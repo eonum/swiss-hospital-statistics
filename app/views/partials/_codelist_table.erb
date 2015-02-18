@@ -1,0 +1,12 @@
+<table style="">
+  <tr>
+    <th>Code</th>
+    <th><%= t('text') %></th>
+  </tr>
+  <% codes.each do |code| %>
+    <tr>
+      <td><%=link_to code.code, code %></td>
+      <td style="text-align: left;"><%= code.text locale %></td>
+    </tr>
+  <% end %>
+</table>

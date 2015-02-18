@@ -1,0 +1,13 @@
+<% actionname = "index" unless local_assigns.has_key? :actionname %>
+<%= form_tag(url_for(:controller => controller, :action => actionname == "" ? 'index' : actionname), :method => "get") do %>
+  <%= label_tag(:q, t('search_for_code')) %>
+  <%= text_field_tag(:q, params[:q]) %>
+  <%= label_tag(:qt, t('search_for_text')) %>
+  <%= text_field_tag(:qt, params[:qt]) %>
+  <%= submit_tag(t('search')) %>
+<% end %>
+
+<br/>
+<hr/>
+
+<%= render(:partial => 'partials/codelist_without_search', :locals => {:codes => codes}) %>

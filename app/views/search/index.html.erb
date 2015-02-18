@@ -1,0 +1,25 @@
+<p></p>
+<h1><%= t('search') %></h1>
+<p><%= raw t('search_explanation') %></p>
+<p>
+  <%= form_tag(url_for(search_path), :method => 'get' ) do %>
+    <%= text_field_tag(:query, @query) %>
+    <%= submit_tag(t('search')) %>
+  <% end %>
+</p>
+<% if(@drg.size > 0) %>
+  <br/>DRGs
+  <%= render(:partial => 'partials/codelist_without_search', :locals => {:codes => @drg}) %>
+<% end %>
+<% if(@mdc.size > 0) %>
+  <br/>MDCs
+  <%= render(:partial => 'partials/codelist_without_search', :locals => {:codes => @mdc}) %>
+<% end %>
+<% if(@icd.size > 0) %>
+  <br/>ICD
+  <%= render(:partial => 'partials/codelist_without_search', :locals => {:codes => @icd}) %>
+<% end %>
+  <% if(@chop.size > 0) %>
+  <br/>CHOP
+  <%= render(:partial => 'partials/codelist_without_search', :locals => {:codes => @chop}) %>
+<% end %>

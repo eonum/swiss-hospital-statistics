@@ -1,0 +1,57 @@
+<h2>DRG <%= @drg.code %>
+  <small><%= @drg.text @locale %></small>
+</h2>
+<b>MDC: </b>
+<%= @drg.mdc.code + ' ' + @drg.mdc.text(locale) %>  <br/>
+Partition: <%= @drg.partition %><br/><br/>
+<%= link_to t('link_to_swissdrg_manual'), System.get('swissdrg_manual_link') + 'drgs/name?code=' + @drg.code + '&locale=' + locale.to_s, :target => '_blank', :class => 'buttonLink' %>
+<p>
+  <% if (@drg.cost_weight == 0) %>
+      <%= t('nocostweight') %>
+      <br/>
+  <% else %>
+      <div>
+        <table>
+          <b><%= t('drg-catalogue') %></b><br/><br/>
+          <tr>
+            <td><b><%= t('cost_weight') %>: </b></td>
+            <td><%= @drg.cost_weight %>
+              <br/></td>
+          </tr>
+          <tr>
+            <td><b><%= t('avg_duration') %>: </b></td>
+            <td><%= @drg.avg_duration %></td>
+          </tr>
+          <tr>
+            <td><b><%= t('first_day_discount') %>: </b></td>
+            <% if @drg.first_day_discount != nil %>
+                <td><%= @drg.first_day_discount %></td>
+                </tr>
+                <tr>
+                  <td><b><%= t('discount_per_day') %>: </b></td>
+                  <td><%= @drg.discount_per_day %></td>
+                </tr>
+            <% else %>
+                <td><%= t('none') %></td>
+                </tr>
+            <% end %>
+            <tr>
+              <td><b><%= t('first_day_surcharge') %>: </b></td>
+              <% if @drg.first_day_surcharge != nil %>
+                  <td><%= @drg.first_day_surcharge %></td>
+                  </tr>
+                  <tr>
+                    <td><b><%= t('surcharge_per_day') %>: </b></td>
+                    <td><%= @drg.surcharge_per_day %></td>
+                  </tr>
+              <% else %>
+                  <td><%= t('none') %></td>
+                  </tr>
+              <% end %>
+              <tr>
+                <td><b><%= t('transfer_flatrate') %>: </b></td>
+                <td><%= @drg.transfer_flatrate == 0 ? t('yes_fpk') : t('no_fpk') + " (" + @drg.transfer_flatrate.to_s + ")" %></td>
+              </tr>
+              </table>
+      </div>
+  <% end %>

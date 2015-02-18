@@ -1,0 +1,32 @@
+<h2><%= System.first.chop %></h2>
+
+<div id='chop_nonterminals'>
+  <% @chop_code.parents.each do |parent| %>
+      <div>
+        <h4 style="margin-bottom: 0.2em;"><%= parent['code'] %> <%= parent.text locale %></h4>
+        <%= render(:partial => 'partials/hint_list', :locals => {:list => parent.localized_field('inclusions', locale), :name => t('inclusions')}) %>
+        <%= render(:partial => 'partials/hint_list', :locals => {:list => parent.localized_field('exclusions', locale), :name => t('exclusions')}) %>
+
+        <%= render(:partial => 'partials/hint_list', :locals => {:list => parent.localized_field('descriptions', locale), :name => t('descriptions')}) %>
+        <%= render(:partial => 'partials/hint_list', :locals => {:list => parent.localized_field('supplement_codes', locale), :name => t('supplement_codes')}) %>
+        <%= render(:partial => 'partials/hint_list', :locals => {:list => parent.localized_field('notes', locale), :name => t('notes')}) %>
+      </div>
+  <% end %>
+</div>
+
+<h2 style="color: #96230A;"><%= @chop_code.code %> <small><%= @chop_code.text locale %></small > </h2>
+<% @chop_code['annotations'].each do |a| %>
+    <span class="tm-tag"><%= t(a) %></span>
+<% end %>
+
+<div id='icd'>
+  <%= render(:partial => 'partials/hint_list', :locals => {:list => @chop_code.localized_field('inclusions', locale), :name => t('inclusions')}) %>
+  <%= render(:partial => 'partials/hint_list', :locals => {:list => @chop_code.localized_field('exclusions', locale), :name => t('exclusions')}) %>
+
+  <%= render(:partial => 'partials/hint_list', :locals => {:list => @chop_code.localized_field('descriptions', locale), :name => t('descriptions')}) %>
+  <%= render(:partial => 'partials/hint_list', :locals => {:list => @chop_code.localized_field('supplement_codes', locale), :name => t('supplement_codes')}) %>
+
+  <%= render(:partial => 'partials/hint_list', :locals => {:list => @chop_code.localized_field('notes', locale), :name => t('notes')}) %>
+</div>
+<br/>
+<%= link_to t('back_to_chop'), chop_codes_path %>

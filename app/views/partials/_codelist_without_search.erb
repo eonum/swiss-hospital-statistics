@@ -1,0 +1,4 @@
+<% page = "page" unless local_assigns.has_key? :page %>
+
+<%= render(:partial => 'partials/codelist_table', :locals => {:codes => codes}) %>
+<%= render 'partials/paginate', {:paginate => codes, :page => page} %>

@@ -1,0 +1,71 @@
+it:
+  name: "Nome"
+  description: "Descrizione"
+  back: "Indietro"
+  yesp: "Sì"
+  nop: "No"
+  edit: "Modifica"
+  user_overview: "Visione d'insieme utente"
+
+  search_for_code: "Ricerca per codice:"
+  search_for_text: "Ricerca per testo:"
+  search: "Cerca"
+  empty_faq: "La ricerca non ha dato risultati!"
+  fulltext_search: "Ricerca completa"
+
+  address: "Indirizzo"
+  remarks: "Osservazioni"
+  password: "Password"
+  password_confirmation: "Confermare la password"
+
+  drgs: "DRG"
+  text: "Testo descrittivo"
+
+  backward: "Indietro"
+  forward: "Avanti"
+  page_gap: "..."
+  catalogue: "Catalogo"
+  system: "Versione SwissDRG"
+  back_to_chop: "Indietro alla visione d'insieme CHOP"
+  back_to_drg: "Indietro alla visione d'insieme DRG"
+  back_to_icd: "Indietro alla visione d'insieme ICD"
+  back_to_mdc: "Indietro alla visione d'insieme MDC"
+  partition: "Partizione"
+  all: "Tutti"
+  none: "Nessuna"
+
+  nocostweight: "Importo forfettario per caso non valutato"
+  avg_duration: "Durata media di degenza"
+  drg-catalogue: "Record del catalogo dei forfait per caso"
+  cost_weight: "Peso dei costi"
+  first_day_discount: "Primo giorno con riduzione"
+  discount_per_day: "Tasso di riduzione giornaliero"
+  first_day_surcharge: "Primo giorno con supplemento"
+  high_trim_point: Limite superiore della durata di degenza
+  low_trim_point: Limite inferiore della durata di degenza
+  surcharge_per_day: "Supplemento giornaliero"
+  transfer_flatrate: "Forfait per caso di trasferimento"
+  yes_fpk: "Sì"
+  no_fpk: "No"
+  none: "Nessuno"
+  length-of-stay-short: DS
+  length-of-stay: Degenza attuale
+  los-chart-legend: Durata del soggiorno
+  drg-chart-title: Grafica del ricavo dei DRG e costweight effettivo
+  formal-logic: Logica formale
+  calculate-ecw: Calcolare il costweight effettivo
+  ecw-calculation: Calcolo del costweight effettivo
+  ecw: Cost-weight effettivo
+  transfer: Riduzione per trasferimento
+  lower: Low-Outlier
+  upper: High-Outlier
+  normal: Inlier
+  adm00: "normale"
+  adm11: "trasferto (Soggiorno più lungo che 24 ore nell'ospedale trasferente.)"
+  adm06: "trasferto (Soggiorno più corte che 24 ore nell'ospedale trasferente.)"
+  sep00: normale
+  sep06: "trasferto (in un altro ospedale)"
+  sep07: "deceduto"
+  sep04: "concluso contro il consiglio medico"
+  adm: Modo di ricovero
+  sep: Modo di dimissione

@@ -1,0 +1,313 @@
+---
+fr:
+  user_sessions:
+    new:
+      usersession:
+        login: "Nom d'utilisateur"
+        password: "Mot de passe"
+  sign_in: Connexion
+  remember_me: "Se souvenir de moi"
+  email: E-mail
+  current_password: "Mot de passe actuel"
+  update: Enregistrer
+  leave_blank_if_no_change: "(laissez ce champ vide si vous ne désirez pas changer votre mot de passe)"
+  mode: "Rôle de l'utilisateur"
+  expert_mode: Expert
+  novice_mode: Standard
+  password_required: "(Le mot de passe est requis pour enregistrer les données)"
+  login: Connexion
+  logout: Déconnexion
+  login_successful: "Connexion réussie"
+  logout_successful: "Déconnexion réussie"
+  login_requisited: "Vous devez vous connecter pour voir cette page !"
+  user_created: "Utilisateur créé avec succès."
+  user_updated: "Paramètres utilisateur enregistrés."
+  personal_category: "Mes règles de validation"
+  no_access: "Vous n'avez pas accès à ce site !"
+  edit_userdata: "Modifier les données"
+  remove_user: "Supprimer l'utilisateur"
+  new_user: "Créer un nouvel utilisateur"
+  user_deleted: " a été supprimé"
+  users: Utilisateur
+  username: "Nom d'utilisateur"
+  admin: Administrateur
+  name: Nom
+  description: Description
+  back: Retour
+  yesp: Oui
+  nop: Non
+  edit: Modifier
+  user_overview: Utilisateurs
+  search_for_code: "Chercher par code :"
+  search_for_text: "Chercher par description :"
+  search: Recherche
+  empty_faq: "Aucune entrée ne correspond à votre demande !"
+  fulltext_search: "Recherche plein texte"
+  address: Adresse
+  remarks: Commentaires
+  password: "Mot de passe"
+  password_confirmation: "Confirmer le mot de passe"
+  user_settings: "Paramètres utilisateur"
+  drgs: DRGs
+  text: Description
+  backward: "En arrière"
+  forward: "En avant"
+  page_gap: "..."
+  catalogue: Catalogue
+  system: "Version SwissDRG"
+  back_to_chop: "Retour à l'aperçu CHOP"
+  back_to_drg: "Retour à l'aperçu DRG"
+  back_to_icd: "Retour à l'aperçu CIM"
+  back_to_mdc: "Retour à l'aperçu MDC"
+  partition: Partition
+  all: Tous
+  none: Aucun
+  nocostweight: "DRG non évalué"
+  avg_duration: "Durée moyenne de séjour"
+  drg-catalogue: "Entrée dans le catalogue des forfaits par cas"
+  cost_weight: Cost-weight
+  first_day_discount: "Premier jour avec réduction"
+  discount_per_day: "Réduction par jour"
+  first_day_surcharge: "1er jour avec supplément"
+  high_trim_point: "Borne supérieure de la durée de séjour"
+  low_trim_point: "Borne inférieure de la durée de séjour"
+  surcharge_per_day: "Augmentation du CW par jour"
+  transfer_flatrate: "DRG avec réduction pour transfert"
+  yes_fpk: Oui
+  no_fpk: Non
+  length-of-stay-short: DS
+  length-of-stay: "Durée actuelle de séjour"
+  los-chart-legend: "Durée du séjour"
+  drg-chart-title: "Graphique du revenu des DRG et cost-weight effectif"
+  formal-logic: "Logique formal de ce DRG"
+  calculate-ecw: "Calculer le cost-weight effectif"
+  ecw-calculation: "Calcul du cost-weight effectif"
+  ecw: "Cost-weight effectif"
+  transfer: "Réduction pour transfert"
+  lower: Low-Outlier
+  upper: High-Outlier
+  normal: Inlier
+  adm00: Normal
+  adm11: "transféré (Séjour plus long que 24 heures dans l'hôpital de soins aigus transférant.)"
+  adm06: "transféré (Séjour plus court que 24 heures dans l'hôpital de soins aigus transférant.)"
+  sep00: Normal
+  sep06: "Transféré vers un autre hôpital"
+  sep07: Décédé
+  sep04: "Terminé contre l'avis médical"
+  adm: "Mode d'admission"
+  sep: "Mode de sortie"
+  drg_trends: "DRG cost weight - tendance"
+  difference: "Différence de la logique"
+  price_instability: "Volatilité des prix"
+  price_trend: "Tendance des prix"
+  case_analysis: "Analyse de cas"
+  search_for_id: "Chercher par ID, DRG ou étiquette"
+  sort_by_id: "Trier par ID"
+  outlier_cases: "Trier par échantillonnage statistique"
+  optimizable_cases: "Trier les cas de DRG similaires qui ont une cost-weight supérieure"
+  edit_in_webgrouper: "Regrouper ce cas avec le Webgrouper de SwissDRG"
+  grouper: Regroupement
+  case: Cas
+  rank: "Indice de similarité"
+  stat_drg: "DRG statistique"
+  adm_vars: "Variables démographiques"
+  age_years: "Âge en années"
+  age_days: "Âge en jours"
+  los: "Durée du séjour"
+  hmv: "Respiration artificielle"
+  sex: Sexe
+  male: Masculin
+  female: Féminin
+  pdx: "Diagnostic principal"
+  pdxs: "Diagnostics principaux"
+  pdxs_short: DP
+  sdxs: "Diagnostics secondaires"
+  sdxs_short: DS
+  procs: Procédures
+  caseflag01: Inlier
+  caseflag02: High-Outlier
+  caseflag03: Low-Outlier
+  caseflag04: "Réduction pour transfert"
+  caseflag05: "DRG non évalué"
+  percentage_of_all: "Part du total des cas"
+  rec_rate: "Taux de reconnaissance"
+  drg_stats: "Statistique de la modèle DRG"
+  misclassifications: "Erreurs de classification dans ce DRG"
+  num: Nombre
+  drg_ranking: "DRG similaires"
+  cost_tab: "État des revenus"
+  cost: "Coût total"
+  returns: Recettes
+  gains: Profit
+  similarity: Similarité
+  all_cases: "Tous les cas"
+  delta_ecw: "Delta ECW"
+  adm_weight: "Poids à l'admission"
+  num_training: "Nombre de cas pour ce modèle DRG"
+  common_pdxs: "Diagnostics principaux fréquents"
+  common_sdxs: "Diagnostics secondaires fréquents"
+  common_srgs: "Procédures fréquentes"
+  stat_reduced: " (sans le dernier chiffre)"
+  coding: Codage
+  no_drg_model: "Aucun ou pas assez d'échantillons de configuration disponibles (<10) : impossible de calculer un modèle pour ce DRG."
+  no_data: "Aucune données de configuration !"
+  no_rank: "Impossible de calculer le rang."
+  delta_ecw_explanation: "Moyenne de toutes les différences en cost-weight effective pour les cinq DRG les plus similaires par rapport à la cost-weight effectif actuel."
+  rank_explanation: "Indice de similarité : rang du DRG regroupé dans le modèle calculé. Un rang de 1 signifie que le DRG groupé est également le DRG le plus probable statistiquement. Les DRG statistique et regroupé correspondent."
+  similarity_explanation: "Similarité de ce cas avec le DRG regroupé : cette mesure est calculée comme probabilité d'assignation dans le modèle statistique. Toutes les valeurs se trouvent dans l'intervalle [0,1] et la somme de toutes les mesures de similarité pour tous les DRG possibles pour un cas donné est égale à 1."
+  drg_explanation: "DRG regroupé"
+  num_training_explanation: "Nombre de cas regroupés dans ce DRG et utilisés pour la formation de ce modèle statistique. Les DRG avec peu d'échantillons (<30) doivent être examinés avec prudence à cause de leur faible stabilité statistique."
+  gain_explanation: "Différence entre les recettes et le coût total."
+  drg_ratio_explanation: "Part de la totalité des cas qui rentrent dans ce DRG."
+  rec_rate_explanation: "Pourcentage des cas de ce DRG qui ont été assignés correctement aux DRG regroupé par le classificateur statistique."
+  code_likelihood_explanation: "Similarité de ce code avec le DRG regroupé. Plus l'indicateur est grand et vert, plus ce code est typique de ce DRG."
+  statistical_drg_explanation: "DRG le plus probable selon le modèle statistique"
+  drg_ranking_explanation: "Liste des cinq DRG les plus similaires selon le modèle statistique."
+  coding_proposals_explanation: "Les diagnostics et procédures qui ont été codés plus souvent dans ce DRG que dans le DRG regroupé."
+  similarity_ranking_explanation: "Similarité de ce cas au DRG regroupé calculé comme probabilité d'assignation dans le modèle statistique dans l'intervalle [0,1]. La somme de toutes les probabilités pour tous les DRG pour un cas donné est égale à 1"
+  code_proposal: "Propositions de codage"
+  single_case_analysis: "Analyse de cas"
+  code_proposal_description: "Une liste de diagnostics et de procédures est générée basée sur le contexte du codage actuel."
+  code_proposals_for_case: "Propositions de codage pour ce cas"
+  relevance: Pertinence
+  adm_variables: "Données administratives"
+  adm_date: "Date d'admission"
+  exit_date: "Date de sortie"
+  leave_days: "Jours de congé"
+  adm_mode: "Mode d'admission"
+  sep_mode: "Mode de sortie"
+  additional_diagnoses: "Diagnostics secondaires"
+  procedures: Procédures
+  group: Grouper
+  unknown: Inconnu
+  transferred_longer_than_24: "transféré (Séjour plus long que 24 heures dans l'hôpital de soins aigus transférant.)"
+  transferred_less_than_24: "transféré (Séjour plus court que 24 heures dans l'hôpital de soins aigus transférant.)"
+  died: Décédé
+  transferred: "transféré (dans un autre hôpital)"
+  medical_advice: "terminé contre l'avis médical"
+  empty_form: "Vider formulaire"
+  validate_and_propose: "Valider et générer les propositions"
+  takeover_code: "Saisir code"
+  remove_code: "Supprimer code"
+  specificity: Spécificité
+  invalid_diag: "Diagnostic invalide"
+  valid_diag: "Diagnostic valide"
+  import: "Importation données"
+  import_not_possible: "L'importation des données n'est pas terminée."
+  import_description: "Ici, vous pouvez envoyer vos analyses. Le fichier doit être soit <a href='https://webgrouper.swissdrg.org/grouper/grouper-doku.de.pdf'>au format SwissDRG Batchgrouper</a>, soit au format de statistiques médicales du OFS, soit un groupe de données PRISMA (GD Zürich). Le format sera détecté automatiquement."
+  file_upload_input: "Veuillez choisir un fichier."
+  upload: "Envoyer un fichier"
+  overview_imports: "Aperçu des fichiers importés"
+  num_cases: "Nombre de cas"
+  delete_import: "Supprimer cette importation. Les cas associés seront également supprimés."
+  are_you_sure: Vraiment ?
+  upload_file: "Fichier envoyé"
+  drg_file: "Fichier de sortie Batchgrouper"
+  import_successfull: "Données importées avec succès !"
+  import_progressing: "Importation des données..."
+  delete_successfull: "Suppression réussie"
+  import_date: "Date d'importation"
+  select_import: "Sélectionner le groupe de données à analyser"
+  similar_constellations: "Cas similaires : "
+  link_to_swissdrg_manual: "Cette entrée dans le manuel de définitions en ligne de SwissDRG"
+  import_errors: "Messages d'erreur"
+  import_log: "Rapport d'importation"
+  update_analysis: "Mettre à jour l'analyse"
+  force_simulate_grouping: "Simulation de l'analyse statistique avec un DRG regroupé différent"
+  live_analysis: "Analyse en direct"
+  reset_case: "Inverser les changements"
+  swap_sdx: "Échanger ce diagnostic et le diagnostic principal"
+  comment: Commentaire
+  confirm_delete_rule: "Voulez-vous vraiment supprimer cette règle ?"
+  rules_overview: "Règles de validation"
+  new_rule: "Créer une nouvelle règle de validation"
+  rule_description: "Logique validation"
+  rule_level: "Niveau validation"
+  rule_hint: Astuce
+  show_rule: "Voir tous les cas qui correspondent à cette règle"
+  edit_rule: "Modifier la règle"
+  warning: Avertissement
+  error: Erreur
+  hint: Astuce
+  info: Information
+  selection: Sélection
+  save: Enregistrer
+  rule_updated: "Règle enregistrée avec succès"
+  delete_rule: "Supprimer la règle"
+  delete_condition: "Retirer la condition"
+  new_rule_based_on: "Créer une nouvelle règle basée sur cette règle."
+  cancel: Annuler
+  add_condition: "Ajouter une condition"
+  and: et
+  or: ou
+  pccl: PCCL
+  diagnoses_length: "Nombre de diagnostics secondaires"
+  procedures_length: "Nombre de procédures"
+  rule_created: "La règle a été créée."
+  creation_date: "Date de création"
+  diagnoses: "Diagnostics secondaires"
+  drg: DRG
+  not_in_list: "n'est pas dans"
+  in_list: "est dans"
+  not_in_table: "n'est pas dans le tableau"
+  in_table: "est dans le tableau"
+  tags: Étiquettes
+  category_created: "La catégorie a été créée."
+  category_updated: "Catégorie enregistrée."
+  no_category: "Aucune catégorie"
+  category: "Catégorie de règles de validation"
+  my_categories: "Mes catégories de règles de validation"
+  system_categories: "Catégories de règles de validation pour l'ensemble du système. (Non modifiable. Vous pouvez activer/désactiver les catégories en vue analyse de cas unique)"
+  delete_category: "Supprimer la catégorie et toutes les règles qu'elle contient"
+  category_disabled: "Désactiver catégorie (les règles de cette catégorie ne seront pas affichées en vue analyse de cas unique)"
+  category_system: "Faire de cette catégorie une catégorie publique pour tout le système"
+  categories_overview: "Catégories de règles de validation"
+  categories: "Catégories de règles de validation"
+  show_category: "Montrer tous les cas qui satisfont au moins une règle de cette catégorie"
+  new_category: "Créer une nouvelle catégorie"
+  edit_category: "Modifier la catégorie"
+  show_rules_of_category: "Montrer toutes les règles de cette catégorie"
+  confirm_delete_category: "Voulez-vous vraiment supprimer cette catégorie et toutes les règles qu'elle contient ?"
+  color: Couleur
+  active: Activé
+  disabled: Désactivé
+  description_activate_disable_category: "Activer ou désactiver cette catégorie en vue analyse de cas unique"
+  number_of_rules: "Nombre de règles"
+  category_public: "Publier la catégorie"
+  public_categories: "Règles et catégories publiques"
+  add_public_category: "Ajouter cette catégorie à Mes Catégories"
+  add_from_public_successfull: "Catégorie ajoutée avec succès à Mes Catégories"
+  public_categories_description: "Sur ce site, vous trouverez les catégories publiques de validation des règles de tous les utilisateurs. Vous pouvez ajouter une copie des catégories publiées dans Mes Catégories afin de les utiliser ou de les modifier. Vous pouvez également publier vos propres catégories afin de les partager avec d'autres utilisateurs si vous activez l'option correspondante durant la modification de votre catégorie."
+  case_flag: "Étiquette de la facture"
+  export_as_excel: "Exporter en fichier Excel (CSV)"
+  num_cases_for_export: "Nombre de cas à exporter"
+  helpsupport: Aide
+  support_services: "Assistance demandée en heures"
+  service_date: Date
+  hours: Horaires
+  inclusions: Inclus
+  exclusions: Exclus
+  descriptions: "Descriptions alternatives"
+  supplement_codes: "Coder de la même façon"
+  notes: "Astuces de codage"
+  nnbez: "sans précision"
+  sonstige: Autre
+  symptom: Symptôme
+  lab: "Diagnostic laboratoire"
+  ank: "non classée ailleurs"
+  illegal_pdx: "non permis comme diagnostic principal"
+  search_explanation: "Recherche de codes CIM-, CHOP- ou DRG. Une recherche plus complète inclut les synonymes et la sémantique qui se trouvent <a href='http://medcode.ch' target='_blank'>ici</a>."
+  table_update: "Le tableau a été enregistré."
+  table_created: "Le tableau a été créée."
+  new_table: "Créer un nouveau tableau"
+  tables_overview: "Aperçu des tableaux"
+  edit_table: "Modifier le tableau"
+  show_table: "Montrer le tableau"
+  delete_table: "Suprimer le tableau"
+  confirm_delete_table: "Voulez-vous vraiment supprimer ce tableau?"
+  num_codes: "nombre de codes"
+  table_type: "Type te tableau"
+  tables: Tableaux
+  table_updated: "Le tableau a été enregistré."
+  delete_table_entries: "Supprimer les codes sélectionnés de ce tableau."
+  add_table_entries: "Insérer les codes sélectionnés dans ce tableau."

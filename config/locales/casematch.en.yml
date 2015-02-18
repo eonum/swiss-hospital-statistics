@@ -1,0 +1,312 @@
+---
+en:
+  user_sessions:
+    new:
+      usersession:
+        login: "User name"
+        password: Password
+  sign_in: "Sign in"
+  remember_me: "Remember me"
+  email: Email
+  current_password: "Current password"
+  update: Save
+  leave_blank_if_no_change: "(Keep this field empty if you do not want to change your password)"
+  mode: "User role"
+  expert_mode: Expert
+  novice_mode: Standard
+  password_required: "(Password is required to save data)"
+  login: "Log in"
+  logout: Logout
+  login_successful: "Login successful"
+  logout_successful: "Logout successful"
+  login_requisited: "You have to be logged in to view this page!"
+  user_created: "User successfully created."
+  user_updated: "User settings have been saved."
+  personal_category: "My validation rules"
+  no_access: "You have no access to this site!"
+  edit_userdata: "Edit data"
+  remove_user: "Delete user"
+  new_user: "Create new user"
+  user_deleted: " has been deleted"
+  users: User
+  username: "User name"
+  admin: Administrator
+  name: Name
+  description: Description
+  back: Back
+  yesp: "Yes"
+  nop: "No"
+  edit: Edit
+  user_overview: Users
+  search_for_code: "Search by code:"
+  search_for_text: "Search by description:"
+  search: Search
+  empty_faq: "No entry matches your query!"
+  fulltext_search: "Full text search"
+  address: Address
+  remarks: Comments
+  password: Password
+  password_confirmation: "Confirm password"
+  user_settings: "User settings"
+  drgs: DRGs
+  text: Description
+  backward: Backward
+  forward: Forward
+  page_gap: "..."
+  catalogue: Catalogue
+  system: "SwissDRG version"
+  back_to_chop: "Back to overview CHOP"
+  back_to_drg: "Back to overview DRG"
+  back_to_icd: "Back to overview ICD"
+  back_to_mdc: "Back to overview MDC"
+  partition: Partition
+  all: All
+  none: None
+  nocostweight: "Unweighted DRG"
+  avg_duration: "Average length of stay"
+  drg-catalogue: "Entry from the DRG catalogue"
+  cost_weight: "Cost weight"
+  first_day_discount: "First day with discharge"
+  discount_per_day: "Discount per day"
+  first_day_surcharge: "First day with surcharge"
+  high_trim_point: "Upper trim point"
+  low_trim_point: "Lower trim point"
+  surcharge_per_day: "Surcharge per day"
+  transfer_flatrate: "Transfer case flat rate"
+  yes_fpk: "Yes"
+  no_fpk: "No"
+  length-of-stay-short: LOS
+  length-of-stay: "Current length of stay"
+  los-chart-legend: "Length of stay"
+  drg-chart-title: "DRG proceeds chart and effective cost weight"
+  formal-logic: "Formal logic of this DRG"
+  calculate-ecw: "Calculate the effective cost weight"
+  ecw-calculation: "Calculation of the effective cost weight"
+  ecw: "Effective cost weight"
+  transfer: Transferred
+  lower: "Lower outlier"
+  upper: "Upper outlier"
+  normal: Normal
+  adm00: Normal
+  adm11: "Transferred (Length of stay more than 24 hours in the transferring hospital)"
+  adm06: "Transferred (Length of stay less than 24 hours in the transferring hospital)"
+  sep00: Normal
+  sep06: "Transferred to another hospital"
+  sep07: Deceased
+  sep04: "Terminated against medical advice"
+  adm: "Admission mode"
+  sep: "Separation mode"
+  drg_trends: "DRG cost weights - trends"
+  difference: "logic differences"
+  price_instability: "price volatility"
+  price_trend: "price trend"
+  case_analysis: "Case analysis"
+  search_for_id: "Search for ID, DRG or tag"
+  sort_by_id: "Sort by ID"
+  outlier_cases: "Sort by statistical selection"
+  optimizable_cases: "Sort by cases with similar DRGs which have a higher cost weight"
+  edit_in_webgrouper: "Group this case with the SwissDRG Webgrouper"
+  grouper: Grouping
+  case: Case
+  rank: "Similarity index"
+  stat_drg: "Statistical DRG"
+  adm_vars: "Demographic variables"
+  age_years: "Age in years"
+  age_days: "Age in days"
+  los: "Length of stay"
+  hmv: "Artificial respiration"
+  sex: Sex
+  male: Male
+  female: Female
+  pdx: "Main diagnosis"
+  pdxs: "Main diagnoses"
+  pdxs_short: MD
+  sdxs: "Secondary diagnoses"
+  sdxs_short: SD
+  procs: Procedures
+  caseflag01: Inlier
+  caseflag02: "High Oulier"
+  caseflag03: "Low Outlier"
+  caseflag04: Transferred
+  caseflag05: "Unweighted DRG"
+  percentage_of_all: "Share of total cases"
+  rec_rate: "Recognition rate"
+  drg_stats: "DRG model statistics"
+  misclassifications: "Missclassifications into this DRG"
+  num: Number
+  drg_ranking: "Similar DRGs"
+  cost_tab: "Earnings situation"
+  cost: "Total cost"
+  returns: Proceeds
+  gains: Profit
+  similarity: Similarity
+  all_cases: "All cases"
+  delta_ecw: "Delta ECW"
+  adm_weight: "Admission weight"
+  num_training: "Number of cases for this DRG model"
+  common_pdxs: "Frequent main diagnoses"
+  common_sdxs: "Frequent secondary diagnoses"
+  common_srgs: "Frequent procedures"
+  stat_reduced: " (without the last digit)"
+  coding: Coding
+  no_drg_model: "No or too few training samples available (<10): A model for this DRG could not be calculated."
+  no_data: "No training data!"
+  no_rank: "Rank cannot be computed."
+  delta_ecw_explanation: "Weighted average of all differences in effective cost weight of the five most similar DRGs in comparison to the actual cost weight"
+  rank_explanation: "Similarity index: Rank of the grouped DRG in the calculated model. A rank of 1 means that the grouped DRG is also statistically the most likely DRG. Statistical and grouped DRG match."
+  similarity_explanation: "Similarity of this case to the grouped DRG: This measure is calculated as an assignment probability in the statistical model. All values are in the interval [0,1] and all similarity measures of all possible DRGs for one case add up to 1."
+  drg_explanation: "Grouped DRG"
+  num_training_explanation: "Number of cases grouped into this DRG and used for the training of the statistical model. DRGs with only few samples (<30) have to be looked upon with caution due to missing statistical stability."
+  gain_explanation: "Difference bewtween proceeds and total cost."
+  drg_ratio_explanation: "Share of cases within this DRG to all cases."
+  rec_rate_explanation: "Percentage of cases in this DRG which have been correctly assigned to  the grouped DRG by the statistical classifier."
+  code_likelihood_explanation: "Similarity of this code to the grouped DRG. The larger and greener the more typical this code is for this DRG."
+  statistical_drg_explanation: "Most probable DRG according to the statistical model."
+  drg_ranking_explanation: "List of the five most similar DRGs according to the statistical model."
+  coding_proposals_explanation: "Diagnoses and procedures which have been coded more frequently in this DRG than in the grouped DRG."
+  similarity_ranking_explanation: "Similarity of this case to the grouped DRG calculated as an assignment probability in the statistical model in the interval [0,1]. All probabilities for all DRGs for one case add up to one."
+  code_proposal: "Coding proposals"
+  single_case_analysis: "Single case analysis"
+  code_proposal_description: "Based on the context of the current coding a list of related diagnoses and procedures is generated."
+  code_proposals_for_case: "Coding proposals for this case"
+  relevance: relevance
+  adm_variables: "Administrative data"
+  adm_date: "Admission date"
+  exit_date: "Exit date"
+  leave_days: "Vacation days"
+  adm_mode: "Admission mode"
+  sep_mode: "Separation mode"
+  additional_diagnoses: "Secondary diagnoses"
+  procedures: Procedures
+  group: Group
+  unknown: Unknown
+  transferred_longer_than_24: "Transferred (Length of stay more than 24 hours in the transferring hospital)"
+  transferred_less_than_24: "Transferred (Length of stay less than 24 hours in the transferring hospital)"
+  died: Deceased
+  transferred: "Transferred to another hospital"
+  medical_advice: "Terminated against medical advice"
+  empty_form: "Clear form"
+  validate_and_propose: "Validate and generate proposals"
+  takeover_code: "Enter code"
+  remove_code: "Delete code"
+  specificity: specificity
+  invalid_diag: "Invalid diagnosis"
+  valid_diag: "Valid diagnosis"
+  import: "Data import"
+  import_not_possible: "The data import is not complete."
+  import_description: "You can upload codings for your analyses here. The file has to be either in the <a href='https://webgrouper.swissdrg.org/grouper/grouper-doku.de.pdf'>SwissDRG Batchgrouper format</a>, in the format of the medical statistic of the BFS or as a PRISMA-data set (GD Zürich). The format will be detected automatically."
+  file_upload_input: "Please choose a file."
+  upload: "Upload file"
+  overview_imports: "Overview imported files"
+  num_cases: "Number of cases"
+  delete_import: "Delete this import. All associated cases will also be deleted."
+  are_you_sure: "Are you sure?"
+  upload_file: "Uploaded file"
+  drg_file: "Batchgrouper output file"
+  import_successfull: "Data import successful!"
+  import_progressing: "Data is being imported .."
+  delete_successfull: "Delete successful"
+  import_date: "Import date"
+  select_import: "Select data set for analysis"
+  similar_constellations: "Similar cases: "
+  link_to_swissdrg_manual: "SwissDRG Online definition manual to this entry"
+  import_errors: "Error messages"
+  import_log: "Import report"
+  update_analysis: "Update analysis"
+  force_simulate_grouping: "Simulation of the statistical analysis with a different grouped DRG"
+  live_analysis: "Live analysis"
+  reset_case: "Revert changes"
+  swap_sdx: "Exchange this diagnosis with the main diagnosis"
+  comment: Comment
+  confirm_delete_rule: "Are you sure you want to delete this rule?"
+  rules_overview: "Validation rules"
+  new_rule: "Create a new validation rule"
+  rule_description: "Validation logic"
+  rule_level: "Validation level"
+  rule_hint: Hint
+  show_rule: "Show all cases which match this rule"
+  edit_rule: "Edit rule"
+  warning: Warning
+  error: Error
+  hint: Hint
+  info: Information
+  selection: Selection
+  save: Save
+  rule_updated: "Rule has been saved successfully"
+  delete_rule: "Delete rule"
+  delete_condition: "Remove condition"
+  new_rule_based_on: "Create a new rule based on this rule."
+  cancel: Cancel
+  add_condition: "Add a condition"
+  and: and
+  pccl: PCCL
+  diagnoses_length: "Number of secondary diagnoses"
+  procedures_length: "Number of procedures"
+  rule_created: "Rule has been created."
+  creation_date: "Creation date"
+  diagnoses: "Secondary diagnoses"
+  drg: DRG
+  not_in_list: "is not in"
+  in_list: "is in"
+  not_in_table: "is not in table"
+  in_table: "is in table"
+  tags: Tags
+  category_created: "Category was created successfully."
+  category_updated: "Category was saved."
+  no_category: "No category"
+  category: "Validation rule category"
+  my_categories: "My validation rule categories"
+  system_categories: "System wide validation rule categories. (Not changeable. You can activate/deactivate the categories for the single case analysis view.)"
+  delete_category: "Delete category including all rules"
+  category_disabled: "Deactivate category (Rules in this category will not be displayed in the single case analysis view)"
+  category_system: "Make this category a public system wide category"
+  categories_overview: "Validation rule categories"
+  categories: "Validation rule categories"
+  show_category: "Show all cases which satisfy at least one rule in this category."
+  new_category: "Create a new category"
+  edit_category: "Edit category"
+  show_rules_of_category: "Show all rules of this category"
+  confirm_delete_category: "Are you sure you want to delete this category including all rules?"
+  color: Color
+  active: Activated
+  disabled: Deactivated
+  description_activate_disable_category: "Activate or deactivate this category for the single case analysis view."
+  number_of_rules: "Number of rules"
+  category_public: "Publish category"
+  public_categories: "Public rules and categories"
+  add_public_category: "Add this category to My Categories"
+  add_from_public_successfull: "Successfully added category to My Categories."
+  public_categories_description: "On this site you can find public validation rule categories from all users. You can add published categories to My Categories as a copy which can then be used and edited by you. You can also publish your own  categories in order to share them with other users if you enable the corresponding option when you edit your category."
+  case_flag: "Invoice flag"
+  export_as_excel: "Export as an Excel table (CSV)"
+  num_cases_for_export: "Number of cases to export"
+  helpsupport: Help
+  support_services: "Claimed support in hours"
+  service_date: Date
+  hours: Hours
+  inclusions: Inclusiva
+  exclusions: Exclusiva
+  descriptions: "Alternative descriptions"
+  supplement_codes: "Code likewise"
+  notes: "Coding hints"
+  nnbez: unspecified
+  sonstige: Other
+  symptom: Symptom
+  lab: "Laboratory diagnosis"
+  ank: "not classified elsewhere"
+  illegal_pdx: "not permitted as main diagnosis"
+  search_explanation: "Search for ICD-, CHOP- or DRG codes. A more sophisticated search including synonyms and semantics can be found <a href='http://medcode.ch' target='_blank'>here</a>"
+  table_update: "Table has been saved."
+  table_created: "Table was created."
+  new_table: "Create a new table"
+  tables_overview: "Overview tables"
+  edit_table: "Edit table"
+  show_table: "Show table"
+  delete_table: "Delete table"
+  confirm_delete_table: "Are you sure you want to delete this table?"
+  num_codes: "Number of codes"
+  table_type: "Table type"
+  tables: Tables
+  table_updated: "Table has been saved."
+  delete_table_entries: "Remove selected codes from this table."
+  add_table_entries: "Insert selected codes into this table."
