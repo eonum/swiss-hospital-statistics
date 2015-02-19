@@ -50,6 +50,7 @@ class ApplicationController < ActionController::Base
     query = escape_query(params[:q])
     lang = locale.to_s
     query2 = escape_query(params[:qt])
+    return model.all.order_by([[ :code, :asc ]]).paginate(:page => params[:page], :per_page => 22) if query.blank? && query2.blank?
     return model.where({"code" => /#{Regexp.escape(query)}/i, "text_#{lang}" => /#{Regexp.escape(query2)}/i}).order_by([[ :code, :asc ]]).paginate(:page => params[:page], :per_page => 22)
   end
 

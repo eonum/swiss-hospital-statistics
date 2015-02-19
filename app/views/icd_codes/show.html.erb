@@ -14,9 +14,6 @@
 </div>
 
 <h2 style="color: #96230A;"><%= @icd_code.code %> <small><%= @icd_code.text locale %></small > </h2>
-<% @icd_code['annotations'].each do |a| %>
-    <span class="tm-tag"><%= t(a) %></span>
-<% end %>
 
 <div id='icd'>
   <p><%= @icd_code.localized_field 'note', locale %></p>

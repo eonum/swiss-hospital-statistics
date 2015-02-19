@@ -1,16 +1,10 @@
-<h2>MDC  <%= @mdc.code %> <small><%= @mdc.text locale %></small > </h2>
+<h2>MDC  <%= @mdc.code %>
+  <small><%= @mdc.text locale %></small>
+</h2>
 
-<div class="tabs">
-  <ul id="tabnav">
-    <li class="tab1" id="<%= @selected == 'drgs' ? 'selected_tab' : '1' %>" ><%= link_to(t('drgs'), {:action => 'drgs', :id => @mdc.id}) %></li>
-  </ul>
-
-  <div id="tab_content">
-    <p>
-       <b><%= @title %>: </b>
-       <%= render(:partial => 'partials/codelist_without_search', :locals => {:codes => @codes}) %>
-    </p>
-  </div>
+<p>
+  <%= render(:partial => 'partials/codelist_without_search', :locals => {:codes => @codes}) %>
+</p>
 </div>
 <br/>
 <%= link_to t('back_to_mdc'), mdcs_path %>

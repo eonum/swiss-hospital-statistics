@@ -4,7 +4,6 @@
 <b>MDC: </b>
 <%= @drg.mdc.code + ' ' + @drg.mdc.text(locale) %>  <br/>
 Partition: <%= @drg.partition %><br/><br/>
-<%= link_to t('link_to_swissdrg_manual'), System.get('swissdrg_manual_link') + 'drgs/name?code=' + @drg.code + '&locale=' + locale.to_s, :target => '_blank', :class => 'buttonLink' %>
 <p>
   <% if (@drg.cost_weight == 0) %>
       <%= t('nocostweight') %>

@@ -5,6 +5,8 @@ class System
 
   field :version, :type => String
   field :year, :type => String
+  field :chop, :type => String
+  field :icd, :type => String
 
   field :swissdrg_webgrouper_system_id, :type => String
   field :swissdrg_manual_link, :type => String

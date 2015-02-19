@@ -15,9 +15,6 @@
 </div>
 
 <h2 style="color: #96230A;"><%= @chop_code.code %> <small><%= @chop_code.text locale %></small > </h2>
-<% @chop_code['annotations'].each do |a| %>
-    <span class="tm-tag"><%= t(a) %></span>
-<% end %>
 
 <div id='icd'>
   <%= render(:partial => 'partials/hint_list', :locals => {:list => @chop_code.localized_field('inclusions', locale), :name => t('inclusions')}) %>

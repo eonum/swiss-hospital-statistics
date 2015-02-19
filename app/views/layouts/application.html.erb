@@ -34,9 +34,9 @@
 
       <ul id='nav'>
         <li><%= link_to(t('drgs'), drgs_path, :style => (controller.controller_name == 'drgs' ? 'color: rgb(3, 123, 218);' : '')) %></li>
-        <li><%= link_to(t('mdcs'), mdcs_path_path, :style => (controller.controller_name == 'mdcs' ? 'color: rgb(3, 123, 218);' : '')) %></li>
-        <li><%= link_to(t('icds'), icd_codes_path, :style => (controller.controller_name == 'icd_codes' ? 'color: rgb(3, 123, 218);' : '')) %></li>
-        <li><%= link_to(t('chops'), chop_codes_path, :style => (controller.controller_name == 'chop_codes' ? 'color: rgb(3, 123, 218);' : '')) %></li>
+        <li><%= link_to('MDCs', mdcs_path, :style => (controller.controller_name == 'mdcs' ? 'color: rgb(3, 123, 218);' : '')) %></li>
+        <li><%= link_to('ICD', icd_codes_path, :style => (controller.controller_name == 'icd_codes' ? 'color: rgb(3, 123, 218);' : '')) %></li>
+        <li><%= link_to('CHOP', chop_codes_path, :style => (controller.controller_name == 'chop_codes' ? 'color: rgb(3, 123, 218);' : '')) %></li>
         <li><%= link_to(t('search'), search_path, :style => (controller.controller_name == 'search' ? 'color: rgb(3, 123, 218);' : '')) %></li>
         <li><%= link_to t('helpsupport'), contact_path %></li>
       </ul>
