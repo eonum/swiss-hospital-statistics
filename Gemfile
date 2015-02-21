@@ -12,6 +12,7 @@ gem 'google_visualr'
 # It’s a small library to provide the Rails I18n translations on Javascript.
 gem 'i18n-js'
 gem 'protected_attributes'
+gem 'rails-perftest'
 
 
 # Gems used only for assets and not required
