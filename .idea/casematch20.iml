@@ -170,6 +170,7 @@
     <orderEntry type="library" scope="PROVIDED" name="rails_layout (v1.0.24, jruby-1.7.19-p551) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="railties (v4.2.0, jruby-1.7.19-p551) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rake (v10.4.2, jruby-1.7.19-p551) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="requirejs-rails (v0.9.5, jruby-1.7.19-p551) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="sass (v3.4.12, jruby-1.7.19-p551) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="sass-rails (v5.0.1, jruby-1.7.19-p551) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="sprockets (v2.12.3, jruby-1.7.19-p551) [gem]" level="application" />
@@ -181,7 +182,6 @@
     <orderEntry type="library" scope="PROVIDED" name="tilt (v1.4.1, jruby-1.7.19-p551) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="turbolinks (v2.5.3, jruby-1.7.19-p551) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="tzinfo (v1.2.2, jruby-1.7.19-p551) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="uglifier (v2.7.0, jruby-1.7.19-p551) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="will_paginate (v3.0.7, jruby-1.7.19-p551) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="will_paginate_mongoid (v2.0.1, jruby-1.7.19-p551) [gem]" level="application" />
   </component>

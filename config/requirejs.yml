@@ -1,0 +1,41 @@
+paths:
+  app: 'app'
+  application: 'application'
+
+  jquery: 'vendor/jquery'
+  # JQuery modules must be defined in jquery-adapter
+  'jquery-adapter': 'jquery-adapter'
+  jquery_ujs: 'jquery_ujs'
+
+  # Foudnation modules must be defined in foundation-adapter
+  'foundation-adapter': 'foundation-adapter'
+  foundation: 'foundation/foundation'
+
+  # Modernizr is inside a vendor directory
+  modernizr: 'vendor/modernizr'
+
+shim:
+  #JQuery adapter consists of jquery and jquery_ujs
+  'jquery-adapter':
+    exports: 'jquery'
+    deps: ['jquery', 'jquery_ujs']
+
+  jquery:
+    exports: 'jquery'
+
+  # jquery_ujs depends on jquery
+  jquery_ujs:
+    deps: ['jquery']
+
+  'foundation-adapter':
+    exports: 'jquery'
+    deps: ['jquery', 'foundation']
+
+  # Foundation depends on jquery
+  foundation:
+    deps: ['jquery']
+
+  topbar:
+    deps: ['jquery']
+
+  priority: ['jquery-adapter', 'foundation-adapter', 'app']
