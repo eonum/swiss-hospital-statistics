@@ -8,8 +8,6 @@ Rails.application.configure do
 
   # Do not eager load code on boot.
   config.eager_load = false
-  # Log error messages when you accidentally call methods on nil.
-  config.whiny_nils = true
 
   # Show full error reports and disable caching.
   config.consider_all_requests_local       = true
@@ -21,16 +19,22 @@ Rails.application.configure do
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
 
-  # Only use best-standards-support built into browsers
-  config.action_dispatch.best_standards_support = :builtin
-
-  # Do not compress assets
-  config.assets.compress = false
+  # Raise an error on page load if there are pending migrations.
+  # config.active_record.migration_error = :page_load
 
   # Debug mode disables concatenation and preprocessing of assets.
   # This option may cause significant delays in view rendering with a large
   # number of complex assets.
   config.assets.debug = true
+
+  # Asset digests allow you to set far-future HTTP expiration dates on all assets,
+  # yet still be able to expire them through the digest params.
+  config.assets.digest = true
+
+  # Precompile *all* assets, except those that start with underscore
+  config.assets.precompile << /(^[^_\/]|\/[^_])[^\/]*$/
+
+  config.assets.compile = true
 
   # Adds additional error checking when serving assets at runtime.
   # Checks for improperly declared sprockets dependencies.

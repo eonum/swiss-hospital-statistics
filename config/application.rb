@@ -4,6 +4,7 @@ require 'action_controller/railtie'
 require 'action_mailer/railtie'
 #require 'active_resource/railtie'
 require 'rails/test_unit/railtie'
+require 'sprockets/railtie'
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -21,7 +22,7 @@ module DrgScaffold
 
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
-    config.i18n.default_locale = :de
+    # config.i18n.default_locale = :de
 
     # Configure the default encoding used in templates for Ruby 1.9.
     config.encoding = "utf-8"
@@ -33,8 +34,8 @@ module DrgScaffold
     config.active_support.escape_html_entities_in_json = true
 
     # Enable the asset pipeline
-    config.assets.enabled = false
-
+    config.assets.enabled = true
+    #
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
   end

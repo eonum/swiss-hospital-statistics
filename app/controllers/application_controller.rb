@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   helper_method :home_path, :standard_search_index
 
   before_filter :locale
-  before_filter :export_i18n_messages
+  # before_filter :export_i18n_messages
 
   rescue_from ActionController::UnknownFormat, with: :raise_not_found
 
@@ -13,9 +13,9 @@ class ApplicationController < ActionController::Base
     render(text: 'Not Acceptable', status: 406)
   end
 
-  def export_i18n_messages
-    SimplesIdeias::I18n.export! if Rails.env.development?
-  end
+  # def export_i18n_messages
+  #   SimplesIdeias::I18n.export! if Rails.env.development?
+  # end
 
   # Sets the locale to the given language, e.g 'de', 'fr, 'it', 'en'
   def set_locale

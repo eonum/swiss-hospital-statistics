@@ -1,80 +1,22 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!DOCTYPE html>
 <html>
 <head>
-  <title>eonum drg scaffold</title>
-  <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
-
-  <%= javascript_include_tag 'jquery.min.js' %>
-  <%= javascript_include_tag 'jquery_ujs.js' %>
-  <%= javascript_include_tag 'application' %>
-  <%= javascript_include_tag 'i18n' %>
-  <%= javascript_include_tag 'translations' %>
-  <%= javascript_include_tag 'purl' %>
-  <%= javascript_include_tag 'jquery-ui-1.10.3.custom.min' %>
-  <%= stylesheet_link_tag 'jquery-ui-1.10.3.custom.min' %>
-
-  <%= javascript_tag do %>
-      I18n.defaultLocale = "<%= I18n.default_locale %>";
-      I18n.locale = "<%= I18n.locale %>";
-  <% end %>
-
-  <%= csrf_meta_tag %>
-  <%= stylesheet_link_tag "style_blue" %>
-  <!-- <%= stylesheet_link_tag "/shadowbox-3.0.3/shadowbox.css" %>-->
-  <%= favicon_link_tag 'favicon.ico' %>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= content_for?(:title) ? yield(:title) : "eonum drg scaffold" %></title>
+    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Rails Foundation" %>">
+    <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
+    <%# Modernizr is required for Zurb Foundation %>
+    <%= javascript_include_tag "vendor/modernizr" %>
+    <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+    <%= csrf_meta_tags %>
 </head>
 <body>
-<div id="header">
-  <div id="header_inner" class="fixed">
-    <div id="logo"><h1><%= link_to("eonum casematch", root_path) %>
-      <span style='font-size: small;'><%= System.first['version'] %></span></h1>
-      <!-- <img style='float: right; border:none; margin-left: 100px; width: 600px' src='/images/header_eonum_einfach.png' /> -->
-    </div>
-    <div id="menu">
-
-      <ul id='nav'>
-        <li><%= link_to(t('drgs'), drgs_path, :style => (controller.controller_name == 'drgs' ? 'color: rgb(3, 123, 218);' : '')) %></li>
-        <li><%= link_to('MDCs', mdcs_path, :style => (controller.controller_name == 'mdcs' ? 'color: rgb(3, 123, 218);' : '')) %></li>
-        <li><%= link_to('ICD', icd_codes_path, :style => (controller.controller_name == 'icd_codes' ? 'color: rgb(3, 123, 218);' : '')) %></li>
-        <li><%= link_to('CHOP', chop_codes_path, :style => (controller.controller_name == 'chop_codes' ? 'color: rgb(3, 123, 218);' : '')) %></li>
-        <li><%= link_to(t('search'), search_path, :style => (controller.controller_name == 'search' ? 'color: rgb(3, 123, 218);' : '')) %></li>
-        <li><%= link_to t('helpsupport'), contact_path %></li>
-      </ul>
-
-    </div>
-    <div style="position:relative; float: right;">
-      <span style='width: 40px'>&nbsp;&nbsp;&nbsp;</span>
-      <%= link_to 'deutsch', set_locale_path(:new_locale => 'de') %> |
-      <%= link_to 'français', set_locale_path(:new_locale => 'fr') %> |
-      <%= link_to 'english', set_locale_path(:new_locale => 'en') %>
-    </div>
-  </div>
-</div>
-
-<div id="main">
-  <br class="clear"/>
-
-  <div id="main_inner" class="fixed">
-    <% if flash[:notice] %>
-        <div id="flash"><%= flash[:notice] %></div>
-    <% end %>
-    <% if alert %>
-        <div id="alert"><%= alert %></div>
-    <% end %>
+<header>
+    <%= render 'layouts/navigation' %>
+</header>
+<main role="main">
+    <%= render 'layouts/messages' %>
     <%= yield %>
-  </div>
-  <br class="clear"/>
-</div>
-<div id="footer" class="fixed">
-  <p>
-    <%= link_to 'deutsch', set_locale_path(:new_locale => 'de') %> |
-    <%= link_to 'français', set_locale_path(:new_locale => 'fr') %> |
-    <%= link_to 'english', set_locale_path(:new_locale => 'en') %> |
-  </p>
-  copyright &copy; 2015 eonum AG. <%= link_to 'contact', contact_path %>
-  <br/>
-  <%= image_tag("/images/randinfo_bild.png", :style => 'border:none; margin-right:200px;') %>
-</div>
-
+</main>
 </body>
 </html>
