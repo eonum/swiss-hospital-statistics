@@ -22,6 +22,7 @@ end
 
 group :db do
   gem 'mongoid', '~> 4'
+  gem 'roo'
 end
 
 group :templates do

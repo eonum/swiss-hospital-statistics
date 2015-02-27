@@ -171,8 +171,12 @@
     <orderEntry type="library" scope="PROVIDED" name="railties (v4.2.0, jruby-1.7.19-p551) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rake (v10.4.2, jruby-1.7.19-p551) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="requirejs-rails (v0.9.5, jruby-1.7.19-p551) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="roo (v1.13.2, jruby-1.7.19-p551) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="ruby-ole (v1.2.11.8, jruby-1.7.19-p551) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="rubyzip (v1.1.7, jruby-1.7.19-p551) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="sass (v3.4.12, jruby-1.7.19-p551) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="sass-rails (v5.0.1, jruby-1.7.19-p551) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="spreadsheet (v1.0.1, jruby-1.7.19-p551) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="sprockets (v2.12.3, jruby-1.7.19-p551) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="sprockets-rails (v2.2.4, jruby-1.7.19-p551) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="therubyrhino (v2.0.4, jruby-1.7.19-p551) [gem]" level="application" />

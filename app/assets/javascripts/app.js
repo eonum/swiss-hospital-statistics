@@ -1,9 +1,10 @@
-define(['jquery'], function($){
+define(['models/CodeModel','views/CodeView','jquery'], function(CodeModel, CodeView, $){
    "use strict";
 
     function App() {
-        // here starts our app
-        console.log('Welcome to PSE3!');
+        var view = new CodeView();
+        $(document.body).append(view);
+        view.model(new CodeModel());
     }
 
     return App

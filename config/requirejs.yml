@@ -1,6 +1,8 @@
 paths:
   app: 'app'
   application: 'application'
+  Announcer: 'Announcer'
+  Dictionary: 'Dictionary'
 
   jquery: 'vendor/jquery'
   # JQuery modules must be defined in jquery-adapter

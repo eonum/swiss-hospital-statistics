@@ -2,12 +2,17 @@ module Api
   module V1
     class CodesController < ApplicationController
 
+      include Parsers
+
       def index
-        render json: {message:'all codes'}
+        # put code to play with here
+        Parsers::SuDParser.new.parse
+        render json: {message:'all all'}
       end
 
       def show
-        render json:  {message: params[:id]}
+        @drg = Drg.where({ "code" => params[:id] }).first
+        render json: @drg
       end
     end
   end
