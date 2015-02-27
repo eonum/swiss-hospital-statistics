@@ -1,6 +1,6 @@
 module Api
   module V1
-    class CodeController < ApplicationController
+    class InfoController < ApplicationController
       def index
         render json: {code: params[:code_id]}
       end

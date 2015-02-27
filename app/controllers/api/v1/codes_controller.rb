@@ -11,8 +11,7 @@ module Api
       end
 
       def show
-        @drg = Drg.where({ "code" => params[:id] }).first
-        render json: @drg
+        render json: {code: params[:id]}
       end
     end
   end
