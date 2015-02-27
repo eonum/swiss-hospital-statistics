@@ -15,6 +15,12 @@ Rails.application.routes.draw do
     get :name, :on => :collection
   end
 
+  namespace :api do
+    namespace :v1 do
+      resources :codes, :only => [:index, :show]
+    end
+  end
+
   resources :drgs, :except => [:new, :edit, :update, :destroy, :create] do
     get :name, :on => :collection
     get :search, :on => :collection
@@ -26,6 +32,5 @@ Rails.application.routes.draw do
   
   get 'set_locale', :to => 'application#set_locale'
   get 'search', :to => 'search#index'
-
   # See how all your routes lay out with "rake routes"
 end
