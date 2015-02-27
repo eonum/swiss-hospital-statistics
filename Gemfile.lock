@@ -152,6 +152,8 @@ GEM
       coffee-rails
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
+    tzinfo-data (1.2015.1)
+      tzinfo (>= 1.0.0)
     will_paginate (3.0.7)
     will_paginate_mongoid (2.0.1)
       mongoid
@@ -178,5 +180,6 @@ DEPENDENCIES
   sass-rails
   therubyrhino
   turbolinks
+  tzinfo-data
   will_paginate
   will_paginate_mongoid

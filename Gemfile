@@ -46,4 +46,5 @@ group :development do
   gem 'rails_layout'
   gem 'execjs'
   gem 'rails-perftest'
+  gem 'tzinfo-data'
 end
