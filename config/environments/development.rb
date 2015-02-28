@@ -34,7 +34,7 @@ Rails.application.configure do
   # Precompile *all* assets, except those that start with underscore
   config.assets.precompile << /(^[^_\/]|\/[^_])[^\/]*$/
 
-  config.assets.compile = true
+  #config.assets.compile = true
 
   # Adds additional error checking when serving assets at runtime.
   # Checks for improperly declared sprockets dependencies.

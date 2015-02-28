@@ -3,6 +3,7 @@ paths:
   application: 'application'
   Announcer: 'Announcer'
   Dictionary: 'Dictionary'
+  Polymorphism: 'Polymorphism'
 
   jquery: 'vendor/jquery'
   # JQuery modules must be defined in jquery-adapter
@@ -17,6 +18,7 @@ paths:
   modernizr: 'vendor/modernizr'
 
 shim:
+
   #JQuery adapter consists of jquery and jquery_ujs
   'jquery-adapter':
     exports: 'jquery'

@@ -11,6 +11,7 @@
 requirejs([
     'jquery-adapter',
     'app',
+    'helpers/ServiceProvider',
     'i18n',
     'i18n/translations',
     'turbolinks',

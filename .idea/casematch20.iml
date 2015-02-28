@@ -186,6 +186,7 @@
     <orderEntry type="library" scope="PROVIDED" name="tilt (v1.4.1, jruby-1.7.19-p551) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="turbolinks (v2.5.3, jruby-1.7.19-p551) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="tzinfo (v1.2.2, jruby-1.7.19-p551) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="tzinfo-data (v1.2015.1, jruby-1.7.19-p551) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="will_paginate (v3.0.7, jruby-1.7.19-p551) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="will_paginate_mongoid (v2.0.1, jruby-1.7.19-p551) [gem]" level="application" />
   </component>

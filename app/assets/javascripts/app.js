@@ -1,10 +1,18 @@
-define(['models/CodeModel','views/CodeView','jquery'], function(CodeModel, CodeView, $){
-   "use strict";
+define([
+    'models/abstract/SexCategory',
+    'helpers/ServiceProvider',
+    'jquery',
+    'Polymorphism',
+    'helpers/CategoryAdapter'
+], function(
+    SexCategory,
+    ServiceProvider,
+    $){
 
+   "use strict";
     function App() {
-        var view = new CodeView();
-        $(document.body).append(view);
-        view.model(new CodeModel());
+        console.log(ServiceProvider);
+        new SexCategory();
     }
 
     return App

@@ -24,7 +24,13 @@
 
 "use strict";
 define([], function() {
-
+    /**
+     * Dictionary like data structure
+     *
+     * @module Dictionary
+     * @exports Dictionary
+     * @class Dictionary
+     */
     function Dictionary() {
         this._keyObjects = [];
         this._valueObjects = [];
@@ -121,6 +127,9 @@ define([], function() {
                 return this.size() === 0;
             },
 
+            /**
+             * @returns {Array.<T>}
+             */
             keys : function() {
                 return this._keyObjects.slice(0);
             },
