@@ -42,4 +42,7 @@ shim:
   topbar:
     deps: ['jquery']
 
+  underscore:
+    exports: '_'
+
   priority: ['jquery-adapter', 'foundation-adapter', 'app']

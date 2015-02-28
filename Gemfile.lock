@@ -162,6 +162,7 @@ GEM
       thread_safe (~> 0.1)
     tzinfo-data (1.2015.1)
       tzinfo (>= 1.0.0)
+    underscore-rails (1.7.0)
     will_paginate (3.0.7)
     will_paginate_mongoid (2.0.1)
       mongoid
@@ -190,5 +191,6 @@ DEPENDENCIES
   therubyrhino
   turbolinks
   tzinfo-data
+  underscore-rails
   will_paginate
   will_paginate_mongoid

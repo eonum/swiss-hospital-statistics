@@ -4,7 +4,7 @@ define([
     IntervalCategory
 ){
 
-    function ChopIntervalCategory() {
+    function GeneralIntervalCategory() {
         var _this = new IntervalCategory();
 
         /**
@@ -39,7 +39,7 @@ define([
         });
     }
 
-    ChopIntervalCategory.ID = 'interval.chop';
-    return ChopIntervalCategory;
+    GeneralIntervalCategory.ID = 'interval.general';
+    return GeneralIntervalCategory;
 
 });

@@ -1,10 +1,15 @@
-define(['helpers/CategoryBuilder'], function(CategoryBuilder) {
+define([
+    'helpers/ObjectBuilder'
+], function(
+    ObjectBuilder
+) {
     function ServiceProvider(){}
 
     /**
-     * @type {CategoryBuilder}
+     * @type {ObjectBuilder}
      */
-    ServiceProvider.categoryBuilder = new CategoryBuilder();
+    ServiceProvider.categoryBuilder = new ObjectBuilder();
+    ServiceProvider.codeBuilder = new ObjectBuilder();
 
     return ServiceProvider;
 });

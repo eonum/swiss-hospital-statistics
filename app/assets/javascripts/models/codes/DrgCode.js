@@ -9,5 +9,7 @@ define([
 
         return _this;
     }
+
+    DrgCode.ID = 'drg';
     return DrgCode;
 });

@@ -41,6 +41,10 @@ group :javascript do
   gem 'jbuilder', '~> 2.0'
   # Enable the AMD design pattern for Javascript modules and integrate into the Asset Pipeline ========>
   gem 'requirejs-rails'
+  # Underscore is a utility-belt library for JavaScript that provides a lot of the functional
+  # programming support that you would expect in Prototype.js (or Ruby),
+  # but without extending any of the built-in JavaScript objects
+  gem 'underscore-rails'
 end
 
 group :development do

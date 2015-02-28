@@ -4,10 +4,12 @@ define([
     CategorisedCode
 ) {
 
-    function ChopCode() {
+    function IcdCode() {
         var _this = new CategorisedCode();
 
         return _this;
     }
-    return ChopCode;
+
+    IcdCode.ID = 'icd';
+    return IcdCode;
 });

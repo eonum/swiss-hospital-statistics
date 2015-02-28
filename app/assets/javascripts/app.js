@@ -1,13 +1,12 @@
 define([
     'models/abstract/SexCategory',
     'helpers/ServiceProvider',
-    'jquery',
     'Polymorphism',
-    'helpers/CategoryAdapter'
+    'helpers/CategoryAdapter',
+    'helpers/CodeAdapter'
 ], function(
     SexCategory,
-    ServiceProvider,
-    $){
+    ServiceProvider){
 
    "use strict";
     function App() {

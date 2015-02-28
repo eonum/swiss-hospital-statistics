@@ -8,14 +8,33 @@
 // compiled file.
 //
 
+var CODE_PATH = 'models/codes/';
+var CODE_CLASSES = [
+    'ChopCode',
+    'DrgCode',
+    'IcdCode'
+];
+
+var CATEGORY_PATH = 'models/categories/';
+var CATEGORY_CLASSES = [
+    'GeneralIntervalCategory',
+    'PercentileCategory'
+];
+
+// better to make them global for convenience
+var _;
+var $;
+
 requirejs([
     'jquery-adapter',
     'app',
+    'underscore',
     'helpers/ServiceProvider',
     'i18n',
     'i18n/translations',
     'turbolinks',
-    'foundation'], function($, App){
-
+    'foundation'], function(jquery, App, underscore){
+    $ = jquery;
+    _ = underscore;
     new App();
 });

@@ -9,5 +9,7 @@ define([
 
         return _this;
     }
+
+    ChopCode.ID = 'chop';
     return ChopCode;
 });
