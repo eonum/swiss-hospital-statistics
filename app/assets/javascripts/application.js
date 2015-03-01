@@ -13,7 +13,8 @@ var CODE_CLASSES = [
     'ChopCode',
     'DrgCode',
     'IcdCode',
-    'AgeCode'
+    'AgeCode',
+    'KeCode'
 ];
 
 var CATEGORY_PATH = 'models/categories/';
@@ -21,7 +22,10 @@ var CATEGORY_CLASSES = [
     'GeneralIntervalCategory',
     'PercentileCategory',
     'SexCategory',
-    'ValueIntervalCategory'
+    'ValueIntervalCategory',
+    'KeKantonCategory',
+    'KeRegionCategory',
+    'KeRegionStatisticCategory'
 ];
 
 // better to make them global for convenience

@@ -43,6 +43,15 @@ define([
         var ageCodes = ServiceProvider.jsonParser.parse(age);
         _.each(ageCodes, function(each){
             console.log(each.toString())});
+
+        console.log('------- K E   R E G I O N ---------');
+        console.log('Received from server:');
+        var kdeRegion = '{"codes":{"ke":{"code":"ZH01","description":"Anzahl Kaiserschnitte an Entbindungen","years":[{"categories":[{"ke_b":[{"categories":[{"ke_region":[{"code":"ZH01","name":"Zürich-City","births":186,"cesareans":70,"cesareansPercent":37.6,"age":33.3,"cesareanAge":35.1}]}]}]}],"year":2013}]}}}';
+        console.log(kdeRegion);
+        console.log('Serialized in Code Models:');
+        var keRegionCodes = ServiceProvider.jsonParser.parse(kdeRegion);
+        _.each(keRegionCodes, function(each){
+            console.log(each.toString())});
     }
 
     return App
