@@ -1,23 +1,23 @@
-.country {
-  fill: #747474;
-}
-
-.lake {
-  fill: rgba(182, 182, 182, 0.75);
-}
-
-.municipality-boundaries {
+.districts {
   fill: none;
   stroke: rgba(255, 255, 255, 0.41);
   stroke-width: .3;
+  pointer-events: none;
 }
 
 .cantons {
-  fill: transparent;
-  stroke: #fff;
-  stroke-width:1px;
+  fill: #747474;
+  stroke: rgba(255, 255, 255, 0.61);
+  stroke-width: 0.5px;
+  stroke-linejoin: round;
+  stroke-linecap: round;
 }
 
 .cantons:hover {
-  fill: rgba(255, 255, 255, 0.30);
+  fill: #afafaf;
+}
+
+.cantons.active {
+  fill: #949494;
+  stroke-width: 1;
 }
