@@ -7,6 +7,7 @@
  * Overrides oldImp function with newImp and allows
  * to access "super class" function using this.super(arguments)
  * in the body of new function
+ * @param scope
  * @param oldImp
  * @param newImp
  * @returns {Function}

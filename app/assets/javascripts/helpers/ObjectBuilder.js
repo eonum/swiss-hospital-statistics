@@ -9,12 +9,18 @@ define([
         var classes = new Dictionary();
 
         /**
-         *
          * @returns {Dictionary}
          * @private
          */
         _this._classes = function () {
             return classes;
+        };
+
+        /**
+         * @returns {Array.<String>}
+         */
+        _this.ids = function () {
+            return _this._classes().keys();
         };
 
         /**

@@ -1,11 +1,7 @@
-define([
-    'helpers/ServiceProvider'].concat(
-    _.map(CATEGORY_CLASSES, function(str){ return CATEGORY_PATH+str })),
-    function(ServiceProvider) {
-
-    for (var i = 1, length = arguments.length; i < length; i++) {
-        var category = arguments[i];
-        console.log(category.ID);
-        ServiceProvider.categoryBuilder.register(category.ID, category);
-    }
+/**
+ *  Loads and registers all category classes to the builder,
+ *  so they could be instantiated by their ID
+ */
+define(_.map(CATEGORY_CLASSES, function(str){ return CATEGORY_PATH+str }), function() {
+    _.each(arguments, function(each){ ServiceProvider.categoryBuilder.register(each.ID, each);});
 });

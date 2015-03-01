@@ -12,18 +12,19 @@ define([
     function AbstractCode() {
         var _this = this;
 
-        /**
-         * @type {String}
-         */
+        /** @type {String} */
         var code;
-        /**
-         * @type {String|Object}
-         */
+        /** @type {String|Object} */
         var description;
-        /**
-         * @type {Dictionary}
-         */
+        /** @type {Dictionary} */
         var years = new Dictionary();
+
+        /**
+         * @returns {string}
+         */
+        _this.name = function() {
+            return 'Abstract Code';
+        };
 
         /**
          * @returns {String}
@@ -80,12 +81,32 @@ define([
         _this.fromJSON = function (obj) {
             code = obj.code;
             description = obj.description;
-            for (var i = 0, length = obj.years.length; i < length; i++) {
-                var year = obj.years[i].key;
+
+            if (!_.has(obj, 'years')) return;
+            _.each(obj.years, function(each){
+                var year = each.year;
                 var data = _this.newData(year);
-                data.fromJSON(obj.years[i].value);
-                _this._years().add(year, data);
-            }
+                data.fromJSON(each);
+                _this._years().put(year, data);
+            });
+        };
+
+        /**
+         * @returns {{code: String, description: (String|Object), years: Array.<{year: Number}>}}
+         */
+        _this.asJSON = function () {
+            return {
+                name : _this.name(),
+                code : _this.code(),
+                description : _this.description(),
+                years : _.map(_this._years().elements(), function(each){ return each.asJSON() }) }
+        };
+
+        /**
+         * @returns {String}
+         */
+        _this.toString = function () {
+            return JSON.stringify(_this.asJSON());
         };
     }
     return AbstractCode;

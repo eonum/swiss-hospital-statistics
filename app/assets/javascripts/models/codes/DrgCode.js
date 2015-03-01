@@ -7,6 +7,13 @@ define([
     function DrgCode() {
         var _this = new CategorisedCode();
 
+        /**
+         * @returns {string}
+         */
+        _this.name = function() {
+            return 'Drg Code';
+        };
+
         return _this;
     }
 

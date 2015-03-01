@@ -27,6 +27,15 @@ define([], function(){
         _this.fromJSON = function (obj) {
 
         };
+
+        /**
+         * @returns {{year: Number}}
+         */
+        _this.asJSON = function () {
+            return {
+                year : _this.year()
+            };
+        };
     }
     return AbstractData;
 });

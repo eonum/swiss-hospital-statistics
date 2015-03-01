@@ -57,6 +57,16 @@ define([], function() {
         _this.toString = function () {
             return _this.from()+'-';
         };
+
+        /**
+         * @returns {{from: Number, to: Number}}
+         */
+        _this.asJSON = function () {
+            return {
+                from : _this.from(),
+                to : _this.to()
+            };
+        };
     }
 
     /**
@@ -65,6 +75,7 @@ define([], function() {
      * @param {Number} obj.to
      */
     Interval.fromJSON = function (obj) {
+        if (_.isUndefined(obj) || _.isNull(obj)) return null;
         return new Interval(obj.from, obj.to);
     };
 

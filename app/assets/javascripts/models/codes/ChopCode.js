@@ -7,6 +7,13 @@ define([
     function ChopCode() {
         var _this = new CategorisedCode();
 
+        /**
+         * @returns {string}
+         */
+        _this.name = function() {
+            return 'Chop Code';
+        };
+
         return _this;
     }
 

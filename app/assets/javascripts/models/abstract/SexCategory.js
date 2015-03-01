@@ -20,6 +20,13 @@ define([
         };
 
         /**
+         * @returns {string}
+         */
+        _this.name = function () {
+            return 'Sex category';
+        };
+
+        /**
          * @see {@link AbstractCategory.fromJSON}
          * @param {String} obj.sex
          */

@@ -24,17 +24,22 @@ var CATEGORY_CLASSES = [
 // better to make them global for convenience
 var _;
 var $;
+var ServiceProvider;
 
 requirejs([
     'jquery-adapter',
-    'app',
     'underscore',
     'helpers/ServiceProvider',
     'i18n',
     'i18n/translations',
     'turbolinks',
-    'foundation'], function(jquery, App, underscore){
+    'foundation',
+    'Polymorphism',
+], function(jquery, underscore, _serviceProvider) {
     $ = jquery;
     _ = underscore;
-    new App();
+    ServiceProvider = _serviceProvider;
+    requirejs(['app'], function (App) {
+        new App();
+    })
 });

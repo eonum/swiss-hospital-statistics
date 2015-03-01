@@ -157,7 +157,7 @@ define([], function() {
                 keyIndex = this._(putInArray)(this._keyObjects, key);
                 putInArrayAt(this._valueObjects, value, keyIndex);
                 this._count++;
-                return oldValue;
+                return value;
             },
 
             /**
@@ -187,6 +187,14 @@ define([], function() {
                         this._(getFromArrayAt)(this._keyObjects, i),
                         this._(getFromArrayAt)(this._valueObjects, i));
                 }
+            },
+
+            asObject : function () {
+                var obj = { };
+                this.each(function(key, value) {
+                    obj[key] = value;
+                });
+                return obj;
             },
 
             /**

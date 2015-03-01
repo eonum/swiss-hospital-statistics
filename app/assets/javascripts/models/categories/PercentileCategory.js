@@ -31,6 +31,13 @@ define([
         };
 
         /**
+         * @returns {string}
+         */
+        _this.name = function () {
+            return 'Percentile category';
+        };
+
+        /**
          * @param {Number} obj.percentile
          * @param {Number} obj.amount
          */
@@ -38,6 +45,16 @@ define([
             this.super(obj);
             percentile = obj.percentile;
             amount = obj.amount;
+        });
+
+        /**
+         * @type {Object}
+         */
+        _this.asJSON = override(_this, _this.asJSON, function(){
+            return _.extend(this.super(), {
+                percentile : _this.percentile(),
+                amount : _this.amount()
+            });
         });
 
         return _this;
