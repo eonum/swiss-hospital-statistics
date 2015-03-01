@@ -24,6 +24,7 @@ var CATEGORY_CLASSES = [
     'SexCategory',
     'ValueIntervalCategory',
     'KeKantonCategory',
+    'KeKantonStatisticCategory',
     'KeRegionCategory',
     'KeRegionStatisticCategory'
 ];
