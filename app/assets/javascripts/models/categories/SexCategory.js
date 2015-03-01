@@ -35,6 +35,15 @@ define([
             sex = obj.sex;
         });
 
+        /**
+         * @type {Object}
+         */
+        _this.asJSON = override(_this, _this.asJSON, function(){
+            return _.extend(this.super(), {
+                sex : _this.sex()
+            });
+        });
+
         return _this;
     }
 
