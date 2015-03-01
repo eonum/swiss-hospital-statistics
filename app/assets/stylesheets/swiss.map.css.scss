@@ -2,14 +2,22 @@
   fill: #747474;
 }
 
-.canton-boundaries {
-  fill: none;
-  stroke: #fff;
-  stroke-width: 1;
+.lake {
+  fill: rgba(182, 182, 182, 0.75);
 }
 
 .municipality-boundaries {
   fill: none;
-  stroke: #fff;
+  stroke: rgba(255, 255, 255, 0.41);
   stroke-width: .3;
+}
+
+.cantons {
+  fill: transparent;
+  stroke: #fff;
+  stroke-width:1px;
+}
+
+.cantons:hover {
+  fill: rgba(255, 255, 255, 0.30);
 }

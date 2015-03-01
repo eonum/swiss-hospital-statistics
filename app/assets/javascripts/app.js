@@ -9,7 +9,7 @@ define([
     function App() {
         var _this = this;
 
-        new SwissMap();
+        $("body").append(new SwissMap());
 
         _this.codes = function () {
             console.log('------------ C H O P ---------------');
