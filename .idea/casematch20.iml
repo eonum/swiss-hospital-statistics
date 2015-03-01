@@ -138,6 +138,7 @@
     <orderEntry type="library" scope="PROVIDED" name="coffee-script (v2.3.0, jruby-1.7.19-p551) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="coffee-script-source (v1.9.1, jruby-1.7.19-p551) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="connection_pool (v2.1.1, jruby-1.7.19-p551) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="d3-rails (v3.5.2, jruby-1.7.19-p551) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="erubis (v2.7.0, jruby-1.7.19-p551) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="execjs (v2.3.0, jruby-1.7.19-p551) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="foundation-rails (v5.5.1.0, jruby-1.7.19-p551) [gem]" level="application" />
@@ -184,6 +185,7 @@
     <orderEntry type="library" scope="PROVIDED" name="thor (v0.19.1, jruby-1.7.19-p551) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="thread_safe (v0.3.4, jruby-1.7.19-p551) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="tilt (v1.4.1, jruby-1.7.19-p551) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="topojson-rails (v1.4.9, jruby-1.7.19-p551) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="turbolinks (v2.5.3, jruby-1.7.19-p551) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="tzinfo (v1.2.2, jruby-1.7.19-p551) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="tzinfo-data (v1.2015.1, jruby-1.7.19-p551) [gem]" level="application" />

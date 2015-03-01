@@ -45,6 +45,10 @@ group :javascript do
   # programming support that you would expect in Prototype.js (or Ruby),
   # but without extending any of the built-in JavaScript objects
   gem 'underscore-rails'
+  # D3.js is a JavaScript library for manipulating documents based on data. D3 helps you bring data to life using HTML, SVG and CSS.
+  gem 'd3-rails'
+  # TopoJSON is an extension of GeoJSON that encodes topology.
+  gem 'topojson-rails'
 end
 
 group :development do

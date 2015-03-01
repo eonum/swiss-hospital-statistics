@@ -10,6 +10,8 @@ paths:
   'jquery-adapter': 'jquery-adapter'
   jquery_ujs: 'jquery_ujs'
 
+  d3: 'd3'
+
   # Foudnation modules must be defined in foundation-adapter
   'foundation-adapter': 'foundation-adapter'
   foundation: 'foundation/foundation'
@@ -44,5 +46,8 @@ shim:
 
   underscore:
     exports: '_'
+
+  topojson:
+    exports: 'topojson'
 
   priority: ['jquery-adapter', 'foundation-adapter', 'app']

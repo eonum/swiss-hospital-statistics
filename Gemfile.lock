@@ -48,6 +48,8 @@ GEM
       execjs
     coffee-script-source (1.9.1)
     connection_pool (2.1.1)
+    d3-rails (3.5.2)
+      railties (>= 3.1)
     erubis (2.7.0)
     execjs (2.3.0)
     foundation-rails (5.5.1.0)
@@ -156,6 +158,8 @@ GEM
     thread_safe (0.3.4)
     thread_safe (0.3.4-java)
     tilt (1.4.1)
+    topojson-rails (1.4.9)
+      railties (>= 3.0, < 5.0)
     turbolinks (2.5.3)
       coffee-rails
     tzinfo (1.2.2)
@@ -174,6 +178,7 @@ PLATFORMS
 
 DEPENDENCIES
   coffee-rails (~> 4)
+  d3-rails
   execjs
   foundation-rails
   google_visualr
@@ -189,6 +194,7 @@ DEPENDENCIES
   roo
   sass-rails
   therubyrhino
+  topojson-rails
   turbolinks
   tzinfo-data
   underscore-rails
