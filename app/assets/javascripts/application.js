@@ -12,13 +12,16 @@ var CODE_PATH = 'models/codes/';
 var CODE_CLASSES = [
     'ChopCode',
     'DrgCode',
-    'IcdCode'
+    'IcdCode',
+    'AgeCode'
 ];
 
 var CATEGORY_PATH = 'models/categories/';
 var CATEGORY_CLASSES = [
     'GeneralIntervalCategory',
-    'PercentileCategory'
+    'PercentileCategory',
+    'SexCategory',
+    'ValueIntervalCategory'
 ];
 
 // better to make them global for convenience
@@ -34,7 +37,7 @@ requirejs([
     'i18n/translations',
     'turbolinks',
     'foundation',
-    'Polymorphism',
+    'Polymorphism'
 ], function(jquery, underscore, _serviceProvider) {
     $ = jquery;
     _ = underscore;

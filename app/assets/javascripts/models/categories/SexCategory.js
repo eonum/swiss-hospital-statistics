@@ -38,6 +38,7 @@ define([
         return _this;
     }
 
+    SexCategory.ID = 'sex';
     return SexCategory;
 
 });
