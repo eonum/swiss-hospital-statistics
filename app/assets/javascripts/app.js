@@ -1,40 +1,54 @@
 define([
     'views/SwissMap',
     'views/PieChart',
+    'views/CardBoardView',
+    'views/CardView',
     'models/categories/SexCategory',
     'helpers/CategoryAdapter',
     'helpers/CodeAdapter'
-], function(SwissMap,PieChart){
+], function(SwissMap,PieChart, CardBoardView, CardView){
 
    "use strict";
     function App() {
         var _this = this;
 
-        $("body").append(new SwissMap());
-        var form = $('<input>');
-        $("body").append(form);
+        $('body').append(
+            new CardBoardView()
+                .add(new CardView())
+                .add(new CardView())
+                .add(new CardView())
+                .add(new CardView())
+                .add(new CardView())
+                .add(new CardView())
+                .add(new CardView()));
 
-        var pie = new PieChart();
-        $('body').append(pie);
 
-        pie
-            .display(function(entity) {
-                return [
-                    {type: 'cesarean', amount: entity},
-                    {type: 'notcesarean', amount: 100 - 50 - entity},
-                    {type: 'bla', amount: 50}
-                ];
-            })
-            .key('type')
-            .value('amount')
-            .openOn(35.49);
+        _this.visualisations = function () {
+            $("body").append(new SwissMap());
+            var form = $('<input>');
+            $("body").append(form);
 
-        form.keyup(function(e){
-            var value = $(this).val();
-            value = Math.min(value.length === 0 ? 0 : parseFloat(value), 100);
-            pie.openOn(value);
-        });
+            var pie = new PieChart();
+            $('body').append(pie);
 
+            pie
+                .display(function(entity) {
+                    return [
+                        {type: 'cesarean', amount: entity},
+                        {type: 'notcesarean', amount: 100 - 50 - entity},
+                        {type: 'bla', amount: 50}
+                    ];
+                })
+                .key('type')
+                .value('amount')
+                .openOn(35.49);
+
+            form.keyup(function(e){
+                var value = $(this).val();
+                value = Math.min(value.length === 0 ? 0 : parseFloat(value), 100);
+                pie.openOn(value);
+            });
+        };
         _this.codes = function () {
             console.log('------------ C H O P ---------------');
             console.log('Received from server:');
@@ -93,8 +107,6 @@ define([
             _.each(keKantonCodes, function(each){
                 console.log(each.toString())});
         };
-
-        _this.codes();
     }
 
     return App

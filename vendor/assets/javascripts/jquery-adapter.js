@@ -1,3 +1,3 @@
-define(['jquery', 'jquery_ujs'], function($){
+define(['jquery', 'jquery_ujs', 'jquery.me'], function($){
     return $;
 });
