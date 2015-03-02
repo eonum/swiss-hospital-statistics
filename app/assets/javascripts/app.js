@@ -11,9 +11,29 @@ define([
         var _this = this;
 
         $("body").append(new SwissMap());
-        $("body").append('<form></form>');
-        $("body").append(new PieChart());
-        //new PieChart();
+        var form = $('<input>');
+        $("body").append(form);
+
+        var pie = new PieChart();
+        $('body').append(pie);
+
+        pie
+            .display(function(entity) {
+                return [
+                    {type: 'cesarean', amount: entity},
+                    {type: 'notcesarean', amount: 100 - 50 - entity},
+                    {type: 'bla', amount: 50}
+                ];
+            })
+            .key('type')
+            .value('amount')
+            .openOn(35.49);
+
+        form.keyup(function(e){
+            var value = $(this).val();
+            value = Math.min(value.length === 0 ? 0 : parseFloat(value), 100);
+            pie.openOn(value);
+        });
 
         _this.codes = function () {
             console.log('------------ C H O P ---------------');
@@ -73,6 +93,8 @@ define([
             _.each(keKantonCodes, function(each){
                 console.log(each.toString())});
         };
+
+        _this.codes();
     }
 
     return App

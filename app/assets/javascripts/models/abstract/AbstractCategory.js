@@ -54,9 +54,9 @@ define([
             _.each(obj.categories, function(category){
                 _.each(_.intersection(_.keys(category), ServiceProvider.categoryBuilder.ids()), function(each){
                     _.each (category[each], function(categoryElement){
-                        var code = ServiceProvider.categoryBuilder.instantiate(each);
-                        code.fromJSON(categoryElement);
-                        _this.at(each).push(code);
+                        var category = ServiceProvider.categoryBuilder.instantiate(each);
+                        category.fromJSON(categoryElement);
+                        _this.at(each).push(category);
                     });
                 });
             });

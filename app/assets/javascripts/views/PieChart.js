@@ -1,5 +1,10 @@
 define(['d3'], function (d3) {
 
+    /**
+     * @returns {*|jQuery|HTMLElement}
+     * @constructor
+     * @class PieChart
+     */
     function PieChart(){
         var width = 960, height = 500;
         var radius = Math.min(width, height) / 2;
@@ -12,91 +17,105 @@ define(['d3'], function (d3) {
             .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
         var path = svg.selectAll("path");
 
-        var zh = [
-            {key: 'cesarean', value: 35.49},
-            {key: 'notcesarean', value: 100 - 35.49}
-        ];
 
-        var be = [
-            {key: 'cesarean', value: 25.49},
-            {key: 'notcesarean', value: 100 - 25.49}
-        ];
+        var utils = {
+            findNeighborArc : function(i, data0, data1, key) {
+                var d;
+                return (d = utils.findPreceding(i, data0, data1, key)) ? {startAngle: d.endAngle, endAngle: d.endAngle}
+                    : (d = utils.findFollowing(i, data0, data1, key)) ? {startAngle: d.startAngle, endAngle: d.startAngle}
+                    : null; },
+            findPreceding : function(i, data0, data1, key) {
+                var m = data0.length;
+                while (--i >= 0) {
+                    var k = key(data1[i]);
+                    for (var j = 0; j < m; ++j) {
+                        if (key(data0[j]) === k) return data0[j]; } } },
+            findFollowing : function(i, data0, data1, key) {
+                var n = data1.length, m = data0.length;
+                while (++i < n) {
+                    var k = key(data1[i]);
+                    for (var j = 0; j < m; ++j) {
+                        if (key(data0[j]) === k) return data0[j]; } } },
+            arcTween : function(d) {
+                var i = d3.interpolate(this._current, d);
+                this._current = i(0);
+                return function(t) { return arc(i(t)); }; },
+            keyOf : function (d) {
+                return d.data[scripting.keySymbol]; },
+            valueOf : function (d) {
+                return d.data[scripting.valueSymbol]; }
+        };
 
-        var color = d3.scale.category20();
+        var scripting = {
+            colorLogic: d3.scale.category20(),
+            /**
+             * Returns an array of objects that should be visualised
+             * in the Pie Chart as one segment
+             * @param {Object} entity
+             * @returns {Array.<Object>}
+             */
+            displayLogic: function (entity) { return entity; },
+            keySymbol: 'key',
+            valueSymbol: 'value'
+        };
 
         var pie = d3.layout.pie()
-            .value(function(d) { return d.value; })
+            .value(function(d) { return d[scripting.valueSymbol]; })
             .sort(null);
 
         var arc = d3.svg.arc()
             .innerRadius(radius - 100)
             .outerRadius(radius - 20);
 
-        _this.initialize = function(region) {
+        _this._initialize = function(data) {
             var data0 = path.data();
-            var data1 = pie(region);
+            var data1 = pie(data);
 
-            path = path.data(data1, _this.key);
+            path = path.data(data1, utils.keyOf);
 
             path.enter().append("path")
-                .each(function(d, i) { this._current = _this.findNeighborArc(i, data0, data1, _this.key) || d; })
-                .attr("fill", function(d) { return color(d.data.key); })
+                .each(function(d, i) { this._current = utils.findNeighborArc(i, data0, data1, utils.keyOf) || d; })
+                .attr("fill", function(d) { return scripting.colorLogic(utils.valueOf(d)); })
                 .append("title")
-                .text(function(d) { return d.data.key; });
+                .text(utils.keyOf);
 
             path.exit()
-                .datum(function(d, i) { return _this.findNeighborArc(i, data1, data0, _this.key) || d; })
+                .datum(function(d, i) { return utils.findNeighborArc(i, data1, data0, utils.keyOf) || d; })
                 .transition()
                 .duration(750)
-                .attrTween("d", _this.arcTween)
+                .attrTween("d", utils.arcTween)
                 .remove();
 
             path.transition()
                 .duration(750)
-                .attrTween("d", _this.arcTween);
+                .attrTween("d", utils.arcTween);
         };
 
-        _this.key = function(d) {
-            return d.data.key;
+        /* ------------ S C R I P T I N G   A P I ------------ */
+        _this.openOn = function (entity) {
+            _this._initialize(scripting.displayLogic(entity));
+            return _this;
         };
 
-        _this.findNeighborArc = function(i, data0, data1, key) {
-            var d;
-            return (d = _this.findPreceding(i, data0, data1, key)) ? {startAngle: d.endAngle, endAngle: d.endAngle}
-                : (d = _this.findFollowing(i, data0, data1, key)) ? {startAngle: d.startAngle, endAngle: d.startAngle}
-                : null;
+        _this.display = function (displayLogic) {
+            scripting.displayLogic = displayLogic;
+            return _this;
         };
 
-
-        _this.findPreceding = function(i, data0, data1, key) {
-            var m = data0.length;
-            while (--i >= 0) {
-                var k = key(data1[i]);
-                for (var j = 0; j < m; ++j) {
-                    if (key(data0[j]) === k) return data0[j];
-                }
-            }
+        _this.key = function (keySymbol) {
+            scripting.keySymbol = keySymbol;
+            return _this;
         };
 
-        _this.findFollowing = function(i, data0, data1, key) {
-            var n = data1.length, m = data0.length;
-            while (++i < n) {
-                var k = key(data1[i]);
-                for (var j = 0; j < m; ++j) {
-                    if (key(data0[j]) === k) return data0[j];
-                }
-            }
+        _this.value = function (valueSymbol) {
+            scripting.valueSymbol = valueSymbol;
+            return _this;
         };
 
-        _this.arcTween = function(d) {
-            var i = d3.interpolate(this._current, d);
-            this._current = i(0);
-            return function(t) { return arc(i(t)); };
+        _this.colored = function (_function) {
+            scripting.colorLogic = _function;
+            return _this;
         };
-
-        _this.initialize(zh);
-        setTimeout(function(){ _this.initialize(be); }, 3000);
-
 
         return _this;
     }
