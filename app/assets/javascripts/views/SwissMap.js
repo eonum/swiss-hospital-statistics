@@ -26,6 +26,9 @@ define(['d3', 'topojson'], function (d3, topojson) {
                         .enter()
                         .append('path')
                         .attr("class", "districts")
+                        .on("click", function (district){
+                            _this.toggleZoom((_this.cantonOf(district)[0]).__data__)
+                        })
                         .attr("d", path)
                 });
             });
@@ -41,9 +44,12 @@ define(['d3', 'topojson'], function (d3, topojson) {
         };
 
         _this.cantonOf = function (district) {
+            var dID = district.id.toString();
             return (g.selectAll('.cantons')
                 .filter(function(canton) {
-                    return district.id.toString().lastIndexOf(canton.id.toString(), 0) === 0;}))[0];
+                    var cID = canton.id.toString();
+                    if (dID.length !== cID.length + 2) return false;
+                    return dID.lastIndexOf(cID, 0) === 0;}))[0];
         };
 
         _this.enableDistricts = function (districts) {

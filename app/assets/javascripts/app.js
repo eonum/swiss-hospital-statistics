@@ -1,15 +1,19 @@
 define([
     'views/SwissMap',
+    'views/PieChart',
     'models/categories/SexCategory',
     'helpers/CategoryAdapter',
     'helpers/CodeAdapter'
-], function(SwissMap){
+], function(SwissMap,PieChart){
 
    "use strict";
     function App() {
         var _this = this;
 
         $("body").append(new SwissMap());
+        $("body").append('<form></form>');
+        $("body").append(new PieChart());
+        //new PieChart();
 
         _this.codes = function () {
             console.log('------------ C H O P ---------------');
