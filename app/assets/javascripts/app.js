@@ -26,7 +26,7 @@ define([
                     .transformed(function(v){return v.toPrecision(3)})
                     .openOn(35.49)))
                 .add(new CardView().add(new SwissMap().class('align-vertical')))
-                .add(new CardView().add(new PieChart().class('align-vertical').display(function(entity) {
+                .add(new CardView().add(new PieChart(300,200).class('align-vertical').display(function(entity) {
                     return [
                         {type: 'cesarean', amount: entity},
                         {type: 'notcesarean', amount: 100 - 50 - entity},
