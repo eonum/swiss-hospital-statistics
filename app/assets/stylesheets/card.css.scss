@@ -7,6 +7,11 @@
   border-color: #dcdcdc;
   border-width: 1px;
   border-style: solid;
+  cursor: pointer;
+
+  &:hover {
+    border-color: #a6a6a6;
+  }
 }
 
 .cardContainer {
