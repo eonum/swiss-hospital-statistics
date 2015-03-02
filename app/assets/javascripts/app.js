@@ -23,6 +23,7 @@ define([
                 })
                     .key('type')
                     .value('amount')
+                    .transformed(function(v){return v.toPrecision(3)})
                     .openOn(35.49)))
                 .add(new CardView().add(new SwissMap().class('align-vertical')))
                 .add(new CardView().add(new PieChart().class('align-vertical').display(function(entity) {
@@ -34,6 +35,7 @@ define([
                 })
                     .key('type')
                     .value('amount')
+                    .transformed(function(v){return v.toPrecision(3)})
                     .openOn(35.49)))
                 .add(new CardView().add(new SwissMap().class('align-vertical')))
                 .add(new CardView().add(new PieChart().class('align-vertical').display(function(entity) {
@@ -44,6 +46,7 @@ define([
                 })
                     .key('type')
                     .value('amount')
+                    .transformed(function(v){return v.toPrecision(3)})
                     .openOn(75.49))));
 
         _this.visualisations = function () {

@@ -33,10 +33,12 @@ define([
             _this.css('left', _this.position().left+'px');
             _this.css('top', _this.position().top+'px');
             content.css('background-color', '#ffffff');
-            _this.animate({left: 0, top: 0, width:($('body').width()+'px'),height:($('body').height()+'px')}, 500);
+            _this.animate({left: 0, top: 0, width:($('body').width()+'px'),height:($('body').height()+'px')},
+                500, function(){
+                    _this.css('width',100+'%');
+                    _this.css('height',100+'%');
+                });
             _this.off();
-            //_this.height(100+'%');
-            //_this.width(100+'%');
         });
 
         _this.add = override(_this, _this.add, function(element){

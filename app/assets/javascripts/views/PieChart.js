@@ -38,7 +38,7 @@ define(['d3', 'views/ResponsiveSvg'], function (d3, ResponsiveSvg) {
             keyOf : function (d) {
                 return d.data[scripting.keySymbol]; },
             valueOf : function (d) {
-                return d.data[scripting.valueSymbol]; }
+                return scripting.transformedLogic(d.data[scripting.valueSymbol]); }
         };
 
         var scripting = {
@@ -50,6 +50,7 @@ define(['d3', 'views/ResponsiveSvg'], function (d3, ResponsiveSvg) {
              * @returns {Array.<Object>}
              */
             displayLogic: function (entity) { return entity; },
+            transformedLogic: function(value) { return value },
             keySymbol: 'key',
             valueSymbol: 'value'
         };
@@ -84,6 +85,12 @@ define(['d3', 'views/ResponsiveSvg'], function (d3, ResponsiveSvg) {
             path.transition()
                 .duration(750)
                 .attrTween("d", utils.arcTween);
+
+            path.enter().append("text")
+                .attr("transform", function(d) { return "translate(" + arc.centroid(d) + ")"; })
+                .attr("dy", ".35em")
+                .style("text-anchor", "middle")
+                .text(function(d) { return utils.valueOf(d); });
         };
 
         /* ------------ S C R I P T I N G   A P I ------------ */
@@ -109,6 +116,11 @@ define(['d3', 'views/ResponsiveSvg'], function (d3, ResponsiveSvg) {
 
         _this.colored = function (_function) {
             scripting.colorLogic = _function;
+            return _this;
+        };
+
+        _this.transformed = function (_function) {
+            scripting.transformedLogic = _function;
             return _this;
         };
 
