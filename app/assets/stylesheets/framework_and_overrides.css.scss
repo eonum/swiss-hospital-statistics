@@ -15,34 +15,55 @@
 @mixin twelve-columns {
   @extend .small-12;
   @extend .columns;
-  }
+}
 @mixin six-columns-centered {
   @extend .small-6;
   @extend .columns;
   @extend .text-center;
-  }
+}
 // create your own classes
 // to make views framework-neutral
 .column {
   @include six-columns-centered;
-  }
+}
 .form {
   @include grid-column(6);
-  }
+}
 .form-centered {
   @include six-columns-centered;
-  }
+}
 .submit {
   @extend .button;
   @extend .radius;
-  }
+}
 // apply styles to HTML elements
 // to make views framework-neutral
 main {
   @include twelve-columns;
   background-color: #eee;
-  }
+}
 section {
   @extend .row;
   margin-top: 20px;
-  }
+}
+
+.svg-content {
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.svg-container {
+  display: inline-block;
+  position: relative;
+  width: 100%;
+  vertical-align: middle;
+  overflow: hidden;
+}
+
+.align-vertical {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}

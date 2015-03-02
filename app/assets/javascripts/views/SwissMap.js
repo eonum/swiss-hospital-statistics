@@ -1,13 +1,12 @@
-define(['d3', 'topojson'], function (d3, topojson) {
+define(['d3', 'topojson','views/ResponsiveSvg'], function (d3, topojson, ResponsiveSvg) {
 
     function SwissMap(){
-        var width = 960, height = 500, selected;
-        var path = d3.geo.path().projection(null);
-        var svg = d3.select(document.createElementNS(d3.ns.prefix.svg, 'svg'));
-        svg.attr("width", width).attr("height", height);
-        var _this = $(svg[0]);
+        var _this = new ResponsiveSvg(960, 500);
 
-        var g = svg.append("g");
+        var selected;
+        var path = d3.geo.path().projection(null);
+
+        var g = _this.svg().append("g");
         _this.initialize = function () {
             d3.json('topo/ch-cantons.json', function(error, ch) {
                 g.selectAll('.cantons')
@@ -72,7 +71,7 @@ define(['d3', 'topojson'], function (d3, topojson) {
 
         _this.zoomOut = function (d) {
             selected = null;
-            _this.zoom(d, width / 2, height / 2, 1);
+            _this.zoom(d, _this._width() / 2, _this._height() / 2, 1);
         };
 
         _this.zoomIn = function (d) {
@@ -87,7 +86,7 @@ define(['d3', 'topojson'], function (d3, topojson) {
 
             g.transition()
                 .duration(750)
-                .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")")
+                .attr("transform", "translate(" + _this._width() / 2 + "," + _this._height() / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")")
                 .style("stroke-width", 1 / k + "px");
         };
 

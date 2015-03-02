@@ -8,20 +8,43 @@ define([
     'helpers/CodeAdapter'
 ], function(SwissMap,PieChart, CardBoardView, CardView){
 
-   "use strict";
+    "use strict";
     function App() {
         var _this = this;
 
         $('body').append(
             new CardBoardView()
-                .add(new CardView())
-                .add(new CardView())
-                .add(new CardView())
-                .add(new CardView())
-                .add(new CardView())
-                .add(new CardView())
-                .add(new CardView()));
-
+                .add(new CardView().add(new SwissMap().class('align-vertical')))
+                .add(new CardView().add(new PieChart().class('align-vertical').display(function(entity) {
+                    return [
+                        {type: 'cesarean', amount: entity},
+                        {type: 'notcesarean', amount: 100 - entity},
+                    ];
+                })
+                    .key('type')
+                    .value('amount')
+                    .openOn(35.49)))
+                .add(new CardView().add(new SwissMap().class('align-vertical')))
+                .add(new CardView().add(new PieChart().class('align-vertical').display(function(entity) {
+                    return [
+                        {type: 'cesarean', amount: entity},
+                        {type: 'notcesarean', amount: 100 - 50 - entity},
+                        {type: 'bla', amount: 50}
+                    ];
+                })
+                    .key('type')
+                    .value('amount')
+                    .openOn(35.49)))
+                .add(new CardView().add(new SwissMap().class('align-vertical')))
+                .add(new CardView().add(new PieChart().class('align-vertical').display(function(entity) {
+                    return [
+                        {type: 'cesarean', amount: entity},
+                        {type: 'notcesarean', amount: 100 - entity}
+                    ];
+                })
+                    .key('type')
+                    .value('amount')
+                    .openOn(75.49))));
 
         _this.visualisations = function () {
             $("body").append(new SwissMap());

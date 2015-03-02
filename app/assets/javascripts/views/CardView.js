@@ -11,14 +11,14 @@ define([
         _this.initialize = function () {
             _this.append(content.class('card'));
             _this.class('cardContainer');
-            _this.add(new View('<p>Visualisation Preview</p>')
-                .with(function(p){
-                    p.class('text-center');
-                    p.css('position', 'relative');
-                    p.css('top', '50%');
-                    p.css('color', '#8B8B8B');
-                    p.css('transform', 'translateY(-50%)');
-                }));
+            //_this.add(new View('<p>Visualisation Preview</p>')
+            //    .with(function(p){
+            //        p.class('text-center');
+            //        p.css('position', 'relative');
+            //        p.css('top', '50%');
+            //        p.css('color', '#8B8B8B');
+            //        p.css('transform', 'translateY(-50%)');
+            //    }));
         };
 
         _this.click(function(){
@@ -34,6 +34,7 @@ define([
             _this.css('top', _this.position().top+'px');
             content.css('background-color', '#ffffff');
             _this.animate({left: 0, top: 0, width:($('body').width()+'px'),height:($('body').height()+'px')}, 500);
+            _this.off();
             //_this.height(100+'%');
             //_this.width(100+'%');
         });

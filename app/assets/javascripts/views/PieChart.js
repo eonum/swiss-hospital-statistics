@@ -1,4 +1,4 @@
-define(['d3'], function (d3) {
+define(['d3', 'views/ResponsiveSvg'], function (d3, ResponsiveSvg) {
 
     /**
      * @returns {*|jQuery|HTMLElement}
@@ -6,17 +6,12 @@ define(['d3'], function (d3) {
      * @class PieChart
      */
     function PieChart(){
-        var width = 960, height = 500;
-        var radius = Math.min(width, height) / 2;
-        var svg = d3.select(document.createElementNS(d3.ns.prefix.svg, 'svg'));
-        var _this = $(svg[0]);
-        svg = svg
-            .attr("width", width)
-            .attr("height", height)
+        var _this = new ResponsiveSvg(960, 500);
+        var radius = Math.min(_this._width(), _this._height()) / 2;
+        var path = _this.svg()
             .append("g")
-            .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
-        var path = svg.selectAll("path");
-
+            .attr("transform", "translate(" + _this._width() / 2 + "," + _this._height() / 2 + ")")
+            .selectAll("path");
 
         var utils = {
             findNeighborArc : function(i, data0, data1, key) {
