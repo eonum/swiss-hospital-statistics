@@ -20,16 +20,44 @@ define(['d3', 'topojson'], function (d3, topojson) {
                     .on('mouseover', function(d){
                     });
 
-                d3.json('topo/ch.json', function(error, ch) {
-                    g.append("path")
-                        .datum(topojson.mesh(ch, ch.objects.districts, function(a, b) { return a !== b; }))
+                d3.json('topo/ch-districts.json', function(error, chDistricts) {
+                    g.selectAll('.districts')
+                        .data(topojson.feature(chDistricts, chDistricts.objects.districts).features)
+                        .enter()
+                        .append('path')
                         .attr("class", "districts")
-                        .attr("d", path);
+                        .attr("d", path)
                 });
             });
         };
 
+        _this.districtsOf = function (canton) {
+            var cID = canton.id.toString();
+            return g.selectAll('.districts')
+                .filter(function(district) {
+                    var dID = district.id.toString();
+                    if (dID.length !== cID.length + 2) return false;
+                    return dID.lastIndexOf(cID, 0) === 0;});
+        };
+
+        _this.cantonOf = function (district) {
+            return (g.selectAll('.cantons')
+                .filter(function(canton) {
+                    return district.id.toString().lastIndexOf(canton.id.toString(), 0) === 0;}))[0];
+        };
+
+        _this.enableDistricts = function (districts) {
+            districts.classed('active',true);
+        };
+
+        _this.disableAllDistricts = function () {
+            g.selectAll('.districts').classed('active', false);
+        };
+
+
         _this.toggleZoom = function (d) {
+            _this.disableAllDistricts();
+            _this.enableDistricts(_this.districtsOf(d));
             if (d && selected !== d)
                 _this.zoomIn(d);
             else
@@ -48,7 +76,7 @@ define(['d3', 'topojson'], function (d3, topojson) {
         };
 
         _this.zoom = function (d, x, y, k) {
-            g.selectAll("path")
+            g.selectAll(".cantons")
                 .classed("active", selected && function(d) { return d === selected; });
 
             g.transition()

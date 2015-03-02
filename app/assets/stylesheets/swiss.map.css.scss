@@ -1,8 +1,16 @@
 .districts {
-  fill: none;
-  stroke: rgba(255, 255, 255, 0.41);
+  fill: transparent;
+  stroke: rgba(255, 255, 255, 0.20);
   stroke-width: .3;
-  pointer-events: none;
+  pointer-events: none
+}
+
+.districts.active {
+  pointer-events: auto
+}
+
+.districts:hover {
+  fill: #aeaeae;
 }
 
 .cantons {
