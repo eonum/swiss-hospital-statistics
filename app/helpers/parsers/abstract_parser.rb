@@ -1,3 +1,5 @@
 class AbstractParser
-  @filename = 'bla'
+  def initialize(filename)
+    @filename = filename
+  end
 end
