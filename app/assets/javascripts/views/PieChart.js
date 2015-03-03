@@ -12,15 +12,17 @@ define(['d3', 'views/abstract/AbstractPieChart'], function (d3, AbstractPieChart
             colorLogic: d3.scale.category20(),
             displayLogic: function (entity) { return entity; },
             transformedLogic: function(value) { return value },
+            labelLogic: function (value) { return value.toString() },
             keySymbol: 'key',
             valueSymbol: 'value'
         };
 
-        _this._keyOf = function (d) {return d.data[scripting.keySymbol]};
-        _this._valueOf = function (d) {return scripting.transformedLogic(d.data[scripting.valueSymbol])};
-        _this._colorOf = function(d){ return scripting.colorLogic(d) };
-        _this._keySymbol = function() {return scripting.keySymbol};
-        _this._valueSymbol = function() {return scripting.valueSymbol};
+        _this._keyOf = function (d) { return d.data[scripting.keySymbol] };
+        _this._valueOf = function (d) { return scripting.transformedLogic(d.data[scripting.valueSymbol]) };
+        _this._colorOf = function(value, d){ return scripting.colorLogic(value, d.data) };
+        _this._labelOf = function(value, d) { return scripting.labelLogic(value, d.data) };
+        _this._keySymbol = function() { return scripting.keySymbol };
+        _this._valueSymbol = function() { return scripting.valueSymbol };
 
         /* ------------ S C R I P T I N G   A P I ------------ */
         _this.openOn = function (entity) {
@@ -30,6 +32,11 @@ define(['d3', 'views/abstract/AbstractPieChart'], function (d3, AbstractPieChart
 
         _this.display = function (displayLogic) {
             scripting.displayLogic = displayLogic;
+            return _this;
+        };
+
+        _this.labeled = function (_labelLogic) {
+            scripting.labelLogic = _labelLogic;
             return _this;
         };
 

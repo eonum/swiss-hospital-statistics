@@ -24,6 +24,7 @@ define([
                     .key('type')
                     .value('amount')
                     .transformed(function(v){return v.toPrecision(3)})
+                    .labeled(function (value) {return value+'%'})
                     .openOn(35.49)))
                 .add(new CardView().add(new SwissMap().class('align-vertical')))
                 .add(new CardView().add(new PieChart(300,200).class('align-vertical').display(function(entity) {

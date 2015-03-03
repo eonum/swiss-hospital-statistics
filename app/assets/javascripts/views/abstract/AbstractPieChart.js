@@ -38,10 +38,11 @@ define(['d3', 'views/ResponsiveSvg'], function (d3, ResponsiveSvg) {
         };
 
         _this._keyOf = function (d) {return d.data[_this._keySymbol()]};
-        _this._valueOf = function (d) {return d.data[_this._valueSymbol()]};
+        _this._valueOf = function (data) {return data.data[_this._valueSymbol()]};
+        _this._colorOf = function(value) { return d3.scale.category20()(value) };
+        _this._labelOf = function(value) {return value.toString()};
         _this._keySymbol = function() {return 'key'};
         _this._valueSymbol = function() {return 'value'};
-        _this._colorOf = function(d) { return d3.scale.category20()(d) };
 
         var arc = d3.svg.arc().innerRadius(radius - 100).outerRadius(radius - 20);
         _this._initialize = function(data) {
@@ -58,7 +59,7 @@ define(['d3', 'views/ResponsiveSvg'], function (d3, ResponsiveSvg) {
 
             path.enter().append("path")
                 .each(function(d, i) { this._current = utils.findNeighborArc(i, data0, data1, _this._keyOf) || d; })
-                .attr("fill", function(d) { return _this._colorOf(_this._valueOf(d)); })
+                .attr("fill", function(d) { return _this._colorOf(_this._valueOf(d), d); })
                 .append("title")
                 .text(_this._keyOf);
 
@@ -77,7 +78,7 @@ define(['d3', 'views/ResponsiveSvg'], function (d3, ResponsiveSvg) {
                 .attr("transform", function(d) { return "translate(" + arc.centroid(d) + ")"; })
                 .attr("dy", ".35em")
                 .style("text-anchor", "middle")
-                .text(function(d) { return _this._valueOf(d); });
+                .text(function(d) { return _this._labelOf(_this._valueOf(d), d); });
         };
         return _this;
     }
