@@ -20,6 +20,11 @@ define([], function(){
             return _this;
         };
 
+        _this.color = function (_color) {
+            _this.css('background-color', _color);
+            return _this;
+        };
+
         return _this;
     }
 

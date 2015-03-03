@@ -5,7 +5,7 @@ define(['d3', 'views/ResponsiveSvg'], function (d3, ResponsiveSvg) {
      * @constructor
      * @class PieChart
      */
-    function PieChart(_width, _height){
+    function AbstractPieChart(_width, _height){
         var _this = new ResponsiveSvg(_width, _height);
         var radius = Math.min(_this._width(), _this._height()) / 2;
         var path = _this.svg()
@@ -45,7 +45,7 @@ define(['d3', 'views/ResponsiveSvg'], function (d3, ResponsiveSvg) {
         _this._valueSymbol = function() {return 'value'};
 
         var arc = d3.svg.arc().innerRadius(radius - 100).outerRadius(radius - 20);
-        _this._initialize = function(data) {
+        _this.initialize = function(data) {
 
             var pie = d3.layout
                 .pie()
@@ -83,6 +83,6 @@ define(['d3', 'views/ResponsiveSvg'], function (d3, ResponsiveSvg) {
         return _this;
     }
 
-    return PieChart;
+    return AbstractPieChart;
 
 });

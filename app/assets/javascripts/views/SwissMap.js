@@ -1,7 +1,7 @@
 define(['d3', 'topojson','views/ResponsiveSvg'], function (d3, topojson, ResponsiveSvg) {
 
-    function SwissMap(){
-        var _this = new ResponsiveSvg(960, 500);
+    function SwissMap(_width, _height){
+        var _this = new ResponsiveSvg(_width, _height);
 
         var selected;
         var path = d3.geo.path().projection(null);

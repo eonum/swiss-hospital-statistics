@@ -3,53 +3,57 @@ define([
     'views/PieChart',
     'views/CardBoardView',
     'views/CardView',
+    'views/abstract/AbstractSeriesChart',
     'models/categories/SexCategory',
     'helpers/CategoryAdapter',
     'helpers/CodeAdapter'
-], function(SwissMap,PieChart, CardBoardView, CardView){
+], function(SwissMap,PieChart, CardBoardView, CardView, AbstractSeriesChart){
 
     "use strict";
     function App() {
         var _this = this;
 
-        $('body').append(
-            new CardBoardView()
-                .add(new CardView().add(new SwissMap().class('align-vertical')))
-                .add(new CardView().add(new PieChart().class('align-vertical').display(function(entity) {
-                    return [
-                        {type: 'cesarean', amount: entity},
-                        {type: 'notcesarean', amount: 100 - entity},
-                    ];
-                })
-                    .key('type')
-                    .value('amount')
-                    .transformed(function(v){return v.toPrecision(3)})
-                    .labeled(function (value) {return value+'%'})
-                    .openOn(35.49)))
-                .add(new CardView().add(new SwissMap().class('align-vertical')))
-                .add(new CardView().add(new PieChart(300,200).class('align-vertical').display(function(entity) {
-                    return [
-                        {type: 'cesarean', amount: entity},
-                        {type: 'notcesarean', amount: 100 - 50 - entity},
-                        {type: 'bla', amount: 50}
-                    ];
-                })
-                    .key('type')
-                    .value('amount')
-                    .transformed(function(v){return v.toPrecision(3)})
-                    .openOn(35.49)))
-                .add(new CardView().add(new SwissMap().class('align-vertical')))
-                .add(new CardView().add(new PieChart().class('align-vertical').display(function(entity) {
-                    return [
-                        {type: 'cesarean', amount: entity},
-                        {type: 'notcesarean', amount: 100 - entity}
-                    ];
-                })
-                    .key('type')
-                    .value('amount')
-                    .transformed(function(v){return v.toPrecision(3)})
-                    .openOn(75.49))));
+        //$('body').append(new $('<div></div>').css('width', '600px').append(new AbstractSeriesChart(700,500)));
 
+        _this.cardView = function () {
+            $('body').append(
+                new CardBoardView()
+                    .add(new CardView().add(new SwissMap().class('align-vertical')))
+                    .add(new CardView().add(new PieChart().class('align-vertical').display(function(entity) {
+                        return [
+                            {type: 'cesarean', amount: entity},
+                            {type: 'notcesarean', amount: 100 - entity},
+                        ];
+                    })
+                        .key('type')
+                        .value('amount')
+                        .transformed(function(v){return v.toPrecision(3)})
+                        .labeled(function (value) {return value+'%'})
+                        .openOn(35.49)))
+                    .add(new CardView().add(new AbstractSeriesChart().class('align-vertical')))
+                    .add(new CardView().add(new PieChart(300,200).class('align-vertical').display(function(entity) {
+                        return [
+                            {type: 'cesarean', amount: entity},
+                            {type: 'notcesarean', amount: 100 - 50 - entity},
+                            {type: 'bla', amount: 50}
+                        ];
+                    })
+                        .key('type')
+                        .value('amount')
+                        .transformed(function(v){return v.toPrecision(3)})
+                        .openOn(35.49)))
+                    .add(new CardView().add(new SwissMap().class('align-vertical')))
+                    .add(new CardView().add(new PieChart().class('align-vertical').display(function(entity) {
+                        return [
+                            {type: 'cesarean', amount: entity},
+                            {type: 'notcesarean', amount: 100 - entity}
+                        ];
+                    })
+                        .key('type')
+                        .value('amount')
+                        .transformed(function(v){return v.toPrecision(3)})
+                        .openOn(75.49))));
+        };
         _this.visualisations = function () {
             $("body").append(new SwissMap());
             var form = $('<input>');
@@ -134,6 +138,8 @@ define([
             _.each(keKantonCodes, function(each){
                 console.log(each.toString())});
         };
+
+        _this.cardView();
     }
 
     return App
