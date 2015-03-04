@@ -77,7 +77,7 @@ define(['d3', 'views/abstract/AbstractSeriesChart'], function (d3, AbstractSerie
             return _this;
         };
 
-        _this.valueTransformed = function (_function) {
+        _this.transformed = function (_function) {
             scripting.valueTransformedLogic = _function;
             return _this;
         };

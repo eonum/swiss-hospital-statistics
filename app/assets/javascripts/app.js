@@ -41,7 +41,7 @@ define([
                             .key('x')
                             .yAxis('f(x)')
                             .labeled(function(serie){return 'f(x)=|'+serie.serie+'|';})
-                            .valueTransformed(function(y) { return Math.abs(y)})
+                            .transformed(function(y) { return Math.abs(y)})
                             .keyTransformed(function(x) {return x/Math.PI})
                             .keyLabeled(function(x) {return x+(x == 0 ? '':'PI')})
                             .openOn( [
