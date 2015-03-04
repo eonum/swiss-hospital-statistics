@@ -8,26 +8,6 @@ define(['d3', 'views/ResponsiveSvg'], function (d3, ResponsiveSvg) {
         _this.marginRight(100);
         _this.marginBottom(50);
 
-        var x = d3.scale.linear()
-            .range([0, _this._width()]);
-
-        var y = d3.scale.linear()
-            .range([_this._height(), 0]);
-
-        var color = d3.scale.category10();
-
-        var xAxis = d3.svg.axis()
-            .scale(x)
-            .orient('bottom');
-
-        var yAxis = d3.svg.axis()
-            .scale(y)
-            .orient('left');
-
-        var line = d3.svg.line()
-            .interpolate('basis')
-            .x(function(entry) { return x(_this._valueOf(entry)); })
-            .y(function(entry) { return y(_this._keyOf(entry)); });
 
         _this._dataOf = function(serie) {return serie[_this._dataSymbol()]};
         _this._nameOf = function(serie) {return serie[_this._serieSymbol()]};
@@ -38,19 +18,44 @@ define(['d3', 'views/ResponsiveSvg'], function (d3, ResponsiveSvg) {
         _this._keySymbol = function() {return 'key'};
         _this._valueSymbol = function() {return 'value'};
         _this._yAxisName = function () {return 'axis'};
+        _this._xAxisName = function () {return 'axis'};
         _this._colorOf = function(serie) { return d3.scale.category10()(_this._nameOf(serie)) };
         _this._labelOf = function(serie) {return _this._nameOf(serie)};
+        _this._keyLabelOf = function (key) {return key};
+        _this._valueLabelOf = function (value) {return value};
+
+
+        var x = d3.scale.linear()
+            .range([0, _this._width()]);
+
+        var y = d3.scale.linear()
+            .range([_this._height(), 0]);
+
+        var xAxis = d3.svg.axis()
+            .scale(x)
+            .orient('bottom')
+            .tickFormat(function(d) { return _this._keyLabelOf(d) })
+
+        var yAxis = d3.svg.axis()
+                .scale(y)
+                .orient('left')
+                .tickFormat(function(d) { return _this._valueLabelOf(d) });
+
+        var line = d3.svg.line()
+            .interpolate('basis')
+            .x(function(entry) { return x(_this._keyOf(entry)); })
+            .y(function(entry) { return y(_this._valueOf(entry)); });
 
         _this.initialize = function(data) {
             x.domain([
                 d3.min(data, function(serie) {
                     return d3.min(_this._dataOf(serie), function(entry) {
-                        return _this._valueOf(entry);
+                        return _this._keyOf(entry);
                     });
                 }),
                 d3.max(data, function(serie) {
                     return d3.max(_this._dataOf(serie), function(entry) {
-                        return _this._valueOf(entry);
+                        return _this._keyOf(entry);
                     });
                 })
             ]);
@@ -58,12 +63,12 @@ define(['d3', 'views/ResponsiveSvg'], function (d3, ResponsiveSvg) {
             y.domain([
                 d3.min(data, function(serie) {
                     return d3.min(_this._dataOf(serie), function(entry) {
-                        return _this._keyOf(entry);
+                        return _this._valueOf(entry);
                     });
                 }),
                 d3.max(data, function(serie) {
                     return d3.max(_this._dataOf(serie), function(entry) {
-                        return _this._keyOf(entry);
+                        return _this._valueOf(entry);
                     });
                 })
             ]);
@@ -77,9 +82,10 @@ define(['d3', 'views/ResponsiveSvg'], function (d3, ResponsiveSvg) {
                 .attr("class", "y axis")
                 .call(yAxis)
                 .append("text")
-                .attr("transform", "rotate(-90)")
-                .attr("y", 6)
-                .attr("dy", ".71em")
+                .attr("transform", "rotate(0)")
+                .attr("y",-20)
+                .attr("x",-10)
+                .attr("dy", ".0em")
                 .style("text-anchor", "end")
                 .text(_this._yAxisName());
 
@@ -95,7 +101,7 @@ define(['d3', 'views/ResponsiveSvg'], function (d3, ResponsiveSvg) {
 
             city.append("text")
                 .datum(function(serie) { return { name: _this._labelOf(serie), value: _this._dataOf(serie)[_this._dataOf(serie).length-1] }; })
-                .attr("transform", function(d) {return "translate(" + x(_this._valueOf(d.value)) + "," + y(_this._keyOf(d.value)) + ")"; })
+                .attr("transform", function(d) {return "translate(" + x(_this._keyOf(d.value)) + "," + y(_this._valueOf(d.value)) + ")"; })
                 .attr("x", 3)
                 .attr("dy", ".35em")
                 .text(function(d) { return d.name; });

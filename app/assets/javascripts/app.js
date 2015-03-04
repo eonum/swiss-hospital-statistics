@@ -32,29 +32,22 @@ define([
                         .labeled(function (value) {return value+'%'})
                         .openOn(35.49)))
                     .add(new CardView().add(new SerieChart().class('align-vertical')
-                            .openOn(
-                            [
-                                {
-                                    serie: 'austin',
-                                    data: [
-                                        { key: 0, value: 0 },
-                                        { key: 1, value: 10 },
-                                        { key: 2, value: 20 },
-                                        { key: 3, value: 30 },
-                                        { key: 4, value: 40 }
-                                    ]
-                                },
-                                {
-                                    serie: 'new york',
-                                    data: [
-                                        { key: 0, value: 0 },
-                                        { key: 1, value: 20 },
-                                        { key: 2, value: 40 },
-                                        { key: 3, value: 60 },
-                                        { key: 4, value: 80 }
-                                    ]
-                                }
-                            ])
+                            .display(function(series){
+                                return _.map(series, function(serie){
+                                    serie.data = _.map(_.range(-Math.PI, Math.PI, 0.01), function(x){
+                                        return {x : x, y : serie.f(x)} });
+                                    return serie })})
+                            .value('y')
+                            .key('x')
+                            .yAxis('f(x)')
+                            .labeled(function(serie){return 'f(x)=|'+serie.serie+'|';})
+                            .valueTransformed(function(y) { return Math.abs(y)})
+                            .keyTransformed(function(x) {return x/Math.PI})
+                            .keyLabeled(function(x) {return x+(x == 0 ? '':'PI')})
+                            .openOn( [
+                                {serie: 'sin(x)', f: function(x){return Math.sin(x)}},
+                                {serie: 'cos(x)', f: function(x){return Math.cos(x)}},
+                                {serie: 'cos(x^2)', f: function(x){return Math.cos(x*x)}}])
                     ))
                     .add(new CardView().add(new PieChart(300,200).class('align-vertical').display(function(entity) {
                         return [
