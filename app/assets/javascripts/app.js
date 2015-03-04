@@ -1,13 +1,14 @@
 define([
     'views/SwissMap',
     'views/PieChart',
+    'views/SeriesChart',
     'views/CardBoardView',
     'views/CardView',
     'views/abstract/AbstractSeriesChart',
     'models/categories/SexCategory',
     'helpers/CategoryAdapter',
     'helpers/CodeAdapter'
-], function(SwissMap,PieChart, CardBoardView, CardView, AbstractSeriesChart){
+], function(SwissMap,PieChart,SerieChart, CardBoardView, CardView, AbstractSeriesChart){
 
     "use strict";
     function App() {
@@ -30,7 +31,31 @@ define([
                         .transformed(function(v){return v.toPrecision(3)})
                         .labeled(function (value) {return value+'%'})
                         .openOn(35.49)))
-                    .add(new CardView().add(new AbstractSeriesChart().class('align-vertical')))
+                    .add(new CardView().add(new SerieChart().class('align-vertical')
+                            .openOn(
+                            [
+                                {
+                                    serie: 'austin',
+                                    data: [
+                                        { key: 0, value: 0 },
+                                        { key: 1, value: 10 },
+                                        { key: 2, value: 20 },
+                                        { key: 3, value: 30 },
+                                        { key: 4, value: 40 }
+                                    ]
+                                },
+                                {
+                                    serie: 'new york',
+                                    data: [
+                                        { key: 0, value: 0 },
+                                        { key: 1, value: 20 },
+                                        { key: 2, value: 40 },
+                                        { key: 3, value: 60 },
+                                        { key: 4, value: 80 }
+                                    ]
+                                }
+                            ])
+                    ))
                     .add(new CardView().add(new PieChart(300,200).class('align-vertical').display(function(entity) {
                         return [
                             {type: 'cesarean', amount: entity},
@@ -43,16 +68,13 @@ define([
                         .transformed(function(v){return v.toPrecision(3)})
                         .openOn(35.49)))
                     .add(new CardView().add(new SwissMap().class('align-vertical')))
-                    .add(new CardView().add(new PieChart().class('align-vertical').display(function(entity) {
-                        return [
-                            {type: 'cesarean', amount: entity},
-                            {type: 'notcesarean', amount: 100 - entity}
-                        ];
-                    })
-                        .key('type')
-                        .value('amount')
-                        .transformed(function(v){return v.toPrecision(3)})
-                        .openOn(75.49))));
+                    .add(new CardView().add(new PieChart().class('align-vertical')
+                        .display(function(entity) {return _.map(entity, function(str){return{text: str, length: str.length}})})
+                        .transformed(function(value){return value*2})
+                        .labeled(function(value,element){return element.text+' - '+value})
+                        .key('text')
+                        .value('length')
+                        .openOn([ 'a','bb','ccc' ]))));
         };
         _this.visualisations = function () {
             $("body").append(new SwissMap());

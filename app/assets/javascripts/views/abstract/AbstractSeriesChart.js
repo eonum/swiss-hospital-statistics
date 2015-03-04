@@ -29,29 +29,6 @@ define(['d3', 'views/ResponsiveSvg'], function (d3, ResponsiveSvg) {
             .x(function(entry) { return x(_this._valueOf(entry)); })
             .y(function(entry) { return y(_this._keyOf(entry)); });
 
-        var data = [
-            {
-                serie: 'austin',
-                data: [
-                    { key: 0, value: 0 },
-                    { key: 1, value: 10 },
-                    { key: 2, value: 20 },
-                    { key: 3, value: 30 },
-                    { key: 4, value: 40 }
-                ]
-            },
-            {
-                serie: 'new york',
-                data: [
-                    { key: 0, value: 0 },
-                    { key: 1, value: 20 },
-                    { key: 2, value: 40 },
-                    { key: 3, value: 60 },
-                    { key: 4, value: 80 }
-                ]
-            }
-        ];
-
         _this._dataOf = function(serie) {return serie[_this._dataSymbol()]};
         _this._nameOf = function(serie) {return serie[_this._serieSymbol()]};
         _this._keyOf = function (entry) {return entry[_this._keySymbol()]};
@@ -61,14 +38,10 @@ define(['d3', 'views/ResponsiveSvg'], function (d3, ResponsiveSvg) {
         _this._keySymbol = function() {return 'key'};
         _this._valueSymbol = function() {return 'value'};
         _this._yAxisName = function () {return 'axis'};
-
-        _this._colorOf = function(serie) { return d3.scale.category10()(serie) };
-        _this._labelOf = function(value) {return value.toString()};
+        _this._colorOf = function(serie) { return d3.scale.category10()(_this._nameOf(serie)) };
+        _this._labelOf = function(serie) {return _this._nameOf(serie)};
 
         _this.initialize = function(data) {
-            color.domain(data.map(function(serie){return _this._nameOf(serie)}));
-
-
             x.domain([
                 d3.min(data, function(serie) {
                     return d3.min(_this._dataOf(serie), function(entry) {
@@ -118,17 +91,15 @@ define(['d3', 'views/ResponsiveSvg'], function (d3, ResponsiveSvg) {
             city.append("path")
                 .attr("class", "line")
                 .attr("d", function(serie) { return line(_this._dataOf(serie));})
-                .style("stroke", function(serie) { return color(serie.serie); });
+                .style("stroke", function(serie) { return _this._colorOf(serie); });
 
             city.append("text")
-                .datum(function(serie) { console.log(serie); return { name: serie.serie, value: serie.data[serie.data.length-1] }; /*return { name: d.name, value: d.values[d.values.length - 1]};*/ })
-                .attr("transform", function(d) {console.log(d);  return "translate(" + x(d.value.value) + "," + y(d.value.key) + ")"; })
+                .datum(function(serie) { return { name: _this._labelOf(serie), value: _this._dataOf(serie)[_this._dataOf(serie).length-1] }; })
+                .attr("transform", function(d) {return "translate(" + x(_this._valueOf(d.value)) + "," + y(_this._keyOf(d.value)) + ")"; })
                 .attr("x", 3)
                 .attr("dy", ".35em")
                 .text(function(d) { return d.name; });
         };
-
-        _this.initialize(data);
 
         return _this;
     }
