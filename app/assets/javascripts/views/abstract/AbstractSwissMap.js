@@ -1,20 +1,54 @@
 define(['d3', 'topojson','views/ResponsiveSvg'], function (d3, topojson, ResponsiveSvg) {
 
-    function SwissMap(_width, _height){
+    function AbstractSwissMap(_width, _height){
         var _this = new ResponsiveSvg(_width, _height);
 
         var selected;
         var path = d3.geo.path().projection(null);
 
         var g = _this.svg().append("g");
-        _this.initialize = function () {
+
+
+        _this._cantonIdSymbol = function () {return 'id'};
+        _this._cantonAbbrSymbol = function () {return 'abbr'};
+        _this._cantonNameSymbol = function () {return 'name'};
+
+        _this._cantonIdOf = function (canton) {
+            return canton.properties[_this._cantonIdSymbol()];
+        };
+
+        _this._cantonAbbrOf = function (canton) {
+            return canton.properties[_this._cantonAbbrSymbol()];
+        };
+
+        _this._cantonNameOf = function (canton) {
+            return canton.properties[_this._cantonNameSymbol()];
+        };
+
+        _this._cantonDataBindSymbol = function () {
+            return _this._cantonIdSymbol();
+        };
+
+        var data = {
+            cantons: [
+                { key: '1', value: 20 },
+                { key: '2', value: 30 }
+            ],
+            districts: [  ]
+        };
+
+        _this._initialize = function (data) {
             d3.json('topo/ch-cantons.json', function(error, ch) {
+                _.each(ch.objects.cantons.geometries, function(each){ each.properties[_this._cantonIdSymbol()] = each[_this._cantonIdSymbol()] });
                 g.selectAll('.cantons')
                     .data(topojson.feature(ch, ch.objects.cantons).features)
                     .enter()
                     .append('path')
                     .attr('class', 'cantons')
                     .attr('d', path)
+                    .attr('fill', function(d,i){
+                        console.log(d);
+                    })
                     .on("click", _this.toggleZoom)
                     .on('mouseover', function(d){
                     });
@@ -90,10 +124,10 @@ define(['d3', 'topojson','views/ResponsiveSvg'], function (d3, topojson, Respons
                 .style("stroke-width", 1 / k + "px");
         };
 
-        _this.initialize();
+        _this._initialize(data);
         return _this;
     }
 
-    return SwissMap;
+    return AbstractSwissMap;
 
 });

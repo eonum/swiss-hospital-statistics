@@ -1,5 +1,5 @@
 define([
-    'views/SwissMap',
+    'views/abstract/AbstractSwissMap',
     'views/PieChart',
     'views/SeriesChart',
     'views/CardBoardView',
@@ -8,7 +8,7 @@ define([
     'models/categories/SexCategory',
     'helpers/CategoryAdapter',
     'helpers/CodeAdapter'
-], function(SwissMap,PieChart,SerieChart, CardBoardView, CardView, AbstractSeriesChart){
+], function(AbstractSwissMap,PieChart,SerieChart, CardBoardView, CardView, AbstractSeriesChart){
 
     "use strict";
     function App() {
@@ -19,7 +19,7 @@ define([
         _this.cardView = function () {
             $('body').append(
                 new CardBoardView()
-                    .add(new CardView().add(new SwissMap().class('align-vertical')))
+                    .add(new CardView().add(new AbstractSwissMap().class('align-vertical')))
                     .add(new CardView().add(new PieChart().class('align-vertical').display(function(entity) {
                         return [
                             {type: 'cesarean', amount: entity},
@@ -37,11 +37,12 @@ define([
                                     serie.data = _.map(_.range(-Math.PI, Math.PI, 0.01), function(x){
                                         return {x : x, y : serie.f(x)} });
                                     return serie })})
+
+                            .transformed(function(y) { return Math.abs(y)})
                             .value('y')
                             .key('x')
                             .yAxis('f(x)')
                             .labeled(function(serie){return 'f(x)=|'+serie.serie+'|';})
-                            .transformed(function(y) { return Math.abs(y)})
                             .keyTransformed(function(x) {return x/Math.PI})
                             .keyLabeled(function(x) {return x+(x == 0 ? '':'PI')})
                             .openOn( [
@@ -60,7 +61,7 @@ define([
                         .value('amount')
                         .transformed(function(v){return v.toPrecision(3)})
                         .openOn(35.49)))
-                    .add(new CardView().add(new SwissMap().class('align-vertical')))
+                    //.add(new CardView().add(new AbstractSwissMap().class('align-vertical')))
                     .add(new CardView().add(new PieChart().class('align-vertical')
                         .display(function(entity) {return _.map(entity, function(str){return{text: str, length: str.length}})})
                         .transformed(function(value){return value*2})

@@ -5,7 +5,7 @@ define(['d3', 'views/ResponsiveSvg'], function (d3, ResponsiveSvg) {
 
         _this.marginTop(50);
         _this.marginLeft(50);
-        _this.marginRight(100);
+        _this.marginRight(140);
         _this.marginBottom(50);
 
 
