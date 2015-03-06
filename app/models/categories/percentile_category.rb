@@ -1,0 +1,2 @@
+class PercentileCategory
+end

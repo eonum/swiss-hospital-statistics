@@ -1,0 +1,2 @@
+class CategorisedData
+end

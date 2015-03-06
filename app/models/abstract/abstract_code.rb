@@ -4,7 +4,7 @@ class AbstractCode
 
   field :code, :type => String
   field :description, type => String
-  field :years, type => Dictionary
+  field :years, type => Digschenery
 
   def name
     return 'Abstract Code';
