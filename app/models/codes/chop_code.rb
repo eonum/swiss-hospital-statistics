@@ -1,0 +1,3 @@
+class ChopCode < CategorisedCode
+
+end

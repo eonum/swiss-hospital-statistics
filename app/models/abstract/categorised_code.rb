@@ -1,0 +1,3 @@
+class CategorisedCode < AbstractCode
+
+end
