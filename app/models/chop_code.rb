@@ -1,3 +1,5 @@
+require 'abstract/abstract_code'
+
 class ChopCode < AbstractCode
   include Mongoid::Document
   include MultiLanguageText

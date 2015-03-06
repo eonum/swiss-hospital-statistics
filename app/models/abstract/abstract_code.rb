@@ -10,10 +10,6 @@ class AbstractCode
     return 'Abstract Code';
   end
 
-  def code
-    return :code;
-  end
-
   def description
     return :description;
   end
