@@ -10,4 +10,14 @@ class ChopCode
   field :text_fr, :type => String
   field :text_it, :type => String
   field :version, :type => String
+
+  @years = {  };
+
+  def to_json
+    return {
+        code: self.code,
+        description: self.text_de,
+        years: self.years.to_json
+    }
+  end
 end
