@@ -3,8 +3,8 @@ class AbstractCode
   include MultiLanguageText
 
   field :code, :type => String
-  field :description, type => String
-  field :years, type => Digschenery
+  field :description, :type => String
+  field :years, :type => Hash
 
   def name
     return 'Abstract Code';

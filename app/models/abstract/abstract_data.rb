@@ -1,5 +1,5 @@
 class AbstractData
-  field :year, type :int
+  field :year, :type => Integer
 
   def year
     return :year
