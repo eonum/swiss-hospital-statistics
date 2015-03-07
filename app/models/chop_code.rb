@@ -1,6 +1,6 @@
-require 'abstract/abstract_code'
+require 'abstract/categorised_code'
 
-class ChopCode < AbstractCode
+class ChopCode < CategorisedCode
   include Mongoid::Document
   include MultiLanguageText
 

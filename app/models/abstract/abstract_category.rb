@@ -1,10 +1,12 @@
-require 'abstract/abstract_data'
-
-class CategorisedData < AbstractData
+class AbstractCategory
   include Mongoid::Document
   include MultiLanguageText
 
-  field :categories, :type => Hash
+  field :categories, :type => Array
+
+  def name
+    return 'AbstractCategory'
+  end
 
   def categories
     #TODO: implement this
@@ -13,5 +15,6 @@ class CategorisedData < AbstractData
   def at
     #TODO: implement this
   end
+
 
 end

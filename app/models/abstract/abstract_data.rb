@@ -7,12 +7,4 @@ class AbstractData
   def year
     return :year
   end
-
-  def fromJSON(json)
-
-  end
-
-  def asJSON
-
-  end
 end

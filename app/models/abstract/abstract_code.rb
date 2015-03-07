@@ -19,18 +19,10 @@ class AbstractCode
   end
 
   def at
-
-  end
-
-  def fromJSON
-
-  end
-
-  def asJSON
-
+    #TODO: implement this
   end
 
   def newData
-
+    #TODO: implement this
   end
 end
