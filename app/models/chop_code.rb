@@ -13,23 +13,11 @@ class ChopCode
 
   @years = {  };
 
-  def ChopCode::to_json
-    return "{
-            codes: {
-                chop: {
-                    description: 'Chop code Description'
-                },
-                icd: {
-                    description: 'ICD code Description'
-                },
-                ke: {
-                    description: 'KE code Description'
-                },
-                age: {
-                    description: 'AGE code Description'
-                }
-            }
-        }"
-
+  def to_json
+    return {
+        code: self.code,
+        description: self.text_de,
+        years: self.years.to_json
+    }
   end
 end

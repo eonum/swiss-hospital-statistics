@@ -7,13 +7,22 @@ module Api
       def index
         # put code to play with here
         # Parsers::SuDParser.new.parse
-=begin
-          if static methods are an option use this
-          if not use an object instead
-=end
-        @test = ChopCode.to_json
-        print @test
-        render json: @test
+        render json: {
+                   codes: {
+                       chop: {
+                           description: "Chop code is tzpe of caode that bla bla haba"
+                       },
+                       icd: {
+                           description: "ICD code is tzpe of caode that bla bla haba"
+                       },
+                       ke: {
+                           description: "KE code is tzpe of caode that bla bla haba"
+                       },
+                       age: {
+                           description: "AGE code is tzpe of caode that bla bla haba"
+                       }
+                   }
+               };
       end
 
       def show
