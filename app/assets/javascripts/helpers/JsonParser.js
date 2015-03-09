@@ -21,11 +21,18 @@ define([], function(){
          * @returns {Array.<AbstractCode>}
          */
         _this.createCodes = function (obj) {
-            return _.map(_.intersection(_.keys(obj), ServiceProvider.codeBuilder.ids()), function(each){
-                var code = ServiceProvider.codeBuilder.instantiate(each);
-                code.fromJSON(obj[each]);
-                return code;
+            var codes = {};
+            _.each(_.intersection(_.keys(obj), ServiceProvider.codeBuilder.ids()), function(each) {
+                codes[each] = [ ];
+                var description = obj[each].description;
+                _.each(obj[each].codes, function(codeObj) {
+                    var code = ServiceProvider.codeBuilder.instantiate(each);
+                    code.typeDescription(description);
+                    code.fromJSON(codeObj);
+                    codes[each].push(code);
+                });
             });
+            return codes;
         };
     }
 

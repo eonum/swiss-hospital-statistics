@@ -11,7 +11,7 @@ module Api
 
         render json: {
                    codes: {
-                       params[:id].parameterize.underscore.to_sym => {
+                       params[:code_id].parameterize.underscore.to_sym => {
                            description: "Chop code is tzpe of caode that bla bla haba",
                            codes: [
                                {

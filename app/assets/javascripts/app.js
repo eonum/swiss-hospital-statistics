@@ -99,18 +99,16 @@ define([
         _this.codes = function () {
             console.log('------------ C H O P ---------------');
             console.log('Received from server:');
-            var chop = '{"codes":{"chop":{"code":"001200","description":"Inhalation von Stickstoffmonoxyd, Dauer der Behandlung bis unter 48 Stunden","years":[{"categories":[{"interval":[{"categories":[{"percentile":[{"amount":14,"percentile":5},{"amount":14,"percentile":10},{"amount":14,"percentile":25},{"amount":14,"percentile":50},{"amount":14,"percentile":75},{"amount":14,"percentile":90},{"amount":14,"percentile":95}]}],"n":1,"dad":14,"interval":{"from":0,"to":14},"max":14,"min":14,"sa":0}]}],"year":"2013"}]}}}';
+            var chop = '{"codes":{"chop":{"description":"Chop code is type of code that bla bla bla","codes":[{"code":"001200","description":"Inhalation von Stickstoffmonoxyd, Dauer der Behandlung bis unter 48 Stunden","years":[{"categories":[{"interval":[{"categories":[{"percentile":[{"amount":14,"percentile":5.0},{"amount":14.0,"percentile":10.0},{"amount":14.0,"percentile":25.0},{"amount":14.0,"percentile":50.0},{"amount":14.0,"percentile":75.0},{"amount":14.0,"percentile":90.0},{"amount":14.0,"percentile":95.0}]}],"n":1,"dad":14.0,"interval":{"from":0,"to":14},"max":14,"min":14,"sa":0.0}]}],"year":2013}]}]}}}';
             console.log(chop);
-            var shopCodes = ServiceProvider.jsonParser.parse(chop);
+            var chopCodes = ServiceProvider.jsonParser.parse(chop);
             console.log('Serialized in Code Models:');
-            _.each(shopCodes, function(each){
+            _.each(chopCodes, function(each) {
                 console.log(each.toString())});
-
-            console.log();
 
             console.log('------------ D R G ---------------');
             console.log('Received from server:');
-            var drg = '{"codes":{"drg":{"code":"901A","description":"Ausgedehnte OR-Prozedur ohne Bezug zur Hauptdiagnose mit komplizierenden Prozeduren oder Strahlentherapie","years":[{"categories":[{"interval":[{"categories":[{"percentile":[{"amount":5,"percentile":5},{"amount":5.4,"percentile":10},{"amount":12,"percentile":25},{"amount":24,"percentile":50},{"amount":"35.5.0","percentile":75},{"amount":"44.8.0","percentile":90},{"amount":48.6,"percentile":95}]}],"n":23,"dad":26,"interval":{"from":70},"max":85,"min":1,"sa":19}]}],"year":"2013"}]}}}';
+            var drg = '{"codes":{"drg":{"codes":[{"code":"901A","description":"Ausgedehnte OR-Prozedur ohne Bezug zur Hauptdiagnose mit komplizierenden Prozeduren oder Strahlentherapie","years":[{"categories":[{"interval":[{"categories":[{"percentile":[{"amount":5,"percentile":5},{"amount":5.4,"percentile":10},{"amount":12,"percentile":25},{"amount":24,"percentile":50},{"amount":"35.5.0","percentile":75},{"amount":"44.8.0","percentile":90},{"amount":48.6,"percentile":95}]}],"dad":26,"interval":{"from":70},"max":85,"min":1,"n":23,"sa":19}]}],"year":"2013"}]}],"description":"Drg code is type of code that bla bla bla"}}}';
             console.log(drg);
             console.log('Serialized in Code Models:');
             var drgCodes = ServiceProvider.jsonParser.parse(drg);
@@ -155,7 +153,8 @@ define([
                 console.log(each.toString())});
         };
 
-        _this.cardView();
+        //_this.cardView();
+        _this.codes();
     }
 
     return App

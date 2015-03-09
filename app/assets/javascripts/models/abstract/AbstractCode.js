@@ -49,7 +49,6 @@ define([
         };
 
         /**
-         *
          * @param year
          * @returns {AbstractData}
          */
@@ -73,7 +72,6 @@ define([
         };
 
         /**
-         *
          * @param {String} obj.code
          * @param {String|Object} obj.description
          * @param {Array.<{key:number, value:Object}>} obj.years
@@ -109,5 +107,16 @@ define([
             return JSON.stringify(_this.asJSON());
         };
     }
+
+    /**
+     * @param {String} _description
+     * @returns {String}
+     */
+    AbstractCode.prototype.typeDescription = function (_description) {
+        if (_.isUndefined(_description)) return AbstractCode.prototype._description;
+        AbstractCode.prototype._description = _description;
+        return _description;
+    };
+
     return AbstractCode;
 });
