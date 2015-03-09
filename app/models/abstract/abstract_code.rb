@@ -11,18 +11,19 @@ class AbstractCode
   end
 
   def description
-    return :description;
+    self.description;
   end
 
   def years
-    return :years;
+    self.years;
   end
 
-  def at
-    #TODO: implement this
+  def at(year)
+    years[year]
   end
 
   def newData
     #TODO: implement this
   end
+
 end

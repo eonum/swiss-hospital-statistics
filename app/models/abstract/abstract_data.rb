@@ -4,6 +4,11 @@ class AbstractData
 
   field :year, :type => Integer
 
+  def initialize(year)
+    self.year = year
+    save
+  end
+
   def year
     return :year
   end
