@@ -1,4 +1,6 @@
-class IcdCode
+require 'abstract/categorised_code'
+
+class IcdCode < CategorisedCode
   include Mongoid::Document
   include MultiLanguageText
 
@@ -10,4 +12,8 @@ class IcdCode
   field :text_fr, :type => String
   field :text_it, :type => String
   field :version, :type => String
+  def name
+    return 'IcdCode'
+  end
+
 end

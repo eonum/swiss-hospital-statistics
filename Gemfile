@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+source 'http://rubygems.org'
 
 group :rails4 do
   # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
