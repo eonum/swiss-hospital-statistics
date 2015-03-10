@@ -1,4 +1,6 @@
-class ChopCode
+require 'abstract/categorised_code'
+
+class ChopCode < CategorisedCode
   include Mongoid::Document
   include MultiLanguageText
 
@@ -19,5 +21,10 @@ class ChopCode
         description: self.text_de,
         years: self.years.to_json
     }
+  end
+
+  def name
+    return 'CHOPCode'
+
   end
 end
