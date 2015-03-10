@@ -11,13 +11,19 @@ class ChopCode
   field :text_it, :type => String
   field :version, :type => String
 
-  @years = {  };
-
-  def to_json
-    return {
-        code: self.code,
-        description: self.text_de,
-        years: self.years.to_json
-    }
+  # static method for general information about the collection
+  def ChopCode::to_json
+    test = "Count: ".concat(ChopCode.count.to_s).concat("\n\n")
+    ChopCode.each do |chopCode|
+      test += chopCode[:code] + "\n"
+    end
+    return test
   end
+
+  # method for an object
+  def to_json
+    chopCode = ChopCode.new
+    return chopCode
+  end
+
 end
