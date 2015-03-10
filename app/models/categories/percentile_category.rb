@@ -5,6 +5,7 @@ class PercentileCategory < AbstractCategory
   include MultiLanguageText
 
   field :percentile, :type => Integer
+  field :amount, :type => Float
 
   def name
     return 'PercentileCategory'
@@ -15,7 +16,7 @@ class PercentileCategory < AbstractCategory
   end
 
   def amount
-    #TODO what is amont? how do I get it?
+    return :amount
   end
 
 end
