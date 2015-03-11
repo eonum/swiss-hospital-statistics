@@ -50,6 +50,9 @@ GEM
     connection_pool (2.1.1)
     d3-rails (3.5.2)
       railties (>= 3.1)
+    debase (0.1.2)
+      debase-ruby_core_source
+    debase-ruby_core_source (0.7.7)
     erubis (2.7.0)
     execjs (2.3.0)
     foundation-rails (5.5.1.0)
@@ -182,6 +185,7 @@ PLATFORMS
 DEPENDENCIES
   coffee-rails (~> 4)
   d3-rails
+  debase
   execjs
   foundation-rails
   google_visualr

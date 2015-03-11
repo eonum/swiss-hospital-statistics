@@ -7,7 +7,7 @@ class CategorisedCode < AbstractCode
   end
 
   def newData
-    #TODO: implement this
+    return CategorisedData.new
   end
 
 end

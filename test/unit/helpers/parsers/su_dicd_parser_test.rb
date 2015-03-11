@@ -12,7 +12,7 @@ class SuDICDParserTest < ActiveSupport::TestCase
 
     assert_equal('A000', icdCodes[0].code)
 
-    intervalCategory = icdCodes[1].categories[0]
+    intervalCategory = icdCodes[1].at(2013).categories[0]
     assert_equal(2, intervalCategory.min)
     assert_equal(11, intervalCategory.max)
   end

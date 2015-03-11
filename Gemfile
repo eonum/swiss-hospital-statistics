@@ -56,4 +56,6 @@ group :development do
   gem 'execjs'
   gem 'rails-perftest'
   gem 'tzinfo-data'
+  # for debugging
+  gem 'debase'
 end

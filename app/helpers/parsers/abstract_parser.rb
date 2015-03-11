@@ -26,6 +26,9 @@ class AbstractParser
   def parseRows(numberOfRowsToParse)
     parsedRows = Array.new
     (@firstRow..@firstRow + numberOfRowsToParse - 1).each do |row|
+      if row.nil?
+        return parsedRows
+      end
       parsedRows.push(@sheet.row(row))
     end
 

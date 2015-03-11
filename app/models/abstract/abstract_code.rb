@@ -6,6 +6,10 @@ class AbstractCode
   field :description, :type => String
   field :years, :type => Hash
 
+  def initialize
+    years = Hash.new
+  end
+
   def name
     return 'Abstract Code';
   end
@@ -14,8 +18,11 @@ class AbstractCode
     self.description;
   end
 
-  def years
-    self.years;
+  # Adds the given data under the given year to this code
+  # @param year the year to save the data under
+  # @param data the data to save under the year
+  def addYear(year, data)
+    years[year] = data
   end
 
   def at(year)
@@ -23,7 +30,7 @@ class AbstractCode
   end
 
   def newData
-    #TODO: implement this
+    return CategorisedData.new
   end
 
 end

@@ -8,7 +8,6 @@ class SuDICDParser < AbstractParser
 
   def processRow(row)
     icdCode = IcdCode.new
-
     # assign fields
     icdCode.code = row[1]
     icdCode.description = row[2]
@@ -35,6 +34,9 @@ class SuDICDParser < AbstractParser
     percentileCategory.categories = percentileSubCategories
 
     category.categories = [percentileCategory]
+
+    # TODO year hardcoded
+    icdCode.addYear(2013, category)
 
     #TODO field 'n'
     #TODO field 'interval'
