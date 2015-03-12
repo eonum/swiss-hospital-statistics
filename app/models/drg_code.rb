@@ -2,13 +2,13 @@ require 'abstract/categorised_code'
 require 'catalog'
 
 class DrgCode < CategorisedCode
-
   include Mongoid::Document
   include MultiLanguageText
+  include ClassInstanceVariables
 
-  def name
-    return 'DrgCode'
-  end
+  @name ='DrgCode'
+  @id = 'drg'
+  @type_description = 'Drg code means something and does something'
 
 end
 
@@ -19,7 +19,7 @@ class Catalog
   pragmatize!
 
   _code
-  def drg_code_in(aContext)
+  def drg_code_in(context)
     DrgCode
   end
 end

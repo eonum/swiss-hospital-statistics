@@ -1,6 +1,11 @@
 require 'catalog'
 
 class KeCode
+
+  @name ='KeCode'
+  @id = 'ke'
+  @type_description = 'Ke code means something and does something'
+
 end
 
 # Adds an extension method to code catalog
@@ -10,7 +15,7 @@ class Catalog
   pragmatize!
 
   _code
-  def ke_code_in(aContext)
+  def ke_code_in(context)
     KeCode
   end
 end

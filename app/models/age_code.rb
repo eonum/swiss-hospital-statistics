@@ -6,9 +6,9 @@ class AgeCode < CategorisedCode
   include Mongoid::Document
   include MultiLanguageText
 
-  def name
-    return 'AgeCode'
-  end
+  @name ='AgeCode'
+  @id = 'age'
+  @type_description = 'Age code means something and does something'
 
 end
 
@@ -19,7 +19,7 @@ class Catalog
   pragmatize!
 
   _code
-  def age_code_in(aContext)
+  def age_code_in(context)
     AgeCode
   end
 end

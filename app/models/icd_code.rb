@@ -3,9 +3,9 @@ require 'catalog'
 
 class IcdCode < CategorisedCode
 
-  def name
-    return 'IcdCode'
-  end
+  @name ='IcdCode'
+  @id = 'icd'
+  @type_description = 'Icd code means something and does something'
 
 end
 
@@ -16,7 +16,7 @@ class Catalog
   pragmatize!
 
   _code
-  def icd_code_in(aContext)
+  def icd_code_in(context)
     IcdCode
   end
 end
