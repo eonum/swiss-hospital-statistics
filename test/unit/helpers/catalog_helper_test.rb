@@ -7,6 +7,7 @@ class CatalogTest < ActiveSupport::TestCase
   end
 
   def test_has_extensions
+    puts @catalog.codes
     assert(!@catalog.codes.empty?)
   end
 

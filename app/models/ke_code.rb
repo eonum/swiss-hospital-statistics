@@ -1,6 +1,6 @@
 require 'catalog'
 
-class KeCode
+class KeCode < CategorisedCode
 
   @name ='KeCode'
   @id = 'ke'

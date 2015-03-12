@@ -7,16 +7,16 @@ module Api
       def index
         # put code to play with here
         # Parsers::SuDParser.new.parse
-        cpcode = ChopCode.new
-        @tester = cpcode.to_json
-        render json: ChopCode.to_json
+        # cpcode = ChopCode.new
+        # @tester = cpcode.to_json
+        render json: Catalog.new.be_preview.to_json
       end
 
       def show
         render json: {
                    codes: {
                        params[:id].parameterize.underscore.to_sym => {
-                           description: "Chop code is tzpe of caode that bla bla haba",
+                           description: "Chop code is type of code that bla bla haba",
                            codes: [
                                {
                                    code: "001200",

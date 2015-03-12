@@ -4,7 +4,6 @@ require 'catalog'
 class DrgCode < CategorisedCode
   include Mongoid::Document
   include MultiLanguageText
-  include ClassInstanceVariables
 
   @name ='DrgCode'
   @id = 'drg'
