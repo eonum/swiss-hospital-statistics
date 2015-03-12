@@ -3,7 +3,7 @@ require 'catalog'
 class KeCode < CategorisedCode
 
   @name ='KeCode'
-  @id = 'ke'
+  @id = :ke
   @type_description = 'Ke code means something and does something'
 
 end

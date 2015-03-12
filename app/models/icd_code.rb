@@ -4,7 +4,7 @@ require 'catalog'
 class IcdCode < CategorisedCode
 
   @name ='IcdCode'
-  @id = 'icd'
+  @id = :icd
   @type_description = 'Icd code means something and does something'
 
 end

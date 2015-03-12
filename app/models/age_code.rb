@@ -7,7 +7,7 @@ class AgeCode < CategorisedCode
   include MultiLanguageText
 
   @name ='AgeCode'
-  @id = 'age'
+  @id = :age
   @type_description = 'Age code means something and does something'
 
 end

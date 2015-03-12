@@ -6,7 +6,7 @@ class DrgCode < CategorisedCode
   include MultiLanguageText
 
   @name ='DrgCode'
-  @id = 'drg'
+  @id = :drg
   @type_description = 'Drg code means something and does something'
 
 end
