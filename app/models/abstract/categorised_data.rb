@@ -7,11 +7,11 @@ class CategorisedData < AbstractData
   field :categories, :type => Hash
 
   def categories
-    #TODO: implement this
+    :categories.self
   end
 
-  def at
-    #TODO: implement this
+  def at(key)
+    :categories[key]
   end
 
 end

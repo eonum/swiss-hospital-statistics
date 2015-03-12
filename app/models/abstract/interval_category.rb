@@ -7,11 +7,11 @@ class IntervalCategory < AbstractCategory
   field :interval, :type => Interval
 
   def name
-    return 'Interval Category'
+    'Interval Category'
   end
 
   def interval
-    return :interval
+    self.interval
   end
 
   def amount

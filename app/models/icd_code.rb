@@ -10,4 +10,8 @@ class IcdCode < CategorisedCode
     return 'IcdCode'
   end
 
+  def categories
+    Array.new
+  end
+
 end

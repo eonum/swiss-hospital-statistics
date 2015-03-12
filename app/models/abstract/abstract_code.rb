@@ -19,11 +19,11 @@ class AbstractCode
   end
 
   def at(year)
-    years[year]
+    self.years[year]
   end
 
   def newData
-    #TODO: implement this
+    AbstractData.new(self.years)
   end
 
 end
