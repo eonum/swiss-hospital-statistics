@@ -13,20 +13,4 @@ class GeneralIntervalCategory < IntervalCategory
     return 'GeneralIntervalCategory'
   end
 
-  def dad
-    return :dad
-  end
-
-  def sa
-    return :sa
-  end
-
-  def min
-    return :min
-  end
-
-  def max
-    return :max
-  end
-
 end

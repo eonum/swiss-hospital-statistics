@@ -4,19 +4,12 @@ class AbstractCode
 
   field :code, :type => String
   field :description, :type => String
-  field :years, :type => Hash
-
-  def initialize
-    years = Hash.new
-  end
+  field :years, :type => Hash, :default => {}
 
   def name
     return 'Abstract Code';
   end
 
-  def description
-    self.description;
-  end
 
   # Adds the given data under the given year to this code
   # @param year the year to save the data under
