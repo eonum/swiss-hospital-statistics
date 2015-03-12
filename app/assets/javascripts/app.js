@@ -153,8 +153,8 @@ define([
                 console.log(each.toString())});
         };
 
-        //_this.cardView();
-        _this.codes();
+        _this.cardView();
+        //_this.codes();
     }
 
     return App

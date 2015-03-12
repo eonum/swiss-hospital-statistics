@@ -29,13 +29,26 @@ define(['d3', 'topojson','views/ResponsiveSvg'], function (d3, topojson, Respons
             return _this._cantonIdSymbol();
         };
 
+        _this._quantize = function(d){
+            console.log(d);
+            return "q" + Math.min(8, ~~(data[d.value] * 9 / 12)) + "-9";
+        };
+
+        _this._cantonDataFor = function (data, canton) {
+            return _.first(_.select(data.cantons, function (each){
+                return each[_this._cantonDataBindSymbol()] === _this._cantonAbbrOf(canton)
+            }));
+        };
+
+
         var data = {
             cantons: [
-                { key: '1', value: 20 },
-                { key: '2', value: 30 }
+                { id: 'ZH', value: 20 },
+                { id: 'BE', value: 30 }
             ],
             districts: [  ]
         };
+
 
         _this._initialize = function (data) {
             d3.json('topo/ch-cantons.json', function(error, ch) {
@@ -46,8 +59,12 @@ define(['d3', 'topojson','views/ResponsiveSvg'], function (d3, topojson, Respons
                     .append('path')
                     .attr('class', 'cantons')
                     .attr('d', path)
-                    .attr('fill', function(d,i){
-                        console.log(d);
+                    .attr('class', function(each){
+                        var d = _this._cantonDataFor(data,each);
+                        var clazz = d3.select(this).attr("class");
+                        if (_.isUndefined(d)) return clazz;
+                        console.log(_this._quantize);
+                        return clazz + " " + _this._quantize(d);
                     })
                     .on("click", _this.toggleZoom)
                     .on('mouseover', function(d){
