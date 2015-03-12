@@ -27,3 +27,17 @@
 .idea/misc.xml
 
 .idea/misc.xml
+
+.idea/.generators
+
+.idea/casematch20.iml
+
+.idea/inspectionProfiles/Project_Default.xml
+
+.idea/runConfigurations/Development__casematch20.xml
+
+.idea/runConfigurations/Production__casematch20.xml
+
+.idea/runConfigurations/spec.xml
+
+.idea/runConfigurations/test.xml
