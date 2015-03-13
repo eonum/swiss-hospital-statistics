@@ -6,8 +6,6 @@ class SexCategory < AbstractCategory
 
   field :sex, :type => Integer
 
-  def name
-    'SexCategory'
-  end
+  @id = :sex
 
 end

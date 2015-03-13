@@ -6,8 +6,4 @@ class IntervalCategory < AbstractCategory
 
   field :interval, :type => Interval
 
-  def name
-    'Interval Category'
-  end
-
 end

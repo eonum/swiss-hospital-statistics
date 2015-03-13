@@ -10,8 +10,6 @@ class GeneralIntervalCategory < IntervalCategory
   field :max, :type => Integer
   field :number, :type => Integer
 
-  def name
-    'GeneralIntervalCategory'
-  end
+  @id = :interval
 
 end

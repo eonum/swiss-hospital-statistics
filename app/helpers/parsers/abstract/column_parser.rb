@@ -1,0 +1,27 @@
+require 'parsers/abstract/linear_parser'
+
+class ColumnParser < LinearParser
+
+  def initialize
+    super
+    @column = 0
+  end
+
+  def column(column=nil)
+    return @column unless column
+    @column = column
+    self
+  end
+
+  def repeated (&block)
+    return super(&block) if block
+    self.repeated{|parser, value| parser.column(value)}
+  end
+
+  protected
+
+  def value_at (index)
+    self.sheet.cell(index, @column)
+  end
+
+end

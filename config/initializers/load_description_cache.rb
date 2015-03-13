@@ -1,29 +1,29 @@
 module DescriptionCache
-  Cache = Hash.new
-  CodePointCache = Hash.new
-  Cache['de'] = Hash.new
-  Cache['fr'] = Hash.new
-  Cache['it'] = Hash.new
-
-  VariableCache = Hash.new
-
-  IcdCode.all.each do |code|
-    Cache['de'][code.short_code] = code.text_de
-    Cache['fr'][code.short_code] = code.text_fr
-    Cache['it'][code.short_code] = code.text_it
-    CodePointCache[code.short_code] = code.code
-  end
-  ChopCode.all.each do |code|
-    Cache['de'][code.short_code] = code.text_de
-    Cache['fr'][code.short_code] = code.text_fr
-    Cache['it'][code.short_code] = code.text_it
-    CodePointCache[code.short_code] = code.code
-  end
-  Drg.all.each do |code|
-    Cache['de'][code.code] = code.text_de
-    Cache['fr'][code.code] = code.text_fr
-    Cache['it'][code.code] = code.text_it
-  end
+  # Cache = Hash.new
+  # CodePointCache = Hash.new
+  # Cache['de'] = Hash.new
+  # Cache['fr'] = Hash.new
+  # Cache['it'] = Hash.new
+  #
+  # VariableCache = Hash.new
+  #
+  # IcdCode.all.each do |code|
+  #   Cache['de'][code.short_code] = code.text_de
+  #   Cache['fr'][code.short_code] = code.text_fr
+  #   Cache['it'][code.short_code] = code.text_it
+  #   CodePointCache[code.short_code] = code.code
+  # end
+  # ChopCode.all.each do |code|
+  #   Cache['de'][code.short_code] = code.text_de
+  #   Cache['fr'][code.short_code] = code.text_fr
+  #   Cache['it'][code.short_code] = code.text_it
+  #   CodePointCache[code.short_code] = code.code
+  # end
+  # Drg.all.each do |code|
+  #   Cache['de'][code.code] = code.text_de
+  #   Cache['fr'][code.code] = code.text_fr
+  #   Cache['it'][code.code] = code.text_it
+  # end
 
   def get (code, locale)
     return '' if code.blank?
