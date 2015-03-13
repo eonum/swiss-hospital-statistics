@@ -20,13 +20,16 @@ class Catalog
 
   def push_code_type (_code)
     code = { :description => _code.type_description }
-    @catalog[:codes][code.id.to_sym] = code
+    @catalog[:codes][_code.id.to_sym] = code
     code
   end
 
   def be_preview_for (symbol)
     type = self.codes.select {|each| each.id == symbol.to_sym}.first
     code = self.push_code_type(type)
+    codes = type.all
+    code[:codes] = codes
+    self
   end
 
   def to_json

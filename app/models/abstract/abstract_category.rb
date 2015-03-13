@@ -5,15 +5,21 @@ class AbstractCategory
   field :categories, :type => Array
 
   def name
-    return 'AbstractCategory'
+    'AbstractCategory'
   end
 
-  def categories
-    #TODO: implement this
+  def add (category)
+    self.categories[category.id] = [] unless self.at(category.id)
+    self.categories[category.id].push(category)
+    category
   end
 
-  def at
-    #TODO: implement this
+  def add_all (categories)
+    categories.each { |each| self.add(each) }
+  end
+
+  def at (category_id)
+    self.categories[category_id]
   end
 
 

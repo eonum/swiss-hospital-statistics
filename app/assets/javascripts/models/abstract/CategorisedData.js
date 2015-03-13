@@ -57,6 +57,7 @@ define([
                     _.each (category[each], function(categoryElement){
                         var category = ServiceProvider.categoryBuilder.instantiate(each);
                         category.fromJSON(categoryElement);
+                        //TODO: what the hell is each?
                         _this.at(each).push(category);
                     });
                 });

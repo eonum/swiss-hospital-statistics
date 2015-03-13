@@ -3,8 +3,4 @@ class AbstractData
   include MultiLanguageText
 
   field :year, :type => Integer
-
-  def year
-    return :year
-  end
 end

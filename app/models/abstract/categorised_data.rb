@@ -4,14 +4,15 @@ class CategorisedData < AbstractData
   include Mongoid::Document
   include MultiLanguageText
 
-  field :categories, :type => Hash
+  field :categories, :type => Hash, :default => { }
 
-  def categories
-    #TODO: implement this
+  def add (category)
+    self.categories[category.id] = category
+    category
   end
 
-  def at
-    #TODO: implement this
+  def at (category_id)
+    self.categories[category_id]
   end
 
 end

@@ -13,23 +13,24 @@ module Api
       end
 
       def show
-        render json: {
-                   codes: {
-                       params[:id].parameterize.underscore.to_sym => {
-                           description: "Chop code is type of code that bla bla haba",
-                           codes: [
-                               {
-                                   code: "001200",
-                                   description: "Inhalation von Stickstoffmonoxyd, Dauer der Behandlung bis unter 48 Stunden"
-                               },
-                               {
-                                   code: "0033",
-                                   description: "Computergesteuerte Chirurgie mit Fluoroskopie"
-                               }
-                           ]
-                       }
-                   }
-               }
+        render json: Catalog.new.be_preview_for(params[:id]).to_json
+        # render json: {
+        #            codes: {
+        #                params[:id].parameterize.underscore.to_sym => {
+        #                    description: "Chop code is type of code that bla bla haba",
+        #                    codes: [
+        #                        {
+        #                            code: "001200",
+        #                            description: "Inhalation von Stickstoffmonoxyd, Dauer der Behandlung bis unter 48 Stunden"
+        #                        },
+        #                        {
+        #                            code: "0033",
+        #                            description: "Computergesteuerte Chirurgie mit Fluoroskopie"
+        #                        }
+        #                    ]
+        #                }
+        #            }
+        #        }
       end
     end
   end

@@ -7,41 +7,36 @@ class SuDICDParser < AbstractParser
   end
 
   def processRow(row)
-    icdCode = IcdCode.new
+    icd_code = IcdCode.new
     # assign fields
-    icdCode.code = row[1]
-    icdCode.description = row[2]
+    icd_code.code = row[1]
+    icd_code.description = row[2]
     # @type [CategorisedData]
-    data = icdCode.newData
-
-    category  = GeneralIntervalCategory.new
+    data = icd_code.new_data
+    # @type [GeneralIntervalCategory]
+    category = data.add(GeneralIntervalCategory.new)
 
     category.dad = row[4]
     category.sa = row[5]
     category.min = row[6]
     category.max = row[7]
 
-    percentileCategory = PercentileCategory.new
-    percentileSubCategories = Array.new
+    percentile_category = category.add(PercentileCategory.new)
 
     percentiles = [5.0, 10.0, 25.0, 50.0, 75.0, 90.0, 95.0]
-    percentiles.each_with_index do |percentile, index|
+
+    percentile_category.add_all(percentiles.each_with_index.collect {|percentile, index|
       perc = PercentileCategory.new
       perc.percentile = percentile
-      perc.amount = row[8 + index]
-    end
-
-    percentileCategory.categories = percentileSubCategories
-
-    category.categories = [percentileCategory]
+      perc.amount = row[8 + index] })
 
     # TODO year hardcoded
-    icdCode.addYear(2013, category)
+    icd_code.addYear(2013, data)
 
     #TODO field 'n'
     #TODO field 'interval'
 
-    return icdCode
+    icd_code
   end
 
 end

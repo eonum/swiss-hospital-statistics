@@ -10,7 +10,7 @@ class GeneralIntervalCategory < IntervalCategory
   field :max, :type => Integer
 
   def name
-    return 'GeneralIntervalCategory'
+    'GeneralIntervalCategory'
   end
 
 end
