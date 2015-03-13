@@ -15,8 +15,8 @@ class AbstractCodeTest < ActiveSupport::TestCase
   end
 
   def test_add_year_with_data
-    data_1 = AbstractData.new
-    data_2 = AbstractData.new
+    data_1 = @code.new_data
+    data_2 = @code.new_data
 
     @code.add_year(2013, data_1)
     @code.add_year(2012, data_2)

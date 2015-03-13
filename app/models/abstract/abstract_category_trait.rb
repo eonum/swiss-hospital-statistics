@@ -1,10 +1,4 @@
-require 'abstract/abstract_data'
-
-class CategorisedData < AbstractData
-  include Mongoid::Document
-  include MultiLanguageText
-
-  field :categories, :type => Hash, :default => { }
+module AbstractCategoryTrait
 
   def add (category)
     self.categories[category.id] = [] unless self.at(category.id)
