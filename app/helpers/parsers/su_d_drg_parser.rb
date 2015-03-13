@@ -1,0 +1,2 @@
+class SuDDRGParser < AbstractParser
+end
