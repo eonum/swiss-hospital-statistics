@@ -6,7 +6,7 @@ class SuDAgeParserTest < ActiveSupport::TestCase
     @parser = SuDAgeParser.new('./test/fixtures/su_d_age.xls')
   end
 
-  def test
-    return "slsdfj"
+  def test_basic_test
+
   end
 end
