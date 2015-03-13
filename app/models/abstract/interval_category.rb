@@ -10,8 +10,4 @@ class IntervalCategory < AbstractCategory
     'Interval Category'
   end
 
-  def amount
-    #TODO
-  end
-
 end
