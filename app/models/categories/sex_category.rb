@@ -7,11 +7,7 @@ class SexCategory < AbstractCategory
   field :sex, :type => Integer
 
   def name
-    return 'SexCategory'
-  end
-
-  def sex
-    return :sex
+    'SexCategory'
   end
 
 end
