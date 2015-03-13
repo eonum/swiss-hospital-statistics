@@ -23,7 +23,6 @@ class SuDICDParser < AbstractParser
     category.max = row[7]
 
     percentile_category = category.add(PercentileCategory.new)
-
     percentiles = [5.0, 10.0, 25.0, 50.0, 75.0, 90.0, 95.0]
 
     percentile_category.add_all(percentiles.each_with_index.collect {|percentile, index|
@@ -31,10 +30,14 @@ class SuDICDParser < AbstractParser
       perc.percentile = percentile
       perc.amount = row[8 + index] })
 
+    # TODO hardcoded interval 0-14
+    interval = Interval.new
+    interval.from = 0
+    interval.to = 14
+    category.interval = interval
+
     # TODO year hardcoded
     icd_code.add_year(2013, data)
-
-    #TODO field 'interval'
 
     icd_code
   end

@@ -22,5 +22,4 @@ class AbstractCategory
     self.categories[category_id]
   end
 
-
 end

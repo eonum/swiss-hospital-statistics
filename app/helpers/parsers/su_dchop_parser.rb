@@ -9,7 +9,7 @@ class SuDCHOPParser < AbstractParser
   def processRow(row)
     chopCode = ChopCode.new
     chopCode.code = row[1]
-    return chopCode
+    chopCode
   end
 
 end

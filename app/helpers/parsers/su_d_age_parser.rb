@@ -1,0 +1,2 @@
+class SuDAgeParser < AbstractParser
+end
