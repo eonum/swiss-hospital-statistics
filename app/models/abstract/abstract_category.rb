@@ -10,8 +10,8 @@ class AbstractCategory
   @id = 'unknown'
 
   def add (category)
-    self.categories[category.id] = [] unless self.at(category.id)
-    self.at(category.id).push(category)
+    self.categories[category.class.id] = [] unless self.at(category.class.id)
+    self.at(category.class.id).push(category)
     category
   end
 

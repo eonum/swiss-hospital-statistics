@@ -36,13 +36,10 @@ class CategorisedCodeTest < ActiveSupport::TestCase
     @code.at(2013).add(category_2)
     @code.at(2013).add(category_3)
 
-    puts 'id: '+AbstractCategory.id
-
-    puts @code.at(2013).categories
-    puts 'end'
-    puts @code.at(2013).categories.class
-
-    assert_equal(category_1, @code.at(2013).at(AbstractCategory.id))
+    assert_equal(category_1, @code.at(2013).at(AbstractCategory.id).first)
+    assert_equal(category_2, @code.at(2013).at(AbstractCategory.id).second)
+    assert_equal(category_3, @code.at(2013).at(AbstractCategory.id).third)
+    assert_equal([category_1, category_2, category_3], @code.at(2013).at(AbstractCategory.id))
   end
 
 end
