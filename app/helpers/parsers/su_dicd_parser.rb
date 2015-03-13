@@ -16,6 +16,7 @@ class SuDICDParser < AbstractParser
     # @type [GeneralIntervalCategory]
     category = data.add(GeneralIntervalCategory.new)
 
+    category.number = row[3]
     category.dad = row[4]
     category.sa = row[5]
     category.min = row[6]
@@ -31,9 +32,8 @@ class SuDICDParser < AbstractParser
       perc.amount = row[8 + index] })
 
     # TODO year hardcoded
-    icd_code.addYear(2013, data)
+    icd_code.add_year(2013, data)
 
-    #TODO field 'n'
     #TODO field 'interval'
 
     icd_code

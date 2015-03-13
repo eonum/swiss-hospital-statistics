@@ -11,12 +11,4 @@ class PercentileCategory < AbstractCategory
     return 'PercentileCategory'
   end
 
-  def percentile
-    return :percentile
-  end
-
-  def amount
-    return :amount
-  end
-
 end

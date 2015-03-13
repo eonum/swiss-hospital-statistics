@@ -8,6 +8,7 @@ class GeneralIntervalCategory < IntervalCategory
   field :sa, :type => Integer
   field :min, :type => Integer
   field :max, :type => Integer
+  field :number, :type => Integer
 
   def name
     'GeneralIntervalCategory'

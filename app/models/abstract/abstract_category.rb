@@ -2,7 +2,7 @@ class AbstractCategory
   include Mongoid::Document
   include MultiLanguageText
 
-  field :categories, :type => Array, :default => []
+  field :categories, :type => Hash, :default => {}
 
   def name
     'AbstractCategory'
