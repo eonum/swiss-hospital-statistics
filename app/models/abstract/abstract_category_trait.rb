@@ -1,13 +1,4 @@
-class AbstractCategory
-  include Mongoid::Document
-  include MultiLanguageText
-  include ClassInstanceVariables
-
-  field :categories, :type => Hash, :default => { }
-
-  inheritable_attributes :id
-
-  @id = 'unknown'
+module AbstractCategoryTrait
 
   def add (category)
     self.categories[category.id] = [] unless self.at(category.id)
@@ -22,6 +13,5 @@ class AbstractCategory
   def at (category_id)
     self.categories[category_id]
   end
-
 
 end
