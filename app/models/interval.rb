@@ -10,7 +10,7 @@ class Interval
   end
 
   def isInfinite
-    to.nil? && !from.nil?
+    to < from
   end
 
 end
