@@ -1,3 +1,4 @@
+require 'abstract/categorised_code'
 require 'catalog'
 
 class KeCode < CategorisedCode
@@ -5,7 +6,6 @@ class KeCode < CategorisedCode
   @name ='KeCode'
   @id = :ke
   @type_description = 'Ke code means something and does something'
-
 end
 
 # Adds an extension method to code catalog

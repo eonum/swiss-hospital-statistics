@@ -6,10 +6,6 @@ class ChopCode < CategorisedCode
   @name ='ChopCode'
   @id = :chop
   @type_description = 'Chop code means something and does something'
-
-
-
-
 end
 
 # Adds an extension method to code catalog

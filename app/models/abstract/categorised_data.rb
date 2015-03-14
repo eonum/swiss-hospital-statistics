@@ -1,8 +1,6 @@
 require 'abstract/abstract_data'
 
 class CategorisedData < AbstractData
-  include Mongoid::Document
-  include MultiLanguageText
 
   field :categories, :type => Hash, :default => { }
 

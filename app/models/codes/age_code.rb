@@ -3,13 +3,9 @@ require 'catalog'
 
 class AgeCode < CategorisedCode
 
-  include Mongoid::Document
-  include MultiLanguageText
-
   @name ='AgeCode'
   @id = :age
   @type_description = 'Age code means something and does something'
-
 end
 
 # Adds an extension method to code catalog

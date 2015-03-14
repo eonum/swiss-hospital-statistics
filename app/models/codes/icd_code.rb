@@ -6,7 +6,6 @@ class IcdCode < CategorisedCode
   @name ='IcdCode'
   @id = :icd
   @type_description = 'Icd code means something and does something'
-
 end
 
 # Adds an extension method to code catalog
