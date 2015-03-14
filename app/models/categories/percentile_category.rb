@@ -15,4 +15,8 @@ class PercentileCategory < AbstractCategory
     self.amount = amount
   end
 
+  def ==(another)
+    self.percentile == another.percentile && self.amount == another.amount
+  end
+
 end
