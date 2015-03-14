@@ -12,11 +12,11 @@ class Interval
   end
 
   def duration
-    return Float::INFINITY if self.is_infinite?
+    return Float::INFINITY if self.infinite?
     (to - from)
   end
 
-  def is_infinite?
+  def infinite?
     !to
   end
 
