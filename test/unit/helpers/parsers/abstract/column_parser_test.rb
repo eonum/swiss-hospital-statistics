@@ -17,12 +17,12 @@ class ColumnParserTest < ActiveSupport::TestCase
     @parser = CompositeParser.new('./test/fixtures/test.xls')._
       .with { |parser|
         parser.column._
-            .from(3)
-            .to(12)
-            .column(2)
-            .transformed{|value| value.round}
-            .for(@stream)
-            .in(:put)}
+            .from(3)                          # (optional) start row index. If not specified iteration starts from first row
+            .to(12)                           # (optional) end row index. If not specified parser iterates until first empty cell is found
+            .column(2)                        # column index to be parsed
+            .transformed(:round)              # transforms each cell value
+            .for(@stream)                     # object that receives results
+            .in(:put)}                        # object's method that will get results as parameter
   end
 
   def test_column_parser

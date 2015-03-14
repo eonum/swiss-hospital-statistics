@@ -32,7 +32,7 @@ class CompositeParserTest < ActiveSupport::TestCase
                   .row(column.position)
                   .for(@stream)
                   .in(:put)
-                  .transformed{|value| value.round}
+                  .transformed(:round)
         }}
   end
 

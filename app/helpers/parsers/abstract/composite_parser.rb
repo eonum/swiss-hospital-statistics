@@ -1,3 +1,5 @@
+require 'scripting'
+
 class CompositeParser
 
   attr_reader :parsers
@@ -68,13 +70,13 @@ class CompositeParser
     self
   end
 
-  def transformed (&block)
-    @transformed_logic = block
+  def transformed (object = nil)
+    @transformed_logic = object if object
     self
   end
 
-  def when (&block)
-    @when_logic = block
+  def when (object = nil)
+    @when_logic = object if object
     self
   end
 

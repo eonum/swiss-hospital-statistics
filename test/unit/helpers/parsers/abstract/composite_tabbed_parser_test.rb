@@ -30,15 +30,13 @@ class CompositeTabbedParserTest < ActiveSupport::TestCase
             tab.column._
               .column(2)
               .from(3)
-              .transformed{|value| value}
               .repeat
               .with{ |column|
                 column.row._
                   .from(column.column)
-                  .row(column.position)
+                  .row(column.from)
                   .for(@stream)
                   .in(:put)
-                  .transformed{|value| value}
               }
           }
       }
