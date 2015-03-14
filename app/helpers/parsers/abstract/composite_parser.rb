@@ -14,11 +14,11 @@ class CompositeParser
   attr_reader :is_repeat
   attr_reader :is_children_repeated
   attr_reader :force_merging
-  attr_reader :result
+  attr_reader :results
 
   def initialize (file_name = nil)
     @parsers = []
-    @result = []
+    @results = []
     @is_repeat = false
     @force_merging = false
     @is_children_repeated = true
@@ -97,10 +97,10 @@ class CompositeParser
   end
 
   def parse
-    @result = [ ]
+    @results = [ ]
     @parsing_logic.call(self)
-    @receiver.send(@receiver_method, @result) if @receiver && should_merge?
-    @after_parsed_logic.call(self, @result)
+    @receiver.send(@receiver_method, @results) if @receiver && should_merge?
+    @after_parsed_logic.call(self, @results)
     @parsers.each{ |each| each.parse } unless @is_repeat
     self
   end
@@ -132,8 +132,8 @@ class CompositeParser
   protected
 
   def stream (value, repeat = nil)
-    @result.push(@transformed_logic.call(value)) if @when_logic.call(value)
-    @receiver.send(@receiver_method, @result.last) if @receiver && !should_merge?
+    @results.push(@transformed_logic.call(value)) if @when_logic.call(value)
+    @receiver.send(@receiver_method, @results.last) if @receiver && !should_merge?
     @parsers.each {|each| each.repeat_logic.call(each, repeat) if @is_children_repeated; each.parse } if @is_repeat
   end
 
