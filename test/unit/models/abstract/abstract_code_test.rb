@@ -29,4 +29,13 @@ class AbstractCodeTest < ActiveSupport::TestCase
     assert_equal(2012, @code.at(2012).year)
   end
 
+  def test_at_year_do_add
+    data_1 = @code.at(2013, true)
+    data_2 = @code.at(2012, true)
+    data_3 = @code.at(2013, true)
+
+    assert_equal(data_1, data_3)
+    assert_not_equal(data_1, data_2)
+  end
+
 end
