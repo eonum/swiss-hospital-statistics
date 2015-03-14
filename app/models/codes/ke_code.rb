@@ -2,6 +2,7 @@ require 'abstract/categorised_code'
 require 'catalog'
 
 class KeCode < CategorisedCode
+  pragmatize!
 
   @name ='KeCode'
   @id = :ke

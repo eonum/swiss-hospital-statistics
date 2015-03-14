@@ -1,3 +1,5 @@
+require 'parsers/abstract/composite_parser'
+
 class SuCodeParser < CompositeParser
 
   def stream (stream = nil)

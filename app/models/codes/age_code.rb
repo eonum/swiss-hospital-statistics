@@ -2,6 +2,7 @@ require 'abstract/categorised_code'
 require 'catalog'
 
 class AgeCode < CategorisedCode
+  pragmatize!
 
   @name ='AgeCode'
   @id = :age

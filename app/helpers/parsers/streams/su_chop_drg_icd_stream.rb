@@ -1,3 +1,6 @@
+require 'categories/general_interval_category'
+require 'categories/percentile_category'
+
 class SuChopDrgIcdStream
 
   attr_reader :map

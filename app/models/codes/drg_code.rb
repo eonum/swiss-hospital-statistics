@@ -2,6 +2,7 @@ require 'abstract/categorised_code'
 require 'catalog'
 
 class DrgCode < CategorisedCode
+  pragmatize!
 
   @name ='DrgCode'
   @id = :drg

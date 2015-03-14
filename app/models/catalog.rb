@@ -32,6 +32,19 @@ class Catalog
     self
   end
 
+  def update_db
+    self.codes.each{|each|
+      pragmas = Pragma.pragmas_named_in(:parser, each)
+      unless pragmas.empty?
+        parser = pragmas.first.method.eonum_value(each)
+        parser.parse
+        codes = parser.stream.to_codes
+        puts codes.to_s
+        codes.each{|each| each.save}
+      end
+    }
+  end
+
   def to_json
     { :codes => @catalog }
   end

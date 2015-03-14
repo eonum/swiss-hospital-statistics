@@ -1,4 +1,5 @@
 require 'parsers/codes/su_code_parser'
+require 'cascadable'
 
 class SuChopDrgIcdParser < SuCodeParser
 

@@ -32,6 +32,12 @@ module Api
         #            }
         #        }
       end
+
+      def new
+        Catalog.new.update_db
+        render json: {:message => 'OK'}
+      end
+
     end
   end
 end

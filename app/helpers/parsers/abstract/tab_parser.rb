@@ -1,3 +1,5 @@
+require 'parsers/abstract/linear_parser'
+
 class TabParser < LinearParser
 
   def initialize

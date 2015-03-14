@@ -1,6 +1,10 @@
 require 'scripting'
 
 class CompositeParser
+  # we put them here, because of circle dependencies
+  require 'parsers/abstract/tab_parser'
+  require 'parsers/abstract/column_parser'
+  require 'parsers/abstract/row_parser'
 
   attr_reader :parsers
   attr_reader :sheet
@@ -144,7 +148,7 @@ class CompositeParser
   def stream (value, repeat = nil)
     should_save = !@cache.include?(value) || !@is_distinct
     @cache.push(value) if should_save
-    @results.push(@transformed_logic.call(value)) if @when_logic.call(value) && should_save
+    @results.push(@transformed_logic.eonum_value(value)) if @when_logic.eonum_value(value) && should_save
     @receiver.send(@receiver_method, @results.last) if @receiver && !should_merge? && should_save
     @parsers.each {|each| each.repeat_logic.call(each, repeat) if @is_children_repeated; each.parse } if @is_repeat
   end
