@@ -6,7 +6,7 @@ class RowParser < LinearParser
 
   def initialize
     super
-    @row = 0
+    @row = 1
   end
 
   def row(row = nil)

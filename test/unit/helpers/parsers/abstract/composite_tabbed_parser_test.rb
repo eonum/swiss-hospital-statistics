@@ -23,8 +23,6 @@ class CompositeTabbedParserTest < ActiveSupport::TestCase
     @parser = CompositeParser.new('./test/fixtures/test.xls')._
       .with { |composite|
       composite.tab._
-          .from(0)
-          .to(3)
           .for(@stream)
           .in(:tab)
           .repeat
@@ -32,13 +30,11 @@ class CompositeTabbedParserTest < ActiveSupport::TestCase
             tab.column._
               .column(2)
               .from(3)
-              .to(12)
               .transformed{|value| value}
               .repeat
               .with{ |column|
                 column.row._
                   .from(column.column)
-                  .to(column.column + 2)
                   .row(column.position)
                   .for(@stream)
                   .in(:put)

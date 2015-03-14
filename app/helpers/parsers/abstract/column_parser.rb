@@ -4,7 +4,7 @@ class ColumnParser < LinearParser
 
   def initialize
     super
-    @column = 0
+    @column = 1
   end
 
   def column(column=nil)

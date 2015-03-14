@@ -1,5 +1,11 @@
 class TabParser < LinearParser
 
+  def initialize
+    super
+    @from = 0
+    @is_children_repeated = false
+  end
+
   protected
 
   def position(position=nil)

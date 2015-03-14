@@ -10,6 +10,7 @@ class CompositeParser
   attr_reader :parsing_logic
   attr_reader :repeat_logic
   attr_reader :is_repeat
+  attr_reader :is_children_repeated
   attr_reader :force_merging
   attr_reader :result
 
@@ -18,6 +19,7 @@ class CompositeParser
     @result = []
     @is_repeat = false
     @force_merging = false
+    @is_children_repeated = true
     @receiver_method = :on_parsed
     @after_parsed_logic = lambda { |*arg|  }
     @transformed_logic = lambda { |each| each }
@@ -130,7 +132,7 @@ class CompositeParser
   def stream (value, repeat = nil)
     @result.push(@transformed_logic.call(value)) if @when_logic.call(value)
     @receiver.send(@receiver_method, @result.last) if @receiver && !should_merge?
-    @parsers.each {|each| each.repeat_logic.call(each, repeat); each.parse } if @is_repeat
+    @parsers.each {|each| each.repeat_logic.call(each, repeat) if @is_children_repeated; each.parse } if @is_repeat
   end
 
 end
