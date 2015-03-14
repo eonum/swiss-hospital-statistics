@@ -10,12 +10,14 @@ class CompositeParser
   attr_reader :parsing_logic
   attr_reader :repeat_logic
   attr_reader :is_repeat
+  attr_reader :force_merging
   attr_reader :result
 
   def initialize (file_name = nil)
     @parsers = []
     @result = []
     @is_repeat = false
+    @force_merging = false
     @receiver_method = :on_parsed
     @after_parsed_logic = lambda { |*arg|  }
     @transformed_logic = lambda { |each| each }
@@ -93,10 +95,14 @@ class CompositeParser
   def parse
     @result = [ ]
     @parsing_logic.call(self)
-    @receiver.send(@receiver_method, @result) if @receiver
+    @receiver.send(@receiver_method, @result) if @receiver && should_merge?
     @after_parsed_logic.call(self, @result)
     @parsers.each{ |each| each.parse } unless @is_repeat
     self
+  end
+
+  def merge
+    @force_merging = true
   end
 
   def sheet=(sheet)
@@ -114,10 +120,16 @@ class CompositeParser
     parser
   end
 
+  def should_merge?
+    return true if @force_merging
+    !@is_repeat && @parsers.empty?
+  end
+
   protected
 
   def stream (value, repeat = nil)
     @result.push(@transformed_logic.call(value)) if @when_logic.call(value)
+    @receiver.send(@receiver_method, @result.last) if @receiver && !should_merge?
     @parsers.each {|each| each.repeat_logic.call(each, repeat); each.parse } if @is_repeat
   end
 
