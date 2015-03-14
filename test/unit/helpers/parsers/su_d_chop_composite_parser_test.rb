@@ -10,5 +10,6 @@ class SuDChopCompositeParserTest < ActiveSupport::TestCase
 
   def test_chop_parser
     @parser.parse
+    puts @stream.map
   end
 end
