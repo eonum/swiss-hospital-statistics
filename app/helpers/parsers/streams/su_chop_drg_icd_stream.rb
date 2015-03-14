@@ -8,7 +8,6 @@ class SuChopDrgIcdStream
   end
 
   def tab (tab)
-    puts tab
     @tab = tab
     @map[@tab] = {} unless @map[@tab]
   end
