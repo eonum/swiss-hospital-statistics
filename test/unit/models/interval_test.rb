@@ -21,13 +21,13 @@ class IntervalTest < ActiveSupport::TestCase
     @interval.from_s('70+')
     assert_equal(70, @interval.from)
     assert_equal(nil, @interval.to)
-    assert(@interval.is_infinite)
+    assert(@interval.is_infinite?)
   end
 
   def test_from_string_70
     @interval.from_s('70')
     assert_equal(70, @interval.from)
     assert_equal(nil, @interval.to)
-    assert(@interval.is_infinite)
+    assert(@interval.is_infinite?)
   end
 end
