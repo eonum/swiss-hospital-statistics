@@ -10,15 +10,16 @@ class LinearParser < CompositeParser
 
     self.parsing do
       |parser|
-      @position = @from
-      (@from..@to).each {|index| @position = index; parser.stream(parser.value_at(index), @position)}
+      self.position(@from)
+      (@from..@to).each {|index| self.position(index); parser.stream(parser.value_at(index), @position)}
+      self.position(@from)
     end
   end
 
   def from(index=nil)
     return @from unless index
     @from = index
-    @position = @from
+    self.position(@from)
     self
   end
 
