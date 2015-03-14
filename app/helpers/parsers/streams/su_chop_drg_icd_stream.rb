@@ -52,7 +52,7 @@ class SuChopDrgIcdStream
           code.description = data[1]
           year_data = code.at(year, true)
           interval = Interval.new.from_s(raw_interval)
-          interval_category = year_data.at_find(GeneralIntervalCategory.id){|each| each.interval = interval }
+          interval_category = year_data.at_find(GeneralIntervalCategory.id){|each| print 'each: ';puts each.to_s; each.interval == interval }
           unless interval_category
             interval_category = year_data.add(GeneralIntervalCategory.new(interval)) unless interval_category
             interval_category.n = data[2]
@@ -61,7 +61,6 @@ class SuChopDrgIcdStream
             interval_category.min = data[5]
             interval_category.max = data[6]
             percentiles.each{|key, value| interval_category.add(PercentileCategory.new(key, value))}
-            year_data.add(interval_category)
           end
         }
       }

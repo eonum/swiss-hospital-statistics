@@ -18,13 +18,13 @@ class AbstractCode
   # @param year the year to save the data under
   # @param data the data to save under the year
   def add_year(year, data = nil)
-    years[year] = (data) ? data : self.new_data(year)
+    self.years[year] = (data) ? data : self.new_data(year)
     self.at(year)
   end
 
   def at(year, do_add = false)
-    return self.add_year(year) if do_add && !years[year]
-    years[year]
+    return self.add_year(year) if do_add && !self.years[year]
+    self.years[year]
   end
 
   def new_data (year)
