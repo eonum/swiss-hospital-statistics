@@ -2,6 +2,7 @@
 # Pharo-like pragmas
 module Pragmas
   def pragmas(meth=nil)
+    return [] unless @__pragmas__
     return @__pragmas__[meth] if meth
     @__pragmas__.values.flatten
   end
@@ -15,12 +16,21 @@ module Pragmas
   private
 
   def method_added(method)
+    pragma_method_added(method)
+    super
+  end
+
+  def singleton_method_added(method)
+    pragma_method_added(method)
+    super
+  end
+
+  def pragma_method_added(method)
     if @__last_pragmas__
       @__last_pragmas__.each{|each| each._method(method)}
       (@__pragmas__ ||= {})[method] = @__last_pragmas__
     end
     @__last_pragmas__ = nil
-    super
   end
 
   def method_missing(method, *args)
