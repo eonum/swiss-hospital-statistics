@@ -5,5 +5,11 @@ class IntervalCategory < AbstractCategory
   include MultiLanguageText
 
   field :interval, :type => Interval
+  field :n, :type => Integer
+
+  def initialize(interval, *args)
+    super(*args)
+    self.interval = interval
+  end
 
 end

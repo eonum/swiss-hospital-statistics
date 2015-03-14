@@ -3,7 +3,7 @@ require 'test_helper'
 class CategorisedDataTest < ActiveSupport::TestCase
 
   def setup
-    @data = CategorisedData.new
+    @data = CategorisedData.new(2013)
   end
 
   def test_add_category

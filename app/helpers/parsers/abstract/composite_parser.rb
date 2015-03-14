@@ -26,10 +26,10 @@ class CompositeParser
     @is_distinct = false
     @is_children_repeated = true
     @receiver_method = :on_parsed
-    @after_parsed_logic = lambda { |*arg|  }
+    @after_parsed_logic = lambda { |*args|  }
     @transformed_logic = lambda { |each| each }
-    @when_logic = lambda {|*arg| true}
-    @parsing_logic = lambda {|*arg| }
+    @when_logic = lambda {|*args| true}
+    @parsing_logic = lambda {|*args| }
     @repeat_logic = lambda {|*args| }
     self.file(file_name)
   end
@@ -111,10 +111,12 @@ class CompositeParser
 
   def merge
     @force_merging = true
+    self
   end
 
   def distinct
     @is_distinct = true
+    self
   end
 
   def sheet=(sheet)

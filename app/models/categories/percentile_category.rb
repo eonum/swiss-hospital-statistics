@@ -9,4 +9,10 @@ class PercentileCategory < AbstractCategory
 
   @id = :percentile
 
+  def initialize (percentile, amount, *args)
+    super(*args)
+    self.percentile = percentile
+    self.amount = amount
+  end
+
 end

@@ -6,11 +6,17 @@ class Interval
   field :to, :type => Integer
 
   def duration
-    return (to - from)
+    (to - from)
   end
 
-  def isInfinite
-    to < from
+  def is_infinite
+    !to
+  end
+
+  def from_s (string)
+    arr = string.split(/-|\+/).collect{|each| each.to_i}
+    self.from = arr[0] unless arr.empty?
+    self.to = arr[1] if arr.length > 1
   end
 
 end

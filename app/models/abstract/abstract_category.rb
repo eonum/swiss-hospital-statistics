@@ -23,4 +23,12 @@ class AbstractCategory
     self.categories[category_id]
   end
 
+  def at_find (category_id, &block)
+    return self.at(category_id) unless block_given?
+    selected = self.at(category_id).select(block)
+    return nil if selected.empty?
+    return selected.first if selected.length == 1
+    selected
+  end
+
 end

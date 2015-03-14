@@ -12,17 +12,21 @@ class AbstractCodeTest < ActiveSupport::TestCase
 
     assert_equal(AbstractData, @code.at(2013).class)
     assert_equal(AbstractData, @code.at(2012).class)
+    assert_equal(2013, @code.at(2013).year)
+    assert_equal(2012, @code.at(2012).year)
   end
 
   def test_add_year_with_data
-    data_1 = @code.new_data
-    data_2 = @code.new_data
+    data_1 = @code.new_data(2013)
+    data_2 = @code.new_data(2012)
 
     @code.add_year(2013, data_1)
     @code.add_year(2012, data_2)
 
     assert_equal(data_1, @code.at(2013))
     assert_equal(data_2, @code.at(2012))
+    assert_equal(2013, @code.at(2013).year)
+    assert_equal(2012, @code.at(2012).year)
   end
 
 end

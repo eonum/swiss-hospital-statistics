@@ -7,7 +7,6 @@ class SuChopDrgIcdParser < SuCodeParser
         .with { |composite|
           composite.tab._
               .from(1)
-              .to(1)
               .for(self.stream)
               .in(:tab)
               .repeat
@@ -23,7 +22,6 @@ class SuChopDrgIcdParser < SuCodeParser
               .with { |sheet|
                 sheet.column._
                     .from(23)
-                    .to(25)
                     .for(self.stream)
                     .in(:year)
                     .transformed(:round)
@@ -33,10 +31,9 @@ class SuChopDrgIcdParser < SuCodeParser
                       code.row._
                           .row(code.from)
                           .from(code.column + 1)
-                          .to(code.column+7)
+                          .to(code.column + 7)
                           .for(self.stream)
                           .in(:code)
-                          .repeat
                           .merge
                     }
                     .with { |code|
