@@ -9,7 +9,7 @@ class DrgCode < CategorisedCode
 
   _parser
   def self.drg_parser
-    SuChopDrgIcdParser.new('public/statistics/su-d-14.04.02-DRG-zp-2013.xls').stream(SuChopDrgIcdStream.new(self))
+    SuChopDrgIcdParser.new('public/statistics/su-d-14.04.02-DRG-2013.xls').stream(SuChopDrgIcdStream.new(self))
   end
 end
 
