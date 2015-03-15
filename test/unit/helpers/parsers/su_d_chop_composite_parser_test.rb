@@ -60,6 +60,7 @@ class SuDChopCompositeParserTest < ActiveSupport::TestCase
   end
 
   def test_interval_categories
+
     assert_not_nil(@codes.first.at(2013).categories)
     assert_not_nil(@codes.second.at(2013).categories)
 
@@ -82,14 +83,14 @@ class SuDChopCompositeParserTest < ActiveSupport::TestCase
     assert_equal(0.0, first.sa)
     assert_equal(3.0, first.min)
     assert_equal(3.0, first.max)
-    assert_equal(Interval.new(15,39), first.interval)
+    assert_equal(Interval.new(from: 15,to: 39), first.interval)
 
     assert_equal(1, second.n)
     assert_equal(12.0, second.dad)
     assert_equal(0.0, second.sa)
     assert_equal(12.0, second.min)
     assert_equal(12.0, second.max)
-    assert_equal(Interval.new(15,39), second.interval)
+    assert_equal(Interval.new(from: 15,to: 39), second.interval)
   end
 
   def test_percentile_categories
@@ -116,21 +117,21 @@ class SuDChopCompositeParserTest < ActiveSupport::TestCase
     first = @codes.first.at(2013).at(:interval).first.at(:percentile)
     second = @codes.second.at(2013).at(:interval).first.at(:percentile)
 
-    assert_equal(PercentileCategory.new(5,3.0), first[0])
-    assert_equal(PercentileCategory.new(10,3.0), first[1])
-    assert_equal(PercentileCategory.new(25,3.0), first[2])
-    assert_equal(PercentileCategory.new(50,3.0), first[3])
-    assert_equal(PercentileCategory.new(75,3.0), first[4])
-    assert_equal(PercentileCategory.new(90,3.0), first[5])
-    assert_equal(PercentileCategory.new(95,3.0), first[6])
+    assert_equal(PercentileCategory.new(percentile: 5, amount: 3.0), first[0])
+    assert_equal(PercentileCategory.new(percentile:10, amount: 3.0), first[1])
+    assert_equal(PercentileCategory.new(percentile:25, amount: 3.0), first[2])
+    assert_equal(PercentileCategory.new(percentile:50, amount: 3.0), first[3])
+    assert_equal(PercentileCategory.new(percentile:75, amount: 3.0), first[4])
+    assert_equal(PercentileCategory.new(percentile:90, amount: 3.0), first[5])
+    assert_equal(PercentileCategory.new(percentile:95, amount: 3.0), first[6])
     
-    assert_equal(PercentileCategory.new(5,12.0), second[0])
-    assert_equal(PercentileCategory.new(10,12.0), second[1])
-    assert_equal(PercentileCategory.new(25,12.0), second[2])
-    assert_equal(PercentileCategory.new(50,12.0), second[3])
-    assert_equal(PercentileCategory.new(75,12.0), second[4])
-    assert_equal(PercentileCategory.new(90,12.0), second[5])
-    assert_equal(PercentileCategory.new(95,12.0), second[6])
+    assert_equal(PercentileCategory.new(percentile:5,  amount: 12.0), second[0])
+    assert_equal(PercentileCategory.new(percentile:10, amount: 12.0), second[1])
+    assert_equal(PercentileCategory.new(percentile:25, amount: 12.0), second[2])
+    assert_equal(PercentileCategory.new(percentile:50, amount: 12.0), second[3])
+    assert_equal(PercentileCategory.new(percentile:75, amount: 12.0), second[4])
+    assert_equal(PercentileCategory.new(percentile:90, amount: 12.0), second[5])
+    assert_equal(PercentileCategory.new(percentile:95, amount: 12.0), second[6])
   end
 
 end
