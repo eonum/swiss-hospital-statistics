@@ -48,7 +48,7 @@ module Mongoid
   end
   module ClassMethods
     def demongoize(object)
-      return object if object.class == self
+      return object unless object.class <= self
       document = new
       object.each{|k,v| document[k] = v }
       document

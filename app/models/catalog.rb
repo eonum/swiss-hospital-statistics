@@ -29,7 +29,26 @@ class Catalog
     type = self.codes.select {|each| each.tag == symbol.to_sym}.first
     return self unless type
     code = self.push_code_type(type)
-    codes = type.all.pluck(:code)
+    codes = type.all.pluck(:code).to_a
+    code[:codes] = codes
+    self
+  end
+
+  def be_info_for (symbol)
+    type = self.codes.select {|each| each.tag == symbol.to_sym}.first
+    return self unless type
+    code = self.push_code_type(type)
+    codes = type.all.pluck(:code, :description).to_a
+    code[:codes] = codes
+    self
+  end
+
+  def be_full_info_for (code_type, code_id)
+    type = self.codes.select {|each| each.tag == code_type.to_sym}.first
+    return self unless type
+    code = self.push_code_type(type)
+    codes = type.find_by(code: code_id)
+    codes = clean_documents_for_json(codes)
     code[:codes] = codes
     self
   end
@@ -48,6 +67,26 @@ class Catalog
   end
 
   def to_json
-    { :codes => @catalog }
+    @catalog
+  end
+
+  private
+  def clean_documents_for_json (object)
+    data = object.to_a
+    data.collect{
+      |each|
+      document = each.as_document
+      clean_hash(document)
+      document
+    }
+  end
+
+  def clean_hash(hash)
+    return hash.each{|each| clean_hash(each)} if hash.class <= Array
+    return unless hash.class <= Hash
+    hash.delete('_id')
+    hash.delete('_type')
+    hash.delete('_mongoclass')
+    hash.values.each{|each| clean_hash(each)}
   end
 end
