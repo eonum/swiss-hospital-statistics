@@ -39,6 +39,7 @@ class Catalog
     return self unless type
     code = self.push_code_type(type)
     codes = type.all.pluck(:code, :description).to_a
+    codes = codes.collect{|each| {:code => each[0], :description => each[1]}}
     code[:codes] = codes
     self
   end
