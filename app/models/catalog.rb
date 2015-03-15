@@ -27,8 +27,9 @@ class Catalog
 
   def be_preview_for (symbol)
     type = self.codes.select {|each| each.tag == symbol.to_sym}.first
+    return self unless type
     code = self.push_code_type(type)
-    codes = type.all
+    codes = type.all.pluck(:code)
     code[:codes] = codes
     self
   end
