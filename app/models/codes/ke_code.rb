@@ -4,8 +4,7 @@ require 'catalog'
 class KeCode < CategorisedCode
   pragmatize!
 
-  @name ='KeCode'
-  @id = :ke
+  @tag = :ke
   @type_description = 'Ke code means something and does something'
 end
 

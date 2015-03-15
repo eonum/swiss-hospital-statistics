@@ -8,6 +8,6 @@ class GeneralIntervalCategory < IntervalCategory
   field :max, :type => Integer
   field :number, :type => Integer
 
-  @id = :interval
+  @tag = :interval
 
 end

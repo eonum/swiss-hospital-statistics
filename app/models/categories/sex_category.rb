@@ -4,6 +4,6 @@ class SexCategory < AbstractCategory
 
   field :sex, :type => Integer
 
-  @id = :sex
+  @tag = :sex
 
 end

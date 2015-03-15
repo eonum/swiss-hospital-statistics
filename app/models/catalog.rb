@@ -1,4 +1,5 @@
 require 'pragmas'
+require 'scripting'
 Dir['./app/models/**/*.rb'].each{ |f| require f }
 
 class Catalog
@@ -20,12 +21,12 @@ class Catalog
 
   def push_code_type (_code)
     code = { :description => _code.type_description }
-    @catalog[:codes][_code.id.to_sym] = code
+    @catalog[:codes][_code.tag.to_sym] = code
     code
   end
 
   def be_preview_for (symbol)
-    type = self.codes.select {|each| each.id == symbol.to_sym}.first
+    type = self.codes.select {|each| each.tag == symbol.to_sym}.first
     code = self.push_code_type(type)
     codes = type.all
     code[:codes] = codes
@@ -39,8 +40,9 @@ class Catalog
         parser = pragmas.first.method.eonum_value(each)
         parser.parse
         codes = parser.stream.to_codes
-        puts codes.to_s
-        codes.each{|each| each.save}
+        puts 'Parsed '+ codes.size.to_s + each.name + 's'
+        #each.collection.insert codes
+        #codes.each{|each| each.save}
       end
     }
   end

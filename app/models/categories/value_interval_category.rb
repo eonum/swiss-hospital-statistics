@@ -2,6 +2,6 @@ require 'abstract/interval_category'
 
 class ValueIntervalCategory < IntervalCategory
 
-  @id = :valueInterval
+  @tag = :valueInterval
 
 end

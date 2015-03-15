@@ -5,12 +5,6 @@ class Interval
   field :from, :type => Integer
   field :to, :type => Integer
 
-  def initialize (from = nil, to = nil, *args)
-    super(args)
-    self.from = from
-    self.to = to
-  end
-
   def duration
     return Float::INFINITY if self.infinite?
     (to - from)

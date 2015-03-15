@@ -4,8 +4,7 @@ require 'catalog'
 class DrgCode < CategorisedCode
   pragmatize!
 
-  @name ='DrgCode'
-  @id = :drg
+  @tag = :drg
   @type_description = 'Drg code means something and does something'
 end
 

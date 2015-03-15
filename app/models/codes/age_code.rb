@@ -4,8 +4,7 @@ require 'catalog'
 class AgeCode < CategorisedCode
   pragmatize!
 
-  @name ='AgeCode'
-  @id = :age
+  @tag = :age
   @type_description = 'Age code means something and does something'
 end
 

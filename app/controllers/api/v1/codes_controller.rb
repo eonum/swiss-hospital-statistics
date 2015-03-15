@@ -2,8 +2,6 @@ module Api
   module V1
     class CodesController < ApplicationController
 
-      include Parsers
-
       def index
         # put code to play with here
         # Parsers::SuDParser.new.parse

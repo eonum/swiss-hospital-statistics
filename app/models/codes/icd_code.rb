@@ -4,8 +4,7 @@ require 'catalog'
 class IcdCode < CategorisedCode
   pragmatize!
 
-  @name ='IcdCode'
-  @id = :icd
+  @tag = :icd
   @type_description = 'Icd code means something and does something'
 end
 

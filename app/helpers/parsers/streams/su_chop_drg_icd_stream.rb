@@ -44,9 +44,10 @@ class SuChopDrgIcdStream
   def to_codes
     @codes = {}
     @map.each {|raw_interval, sheet|
+      puts 'Parsing... '+ raw_interval
       sheet.each{|year, codes|
         codes.each{|id, raw_code|
-          @codes[id] = @clazz.new unless @codes[id]
+          @codes[id] = @clazz.new.lock unless @codes[id]
           data = raw_code[:data]
           percentiles = raw_code[:percentiles]
           code = @codes[id]
@@ -54,20 +55,23 @@ class SuChopDrgIcdStream
           code.description = data[1]
           year_data = code.at(year, true)
           interval = Interval.new.from_s(raw_interval)
-          interval_category = year_data.at_find(GeneralIntervalCategory.id){|each| print 'each: ';puts each.to_s; each.interval == interval }
+          interval_category = year_data.at_find(GeneralIntervalCategory.tag){|each| each.interval == interval }
           unless interval_category
-            interval_category = year_data.add(GeneralIntervalCategory.new(interval)) unless interval_category
+            interval_category = GeneralIntervalCategory.new(interval: interval)
             interval_category.n = data[2]
             interval_category.dad = data[3]
             interval_category.sa = data[4]
             interval_category.min = data[5]
             interval_category.max = data[6]
-            percentiles.each{|key, value| interval_category.add(PercentileCategory.new(key, value))}
+            percentiles.each{|key, value| interval_category.add(PercentileCategory.new(percentile: key, amount: value))}
+            year_data.add(interval_category)
           end
         }
       }
     }
-    @codes.values.sort_by{|each| each.code.downcase}
+    codes = @codes.values.sort_by{|each| each.code.downcase}
+    codes.each{|each| each.lock}
+    codes
   end
 
 end

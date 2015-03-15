@@ -5,13 +5,7 @@ class PercentileCategory < AbstractCategory
   field :percentile, :type => Integer
   field :amount, :type => Float
 
-  @id = :percentile
-
-  def initialize (percentile, amount, *args)
-    super(*args)
-    self.percentile = percentile
-    self.amount = amount
-  end
+  @tag = :percentile
 
   def ==(another)
     self.percentile == another.percentile && self.amount == another.amount
