@@ -54,16 +54,18 @@ class Catalog
   end
 
   def update_db
-    self.codes.each{|each|
-      pragmas = Pragma.pragmas_named_in(:parser, each)
-      unless pragmas.empty?
-        parser = pragmas.first.method.eonum_value(each)
-        parser.parse
-        codes = parser.stream.to_codes
-        puts 'Parsed '+ codes.size.to_s + ' ' + each.name + 's'
-        each.collection.insert codes.collect{|each| each.as_document }
-      end
-    }
+    self.codes.each{|each| update_db_code(each) }
+  end
+
+  def update_db_code(clazz)
+    pragmas = Pragma.pragmas_named_in(:parser, clazz)
+    unless pragmas.empty?
+      parser = pragmas.first.method.eonum_value(clazz)
+      parser.parse
+      codes = parser.stream.to_codes
+      puts 'Parsed '+ codes.size.to_s + ' ' + clazz.name + 's'
+      each.collection.insert codes.collect{|each| each.as_document }
+    end
   end
 
   def to_json

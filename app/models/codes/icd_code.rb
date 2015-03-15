@@ -6,6 +6,11 @@ class IcdCode < CategorisedCode
 
   @tag = :icd
   @type_description = 'Icd code means something and does something'
+
+  _parser
+  def self.icd_parser
+    SuChopDrgIcdParser.new('public/statistics/su-d-14.04.02-ICD-zp-2013.xls').stream(SuChopDrgIcdStream.new(self))
+  end
 end
 
 # Adds an extension method to code catalog
