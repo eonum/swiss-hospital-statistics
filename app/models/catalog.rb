@@ -64,7 +64,7 @@ class Catalog
       parser.parse
       codes = parser.stream.to_codes
       puts 'Parsed '+ codes.size.to_s + ' ' + clazz.name + 's'
-      each.collection.insert codes.collect{|each| each.as_document }
+      clazz.collection.insert codes.collect{|each| each.as_document }
     end
   end
 
