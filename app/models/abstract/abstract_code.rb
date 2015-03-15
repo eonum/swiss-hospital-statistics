@@ -25,14 +25,17 @@ class AbstractCode
   end
 
   def lock
+    return if self.locked?
     @_years_copy = self.years.deep_copy
     @locked = true
     self
   end
 
   def unlock
+    return unless self.locked?
     @locked = false
     self.years = @_years_copy
+    @_years_copy = nil
     self
   end
 

@@ -70,7 +70,7 @@ class SuChopDrgIcdStream
       }
     }
     codes = @codes.values.sort_by{|each| each.code.downcase}
-    codes.each{|each| each.lock}
+    codes.each{|each| each.unlock}
     codes
   end
 

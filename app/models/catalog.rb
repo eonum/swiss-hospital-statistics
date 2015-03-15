@@ -40,9 +40,8 @@ class Catalog
         parser = pragmas.first.method.eonum_value(each)
         parser.parse
         codes = parser.stream.to_codes
-        puts 'Parsed '+ codes.size.to_s + each.name + 's'
-        #each.collection.insert codes
-        #codes.each{|each| each.save}
+        puts 'Parsed '+ codes.size.to_s + ' ' + each.name + 's'
+        each.collection.insert codes.collect{|each| each.as_document }
       end
     }
   end
