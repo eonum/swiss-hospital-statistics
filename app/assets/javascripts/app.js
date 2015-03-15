@@ -5,16 +5,21 @@ define([
     'views/CardBoardView',
     'views/CardView',
     'views/abstract/AbstractSeriesChart',
+    'models/Catalog',
     'models/categories/SexCategory',
     'helpers/CategoryAdapter',
     'helpers/CodeAdapter'
-], function(AbstractSwissMap,PieChart,SerieChart, CardBoardView, CardView, AbstractSeriesChart){
+], function(AbstractSwissMap,PieChart,SerieChart, CardBoardView, CardView, AbstractSeriesChart, Catalog){
 
     "use strict";
     function App() {
         var _this = this;
 
-        //$('body').append(new $('<div></div>').css('width', '600px').append(new AbstractSeriesChart(700,500)));
+        var catalog = new Catalog();
+        catalog.loadTypes(function(){
+            catalog.loadCodeType(catalog.types()[1])
+        });
+
 
         _this.cardView = function () {
             $('body').append(
@@ -153,7 +158,7 @@ define([
                 console.log(each.toString())});
         };
 
-        _this.cardView();
+        //_this.cardView();
         //_this.codes();
     }
 
