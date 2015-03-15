@@ -3,6 +3,10 @@ define([
 ], function(
     Dictionary
 ){
+    /**
+     * @class ObjectBuilder
+     * @constructor
+     */
     function ObjectBuilder() {
         var _this = this;
 
@@ -39,6 +43,14 @@ define([
             var _class = _this._classes().get(id);
             return new _class();
         };
+
+        /**
+         * @param id
+         * @returns {Class}
+         */
+        _this.classFor = function (id){
+            return new _this._classes().get(id);
+        }
     }
 
     return ObjectBuilder;

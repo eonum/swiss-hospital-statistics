@@ -1,14 +1,17 @@
 define([], function(){
-
+    /**
+     * @class JsonParser
+     * @constructor
+     */
     function JsonParser(){
         var _this = this;
 
         /**
-         * @param {String} string - json string
-         * @returns {Array.<AbstractCode>}
+         * @param {String | Object} data - json string
+         * @returns {Object}
          */
-        _this.parse = function (string) {
-            var obj = JSON.parse(string);
+        _this.parse = function (data) {
+            var obj = _.isString(data) ? JSON.parse(data) : data;
 
             if (_.has(obj, 'codes')){
                 return _this.createCodes(obj['codes']);
@@ -18,7 +21,7 @@ define([], function(){
         /**
          *
          * @param {Array.<Object>} obj
-         * @returns {Array.<AbstractCode>}
+         * @returns {Object}
          */
         _this.createCodes = function (obj) {
             var codes = {};
