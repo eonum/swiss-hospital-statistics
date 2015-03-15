@@ -1,10 +1,4 @@
-require 'scripting'
-
 class CompositeParser
-  # we put them here, because of circle dependencies
-  require 'parsers/abstract/tab_parser'
-  require 'parsers/abstract/column_parser'
-  require 'parsers/abstract/row_parser'
 
   attr_reader :parsers
   attr_reader :sheet
@@ -39,14 +33,17 @@ class CompositeParser
   end
 
   def tab
+    require 'parsers/abstract/tab_parser'
     add_parser(TabParser.new)
   end
 
   def row
+    require 'parsers/abstract/row_parser'
     add_parser(RowParser.new)
   end
 
   def column
+    require 'parsers/abstract/column_parser'
     add_parser(ColumnParser.new)
   end
 
