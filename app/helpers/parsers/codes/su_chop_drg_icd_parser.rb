@@ -18,7 +18,6 @@ class SuChopDrgIcdParser < SuCodeParser
                     .for(self.stream)
                     .in(:percentiles)
                     .transformed(:round)
-                    .merge
               }
               .with { |sheet|
                 sheet.column._
@@ -35,7 +34,6 @@ class SuChopDrgIcdParser < SuCodeParser
                           .to(code.column + 7)
                           .for(self.stream)
                           .in(:code)
-                          .merge
                     }
                     .with { |code|
                       code.row._
@@ -43,7 +41,6 @@ class SuChopDrgIcdParser < SuCodeParser
                           .from(code.column + 8)
                           .for(self.stream)
                           .in(:percentile_values)
-                          .merge
                     }
               }
         }
