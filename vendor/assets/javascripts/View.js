@@ -2,6 +2,8 @@ define([], function(){
 
     function View (html) {
         var _this = $(html);
+        var model;
+
         _this.data('me', _this);
 
         _this.class = function (className) {
@@ -23,6 +25,12 @@ define([], function(){
         _this.color = function (_color) {
             _this.css('background-color', _color);
             return _this;
+        };
+
+        _this.model = function (_model) {
+            if (_.isUndefined(_model)) return model;
+            model = _model;
+            return _this;;
         };
 
         return _this;

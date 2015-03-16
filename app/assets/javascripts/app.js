@@ -6,23 +6,32 @@ define([
     'views/CardView',
     'views/abstract/AbstractSeriesChart',
     'models/Catalog',
+    'views/ui/CodeTableView',
+    'views/ui/CodeButtonBarView',
     'models/categories/SexCategory',
     'helpers/CategoryAdapter',
     'helpers/CodeAdapter'
-], function(AbstractSwissMap,PieChart,SerieChart, CardBoardView, CardView, AbstractSeriesChart, Catalog){
+], function(AbstractSwissMap,PieChart,SerieChart, CardBoardView, CardView, AbstractSeriesChart, Catalog, CodeTableView, CodeButtonBarView){
 
     "use strict";
     function App() {
         var _this = this;
 
+        var table = new CodeTableView();
+        var buttons = new CodeButtonBarView();
+        $('body').append(buttons).append(table);
+
         var catalog = new Catalog();
         catalog.loadTypes(function(){
-            catalog.loadCodeType(catalog.types()[1], function(){
-                console.log(_.keys(catalog.codes(catalog.types()[1]))[0]);
-                catalog.loadCode(catalog.types()[1], _.keys(catalog.codes(catalog.types()[1]))[0]);
-            })
+            buttons.setTypes(catalog.types());
+            var type;
+            buttons.find('a').click(function(){
+                type = $(this).me().model();
+                catalog.loadCodeType(type, function(){
+                    table.setCodes(_.values(catalog.codes(type)));
+                });
+            });
         });
-
 
         _this.cardView = function () {
             $('body').append(
