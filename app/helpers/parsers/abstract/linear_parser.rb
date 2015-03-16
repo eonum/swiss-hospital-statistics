@@ -2,11 +2,14 @@ require 'parsers/abstract/composite_parser'
 
 class LinearParser < CompositeParser
 
+  attr_reader :is_index_used
+
   def initialize
     super
     @from = 1
     @to = Float::INFINITY
     @position = @from
+    @is_index_used = false
 
     self.parsing do
       |parser|
@@ -15,7 +18,7 @@ class LinearParser < CompositeParser
         value = parser.value_at(index)
         break if @to == Float::INFINITY && !value
         self.position(index)
-        parser.stream(value, @position)}
+        parser.stream(@is_index_used ? index : value, @position)}
       self.position(@from)
     end
   end
@@ -37,6 +40,10 @@ class LinearParser < CompositeParser
     return @position unless position
     @position = position
     self
+  end
+
+  def index
+    @is_index_used = true
   end
 
   protected
