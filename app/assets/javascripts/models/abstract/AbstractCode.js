@@ -81,12 +81,19 @@ define([
             description = obj.description;
 
             if (!_.has(obj, 'years')) return;
-            _.each(obj.years, function(each){
+            _.mapObject(obj.years, function(each){
                 var year = each.year;
                 var data = _this.newData(year);
                 data.fromJSON(each);
                 _this._years().put(year, data);
             });
+        };
+
+        /**
+         * @returns {boolean}
+         */
+        _this.isLoaded = function () {
+            return !_.isEmpty(_this.years());
         };
 
         /**

@@ -50,14 +50,13 @@ define([
          * @param {Array.<{key: String, value: Object}>} obj.categories
          */
         _this.fromJSON = function (obj) {
+            if (_.isUndefined(obj) || _.isNull(obj)) return null;
             if (!_.has(obj, 'categories')) return;
-            _.each(obj.categories, function(category){
-                _.each(_.intersection(_.keys(category), ServiceProvider.categoryBuilder.ids()), function(each){
-                    _.each (category[each], function(categoryElement){
-                        var category = ServiceProvider.categoryBuilder.instantiate(each);
-                        category.fromJSON(categoryElement);
-                        _this.at(each).push(category);
-                    });
+            _.each(_.intersection(_.keys(obj.categories), ServiceProvider.categoryBuilder.ids()), function(categoryID){
+                _.each (obj.categories[categoryID], function(categoryElement){
+                    var category = ServiceProvider.categoryBuilder.instantiate(categoryID);
+                    category.fromJSON(categoryElement);
+                    _this.at(categoryID).push(category);
                 });
             });
         };

@@ -17,7 +17,10 @@ define([
 
         var catalog = new Catalog();
         catalog.loadTypes(function(){
-            catalog.loadCodeType(catalog.types()[1])
+            catalog.loadCodeType(catalog.types()[1], function(){
+                console.log(_.keys(catalog.codes(catalog.types()[1]))[0]);
+                catalog.loadCode(catalog.types()[1], _.keys(catalog.codes(catalog.types()[1]))[0]);
+            })
         });
 
 
