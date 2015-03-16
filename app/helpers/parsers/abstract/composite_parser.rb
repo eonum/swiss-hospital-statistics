@@ -74,13 +74,15 @@ class CompositeParser
     self
   end
 
-  def transformed (object = nil)
+  def transformed (object = nil, &block)
     @transformed_logic = object if object
+    @transformed_logic = block if block_given?
     self
   end
 
-  def when (object = nil)
+  def when (object = nil, &block)
     @when_logic = object if object
+    @when_logic = block if block_given?
     self
   end
 
