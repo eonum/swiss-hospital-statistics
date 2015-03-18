@@ -4,7 +4,7 @@ require 'cascadable'
 class SuDChopCompositeParserTest < ActiveSupport::TestCase
 
   def setup
-    @stream = SuChopDrgIcdStream.new(ChopCode)
+    @stream = SuChopDrgIcdStream.new(ChopCodeDataset)
     @parser = SuChopDrgIcdParser.new('./test/fixtures/su_d_chop.xls').stream(@stream)
     @parser.parse
     @codes = @stream.to_codes
@@ -30,8 +30,8 @@ class SuDChopCompositeParserTest < ActiveSupport::TestCase
   end
 
   def test_codes_class
-    assert_equal(ChopCode, @codes.first.class)
-    assert_equal(ChopCode, @codes.second.class)
+    assert_equal(ChopCodeDataset, @codes.first.class)
+    assert_equal(ChopCodeDataset, @codes.second.class)
   end
 
   def test_code_data

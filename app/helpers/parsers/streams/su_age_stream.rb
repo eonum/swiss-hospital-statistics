@@ -7,7 +7,7 @@ class SuAgeStream
   attr_reader :map
 
   def initialize(clazz = nil)
-    self.clazz(clazz ? clazz : AgeCode)
+    self.clazz(clazz ? clazz : AgeCodeDataset)
     @map = {}
   end
 

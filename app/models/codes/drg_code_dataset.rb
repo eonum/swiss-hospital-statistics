@@ -1,7 +1,7 @@
 require 'abstract/categorised_code'
 require 'catalog'
 
-class DrgCode < CategorisedCode
+class DrgCodeDataset < CategorisedDataset
   pragmatize!
 
   @tag = :drg
@@ -21,6 +21,6 @@ class Catalog
 
   _code
   def drg_code_in(context)
-    DrgCode
+    DrgCodeDataset
   end
 end

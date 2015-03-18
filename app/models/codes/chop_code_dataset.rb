@@ -3,7 +3,7 @@ require 'catalog'
 require 'parsers/codes/su_chop_drg_icd_parser'
 require 'parsers/streams/su_chop_drg_icd_stream'
 
-class ChopCode < CategorisedCode
+class ChopCodeDataset < CategorisedDataset
   pragmatize!
 
   @tag = :chop
@@ -24,6 +24,6 @@ class Catalog
 
   _code
   def chop_code_in(context)
-    ChopCode
+    ChopCodeDataset
   end
 end

@@ -1,9 +1,9 @@
 require 'test_helper'
 
-class CategorisedCodeTest < ActiveSupport::TestCase
+class CategorisedDatasetTest < ActiveSupport::TestCase
 
   def setup
-    @code = CategorisedCode.new
+    @code = CategorisedDataset.new
   end
 
   def test_add_year_without_data

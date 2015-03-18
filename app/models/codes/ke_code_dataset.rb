@@ -1,7 +1,7 @@
 require 'abstract/categorised_code'
 require 'catalog'
 
-class KeCode < CategorisedCode
+class KeCodeDataset < CategorisedDataset
   pragmatize!
 
   @tag = :ke
@@ -16,6 +16,6 @@ class Catalog
 
   _code
   def ke_code_in(context)
-    KeCode
+    KeCodeDataset
   end
 end

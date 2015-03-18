@@ -1,7 +1,7 @@
 require 'abstract/abstract_data'
 require 'mongoid_extensions'
 
-class AbstractCode
+class AbstractDataset
   include Mongoid::Document
   include MultiLanguageText
 
@@ -50,7 +50,7 @@ class AbstractCode
     self.unlock
   end
 
-  # Adds the given data under the given year to this code
+  # Adds the given data under the given year to this dataset
   # @param year the year to save the data under
   # @param data the data to save under the year
   def add_year(year, data = nil)

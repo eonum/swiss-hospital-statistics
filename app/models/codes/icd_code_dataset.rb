@@ -1,7 +1,7 @@
 require 'abstract/categorised_code'
 require 'catalog'
 
-class IcdCode < CategorisedCode
+class IcdCodeDataset < CategorisedDataset
   pragmatize!
 
   @tag = :icd
@@ -21,6 +21,6 @@ class Catalog
 
   _code
   def icd_code_in(context)
-    IcdCode
+    IcdCodeDataset
   end
 end

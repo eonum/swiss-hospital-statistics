@@ -1,9 +1,9 @@
 require 'test_helper'
 
-class AbstractCodeTest < ActiveSupport::TestCase
+class AbstractDatasetTest < ActiveSupport::TestCase
 
   def setup
-    @code = AbstractCode.new
+    @code = AbstractDataset.new
   end
 
   def test_add_year_without_data

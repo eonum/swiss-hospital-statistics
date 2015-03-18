@@ -3,7 +3,7 @@ require 'catalog'
 require 'parsers/codes/su_age_parser'
 require 'parsers/streams/su_age_stream'
 
-class AgeCode < CategorisedCode
+class AgeCodeDataset < CategorisedDataset
   pragmatize!
 
   @tag = :age
@@ -25,6 +25,6 @@ class Catalog
 
   _code
   def age_code_in(context)
-    AgeCode
+    AgeCodeDataset
   end
 end
