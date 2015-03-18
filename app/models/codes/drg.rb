@@ -8,7 +8,6 @@ class Drg
     field :text_de, :type => String
     field :text_fr, :type => String
     field :text_it, :type => String
-    field :version, :type => String
 
     field :cost_weight, :type => Float
     field :first_day_surcharge, :type => Integer
