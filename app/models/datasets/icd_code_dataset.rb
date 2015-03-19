@@ -2,6 +2,8 @@ require 'abstract/categorised_code'
 require 'catalog'
 
 class IcdCodeDataset < CategorisedDataset
+  belongs_to :icd_code
+
   pragmatize!
 
   @tag = :icd

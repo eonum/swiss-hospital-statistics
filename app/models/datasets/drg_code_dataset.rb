@@ -4,6 +4,8 @@ require 'catalog'
 class DrgCodeDataset < CategorisedDataset
   pragmatize!
 
+  belongs_to :drg
+
   @tag = :drg
   @type_description = 'Drg code means something and does something'
 

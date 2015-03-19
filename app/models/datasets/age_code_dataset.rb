@@ -6,6 +6,9 @@ require 'parsers/streams/su_age_stream'
 class AgeCodeDataset < CategorisedDataset
   pragmatize!
 
+  # belongs to ICD, because it's data is filed under ICD codes
+  belongs_to :icd_code
+
   @tag = :age
   @type_description = 'Age code means something and does something'
 

@@ -6,6 +6,8 @@ require 'parsers/streams/su_chop_drg_icd_stream'
 class ChopCodeDataset < CategorisedDataset
   pragmatize!
 
+  belongs_to :chop_code
+
   @tag = :chop
   @type_description = 'Chop code means something and does something'
 

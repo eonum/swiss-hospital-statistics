@@ -1,6 +1,7 @@
 require 'abstract/categorised_code'
 require 'catalog'
 
+# we only need ke data as soon as we have finished the orange excel files
 class KeCodeDataset < CategorisedDataset
   pragmatize!
 

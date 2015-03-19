@@ -3,6 +3,8 @@ class Drg
     include MultiLanguageText
 
     belongs_to :mdc
+    
+    has_many :drg_code_dataset
 
     field :code, :type => String
     field :text_de, :type => String
