@@ -1,6 +1,6 @@
 require 'categories/sex_category'
 require 'categories/value_interval_category'
-require 'codes/age_code'
+require 'datasets/age_code_dataset'
 
 class SuAgeStream
 

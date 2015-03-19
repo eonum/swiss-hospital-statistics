@@ -1,4 +1,4 @@
-require 'abstract/categorised_code'
+require 'abstract/categorised_dataset'
 require 'catalog'
 
 class IcdCodeDataset < CategorisedDataset

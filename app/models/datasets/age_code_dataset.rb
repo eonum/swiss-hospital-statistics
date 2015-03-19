@@ -1,4 +1,4 @@
-require 'abstract/categorised_code'
+require 'abstract/categorised_dataset'
 require 'catalog'
 require 'parsers/codes/su_age_parser'
 require 'parsers/streams/su_age_stream'

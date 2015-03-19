@@ -1,4 +1,4 @@
-require 'abstract/abstract_code'
+require 'abstract/abstract_dataset'
 require 'abstract/categorised_data'
 require 'pragmas'
 
