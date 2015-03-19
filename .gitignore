@@ -37,3 +37,8 @@
 .idea/runConfigurations/test.xml
 
 .idea/inspectionProfiles/profiles_settings.xml
+.idea/.rakeTasks
+.idea/casematch20.iml
+.idea/runConfigurations/Development__swiss_hospital_statistics.xml
+.idea/runConfigurations/test__swiss_hospital_statistics.xml
+.idea/casematch20.iml
