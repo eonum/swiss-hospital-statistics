@@ -2,6 +2,7 @@ require 'pragmas'
 require 'scripting'
 Dir['./app/models/**/*.rb'].each{ |f| require f }
 
+# TODO documentation
 class Catalog
 
   attr_reader :catalog

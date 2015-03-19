@@ -25,18 +25,19 @@ class AbstractCategory
   end
 
   # Adds several categories to the class field.
+  # TODO what is categories? an Array?
   def add_all (categories)
     categories.each { |each| self.add(each) }
   end
 
   # if category_id is already present in categories hash
   # it will return its value thus true, otherwise false
-  # param category_id it is the tag string of a category class
+  # param category_id category_id is the string of a category class
   def at (category_id)
     self.categories[category_id.to_s]
   end
 
-  # TODO ask Alex about the &block
+  # TODO documentation
   def at_find (category_id, &block)
     return self.at(category_id) unless block_given?
     selected = self.at(category_id).select(&block)
