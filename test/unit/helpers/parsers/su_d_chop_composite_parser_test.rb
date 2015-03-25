@@ -38,10 +38,10 @@ class SuDChopCompositeParserTest < ActiveSupport::TestCase
     first = @codes.first
     second = @codes.second
 
-    assert_equal('0009', first.code)
+    assert_equal('0009', first.dataset)
     assert_equal('Sonstiger therapeutischer Ultraschall', first.description)
 
-    assert_equal('99B611', second.code)
+    assert_equal('99B611', second.dataset)
     assert_equal('Physikalisch-medizinische Komplexbehandlung, mehr als 7 Tage', second.description)
   end
 
@@ -94,8 +94,8 @@ class SuDChopCompositeParserTest < ActiveSupport::TestCase
   end
 
   def test_percentile_categories
-    first = @codes.first.at(2013).at(:interval).first
-    second = @codes.second.at(2013).at(:interval).first
+    first = @codes.first.categorised_data.at(:interval).first
+    second = @codes.second.categorised_data.at(:interval).first
 
     assert_not_nil(first.categories)
     assert_not_nil(second.categories)
