@@ -47,15 +47,17 @@ class SuChopDrgIcdStream
       puts 'Parsing... '+ raw_interval
       sheet.each{|year, codes|
         codes.each{|id, raw_code|
-          @codes[id] = @clazz.new.lock unless @codes[id]
+          @codes[id] = @clazz.new unless @codes[id]
           data = raw_code[:data]
           percentiles = raw_code[:percentiles]
           code = @codes[id]
           code.code = id
           code.description = data[1]
-          year_data = code.at(year, true)
+          code.year = year
+          #year_data = code.at(year, true)
+          dataset_data = code.new_data
           interval = Interval.new.from_s(raw_interval)
-          interval_category = year_data.at_find(GeneralIntervalCategory.tag){|each| each.interval == interval }
+          interval_category = dataset_data.at_find(GeneralIntervalCategory.tag){|each| each.interval == interval }
           unless interval_category
             interval_category = GeneralIntervalCategory.new(interval: interval)
             interval_category.n = data[2]
@@ -64,13 +66,13 @@ class SuChopDrgIcdStream
             interval_category.min = data[5]
             interval_category.max = data[6]
             percentiles.each{|key, value| interval_category.add(PercentileCategory.new(percentile: key, amount: value))}
-            year_data.add(interval_category)
+            dataset_data.add(interval_category)
           end
         }
       }
     }
     codes = @codes.values.sort_by{|each| each.code.downcase}
-    codes.each{|each| each.unlock}
+    #codes.each{|each| each.unlock}
     codes
   end
 
