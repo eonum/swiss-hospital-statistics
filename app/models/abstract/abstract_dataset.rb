@@ -21,6 +21,14 @@ class AbstractDataset
     @type_description
   end
 
+  def find_parent
+    raise 'subclass responsiblity!'
+  end
+
+  def persist_dataset
+    raise 'subclass responsiblity!'
+  end
+
 =begin
 
   def locked?
