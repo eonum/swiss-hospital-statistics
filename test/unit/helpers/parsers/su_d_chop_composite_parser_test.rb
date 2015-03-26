@@ -38,45 +38,39 @@ class SuDChopCompositeParserTest < ActiveSupport::TestCase
     first = @codes.first
     second = @codes.second
 
-    assert_equal('0009', first.dataset)
+    assert_equal('0009', first.code)
     assert_equal('Sonstiger therapeutischer Ultraschall', first.description)
 
-    assert_equal('99B611', second.dataset)
+    assert_equal('99B611', second.code)
     assert_equal('Physikalisch-medizinische Komplexbehandlung, mehr als 7 Tage', second.description)
   end
 
   def test_code_years
-    assert_not_nil(@codes.first.years)
-    assert_not_nil(@codes.second.years)
+    assert_not_nil(@codes.first.categorised_data)
+    assert_not_nil(@codes.second.categorised_data)
 
-    assert_equal(1, @codes.first.years.size)
-    assert_equal(1, @codes.second.years.size)
-
-    assert_not_nil(@codes.first.at(2013))
-    assert_not_nil(@codes.second.at(2013))
-
-    assert_equal(2013, @codes.first.at(2013).year)
-    assert_equal(2013, @codes.second.at(2013).year)
+    assert_equal(2013, @codes.first.year)
+    assert_equal(2013, @codes.second.year)
   end
 
   def test_interval_categories
 
-    assert_not_nil(@codes.first.at(2013).categories)
-    assert_not_nil(@codes.second.at(2013).categories)
+    assert_not_nil(@codes.first.categorised_data.categories)
+    assert_not_nil(@codes.second.categorised_data.categories)
 
-    assert_equal(1, @codes.first.at(2013).categories.size)
-    assert_equal(1, @codes.second.at(2013).categories.size)
+    assert_equal(1, @codes.first.categorised_data.categories.size)
+    assert_equal(1, @codes.second.categorised_data.categories.size)
 
-    assert_equal(1, @codes.first.at(2013).at(:interval).length)
-    assert_equal(1, @codes.second.at(2013).at(:interval).length)
+    assert_equal(1, @codes.first.categorised_data.at(:interval).length)
+    assert_equal(1, @codes.second.categorised_data.at(:interval).length)
 
-    assert_equal(GeneralIntervalCategory, @codes.first.at(2013).at(:interval).first.class)
-    assert_equal(GeneralIntervalCategory, @codes.second.at(2013).at(:interval).first.class)
+    assert_equal(GeneralIntervalCategory, @codes.first.categorised_data.at(:interval).first.class)
+    assert_equal(GeneralIntervalCategory, @codes.second.categorised_data.at(:interval).first.class)
   end
 
   def test_interval_data
-    first = @codes.first.at(2013).at(:interval).first
-    second = @codes.second.at(2013).at(:interval).first
+    first = @codes.first.categorised_data.at(:interval).first
+    second = @codes.second.categorised_data.at(:interval).first
 
     assert_equal(1, first.n)
     assert_equal(3.0, first.dad)
@@ -114,8 +108,8 @@ class SuDChopCompositeParserTest < ActiveSupport::TestCase
   end
 
   def test_percentile_data
-    first = @codes.first.at(2013).at(:interval).first.at(:percentile)
-    second = @codes.second.at(2013).at(:interval).first.at(:percentile)
+    first = @codes.first.categorised_data.at(:interval).first.at(:percentile)
+    second = @codes.second.categorised_data.at(:interval).first.at(:percentile)
 
     assert_equal(PercentileCategory.new(percentile: 5, amount: 3.0), first[0])
     assert_equal(PercentileCategory.new(percentile:10, amount: 3.0), first[1])

@@ -6,7 +6,6 @@ class CategorisedDataTest < ActiveSupport::TestCase
     @data = CategorisedData.new
   end
 
-=begin
   def test_add_category
 
     category_1 = AbstractCategory.new
@@ -22,5 +21,6 @@ class CategorisedDataTest < ActiveSupport::TestCase
     assert_equal(category_3, @data.at(AbstractCategory.tag).third)
     assert_equal([category_1, category_2, category_3], @data.at(AbstractCategory.tag))
   end
-=end
+
+
 end
