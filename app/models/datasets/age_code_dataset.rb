@@ -12,6 +12,21 @@ class AgeCodeDataset < CategorisedDataset
   @tag = :age
   @type_description = 'Age code means something and does something'
 
+  def find_parent
+    # TODO: how do we do that? -> customer meeting
+  end
+
+  def persist_dataset
+    parent_code = find_parent
+    if parent_code.nil?
+      self.save
+    else
+      # persist self on parent
+      parent_code.icd_code_datasets.push(self)
+      parent_code.save
+    end
+  end
+
   _parser
   def self.age_parser
     SuAgeParser.new('public/statistics/su-d-14.04.02-AGE-zp-2013.xls').stream(SuAgeStream.new)

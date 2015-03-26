@@ -9,6 +9,20 @@ class DrgCodeDataset < CategorisedDataset
   @tag = :drg
   @type_description = 'Drg code means something and does something'
 
+  def find_parent
+    Drg.where(code: self.code).first
+  end
+
+  def persist_dataset
+    parent_code = find_parent
+    if parent_code.nil?
+      self.save
+    else
+      parent_code.drg_code_datasets.push(self)
+      parent_code.save
+    end
+  end
+
   _parser
   def self.drg_parser
     SuChopDrgIcdParser.new('public/statistics/su-d-14.04.02-DRG-2013.xls').stream(SuChopDrgIcdStream.new(self))
