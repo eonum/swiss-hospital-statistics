@@ -5,7 +5,7 @@ class IcdCodeDatasetTest < ActiveSupport::TestCase
   def setup
     # empty test data collections
     IcdCode.delete_all
-    IcdCodeDataset
+    IcdCodeDataset.delete_all
 
     @dataset = IcdCodeDataset.new
     @dataset.code = "A084"
