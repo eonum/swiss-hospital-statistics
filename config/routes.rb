@@ -15,6 +15,9 @@ Rails.application.routes.draw do
   #   get :name, :on => :collection
   # end
 
+  # Displaying the data happens under the namespace /api/v1/...
+  # as reflected in the controller
+  # only /index /show and /new shall be used for the time being
   namespace :api do
     namespace :v1 do
       resources :codes, :only => [:index, :show, :new] do

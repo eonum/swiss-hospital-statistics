@@ -14,7 +14,6 @@ module Pragmas
   end
 
   private
-
   def method_added(method)
     pragma_method_added(method)
     super
@@ -27,9 +26,9 @@ module Pragmas
 
   def pragma_method_added(method)
     if @__last_pragmas__
-      @__last_pragmas__.each{|each| each._method(method)}
-      (@__pragmas__ ||= {})[method] = @__last_pragmas__
-    end
+    @__last_pragmas__.each{|each| each._method(method)}
+    (@__pragmas__ ||= {})[method] = @__last_pragmas__
+  end
     @__last_pragmas__ = nil
   end
 
