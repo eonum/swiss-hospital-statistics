@@ -4,7 +4,7 @@ define([
     CategorisedDataset
 ) {
 
-    function KeCode() {
+    function KeCodeDataset() {
         var _this = new CategorisedDataset();
 
         /**
@@ -17,6 +17,6 @@ define([
         return _this;
     }
 
-    KeCode.ID = 'ke';
-    return KeCode;
+    KeCodeDataset.ID = 'ke';
+    return KeCodeDataset;
 });

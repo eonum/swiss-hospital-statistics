@@ -4,19 +4,19 @@ define([
     CategorisedDataset
 ) {
 
-    function AgeCode() {
+    function AgeCodeDataset() {
         var _this = new CategorisedDataset();
 
         /**
          * @returns {string}
          */
         _this.name = function() {
-            return 'Age Dataset';
+            return 'Age Code Dataset';
         };
 
         return _this;
     }
 
-    AgeCode.ID = 'age';
-    return AgeCode;
+    AgeCodeDataset.ID = 'age';
+    return AgeCodeDataset;
 });

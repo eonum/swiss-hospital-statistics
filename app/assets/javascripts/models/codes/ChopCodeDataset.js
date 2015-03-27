@@ -4,7 +4,7 @@ define([
     CategorisedDataset
 ) {
 
-    function ChopCode() {
+    function ChopCodeDataset() {
         var _this = new CategorisedDataset();
 
         /**
@@ -17,6 +17,6 @@ define([
         return _this;
     }
 
-    ChopCode.ID = 'chop';
-    return ChopCode;
+    ChopCodeDataset.ID = 'chop';
+    return ChopCodeDataset;
 });

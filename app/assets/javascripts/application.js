@@ -10,11 +10,11 @@
 
 var CODE_PATH = 'models/codes/';
 var CODE_CLASSES = [
-    'ChopCode',
-    'DrgCode',
-    'IcdCode',
-    'AgeCode',
-    'KeCode'
+    'ChopCodeDataset',
+    'DrgCodeDataset',
+    'IcdCodeDataset',
+    'AgeCodeDataset',
+    'KeCodeDataset'
 ];
 
 var CATEGORY_PATH = 'models/categories/';

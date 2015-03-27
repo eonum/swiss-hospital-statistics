@@ -4,19 +4,20 @@ define([
     CategorisedDataset
 ) {
 
-    function DrgCode() {
+    function IcdCodeDataset() {
         var _this = new CategorisedDataset();
+
 
         /**
          * @returns {string}
          */
         _this.name = function() {
-            return 'Drg Code Dataset';
+            return 'Icd Code Dataset';
         };
 
         return _this;
     }
 
-    DrgCode.ID = 'drg';
-    return DrgCode;
+    IcdCodeDataset.ID = 'icd';
+    return IcdCodeDataset;
 });
