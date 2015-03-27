@@ -58,4 +58,6 @@ group :development do
   gem 'tzinfo-data'
   # for debugging
   gem 'debase'
+  # only necessary on windows
+  gem 'coffee-script-source', '1.8.0'
 end
