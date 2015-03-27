@@ -19,7 +19,12 @@ define([
 
         var table = new CodeTableView();
         var buttons = new CodeButtonBarView();
+
+        var pieChart = new PieChart(300, 300);
+        pieChart.openOn([ { key: 'apples', value: '60' }, { key: 'oranges', value: '40' } ]);
+
         $('body').append(buttons).append(table);
+        $('body').append(pieChart)
 
         var catalog = new Catalog();
         catalog.loadTypes(function(){
