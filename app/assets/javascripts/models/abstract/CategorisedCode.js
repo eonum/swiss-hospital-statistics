@@ -1,12 +1,12 @@
 define([
-    'models/abstract/AbstractCode',
+    'models/abstract/AbstractDataset',
     'models/abstract/CategorisedData',
 ], function(
     AbstractCode,
     CategorisedData
 ) {
 
-    function CategorisedCode () {
+    function CategorisedDataset () {
         var _this = new AbstractCode();
 
         /**
@@ -26,5 +26,5 @@ define([
 
         return _this;
     }
-    return CategorisedCode;
+    return CategorisedDataset;
 });
