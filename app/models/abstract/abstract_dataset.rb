@@ -7,7 +7,8 @@ class AbstractDataset
 
   field :code, :type => String
   field :description, :type => String
-  field :years, :type => HashWithIndifferentAccess, :default => Hash[]
+  #field :years, :type => HashWithIndifferentAccess, :default => Hash[]
+  field :year, :type => Integer
 
   @tag = 'unknown'
   @type_description = 'Abstract code does nothing'
@@ -19,6 +20,16 @@ class AbstractDataset
   def self.type_description
     @type_description
   end
+
+  def find_parent
+    raise 'subclass responsiblity!'
+  end
+
+  def persist_dataset
+    raise 'subclass responsiblity!'
+  end
+
+=begin
 
   def locked?
     @locked
@@ -67,4 +78,5 @@ class AbstractDataset
     AbstractData.new(year: year)
   end
 
+=end
 end

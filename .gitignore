@@ -42,8 +42,7 @@
 .idea/runConfigurations/Development__swiss_hospital_statistics.xml
 .idea/runConfigurations/test__swiss_hospital_statistics.xml
 .idea/casematch20.iml
+.idea/runConfigurations/spec__swiss_hospital_statistics.xml
+.idea/.rakeTasks
 .idea/casematch20.iml
-lib/pragmas.rb
-.idea/casematch20.iml
-.idea/swiss-hospital-statistics.iml
-config/routes.rb
+

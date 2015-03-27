@@ -66,7 +66,8 @@ class Catalog
       parser.parse
       codes = parser.stream.to_codes
       puts 'Parsed '+ codes.size.to_s + ' ' + clazz.name + 's'
-      clazz.collection.insert codes.collect{|each| each.as_document } unless codes.empty?
+      codes.each {|each| each.persist_dataset}
+      #clazz.collection.insert codes.collect{|each| each.as_document } unless codes.empty?
     end
   end
 

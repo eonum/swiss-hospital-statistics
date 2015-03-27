@@ -3,7 +3,7 @@ require 'test_helper'
 class CategorisedDataTest < ActiveSupport::TestCase
 
   def setup
-    @data = CategorisedData.new(year: 2013)
+    @data = CategorisedData.new
   end
 
   def test_add_category
@@ -21,5 +21,6 @@ class CategorisedDataTest < ActiveSupport::TestCase
     assert_equal(category_3, @data.at(AbstractCategory.tag).third)
     assert_equal([category_1, category_2, category_3], @data.at(AbstractCategory.tag))
   end
+
 
 end

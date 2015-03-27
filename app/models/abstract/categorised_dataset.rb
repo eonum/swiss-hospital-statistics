@@ -4,8 +4,10 @@ require 'pragmas'
 
 class CategorisedDataset < AbstractDataset
 
-  def new_data(year)
-    CategorisedData.new(year: year)
-  end
+  embeds_one :categorised_data, class_name: "CategorisedData", inverse_of: :categorised_dataset
 
+  def new_data
+    build_categorised_data
+    categorised_data
+  end
 end

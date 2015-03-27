@@ -11,6 +11,7 @@ class LinearParser < CompositeParser
     @position = @from
     @is_index_used = false
 
+    #defines parsing logic for linear parsers in super class
     self.parsing do
       |parser|
       self.position(@from)

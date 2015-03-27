@@ -2,6 +2,8 @@ require 'abstract/abstract_data'
 
 class CategorisedData < AbstractData
 
+  embedded_in :categorised_dataset, class_name: "CategorisedDataset", inverse_of: :categorised_data
+
   field :categories, :type => HashWithIndifferentAccess, :default => { }
 
   # Tests if category is already present. If it is

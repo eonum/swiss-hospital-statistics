@@ -4,7 +4,7 @@ class Drg
 
     belongs_to :mdc
     
-    has_many :drg_code_dataset
+    has_many :drg_code_datasets
 
     field :code, :type => String
     field :text_de, :type => String

@@ -32,21 +32,25 @@ class CompositeParser
     self.file(file_name)
   end
 
+  #adds tab parser to the parsers collection
   def tab
     require 'parsers/abstract/tab_parser'
     add_parser(TabParser.new)
   end
 
+  #adds row parser to the parsers collection
   def row
     require 'parsers/abstract/row_parser'
     add_parser(RowParser.new)
   end
 
+  #adds column parser to the parsers collection
   def column
     require 'parsers/abstract/column_parser'
     add_parser(ColumnParser.new)
   end
 
+  #loads Excel file to Roo
   def file (file_name = nil)
     return unless file_name
     sheet = Roo::Excel.new(file_name)
@@ -54,16 +58,19 @@ class CompositeParser
     self.sheet = sheet
   end
 
+  #yields parsing control to passed block (if there is any)
   def with (&block)
     block.call (self) if block_given?
     self
   end
 
+  #defines where parsed results should be sent to
   def for (receiver)
     @receiver = receiver
     self
   end
 
+  #defines where exactly in receiver parsed results should be sent to
   def in (method_symbol)
     @receiver_method = method_symbol
     self
@@ -86,6 +93,7 @@ class CompositeParser
     self
   end
 
+  #sets parsing logic (defined by particular parser)
   def parsing (&block)
     @parsing_logic = block
     self
@@ -96,12 +104,14 @@ class CompositeParser
     self
   end
 
+
   def repeat
     @is_repeat = true
     @parsers.each{|each| each.repeated}
     self
   end
 
+  #parses input using composed parsing logic
   def parse
     @results = [ ]
     @cache = []
