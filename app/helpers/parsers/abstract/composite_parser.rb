@@ -99,12 +99,13 @@ class CompositeParser
     self
   end
 
+  #sets parsing logic to be repeated
   def repeated (&block)
     @repeat_logic = block
     self
   end
 
-
+  #repeats parsing logic to next units
   def repeat
     @is_repeat = true
     @parsers.each{|each| each.repeated}
@@ -153,6 +154,7 @@ class CompositeParser
   end
 
   protected
+
 
   def stream (value, repeat = nil)
     should_save = !@cache.include?(value) || !@is_distinct
