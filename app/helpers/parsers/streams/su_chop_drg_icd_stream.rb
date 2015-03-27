@@ -42,15 +42,15 @@ class SuChopDrgIcdStream
   end
 
   def to_codes
-    @codes = {}
+    @codes = []
     @map.each {|raw_interval, sheet|
       puts 'Parsing... '+ raw_interval
       sheet.each{|year, codes|
         codes.each{|id, raw_code|
-          @codes[id] = @clazz.new unless @codes[id]
+          code = @clazz.new
+          @codes.push(code)
           data = raw_code[:data]
           percentiles = raw_code[:percentiles]
-          code = @codes[id]
           code.code = id
           code.description = data[1]
           code.year = year
@@ -71,7 +71,7 @@ class SuChopDrgIcdStream
         }
       }
     }
-    codes = @codes.values.sort_by{|each| each.code.downcase}
+    codes = @codes.sort_by{|each| each.code.downcase}
     #codes.each{|each| each.unlock}
     codes
   end
