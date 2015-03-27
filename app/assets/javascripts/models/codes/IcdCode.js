@@ -1,18 +1,18 @@
 define([
-    'models/abstract/CategorisedCode'
+    'models/abstract/CategorisedDataset'
 ], function(
-    CategorisedCode
+    CategorisedDataset
 ) {
 
     function IcdCode() {
-        var _this = new CategorisedCode();
+        var _this = new CategorisedDataset();
 
 
         /**
          * @returns {string}
          */
         _this.name = function() {
-            return 'Icd Code';
+            return 'Icd Code Dataset';
         };
 
         return _this;

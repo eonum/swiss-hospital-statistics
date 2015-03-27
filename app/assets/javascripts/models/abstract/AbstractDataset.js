@@ -23,7 +23,7 @@ define([
          * @returns {string}
          */
         _this.name = function() {
-            return 'Abstract Code';
+            return 'Abstract Dataset';
         };
 
         /**
