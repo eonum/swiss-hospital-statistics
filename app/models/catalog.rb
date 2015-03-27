@@ -49,7 +49,7 @@ class Catalog
     type = self.codes.select {|each| each.tag == code_type.to_sym}.first
     return self unless type
     code = self.push_code_type(type)
-    codes = type.find_by(code: code_id)
+    codes = type.where(code: code_id)
     codes = clean_documents_for_json(codes)
     code[:codes] = codes
     self
