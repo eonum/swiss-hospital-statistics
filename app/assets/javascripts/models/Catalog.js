@@ -91,7 +91,7 @@ define([
         /**
          * @param {Class} type
          * @param {string} code
-         * @returns {AbstractCode}
+         * @returns {AbstractDataset}
          */
         _this.code = function (type, code) {
             return _this.codes(type)[code];

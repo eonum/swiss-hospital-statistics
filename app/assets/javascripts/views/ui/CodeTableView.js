@@ -21,7 +21,7 @@ define([
         };
 
         /**
-         * @param {Array.<AbstractCode>} _codes
+         * @param {Array.<AbstractDataset>} _codes
          */
         _this.setCodes = function (_codes) {
             codes = _codes;
@@ -29,7 +29,7 @@ define([
         };
 
         /**
-         * @param {Array.<AbstractCode>} _codes
+         * @param {Array.<AbstractDataset>} _codes
          */
         _this.codes = function () {
             return codes;

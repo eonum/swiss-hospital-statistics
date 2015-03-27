@@ -7,9 +7,9 @@ define([
     /**
      * @constructor
      * @class AbstractCode
-     * @module AbstractCode
+     * @module AbstractDataset
      */
-    function AbstractCode() {
+    function AbstractDataset() {
         var _this = this;
 
         /** @type {String} */
@@ -119,11 +119,11 @@ define([
      * @param {String} _description
      * @returns {String}
      */
-    AbstractCode.prototype.typeDescription = function (_description) {
-        if (_.isUndefined(_description)) return AbstractCode.prototype._description;
-        AbstractCode.prototype._description = _description;
+    AbstractDataset.prototype.typeDescription = function (_description) {
+        if (_.isUndefined(_description)) return AbstractDataset.prototype._description;
+        AbstractDataset.prototype._description = _description;
         return _description;
     };
 
-    return AbstractCode;
+    return AbstractDataset;
 });
