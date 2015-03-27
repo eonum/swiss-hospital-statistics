@@ -2,7 +2,7 @@ define([
     'models/abstract/AbstractDataset',
     'models/abstract/CategorisedData',
 ], function(
-    AbstractDataset,
+    AbstractCode,
     CategorisedData
 ) {
 
@@ -13,7 +13,7 @@ define([
          * @returns {string}
          */
         _this.name = function() {
-            return 'Categorised Dataset';
+            return 'Categorised Code';
         };
 
         /**

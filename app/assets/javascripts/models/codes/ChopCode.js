@@ -1,17 +1,17 @@
 define([
-    'models/abstract/CategorisedDataset'
+    'models/abstract/CategorisedCode'
 ], function(
-    CategorisedDataset
+    CategorisedCode
 ) {
 
     function ChopCode() {
-        var _this = new CategorisedDataset();
+        var _this = new CategorisedCode();
 
         /**
          * @returns {string}
          */
         _this.name = function() {
-            return 'Chop Code Dataset';
+            return 'Chop Code';
         };
 
         return _this;

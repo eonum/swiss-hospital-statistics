@@ -1,17 +1,17 @@
 define([
-    'models/abstract/CategorisedDataset'
+    'models/abstract/CategorisedCode'
 ], function(
-    CategorisedDataset
+    CategorisedCode
 ) {
 
     function AgeCode() {
-        var _this = new CategorisedDataset();
+        var _this = new CategorisedCode();
 
         /**
          * @returns {string}
          */
         _this.name = function() {
-            return 'Age Dataset';
+            return 'Age Code';
         };
 
         return _this;
