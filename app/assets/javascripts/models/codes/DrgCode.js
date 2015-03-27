@@ -1,17 +1,17 @@
 define([
-    'models/abstract/CategorisedCode'
+    'models/abstract/CategorisedDataset'
 ], function(
-    CategorisedCode
+    CategorisedDataset
 ) {
 
     function DrgCode() {
-        var _this = new CategorisedCode();
+        var _this = new CategorisedDataset();
 
         /**
          * @returns {string}
          */
         _this.name = function() {
-            return 'Drg Code';
+            return 'Drg Code Dataset';
         };
 
         return _this;
