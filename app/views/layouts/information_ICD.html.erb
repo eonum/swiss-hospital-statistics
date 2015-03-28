@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= content_for?(:title) ? yield(:title) : "eonum drg scaffold" %></title>
+  <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Rails Foundation" %>">
+  <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
+  <%= requirejs_include_tag 'applicationCode' %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<header>
+  <%= render 'layouts/navigation' %>
+</header>
+<main role="main">
+  <%= render 'layouts/messages' %>
+</main>
+<ul class="breadcrumbs">
+  <li><a href="#">Home</a></li>
+  <li><a href="#">Features</a></li>
+  <li class="unavailable"><a href="#">Gene Splicing</a></li>
+  <li class="current"><a href="#">Cloning</a></li>
+</ul>
+
+</body>
+</html>

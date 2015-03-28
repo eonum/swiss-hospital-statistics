@@ -20,8 +20,7 @@ define([
         var table = new CodeTableView();
         var buttons = new CodeButtonBarView();
 
-        var pieChart = new PieChart(300, 300);
-
+        var pieChart = new PieChart(250, 250);
 
         console.log("Starting");
         $.getJSON( "/api/v1/codes/icd/info/C341", function( data ) {
@@ -29,6 +28,7 @@ define([
             var fifteenToThirtynine = 0;
             var fortyToSixtynine = 0;
             var overSeventy = 0;
+            console.log(JSON.stringify(data));
             console.log(data.codes.icd.codes[0].description);
             console.log(data.codes.icd.codes[0].categorised_data.categories.interval[0].n);
             var description = data.codes.icd.codes[0].description;
