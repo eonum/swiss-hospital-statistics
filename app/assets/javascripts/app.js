@@ -11,7 +11,7 @@ define([
     'models/categories/SexCategory',
     'helpers/CategoryAdapter',
     'helpers/CodeAdapter'
-], function(AbstractSwissMap,PieChart,SerieChart, CardBoardView, CardView, AbstractSeriesChart, Catalog, CodeTableView, CodeButtonBarView){
+], function(AbstractSwissMap,PieChart,SeriesChart, CardBoardView, CardView, AbstractSeriesChart, Catalog, CodeTableView, CodeButtonBarView){
 
     "use strict";
     function App() {
@@ -21,7 +21,50 @@ define([
         var buttons = new CodeButtonBarView();
 
         var pieChart = new PieChart(300, 300);
-        pieChart.openOn([ { key: 'apples', value: '60' }, { key: 'oranges', value: '40' } ]);
+
+
+        console.log("Starting");
+        $.getJSON( "/api/v1/codes/icd/info/C341", function( data ) {
+            var zeroToFourteen = 0;
+            var fifteenToThirtynine = 0;
+            var fortyToSixtynine = 0;
+            var overSeventy = 0;
+            console.log(data.codes.icd.codes[0].description);
+            console.log(data.codes.icd.codes[0].categorised_data.categories.interval[0].n);
+            var description = data.codes.icd.codes[0].description;
+            var numberOfIntervals = data.codes.icd.codes.length;
+            for(var i = 0; i < numberOfIntervals; i++) {
+                var interval = data.codes.icd.codes[i].categorised_data.categories.interval[0].interval.from;
+                switch(interval) {
+                    case 0:
+                        zeroToFourteen = data.codes.icd.codes[i].categorised_data.categories.interval[0].n;
+                        break;
+                    case 15:
+                        fifteenToThirtynine = data.codes.icd.codes[i].categorised_data.categories.interval[0].n;
+                        break;
+                    case 40:
+                        fortyToSixtynine = data.codes.icd.codes[i].categorised_data.categories.interval[0].n;
+                        break;
+                    case 70:
+                        overSeventy = data.codes.icd.codes[i].categorised_data.categories.interval[0].n
+                        break;
+                    default:
+                        console.log("nothing to update");
+                }
+            }
+            console.log("zeroToFourteen: " + zeroToFourteen);
+            console.log("fifteenToThirtynine: " + fifteenToThirtynine);
+            console.log("fortyToSixtynine: " + fortyToSixtynine);
+            console.log("overSeventy: " + overSeventy);
+
+            pieChart.openOn([
+                { key: 'fifteenToThirtynine', value: fifteenToThirtynine },
+                { key: 'fortyToSixtynine', value: fortyToSixtynine },
+                { key: 'overSeventy', value: overSeventy }]);
+        });
+
+        console.log("Ending");
+
 
         $('body').append(buttons).append(table);
         $('body').append(pieChart)
@@ -37,6 +80,7 @@ define([
                 });
             });
         });
+
 
         _this.cardView = function () {
             $('body').append(
