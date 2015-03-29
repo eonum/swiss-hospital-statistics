@@ -59,7 +59,6 @@ define([
                     })
                     .openOn(intervals);
 
-                console.log(intervals);
                 content.empty();
 
                 content.add('<h3>' + code + ": "+ description + '</h3>');
@@ -73,7 +72,6 @@ define([
 
                 var key = '<div id="key"><ul>';
                 $.each(intervals, function(index, value){
-                    console.log(index);
                     key += '<li style="background-color:' + colors[index] + '">' + value.key + '   Jahre</li>';
                 });
                 key += '</ul></div>';

@@ -44,7 +44,6 @@ define([
                 $('body').append(visualisation.setData(data));
 
                 $('#code_chooser').keyup(function () {
-                    console.log("test");
                     var text = $('#code_chooser').val();
                     if(text.length == 4){
                         $.getJSON( "/api/v1/codes/icd/info/" + text, function( data ) {
