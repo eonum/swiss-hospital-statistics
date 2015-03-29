@@ -26,6 +26,7 @@ define([
         _this.setData = function (data){
             var datasets = data.codes.icd.codes;
             if(datasets.length > 0) {
+                var code = datasets[0].code;
                 var description = datasets[0].description;
                 var intervals = [];
 
@@ -61,7 +62,7 @@ define([
                 console.log(intervals);
                 content.empty();
 
-                content.add('<h3>' + description + '</h3>');
+                content.add('<h3>' + code + ": "+ description + '</h3>');
                 content.add(pieChart);
 
                 // TODO: actually get colors from d3
