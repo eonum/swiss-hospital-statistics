@@ -20,55 +20,6 @@ define([
         var table = new CodeTableView();
         var buttons = new CodeButtonBarView();
 
-        var pieChart = new PieChart(250, 250);
-
-        console.log("Starting");
-        $.getJSON( "/api/v1/codes/icd/info/C341", function( data ) {
-            var zeroToFourteen = 0;
-            var fifteenToThirtynine = 0;
-            var fortyToSixtynine = 0;
-            var overSeventy = 0;
-            console.log(JSON.stringify(data));
-            console.log(data.codes.icd.codes[0].description);
-            console.log(data.codes.icd.codes[0].categorised_data.categories.interval[0].n);
-            var description = data.codes.icd.codes[0].description;
-            var numberOfIntervals = data.codes.icd.codes.length;
-            for(var i = 0; i < numberOfIntervals; i++) {
-                var interval = data.codes.icd.codes[i].categorised_data.categories.interval[0].interval.from;
-                switch(interval) {
-                    case 0:
-                        zeroToFourteen = data.codes.icd.codes[i].categorised_data.categories.interval[0].n;
-                        break;
-                    case 15:
-                        fifteenToThirtynine = data.codes.icd.codes[i].categorised_data.categories.interval[0].n;
-                        break;
-                    case 40:
-                        fortyToSixtynine = data.codes.icd.codes[i].categorised_data.categories.interval[0].n;
-                        break;
-                    case 70:
-                        overSeventy = data.codes.icd.codes[i].categorised_data.categories.interval[0].n
-                        break;
-                    default:
-                        console.log("nothing to update");
-                }
-            }
-            console.log("zeroToFourteen: " + zeroToFourteen);
-            console.log("fifteenToThirtynine: " + fifteenToThirtynine);
-            console.log("fortyToSixtynine: " + fortyToSixtynine);
-            console.log("overSeventy: " + overSeventy);
-
-            pieChart.openOn([
-                { key: 'fifteenToThirtynine', value: fifteenToThirtynine },
-                { key: 'fortyToSixtynine', value: fortyToSixtynine },
-                { key: 'overSeventy', value: overSeventy }]);
-        });
-
-        console.log("Ending");
-
-
-        $('body').append(buttons).append(table);
-        $('body').append(pieChart)
-
         var catalog = new Catalog();
         catalog.loadTypes(function(){
             buttons.setTypes(catalog.types());
@@ -81,6 +32,54 @@ define([
             });
         });
 
+        _this.pieChartView = function () {
+            var pieChart = new PieChart(250, 250);
+
+            console.log("Starting");
+            $.getJSON( "/api/v1/codes/icd/info/C341", function( data ) {
+                var zeroToFourteen = 0;
+                var fifteenToThirtynine = 0;
+                var fortyToSixtynine = 0;
+                var overSeventy = 0;
+                console.log(JSON.stringify(data));
+                console.log(data.codes.icd.codes[0].description);
+                console.log(data.codes.icd.codes[0].categorised_data.categories.interval[0].n);
+                var description = data.codes.icd.codes[0].description;
+                var numberOfIntervals = data.codes.icd.codes.length;
+                for(var i = 0; i < numberOfIntervals; i++) {
+                    var interval = data.codes.icd.codes[i].categorised_data.categories.interval[0].interval.from;
+                    switch(interval) {
+                        case 0:
+                            zeroToFourteen = data.codes.icd.codes[i].categorised_data.categories.interval[0].n;
+                            break;
+                        case 15:
+                            fifteenToThirtynine = data.codes.icd.codes[i].categorised_data.categories.interval[0].n;
+                            break;
+                        case 40:
+                            fortyToSixtynine = data.codes.icd.codes[i].categorised_data.categories.interval[0].n;
+                            break;
+                        case 70:
+                            overSeventy = data.codes.icd.codes[i].categorised_data.categories.interval[0].n
+                            break;
+                        default:
+                            console.log("nothing to update");
+                    }
+                }
+                console.log("zeroToFourteen: " + zeroToFourteen);
+                console.log("fifteenToThirtynine: " + fifteenToThirtynine);
+                console.log("fortyToSixtynine: " + fortyToSixtynine);
+                console.log("overSeventy: " + overSeventy);
+
+                pieChart.openOn([
+                    { key: 'fifteenToThirtynine', value: fifteenToThirtynine },
+                    { key: 'fortyToSixtynine', value: fortyToSixtynine },
+                    { key: 'overSeventy', value: overSeventy }]);
+            });
+
+            console.log("Ending");
+            $('body').append(buttons).append(table);
+            $('body').append(pieChart)
+        };
 
         _this.cardView = function () {
             $('body').append(
@@ -97,7 +96,7 @@ define([
                         .transformed(function(v){return v.toPrecision(3)})
                         .labeled(function (value) {return value+'%'})
                         .openOn(35.49)))
-                    .add(new CardView().add(new SerieChart().class('align-vertical')
+                    .add(new CardView().add(new SeriesChart().class('align-vertical')
                             .display(function(series){
                                 return _.map(series, function(serie){
                                     serie.data = _.map(_.range(-Math.PI, Math.PI, 0.01), function(x){
@@ -136,8 +135,9 @@ define([
                         .value('length')
                         .openOn([ 'a','bb','ccc' ]))));
         };
+
         _this.visualisations = function () {
-            $("body").append(new SwissMap());
+            $("body").append(new AbstractSwissMap());
             var form = $('<input>');
             $("body").append(form);
 
@@ -219,8 +219,10 @@ define([
                 console.log(each.toString())});
         };
 
+        _this.pieChartView();
         //_this.cardView();
         //_this.codes();
+        //_this.visualisations();
     }
 
     return App

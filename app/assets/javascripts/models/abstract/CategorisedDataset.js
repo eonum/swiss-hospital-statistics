@@ -7,7 +7,7 @@ define([
 ) {
 
     function CategorisedDataset () {
-        var _this = new AbstractCode();
+        var _this = new AbstractDataset();
 
         /**
          * @returns {string}
