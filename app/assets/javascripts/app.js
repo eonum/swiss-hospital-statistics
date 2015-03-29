@@ -8,10 +8,11 @@ define([
     'models/Catalog',
     'views/ui/CodeTableView',
     'views/ui/CodeButtonBarView',
+    'views/ui/PieChartByAgeVisualisation',
     'models/categories/SexCategory',
     'helpers/CategoryAdapter',
     'helpers/CodeAdapter'
-], function(AbstractSwissMap,PieChart,SeriesChart, CardBoardView, CardView, AbstractSeriesChart, Catalog, CodeTableView, CodeButtonBarView){
+], function(AbstractSwissMap,PieChart,SeriesChart, CardBoardView, CardView, AbstractSeriesChart, Catalog, CodeTableView, CodeButtonBarView, PieChartByAgeVisualisation){
 
     "use strict";
     function App() {
@@ -31,6 +32,29 @@ define([
                 });
             });
         });
+
+        //$('body').append(buttons).append(table);
+
+        _this.icdPieChart = function () {
+            $.getJSON( "/api/v1/codes/icd/info/A045", function( data ) {
+                var visualisation = new PieChartByAgeVisualisation();
+                // TODO remove inline styling
+                $('body').append('<p style="margin-left: 20px;">ICD-Code auswählen:</p>');
+                $('body').append('<input id="code_chooser" style="margin-left: 20px;"/>');
+                $('body').append(visualisation.setData(data));
+
+                $('#code_chooser').keyup(function () {
+                    console.log("test");
+                    var text = $('#code_chooser').val();
+                    if(text.length == 4){
+                        $.getJSON( "/api/v1/codes/icd/info/" + text, function( data ) {
+                            visualisation.setData(data);
+                            $("#code_chooser").focus();
+                        });
+                    }
+                });
+            });
+        };
 
         _this.pieChartView = function () {
             var pieChart = new PieChart(250, 250);
@@ -77,7 +101,6 @@ define([
             });
 
             console.log("Ending");
-            $('body').append(buttons).append(table);
             $('body').append(pieChart)
         };
 
@@ -219,7 +242,8 @@ define([
                 console.log(each.toString())});
         };
 
-        _this.pieChartView();
+        _this.icdPieChart();
+        //_this.pieChartView();
         //_this.cardView();
         //_this.codes();
         //_this.visualisations();
