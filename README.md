@@ -39,4 +39,4 @@ The parsing is initiated by the *Catalog* class. It searches for all datasets th
 
 ### Use the visualizations
 
-Visit the URL [http://localhost:3000/](http://localhost:3000/api/v1/codes/new).
+Visit the URL [http://localhost:3000/](http://localhost:3000/).
