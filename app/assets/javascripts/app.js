@@ -35,6 +35,27 @@ define([
 
         //$('body').append(buttons).append(table);
 
+        _this.seriesChart = function () {
+            var chart = new SeriesChart().class('align-vertical')
+                .display(function(series){
+                    return _.map(series, function(serie){
+                        serie.data = _.map(_.range(-Math.PI, Math.PI, 0.01), function(x){
+                            return {x : x, y : serie.f(x)} });
+                        return serie })})
+                .transformed(function(y) { return Math.abs(y)})
+                .value('y')
+                .key('x')
+                .yAxis('f(x)')
+                .labeled(function(serie){return 'f(x)=|'+serie.serie+'|';})
+                .keyTransformed(function(x) {return x/Math.PI})
+                .keyLabeled(function(x) {return x+(x == 0 ? '':'PI')})
+                .openOn( [
+                    {serie: 'sin(x)', f: function(x){return x}},
+                    {serie: 'cos(x)', f: function(x){return 2*x}},
+                    {serie: 'cos(x^2)', f: function(x){return 10*x}}])
+            $('body').append(chart);
+        };
+
         _this.icdPieChart = function () {
             $.getJSON( "/api/v1/codes/icd/info/A045", function( data ) {
                 var visualisation = new PieChartByAgeVisualisation();
@@ -193,8 +214,9 @@ define([
                 console.log(each.toString())});
         };
 
+        //_this.seriesChart();
         _this.icdPieChart();
-        //_this.cardView();
+        //this.cardView();
         //_this.codes();
         //_this.visualisations();
     }
