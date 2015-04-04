@@ -2,53 +2,16 @@ require 'parsers/abstract/composite_parser'
 require 'parsers/streams/je_age_sex_stream'
 require 'datasets/age_sex_dataset'
 
-class JeAgeSexParser
-
-  INTERVAL_COLUMN = 1
-  CODE_COLUMN = 2
-  PERCENTAGE_COLUMN = 3
-  DAD_COLUMN = 4
+class JeAgeSexParser < AbstractJeDParser
 
   def initialize(file)
-    @sheet = Roo::Excel.new(file)
-    @sheet.default_sheet = @sheet.sheets.first
+    super(file)
     @first_row = 8
     @last_row = 91
-  end
-
-  def stream
-    JeAgeSexStream.new(@datasets)
-  end
-
-  def parse
-    @datasets = []
-    @sheet.sheets.each_with_index { |sheet, index|
-       @sheet.default_sheet = sheet
-
-       @year = sheet[0..3].to_i
-      # set the gender of the results, 0 = women, 1 = men, 2 = total
-      if index % 3 == 0
-        # total sheet
-        @gender = 2
-      elsif index % 3 == 1
-         @gender = 1
-      elsif index % 3 == 2
-        @gender = 0
-      end
-
-      (@first_row .. @last_row).each do |row_index|
-        # the second column always contains a value
-        if @sheet.cell(row_index, CODE_COLUMN).nil?
-          next
-        end
-        dataset = parse_row(row_index)
-        unless dataset.nil?
-          @datasets.push(dataset)
-        end
-      end
-    }
-
-    @datasets
+    @interval_column = 1
+    @code_column = 2
+    @percentage_column = 3
+    @dad_column = 4
   end
 
   private
@@ -66,33 +29,26 @@ class JeAgeSexParser
     category = SexIntervalCategory.new
     category.hospital_type = @hospital_type
     category.sex = @gender
-    category.percentage = @sheet.cell(row, PERCENTAGE_COLUMN)
-    category.dad = @sheet.cell(row, DAD_COLUMN)
+    category.percentage = @sheet.cell(row, @percentage_column)
+    category.dad = @sheet.cell(row, @dad_column)
 
     category.interval = @interval
 
     data.add(category)
 
-    dataset.code = @sheet.cell(row, CODE_COLUMN).split.first
+    dataset.code = @sheet.cell(row, @code_column).split.first
 
     dataset
   end
 
-  def set_interval(row)
-    # new interval
-    unless @sheet.cell(row, INTERVAL_COLUMN).nil?
-      @interval = Interval.new.from_s(@sheet.cell(row, INTERVAL_COLUMN))
-    end
-  end
-
   def update_hospital_type(row)
     # hospital type
-    unless @sheet.cell(row, CODE_COLUMN) =~ /\d/
+    unless @sheet.cell(row, @code_column) =~ /\d/
       if @year == 1998
         return handle_special_1998_case(row)
       end
 
-      @hospital_type = HospitalType.where(:text_de => @sheet.cell(row, CODE_COLUMN)).first
+      @hospital_type = HospitalType.where(:text_de => @sheet.cell(row, @code_column)).first
       return true
     end
     false
