@@ -4,10 +4,10 @@ require 'datasets/age_sex_dataset'
 
 class JeAgeSexParser
 
-  @@interval_column = 1
-  @@code_column = 2
-  @@percentage_column = 3
-  @@dad_column = 4
+  INTERVAL_COLUMN = 1
+  CODE_COLUMN = 2
+  PERCENTAGE_COLUMN = 3
+  DAD_COLUMN = 4
 
   def initialize(file)
     @sheet = Roo::Excel.new(file)
@@ -38,7 +38,7 @@ class JeAgeSexParser
 
       (@first_row .. @last_row).each do |row_index|
         # the second column always contains a value
-        if @sheet.cell(row_index, @@code_column).nil?
+        if @sheet.cell(row_index, CODE_COLUMN).nil?
           next
         end
         dataset = parse_row(row_index)
@@ -54,7 +54,7 @@ class JeAgeSexParser
   private
 
   def parse_row(row)
-    if (update_hospital_type(row))
+    if update_hospital_type(row)
       return
     end
     set_interval(row)
@@ -66,34 +66,33 @@ class JeAgeSexParser
     category = SexIntervalCategory.new
     category.hospital_type = @hospital_type
     category.sex = @gender
-    category.percentage = @sheet.cell(row, @@percentage_column)
-    category.dad = @sheet.cell(row, @@dad_column)
+    category.percentage = @sheet.cell(row, PERCENTAGE_COLUMN)
+    category.dad = @sheet.cell(row, DAD_COLUMN)
 
     category.interval = @interval
 
     data.add(category)
 
-    dataset.code = @sheet.cell(row, @@code_column).split.first
+    dataset.code = @sheet.cell(row, CODE_COLUMN).split.first
 
     dataset
   end
 
   def set_interval(row)
     # new interval
-    unless @sheet.cell(row, @@interval_column).nil?
-      str = @sheet.cell(row, @@interval_column)
-      @interval = Interval.new.from_s(@sheet.cell(row, @@interval_column))
+    unless @sheet.cell(row, INTERVAL_COLUMN).nil?
+      @interval = Interval.new.from_s(@sheet.cell(row, INTERVAL_COLUMN))
     end
   end
 
   def update_hospital_type(row)
     # hospital type
-    unless @sheet.cell(row, @@code_column) =~ /\d/
+    unless @sheet.cell(row, CODE_COLUMN) =~ /\d/
       if @year == 1998
         return handle_special_1998_case(row)
       end
 
-      @hospital_type = HospitalType.where(:text_de => @sheet.cell(row, @@code_column)).first
+      @hospital_type = HospitalType.where(:text_de => @sheet.cell(row, CODE_COLUMN)).first
       return true
     end
     false
@@ -104,7 +103,7 @@ class JeAgeSexParser
     mappings = {8 => "Allgemeine Krankenhäuser, Zentrumsversorgung", 25 => "Spezialkliniken: Psychiatrische Kliniken",
     42 => "Spezialkliniken: Rehabilitationskliniken"}
     @hospital_type = HospitalType.where(:text_de => mappings[row]).first
-    return true
+    true
   end
 
  end
