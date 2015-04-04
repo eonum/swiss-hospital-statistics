@@ -1,3 +1,4 @@
+
 define([
     'views/abstract/AbstractSwissMap',
     'views/PieChart',
@@ -59,7 +60,6 @@ define([
         _this.icdPieChart = function () {
             $.getJSON( "/api/v1/codes/icd/info/A045", function( data ) {
                 var visualisation = new PieChartByAgeVisualisation();
-                // TODO remove inline styling
                 $('body').append('<p class="code_title">ICD-Code auswählen:</p>');
                 $('body').append('<input class="code_title", id="code_chooser"/>');
                 $('body').append(visualisation.setData(data));
@@ -77,12 +77,22 @@ define([
         };
 
         _this.icdBoxPlot = function () {
+            // TODO maybe get the code from before IF available! Otherwise chose neutral/empty default.
             $.getJSON("/api/v1/codes/icd/info/A045", function(data) {
                 var visualisation = new BoxPlotVisualization();
-                // TODO same as up ;)
                 $('body').append('<p class="code_title">ICD-Code auswählen:</p>');
                 $('body').append('<input class="code_title", id="code_chooser"/>');
                 $('body').append(visualisation.setData(data));
+
+                $('#code_chooser').keyup(function () {
+                    var text = $('#code_chooser').val();
+                    if(text.length >= 4){
+                        $.getJSON( "/api/v1/codes/icd/info/" + text, function( data ) {
+                            visualisation.setData(data);
+                            $("#code_chooser").focus();
+                        });
+                    }
+                });
             })
         }
 
