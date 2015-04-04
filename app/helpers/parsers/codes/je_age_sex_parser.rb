@@ -1,6 +1,7 @@
 require 'parsers/abstract/composite_parser'
 require 'parsers/streams/je_age_sex_stream'
 require 'datasets/age_sex_dataset'
+require 'parsers/abstract/abstract_je_d_parser'
 
 class JeAgeSexParser < AbstractJeDParser
 
