@@ -31,6 +31,9 @@ The project can be used with Ruby 2.0 or Ruby 2.1. After downloading the project
 The *mongoid.yml* file must be placed in the *config* folder of the project.
 
 ### Seed the database
+Some data like hospital types has to be seeded into the database first. For this, execute the rake task *rake db:seed*.
+
+### Parse the statistics
 In order to use the visualisations, the statistics have to be parsed first. To do this, go to the file *app/controllers/api/v1/codes_controller.rb* and change the line containing the *Catalog.new.update_db_code* method call with the datasets you want to parse (e.g. *IcdCodeDataset*, *ChopCodeDataset*, *DrgCodeDataset*, etc.).
 Then, start up the server by running the *Development* run configuration. Once the server is started, go to the url
 [http://localhost:3000/api/v1/codes/new](http://localhost:3000/api/v1/codes/new), which will parse the dataset that you selected. This will take a few minutes to complete. The message *OK* will be displayed when the process finishes.
