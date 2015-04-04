@@ -9,10 +9,11 @@ define([
     'views/ui/CodeTableView',
     'views/ui/CodeButtonBarView',
     'views/ui/PieChartByAgeVisualisation',
+    'views/BarChart',
     'models/categories/SexCategory',
     'helpers/CategoryAdapter',
     'helpers/CodeAdapter'
-], function(AbstractSwissMap,PieChart,SeriesChart, CardBoardView, CardView, AbstractSeriesChart, Catalog, CodeTableView, CodeButtonBarView, PieChartByAgeVisualisation){
+], function(AbstractSwissMap,PieChart,SeriesChart, CardBoardView, CardView, AbstractSeriesChart, Catalog, CodeTableView, CodeButtonBarView, PieChartByAgeVisualisation, BarChart){
 
     "use strict";
     function App() {
@@ -34,6 +35,13 @@ define([
         });
 
         //$('body').append(buttons).append(table);
+        _this.barChart = function () {
+            var chart = new BarChart(800, 400);
+            chart.initialize([{interval: "0-14", amount: 23},
+                {interval: "15-39", amount: 50}]);
+
+            $('body').append(chart);
+        };
 
         _this.seriesChart = function () {
             var chart = new SeriesChart().class('align-vertical')
@@ -214,6 +222,7 @@ define([
                 console.log(each.toString())});
         };
 
+        //_this.barChart();
         //_this.seriesChart();
         _this.icdPieChart();
         //this.cardView();
