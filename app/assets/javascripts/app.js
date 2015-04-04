@@ -60,8 +60,8 @@ define([
             $.getJSON( "/api/v1/codes/icd/info/A045", function( data ) {
                 var visualisation = new PieChartByAgeVisualisation();
                 // TODO remove inline styling
-                $('body').append('<p style="margin-left: 20px;">ICD-Code auswählen:</p>');
-                $('body').append('<input id="code_chooser" style="margin-left: 20px;"/>');
+                $('body').append('<p class="code_title">ICD-Code auswählen:</p>');
+                $('body').append('<input class="code_title", id="code_chooser"/>');
                 $('body').append(visualisation.setData(data));
 
                 $('#code_chooser').keyup(function () {
@@ -75,6 +75,16 @@ define([
                 });
             });
         };
+
+        _this.icdBoxPlot = function () {
+            $.getJSON("/api/v1/codes/icd/info/A045", function(data) {
+                var visualisation = new BoxPlotVisualization();
+                // TODO same as up ;)
+                $('body').append('<p class="code_title">ICD-Code auswählen:</p>');
+                $('body').append('<input class="code_title", id="code_chooser"/>');
+                $('body').append(visualisation.setData(data));
+            })
+        }
 
         _this.cardView = function () {
             $('body').append(

@@ -7,11 +7,13 @@ define(['d3', 'views/ResponsiveSvg'], function (d3, ResponsiveSvg) {
      */
     function BoxPlot(_width, _height){
         var _this = new ResponsiveSvg(_width, _height);
-        var radius = Math.min(_this._width(), _this._height()) / 2;
+
         var path = _this.svg()
             .append("g")
             .attr("transform", "translate(" + _this._width() / 2 + "," + _this._height() / 2 + ")")
             .selectAll("path");
+
+        // TODO: define how the BoxPlot will look like
 
 
 
