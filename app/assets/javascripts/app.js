@@ -39,7 +39,9 @@ define([
         _this.barChart = function () {
             var chart = new BarChart(800, 400);
             chart.initialize([{interval: "0-14", amount: 23},
-                {interval: "15-39", amount: 50}]);
+                {interval: "15-39", amount: 50},
+                {interval: "40-69", amount: 23.2},
+                {interval: "70+", amount: 66.3}]);
 
             $('body').append(chart);
         };

@@ -8,10 +8,12 @@ define(['d3', 'views/ResponsiveSvg'], function (d3, ResponsiveSvg){
         _this.marginRight(140);
         _this.marginBottom(50);
 
+        var intervals = ["0-14", "15-39", "40-69", "70+"];
+
         var x = d3.scale.ordinal();
 
-        x.domain(["0-14", "15-39", "40-69", "70+"]);
-        x.rangePoints([0, _width], 1.0);
+        x.domain(intervals);
+        x.rangeBands([0, _width], 0.5);
 
         var y = d3.scale.linear().range([_height, 0]);
 
@@ -30,20 +32,25 @@ define(['d3', 'views/ResponsiveSvg'], function (d3, ResponsiveSvg){
 
             _this.svg().append("g")
                 .attr('transform', 'translate(0,'+ _height +')')
+                .attr('class', 'x axis')
                 .call(xAxis);
 
             _this.svg().append("g")
+                .attr("class", "y axis")
                 .call(yAxis);
 
             var points = _this.svg().selectAll(".bars")
                 .data(data)
                 .enter().append("g");
 
+            var colorScale = d3.scale.category20().domain(intervals);
+
             points.append("rect")
                 .attr("x", function(datum) { return x(datum.interval)})
-                /*.attr("y", function(datum) { return y(datum.amount)})*/
-                .attr("width", 10)
-                .attr("height",function(datum) { return y(datum.amount) + 5});
+                .attr("y", function(datum) { return y(datum.amount)})
+                .attr("width", function(datum) { return x.rangeBand()})
+                .attr("height",function(datum) { return _height - y(datum.amount)})
+                .style("fill", function(datum) { return colorScale(datum.interval)});
         };
 
         return _this;
