@@ -11,10 +11,11 @@ define([
     'views/ui/CodeButtonBarView',
     'views/ui/PieChartByAgeVisualisation',
     'views/BarChart',
+    'views/OrdinalCurveChart',
     'models/categories/SexCategory',
     'helpers/CategoryAdapter',
     'helpers/CodeAdapter'
-], function(AbstractSwissMap,PieChart, SeriesChart, CardBoardView, CardView, AbstractSeriesChart, Catalog, CodeTableView, CodeButtonBarView, PieChartByAgeVisualisation, BarChart){
+], function(AbstractSwissMap, PieChart, SeriesChart, CardBoardView, CardView, AbstractSeriesChart, Catalog, CodeTableView, CodeButtonBarView, PieChartByAgeVisualisation, BarChart, OrdinalCurveChart){
 
     "use strict";
     function App() {
@@ -46,10 +47,13 @@ define([
             $('body').append(chart);
         };
 
-
-        //TODO: Fetch data from DB etc.
         _this.ordinalCurveChart = function () {
-            alert("curve chart");
+            var chart = new OrdinalCurveChart(800, 400);
+            chart.initialize([{x: 50, y: 100},          //TODO: write something meaningful here
+                {x: 50, y: 200},
+                {x: 100, y: 200}]);
+
+            $('body').append(chart);
         };
 
         _this.seriesChart = function () {
@@ -250,7 +254,8 @@ define([
                 console.log(each.toString())});
         };
 
-        _this.barChart();
+        //_this.barChart();
+        _this.ordinalCurveChart();
         //_this.seriesChart();
         //_this.icdPieChart();
         //this.cardView();
