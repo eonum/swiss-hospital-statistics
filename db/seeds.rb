@@ -1,3 +1,4 @@
+require 'datasets/icd_chapter_age_sex_dataset'
 require 'codes/icd_chapter'
 # clear out old data
 HospitalType.delete_all
