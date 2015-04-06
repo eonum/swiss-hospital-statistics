@@ -14,7 +14,7 @@ define([
     'models/categories/SexCategory',
     'helpers/CategoryAdapter',
     'helpers/CodeAdapter'
-], function(AbstractSwissMap,PieChart,SeriesChart, CardBoardView, CardView, AbstractSeriesChart, Catalog, CodeTableView, CodeButtonBarView, PieChartByAgeVisualisation, BarChart){
+], function(AbstractSwissMap,PieChart, SeriesChart, CardBoardView, CardView, AbstractSeriesChart, Catalog, CodeTableView, CodeButtonBarView, PieChartByAgeVisualisation, BarChart){
 
     "use strict";
     function App() {
@@ -44,6 +44,12 @@ define([
                 {interval: "70+", amount: 66.3}]);
 
             $('body').append(chart);
+        };
+
+
+        //TODO: Fetch data from DB etc.
+        _this.ordinalCurveChart = function () {
+            alert("curve chart");
         };
 
         _this.seriesChart = function () {
@@ -244,9 +250,9 @@ define([
                 console.log(each.toString())});
         };
 
-        //_this.barChart();
+        _this.barChart();
         //_this.seriesChart();
-        _this.icdPieChart();
+        //_this.icdPieChart();
         //this.cardView();
         //_this.codes();
         //_this.visualisations();
