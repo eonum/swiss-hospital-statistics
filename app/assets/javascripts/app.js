@@ -37,13 +37,20 @@ define([
 
         //$('body').append(buttons).append(table);
         _this.barChart = function () {
-            var chart = new BarChart(800, 400);
-            chart.initialize([{interval: "0-14", amount: 23},
+            var chart = new BarChart(800, 400).setData([{interval: "0-14", amount: 23},
                 {interval: "15-39", amount: 50},
                 {interval: "40-69", amount: 23.2},
                 {interval: "70+", amount: 66.3}]);
 
             $('body').append(chart);
+            $('body').append('<p id="clicker">Test</p>');
+
+            $('#clicker').click(function () {
+                chart.setData([{interval: "0-14", amount: 5},
+                    {interval: "15-39", amount: 25},
+                    {interval: "40-69", amount: 75},
+                    {interval: "70+", amount: 31.3}]);
+            });
         };
 
         _this.seriesChart = function () {
