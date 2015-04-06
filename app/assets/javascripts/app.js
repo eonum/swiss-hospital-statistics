@@ -11,10 +11,11 @@ define([
     'views/ui/CodeButtonBarView',
     'views/ui/PieChartByAgeVisualisation',
     'views/BarChart',
+    'views/OrdinalCurveChart',
     'models/categories/SexCategory',
     'helpers/CategoryAdapter',
     'helpers/CodeAdapter'
-], function(AbstractSwissMap,PieChart,SeriesChart, CardBoardView, CardView, AbstractSeriesChart, Catalog, CodeTableView, CodeButtonBarView, PieChartByAgeVisualisation, BarChart){
+], function(AbstractSwissMap, PieChart, SeriesChart, CardBoardView, CardView, AbstractSeriesChart, Catalog, CodeTableView, CodeButtonBarView, PieChartByAgeVisualisation, BarChart, OrdinalCurveChart){
 
     "use strict";
     function App() {
@@ -51,6 +52,15 @@ define([
                     {interval: "40-69", amount: 75},
                     {interval: "70+", amount: 31.3}]);
             });
+        };
+
+        _this.ordinalCurveChart = function () {
+            var chart = new OrdinalCurveChart(800, 400);
+            chart.initialize([{x: 50, y: 100},          //TODO: write something meaningful here
+                {x: 50, y: 200},
+                {x: 100, y: 200}]);
+
+            $('body').append(chart);
         };
 
         _this.seriesChart = function () {
@@ -252,8 +262,9 @@ define([
         };
 
         //_this.barChart();
+        _this.ordinalCurveChart();
         //_this.seriesChart();
-        _this.icdPieChart();
+        //_this.icdPieChart();
         //this.cardView();
         //_this.codes();
         //_this.visualisations();
