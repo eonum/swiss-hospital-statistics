@@ -1,6 +1,7 @@
 define(['d3', 'views/ResponsiveSvg'], function (d3, ResponsiveSvg) {
 
     function OrdinalCurveChart(_width, _height) {
+        var TRANSITION_TIME = 1000;
 
         var _this = new ResponsiveSvg(_width, _height);
 
@@ -9,18 +10,82 @@ define(['d3', 'views/ResponsiveSvg'], function (d3, ResponsiveSvg) {
         _this.marginRight(140);
         _this.marginBottom(50);
 
-        _this.initialize = function(data){
+        var x = d3.scale.ordinal();
 
-            _this.svg().selectAll("circle")
-                .data(data)
-                .enter().append("circle")
-                .attr("cx", function(d) { return d.x; })
-                .attr("cy", function(d) { return d.y; })
-                .attr("r", 2.5);
+        x.rangeBands([0, _width], 0.5);
+
+        var y = d3.scale.linear().range([_height, 0]);
+
+        var xAxis = d3.svg.axis()
+            .scale(x)
+            .orient("bottom");
+
+        var yAxis = d3.svg.axis()
+            .scale(y)
+            .orient("left");
+
+        _this.initialize = function(){
+
+            _this.svg().append("g")
+                .attr('transform', 'translate(0,'+ _height +')')
+                .attr('class', 'x axis')
+                .call(xAxis);
+
+            _this.svg().append("g")
+                .attr("class", "y axis");
+
+            return _this;
         };
+
+        _this.setData = function (data){
+
+            _this.svg().selectAll("line")
+                .data(data)
+                .enter().append("g").append("line");
+
+            /*_this.svg().selectAll("circle")
+                .data(data)
+                .enter().append("g").append("circle");*/
+
+            var xDomain = _.map(data, function(datum){ return datum.interval});
+            var colorScale = d3.scale.category20().domain(xDomain);
+
+            x.domain(xDomain);
+            y.domain([0, d3.max(data, function(datum){
+                return datum.amount;
+            })]);
+
+            _this.svg().selectAll(".x.axis").call(xAxis);
+            _this.svg().selectAll(".y.axis").call(yAxis);
+
+            _this.svg().selectAll("line").data(data)
+                .style("fill", function(datum) { return colorScale(datum.interval)})
+                .attr("x1", x(20)) //function(datum) { return x(datum.interval) + 0.5*x.rangeBand()})
+                .attr("y1", 0)   //function(datum) { return y(datum.amount) - 1})
+                .attr("x2", 20) //function(datum) { return x(datum.interval) + 1.5*x.rangeBand()})
+                .attr("y2", 20);
+
+            /*_this.svg().selectAll("circle").data(data)
+                .style("fill", function(datum) { return colorScale(datum.interval)})
+                .attr("cx", function(datum) { return x(datum.interval) + 0.5*x.rangeBand()})
+                .attr("cy", function(datum) { return y(datum.amount) - 1})
+                .attr("r", 10);*/
+
+            return _this;
+        };
+
+        _this.initialize();
 
         return _this;
     }
 
     return OrdinalCurveChart;
 });
+
+
+/*_this.svg().selectAll("circle")
+    .data(data)
+    .enter().append("circle")
+    .attr("cx", function(d) { return d.x; })
+    .attr("cy", function(d) { return d.y; })
+    .attr("r", 2.5);*/

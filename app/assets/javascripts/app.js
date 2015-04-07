@@ -55,10 +55,10 @@ define([
         };
 
         _this.ordinalCurveChart = function () {
-            var chart = new OrdinalCurveChart(800, 400);
-            chart.initialize([{x: 50, y: 100},          //TODO: write something meaningful here
-                {x: 50, y: 200},
-                {x: 100, y: 200}]);
+            var chart = new OrdinalCurveChart(800, 400).setData([{interval: "0-14", amount: 5},
+                {interval: "15-39", amount: 25},
+                {interval: "40-69", amount: 75},
+                {interval: "70+", amount: 31.3}]);
 
             $('body').append(chart);
         };
@@ -204,6 +204,7 @@ define([
                 pie.openOn(value);
             });
         };
+
         _this.codes = function () {
             console.log('------------ C H O P ---------------');
             console.log('Received from server:');
