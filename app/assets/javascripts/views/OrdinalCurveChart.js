@@ -12,7 +12,7 @@ define(['d3', 'views/ResponsiveSvg'], function (d3, ResponsiveSvg) {
 
         var x = d3.scale.ordinal();
 
-        x.rangeBands([0, _width], 0.5);
+        x.rangePoints([0, _width], 0.5);
 
         var y = d3.scale.linear().range([_height, 0]);
 
@@ -39,13 +39,14 @@ define(['d3', 'views/ResponsiveSvg'], function (d3, ResponsiveSvg) {
 
         _this.setData = function (data){
 
-            _this.svg().selectAll("line")
+            _this.svg().selectAll(".connection")
                 .data(data)
-                .enter().append("g").append("line");
+                .enter().append("g").append("line")
+                .attr("class", "connection");
 
-            /*_this.svg().selectAll("circle")
+            _this.svg().selectAll("circle")
                 .data(data)
-                .enter().append("g").append("circle");*/
+                .enter().append("g").append("circle");
 
             var xDomain = _.map(data, function(datum){ return datum.interval});
             var colorScale = d3.scale.category20().domain(xDomain);
@@ -58,18 +59,22 @@ define(['d3', 'views/ResponsiveSvg'], function (d3, ResponsiveSvg) {
             _this.svg().selectAll(".x.axis").call(xAxis);
             _this.svg().selectAll(".y.axis").call(yAxis);
 
-            _this.svg().selectAll("line").data(data)
-                .style("fill", function(datum) { return colorScale(datum.interval)})
-                .attr("x1", x(20)) //function(datum) { return x(datum.interval) + 0.5*x.rangeBand()})
-                .attr("y1", 0)   //function(datum) { return y(datum.amount) - 1})
-                .attr("x2", 20) //function(datum) { return x(datum.interval) + 1.5*x.rangeBand()})
-                .attr("y2", 20);
+            _this.svg().selectAll(".connection")
+                .data(data)
+                // filter out last element
+                .filter(function (datum, index) {return index != data.length -1 })
+                .attr("stroke-width", 2)
+                .attr("stroke", "black")
+                .attr("x1", function(datum) { return x(datum.interval)})
+                .attr("y1", function(datum) { return y(datum.amount) - 1})
+                .attr("x2", function(datum, index) { return x(data[index + 1].interval)})
+                .attr("y2", function(datum, index) { return y(data[index + 1].amount)});
 
-            /*_this.svg().selectAll("circle").data(data)
+            _this.svg().selectAll("circle").data(data)
                 .style("fill", function(datum) { return colorScale(datum.interval)})
-                .attr("cx", function(datum) { return x(datum.interval) + 0.5*x.rangeBand()})
+                .attr("cx", function(datum) { return x(datum.interval)})
                 .attr("cy", function(datum) { return y(datum.amount) - 1})
-                .attr("r", 10);*/
+                .attr("r", 10);
 
             return _this;
         };
