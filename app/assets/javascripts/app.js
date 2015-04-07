@@ -10,12 +10,13 @@ define([
     'views/ui/CodeTableView',
     'views/ui/CodeButtonBarView',
     'views/ui/PieChartByAgeVisualisation',
+    'views/ui/BarChartVisualisation',
     'views/BarChart',
     'views/OrdinalCurveChart',
     'models/categories/SexCategory',
     'helpers/CategoryAdapter',
     'helpers/CodeAdapter'
-], function(AbstractSwissMap, PieChart, SeriesChart, CardBoardView, CardView, AbstractSeriesChart, Catalog, CodeTableView, CodeButtonBarView, PieChartByAgeVisualisation, BarChart, OrdinalCurveChart){
+], function(AbstractSwissMap, PieChart, SeriesChart, CardBoardView, CardView, AbstractSeriesChart, Catalog, CodeTableView, CodeButtonBarView, PieChartByAgeVisualisation,BarChartVisualisation, BarChart, OrdinalCurveChart){
 
     "use strict";
     function App() {
@@ -38,19 +39,13 @@ define([
 
         //$('body').append(buttons).append(table);
         _this.barChart = function () {
-            var chart = new BarChart(800, 400).setData([{interval: "0-14", amount: 23},
-                {interval: "15-39", amount: 50},
-                {interval: "40-69", amount: 23.2},
-                {interval: "70+", amount: 66.3}]);
-
-            $('body').append(chart);
-            $('body').append('<p id="clicker">Test</p>');
+            var visualisation = new BarChartVisualisation(800, 400);
+            visualisation.visualiseCode("icd", "A045");
+            $('body').append(visualisation);
+            $('body').append('<p id="clicker">Click me</p>');
 
             $('#clicker').click(function () {
-                chart.setData([{interval: "0-14", amount: 5},
-                    {interval: "15-39", amount: 25},
-                    {interval: "40-69", amount: 75},
-                    {interval: "70+", amount: 31.3}]);
+               visualisation.visualiseCode("icd", "B002");
             });
         };
 
