@@ -1,5 +1,5 @@
-define(['View', 'views/OrdinalCurveChart', 'helpers/converters/NumberByAgeDatasetConverter'],
-function(View, OrdinalCurveChart, NumberByAgeDatasetConverter)
+define(['View', 'views/OrdinalCurveChart', 'helpers/converters/NumberByAgeDatasetConverter', 'helpers/converters/DatasetSorter'],
+function(View, OrdinalCurveChart, NumberByAgeDatasetConverter, DatasetSorter)
 {
     function OrdinalCurveChartVisualisation(_width, _height){
         //var _this = this;
@@ -29,7 +29,12 @@ function(View, OrdinalCurveChart, NumberByAgeDatasetConverter)
                 function (result){
                 var codeType = _this.getFirstProperty(result.codes);
                 var datasets = codeType.codes; //Array of data sets
-                var converter = new NumberByAgeDatasetConverter(datasets);
+
+                var sorter = new DatasetSorter(datasets);
+                var sortedDatasets = sorter.sortByIntervalsAscending();
+
+                var converter = new NumberByAgeDatasetConverter(sortedDatasets);
+
 
                 chart.setData(converter.asAbsoluteData())
                     .setTitle(datasets[0].description);
