@@ -55,6 +55,8 @@ define([
                 {interval: "40-69", amount: 75},
                 {interval: "70+", amount: 31.3}]);
 
+            chart.setTitle("Dummy Data");
+
             $('body').append(chart);
         };
 

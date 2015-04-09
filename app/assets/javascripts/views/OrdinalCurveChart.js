@@ -14,6 +14,11 @@ define(['d3', 'views/ResponsiveSvg'], function (d3, ResponsiveSvg) {
 
         x.rangePoints([0, _width], 0.5);
 
+        var titleFontSize = _height / 20;
+        _this.svg().append("text")
+            .attr("id", "title")
+            .style("font-size", titleFontSize + "px");
+
         var y = d3.scale.linear().range([_height, 0]);
 
         var xAxis = d3.svg.axis()
@@ -75,6 +80,24 @@ define(['d3', 'views/ResponsiveSvg'], function (d3, ResponsiveSvg) {
                 .attr("cx", function(datum) { return x(datum.interval)})
                 .attr("cy", function(datum) { return y(datum.amount) - 1})
                 .attr("r", 10);
+
+            _this.setTitle = function(text){
+                _this.svg().select("#title")
+                    .transition()
+                    .duration(TRANSITION_TIME)
+                    .text(text);
+
+                return _this;
+            };
+
+            _this.setTitle = function(text){
+                _this.svg().select("#title")
+                    .transition()
+                    .duration(TRANSITION_TIME)
+                    .text(text);
+
+                return _this;
+            };
 
             return _this;
         };
