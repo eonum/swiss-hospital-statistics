@@ -44,24 +44,31 @@ define([], function(){
 
         /**
          * Converts the datasets using absolute values.
-         * @returns array of data set objects {interval: val, amount: val}
+         * @returns array of data set objects {interval: val, amount: val}, sorted by the interval
          */
         _this.asAbsoluteData = function(){
-            return _.map(datasets, function(dataset, index){
-                var interval = dataset.categorised_data.categories.interval[0];
-                return {interval: textIntervals[index], amount: interval.n};
-            })
+            return _this.asData(function (n){
+                return n;
+            });
         };
 
         /**
          * Converts the datasets using percent values.
-         * @returns array of data set objects {interval: val, amount: val}
+         * @returns array of data set objects {interval: val, amount: val}, sorted by the interval
          */
         _this.asPercentData = function () {
-            return _.map(datasets, function(dataset, index){
+            return _this.asData(function (n) {
+                return 100 * (n) / totalNumber;
+            });
+        };
+
+        _this.asData = function (amountCalculator){
+            var data = _.map(datasets, function(dataset, index){
                 var interval = dataset.categorised_data.categories.interval[0];
-                return {interval: textIntervals[i], amount: 100 * (interval.n) / totalNumber};
-            })
+                return {interval: textIntervals[index], amount: amountCalculator(interval.n)};
+            });
+            // sort by interval
+            return _.sortBy(data, 'interval');
         };
 
         _this.initialize();
