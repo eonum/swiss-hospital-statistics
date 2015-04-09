@@ -13,10 +13,11 @@ define([
     'views/ui/BarChartVisualisation',
     'views/BarChart',
     'views/OrdinalCurveChart',
+    'views/ui/OrdinalCurveChartVisualisation',
     'models/categories/SexCategory',
     'helpers/CategoryAdapter',
     'helpers/CodeAdapter'
-], function(AbstractSwissMap, PieChart, SeriesChart, CardBoardView, CardView, AbstractSeriesChart, Catalog, CodeTableView, CodeButtonBarView, PieChartByAgeVisualisation,BarChartVisualisation, BarChart, OrdinalCurveChart){
+], function(AbstractSwissMap, PieChart, SeriesChart, CardBoardView, CardView, AbstractSeriesChart, Catalog, CodeTableView, CodeButtonBarView, PieChartByAgeVisualisation,BarChartVisualisation, BarChart, OrdinalCurveChart, OrdinalCurveChartVisualisation){
 
     "use strict";
     function App() {
@@ -50,14 +51,9 @@ define([
         };
 
         _this.ordinalCurveChart = function () {
-            var chart = new OrdinalCurveChart(800, 400).setData([{interval: "0-14", amount: 5},
-                {interval: "15-39", amount: 25},
-                {interval: "40-69", amount: 75},
-                {interval: "70+", amount: 31.3}]);
-
-            chart.setTitle("Dummy Data");
-
-            $('body').append(chart);
+            var visualisation = new OrdinalCurveChartVisualisation(800, 400);
+            visualisation.visualiseCode();
+            $('body').append(visualisation);
         };
 
         _this.seriesChart = function () {
@@ -259,7 +255,7 @@ define([
                 console.log(each.toString())});
         };
 
-        //_this.barChart();
+        _this.barChart();
         _this.ordinalCurveChart();
         //_this.seriesChart();
         //_this.icdPieChart();
