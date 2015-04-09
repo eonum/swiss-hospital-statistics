@@ -60,4 +60,6 @@ group :development do
   gem 'debase'
   # only necessary on windows
   gem 'coffee-script-source', '1.8.0'
+  # javascript testing
+  gem 'teaspoon'
 end
