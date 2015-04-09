@@ -44,6 +44,11 @@ define(['d3', 'views/ResponsiveSvg'], function (d3, ResponsiveSvg) {
             return _this;
         };
 
+        /**
+         *
+         * @param data                  array of data set objects {interval: val, amount: val}
+         * @returns {ResponsiveSvg}     OrdinalCurveChart, filled with given data
+         */
         _this.setData = function (data){
 
             _this.svg().selectAll(".connection")

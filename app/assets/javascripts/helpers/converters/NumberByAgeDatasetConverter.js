@@ -12,6 +12,9 @@ define([], function(){
         var textIntervals = [];
         var totalNumber = 0;
 
+        /**
+         * Counts total number of cases and parses intervals to interval name tags (text)
+         */
         _this.initialize = function (){
 
             var intervals = [];
@@ -21,6 +24,8 @@ define([], function(){
                 totalNumber += datasets[i].categorised_data.categories.interval[0].n;
             }
 
+            /* go through each data set (i.e. interval), read "from" and "to" and store it as formatted text,
+               e.g. "15 - 36" or "70+" */
             for (var i = 0; i < datasets.length; i++) {
                 var interval = datasets[i].categorised_data.categories.interval[0];
                 var from = interval.interval.from;
@@ -35,11 +40,11 @@ define([], function(){
 
                 textIntervals.push(textInterval);
             }
-
         };
 
         /**
          * Converts the datasets using absolute values.
+         * @returns array of data set objects {interval: val, amount: val}
          */
         _this.asAbsoluteData = function(){
             return _.map(datasets, function(dataset, index){
@@ -50,6 +55,7 @@ define([], function(){
 
         /**
          * Converts the datasets using percent values.
+         * @returns array of data set objects {interval: val, amount: val}
          */
         _this.asPercentData = function () {
             return _.map(datasets, function(dataset, index){

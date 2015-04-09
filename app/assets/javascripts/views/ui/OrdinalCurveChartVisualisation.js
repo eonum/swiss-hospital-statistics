@@ -1,5 +1,5 @@
-define(['View', 'views/OrdinalCurveChart'],
-function(View, OrdinalCurveChart)
+define(['View', 'views/OrdinalCurveChart', 'helpers/converters/NumberByAgeDatasetConverter'],
+function(View, OrdinalCurveChart, NumberByAgeDatasetConverter)
 {
     function OrdinalCurveChartVisualisation(_width, _height){
         //var _this = this;
@@ -12,12 +12,39 @@ function(View, OrdinalCurveChart)
             content.append(chart);
         };
 
-        //TODO: fetch actual data from type/code
-        _this.visualiseCode = function(type, code){
-            chart.setData([{interval: "0-14", amount: 5},
-                {interval: "15-39", amount: 25},
-                {interval: "40-69", amount: 75},
-                {interval: "70+", amount: 31.3}]).setTitle("Dummy Data");
+        /**
+         * Does something and means something ;-)
+         */
+        _this.add = override(_this, _this.add, function(element){
+            content.add(element);
+            return _this;
+        });
+
+        _this.visualiseCode = function (type, code){
+
+            /* jQuery getJSON(url, callback) fetches data from /api/v1/... and returns JSONs to given callback function */
+            $.getJSON('/api/v1/codes/' + type + '/info/'+ code,
+
+               /* extract data sets from JSON result, convert ??? and fill data into chart */
+                function (result){
+                var codeType = _this.getFirstProperty(result.codes);
+                var datasets = codeType.codes; //Array of data sets
+                var converter = new NumberByAgeDatasetConverter(datasets);
+
+                chart.setData(converter.asAbsoluteData())
+                    .setTitle(datasets[0].description);
+            });
+        };
+
+        /**
+         * Fetches first property from JSON object, which is the type of code (e.g. ICD, CHOP etc.)
+         * @param object JSON result from API call
+         * @returns code type object, the object containing the actual datasets
+         */
+        _this.getFirstProperty = function (object){
+            for (var prop in object) {
+                return object[prop];
+            }
         };
 
         _this.initialize();

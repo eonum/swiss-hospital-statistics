@@ -52,7 +52,7 @@ define([
 
         _this.ordinalCurveChart = function () {
             var visualisation = new OrdinalCurveChartVisualisation(800, 400);
-            visualisation.visualiseCode();
+            visualisation.visualiseCode("icd", "A045");
             $('body').append(visualisation);
         };
 
