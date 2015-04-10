@@ -43,3 +43,10 @@ The parsing is initiated by the *Catalog* class. It searches for all datasets th
 ### Use the visualizations
 
 Visit the URL [http://localhost:3000/](http://localhost:3000/).
+
+### Run tests
+
+The unit tests of this project consist of ruby tests that mainly cover the statistics parsers and of javascript tests that cover the frontend, namely the visualisations and the data converters.
+
+- To run the ruby tests, the rake task *test:units* can be used. Please note that MongoDB needs to be running. The tests will run in the database specified in the *mongoid.yml* file.
+- For the javascript unit tests the teaspoon gem is used. This gem is only available in the development environment. To run the tests, the development configuration has to be run. Once the server is started, the javascript testing is available under the URL [http://localhost:3000/teaspoon/default](http://localhost:3000/teaspoon/default).
