@@ -9,6 +9,7 @@ define([
     'models/Catalog',
     'views/ui/CodeTableView',
     'views/ui/CodeButtonBarView',
+    'views/ui/ChartChoiceButtonBar',
     'views/ui/PieChartByAgeVisualisation',
     'views/ui/BarChartVisualisation',
     'views/BarChart',
@@ -17,7 +18,7 @@ define([
     'models/categories/SexCategory',
     'helpers/CategoryAdapter',
     'helpers/CodeAdapter'
-], function(AbstractSwissMap, PieChart, SeriesChart, CardBoardView, CardView, AbstractSeriesChart, Catalog, CodeTableView, CodeButtonBarView, PieChartByAgeVisualisation,BarChartVisualisation, BarChart, OrdinalCurveChart, OrdinalCurveChartVisualisation){
+], function(AbstractSwissMap, PieChart, SeriesChart, CardBoardView, CardView, AbstractSeriesChart, Catalog, CodeTableView, CodeButtonBarView, ChartChoiceButtonBar, PieChartByAgeVisualisation,BarChartVisualisation, BarChart, OrdinalCurveChart, OrdinalCurveChartVisualisation){
 
     "use strict";
     function App() {
@@ -25,6 +26,7 @@ define([
 
         var table = new CodeTableView();
         var buttons = new CodeButtonBarView();
+        var realButtons = new ChartChoiceButtonBar();
 
         var catalog = new Catalog();
         catalog.loadTypes(function(){
@@ -39,6 +41,8 @@ define([
         });
 
         //$('body').append(buttons).append(table);
+        $('body').append(realButtons);
+
         _this.barChart = function () {
             var visualisation = new BarChartVisualisation(800, 400);
             visualisation.visualiseCode("icd", "A045");
