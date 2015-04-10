@@ -56,6 +56,7 @@ define(['d3', 'views/ResponsiveSvg'], function (d3, ResponsiveSvg) {
                 .enter().append("g").append("line")
                 .attr("class", "connection");
 
+
             _this.svg().selectAll("circle")
                 .data(data)
                 .enter().append("g").append("circle");
@@ -107,11 +108,3 @@ define(['d3', 'views/ResponsiveSvg'], function (d3, ResponsiveSvg) {
 
     return OrdinalCurveChart;
 });
-
-
-/*_this.svg().selectAll("circle")
-    .data(data)
-    .enter().append("circle")
-    .attr("cx", function(d) { return d.x; })
-    .attr("cy", function(d) { return d.y; })
-    .attr("r", 2.5);*/
