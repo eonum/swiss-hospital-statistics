@@ -276,6 +276,7 @@ define([
         chartCardPane.setCard("barChart"); //TODO: this should rather be a default in CardPane
         $('body').append(chartCardPane);
 
+        //_this.boxPlot();
         //_this.seriesChart();
         //_this.icdPieChart();
         //this.cardView();
