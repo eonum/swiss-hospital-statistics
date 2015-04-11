@@ -1,5 +1,8 @@
 define(['d3', 'views/ResponsiveSvg'], function (d3, ResponsiveSvg) {
 
+    //TODO: So far, only one curve is shown at a time. We use the ordinal curve visualisation to compare multiple Codes.
+    //Also, the colors have to be set right. See TODOs below.
+
     function OrdinalCurveChart(_width, _height) {
         var TRANSITION_TIME = 1000;
 
@@ -62,7 +65,8 @@ define(['d3', 'views/ResponsiveSvg'], function (d3, ResponsiveSvg) {
                 .enter().append("g").append("circle");
 
             var xDomain = _.map(data, function(datum){ return datum.interval});
-            var colorScale = d3.scale.category20().domain(xDomain);
+            var colorScaleIntervals = d3.scale.category20().domain(xDomain);
+            var colorScaleNumbers = d3.scale.category20();
 
             x.domain(xDomain);
             y.domain([0, d3.max(data, function(datum){
@@ -76,7 +80,8 @@ define(['d3', 'views/ResponsiveSvg'], function (d3, ResponsiveSvg) {
                 .data(data)
                 // filter out last element
                 .filter(function (datum, index) {return index != data.length -1 })
-                .attr("stroke-width", 2)
+                .style("stroke", function(datum) {return colorScaleNumbers(1) /*TODO: Choose n-th color from scale, n = number of the curve*/})
+                .attr("stroke-width", 1.5)
                 .attr("stroke", "black")
                 .attr("x1", function(datum) { return x(datum.interval)})
                 .attr("y1", function(datum) { return y(datum.amount) - 1})
@@ -84,10 +89,10 @@ define(['d3', 'views/ResponsiveSvg'], function (d3, ResponsiveSvg) {
                 .attr("y2", function(datum, index) { return y(data[index + 1].amount)});
 
             _this.svg().selectAll("circle").data(data)
-                .style("fill", function(datum) { return colorScale(datum.interval)})
+                .style("fill", function(datum) {return colorScaleNumbers(1) /*TODO: Choose n-th color from scale, n = number of the curve*/})
                 .attr("cx", function(datum) { return x(datum.interval)})
                 .attr("cy", function(datum) { return y(datum.amount) - 1})
-                .attr("r", 10);
+                .attr("r", 4);
 
             _this.setTitle = function(text){
                 _this.svg().select("#title")
