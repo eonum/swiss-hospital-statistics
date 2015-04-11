@@ -8,6 +8,7 @@ define(['d3', 'views/ResponsiveSvg'], function (d3, ResponsiveSvg) {
     function BoxPlot(_width, _height){
         var _this = new ResponsiveSvg(_width, _height);
 
+        // TODO
         var path = _this.svg()
             .append("g")
             .attr("transform", "translate(" + _this._width() / 2 + "," + _this._height() / 2 + ")")
@@ -19,35 +20,35 @@ define(['d3', 'views/ResponsiveSvg'], function (d3, ResponsiveSvg) {
 
         var min = Infinity,
             max = -Infinity;
-/*
-        var chart = d3.box()
-            .whiskers(iqr(1.5))
-            .width(width)
-            .height(height);
-*/
-        chart.domain([min, max]);
+
+        _this.setData = function (data) {
 
 
+            var chart = d3.box()
+                .whiskers(iqr(1.5))
+                .width(width)
+                .height(height);
 
-        // TODO: define how the BoxPlot will look like
-
-        _this.setData = function (intervals) {
-
-        }
+            chart.domain([min, max]);
+        };
 
         _this.initialize = function() {
-            var svg = d3.select("body").selectAll("svg")
-                .data(data)
+            var svg = d3.select("body").selectAll(".tomasz")
+                .data()
                 .enter().append("svg")
                 .attr("class", "box")
                 .attr("width", width + margin.left + margin.right)
                 .attr("height", height + margin.bottom + margin.top)
                 .append("g")
-                .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
-                .call(chart);
-        }
+                .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+                // .call(chart);
+        };
+
+        // TODO change that number
+        _this.initialize()
+
         return _this;
     }
-    return AbstractPieChart;
+    return BoxPlot;
 
 });

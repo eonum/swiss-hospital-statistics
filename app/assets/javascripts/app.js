@@ -14,13 +14,15 @@ define([
     'views/ui/ChartChoiceButtonBar',
     'views/ui/PieChartByAgeVisualisation',
     'views/ui/BarChartVisualisation',
+    'views/ui/BoxPlotVisualisation',
     'views/BarChart',
+    'views/BoxPlot',
     'views/OrdinalCurveChart',
     'views/ui/OrdinalCurveChartVisualisation',
     'models/categories/SexCategory',
     'helpers/CategoryAdapter',
     'helpers/CodeAdapter'
-], function(CardElement, CardPane, AbstractSwissMap, PieChart, SeriesChart, CardBoardView, CardView, AbstractSeriesChart, Catalog, CodeTableView, CodeButtonBarView, ChartChoiceButtonBar, PieChartByAgeVisualisation,BarChartVisualisation, BarChart, OrdinalCurveChart, OrdinalCurveChartVisualisation){
+], function(CardElement, CardPane, AbstractSwissMap, PieChart, SeriesChart, CardBoardView, CardView, AbstractSeriesChart, Catalog, CodeTableView, CodeButtonBarView, ChartChoiceButtonBar, PieChartByAgeVisualisation,BarChartVisualisation, BoxPlotVisualisation, BarChart, BoxPlot, OrdinalCurveChart, OrdinalCurveChartVisualisation){
 
     "use strict";
     function App() {
