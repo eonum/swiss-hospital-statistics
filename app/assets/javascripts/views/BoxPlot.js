@@ -13,35 +13,43 @@ define(['d3', 'views/ResponsiveSvg'], function (d3, ResponsiveSvg) {
             .attr("transform", "translate(" + _this._width() / 2 + "," + _this._height() / 2 + ")")
             .selectAll("path");
 
+        var margin = {top: 10, right: 50, bottom: 20, left: 50},
+            width = 120 - margin.left - margin.right,
+            height = 500 - margin.top - margin.bottom;
+
+        var min = Infinity,
+            max = -Infinity;
+
+        var chart = d3.box()
+            .whiskers(iqr(1.5))
+            .width(width)
+            .height(height);
+
+        chart.domain([min, max]);
+
+
+
         // TODO: define how the BoxPlot will look like
 
+        _this.setData = function (intervals) {
 
+        }
 
+        _this.initialize = function() {
+            var svg = d3.select("body").selectAll("svg")
+                .data(data)
+                .enter().append("svg")
+                .attr("class", "box")
+                .attr("width", width + margin.left + margin.right)
+                .attr("height", height + margin.bottom + margin.top)
+                .append("g")
+                .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
+                .call(chart);
 
-
-        var utils = {
-            findNeighborArc : function(i, data0, data1, key) {
-                var d;
-                return (d = utils.findPreceding(i, data0, data1, key)) ? {startAngle: d.endAngle, endAngle: d.endAngle}
-                    : (d = utils.findFollowing(i, data0, data1, key)) ? {startAngle: d.startAngle, endAngle: d.startAngle}
-                    : null; },
-            findPreceding : function(i, data0, data1, key) {
-                var m = data0.length;
-                while (--i >= 0) {
-                    var k = key(data1[i]);
-                    for (var j = 0; j < m; ++j) {
-                        if (key(data0[j]) === k) return data0[j]; } } },
-            findFollowing : function(i, data0, data1, key) {
-                var n = data1.length, m = data0.length;
-                while (++i < n) {
-                    var k = key(data1[i]);
-                    for (var j = 0; j < m; ++j) {
-                        if (key(data0[j]) === k) return data0[j]; } } },
-            arcTween : function(d) {
-                var i = d3.interpolate(this._current, d);
-                this._current = i(0);
-                return function(t) { return arc(i(t)); }; }
-        };
+            setInterval(function() {
+                svg.datum(randomize).call(chart.duration(1000));
+            }, 2000);
+        }
 
         _this._keyOf = function (d) {return d.data[_this._keySymbol()]};
         _this._valueOf = function (data) {return data.data[_this._valueSymbol()]};
