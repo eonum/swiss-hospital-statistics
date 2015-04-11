@@ -176,6 +176,13 @@ define(['helpers/converters/DatasetSorter'], function(DatasetSorter){
 		
 	    expect(datasets).toEqual(sortedDataset);
 	});
+
+	it("should not add or delete elements from lists", function() {
+	    var sorter = new DatasetSorter(datasets);
+	    var sortedDataset = sorter.sortByIntervalsAscending();
+		
+	    expect(datasets.length).toEqual(sortedDataset.length);
+	});
 	
     });
 });
