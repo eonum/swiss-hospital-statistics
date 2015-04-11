@@ -145,6 +145,22 @@ define(['helpers/converters/NumberByAgeDatasetConverter'], function(NumberByAgeD
 
         });
 
+	it("should be able to compute the total number of cases", function (){
+            var converter = new NumberByAgeDatasetConverter(datasets);
+
+            var expectedResult = 1177;
+
+            expect(converter.getTotalCases()).toEqual(expectedResult);
+        });
+
+	it("should be able to find the used intervals", function (){
+            var converter = new NumberByAgeDatasetConverter(datasets);
+
+            var expectedResult = ["70+", "40 - 69", "0 - 14", "15 - 39"];
+
+            expect(converter.pushTextIntervals()).toEqual(expectedResult);
+        });
+
         it("should convert a valid dataset with absolute numbers", function (){
             var converter = new NumberByAgeDatasetConverter(datasets);
 
@@ -168,13 +184,23 @@ define(['helpers/converters/NumberByAgeDatasetConverter'], function(NumberByAgeD
 
         });
 
-        it("should handle an empty dataset gracefully", function (){
+        it("should handle an empty dataset gracefully (as absolute data)", function (){
 
             var converter = new NumberByAgeDatasetConverter([]);
 
             var expectedResults = [];
 
             expect(converter.asAbsoluteData()).toEqual(expectedResults);
+
+        });
+
+	it("should handle an empty dataset gracefully (as percent data)", function (){
+
+            var converter = new NumberByAgeDatasetConverter([]);
+
+            var expectedResults = [];
+
+            expect(converter.asPercentData()).toEqual(expectedResults);
 
         });
     });
