@@ -33,14 +33,18 @@ define([
         };*/
 
         _this.addButtons = function () {
-            var button1 = new View('<a href="#" class="small button secondary">Bar Chart</a>');
-            content.add(new View('<li></li>').add(button1));
+            var barChartButton = $(new View('<a href="#" class="small button secondary">Bar Chart</a>'));
+            barChartButton.click(function(){alert("Theoretically, there would be a Bar Chart now...")});
+            content.add(new View('<li></li>').add(barChartButton));
 
-            var button1 = new View('<a href="#" class="small button secondary">Ordinal Curve</a>');
-            content.add(new View('<li></li>').add(button1));
+            var ordinalCurveButton = $(new View('<a href="#" class="small button secondary">Ordinal Curve</a>'));
+            ordinalCurveButton.click(function(){alert("Theoretically, there would be an Ordinal Curve Chart now...")});
+            //ordinalCurveButton.click(function(){$(this).parent().remove()});
+            content.add(new View('<li></li>').add(ordinalCurveButton));
 
-            var button1 = new View('<a href="#" class="small button secondary">Pie Chart</a>');
-            content.add(new View('<li></li>').add(button1));
+            var pieChartButton = $(new View('<a href="#" class="small button secondary">Pie Chart</a>'));
+            pieChartButton.click(function(){alert("Theoretically, there would be a Pie Chart now...")});
+            content.add(new View('<li></li>').add(pieChartButton));
         };
 
         _this.addButtons();

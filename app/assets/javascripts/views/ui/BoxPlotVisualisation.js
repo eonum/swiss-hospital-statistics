@@ -19,6 +19,11 @@ define([
             return _this;
         });
 
+        _this.removeFromContent = function()
+        {
+            $(_this).remove();
+        }
+
         /**
          * Creates this visualisation from the data provided.
          * @param data the data to update this visualisation with

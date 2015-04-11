@@ -20,6 +20,11 @@ function(View, OrdinalCurveChart, NumberByAgeDatasetConverter, DatasetSorter)
             return _this;
         });
 
+        _this.removeFromContent = function()
+        {
+            $(_this).remove();
+        }
+
         _this.visualiseCode = function (type, code){
 
             /* jQuery getJSON(url, callback) fetches data from /api/v1/... and returns JSONs to given callback function */

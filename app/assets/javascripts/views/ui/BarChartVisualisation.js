@@ -32,6 +32,11 @@ function (BarChart, View, NumberByAgeDatasetConverter){
             });
         };
 
+        _this.removeFromContent = function()
+        {
+            $(_this).remove();
+        }
+
         _this.getFirstProperty = function (object){
                 for (var prop in object) {
                     return object[prop];
