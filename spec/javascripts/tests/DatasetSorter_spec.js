@@ -1,7 +1,7 @@
 define(['helpers/converters/DatasetSorter'], function(DatasetSorter){
     describe('DatasetSorter', function (){
-        var converter;
-        var datasets = [{
+        var sorter;
+	var datasets = [{
                         "code": "A045",
                         "description": "Enteritis durch Campylobacter",
                         "year": 2013,
@@ -144,15 +144,38 @@ define(['helpers/converters/DatasetSorter'], function(DatasetSorter){
         beforeEach(function(){
 
         });
-
-	it("should be able to know that 1 = 1", function (){
-            var converter = new DatasetSorter(datasets);
-
-            var expectedResult = 1;
-
-            expect(1).toEqual(expectedResult);
+	
+	it("should be able to sort datasets", function (){
+	    var sorter = new DatasetSorter(datasets);
+            var sortedData = sorter.sortByIntervalsAscending();
+            
+	    var firstIntervalFrom = sortedData[0].categorised_data.categories.interval[0].interval.from;
+	    var firstIntervalTo = sortedData[0].categorised_data.categories.interval[0].interval.to;
+	    var secondIntervalFrom = sortedData[1].categorised_data.categories.interval[0].interval.from;
+	    var secondIntervalTo = sortedData[1].categorised_data.categories.interval[0].interval.to;
+	    var thirdIntervalFrom = sortedData[2].categorised_data.categories.interval[0].interval.from;
+	    var thirdIntervalTo = sortedData[2].categorised_data.categories.interval[0].interval.to;
+	    var fourthIntervalFrom = sortedData[3].categorised_data.categories.interval[0].interval.from;
+	    var fourthIntervalTo = sortedData[3].categorised_data.categories.interval[0].interval.to;
+	    
+	    expect(0).toEqual(firstIntervalFrom);
+	    expect(14).toEqual(firstIntervalTo);
+	    expect(15).toEqual(secondIntervalFrom);
+	    expect(39).toEqual(secondIntervalTo);
+	    expect(40).toEqual(thirdIntervalFrom);
+	    expect(69).toEqual(thirdIntervalTo);
+	    expect(70).toEqual(fourthIntervalFrom);
+	    expect(undefined).toEqual(fourthIntervalTo);
         });
 
+	it("should leave empty datasets alone", function() {
+	    var datasets = [];
+	    var sorter = new DatasetSorter(datasets);
+
+	    var sortedDataset = sorter.sortByIntervalsAscending();
+		
+	    expect(datasets).toEqual(sortedDataset);
+	});
 	
     });
 });
