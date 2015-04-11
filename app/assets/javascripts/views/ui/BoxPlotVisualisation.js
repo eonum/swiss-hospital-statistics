@@ -64,10 +64,10 @@ define([
                     }
 
                     // Pushing data per age interval into an array.
-                    intervals.push({key: textInterval, value: 100 * (interval.n) / sum},
+                    intervals.push([{key: textInterval, value: 100 * (interval.n) / sum},
                         {key: lowerQuartil, value: lowerQuartil.amount},
                         {key: median, value: median.amount},
-                        {key: higherQuartil, value: higherQuartil.amount});
+                        {key: higherQuartil, value: higherQuartil.amount}]);
                 }
 
                 boxPlot.setData(intervals);
