@@ -168,13 +168,23 @@ define(['helpers/converters/NumberByAgeDatasetConverter'], function(NumberByAgeD
 
         });
 
-        it("should handle an empty dataset gracefully", function (){
+        it("should handle an empty dataset gracefully (as absolute data)", function (){
 
             var converter = new NumberByAgeDatasetConverter([]);
 
             var expectedResults = [];
 
             expect(converter.asAbsoluteData()).toEqual(expectedResults);
+
+        });
+
+	it("should handle an empty dataset gracefully (as percent data)", function (){
+
+            var converter = new NumberByAgeDatasetConverter([]);
+
+            var expectedResults = [];
+
+            expect(converter.asPercentData()).toEqual(expectedResults);
 
         });
     });
