@@ -17,15 +17,18 @@ define([], function(){
          */
         _this.initialize = function (){
 
+            //get total number of cases
+            totalNumber = _this.getTotalCases();
+
+            //get used age intervals
+            textIntervals = _this.pushTextIntervals();
+        };
+
+        /* go through each data set (i.e. interval), read "from" and "to" and store it as formatted text,
+         e.g. "15 - 36" or "70+"
+         Does NOT sort the intervals*/
+        _this.pushTextIntervals = function() {
             var intervals = [];
-
-            // get total number of cases
-            for (var i = 0; i < datasets.length; i++) {
-                totalNumber += datasets[i].categorised_data.categories.interval[0].n;
-            }
-
-            /* go through each data set (i.e. interval), read "from" and "to" and store it as formatted text,
-               e.g. "15 - 36" or "70+" */
             for (var i = 0; i < datasets.length; i++) {
                 var interval = datasets[i].categorised_data.categories.interval[0];
                 var from = interval.interval.from;
@@ -37,10 +40,18 @@ define([], function(){
                 } else {
                     textInterval = from + " - " + to;
                 }
-
-                textIntervals.push(textInterval);
+                intervals.push(textInterval);
             }
-        };
+            return intervals;
+        }
+
+        //returns the total number of cases for a specific code
+        _this.getTotalCases = function() {
+            var cases = 0;
+            for (var i = 0; i < datasets.length; i++)
+                cases += datasets[i].categorised_data.categories.interval[0].n;
+            return cases;
+        }
 
         /**
          * Converts the datasets using absolute values.

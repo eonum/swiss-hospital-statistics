@@ -1,5 +1,7 @@
 
 define([
+    'views/ui/CardElement',
+    'views/ui/CardPane',
     'views/abstract/AbstractSwissMap',
     'views/PieChart',
     'views/SeriesChart',
@@ -18,7 +20,7 @@ define([
     'models/categories/SexCategory',
     'helpers/CategoryAdapter',
     'helpers/CodeAdapter'
-], function(AbstractSwissMap, PieChart, SeriesChart, CardBoardView, CardView, AbstractSeriesChart, Catalog, CodeTableView, CodeButtonBarView, ChartChoiceButtonBar, PieChartByAgeVisualisation,BarChartVisualisation, BarChart, OrdinalCurveChart, OrdinalCurveChartVisualisation){
+], function(CardElement, CardPane, AbstractSwissMap, PieChart, SeriesChart, CardBoardView, CardView, AbstractSeriesChart, Catalog, CodeTableView, CodeButtonBarView, ChartChoiceButtonBar, PieChartByAgeVisualisation,BarChartVisualisation, BarChart, OrdinalCurveChart, OrdinalCurveChartVisualisation){
 
     "use strict";
     function App() {
@@ -26,7 +28,8 @@ define([
 
         var table = new CodeTableView();
         var buttons = new CodeButtonBarView();
-        var realButtons = new ChartChoiceButtonBar();
+        var chartChoiceButtons = new ChartChoiceButtonBar();
+        var chartCardPane = new CardPane();
 
         var catalog = new Catalog();
         catalog.loadTypes(function(){
@@ -41,12 +44,17 @@ define([
         });
 
         //$('body').append(buttons).append(table);
-        $('body').append(realButtons);
+        chartChoiceButtons.addButtons(chartCardPane);
+        $('body').append(chartChoiceButtons);
+
 
         _this.barChart = function () {
             var visualisation = new BarChartVisualisation(800, 400);
             visualisation.visualiseCode("icd", "A045");
-            $('body').append(visualisation);
+            //$('body').append(visualisation);
+            var barChartCard = new CardElement("barChart",visualisation);
+            chartCardPane.addCard(barChartCard);
+
             $('body').append('<p id="clicker">Click me</p>');
 
             $('#clicker').click(function () {
@@ -57,7 +65,10 @@ define([
         _this.ordinalCurveChart = function () {
             var visualisation = new OrdinalCurveChartVisualisation(800, 400);
             visualisation.visualiseCode("icd", "A045");
-            $('body').append(visualisation);
+            //$('body').append(visualisation);
+
+            var ordinalCurveChartCard = new CardElement("ordinalCurve",visualisation);
+            chartCardPane.addCard(ordinalCurveChartCard);
         };
 
         _this.seriesChart = function () {
@@ -261,7 +272,10 @@ define([
 
         _this.barChart();
         _this.ordinalCurveChart();
-        //_this.boxPlot();
+
+        chartCardPane.setCard("barChart"); //TODO: this should rather be a default in CardPane
+        $('body').append(chartCardPane);
+
         //_this.seriesChart();
         //_this.icdPieChart();
         //this.cardView();
