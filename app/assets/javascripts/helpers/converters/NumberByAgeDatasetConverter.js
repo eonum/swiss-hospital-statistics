@@ -17,13 +17,18 @@ define([], function(){
          */
         _this.initialize = function (){
 
-            var intervals = [];
-
-            // get total number of cases
+            //get total number of cases
             totalNumber = _this.getTotalCases();
 
-            /* go through each data set (i.e. interval), read "from" and "to" and store it as formatted text,
-               e.g. "15 - 36" or "70+" */
+            //get used age intervals
+            textIntervals = _this.pushTextIntervals();
+        };
+
+        /* go through each data set (i.e. interval), read "from" and "to" and store it as formatted text,
+         e.g. "15 - 36" or "70+"
+         Does NOT sort the intervals*/
+        _this.pushTextIntervals = function() {
+            var intervals = [];
             for (var i = 0; i < datasets.length; i++) {
                 var interval = datasets[i].categorised_data.categories.interval[0];
                 var from = interval.interval.from;
@@ -35,10 +40,10 @@ define([], function(){
                 } else {
                     textInterval = from + " - " + to;
                 }
-
-                textIntervals.push(textInterval);
+                intervals.push(textInterval);
             }
-        };
+            return intervals;
+        }
 
         //returns the total number of cases for a specific code
         _this.getTotalCases = function() {

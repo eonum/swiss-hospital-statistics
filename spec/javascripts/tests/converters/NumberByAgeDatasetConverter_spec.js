@@ -153,6 +153,14 @@ define(['helpers/converters/NumberByAgeDatasetConverter'], function(NumberByAgeD
             expect(converter.getTotalCases()).toEqual(expectedResult);
         });
 
+	it("should be able to find the used intervals", function (){
+            var converter = new NumberByAgeDatasetConverter(datasets);
+
+            var expectedResult = ["70+", "40 - 69", "0 - 14", "15 - 39"];
+
+            expect(converter.pushTextIntervals()).toEqual(expectedResult);
+        });
+
         it("should convert a valid dataset with absolute numbers", function (){
             var converter = new NumberByAgeDatasetConverter(datasets);
 
