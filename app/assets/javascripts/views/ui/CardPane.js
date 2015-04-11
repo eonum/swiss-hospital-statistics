@@ -29,8 +29,10 @@ function(View){
         };
 
         function getCardIndexById(cardID){
-            //TODO: implement this
-            return 0;
+            for(var i=0; i<cards.length; i++)
+                if(cards[i].getId() == cardID){ //TODO: does "==" check for equality or identity in JavaScript...? Seems to work like equality
+                    return i;
+                }
         };
 
         _this.initialize();

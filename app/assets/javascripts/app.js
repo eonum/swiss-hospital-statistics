@@ -29,6 +29,7 @@ define([
         var table = new CodeTableView();
         var buttons = new CodeButtonBarView();
         var realButtons = new ChartChoiceButtonBar();
+        var chartCardPane = new CardPane();
 
         var catalog = new Catalog();
         catalog.loadTypes(function(){
@@ -50,7 +51,10 @@ define([
         _this.barChart = function () {
             var visualisation = new BarChartVisualisation(800, 400);
             visualisation.visualiseCode("icd", "A045");
-            $('body').append(visualisation);
+            //$('body').append(visualisation);
+            var barChartCard = new CardElement("barChart",visualisation);
+            chartCardPane.addCard(barChartCard);
+
             $('body').append('<p id="clicker">Click me</p>');
 
             $('#clicker').click(function () {
@@ -63,13 +67,8 @@ define([
             visualisation.visualiseCode("icd", "A045");
             //$('body').append(visualisation);
 
-            var testCard = new CardElement("test",visualisation);
-
-            var testCardPane = new CardPane();
-            testCardPane.addCard(testCard);
-            testCardPane.setCard("test");
-
-            $('body').append(testCardPane);
+            var ordinalCurveChartCard = new CardElement("ordinalCurve",visualisation);
+            chartCardPane.addCard(ordinalCurveChartCard);
         };
 
         _this.seriesChart = function () {
@@ -273,6 +272,9 @@ define([
 
         _this.barChart();
         _this.ordinalCurveChart();
+
+        chartCardPane.setCard("ordinalCurve");
+        $('body').append(chartCardPane);
         //_this.seriesChart();
         //_this.icdPieChart();
         //this.cardView();
