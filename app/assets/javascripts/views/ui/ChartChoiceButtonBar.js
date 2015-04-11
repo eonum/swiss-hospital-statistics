@@ -17,6 +17,10 @@ define([
             var ordinalCurveButton = $(new View('<a href="#" class="small button secondary">Ordinal Curve</a>'));
             ordinalCurveButton.click(function(){cardPane.setCard("ordinalCurve")});
             content.add(new View('<li></li>').add(ordinalCurveButton));
+
+            var pieChartButton = $(new View('<a href="#" class="small button secondary">ICD Pie Chart</a>'));
+            pieChartButton.click(function(){cardPane.setCard("pieChart")});
+            content.add(new View('<li></li>').add(pieChartButton));
         };
 
         return _this;

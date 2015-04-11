@@ -53,9 +53,11 @@ define([
             visualisation.visualiseCode("icd", "A045");
             //$('body').append(visualisation);
             var barChartCard = new CardElement("barChart",visualisation);
+            barChartCard.append('<p id="clicker">Click me</p>');
+
             chartCardPane.addCard(barChartCard);
 
-            $('body').append('<p id="clicker">Click me</p>');
+            //$('body').append('<p id="clicker">Click me</p>');
 
             $('#clicker').click(function () {
                visualisation.visualiseCode("icd", "B002");
@@ -95,9 +97,13 @@ define([
         _this.icdPieChart = function () {
             $.getJSON( "/api/v1/codes/icd/info/A045", function( data ) {
                 var visualisation = new PieChartByAgeVisualisation();
-                $('body').append('<p class="code_title">ICD-Code auswählen:</p>');
-                $('body').append('<input class="code_title", id="code_chooser"/>');
-                $('body').append(visualisation.setData(data));
+
+
+
+                var card = new CardElement("pieChart",visualisation.setData(data));
+                card.append('<p class="code_title">ICD-Code auswählen:</p>');
+                card.append('<input class="code_title", id="code_chooser"/>');
+                chartCardPane.addCard(card);
 
                 $('#code_chooser').keyup(function () {
                     var text = $('#code_chooser').val();
@@ -272,12 +278,12 @@ define([
 
         _this.barChart();
         _this.ordinalCurveChart();
+        _this.icdPieChart();
 
-        chartCardPane.setCard("barChart"); //TODO: this should rather be a default in CardPane
         $('body').append(chartCardPane);
 
+
         //_this.seriesChart();
-        //_this.icdPieChart();
         //this.cardView();
         //_this.codes();
         //_this.visualisations();

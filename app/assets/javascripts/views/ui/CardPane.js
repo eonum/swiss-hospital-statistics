@@ -23,6 +23,10 @@ function(View){
          */
         _this.addCard = function(card){
             cards.push(card);
+
+            //set first added card as default
+            if(cards.length == 1)
+                _this.setCard(card.getId());
         };
 
         /**
