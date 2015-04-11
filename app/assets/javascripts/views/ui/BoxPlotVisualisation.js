@@ -4,21 +4,23 @@ define([
     View, BoxPlot
 ) {
 
-    function BoxPlotVisualisation() {
+    function BoxPlotVisualisation(_width, _height) {
         var _this = new View('<div></div>');
         var content = new View('<div></div>');
-        var boxPlot;
+        var boxPlot = new BoxPlot(_width, _height);
 
         _this.initialize = function () {
             this.append(content);
             _this.class('boxPlotContainer');
         };
 
+        // TODO: Understand this function
         _this.add = override(_this, _this.add, function(element){
             content.add(element);
             return _this;
         });
 
+        // TODO: possible transitions?
         _this.removeFromContent = function()
         {
             $(_this).remove();
@@ -28,11 +30,11 @@ define([
          * Creates this visualisation from the data provided.
          * @param data the data to update this visualisation with
          */
-        _this.setData = function (data){
+        _this.visualise = function (data){
             var datasets = data.codes.icd.codes;
             if(datasets.length > 0) {
                 var code = datasets[0].code;
-                // This is the short description of the specific code from data
+                // This is the short textual description of the specific code from data
                 var description = datasets[0].description;
                 var intervals = [];
 
@@ -41,8 +43,8 @@ define([
                 for (var i = 0; i < datasets.length; i++) {
                     sum += datasets[i].categorised_data.categories.interval[0].n;
                 }
-                // TODO calculate the mean value
 
+                // TODO what happens if some data is missing?
                 for (var i = 0; i < datasets.length; i++) {
                     var interval = datasets[i].categorised_data.categories.interval[0];
                     var lowerQuartil = interval.categories.percentile[2];
@@ -52,6 +54,7 @@ define([
                     var from = interval.interval.from;
                     var to = interval.interval.to;
 
+                    // TODO maybe you want to put all boxplots into a chart???
                     var textInterval;
                     if (_.isUndefined(to)) {
                         textInterval = from + "+";
@@ -59,12 +62,16 @@ define([
                         textInterval = from + " - " + to;
                     }
 
+                    // Pushing data per age interval into an array.
                     intervals.push({key: textInterval, value: 100 * (interval.n) / sum},
                         {key: lowerQuartil, value: lowerQuartil.amount},
                         {key: median, value: median.amount},
                         {key: higherQuartil, value: higherQuartil.amount});
                 }
 
+                boxPlot.setData(intervals);
+
+/*
                 boxPlot = new BoxPlot().transformed(function (v) {
                     return v.toPrecision(3)
                 })
@@ -74,7 +81,7 @@ define([
                     .openOn(intervals);
 
                 content.empty();
-
+*/
                 content.add('<h3>' + code + ": "+ description + '</h3>');
                 content.add(boxPlot);
 
@@ -101,5 +108,5 @@ define([
         return _this;
     }
 
-    return PieChartByAgeVisualisation;
+    return BoxPlotVisualisation;
 });
