@@ -20,9 +20,7 @@ define([], function(){
             var intervals = [];
 
             // get total number of cases
-            for (var i = 0; i < datasets.length; i++) {
-                totalNumber += datasets[i].categorised_data.categories.interval[0].n;
-            }
+            totalNumber = _this.getTotalCases();
 
             /* go through each data set (i.e. interval), read "from" and "to" and store it as formatted text,
                e.g. "15 - 36" or "70+" */
@@ -41,6 +39,14 @@ define([], function(){
                 textIntervals.push(textInterval);
             }
         };
+
+        //returns the total number of cases for a specific code
+        _this.getTotalCases = function() {
+            var cases = 0;
+            for (var i = 0; i < datasets.length; i++)
+                cases += datasets[i].categorised_data.categories.interval[0].n;
+            return cases;
+        }
 
         /**
          * Converts the datasets using absolute values.

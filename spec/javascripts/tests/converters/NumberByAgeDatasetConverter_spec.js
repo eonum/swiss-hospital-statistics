@@ -145,6 +145,14 @@ define(['helpers/converters/NumberByAgeDatasetConverter'], function(NumberByAgeD
 
         });
 
+	it("should be able to compute the total number of cases", function (){
+            var converter = new NumberByAgeDatasetConverter(datasets);
+
+            var expectedResult = 1177;
+
+            expect(converter.getTotalCases()).toEqual(expectedResult);
+        });
+
         it("should convert a valid dataset with absolute numbers", function (){
             var converter = new NumberByAgeDatasetConverter(datasets);
 
