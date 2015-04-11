@@ -275,6 +275,11 @@ define([
 
         chartCardPane.setCard("ordinalCurve");
         $('body').append(chartCardPane);
+
+        $('body').append('<p id="switcher">Switch Chart</p>');
+        $('#switcher').click(function () {
+            chartCardPane.setCard("barChart");
+        });
         //_this.seriesChart();
         //_this.icdPieChart();
         //this.cardView();
