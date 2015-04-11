@@ -1,5 +1,8 @@
 define(['d3', 'views/ResponsiveSvg'], function (d3, ResponsiveSvg) {
 
+    //TODO: So far, only one curve is shown at a time. We use the ordinal curve visualisation to compare multiple Codes.
+    //Also, the colors have to be set right. See TODOs below.
+
     function OrdinalCurveChart(_width, _height) {
         var TRANSITION_TIME = 1000;
 
