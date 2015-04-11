@@ -1,5 +1,7 @@
 
 define([
+    'views/ui/CardElement',
+    'views/ui/CardPane',
     'views/abstract/AbstractSwissMap',
     'views/PieChart',
     'views/SeriesChart',
@@ -18,7 +20,7 @@ define([
     'models/categories/SexCategory',
     'helpers/CategoryAdapter',
     'helpers/CodeAdapter'
-], function(AbstractSwissMap, PieChart, SeriesChart, CardBoardView, CardView, AbstractSeriesChart, Catalog, CodeTableView, CodeButtonBarView, ChartChoiceButtonBar, PieChartByAgeVisualisation,BarChartVisualisation, BarChart, OrdinalCurveChart, OrdinalCurveChartVisualisation){
+], function(CardElement, CardPane, AbstractSwissMap, PieChart, SeriesChart, CardBoardView, CardView, AbstractSeriesChart, Catalog, CodeTableView, CodeButtonBarView, ChartChoiceButtonBar, PieChartByAgeVisualisation,BarChartVisualisation, BarChart, OrdinalCurveChart, OrdinalCurveChartVisualisation){
 
     "use strict";
     function App() {
@@ -43,6 +45,8 @@ define([
         //$('body').append(buttons).append(table);
         $('body').append(realButtons);
 
+
+
         _this.barChart = function () {
             var visualisation = new BarChartVisualisation(800, 400);
             visualisation.visualiseCode("icd", "A045");
@@ -57,7 +61,15 @@ define([
         _this.ordinalCurveChart = function () {
             var visualisation = new OrdinalCurveChartVisualisation(800, 400);
             visualisation.visualiseCode("icd", "A045");
-            $('body').append(visualisation);
+            //$('body').append(visualisation);
+
+            var testCard = new CardElement("test",visualisation);
+
+            var testCardPane = new CardPane();
+            testCardPane.addCard(testCard);
+            testCardPane.setCard("test");
+
+            $('body').append(testCardPane);
         };
 
         _this.seriesChart = function () {
