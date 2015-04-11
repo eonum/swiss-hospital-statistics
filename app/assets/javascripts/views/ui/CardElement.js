@@ -14,7 +14,7 @@ function(View){
             _this.append(content);
             content.append(cardContent);
         };
-        
+
         _this.getId = function(){
             return id;
         }

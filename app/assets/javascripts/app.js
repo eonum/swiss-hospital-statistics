@@ -28,7 +28,7 @@ define([
 
         var table = new CodeTableView();
         var buttons = new CodeButtonBarView();
-        var realButtons = new ChartChoiceButtonBar();
+        var chartChoiceButtons = new ChartChoiceButtonBar();
         var chartCardPane = new CardPane();
 
         var catalog = new Catalog();
@@ -44,8 +44,8 @@ define([
         });
 
         //$('body').append(buttons).append(table);
-        $('body').append(realButtons);
-
+        chartChoiceButtons.addButtons(chartCardPane);
+        $('body').append(chartChoiceButtons);
 
 
         _this.barChart = function () {
@@ -273,13 +273,9 @@ define([
         _this.barChart();
         _this.ordinalCurveChart();
 
-        chartCardPane.setCard("ordinalCurve");
+        chartCardPane.setCard("barChart"); //TODO: this should rather be a default in CardPane
         $('body').append(chartCardPane);
 
-        $('body').append('<p id="switcher">Switch Chart</p>');
-        $('#switcher').click(function () {
-            chartCardPane.setCard("barChart");
-        });
         //_this.seriesChart();
         //_this.icdPieChart();
         //this.cardView();
