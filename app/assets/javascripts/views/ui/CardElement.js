@@ -13,9 +13,8 @@ function(View){
         _this.initialize = function (){
             _this.append(content);
             content.append(cardContent);
-            //TODO: implement this
         };
-
+        
         _this.getId = function(){
             return id;
         }
