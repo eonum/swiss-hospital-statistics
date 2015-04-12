@@ -14,17 +14,15 @@ define([
             _this.class('boxPlotContainer');
         };
 
-        // TODO: Understand this function
+        // add is being overridden by content.add...
         _this.add = override(_this, _this.add, function(element){
             content.add(element);
             return _this;
         });
 
-        // TODO: possible transitions?
-        _this.removeFromContent = function()
-        {
+        _this.removeFromContent = function() {
             $(_this).remove();
-        }
+        };
 
         /**
          * Creates this visualisation from the data provided.

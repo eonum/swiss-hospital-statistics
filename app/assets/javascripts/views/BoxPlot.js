@@ -1,4 +1,4 @@
-define(['d3', 'views/ResponsiveSvg'], function (d3, ResponsiveSvg) {
+define(['d3', 'views/ResponsiveSvg', '/views/Box'], function (d3, ResponsiveSvg, Box) {
 
     /**
      * @returns {*|jQuery|HTMLElement}
@@ -19,15 +19,7 @@ define(['d3', 'views/ResponsiveSvg'], function (d3, ResponsiveSvg) {
             max = -Infinity;
 
         _this.initialize = function() {
-            var svg = d3.select("body").selectAll("rect")
-                .data()
-                .enter().append("svg")
-                .attr("class", "box")
-                .attr("width", width + margin.left + margin.right)
-                .attr("height", height + margin.bottom + margin.top)
-                .append("g")
-                .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-            // .call(chart);
+
         };
 
         _this.setData = function (data) {
@@ -37,10 +29,20 @@ define(['d3', 'views/ResponsiveSvg'], function (d3, ResponsiveSvg) {
                 .enter().append("g").append("rect");
 
             // Need data to calculate on
-            var chart = d3.box()
-                .whiskers(iqr[1.5])
+            var chart = new Box()
+                .whiskers([2,10])
                 .width(width)
                 .height(height);
+
+            var svg = d3.select("body").selectAll("svg")
+                .data()
+                .enter().append("svg")
+                .attr("class", "box")
+                .attr("width", width + margin.left + margin.right)
+                .attr("height", height + margin.bottom + margin.top)
+                .append("g")
+                .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
+                .call(chart);
 
             chart.domain([min, max]);
 
