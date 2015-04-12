@@ -120,11 +120,10 @@ define([
         };
 
         _this.icdBoxPlot = function () {
-            // TODO maybe get the code from before IF available! Otherwise chose neutral/empty default.
             $.getJSON("/api/v1/codes/icd/info/A045", function(data) {
-                var visualisation = new BoxPlotVisualization(50, 300);
                 $('body').append('<p class="code_title">ICD-Code auswählen:</p>');
                 $('body').append('<input class="code_title", id="code_chooser"/>');
+                var visualisation = new BoxPlotVisualisation(50, 300);
                 $('body').append(visualisation.visualise(data));
 
                 $('#code_chooser').keyup(function () {
@@ -278,13 +277,13 @@ define([
                 console.log(each.toString())});
         };
 
-        _this.barChart();
-        _this.ordinalCurveChart();
-        _this.icdPieChart();
+        //_this.barChart();
+        //_this.ordinalCurveChart();
+        //_this.icdPieChart();
 
-        $('body').append(chartCardPane);
+        //$('body').append(chartCardPane);
 
-        //_this.boxPlot();
+        _this.icdBoxPlot();
         //_this.seriesChart();
         //this.cardView();
         //_this.codes();
