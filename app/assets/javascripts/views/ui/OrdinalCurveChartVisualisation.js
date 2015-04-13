@@ -2,7 +2,6 @@ define(['View', 'views/OrdinalCurveChart', 'helpers/converters/NumberByAgeDatase
 function(View, OrdinalCurveChart, NumberByAgeDatasetConverter, DatasetSorter)
 {
     function OrdinalCurveChartVisualisation(_width, _height){
-        //var _this = this;
         var _this = new View('<div></div>');
         var content = new View('<div></div>');
         var chart = new OrdinalCurveChart(_width, _height);
@@ -25,6 +24,11 @@ function(View, OrdinalCurveChart, NumberByAgeDatasetConverter, DatasetSorter)
             $(_this).remove();
         };
 
+        /**
+         * Updates this visualisation based upon the given description and datasets.
+         * @param description the description of the code
+         * @param datasets the datasets to use
+         */
         _this.visualiseData = function (description, datasets){
                 var sorter = new DatasetSorter(datasets);
                 var sortedDatasets = sorter.sortByIntervalsAscending();
@@ -33,17 +37,6 @@ function(View, OrdinalCurveChart, NumberByAgeDatasetConverter, DatasetSorter)
 
                 chart.setData(converter.asAbsoluteData())
                     .setTitle(description);
-        };
-
-        /**
-         * Fetches first property from JSON object, which is the type of code (e.g. ICD, CHOP etc.)
-         * @param object JSON result from API call
-         * @returns code type object, the object containing the actual datasets
-         */
-        _this.getFirstProperty = function (object){
-            for (var prop in object) {
-                return object[prop];
-            }
         };
 
         _this.initialize();
