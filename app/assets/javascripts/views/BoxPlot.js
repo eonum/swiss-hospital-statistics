@@ -26,10 +26,16 @@ define(['d3', 'views/ResponsiveSvg', 'views/Box'], function (d3, ResponsiveSvg, 
            //     .enter().append("g").append("rect");
 
             // Need data to calculate on
-            var chart = new Box()
-                .whiskers([2,10])
+            var chart = Box()
+                .whiskers(data[0][2].value, data[0][3].value)
                 .width(width)
                 .height(height);
+
+            var test = function() {
+                console.log(data[0][0].key);
+                console.log(data[1][0].key);
+                console.log(data[2][0].key);
+            };
 
             chart.domain([min, max]);
 

@@ -28,20 +28,30 @@ define([
         // For each small multiple…
         function box(g) {
             g.each(function (d, i) {
-                d = d.map(value).sort(d3.ascending);
+                // d = d.map(value).sort(d3.ascending);
                 var g = d3.select(this),
-                    n = d.length,
-                    min = d[0],
-                    max = d[n - 1];
+                    n = d[4].value,
+                    min = d[2].value,
+                    max = d[3].value;
+
+                // TODO get the correct values for d!!!
+                console.log(d);
+                console.log(n);
+                console.log(min);
+                console.log(max);
 
                 // Compute quartiles. Must return exactly 3 elements.
                 var quartileData = d.quartiles = quartiles(d);
 
                 // Compute whiskers. Must return exactly 2 elements, or null.
-                var whiskerIndices = whiskers && whiskers.call(this, d, i),
-                    whiskerData = whiskerIndices && whiskerIndices.map(function (i) {
-                            return d[i];
-                        });
+//                var whiskerIndices = whiskers && whiskers.call(this, d, i),
+//                    whiskerData = whiskerIndices && whiskerIndices.map(function (i) {
+//                            return d[i];
+//                        });
+
+                var whiskerIndices = function() {
+                    return [min, max];
+                }
 
                 // Compute outliers. If no whiskers are specified, all data are "outliers".
                 // We compute the outliers as indices, so that we can join across transitions!
