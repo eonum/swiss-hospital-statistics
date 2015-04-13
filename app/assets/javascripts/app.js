@@ -45,18 +45,18 @@ define([
             });
         });
 
-        chartChoiceButtons.addButtons(chartCardPane);
         $('body').append(chartChoiceButtons);
-
-
+        
         _this.visualise = function () {
             var barChartVisualisation = new BarChartVisualisation(800, 400);
             var barChartCard = new CardElement("barChart",barChartVisualisation);
             chartCardPane.addCard(barChartCard);
+            chartChoiceButtons.addButton(chartCardPane, "barChart", "Bar Chart");
 
             var ordinalCurveVisualisation = new OrdinalCurveChartVisualisation(800, 400);
             var ordinalCurveChartCard = new CardElement("ordinalCurve",ordinalCurveVisualisation);
             chartCardPane.addCard(ordinalCurveChartCard);
+            chartChoiceButtons.addButton(chartCardPane, "ordinalCurve", "Ordinal Curve");
 
             function updateVisualisations(data){
                 barChartVisualisation.visualiseData("temporary", data);
