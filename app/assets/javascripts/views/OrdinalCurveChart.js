@@ -1,7 +1,7 @@
 define(['d3', 'views/ResponsiveSvg'], function (d3, ResponsiveSvg) {
 
-    //TODO: So far, only one curve is shown at a time. We use the ordinal curve visualisation to compare multiple Codes.
-    //Also, the colors have to be set right. See TODOs below.
+    // TODO: So far, only one curve is shown at a time. We use the ordinal curve visualisation to compare multiple Codes.
+    // TODO: also, the colors have to be set right. See TODOs below.
 
     function OrdinalCurveChart(_width, _height) {
         var TRANSITION_TIME = 1000;
@@ -47,11 +47,6 @@ define(['d3', 'views/ResponsiveSvg'], function (d3, ResponsiveSvg) {
             return _this;
         };
 
-        /**
-         *
-         * @param data                  array of data set objects {interval: val, amount: val}
-         * @returns {ResponsiveSvg}     OrdinalCurveChart, filled with given data
-         */
         _this.setData = function (data){
 
             var lines = _this.svg().selectAll(".connection").data(data);
