@@ -19,10 +19,10 @@ define([
     'views/BoxPlot',
     'views/OrdinalCurveChart',
     'views/ui/OrdinalCurveChartVisualisation',
-    'models/categories/SexCategory',
-    'helpers/CategoryAdapter',
-    'helpers/CodeAdapter'
-], function(CardElement, CardPane, AbstractSwissMap, PieChart, SeriesChart, CardBoardView, CardView, AbstractSeriesChart, Catalog, CodeTableView, CodeButtonBarView, ChartChoiceButtonBar, PieChartByAgeVisualisation,BarChartVisualisation, BoxPlotVisualisation, BarChart, BoxPlot, OrdinalCurveChart, OrdinalCurveChartVisualisation){
+    'helpers/CodeChooser'
+], function(CardElement, CardPane, AbstractSwissMap, PieChart, SeriesChart, CardBoardView, CardView, AbstractSeriesChart,
+            Catalog, CodeTableView, CodeButtonBarView, ChartChoiceButtonBar, PieChartByAgeVisualisation,BarChartVisualisation,
+            BoxPlotVisualisation, BarChart, BoxPlot, OrdinalCurveChart, OrdinalCurveChartVisualisation, CodeChooser){
 
     "use strict";
     function App() {
@@ -45,7 +45,6 @@ define([
             });
         });
 
-        //$('body').append(buttons).append(table);
         chartChoiceButtons.addButtons(chartCardPane);
         $('body').append(chartChoiceButtons);
 
@@ -57,6 +56,11 @@ define([
             var barChartCard = new CardElement("barChart",visualisation);
 
             chartCardPane.addCard(barChartCard);
+
+            var codeChooser = new CodeChooser("icd", function(data){
+                visualisation.visualiseData("temporary", data);
+            });
+            codeChooser.appendTo($('body'));
         };
 
         _this.ordinalCurveChart = function () {

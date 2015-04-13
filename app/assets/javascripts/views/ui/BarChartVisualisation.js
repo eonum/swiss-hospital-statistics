@@ -32,6 +32,16 @@ function (BarChart, View, NumberByAgeDatasetConverter){
             });
         };
 
+        /**
+         * Creates the visualisation by displaying the given dataset
+         * @param dataset
+         */
+        _this.visualiseData = function (description, datasets){
+            var converter = new NumberByAgeDatasetConverter(datasets);
+
+            barChart.setData(converter.asAbsoluteData()).setTitle(description);
+        };
+
         _this.removeFromContent = function()
         {
             $(_this).remove();
