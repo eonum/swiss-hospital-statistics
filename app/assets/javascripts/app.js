@@ -55,15 +55,8 @@ define([
             visualisation.visualiseCode("icd", "A045");
             //$('body').append(visualisation);
             var barChartCard = new CardElement("barChart",visualisation);
-            barChartCard.append('<p id="clicker">Click me</p>');
 
             chartCardPane.addCard(barChartCard);
-
-            //$('body').append('<p id="clicker">Click me</p>');
-
-            $('#clicker').click(function () {
-               visualisation.visualiseCode("icd", "B002");
-            });
         };
 
         _this.ordinalCurveChart = function () {
@@ -277,13 +270,13 @@ define([
                 console.log(each.toString())});
         };
 
-        //_this.barChart();
-        //_this.ordinalCurveChart();
-        //_this.icdPieChart();
+        _this.barChart();
+        _this.ordinalCurveChart();
+        _this.icdPieChart();
 
-        //$('body').append(chartCardPane);
+        $('body').append(chartCardPane);
 
-        _this.icdBoxPlot();
+        //_this.icdBoxPlot();
         //_this.seriesChart();
         //this.cardView();
         //_this.codes();
