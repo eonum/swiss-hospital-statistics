@@ -32,6 +32,7 @@ define([
             var datasets = data.codes.icd.codes;
             // TODO: think of a new helper JS
             if(datasets.length > 0) {
+                // datasets[0].codes gives you the C341 code
                 var code = datasets[0].code;
                 // This is the short textual description of the specific code from data
                 var description = datasets[0].description;
@@ -46,6 +47,9 @@ define([
                 // TODO what happens if some data is missing?
                 for (var i = 0; i < datasets.length; i++) {
                     var interval = datasets[i].categorised_data.categories.interval[0];
+                    var min = interval.min;
+                    var max = interval.max;
+                    var specificN = interval.n;
                     var lowerQuartil = interval.categories.percentile[2];
                     var median = interval.categories.percentile[3];
                     var higherQuartil = interval.categories.percentile[4];
@@ -63,11 +67,15 @@ define([
 
                     // Pushing data per age interval into an array.
                     intervals.push([{key: textInterval, value: 100 * (interval.n) / sum},
-                        {key: lowerQuartil, value: lowerQuartil.amount},
-                        {key: median, value: median.amount},
-                        {key: higherQuartil, value: higherQuartil.amount}]);
+                        {key: "summe", value: sum},
+                        {key: "min", value: min},
+                        {key: "max", value: max},
+                        {key: "specificN", value: specificN},
+                        {key: "lowerQuartil", value: lowerQuartil.amount},
+                        {key: "median", value: median.amount},
+                        {key: "higherQuartil", value: higherQuartil.amount}]);
                 }
-
+                console.log(interval);
                 boxPlot.setData(intervals);
 
                 /*
