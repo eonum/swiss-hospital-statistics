@@ -49,27 +49,24 @@ define([
         $('body').append(chartChoiceButtons);
 
 
-        _this.barChart = function () {
-            var visualisation = new BarChartVisualisation(800, 400);
-            visualisation.visualiseCode("icd", "A045");
-            //$('body').append(visualisation);
-            var barChartCard = new CardElement("barChart",visualisation);
-
+        _this.visualise = function () {
+            var barChartVisualisation = new BarChartVisualisation(800, 400);
+            var barChartCard = new CardElement("barChart",barChartVisualisation);
             chartCardPane.addCard(barChartCard);
 
-            var codeChooser = new CodeChooser("icd", function(data){
-                visualisation.visualiseData("temporary", data);
-            });
-            codeChooser.appendTo($('body'));
-        };
-
-        _this.ordinalCurveChart = function () {
-            var visualisation = new OrdinalCurveChartVisualisation(800, 400);
-            visualisation.visualiseCode("icd", "A045");
-            //$('body').append(visualisation);
-
-            var ordinalCurveChartCard = new CardElement("ordinalCurve",visualisation);
+            var ordinalCurveVisualisation = new OrdinalCurveChartVisualisation(800, 400);
+            var ordinalCurveChartCard = new CardElement("ordinalCurve",ordinalCurveVisualisation);
             chartCardPane.addCard(ordinalCurveChartCard);
+
+            function updateVisualisations(data){
+                barChartVisualisation.visualiseData("temporary", data);
+                ordinalCurveVisualisation.visualiseData("temporary", data);
+            }
+
+            var codeChooser = new CodeChooser("icd", updateVisualisations);
+            codeChooser.appendTo($('body'));
+
+            codeChooser.fetchDatasets("icd", "A045", updateVisualisations);
         };
 
         _this.seriesChart = function () {
@@ -274,17 +271,11 @@ define([
                 console.log(each.toString())});
         };
 
-        _this.barChart();
-        _this.ordinalCurveChart();
+        _this.visualise();
         _this.icdPieChart();
 
         $('body').append(chartCardPane);
 
-        //_this.icdBoxPlot();
-        //_this.seriesChart();
-        //this.cardView();
-        //_this.codes();
-        //_this.visualisations();
     }
 
     return App

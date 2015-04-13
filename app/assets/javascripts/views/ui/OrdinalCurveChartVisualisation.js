@@ -23,27 +23,16 @@ function(View, OrdinalCurveChart, NumberByAgeDatasetConverter, DatasetSorter)
         _this.removeFromContent = function()
         {
             $(_this).remove();
-        }
+        };
 
-        _this.visualiseCode = function (type, code){
-
-            /* jQuery getJSON(url, callback) fetches data from /api/v1/... and returns JSONs to given callback function */
-            $.getJSON('/api/v1/codes/' + type + '/info/'+ code,
-
-               /* extract data sets from JSON result, convert ??? and fill data into chart */
-                function (result){
-                var codeType = _this.getFirstProperty(result.codes);
-                var datasets = codeType.codes; //Array of data sets
-
+        _this.visualiseData = function (description, datasets){
                 var sorter = new DatasetSorter(datasets);
                 var sortedDatasets = sorter.sortByIntervalsAscending();
 
                 var converter = new NumberByAgeDatasetConverter(sortedDatasets);
 
-
                 chart.setData(converter.asAbsoluteData())
-                    .setTitle(datasets[0].description);
-            });
+                    .setTitle(description);
         };
 
         /**

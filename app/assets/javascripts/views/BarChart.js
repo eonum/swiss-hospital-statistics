@@ -55,6 +55,10 @@ define(['d3', 'views/ResponsiveSvg'], function (d3, ResponsiveSvg){
         };
 
         _this.setData = function (data){
+            chartGroup.selectAll("rect")
+                .data(data)
+                .exit().remove();
+
             var bars = chartGroup.selectAll("rect")
                 .data(data)
                 .enter().append("g").append("rect");

@@ -10,9 +10,7 @@ define(['View'], function (View){
         };
 
         _this.attachClickHandler = function(codeType){
-            console.log("test1");
             $('#code_chooser').keyup(function () {
-                console.log("test2");
                 var text = $('#code_chooser').val();
                 if(text.length >= 4){
                     $.getJSON( "/api/v1/codes/"+ codeType + "/info/" + text, function( data ) {
@@ -29,6 +27,14 @@ define(['View'], function (View){
             for (var prop in object) {
                 return object[prop];
             }
+        };
+
+        _this.fetchDatasets = function (codeType, code, resultCallback){
+            $.getJSON( "/api/v1/codes/"+ codeType + "/info/" + code, function( data ) {
+                var codeType = _this.getFirstProperty(data.codes);
+                var datasets = codeType.codes;
+                resultCallback(datasets);
+            });
         };
 
         _this.appendTo = function (element) {

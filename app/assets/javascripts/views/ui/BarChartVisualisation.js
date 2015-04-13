@@ -17,22 +17,6 @@ function (BarChart, View, NumberByAgeDatasetConverter){
         });
 
         /**
-         * Creates the visualisation by fetching the specified code and displaying it.
-         * @param type the code type, e.g. "icd", "chop", "drg", ...
-         * @param code the code to display, e.g. "A045" for an ICD code
-         */
-        _this.visualiseCode = function (type, code){
-            $.getJSON('/api/v1/codes/' + type + '/info/'+ code,function (result){
-                var codeType = _this.getFirstProperty(result.codes);
-                var datasets = codeType.codes;
-                var converter = new NumberByAgeDatasetConverter(datasets);
-
-               barChart.setData(converter.asAbsoluteData())
-                    .setTitle(datasets[0].description);
-            });
-        };
-
-        /**
          * Creates the visualisation by displaying the given dataset
          * @param dataset
          */
@@ -45,7 +29,7 @@ function (BarChart, View, NumberByAgeDatasetConverter){
         _this.removeFromContent = function()
         {
             $(_this).remove();
-        }
+        };
 
         _this.getFirstProperty = function (object){
                 for (var prop in object) {
