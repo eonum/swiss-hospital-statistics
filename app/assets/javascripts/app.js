@@ -30,8 +30,8 @@ define([
 
         var table = new CodeTableView();
         var buttons = new CodeButtonBarView();
-        var chartChoiceButtons = new ChartChoiceButtonBar();
         var chartCardPane = new CardPane();
+        var chartChoiceButtons = new ChartChoiceButtonBar(chartCardPane);
 
         var catalog = new Catalog();
         catalog.loadTypes(function(){
@@ -51,12 +51,12 @@ define([
             var barChartVisualisation = new BarChartVisualisation(800, 400);
             var barChartCard = new CardElement("barChart",barChartVisualisation);
             chartCardPane.addCard(barChartCard);
-            chartChoiceButtons.addButton(chartCardPane, "barChart", "Bar Chart");
+            chartChoiceButtons.addButton("barChart", "Bar Chart");
 
             var ordinalCurveVisualisation = new OrdinalCurveChartVisualisation(800, 400);
             var ordinalCurveChartCard = new CardElement("ordinalCurve",ordinalCurveVisualisation);
             chartCardPane.addCard(ordinalCurveChartCard);
-            chartChoiceButtons.addButton(chartCardPane, "ordinalCurve", "Ordinal Curve");
+            chartChoiceButtons.addButton("ordinalCurve", "Ordinal Curve");
 
             function updateVisualisations(data){
                 barChartVisualisation.visualiseData("temporary", data);
