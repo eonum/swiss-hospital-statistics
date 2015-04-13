@@ -73,14 +73,17 @@ define(['d3', 'views/ResponsiveSvg'], function (d3, ResponsiveSvg) {
                 return datum.amount;
             })]);
 
-            _this.svg().selectAll(".x.axis").call(xAxis);
-            _this.svg().selectAll(".y.axis").call(yAxis);
+            _this.svg().selectAll(".x.axis").transition().duration(TRANSITION_TIME).call(xAxis);
+            _this.svg().selectAll(".y.axis").transition().duration(TRANSITION_TIME).call(yAxis);
 
             // show all lines but the last one
             lines = _this.svg().selectAll(".connection").data(data);
             lines.filter(function (datum, index) {return index != data.length -1 })
                 /*TODO: Choose n-th color from scale, n = number of the curve*/
                 .style("stroke", function(datum) {return colorScaleNumbers(1)})
+                .attr("stroke-width", 0)
+                .transition()
+                .duration(TRANSITION_TIME)
                 .attr("stroke-width", 1.5)
                 .attr("stroke", "black")
                 .attr("x1", function(datum) { return x(datum.interval)})

@@ -90,6 +90,7 @@ define([
                     }
                 });
             });
+            chartChoiceButtons.addButton("pieChart", "Pie Chart");
         };
 
         _this.icdBoxPlot = function () {
