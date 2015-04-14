@@ -4,25 +4,14 @@ define([
     d3
 ) {
     function Box() {
-        function boxWhiskers(d) {
-            return [0, d.length - 1];
-        }
-
-        function boxQuartiles(d) {
-            return [
-                d3.quantile(d, .25),
-                d3.quantile(d, .5),
-                d3.quantile(d, .75)
-            ];
-        }
 
         var width = 1,
             height = 1,
             duration = 0,
             domain = null,
             value = Number,
-            whiskers = boxWhiskers,
-            quartiles = boxQuartiles,
+            whiskers = [1,4],
+            quartiles = [2,3],
             tickFormat = null;
 
         // For each small multiple…
@@ -30,25 +19,30 @@ define([
             g.each(function (d, i) {
                 // d = d.map(value).sort(d3.ascending);
                 var g = d3.select(this),
-                    ageRange = d.age,
-                    n = d.amount,
-                    min = d.specificN,
-                    lowerQ = d.lowerQ.amount,
-                    avg = d.avg.amount,
-                    higherQ = d.higherQ.amount,
+                    ageRange = d.ageInterval,
+                    n = d.percentOfTotal,
+                    min = d.min,
+                    lowerQ = d.lowerQ,
+                    avg = d.avg,
+                    higherQ = d.higherQ,
                     max = d.max;
 
                 // TODO get the correct values for d!!!
-                console.log("age:" + ageRange);
-                console.log("n" + n);
-                console.log("min" + min);
-                console.log("lowerQ" + lowerQ);
-                console.log("average" + avg);
-                console.log("higherQ" + higherQ);
-                console.log("max" + max);
+                console.log(ageRange);
+                console.log(n);
+                console.log(min);
+                console.log(lowerQ);
+                console.log(avg);
+                console.log(higherQ);
+                console.log(max);
 
                 // Compute quartiles. Must return exactly 3 elements.
-                var quartileData = d.quartiles = quartiles(d);
+                var quartileData = [d.lowerQ, d.avg, d.higherQ];
+                console.log("quartiles");
+                console.log(quartileData);
+
+                var whiskerIndices = [min, max];
+                var whiskerData = [min, max];
 
                 // Compute whiskers. Must return exactly 2 elements, or null.
 //                var whiskerIndices = whiskers && whiskers.call(this, d, i),
@@ -56,9 +50,9 @@ define([
 //                            return d[i];
 //                        });
 
-                var whiskerIndices = function() {
+                /*var whiskerIndices = function() {
                     return [min, max];
-                }
+                }*/
 
                 // Compute outliers. If no whiskers are specified, all data are "outliers".
                 // We compute the outliers as indices, so that we can join across transitions!

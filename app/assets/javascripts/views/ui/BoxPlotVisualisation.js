@@ -66,7 +66,7 @@ define([
                     }
 
                     intervals.push({ageInterval: textInterval,
-                        amount: 100 * (interval.n) / sum,
+                        percentOfTotal: (100 * (interval.n) / sum),
                         specificN: specificN,
                         min: min,
                         lowerQ: lowerQuartil,
@@ -76,8 +76,6 @@ define([
                         sum: sum}
                     );
                 }
-                console.log("BEFORE");
-                console.log(intervals);
                 boxPlot.setData(intervals);
 
                 /*
