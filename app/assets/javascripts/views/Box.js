@@ -30,15 +30,22 @@ define([
             g.each(function (d, i) {
                 // d = d.map(value).sort(d3.ascending);
                 var g = d3.select(this),
-                    n = d[4].value,
-                    min = d[2].value,
-                    max = d[3].value;
+                    ageRange = d.age,
+                    n = d.amount,
+                    min = d.specificN,
+                    lowerQ = d.lowerQ.amount,
+                    avg = d.avg.amount,
+                    higherQ = d.higherQ.amount,
+                    max = d.max;
 
                 // TODO get the correct values for d!!!
-                console.log(d);
-                console.log(n);
-                console.log(min);
-                console.log(max);
+                console.log("age:" + ageRange);
+                console.log("n" + n);
+                console.log("min" + min);
+                console.log("lowerQ" + lowerQ);
+                console.log("average" + avg);
+                console.log("higherQ" + higherQ);
+                console.log("max" + max);
 
                 // Compute quartiles. Must return exactly 3 elements.
                 var quartileData = d.quartiles = quartiles(d);

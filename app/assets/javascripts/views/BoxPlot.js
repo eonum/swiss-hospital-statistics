@@ -20,6 +20,7 @@ define(['d3', 'views/ResponsiveSvg', 'views/Box'], function (d3, ResponsiveSvg, 
         };
 
         _this.setData = function (data) {
+            console.log("AFTER");
             console.log(data);
            // var bars = boxPlots.selectAll("rect")
            //     .data(data)
@@ -27,15 +28,9 @@ define(['d3', 'views/ResponsiveSvg', 'views/Box'], function (d3, ResponsiveSvg, 
 
             // Need data to calculate on
             var chart = Box()
-                .whiskers(data[0][2].value, data[0][3].value)
+                .whiskers(data.lowerQ.amount, data.higherQ.amount)
                 .width(width)
                 .height(height);
-
-            var test = function() {
-                console.log(data[0][0].key);
-                console.log(data[1][0].key);
-                console.log(data[2][0].key);
-            };
 
             chart.domain([min, max]);
 

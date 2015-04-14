@@ -251,9 +251,9 @@ define([
                 console.log(each.toString())});
         };
 
-        _this.visualise();
-        _this.icdPieChart();
-        //_this.icdBoxPlot();
+        //_this.visualise();
+        //_this.icdPieChart();
+        _this.icdBoxPlot();
 
         $('body').append(chartCardPane);
     }

@@ -50,9 +50,9 @@ define([
                     var min = interval.min;
                     var max = interval.max;
                     var specificN = interval.n;
-                    var lowerQuartil = interval.categories.percentile[2];
-                    var median = interval.categories.percentile[3];
-                    var higherQuartil = interval.categories.percentile[4];
+                    var lowerQuartil = interval.categories.percentile[2].amount;
+                    var avg = interval.categories.percentile[3].amount;
+                    var higherQuartil = interval.categories.percentile[4].amount;
 
                     var from = interval.interval.from;
                     var to = interval.interval.to;
@@ -65,17 +65,19 @@ define([
                         textInterval = from + " - " + to;
                     }
 
-                    // Pushing data per age interval into an array.
-                    intervals.push([{key: textInterval, value: 100 * (interval.n) / sum},
-                        {key: "summe", value: sum},
-                        {key: "min", value: min},
-                        {key: "max", value: max},
-                        {key: "specificN", value: specificN},
-                        {key: "lowerQuartil", value: lowerQuartil.amount},
-                        {key: "median", value: median.amount},
-                        {key: "higherQuartil", value: higherQuartil.amount}]);
+                    intervals.push({ageInterval: textInterval,
+                        amount: 100 * (interval.n) / sum,
+                        specificN: specificN,
+                        min: min,
+                        lowerQ: lowerQuartil,
+                        avg: avg,
+                        higherQ: higherQuartil,
+                        max: max,
+                        sum: sum}
+                    );
                 }
-                console.log(interval);
+                console.log("BEFORE");
+                console.log(intervals);
                 boxPlot.setData(intervals);
 
                 /*
