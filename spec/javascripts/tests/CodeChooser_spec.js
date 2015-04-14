@@ -1,10 +1,10 @@
-define(['helpers/CodeChooser', 'View'], function(CodeChooser){
+define(['helpers/CodeChooser'], function(CodeChooser){
     describe('CodeChooser', function (){
 
         var data = [{
-            "firstprop": "firstvalue",
-            "secondprop": "secondvalue",
-            "thirdprop": "thirdvalue"}];
+            firstprop: "firstvalue",
+            secondprop: "secondvalue",
+            thirdprop: "thirdvalue"}];
 
         beforeEach(function(){
         });
