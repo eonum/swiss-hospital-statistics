@@ -42,6 +42,7 @@ define([
                 console.log(quartileData);
 
                 var whiskerIndices = [min, max];
+                // TODO can we omit one of these?
                 var whiskerData = [min, max];
 
                 // Compute whiskers. Must return exactly 2 elements, or null.
@@ -50,12 +51,9 @@ define([
 //                            return d[i];
 //                        });
 
-                /*var whiskerIndices = function() {
-                    return [min, max];
-                }*/
-
                 // Compute outliers. If no whiskers are specified, all data are "outliers".
                 // We compute the outliers as indices, so that we can join across transitions!
+                // TODO function not needed?
                 var outlierIndices = whiskerIndices
                     ? d3.range(0, whiskerIndices[0]).concat(d3.range(whiskerIndices[1] + 1, n))
                     : d3.range(n);
@@ -85,22 +83,23 @@ define([
                 center.enter().insert("line", "rect")
                     .attr("class", "center")
                     .attr("x1", width / 2)
+                    // TODO does y1 really stands for lower quartile?
                     .attr("y1", function (d) {
-                        return x0(d[0]);
+                        return x0(d.lowerQ);
                     })
                     .attr("x2", width / 2)
                     .attr("y2", function (d) {
-                        return x0(d[1]);
+                        return x0(d.higherQ);
                     })
                     .style("opacity", 1e-6)
                     .transition()
                     .duration(duration)
                     .style("opacity", 1)
                     .attr("y1", function (d) {
-                        return x1(d[0]);
+                        return x1(d.lowerQ);
                     })
                     .attr("y2", function (d) {
-                        return x1(d[1]);
+                        return x1(d.higherQ);
                     });
 
                 center.transition()
@@ -127,16 +126,16 @@ define([
                 // Update innerquartile box.
                 var box = g.selectAll("rect.box")
                     .data([quartileData]);
-
+                // attribute y is not
                 box.enter().append("rect")
                     .attr("class", "box")
                     .attr("x", 0)
                     .attr("y", function (d) {
-                        return x0(d[2]);
+                        return x0(d.max);
                     })
                     .attr("width", width)
                     .attr("height", function (d) {
-                        return x0(d[0]) - x0(d[2]);
+                        return x0(d.lowerQ) - x0(d.higherQ);
                     })
                     .transition()
                     .duration(duration)
