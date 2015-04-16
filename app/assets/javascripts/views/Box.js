@@ -7,7 +7,7 @@ define([
 
         var width = 5,
             height = 40,
-            duration = 20,
+            duration = 0,
             domain = null,
             value = Number,
             whiskers = [1,4],
@@ -17,7 +17,9 @@ define([
         // For each small multiple…
         function box(g) {
             g.each(function (d, i) {
-                // d = d.map(value).sort(d3.ascending);
+               //  d = d.map(value).sort(d3.ascending);
+
+                // g is one container of one boxplot
                 var g = d3.select(this),
                     ageRange = d.ageInterval,
                     n = d.percentOfTotal,
@@ -26,15 +28,17 @@ define([
                     avg = d.avg,
                     higherQ = d.higherQ,
                     max = d.max;
+                console.log(g);
+                console.log(d);
 
                 // TODO get the correct values for d!!!
-                console.log(ageRange);
-                console.log(n);
-                console.log(min);
-                console.log(lowerQ);
-                console.log(avg);
-                console.log(higherQ);
-                console.log(max);
+                console.log("age" + ageRange);
+                console.log("n" + n);
+                console.log("min" + min);
+                console.log("lowserQ" + lowerQ);
+                console.log("avg" + avg);
+                console.log("higherQ" + higherQ);
+                console.log("max" + max);
 
                 // Compute quartiles. Must return exactly 3 elements.
                 var quartileData = [d.lowerQ, d.avg, d.higherQ];
@@ -67,12 +71,14 @@ define([
                 var x1 = d3.scale.linear()
                     .domain([min, max])
                     .range([height, 0]);
+                // TODO remove that
                 console.log(x1);
 
                 // Retrieve the old x-scale, if this is an update.
                 var x0 = this.__chart__ || d3.scale.linear()
                         .domain([0, Infinity])
                         .range(x1.range());
+                // TODO remove that
                 console.log(x0);
 
                 // Stash the new scale.
@@ -92,21 +98,21 @@ define([
                     .attr("x1", width / 2)
                     // TODO does y1 really stands for lower quartile?
                     .attr("y1", function (d) {
-                        return x0(d.lowerQ);
+                        return x0(d[0]);
                     })
                     .attr("x2", width / 2)
                     .attr("y2", function (d) {
-                        return x0(d.higherQ);
+                        return x0(d[1]);
                     })
                     .style("opacity", 1e-6)
                     .transition()
                     .duration(duration)
                     .style("opacity", 1)
                     .attr("y1", function (d) {
-                        return x1(d.lowerQ);
+                        return x1(d[0]);
                     })
                     .attr("y2", function (d) {
-                        return x1(d.higherQ);
+                        return x1(d[1]);
                     });
 
                 center.transition()
@@ -138,11 +144,11 @@ define([
                     .attr("class", "box")
                     .attr("x", 0)
                     .attr("y", function (d) {
-                        return x0(d.max);
+                        return x0(d[2]);
                     })
                     .attr("width", width)
                     .attr("height", function (d) {
-                        return x0(d.lowerQ) - x0(d.higherQ);
+                        return x0(d[0]) - x0(d[2]);
                     })
                     .transition()
                     .duration(duration)
