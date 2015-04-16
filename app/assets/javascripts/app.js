@@ -96,16 +96,16 @@ define([
         _this.icdBoxPlot = function () {
             $.getJSON("/api/v1/codes/icd/info/A045", function(data) {
                 $('body').append('<p class="code_title">ICD-Code auswählen:</p>');
-                $('body').append('<input class="code_title", id="code_chooser"/>');
-                var visualisation = new BoxPlotVisualisation(50, 300);
+                $('body').append('<input class="code_title", id="code_chooser2"/>');
+                var visualisation = new BoxPlotVisualisation(1000, 400);
                 $('body').append(visualisation.visualise(data));
 
-                $('#code_chooser').keyup(function () {
-                    var text = $('#code_chooser').val();
+                $('#code_chooser2').keyup(function () {
+                    var text = $('#code_chooser2').val();
                     if(text.length >= 4){
                         $.getJSON( "/api/v1/codes/icd/info/" + text, function( data ) {
                             visualisation.visualise(data);
-                            $("#code_chooser").focus();
+                            $("#code_chooser2").focus();
                         });
                     }
                 });

@@ -8,9 +8,11 @@ define(['d3', 'views/ResponsiveSvg', 'views/Box'], function (d3, ResponsiveSvg, 
     function BoxPlot(_width, _height){
         var _this = new ResponsiveSvg(_width, _height);
 
-        var margin = {top: 10, right: 50, bottom: 20, left: 50},
-            width = 120 - margin.left - margin.right,
-            height = 500 - margin.top - margin.bottom;
+        var margin = {top: 10, right: 10, bottom: 20, left: 10},
+            width = 40 - margin.left - margin.right,
+            height = 300 - margin.top - margin.bottom;
+
+        var titleFontSize = _height / 20;
 
         var min = Infinity,
             max = -Infinity;
@@ -21,7 +23,7 @@ define(['d3', 'views/ResponsiveSvg', 'views/Box'], function (d3, ResponsiveSvg, 
 
         _this.setData = function (data) {
             console.log(data);
-           // var bars = boxPlots.selectAll("rect")
+           //var bars = boxPlots.selectAll("rect")
            //     .data(data)
            //     .enter().append("g").append("rect");
 
@@ -33,15 +35,37 @@ define(['d3', 'views/ResponsiveSvg', 'views/Box'], function (d3, ResponsiveSvg, 
 
             chart.domain([min, max]);
 
-            var svg = d3.select("body").selectAll("svg")
+            var svg = _this.svg().selectAll("svg")
                 .data(data)
-                .enter().append("svg")
+                .enter()
+                .append("svg")
                 .attr("class", "box")
-                .attr("width", width + margin.left + margin.right)
+                .attr("width", width + (5* margin.left) + margin.right)
                 .attr("height", height + margin.bottom + margin.top)
+                .attr("transform", function(datum, index){
+                   return  "translate(" + (index * (width + 5 * margin.left + margin.right)) + "," + margin.top + ")";
+                })
                 .append("g")
-                .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
+                .attr("transform", "translate(30, " + margin.top + ")")
                 .call(chart);
+
+            var svg = _this.svg().selectAll("svg")
+                .data(data)
+                .append("svg")
+                .attr("class", "box")
+                .attr("width", width + (5* margin.left) + margin.right)
+                .attr("height", height + margin.bottom + margin.top)
+                .attr("transform", function(datum, index){
+                    return  "translate(" + (index * (width + 5 * margin.left + margin.right)) + "," + margin.top + ")";
+                })
+                .append("g")
+                .attr("transform", "translate(30, " + margin.top + ")")
+                .call(chart);
+
+            d3.select("body").selectAll("svg")
+                .data(data)
+                .exit()
+                .remove();
 
 
         };

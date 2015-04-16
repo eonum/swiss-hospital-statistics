@@ -35,7 +35,7 @@ define([
                 console.log("age" + ageRange);
                 console.log("n" + n);
                 console.log("min" + min);
-                console.log("lowserQ" + lowerQ);
+                console.log("lowerQ" + lowerQ);
                 console.log("avg" + avg);
                 console.log("higherQ" + higherQ);
                 console.log("max" + max);

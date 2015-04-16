@@ -11,7 +11,7 @@ define([
 
         _this.initialize = function () {
             this.append(content);
-            _this.class('boxPlotContainer');
+            content.append(boxPlot);
         };
 
         // add is being overridden by content.add...
@@ -36,6 +36,7 @@ define([
                 var code = datasets[0].code;
                 // This is the short textual description of the specific code from data
                 var description = datasets[0].description;
+
                 var intervals = [];
 
                 // get total number of cases
@@ -89,7 +90,8 @@ define([
 
                  content.empty();
                  */
-                content.add('<h3>' + code + ": " + description + '</h3>');
+
+                content.add('<h3 class="svg_title_boxplot">' + code + ": " + description + '</h3>');
                 content.add(boxPlot);
 
                 // TODO think of something else for a Legend
