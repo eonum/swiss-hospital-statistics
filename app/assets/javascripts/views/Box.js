@@ -5,9 +5,9 @@ define([
 ) {
     function Box() {
 
-        var width = 1,
-            height = 1,
-            duration = 0,
+        var width = 5,
+            height = 40,
+            duration = 20,
             domain = null,
             value = Number,
             whiskers = [1,4],
@@ -54,19 +54,26 @@ define([
                 // Compute outliers. If no whiskers are specified, all data are "outliers".
                 // We compute the outliers as indices, so that we can join across transitions!
                 // TODO function not needed?
-                var outlierIndices = whiskerIndices
-                    ? d3.range(0, whiskerIndices[0]).concat(d3.range(whiskerIndices[1] + 1, n))
-                    : d3.range(n);
+//                var outlierIndices = whiskerIndices
+//                   ? d3.range(0, whiskerIndices[0]).concat(d3.range(whiskerIndices[1] + 1, n))
+//                    : d3.range(n);
 
                 // Compute the new x-scale.
+//                var x1 = d3.scale.linear()
+//                    .domain(domain && domain.call(this, d, i) || [min, max])
+//                    .range([height, 0]);
+//                console.log(x1);
+
                 var x1 = d3.scale.linear()
-                    .domain(domain && domain.call(this, d, i) || [min, max])
+                    .domain([min, max])
                     .range([height, 0]);
+                console.log(x1);
 
                 // Retrieve the old x-scale, if this is an update.
                 var x0 = this.__chart__ || d3.scale.linear()
                         .domain([0, Infinity])
                         .range(x1.range());
+                console.log(x0);
 
                 // Stash the new scale.
                 this.__chart__ = x1;
@@ -206,24 +213,24 @@ define([
                     .remove();
 
                 // Update outliers.
-                var outlier = g.selectAll("circle.outlier")
-                    .data(outlierIndices, Number);
+//                var outlier = g.selectAll("circle.outlier")
+//                    .data(outlierIndices, Number);
 
-                outlier.enter().insert("circle", "text")
-                    .attr("class", "outlier")
-                    .attr("r", 5)
-                    .attr("cx", width / 2)
-                    .attr("cy", function (i) {
-                        return x0(d[i]);
-                    })
-                    .style("opacity", 1e-6)
-                    .transition()
-                    .duration(duration)
-                    .attr("cy", function (i) {
-                        return x1(d[i]);
-                    })
-                    .style("opacity", 1);
-
+//                outlier.enter().insert("circle", "text")
+//                    .attr("class", "outlier")
+//                    .attr("r", 5)
+//                    .attr("cx", width / 2)
+//                    .attr("cy", function (i) {
+//                        return x0(d[i]);
+//                    })
+//                    .style("opacity", 1e-6)
+//                    .transition()
+//                    .duration(duration)
+//                    .attr("cy", function (i) {
+//                        return x1(d[i]);
+//                    })
+//                    .style("opacity", 1);
+/*
                 outlier.transition()
                     .duration(duration)
                     .attr("cy", function (i) {
@@ -238,7 +245,7 @@ define([
                     })
                     .style("opacity", 1e-6)
                     .remove();
-
+*/
                 // Compute the tick format.
                 var format = tickFormat || x1.tickFormat(8);
 
