@@ -9,16 +9,11 @@ define(['View'], function (View){
             _this.add('<input id="code_chooser"/>');
         };
 
-        _this.attachClickHandler = function(codeType){
+        _this.attachInputHandler = function(codeType){
             $('#code_chooser').keyup(function () {
                 var text = $('#code_chooser').val();
                 if(text.length >= 4){
-                    $.getJSON( "/api/v1/codes/"+ codeType + "/datasets/" + text, function( data ) {
-                        var codeType = _this.getFirstProperty(data.codes);
-                        var datasets = codeType.codes;
-                        newCodeCallback(datasets);
-                        //$("#code_chooser").focus();
-                    });
+                    _this.fetchCodeAndDatasets(codeType, text, newCodeCallback);
                 }
             });
         };
@@ -31,16 +26,22 @@ define(['View'], function (View){
         };
 
         _this.fetchDatasets = function (codeType, code, resultCallback){
-            $.getJSON( "/api/v1/codes/"+ codeType + "/datasets/" + code, function( data ) {
-                var codeType = _this.getFirstProperty(data.codes);
-                var datasets = codeType.codes;
-                resultCallback(datasets);
-            });
+            _this.fetchCodeAndDatasets(codeType, code, resultCallback);
+        };
+
+        _this.fetchCodeAndDatasets = function (codeType, code, resultCallback){
+            $.getJSON("/api/v1/codes/" + codeType + "/specific/" + code, function(resultCodes){
+                $.getJSON( "/api/v1/codes/"+ codeType + "/datasets/" + code, function( data ) {
+                    var codeType = _this.getFirstProperty(data.codes);
+                    var datasets = codeType.codes;
+                    resultCallback(resultCodes[0], datasets);
+                });
+            } );
         };
 
         _this.appendTo = function (element) {
             element.append(_this);
-            _this.attachClickHandler(codeType);
+            _this.attachInputHandler(codeType);
         };
 
         _this.initialize();

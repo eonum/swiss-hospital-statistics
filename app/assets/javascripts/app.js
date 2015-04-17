@@ -63,10 +63,12 @@ define([
             chartCardPane.addCard(pieChartCard);
             chartChoiceButtons.addButton("pieChart","Pie Chart");
 
-            function updateVisualisations(data){
-                barChartVisualisation.visualiseData("temporary", data);
-                ordinalCurveVisualisation.visualiseData("temporary", data);
-                pieChartVisualisation.setData(data);
+            function updateVisualisations(code, datasets){
+                var title = code.code + ": " + code.text_de;
+
+                barChartVisualisation.visualiseData(title, datasets);
+                ordinalCurveVisualisation.visualiseData(title, datasets);
+                pieChartVisualisation.setData(datasets);
             }
 
             var codeChooser = new CodeChooser("icd", updateVisualisations);
