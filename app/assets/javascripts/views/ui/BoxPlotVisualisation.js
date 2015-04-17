@@ -51,9 +51,11 @@ define([
                     var min = interval.min;
                     var max = interval.max;
                     var specificN = interval.n;
+                    var lowerWhisker = interval.categories.percentile[1].amount;
                     var lowerQuartil = interval.categories.percentile[2].amount;
                     var avg = interval.categories.percentile[3].amount;
                     var higherQuartil = interval.categories.percentile[4].amount;
+                    var higherWhisker = interval.categories.percentile[5].amount;
 
                     var from = interval.interval.from;
                     var to = interval.interval.to;
@@ -70,9 +72,11 @@ define([
                         percentOfTotal: (100 * (interval.n) / sum),
                         specificN: specificN,
                         min: min,
+                        lowerWhisker: lowerWhisker,
                         lowerQ: lowerQuartil,
                         avg: avg,
                         higherQ: higherQuartil,
+                        higherWhisker: higherWhisker,
                         max: max,
                         sum: sum}
                     );

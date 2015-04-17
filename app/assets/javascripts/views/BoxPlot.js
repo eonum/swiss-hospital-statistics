@@ -8,9 +8,9 @@ define(['d3', 'views/ResponsiveSvg', 'views/Box'], function (d3, ResponsiveSvg, 
     function BoxPlot(_width, _height){
         var _this = new ResponsiveSvg(_width, _height);
 
-        var margin = {top: 10, right: 10, bottom: 20, left: 10},
-            width = 40 - margin.left - margin.right,
-            height = 300 - margin.top - margin.bottom;
+        var margin = {top: 10, right: 20, bottom: 20, left: 20},
+            width = 60 - margin.left - margin.right,
+            height = 200 - margin.top - margin.bottom;
 
         var min = Infinity,
             max = -Infinity;
@@ -20,6 +20,7 @@ define(['d3', 'views/ResponsiveSvg', 'views/Box'], function (d3, ResponsiveSvg, 
         };
 
         _this.setData = function (data) {
+            console.log("SETDATA");
             console.log(data);
            //var bars = boxPlots.selectAll("rect")
            //     .data(data)
@@ -38,23 +39,23 @@ define(['d3', 'views/ResponsiveSvg', 'views/Box'], function (d3, ResponsiveSvg, 
                 .enter()
                 .append("svg")
                 .attr("class", "box")
-                .attr("width", width + (5* margin.left) + margin.right)
+                .attr("width", width + (margin.left) + (margin.right))
                 .attr("height", height + margin.bottom + margin.top)
                 .attr("transform", function(d, i){
-                   return  "translate(" + (i * (width + 5 * margin.left + margin.right)) + "," + margin.top + ")";
+                   return  "translate(" + (i*width*5) + "," + margin.top + ")";
                 })
                 .append("g")
-                .attr("transform", "translate(30, " + margin.top + ")")
+                .attr("transform", "translate(" + margin.left + ")")
                 .call(chart);
 
-            var svg = _this.svg().selectAll("svg")
+/*            var svg = _this.svg().selectAll("svg")
                 .data(data)
                 .append("svg")
                 .attr("class", "box")
-                .attr("width", width + (5* margin.left) + margin.right)
+                .attr("width", width + (margin.left) + margin.right)
                 .attr("height", height + margin.bottom + margin.top)
                 .attr("transform", function(datum, index){
-                    return  "translate(" + (index * (width + 5 * margin.left + margin.right)) + "," + margin.top + ")";
+                    return  "translate(" + (index * (width + margin.left + margin.right)) + "," + margin.top + ")";
                 })
                 .append("g")
                 .attr("transform", "translate(30, " + margin.top + ")")
@@ -64,11 +65,10 @@ define(['d3', 'views/ResponsiveSvg', 'views/Box'], function (d3, ResponsiveSvg, 
                 .data(data)
                 .exit()
                 .remove();
-
+*/
 
         };
 
-        // TODO change that number
         _this.initialize()
 
         return _this;
