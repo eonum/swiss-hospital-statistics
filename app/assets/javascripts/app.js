@@ -77,12 +77,6 @@ define([
 
         _this.icdBoxPlot = function () {
             $.getJSON("/api/v1/codes/icd/info/A045", function(data) {
-<<<<<<< HEAD
-                $('body').append('<p class="code_title">ICD-Code auswählen:</p>');
-                $('body').append('<input class="code_title", id="code_chooser2"/>');
-                var visualisation = new BoxPlotVisualisation(800, 800);
-                $('body').append(visualisation.visualise(data));
-=======
                 var card = new CardElement("boxPlot", null);
                 chartChoiceButtons.addButton("boxPlot", "Box Plot");
 
@@ -90,7 +84,6 @@ define([
                 card.append('<input class="code_title", id="code_chooser2"/>');
                 var visualisation = new BoxPlotVisualisation(1000, 400);
                 card.append(visualisation.visualise(data));
->>>>>>> 3a5bae67cd4666cd9e51906fc99d8a94f1143488
 
                 $('#code_chooser2').keyup(function () {
                     var text = $('#code_chooser2').val();
@@ -164,7 +157,7 @@ define([
         };
 
         _this.visualise();
-        //_this.icdBoxPlot();
+        _this.icdBoxPlot();
 
 
         $('body').append(chartCardPane);
