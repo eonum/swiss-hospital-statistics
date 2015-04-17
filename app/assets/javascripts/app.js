@@ -82,7 +82,7 @@ define([
 
                 card.append('<p class="code_title">ICD-Code auswählen:</p>');
                 card.append('<input class="code_title", id="code_chooser2"/>');
-                var visualisation = new BoxPlotVisualisation(1000, 400);
+                var visualisation = new BoxPlotVisualisation(700, 500);
                 card.append(visualisation.visualise(data));
 
                 $('#code_chooser2').keyup(function () {

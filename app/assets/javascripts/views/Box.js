@@ -27,36 +27,21 @@ define([
                     lowerQ = d.lowerQ,
                     avg = d.avg,
                     higherQ = d.higherQ,
-                    max = d.max;
-                console.log(g);
-                console.log(d);
+                    max = d.max,
+                    lowerWhisker = d.lowerWhisker,
+                    higherWhisker = d.higherWhisker;
 
-                // TODO get the correct values for d!!!
-                console.log("age" + ageRange);
-                console.log("n" + n);
-                console.log("min" + min);
-                console.log("lowerQ" + lowerQ);
-                console.log("avg" + avg);
-                console.log("higherQ" + higherQ);
-                console.log("max" + max);
+                console.log(g);
 
                 // Compute quartiles. Must return exactly 3 elements.
                 var quartileData = [d.lowerQ, d.avg, d.higherQ];
                 console.log("quartiles");
                 console.log(quartileData);
 
-                var whiskerIndices = [min, max];
+                var whiskerIndices = [lowerWhisker, higherWhisker];
                 // TODO can we omit one of these?
-                var whiskerData = [min, max];
+                var whiskerData = whiskerIndices;
 
-                // Compute whiskers. Must return exactly 2 elements, or null.
-//                var whiskerIndices = whiskers && whiskers.call(this, d, i),
-//                    whiskerData = whiskerIndices && whiskerIndices.map(function (i) {
-//                            return d[i];
-//                        });
-
-                // Compute outliers. If no whiskers are specified, all data are "outliers".
-                // We compute the outliers as indices, so that we can join across transitions!
                 // TODO function not needed?
 //                var outlierIndices = whiskerIndices
 //                   ? d3.range(0, whiskerIndices[0]).concat(d3.range(whiskerIndices[1] + 1, n))
@@ -71,15 +56,11 @@ define([
                 var x1 = d3.scale.linear()
                     .domain([min, max])
                     .range([height, 0]);
-                // TODO remove that
-                console.log(x1);
 
                 // Retrieve the old x-scale, if this is an update.
                 var x0 = this.__chart__ || d3.scale.linear()
                         .domain([0, Infinity])
                         .range(x1.range());
-                // TODO remove that
-                console.log(x0);
 
                 // Stash the new scale.
                 this.__chart__ = x1;
@@ -218,40 +199,6 @@ define([
                     .style("opacity", 1e-6)
                     .remove();
 
-                // Update outliers.
-//                var outlier = g.selectAll("circle.outlier")
-//                    .data(outlierIndices, Number);
-
-//                outlier.enter().insert("circle", "text")
-//                    .attr("class", "outlier")
-//                    .attr("r", 5)
-//                    .attr("cx", width / 2)
-//                    .attr("cy", function (i) {
-//                        return x0(d[i]);
-//                    })
-//                    .style("opacity", 1e-6)
-//                    .transition()
-//                    .duration(duration)
-//                    .attr("cy", function (i) {
-//                        return x1(d[i]);
-//                    })
-//                    .style("opacity", 1);
-/*
-                outlier.transition()
-                    .duration(duration)
-                    .attr("cy", function (i) {
-                        return x1(d[i]);
-                    })
-                    .style("opacity", 1);
-
-                outlier.exit().transition()
-                    .duration(duration)
-                    .attr("cy", function (i) {
-                        return x1(d[i]);
-                    })
-                    .style("opacity", 1e-6)
-                    .remove();
-*/
                 // Compute the tick format.
                 var format = tickFormat || x1.tickFormat(8);
 
