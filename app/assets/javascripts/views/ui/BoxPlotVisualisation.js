@@ -77,6 +77,8 @@ define([
                         sum: sum}
                     );
                 }
+                console.log("THIS");
+                console.log(intervals);
                 boxPlot.setData(intervals);
 
                 /*

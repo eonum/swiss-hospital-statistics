@@ -12,8 +12,6 @@ define(['d3', 'views/ResponsiveSvg', 'views/Box'], function (d3, ResponsiveSvg, 
             width = 40 - margin.left - margin.right,
             height = 300 - margin.top - margin.bottom;
 
-        var titleFontSize = _height / 20;
-
         var min = Infinity,
             max = -Infinity;
 
@@ -42,8 +40,8 @@ define(['d3', 'views/ResponsiveSvg', 'views/Box'], function (d3, ResponsiveSvg, 
                 .attr("class", "box")
                 .attr("width", width + (5* margin.left) + margin.right)
                 .attr("height", height + margin.bottom + margin.top)
-                .attr("transform", function(datum, index){
-                   return  "translate(" + (index * (width + 5 * margin.left + margin.right)) + "," + margin.top + ")";
+                .attr("transform", function(d, i){
+                   return  "translate(" + (i * (width + 5 * margin.left + margin.right)) + "," + margin.top + ")";
                 })
                 .append("g")
                 .attr("transform", "translate(30, " + margin.top + ")")
@@ -62,7 +60,7 @@ define(['d3', 'views/ResponsiveSvg', 'views/Box'], function (d3, ResponsiveSvg, 
                 .attr("transform", "translate(30, " + margin.top + ")")
                 .call(chart);
 
-            d3.select("body").selectAll("svg")
+            _this.svg().selectAll("svg")
                 .data(data)
                 .exit()
                 .remove();
