@@ -23,6 +23,7 @@ define(['View'], function (View){
             });
         };
 
+        //returns the value of the first property of an object
         _this.getFirstProperty = function (object){
             for (var prop in object) {
                 return object[prop];
@@ -48,5 +49,4 @@ define(['View'], function (View){
     }
 
     return CodeChooser;
-
 });
