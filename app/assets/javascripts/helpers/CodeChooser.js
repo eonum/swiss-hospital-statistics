@@ -13,7 +13,7 @@ define(['View'], function (View){
             $('#code_chooser').keyup(function () {
                 var text = $('#code_chooser').val();
                 if(text.length >= 4){
-                    $.getJSON( "/api/v1/codes/"+ codeType + "/info/" + text, function( data ) {
+                    $.getJSON( "/api/v1/codes/"+ codeType + "/datasets/" + text, function( data ) {
                         var codeType = _this.getFirstProperty(data.codes);
                         var datasets = codeType.codes;
                         newCodeCallback(datasets);
@@ -31,7 +31,7 @@ define(['View'], function (View){
         };
 
         _this.fetchDatasets = function (codeType, code, resultCallback){
-            $.getJSON( "/api/v1/codes/"+ codeType + "/info/" + code, function( data ) {
+            $.getJSON( "/api/v1/codes/"+ codeType + "/datasets/" + code, function( data ) {
                 var codeType = _this.getFirstProperty(data.codes);
                 var datasets = codeType.codes;
                 resultCallback(datasets);

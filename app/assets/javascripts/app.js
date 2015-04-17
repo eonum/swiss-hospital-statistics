@@ -76,7 +76,7 @@ define([
         };
 
         _this.icdBoxPlot = function () {
-            $.getJSON("/api/v1/codes/icd/info/A045", function(data) {
+            $.getJSON("/api/v1/codes/icd/datasets/A045", function(data) {
                 var card = new CardElement("boxPlot", null);
                 chartChoiceButtons.addButton("boxPlot", "Box Plot");
 
@@ -88,7 +88,7 @@ define([
                 $('#code_chooser2').keyup(function () {
                     var text = $('#code_chooser2').val();
                     if(text.length >= 4){
-                        $.getJSON( "/api/v1/codes/icd/info/" + text, function( data ) {
+                        $.getJSON( "/api/v1/codes/icd/datasets/" + text, function( data ) {
                             visualisation.visualise(data);
                             $("#code_chooser2").focus();
                         });

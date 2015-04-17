@@ -27,7 +27,7 @@ define([
          */
         _this.loadCodeType = function (type, callback) {
             if (_this.isCodeTypeLoaded(type)) return (_.isUndefined(callback)) ? _this : callback();
-            $.getJSON( 'api/v1/codes/'+type.ID+'/info', function( data ) {
+            $.getJSON( 'api/v1/codes/'+type.ID+'/datasets', function( data ) {
                 var codes = ServiceProvider.jsonParser.parse(data)[type.ID];
                 var map = _.object(_.map(codes, function(each){return each.code()}), codes);
                 _this._catalog().put(type, map);
@@ -45,7 +45,7 @@ define([
             if (!_this.isCodeTypeLoaded(type))
                 return _this.loadCodeType(type, function(){ _this.loadCode(type, code, callback)});
             if (_this.isCodeLoaded(type, code)) return (_.isUndefined(callback)) ? _this : callback();
-            $.getJSON( 'api/v1/codes/'+type.ID+'/info/'+code, function( data ) {
+            $.getJSON( 'api/v1/codes/'+type.ID+'/datasets/'+code, function( data ) {
                 var codeObject = _this.code(type, code);
                 var codeData = _.first(data.codes[type.ID].codes);
                 codeObject.fromJSON(codeData);
