@@ -58,39 +58,21 @@ define([
             chartCardPane.addCard(ordinalCurveChartCard);
             chartChoiceButtons.addButton("ordinalCurve", "Ordinal Curve");
 
+            var pieChartVisualisation = new PieChartByAgeVisualisation();
+            var pieChartCard = new CardElement("pieChart", pieChartVisualisation);
+            chartCardPane.addCard(pieChartCard);
+            chartChoiceButtons.addButton("pieChart","Pie Chart");
+
             function updateVisualisations(data){
                 barChartVisualisation.visualiseData("temporary", data);
                 ordinalCurveVisualisation.visualiseData("temporary", data);
+                pieChartVisualisation.setData(data);
             }
 
             var codeChooser = new CodeChooser("icd", updateVisualisations);
             codeChooser.appendTo($('body'));
 
             codeChooser.fetchDatasets("icd", "A045", updateVisualisations);
-        };
-
-        _this.icdPieChart = function () {
-            $.getJSON( "/api/v1/codes/icd/info/A045", function( data ) {
-                               var visualisation = new PieChartByAgeVisualisation();
-
-
-
-                var card = new CardElement("pieChart",visualisation.setData(data));
-                card.append('<p class="code_title">ICD-Code auswählen:</p>');
-                card.append('<input class="code_title", id="code_chooser"/>');
-                chartCardPane.addCard(card);
-
-                $('#code_chooser').keyup(function () {
-                    var text = $('#code_chooser').val();
-                    if(text.length >= 4){
-                        $.getJSON( "/api/v1/codes/icd/info/" + text, function( data ) {
-                            visualisation.setData(data);
-                            $("#code_chooser").focus();
-                        });
-                    }
-                });
-            });
-            chartChoiceButtons.addButton("pieChart", "Pie Chart");
         };
 
         _this.icdBoxPlot = function () {
@@ -257,7 +239,6 @@ define([
         };
 
         _this.visualise();
-        _this.icdPieChart();
         _this.icdBoxPlot();
 
         $('body').append(chartCardPane);

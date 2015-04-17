@@ -29,20 +29,19 @@ define([
          * @param data the data to update this visualisation with
          */
         _this.setData = function (data){
-            var datasets = data.codes.icd.codes;
-            if(datasets.length > 0) {
-                var code = datasets[0].code;
-                var description = datasets[0].description;
+            if(data.length > 0) {
+                var code = data[0].code;
+                var description = data[0].description;
                 var intervals = [];
 
                 // get total number of cases
                 var sum = 0;
-                for (var i = 0; i < datasets.length; i++) {
-                    sum += datasets[i].categorised_data.categories.interval[0].n;
+                for (var i = 0; i < data.length; i++) {
+                    sum += data[i].categorised_data.categories.interval[0].n;
                 }
 
-                for (var i = 0; i < datasets.length; i++) {
-                    var interval = datasets[i].categorised_data.categories.interval[0];
+                for (var i = 0; i < data.length; i++) {
+                    var interval = data[i].categorised_data.categories.interval[0];
                     var from = interval.interval.from;
                     var to = interval.interval.to;
 
