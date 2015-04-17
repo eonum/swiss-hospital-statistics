@@ -7,7 +7,7 @@ module Api
       end
 
       def show
-        render json: Catalog.new.be_preview_for(params[:id]).to_json
+        render json: CodeCatalog.new.codes_for_tag(params[:id])
       end
 
       def new

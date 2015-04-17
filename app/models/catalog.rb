@@ -50,7 +50,7 @@ class Catalog
     return self unless type
     code = self.push_code_type(type)
     codes = type.where(code: code_id)
-    codes = clean_documents_for_json(codes)
+    codes = DocumentForJSONCleaner.new.clean_documents_for_json(codes)
     code[:codes] = codes
     self
   end
@@ -73,25 +73,5 @@ class Catalog
 
   def to_json
     @catalog
-  end
-
-  private
-  def clean_documents_for_json (object)
-    data = object.to_a
-    data.collect{
-      |each|
-      document = each.as_document
-      clean_hash(document)
-      document
-    }
-  end
-
-  def clean_hash(hash)
-    return hash.each{|each| clean_hash(each)} if hash.class <= Array
-    return unless hash.class <= Hash
-    hash.delete('_id')
-    hash.delete('_type')
-    hash.delete('_mongoclass')
-    hash.values.each{|each| clean_hash(each)}
   end
 end
