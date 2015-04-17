@@ -39,22 +39,30 @@ define(['helpers/CodeChooser'], function(CodeChooser){
         });*/
 
         it("should support async execution of test preparation and expectations", function() {
+            var expectedJSON = "blah";
+            var actualJSON;
+            var flag = false;
+
             runs(function() {
                 flag = false;
-                value = 0;
+                var chooser = new CodeChooser();
+                chooser.fetchDatasets("icd", "A045", function(data) {
+                    actualJSON = data;
+                });
 
                 setTimeout(function() {
                     flag = true;
-                }, 500);
+                }, 2000);
             });
 
+
             waitsFor(function() {
-                value++;
                 return flag;
-            }, "The Value should be incremented", 750);
+            }, "The Value should be incremented", 2100);
+
 
             runs(function() {
-                expect(value).toBeGreaterThan(0);
+                expect(actualJSON).toEqual(expectedJSON);
             });
         });
     });
