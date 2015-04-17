@@ -38,28 +38,28 @@ class SuAgeStream
   end
 
   def to_codes
-    @codes = {}
+    @codes = []
     @map.each {|raw_sex, sheet|
       puts 'Parsing... '+ ((raw_sex == 0) ? 'women' : 'men')
       sheet.each{|id, raw_code|
-        @codes[id] = @clazz.new.lock unless @codes[id]
+        code = @clazz.new
+        @codes.push(code)
         data = raw_code[:data]
         ages = raw_code[:ages]
-        code = @codes[id]
         code.code = id
         code.description = data[1]
         # TODO: YEAR HACK!
-        year_data = code.at(2013, true)
-        sex_category = year_data.at_find(SexCategory.tag){|each| each.sex == raw_sex }
+        code.year = 2013
+        dataset_data = code.new_data
+        sex_category = dataset_data.at_find(SexCategory.tag){|each| each.sex == raw_sex }
         unless sex_category
           sex_category = SexCategory.new(sex: raw_sex)
           ages.each{|key, value| sex_category.add(ValueIntervalCategory.new(interval: Interval.new.from_s(key), n: value))}
-          year_data.add(sex_category)
+          dataset_data.add(sex_category)
         end
       }
     }
-    codes = @codes.values.sort_by{|each| each.code.downcase}
-    codes.each{|each| each.unlock}
+    codes = @codes.sort_by{|each| each.code.downcase}
     codes
   end
 
