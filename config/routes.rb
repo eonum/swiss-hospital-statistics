@@ -21,7 +21,8 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :codes, :only => [:index, :show, :new] do
-        resources :info, :only => [:index, :show]
+        resources :specific, :only => [:show]
+        resources :datasets, :only => [:index, :show]
       end
     end
   end

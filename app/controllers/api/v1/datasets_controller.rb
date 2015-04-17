@@ -1,6 +1,6 @@
 module Api
   module V1
-    class InfoController < ApplicationController
+    class DatasetsController < ApplicationController
       def index
           render json: Catalog.new.be_info_for(params[:code_id]).to_json
       end
