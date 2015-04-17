@@ -58,9 +58,15 @@ define([
             chartCardPane.addCard(ordinalCurveChartCard);
             chartChoiceButtons.addButton("ordinalCurve", "Ordinal Curve");
 
+            var pieChartVisualisation = new PieChartByAgeVisualisation();
+            var pieChartCard = new CardElement("pieChart", pieChartVisualisation);
+            chartCardPane.addCard(pieChartCard);
+            chartChoiceButtons.addButton("pieChart","Pie Chart");
+
             function updateVisualisations(data){
                 barChartVisualisation.visualiseData("temporary", data);
                 ordinalCurveVisualisation.visualiseData("temporary", data);
+                pieChartVisualisation.setData(data);
             }
 
             var codeChooser = new CodeChooser("icd", updateVisualisations);
@@ -69,36 +75,22 @@ define([
             codeChooser.fetchDatasets("icd", "A045", updateVisualisations);
         };
 
-        _this.icdPieChart = function () {
-            $.getJSON( "/api/v1/codes/icd/info/A045", function( data ) {
-                var visualisation = new PieChartByAgeVisualisation();
-
-
-
-                var card = new CardElement("pieChart",visualisation.setData(data));
-                card.append('<p class="code_title">ICD-Code auswählen:</p>');
-                card.append('<input class="code_title", id="code_chooser"/>');
-                chartCardPane.addCard(card);
-
-                $('#code_chooser').keyup(function () {
-                    var text = $('#code_chooser').val();
-                    if(text.length >= 4){
-                        $.getJSON( "/api/v1/codes/icd/info/" + text, function( data ) {
-                            visualisation.setData(data);
-                            $("#code_chooser").focus();
-                        });
-                    }
-                });
-            });
-            chartChoiceButtons.addButton("pieChart", "Pie Chart");
-        };
-
         _this.icdBoxPlot = function () {
             $.getJSON("/api/v1/codes/icd/info/A045", function(data) {
+<<<<<<< HEAD
                 $('body').append('<p class="code_title">ICD-Code auswählen:</p>');
                 $('body').append('<input class="code_title", id="code_chooser2"/>');
                 var visualisation = new BoxPlotVisualisation(800, 800);
                 $('body').append(visualisation.visualise(data));
+=======
+                var card = new CardElement("boxPlot", null);
+                chartChoiceButtons.addButton("boxPlot", "Box Plot");
+
+                card.append('<p class="code_title">ICD-Code auswählen:</p>');
+                card.append('<input class="code_title", id="code_chooser2"/>');
+                var visualisation = new BoxPlotVisualisation(1000, 400);
+                card.append(visualisation.visualise(data));
+>>>>>>> 3a5bae67cd4666cd9e51906fc99d8a94f1143488
 
                 $('#code_chooser2').keyup(function () {
                     var text = $('#code_chooser2').val();
@@ -109,89 +101,9 @@ define([
                         });
                     }
                 });
+
+                chartCardPane.addCard(card);
             })
-        };
-
-        _this.cardView = function () {
-            $('body').append(
-                new CardBoardView()
-                    .add(new CardView().add(new AbstractSwissMap().class('align-vertical')))
-                    .add(new CardView().add(new PieChart().class('align-vertical').display(function(entity) {
-                        return [
-                            {type: 'cesarean', amount: entity},
-                            {type: 'notcesarean', amount: 100 - entity},
-                        ];
-                    })
-                        .key('type')
-                        .value('amount')
-                        .transformed(function(v){return v.toPrecision(3)})
-                        .labeled(function (value) {return value+'%'})
-                        .openOn(35.49)))
-                    .add(new CardView().add(new SeriesChart().class('align-vertical')
-                            .display(function(series){
-                                return _.map(series, function(serie){
-                                    serie.data = _.map(_.range(-Math.PI, Math.PI, 0.01), function(x){
-                                        return {x : x, y : serie.f(x)} });
-                                    return serie })})
-
-                            .transformed(function(y) { return Math.abs(y)})
-                            .value('y')
-                            .key('x')
-                            .yAxis('f(x)')
-                            .labeled(function(serie){return 'f(x)=|'+serie.serie+'|';})
-                            .keyTransformed(function(x) {return x/Math.PI})
-                            .keyLabeled(function(x) {return x+(x == 0 ? '':'PI')})
-                            .openOn( [
-                                {serie: 'sin(x)', f: function(x){return Math.sin(x)}},
-                                {serie: 'cos(x)', f: function(x){return Math.cos(x)}},
-                                {serie: 'cos(x^2)', f: function(x){return Math.cos(x*x)}}])
-                    ))
-                    .add(new CardView().add(new PieChart(300,200).class('align-vertical').display(function(entity) {
-                        return [
-                            {type: 'cesarean', amount: entity},
-                            {type: 'notcesarean', amount: 100 - 50 - entity},
-                            {type: 'bla', amount: 50}
-                        ];
-                    })
-                        .key('type')
-                        .value('amount')
-                        .transformed(function(v){return v.toPrecision(3)})
-                        .openOn(35.49)))
-                    //.add(new CardView().add(new AbstractSwissMap().class('align-vertical')))
-                    .add(new CardView().add(new PieChart().class('align-vertical')
-                        .display(function(entity) {return _.map(entity, function(str){return{text: str, length: str.length}})})
-                        .transformed(function(value){return value*2})
-                        .labeled(function(value,element){return element.text+' - '+value})
-                        .key('text')
-                        .value('length')
-                        .openOn([ 'a','bb','ccc' ]))));
-        };
-
-        _this.visualisations = function () {
-            $("body").append(new AbstractSwissMap());
-            var form = $('<input>');
-            $("body").append(form);
-
-            var pie = new PieChart();
-            $('body').append(pie);
-
-            pie
-                .display(function(entity) {
-                    return [
-                        {type: 'cesarean', amount: entity},
-                        {type: 'notcesarean', amount: 100 - 50 - entity},
-                        {type: 'bla', amount: 50}
-                    ];
-                })
-                .key('type')
-                .value('amount')
-                .openOn(35.49);
-
-            form.keyup(function(e){
-                var value = $(this).val();
-                value = Math.min(value.length === 0 ? 0 : parseFloat(value), 100);
-                pie.openOn(value);
-            });
         };
 
         _this.codes = function () {
@@ -252,8 +164,8 @@ define([
         };
 
         _this.visualise();
-        _this.icdPieChart();
         //_this.icdBoxPlot();
+
 
         $('body').append(chartCardPane);
     }
