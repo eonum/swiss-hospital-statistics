@@ -12,7 +12,9 @@ function(View){
 
         _this.initialize = function (){
             _this.append(content);
-            content.append(cardContent);
+
+            if(cardContent != null)
+                content.append(cardContent);
         };
 
         _this.getId = function(){
