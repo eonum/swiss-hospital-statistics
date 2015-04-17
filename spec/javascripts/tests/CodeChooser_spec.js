@@ -1,19 +1,19 @@
 define(['helpers/CodeChooser'], function(CodeChooser){
     describe('CodeChooser', function (){
 
-        var data = [{
+        var data = {
             firstprop: "firstvalue",
             secondprop: "secondvalue",
-            thirdprop: "thirdvalue"}];
+            thirdprop: "thirdvalue"};
 
         beforeEach(function(){
         });
 
         it("should be able to return the first property (object has one or more properties)", function (){
             var chooser = new CodeChooser(data);
-            var firstProp = chooser.getFirstProperty();
+            var firstProp = chooser.getFirstProperty(data);
 
-            var expectedResult = "firstprop";
+            var expectedResult = "firstvalue";
 
             expect(firstProp).toEqual(expectedResult);
         });
