@@ -43,7 +43,7 @@ define([], function(){
                 intervals.push(textInterval);
             }
             return intervals;
-        }
+        };
 
         //returns the total number of cases for a specific code
         _this.getTotalCases = function() {
@@ -51,7 +51,7 @@ define([], function(){
             for (var i = 0; i < datasets.length; i++)
                 cases += datasets[i].categorised_data.categories.interval[0].n;
             return cases;
-        }
+        };
 
         /**
          * Converts the datasets using absolute values.

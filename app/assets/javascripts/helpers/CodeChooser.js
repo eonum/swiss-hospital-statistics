@@ -31,11 +31,17 @@ define(['View'], function (View){
 
         _this.fetchCodeAndDatasets = function (codeType, code, resultCallback){
             $.getJSON("/api/v1/codes/" + codeType + "/specific/" + code, function(resultCodes){
-                $.getJSON( "/api/v1/codes/"+ codeType + "/datasets/" + code, function( data ) {
-                    var codeType = _this.getFirstProperty(data.codes);
-                    var datasets = codeType.codes;
-                    resultCallback(resultCodes[0], datasets);
-                });
+                // only continue if code exists
+                if(resultCodes.length > 0) {
+                    $.getJSON("/api/v1/codes/" + codeType + "/datasets/" + code, function (data) {
+                        var codeType = _this.getFirstProperty(data.codes);
+                        var datasets = codeType.codes;
+                        // only continue if there is at least one dataset
+                        if(datasets.length > 0){
+                            resultCallback(resultCodes[0], datasets);
+                        }
+                    });
+                }
             } );
         };
 

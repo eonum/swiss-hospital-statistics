@@ -68,7 +68,7 @@ define([
 
                 barChartVisualisation.visualiseData(title, datasets);
                 ordinalCurveVisualisation.visualiseData(title, datasets);
-                pieChartVisualisation.setData(datasets);
+                pieChartVisualisation.visualiseData(title, datasets);
             }
 
             var codeChooser = new CodeChooser("icd", updateVisualisations);
