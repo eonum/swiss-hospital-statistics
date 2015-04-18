@@ -20,6 +20,10 @@ define([
             return _this;
         });
 
+        _this.visualiseData = function(description, datasets) {
+            _this.visualise(datasets);
+        };
+
         _this.removeFromContent = function() {
             $(_this).remove();
         };
@@ -28,8 +32,8 @@ define([
          * Creates this visualisation from the data provided.
          * @param data the data to update this visualisation with
          */
-        _this.visualise = function (data){
-            var datasets = data.codes.icd.codes;
+        _this.visualise = function (datasets){
+
             // TODO: think of a new helper JS
             if(datasets.length > 0) {
                 // datasets[0].codes gives you the C341 code

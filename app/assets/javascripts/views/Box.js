@@ -7,7 +7,7 @@ define([
 
         var width = 5,
             height = 40,
-            duration = 0,
+            duration = 1000,
             domain = null,
             value = Number,
             whiskers = [1,4],
@@ -77,7 +77,6 @@ define([
                 center.enter().insert("line", "rect")
                     .attr("class", "center")
                     .attr("x1", width / 2)
-                    // TODO does y1 really stands for lower quartile?
                     .attr("y1", function (d) {
                         return x0(d[0]);
                     })

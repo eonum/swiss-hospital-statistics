@@ -39,7 +39,7 @@ define(['d3', 'views/ResponsiveSvg', 'views/Box'], function (d3, ResponsiveSvg, 
                 .enter()
                 .append("svg")
                 .attr("class", "box")
-                .attr("width", width + (margin.left) + (margin.right))
+                .attr("width", width + margin.left + margin.right)
                 .attr("height", height + margin.bottom + margin.top)
                 .attr("transform", function(d, i){
                    return  "translate(" + (i*width*5) + "," + margin.top + ")";
@@ -47,18 +47,16 @@ define(['d3', 'views/ResponsiveSvg', 'views/Box'], function (d3, ResponsiveSvg, 
                 .append("g")
                 .attr("transform", "translate(" + margin.left + ")")
                 .call(chart);
-
-/*            var svg = _this.svg().selectAll("svg")
-                .data(data)
-                .append("svg")
+/*
+            svg.append("svg")
                 .attr("class", "box")
                 .attr("width", width + (margin.left) + margin.right)
                 .attr("height", height + margin.bottom + margin.top)
-                .attr("transform", function(datum, index){
-                    return  "translate(" + (index * (width + margin.left + margin.right)) + "," + margin.top + ")";
+                .attr("transform", function(d, i){
+                    return  "translate(" + (i*width*5) + "," + margin.top + ")";
                 })
                 .append("g")
-                .attr("transform", "translate(30, " + margin.top + ")")
+                .attr("transform", "translate(" + margin.top + ")")
                 .call(chart);
 
             _this.svg().selectAll("svg")
@@ -69,7 +67,7 @@ define(['d3', 'views/ResponsiveSvg', 'views/Box'], function (d3, ResponsiveSvg, 
 
         };
 
-        _this.initialize()
+        _this.initialize();
 
         return _this;
     }
