@@ -19,15 +19,17 @@ define([
     'views/BoxPlot',
     'views/OrdinalCurveChart',
     'views/ui/OrdinalCurveChartVisualisation',
-    'helpers/CodeChooser'
+    'helpers/CodeChooser',
+    'views/ui/CatalogChoiceButtonBar'
 ], function(CardElement, CardPane, AbstractSwissMap, PieChart, SeriesChart, CardBoardView, CardView, AbstractSeriesChart,
             Catalog, CodeTableView, CodeButtonBarView, ChartChoiceButtonBar, PieChartByAgeVisualisation,BarChartVisualisation,
-            BoxPlotVisualisation, BarChart, BoxPlot, OrdinalCurveChart, OrdinalCurveChartVisualisation, CodeChooser){
+            BoxPlotVisualisation, BarChart, BoxPlot, OrdinalCurveChart, OrdinalCurveChartVisualisation, CodeChooser, CatalogChoiceButtonBar){
 
     "use strict";
     function App() {
         var _this = this;
 
+        var catalogChoiceButtons = new CatalogChoiceButtonBar();
         var table = new CodeTableView();
         var buttons = new CodeButtonBarView();
         var chartCardPane = new CardPane();
@@ -45,7 +47,23 @@ define([
             });
         });
 
-        $('body').append(chartChoiceButtons);
+
+        _this.initialize = function(){
+            _this.addCatalogChoiceButtons();
+            $('body').append(chartChoiceButtons);
+            _this.visualise();
+            _this.icdBoxPlot();
+            $('body').append(chartCardPane);
+        }
+
+
+        _this.addCatalogChoiceButtons = function(){
+            catalogChoiceButtons.addButton("ICD", function(){window.alert("Hi! I'm the ICD catalog!")});
+            catalogChoiceButtons.addButton("CHOP", function(){window.alert("Hi! I'm the CHOP catalog!")});
+            catalogChoiceButtons.addButton("DRG", function(){window.alert("Hi! I'm the DRG catalog!")});
+            $('body').append(catalogChoiceButtons);
+        };
+
         
         _this.visualise = function () {
             var barChartVisualisation = new BarChartVisualisation(800, 400);
@@ -168,7 +186,7 @@ define([
         //_this.icdBoxPlot();
 
 
-        $('body').append(chartCardPane);
+        _this.initialize();
     }
 
     return App
