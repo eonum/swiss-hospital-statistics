@@ -8,23 +8,36 @@ define(['d3', 'views/ResponsiveSvg', 'views/Box'], function (d3, ResponsiveSvg, 
     function BoxPlot(_width, _height){
         var _this = new ResponsiveSvg(_width, _height);
 
-        var margin = {top: 10, right: 20, bottom: 20, left: 20},
-            width = 60 - margin.left - margin.right,
-            height = 200 - margin.top - margin.bottom;
+        var x = d3.scale.ordinal();
+        x.rangeBands([0, _width], 0.5);
+
+        _this.marginTop(50);
+        _this.marginLeft(50);
+        _this.marginRight(140);
+        _this.marginBottom(50);
 
         var min = Infinity,
             max = -Infinity;
 
-        _this.initialize = function() {
+        var xAxis = d3.svg.axis()
+            .scale(x)
+            .orient("bottom");
 
+        _this.initialize = function() {
+            _this.svg().append("g")
+                .attr('transform', 'translate(0,'+ (_height) +')')
+                .attr('class', 'x axis')
+                .call(xAxis);
         };
 
         _this.setData = function (data) {
-            console.log("SETDATA");
-            console.log(data);
-           //var bars = boxPlots.selectAll("rect")
-           //     .data(data)
-           //     .enter().append("g").append("rect");
+            var xDomain = _.map(data, function(datum){ return datum.ageInterval}).sort();
+            x.domain(xDomain);
+            _this.svg().selectAll(".x.axis").call(xAxis);
+
+            var margin = {top: 10, right: 20, bottom: 20, left: 20},
+                width = x.rangeBand() - margin.left - margin.right,
+                height = _height - margin.top - margin.bottom;
 
             // Need data to calculate on
             var chart = Box()
@@ -35,35 +48,30 @@ define(['d3', 'views/ResponsiveSvg', 'views/Box'], function (d3, ResponsiveSvg, 
             chart.domain([min, max]);
 
             var svg = _this.svg().selectAll("svg")
-                .data(data)
-                .enter()
+                .data(data);
+
+            svg.enter()
                 .append("svg")
                 .attr("class", "box")
                 .attr("width", width + margin.left + margin.right)
                 .attr("height", height + margin.bottom + margin.top)
-                .attr("transform", function(d, i){
-                   return  "translate(" + (i*width*5) + "," + margin.top + ")";
-                })
                 .append("g")
                 .attr("transform", "translate(" + margin.left + ")")
                 .call(chart);
-/*
-            svg.append("svg")
-                .attr("class", "box")
-                .attr("width", width + (margin.left) + margin.right)
-                .attr("height", height + margin.bottom + margin.top)
-                .attr("transform", function(d, i){
+
+            /*svg.attr("transform", function(d, i){
                     return  "translate(" + (i*width*5) + "," + margin.top + ")";
                 })
-                .append("g")
-                .attr("transform", "translate(" + margin.top + ")")
+                .call(chart);*/
+
+            svg.attr("transform", function(d, i){
+                return  "translate(" + x(d.ageInterval) + "," + margin.top + ")";
+            })
                 .call(chart);
 
-            _this.svg().selectAll("svg")
-                .data(data)
-                .exit()
+            svg.exit()
                 .remove();
-*/
+
 
         };
 
