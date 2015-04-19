@@ -156,8 +156,7 @@ define([
             _.each(keKantonCodes, function(each){
                 console.log(each.toString())});
         };
-
-        _this.visualise();
+        
         _this.initialize();
     }
 
