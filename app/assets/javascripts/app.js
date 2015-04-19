@@ -52,7 +52,6 @@ define([
             _this.addCatalogChoiceButtons();
             $('body').append(chartChoiceButtons);
             _this.visualise();
-            _this.icdBoxPlot();
             $('body').append(chartCardPane);
         }
 
@@ -99,30 +98,6 @@ define([
             codeChooser.appendTo($('body'));
 
             codeChooser.fetchDatasets("icd", "A045", updateVisualisations);
-        };
-
-        _this.icdBoxPlot = function () {
-            $.getJSON("/api/v1/codes/icd/datasets/A045", function(data) {
-                var card = new CardElement("boxPlot", null);
-                chartChoiceButtons.addButton("boxPlot", "Box Plot");
-
-                card.append('<p class="code_title">ICD-Code auswählen:</p>');
-                card.append('<input class="code_title", id="code_chooser2"/>');
-                var visualisation = new BoxPlotVisualisation(700, 500);
-                card.append(visualisation.visualise(data));
-
-                $('#code_chooser2').keyup(function () {
-                    var text = $('#code_chooser2').val();
-                    if(text.length >= 4){
-                        $.getJSON( "/api/v1/codes/icd/datasets/" + text, function( data ) {
-                            visualisation.visualise(data);
-                            $("#code_chooser2").focus();
-                        });
-                    }
-                });
-
-                chartCardPane.addCard(card);
-            })
         };
 
         _this.codes = function () {
@@ -183,9 +158,6 @@ define([
         };
 
         _this.visualise();
-        //_this.icdBoxPlot();
-
-
         _this.initialize();
     }
 
