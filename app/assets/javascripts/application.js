@@ -32,20 +32,23 @@ var CATEGORY_CLASSES = [
 // better to make them global for convenience
 var _;
 var $;
+var Bacon;
 var ServiceProvider;
 
 requirejs([
     'jquery-adapter',
     'underscore',
+    'Bacon.min',
     'helpers/ServiceProvider',
     'i18n',
     'i18n/translations',
     'turbolinks',
     'foundation',
     'Polymorphism'
-], function(jquery, underscore, _serviceProvider) {
+], function(jquery, underscore, bacon, _serviceProvider) {
     $ = jquery;
     _ = underscore;
+    Bacon = bacon;
     ServiceProvider = _serviceProvider;
     requirejs(['app'], function (App) {
         new App();

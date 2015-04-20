@@ -8,7 +8,6 @@ define([
     'views/CardBoardView',
     'views/CardView',
     'views/abstract/AbstractSeriesChart',
-    'models/Catalog',
     'views/ui/CodeTableView',
     'views/ui/CodeButtonBarView',
     'views/ui/ChartChoiceButtonBar',
@@ -22,7 +21,7 @@ define([
     'helpers/CodeChooser',
     'views/ui/CatalogChoiceButtonBar'
 ], function(CardElement, CardPane, AbstractSwissMap, PieChart, SeriesChart, CardBoardView, CardView, AbstractSeriesChart,
-            Catalog, CodeTableView, CodeButtonBarView, ChartChoiceButtonBar, PieChartByAgeVisualisation,BarChartVisualisation,
+            CodeTableView, CodeButtonBarView, ChartChoiceButtonBar, PieChartByAgeVisualisation,BarChartVisualisation,
             BoxPlotVisualisation, BarChart, BoxPlot, OrdinalCurveChart, OrdinalCurveChartVisualisation, CodeChooser, CatalogChoiceButtonBar){
 
     "use strict";
@@ -39,7 +38,6 @@ define([
             _this.visualise();
             $('body').append(chartCardPane);
         };
-
 
         _this.addCatalogChoiceButtons = function(){
             catalogChoiceButtons.addButton("ICD", function(){window.alert("Hi! I'm the ICD catalog!")});
