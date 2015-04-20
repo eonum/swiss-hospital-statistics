@@ -3,25 +3,10 @@ function(View, OrdinalCurveChart, NumberByAgeDatasetConverter, DatasetSorter)
 {
     function OrdinalCurveChartVisualisation(_width, _height){
         var _this = new View('<div></div>');
-        var content = new View('<div></div>');
         var chart = new OrdinalCurveChart(_width, _height);
 
         _this.initialize = function(){
-            _this.append(content);
-            content.append(chart);
-        };
-
-        /**
-         * Does something and means something ;-)
-         */
-        _this.add = override(_this, _this.add, function(element){
-            content.add(element);
-            return _this;
-        });
-
-        _this.removeFromContent = function()
-        {
-            $(_this).remove();
+            _this.add(chart);
         };
 
         /**
@@ -34,9 +19,7 @@ function(View, OrdinalCurveChart, NumberByAgeDatasetConverter, DatasetSorter)
                 var sortedDatasets = sorter.sortByIntervalsAscending();
 
                 var converter = new NumberByAgeDatasetConverter(sortedDatasets);
-
-                chart.setData(converter.asAbsoluteData())
-                    .setTitle(description);
+                chart.setData(converter.asAbsoluteData()).setTitle(description);
         };
 
         _this.initialize();

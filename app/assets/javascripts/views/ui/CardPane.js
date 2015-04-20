@@ -36,7 +36,7 @@ function(View){
          */
         _this.setCard = function(cardID){
             if(currentCardIndex >= 0)
-                cards[currentCardIndex].removeFromContent();
+                cards[currentCardIndex].remove();
             currentCardIndex = getCardIndexById(cardID);
             var currentCard = cards[currentCardIndex];
             content.append(currentCard);

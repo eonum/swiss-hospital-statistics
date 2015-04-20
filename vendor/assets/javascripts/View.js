@@ -30,7 +30,11 @@ define([], function(){
         _this.model = function (_model) {
             if (_.isUndefined(_model)) return model;
             model = _model;
-            return _this;;
+            return _this;
+        };
+
+        _this.subclassResponsibility = function() {
+            throw 'Should be implemented by subclass!';
         };
 
         return _this;
