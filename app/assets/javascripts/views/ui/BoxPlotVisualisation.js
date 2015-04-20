@@ -27,7 +27,12 @@ define([
 
                 boxPlot.setData(intervals);
 
-                content.add('<h3 class="svg_title_boxplot">' + title + '</h3>');
+                if(document.getElementById("title_id_boxplot")) {
+                    document.getElementById("title_id_boxplot").innerHTML = title;
+                } else {
+                    content.add('<h3 class="svg_title_boxplot", id="title_id_boxplot">' + title + '</h3>');
+                }
+
                 content.add(boxPlot);
             }
             return _this;
