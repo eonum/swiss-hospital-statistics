@@ -26,15 +26,8 @@ function (BarChart, View, NumberByAgeDatasetConverter){
             barChart.setData(converter.asAbsoluteData()).setTitle(description);
         };
 
-        _this.removeFromContent = function()
-        {
-            $(_this).remove();
-        };
-
         _this.getFirstProperty = function (object){
-                for (var prop in object) {
-                    return object[prop];
-                }
+            return _.first(_.values(object));
         };
 
         _this.initialize();
