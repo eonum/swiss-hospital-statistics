@@ -94,34 +94,136 @@ define(['helpers/CodeChooser'], function(CodeChooser){
             }
         }];
 
-        var DRG_962Z = [{
-            "code": "962Z",
-            "description": "Unzulässige geburtshilfliche Diagnosekombination",
-            "year": 2013,
-            "drg_id": {"$oid": "54e5d7cc48e2b8495c4b39d5"},
-            "categorised_data": {
-                "categories": {
-                    "interval": [{
-                        "categories": {
-                            "percentile": [{
-                                "categories": {},
-                                "percentile": 5,
-                                "amount": 4.0
-                            }, {"categories": {}, "percentile": 10, "amount": 4.0}, {
-                                "categories": {},
-                                "percentile": 25,
-                                "amount": 4.0
-                            }, {"categories": {}, "percentile": 50, "amount": 4.0}, {
-                                "categories": {},
-                                "percentile": 75,
-                                "amount": 4.0
-                            }, {"categories": {}, "percentile": 90, "amount": 4.0}, {
-                                "categories": {},
-                                "percentile": 95,
-                                "amount": 4.0
-                            }]
-                        }, "interval": {"from": 15, "to": 39}, "n": 1, "dad": 4, "sa": 0, "min": 4, "max": 4
-                    }]}}}];
+        var DRG_962Z = [
+            {
+                "code": "962Z",
+                "description": "Unzulässige geburtshilfliche Diagnosekombination",
+                "year": 2013,
+                "drg_id": {
+                    "$oid": "54e5d7cc48e2b8495c4b39d5"
+                },
+                "categorised_data": {
+                    "categories": {
+                        "interval": [
+                            {
+                                "categories": {
+                                    "percentile": [
+                                        {
+                                            "categories": {},
+                                            "percentile": 5,
+                                            "amount": 4
+                                        },
+                                        {
+                                            "categories": {},
+                                            "percentile": 10,
+                                            "amount": 4
+                                        },
+                                        {
+                                            "categories": {},
+                                            "percentile": 25,
+                                            "amount": 4
+                                        },
+                                        {
+                                            "categories": {},
+                                            "percentile": 50,
+                                            "amount": 4
+                                        },
+                                        {
+                                            "categories": {},
+                                            "percentile": 75,
+                                            "amount": 4
+                                        },
+                                        {
+                                            "categories": {},
+                                            "percentile": 90,
+                                            "amount": 4
+                                        },
+                                        {
+                                            "categories": {},
+                                            "percentile": 95,
+                                            "amount": 4
+                                        }
+                                    ]
+                                },
+                                "interval": {
+                                    "from": 15,
+                                    "to": 39
+                                },
+                                "n": 1,
+                                "dad": 4,
+                                "sa": 0,
+                                "min": 4,
+                                "max": 4
+                            }
+                        ]
+                    }
+                }
+            },
+            {
+                "code": "962Z",
+                "description": "Unzulässige geburtshilfliche Diagnosekombination",
+                "year": 2013,
+                "drg_id": {
+                    "$oid": "54e5d7cc48e2b8495c4b39d5"
+                },
+                "categorised_data": {
+                    "categories": {
+                        "interval": [
+                            {
+                                "categories": {
+                                    "percentile": [
+                                        {
+                                            "categories": {},
+                                            "percentile": 5,
+                                            "amount": 4
+                                        },
+                                        {
+                                            "categories": {},
+                                            "percentile": 10,
+                                            "amount": 4
+                                        },
+                                        {
+                                            "categories": {},
+                                            "percentile": 25,
+                                            "amount": 4
+                                        },
+                                        {
+                                            "categories": {},
+                                            "percentile": 50,
+                                            "amount": 4
+                                        },
+                                        {
+                                            "categories": {},
+                                            "percentile": 75,
+                                            "amount": 4
+                                        },
+                                        {
+                                            "categories": {},
+                                            "percentile": 90,
+                                            "amount": 4
+                                        },
+                                        {
+                                            "categories": {},
+                                            "percentile": 95,
+                                            "amount": 4
+                                        }
+                                    ]
+                                },
+                                "interval": {
+                                    "from": 15,
+                                    "to": 39
+                                },
+                                "n": 1,
+                                "dad": 4,
+                                "sa": 0,
+                                "min": 4,
+                                "max": 4
+                            }
+                        ]
+                    }
+                }
+            }
+        ];
 
         var emptyArray = [];
 
