@@ -55,10 +55,13 @@ define(['d3', 'views/ResponsiveSvg', 'views/Box'], function (d3, ResponsiveSvg, 
             _this.svg().selectAll(".y.axis").call(yAxis);
 
             // Need data to calculate on
-            var chart = Box()
-                .whiskers(yScale(data, function(d) {return d.lowerQ;}), yScale(data, function(d) {return d.higherQ;}))
+            var chart = Box(yScale)
                 .width(width)
-                .height(height);
+                .height(height)
+                .min(min)
+                .max(max);
+
+            // yScale(data, function(d) {return d.lowerQ;})
 
             console.log("whiskers with yScale");
             console.log(yScale(data, function(d) {return d.lowerQ;}));

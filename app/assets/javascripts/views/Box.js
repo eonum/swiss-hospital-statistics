@@ -3,16 +3,19 @@ define([
 ], function (
     d3
 ) {
-    function Box() {
+    function Box(y) {
 
         var width = 5,
             height = 40,
             duration = 1000,
             domain = null,
-            value = Number,
+            min = 0,
+            max = 19,
+            //value = Number,
             whiskers = [1,4],
-            quartiles = [2,3],
-            tickFormat = null;
+            //quartiles = [2,3],
+            tickFormat = null,
+            yScale = y;
 
         // For each small multiple…
         function box(g) {
@@ -49,17 +52,17 @@ define([
 //                    .range([height, 0]);
 //                console.log(x1);
 
-                var x1 = d3.scale.linear()
-                    .domain([min, max])
-                    .range([height, 0]);
+               // var x1 = d3.scale.linear()
+                //    .domain([min, max])
+                 //   .range([height, 0]);
 
                 // Retrieve the old x-scale, if this is an update.
                 var x0 = this.__chart__ || d3.scale.linear()
                         .domain([0, Infinity])
-                        .range(x1.range());
+                        .range(yScale.range());
 
                 // Stash the new scale.
-                this.__chart__ = x1;
+                this.__chart__ = yScale;
 
                 // Note: the box, median, and box tick elements are fixed in number,
                 // so we only have to handle enter and update. In contrast, the outliers
@@ -85,30 +88,30 @@ define([
                     .duration(duration)
                     .style("opacity", 1)
                     .attr("y1", function (d) {
-                        return x1(d[0]);
+                        return yScale(d[0]);
                     })
                     .attr("y2", function (d) {
-                        return x1(d[1]);
+                        return yScale(d[1]);
                     });
 
                 center.transition()
                     .duration(duration)
                     .style("opacity", 1)
                     .attr("y1", function (d) {
-                        return x1(d[0]);
+                        return yScale(d[0]);
                     })
                     .attr("y2", function (d) {
-                        return x1(d[1]);
+                        return yScale(d[1]);
                     });
 
                 center.exit().transition()
                     .duration(duration)
                     .style("opacity", 1e-6)
                     .attr("y1", function (d) {
-                        return x1(d[0]);
+                        return yScale(d[0]);
                     })
                     .attr("y2", function (d) {
-                        return x1(d[1]);
+                        return yScale(d[1]);
                     })
                     .remove();
 
@@ -129,19 +132,19 @@ define([
                     .transition()
                     .duration(duration)
                     .attr("y", function (d) {
-                        return x1(d[2]);
+                        return yScale(d[2]);
                     })
                     .attr("height", function (d) {
-                        return x1(d[0]) - x1(d[2]);
+                        return yScale(d[0]) - yScale(d[2]);
                     });
 
                 box.transition()
                     .duration(duration)
                     .attr("y", function (d) {
-                        return x1(d[2]);
+                        return yScale(d[2]);
                     })
                     .attr("height", function (d) {
-                        return x1(d[0]) - x1(d[2]);
+                        return yScale(d[0]) - yScale(d[2]);
                     });
 
                 // Update median line.
@@ -156,13 +159,13 @@ define([
                     .attr("y2", x0)
                     .transition()
                     .duration(duration)
-                    .attr("y1", x1)
-                    .attr("y2", x1);
+                    .attr("y1", yScale)
+                    .attr("y2", yScale);
 
                 medianLine.transition()
                     .duration(duration)
-                    .attr("y1", x1)
-                    .attr("y2", x1);
+                    .attr("y1", yScale)
+                    .attr("y2", yScale);
 
                 // Update whiskers.
                 var whisker = g.selectAll("line.whisker")
@@ -177,25 +180,25 @@ define([
                     .style("opacity", 1e-6)
                     .transition()
                     .duration(duration)
-                    .attr("y1", x1)
-                    .attr("y2", x1)
+                    .attr("y1", yScale)
+                    .attr("y2", yScale)
                     .style("opacity", 1);
 
                 whisker.transition()
                     .duration(duration)
-                    .attr("y1", x1)
-                    .attr("y2", x1)
+                    .attr("y1", yScale)
+                    .attr("y2", yScale)
                     .style("opacity", 1);
 
                 whisker.exit().transition()
                     .duration(duration)
-                    .attr("y1", x1)
-                    .attr("y2", x1)
+                    .attr("y1", yScale)
+                    .attr("y2", yScale)
                     .style("opacity", 1e-6)
                     .remove();
 
                 // Compute the tick format.
-                var format = tickFormat || x1.tickFormat(8);
+                var format = tickFormat || yScale.tickFormat(8);
 
                 // Update box ticks.
                 var boxTick = g.selectAll("text.box")
@@ -217,12 +220,12 @@ define([
                     .text(format)
                     .transition()
                     .duration(duration)
-                    .attr("y", x1);
+                    .attr("y", yScale);
 
                 boxTick.transition()
                     .duration(duration)
                     .text(format)
-                    .attr("y", x1);
+                    .attr("y", yScale);
 
                 // Update whisker ticks. These are handled separately from the box
                 // ticks because they may or may not exist, and we want don't want
@@ -240,18 +243,18 @@ define([
                     .style("opacity", 1e-6)
                     .transition()
                     .duration(duration)
-                    .attr("y", x1)
+                    .attr("y", yScale)
                     .style("opacity", 1);
 
                 whiskerTick.transition()
                     .duration(duration)
                     .text(format)
-                    .attr("y", x1)
+                    .attr("y", yScale)
                     .style("opacity", 1);
 
                 whiskerTick.exit().transition()
                     .duration(duration)
-                    .attr("y", x1)
+                    .attr("y", yScale)
                     .style("opacity", 1e-6)
                     .remove();
             });
@@ -269,7 +272,7 @@ define([
             height = x;
             return box;
         };
-
+/*
         box.tickFormat = function (x) {
             if (!arguments.length) return tickFormat;
             tickFormat = x;
@@ -281,31 +284,44 @@ define([
             duration = x;
             return box;
         };
-
+*/
         box.domain = function (x) {
             if (!arguments.length) return domain;
             domain = x == null ? x : d3.functor(x);
             return box;
         };
-
+/*
         box.value = function (x) {
             if (!arguments.length) return value;
             value = x;
             return box;
         };
-
+*/
         box.whiskers = function (x) {
+
             if (!arguments.length) return whiskers;
             whiskers = x;
             return box;
         };
 
+        box.min = function (x) {
+            if (!arguments.length) return min;
+            min = x;
+            return box;
+        };
+
+        box.max = function (x) {
+            if (!arguments.length) return max;
+            max = x;
+            return box;
+        };
+/*
         box.quartiles = function (x) {
             if (!arguments.length) return quartiles;
             quartiles = x;
             return box;
         };
-
+*/
         return box;
     }
 
