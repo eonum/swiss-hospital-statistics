@@ -63,7 +63,7 @@ define([
             chartCardPane.addCard(pieChartCard);
             chartChoiceButtons.addButton("pieChart","Pie Chart");
 
-            var boxPlotVisualisation = new BoxPlotVisualisation(700, 500);
+            var boxPlotVisualisation = new BoxPlotVisualisation(700, 400);
             var boxPlotCard = new CardElement("boxPlot", boxPlotVisualisation);
             chartCardPane.addCard(boxPlotCard);
             chartChoiceButtons.addButton("boxPlot","BoxPlot");

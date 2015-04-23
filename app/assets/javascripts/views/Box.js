@@ -31,12 +31,8 @@ define([
                     lowerWhisker = d.lowerWhisker,
                     higherWhisker = d.higherWhisker;
 
-                console.log(g);
-
                 // Compute quartiles. Must return exactly 3 elements.
                 var quartileData = [d.lowerQ, d.avg, d.higherQ];
-                console.log("quartiles");
-                console.log(quartileData);
 
                 var whiskerIndices = [lowerWhisker, higherWhisker];
                 // TODO can we omit one of these?

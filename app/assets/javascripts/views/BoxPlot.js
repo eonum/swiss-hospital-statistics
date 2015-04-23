@@ -8,8 +8,8 @@ define(['d3', 'views/ResponsiveSvg', 'views/Box'], function (d3, ResponsiveSvg, 
     function BoxPlot(_width, _height){
         var _this = new ResponsiveSvg(_width, _height);
 
-        var x = d3.scale.ordinal();
-        x.rangeBands([0, _width], 0.5);
+        var xScale = d3.scale.ordinal();
+        xScale.rangeBands([0, _width], 0.6);
 
         var yScale = d3.scale.linear();
 
@@ -22,7 +22,7 @@ define(['d3', 'views/ResponsiveSvg', 'views/Box'], function (d3, ResponsiveSvg, 
             max = -Infinity;
 
         var xAxis = d3.svg.axis()
-            .scale(x)
+            .scale(xScale)
             .orient("bottom");
 
         var yAxis = d3.svg.axis()
@@ -40,21 +40,28 @@ define(['d3', 'views/ResponsiveSvg', 'views/Box'], function (d3, ResponsiveSvg, 
                 .call(yAxis);
         };
 
+        // TODO: Firefox Chrome IE issue ;(
         _this.setData = function (data) {
             var xDomain = _.map(data, function(datum){ return datum.ageInterval}).sort();
-            x.domain(xDomain);
+            xScale.domain(xDomain);
             _this.svg().selectAll(".x.axis").call(xAxis);
 
             var margin = {top: 10, right: 20, bottom: 20, left: 20},
-                width = x.rangeBand() - margin.left - margin.right,
+                width = xScale.rangeBand() - margin.left - margin.right,
                 height = _height - margin.top - margin.bottom;
 
+            yScale.domain([d3.max(data, function(d) {return d.max}), d3.min(data, function(d) {return d.min})]);
+            yScale.range([0, height]);
+            _this.svg().selectAll(".y.axis").call(yAxis);
 
             // Need data to calculate on
             var chart = Box()
-                .whiskers(data.lowerQ, data.higherQ)
+                .whiskers(yScale(data, function(d) {return d.lowerQ;}), yScale(data, function(d) {return d.higherQ;}))
                 .width(width)
                 .height(height);
+
+            console.log("whiskers with yScale");
+            console.log(yScale(data, function(d) {return d.lowerQ;}));
 
             chart.domain([min, max]);
 
@@ -71,12 +78,13 @@ define(['d3', 'views/ResponsiveSvg', 'views/Box'], function (d3, ResponsiveSvg, 
                 .call(chart);
 
             svg.attr("transform", function(d, i){
-                return  "translate(" + x(d.ageInterval) + "," + margin.top + ")";
+                return  "translate(" + xScale(d.ageInterval) + "," + margin.top + ")";
             })
                 .call(chart);
 
             svg.exit()
                 .remove();
+
 
         };
 
