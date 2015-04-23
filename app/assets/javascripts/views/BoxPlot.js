@@ -11,6 +11,8 @@ define(['d3', 'views/ResponsiveSvg', 'views/Box'], function (d3, ResponsiveSvg, 
         var x = d3.scale.ordinal();
         x.rangeBands([0, _width], 0.5);
 
+        var yScale = d3.scale.linear();
+
         _this.marginTop(50);
         _this.marginLeft(50);
         _this.marginRight(140);
@@ -23,11 +25,19 @@ define(['d3', 'views/ResponsiveSvg', 'views/Box'], function (d3, ResponsiveSvg, 
             .scale(x)
             .orient("bottom");
 
+        var yAxis = d3.svg.axis()
+            .scale(yScale)
+            .orient("left");
+
         _this.initialize = function() {
             _this.svg().append("g")
                 .attr('transform', 'translate(0,'+ (_height) +')')
                 .attr('class', 'x axis')
                 .call(xAxis);
+
+            _this.svg().append("g")
+                .attr('class', 'y axis')
+                .call(yAxis);
         };
 
         _this.setData = function (data) {
@@ -38,6 +48,7 @@ define(['d3', 'views/ResponsiveSvg', 'views/Box'], function (d3, ResponsiveSvg, 
             var margin = {top: 10, right: 20, bottom: 20, left: 20},
                 width = x.rangeBand() - margin.left - margin.right,
                 height = _height - margin.top - margin.bottom;
+
 
             // Need data to calculate on
             var chart = Box()
@@ -59,11 +70,6 @@ define(['d3', 'views/ResponsiveSvg', 'views/Box'], function (d3, ResponsiveSvg, 
                 .attr("transform", "translate(" + margin.left + ")")
                 .call(chart);
 
-            /*svg.attr("transform", function(d, i){
-                    return  "translate(" + (i*width*5) + "," + margin.top + ")";
-                })
-                .call(chart);*/
-
             svg.attr("transform", function(d, i){
                 return  "translate(" + x(d.ageInterval) + "," + margin.top + ")";
             })
@@ -71,7 +77,6 @@ define(['d3', 'views/ResponsiveSvg', 'views/Box'], function (d3, ResponsiveSvg, 
 
             svg.exit()
                 .remove();
-
 
         };
 
