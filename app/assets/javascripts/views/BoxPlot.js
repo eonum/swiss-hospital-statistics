@@ -68,11 +68,11 @@ define(['d3', 'views/ResponsiveSvg', 'views/Box'], function (d3, ResponsiveSvg, 
 
             chart.domain([min, max]);
 
-            var svg = _this.svg().selectAll("svg")
+            var svg = _this.svg().selectAll(".box")
                 .data(data);
 
             svg.enter()
-                .append("svg")
+                .append("g")
                 .attr("class", "box")
                 .attr("width", width + margin.left + margin.right)
                 .attr("height", height + margin.bottom + margin.top)
