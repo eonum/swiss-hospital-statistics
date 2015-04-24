@@ -1,12 +1,18 @@
-define(['d3', 'views/ResponsiveSvg'], function (d3, ResponsiveSvg){
+define(['d3', 'views/ResponsiveSvg', 'views/ui/HospitalTypeButtonBar'], function (d3, ResponsiveSvg, HospitalTypeButtonBar){
 
     function TopThreeDiagnosisTable(_width, _height){
+
+        //Expected JSON-format: {"interval": val, "total": val, "male": val, "female": val}
 
         var _this = new ResponsiveSvg(_width, _height);
 
         var TRANSITION_TIME = 1000;
         var titleFontSize = _height / 20;
         var chartHeight = _height - titleFontSize;
+
+        var hospitalTypeButtons = new HospitalTypeButtonBar();
+
+        _this.append(hospitalTypeButtons);
 
         _this.marginTop(50);
         _this.marginLeft(50);

@@ -69,10 +69,10 @@ define([
             chartCardPane.addCard(boxPlotCard);
             chartChoiceButtons.addButton("boxPlot","BoxPlot");
 
-            var topThreeVisualisation = new TopThreeDiagnosisVisualisation(800, 500);
+            var topThreeVisualisation = new TopThreeDiagnosisVisualisation(800, 400);
             var topThreeCard = new CardElement("topThreeTable", topThreeVisualisation);
             chartCardPane.addCard(topThreeCard);
-            chartChoiceButtons.addButton("topThreeTable", "Top Three Diagnosis");
+            chartChoiceButtons.addButton("topThreeTable", "Top 3 Diagnosen");
 
             function updateVisualisations(code, datasets){
                 var title = code.code + ": " + code.text_de;

@@ -6,6 +6,7 @@ define(['views/TopThreeDiagnosisTable', 'View'],
             var topThreeTable = new TopThreeDiagnosisTable(_width, _height);
 
             _this.initialize = function (){
+                _this.append(topThreeTable);
             };
 
             //TODO: what do you do...?
