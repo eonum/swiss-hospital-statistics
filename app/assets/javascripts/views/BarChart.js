@@ -59,9 +59,12 @@ define(['d3', 'views/ResponsiveSvg'], function (d3, ResponsiveSvg){
                 .data(data)
                 .exit().remove();
 
-            var bars = chartGroup.selectAll("rect")
+            var barGroups = chartGroup.selectAll(".bar")
                 .data(data)
-                .enter().append("g").append("rect");
+                .enter().append("g").attr("class", "bar");
+
+            barGroups.append("rect");
+            barGroups.append("text").style("font-size", "24px").attr("text-anchor", "middle");
 
             var xDomain = _.map(data, function(datum){ return datum.interval}).sort();
             var colorScale = d3.scale.category20().domain(xDomain);
@@ -74,14 +77,19 @@ define(['d3', 'views/ResponsiveSvg'], function (d3, ResponsiveSvg){
             chartGroup.selectAll(".x.axis").transition().duration(TRANSITION_TIME).call(xAxis);
             chartGroup.selectAll(".y.axis").transition().duration(TRANSITION_TIME).call(yAxis);
 
-            chartGroup.selectAll("rect").data(data)
+            barGroups = chartGroup.selectAll(".bar").data(data);
+            barGroups
+                .transition()
+                .duration(TRANSITION_TIME)
+                .attr("transform", function(datum) { return "translate(" + x(datum.interval)+ ","+ (y(datum.amount) -1) + ")"});
+
+            barGroups.select("rect")
                 .style("fill", function(datum) { return colorScale(datum.interval)})
                 .transition()
                 .duration(TRANSITION_TIME)
-                .attr("x", function(datum) { return x(datum.interval)})
-                .attr("y", function(datum) { return y(datum.amount) - 1})
                 .attr("width", function(datum) { return x.rangeBand()})
                 .attr("height",function(datum) { return chartHeight - y(datum.amount)});
+            barGroups.select("text").attr("x", function(datum){return x.rangeBand()/2}).attr("y", 30).text(function(datum){return datum.amount});
 
             return _this;
         };
