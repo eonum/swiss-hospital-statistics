@@ -58,6 +58,9 @@ define(['d3', 'views/ResponsiveSvg'], function (d3, ResponsiveSvg){
             chartGroup.selectAll("rect")
                 .data(data)
                 .exit().remove();
+            chartGroup.selectAll(".bar")
+                .data(data)
+                .exit().remove();
 
             var barGroups = chartGroup.selectAll(".bar")
                 .data(data)
