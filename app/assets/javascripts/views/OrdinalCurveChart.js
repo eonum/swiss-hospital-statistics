@@ -34,14 +34,17 @@ define(['d3', 'views/ResponsiveSvg'], function (d3, ResponsiveSvg) {
             .scale(y)
             .orient("left");
 
+        var chartGroup = _this.svg().append("g")
+            .attr("transform", "translate(40, " + titleFontSize + ")");
+
         _this.initialize = function(){
 
-            _this.svg().append("g")
+            chartGroup.append("g")
                 .attr('transform', 'translate(0,'+ chartHeight +')')
                 .attr('class', 'x axis')
                 .call(xAxis);
 
-            _this.svg().append("g")
+            chartGroup.append("g")
                 .attr("class", "y axis");
 
             return _this;
@@ -49,18 +52,18 @@ define(['d3', 'views/ResponsiveSvg'], function (d3, ResponsiveSvg) {
 
         _this.setData = function (data){
 
-            var lines = _this.svg().selectAll(".connection").data(data);
+            var lines = chartGroup.selectAll(".connection").data(data);
 
             lines.enter().append("g").append("line")
                 .attr("class", "connection");
 
             lines.exit().remove();
 
-            _this.svg().selectAll("circle")
+            chartGroup.selectAll("circle")
                 .data(data)
                 .enter().append("g").append("circle");
 
-            _this.svg().selectAll("circle")
+            chartGroup.selectAll("circle")
                 .data(data)
                 .exit().remove();
 
@@ -73,11 +76,11 @@ define(['d3', 'views/ResponsiveSvg'], function (d3, ResponsiveSvg) {
                 return datum.amount;
             })]);
 
-            _this.svg().selectAll(".x.axis").transition().duration(TRANSITION_TIME).call(xAxis);
-            _this.svg().selectAll(".y.axis").transition().duration(TRANSITION_TIME).call(yAxis);
+            chartGroup.selectAll(".x.axis").transition().duration(TRANSITION_TIME).call(xAxis);
+            chartGroup.selectAll(".y.axis").transition().duration(TRANSITION_TIME).call(yAxis);
 
             // show all lines but the last one
-            lines = _this.svg().selectAll(".connection").data(data);
+            lines = chartGroup.selectAll(".connection").data(data);
             lines.filter(function (datum, index) {return index != data.length -1 })
                 /*TODO: Choose n-th color from scale, n = number of the curve*/
                 .style("stroke", function(datum) {return colorScaleNumbers(1)})
@@ -95,7 +98,7 @@ define(['d3', 'views/ResponsiveSvg'], function (d3, ResponsiveSvg) {
             lines.filter(function (datum, index) {return index == data.length -1 })
                 .attr("stroke-width", 0);
 
-            _this.svg().selectAll("circle").data(data)
+            chartGroup.selectAll("circle").data(data)
                 /*TODO: Choose n-th color from scale, n = number of the curve*/
                 .style("fill", function(datum) {return colorScaleNumbers(1)})
                 .attr("cx", function(datum) { return x(datum.interval)})
