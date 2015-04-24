@@ -19,10 +19,11 @@ define([
     'views/OrdinalCurveChart',
     'views/ui/OrdinalCurveChartVisualisation',
     'helpers/CodeChooser',
-    'views/ui/CatalogChoiceButtonBar'
+    'views/ui/CatalogChoiceButtonBar',
+    'views/ui/TopThreeDiagnosisVisualisation'
 ], function(CardElement, CardPane, AbstractSwissMap, PieChart, SeriesChart, CardBoardView, CardView, AbstractSeriesChart,
             CodeTableView, CodeButtonBarView, ChartChoiceButtonBar, PieChartByAgeVisualisation,BarChartVisualisation,
-            BoxPlotVisualisation, BarChart, BoxPlot, OrdinalCurveChart, OrdinalCurveChartVisualisation, CodeChooser, CatalogChoiceButtonBar){
+            BoxPlotVisualisation, BarChart, BoxPlot, OrdinalCurveChart, OrdinalCurveChartVisualisation, CodeChooser, CatalogChoiceButtonBar, TopThreeDiagnosisVisualisation){
 
     "use strict";
     function App() {
@@ -68,6 +69,8 @@ define([
             chartCardPane.addCard(boxPlotCard);
             chartChoiceButtons.addButton("boxPlot","BoxPlot");
 
+            _this.displayTopThreeDiagnosis(); //TODO: dummy-method until development of top-3 is done
+
             function updateVisualisations(code, datasets){
                 var title = code.code + ": " + code.text_de;
 
@@ -81,6 +84,12 @@ define([
             codeChooser.appendTo($('body'));
 
             codeChooser.fetchDatasets("icd", "A045", updateVisualisations);
+        };
+
+
+        //TODO: dummy-method until development of top-3 is done
+        _this.displayTopThreeDiagnosis = function(){
+            var topThreeVisualisation = new TopThreeDiagnosisVisualisation(800, 500);
         };
         
         _this.initialize();
