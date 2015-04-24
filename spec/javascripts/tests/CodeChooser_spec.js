@@ -225,6 +225,75 @@ define(['helpers/CodeChooser'], function(CodeChooser){
             }
         ];
 
+        var AGE_010 = {
+            "code": "010",
+            "description": "Brucellose",
+            "years": [
+                {
+                    "categories": [
+                        {
+                            "sex": [
+                                {
+                                    "categories": [
+                                        {
+                                            "valueInterval": [
+                                                {
+                                                    "interval": {
+                                                        "from": 20,
+                                                        "to": 24
+                                                    },
+                                                    "n": 1
+                                                },
+                                                {
+                                                    "interval": {
+                                                        "from": 30,
+                                                        "to": 34
+                                                    },
+                                                    "n": 1
+                                                },
+                                                {
+                                                    "interval": {
+                                                        "from": 35,
+                                                        "to": 39
+                                                    },
+                                                    "n": 1
+                                                }
+                                            ]
+                                        }
+                                    ],
+                                    "sex": "f"
+                                },
+                                {
+                                    "categories": [
+                                        {
+                                            "valueInterval": [
+                                                {
+                                                    "interval": {
+                                                        "from": 25,
+                                                        "to": 29
+                                                    },
+                                                    "n": 2
+                                                },
+                                                {
+                                                    "interval": {
+                                                        "from": 80,
+                                                        "to": 84
+                                                    },
+                                                    "n": 1
+                                                }
+                                            ]
+                                        }
+                                    ],
+                                    "sex": "m"
+                                }
+                            ]
+                        }
+                    ],
+                    "year": "2013"
+                }
+            ]
+        };
+
         var emptyArray = [];
 
         var emptyObject = {};
@@ -241,7 +310,7 @@ define(['helpers/CodeChooser'], function(CodeChooser){
             expect(firstProp).toEqual(expectedResult);
         });
 
-        it("should be able to handle empty objects", function (){
+        it("should be able to handle empty objects", function(){
             var chooser = new CodeChooser(testdata);
             var firstProp = chooser.getFirstProperty(emptyObject);
 
@@ -331,27 +400,28 @@ define(['helpers/CodeChooser'], function(CodeChooser){
             });
         });
 
+        /*VALID AGE API TEST - READY AS SOON AS ROUTE IS DEFINED
         //tests the api call (AGE, valid)
-        /*it("should return correct JSON string upon valid API call [AGE]", function() {
-            var expectedJSON = AGE_010;
+        it("should return correct JSON string upon valid API call [AGE]", function() {
+            var expectedJSON = "blah";
             var actualJSON;
             var flag = false;
 
             runs(function() {
                 flag = false;
                 var chooser = new CodeChooser();
-                chooser.fetchDatasets("age", "010", function(data) {
+                chooser.fetchDatasets("age", "010", function(code, data) {
                     actualJSON = data;
                 });
 
                 setTimeout(function() {
                     flag = true;
-                }, 100);
+                }, timeoutTime / 2);
             });
 
             waitsFor(function() {
                 return flag;
-            }, "The Value should be incremented", 200);
+            }, "The Value should be incremented", timeoutTime);
 
             runs(function() {
                 expect(actualJSON).toEqual(expectedJSON);
@@ -438,5 +508,33 @@ define(['helpers/CodeChooser'], function(CodeChooser){
                 expect(actualJSON).toEqual(expectedJSON);
             });
         });
+
+        /*INVALID AGE API TEST - READY AS SOON AS ROUTE IS DEFINED
+        //tests the api call (AGE, invalid)
+        it("should return empty array upon invalid API call [AGE]", function() {
+            var expectedJSON = emptyArray;
+            var actualJSON;
+            var flag = false;
+
+            runs(function() {
+                flag = false;
+                var chooser = new CodeChooser();
+                chooser.fetchDatasets("age", "blah", function(code, data) {
+                    actualJSON = data;
+                });
+
+                setTimeout(function() {
+                    flag = true;
+                }, timeoutTime / 2);
+            });
+
+            waitsFor(function() {
+                return flag;
+            }, "Wait longer for the function", timeoutTime);
+
+            runs(function() {
+                expect(actualJSON).toEqual(expectedJSON);
+            });
+        });*/
     });
 });
