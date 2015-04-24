@@ -69,7 +69,10 @@ define([
             chartCardPane.addCard(boxPlotCard);
             chartChoiceButtons.addButton("boxPlot","BoxPlot");
 
-            _this.displayTopThreeDiagnosis(); //TODO: dummy-method until development of top-3 is done
+            var topThreeVisualisation = new TopThreeDiagnosisVisualisation(800, 500);
+            var topThreeCard = new CardElement("topThreeTable", topThreeVisualisation);
+            chartCardPane.addCard(topThreeCard);
+            chartChoiceButtons.addButton("topThreeTable", "Top Three Diagnosis");
 
             function updateVisualisations(code, datasets){
                 var title = code.code + ": " + code.text_de;
@@ -89,7 +92,7 @@ define([
 
         //TODO: dummy-method until development of top-3 is done
         _this.displayTopThreeDiagnosis = function(){
-            var topThreeVisualisation = new TopThreeDiagnosisVisualisation(800, 500);
+
         };
         
         _this.initialize();
