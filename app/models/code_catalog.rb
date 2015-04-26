@@ -27,8 +27,8 @@ class CodeCatalog
   # Fetches all codes for a specific type from the DB
   def codes_for_tag(tag)
     type = code_for_tag(tag)
-    codes = type.all.pluck(:code, :text_de, :text_fr, :text_it).to_a
-    codes = codes.collect{|each| {:type => tag, :code => each[0], :text_de => each[1], :text_fr => each[2], :text_it => each[3]}}
+    codes = type.all.pluck(:code, :short_code, :text_de, :text_fr, :text_it).to_a
+    codes = codes.collect{|each| {:type => tag, :code => each[0], :short_code => each[1], :text_de => each[2], :text_fr => each[3], :text_it => each[4]}}
   end
 
   def code_for_tag(tag)

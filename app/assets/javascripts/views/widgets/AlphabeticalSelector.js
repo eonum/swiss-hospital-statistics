@@ -58,7 +58,7 @@ define([
                 var item = _this.newItem();
                 item.find('a').text(_this.model().selector().nameOf(each));
                 item.click(function() {
-                    _this.announcer().announce(new OnItemClicked(item));
+                    _this.announcer().announce(new OnItemClicked(each));
                 });
                 _list.add(item);
             });
@@ -78,7 +78,7 @@ define([
     }
 
     function AlphabeticalSelector() {
-        var _this = new View('<div></div>');
+        var _this = new View('<div style="width: 100%; display: inline-block;"></div>');
         var header;
         var list;
         var model;
@@ -144,7 +144,6 @@ define([
         };
 
         _this.onItemsUpdated = function () {
-            console.log('items loaded!');
             _this.render();
         };
 

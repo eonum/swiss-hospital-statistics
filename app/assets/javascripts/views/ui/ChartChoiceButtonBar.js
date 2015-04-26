@@ -12,7 +12,7 @@ define([
 
         _this.addButton = function(targetID, title){
             var button = new $(new View('<a href="#" class="small button secondary">' + title +'</a>'));
-            button.click(function(){cardPane.setCard(targetID)});
+            button.click(function(e){e.preventDefault(); cardPane.setCard(targetID)});
             content.add(new View('<li></li>').add(button));
         };
 
