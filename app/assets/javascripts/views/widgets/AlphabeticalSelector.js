@@ -129,7 +129,7 @@ define([
         };
 
         _this.renderName = function () {
-            return new View('<div data-magellan-destination="'+groupID(_this.model())+'" class="medium-1 large-1 columns" id="'+groupID(_this.model())+'">'+_this.model().label()+'</div>');
+            return new View('<div data-magellan-destination="'+groupID(_this.model())+'" class="medium-1 large-1 columns text-center name" id="'+groupID(_this.model())+'">'+_this.model().label()+'</div>');
         };
 
         _this.renderItemsIn = function (_items, _list) {

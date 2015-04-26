@@ -7,6 +7,10 @@
 
   div {
 
+    &.name {
+      padding-left: 0.9375rem * 2;
+    }
+
     &.navigation {
       margin: 1em 0;
     }
