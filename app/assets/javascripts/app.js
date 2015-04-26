@@ -98,17 +98,17 @@ define([
 
         };
 
+
+        var selectorModel = new AlphabeticalSelectorModel();
+        selectorModel.nameLogic(function(item){
+            return item.code + " "+item.text_de;
+        });
         var selectorView = new AlphabeticalSelecor();
+        selectorView.model(selectorModel);
         $('body').append(selectorView);
 
         $.getJSON("/api/v1/codes/icd", function(result){
-            console.log('loaded!');
-            var selectorModel = new AlphabeticalSelectorModel();
-            selectorModel.nameLogic(function(item){
-                return item.code + " "+item.text_de;
-            });
             selectorModel.items(result);
-            selectorView.model(selectorModel);
         });
         
         _this.initialize();

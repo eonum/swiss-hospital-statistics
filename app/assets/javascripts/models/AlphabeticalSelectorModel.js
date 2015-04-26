@@ -1,4 +1,13 @@
-define([], function() {
+define([
+    'Announcer',
+    'announcements/OnAlphabeticalItemSelected',
+    'announcements/OnAlphabeticalItemsUpdated'
+    ],
+    function(
+        Announcer,
+        OnAlphabeticalItemSelected,
+        OnAlphabeticalItemsUpdated
+    ) {
 
     function Group (_selector, _label) {
         var _this = this;
@@ -40,25 +49,31 @@ define([], function() {
         var items = [];
         var nameLogic = function(_item) {return _item.toString();};
         var groups = {};
+        var announcer = new Announcer();
 
         _this.initialize = function () {
+            groups = {};
             _.each("abcdefghijklmnopqrstuvwxyz".toUpperCase().split(""),function(each) {
                 groups[each] = new Group(_this, each);
             });
         };
 
+        _this.announcer = function () {
+            return announcer;
+        };
+
         _this.items = function (_items) {
             if (_.isUndefined(_items)) return items;
             items = _items;
-            _this.initializeGroupsFrom(_this.items());
+            _this.invalidate();
         };
 
         _this.nameLogic = function (_func) {
             nameLogic = _func;
         };
 
-        _this.initializeGroupsFrom = function(_items) {
-            _.each(_.groupBy(_items, _this.firstCharacterOf), function(each) {
+        _this.initializeGroupsFrom = function() {
+            _.each(_.groupBy(_this.items(), _this.firstCharacterOf), function(each) {
                 _this.groupAt(_this.firstCharacterOf(_.first(each)).toUpperCase()).items(each);
             });
         };
@@ -77,6 +92,20 @@ define([], function() {
 
         _this.groups = function () {
             return groups;
+        };
+
+        _this.selectItem = function(item) {
+            _this.announcer().announce(new OnAlphabeticalItemSelected(item));
+        };
+
+        _this.invalidate = function () {
+            _this.initialize();
+            _this.initializeGroupsFrom();
+            _this.notifyItemsUpdated();
+        };
+
+        _this.notifyItemsUpdated = function () {
+            _this.announcer().announce(new OnAlphabeticalItemsUpdated());
         };
 
         _this.initialize();

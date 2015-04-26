@@ -24,11 +24,11 @@ class CodeCatalog
     DocumentForJSONCleaner.new.clean_documents_for_json(result)
   end
 
-  # Fetches all codes for a specific type from the DB.
-  # Warning, fetches the entire collection!
+  # Fetches all codes for a specific type from the DB
   def codes_for_tag(tag)
     type = code_for_tag(tag)
-    type.all.to_a
+    codes = type.all.pluck(:code, :text_de, :text_fr, :text_it).to_a
+    codes = codes.collect{|each| {:type => tag, :code => each[0], :text_de => each[1], :text_fr => each[2], :text_it => each[3]}}
   end
 
   def code_for_tag(tag)

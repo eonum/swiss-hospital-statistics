@@ -1,16 +1,32 @@
 define([
-    'View'
+    'View',
+    'Announcer',
+    'announcements/OnAlphabeticalItemsUpdated'
 ], function(
-    View
+    View,
+    Announcer,
+    OnAlphabeticalItemsUpdated
 ) {
+
+    function OnItemClicked(item) {
+        var _this = this;
+        _this.item = function () {
+            return item;
+        };
+    }
 
     function GroupView () {
         var _this = new View('<div class="row left"></div>');
         var name = new View('<div class="medium-1 large-1 columns"></div>');
         var content = new View ('<div class="medium-11 large-11 columns"></div>');
         var list = new View ('<ul class="no-bullet"></ul>');
+        var announcer = new Announcer();
 
         var model;
+
+        _this.announcer = function () {
+            return announcer;
+        };
 
         _this.model = function (_model) {
             if (_.isUndefined(_model)) return model;
@@ -40,7 +56,10 @@ define([
         _this.renderItemsIn = function (_items, _list) {
             _.each(_items, function (each) {
                 var item = _this.newItem();
-                item.html(_this.model().selector().nameOf(each));
+                item.find('a').text(_this.model().selector().nameOf(each));
+                item.click(function() {
+                    _this.announcer().announce(new OnItemClicked(item));
+                });
                 _list.add(item);
             });
         };
@@ -52,7 +71,7 @@ define([
         };
 
         _this.newItem = function () {
-            return new View('<li></li>')
+            return new View('<li><a></a></li>')
         };
 
         return _this;
@@ -67,10 +86,12 @@ define([
         _this.model = function (_model) {
             if (_.isUndefined(_model)) return model;
             model = _model;
+            model.announcer().onSendTo(OnAlphabeticalItemsUpdated, _this.onItemsUpdated, _this);
             _this.render();
         };
 
         _this.render = function () {
+            _this.cleanAll();
             header = _this.renderCharacterList();
             list = _this.renderGroupList();
             _this.add(header);
@@ -95,9 +116,18 @@ define([
             return list;
         };
 
+        _this.cleanAll = function () {
+            if (!_.isUndefined(list))
+                list.children().each(function(index, group) {
+                    $(group).me().announcer().unsubscribe(_this);
+                });
+            _this.empty();
+        };
+
         _this.renderGroup = function (group) {
             var view = new GroupView();
             view.model(group);
+            view.announcer().onSendTo(OnItemClicked, _this.onItemClicked,_this);
             return view;
         };
 
@@ -107,6 +137,15 @@ define([
 
         _this.newCharacterListItem = function () {
             return new View('<li><a></a></li>')
+        };
+
+        _this.onItemClicked = function (ann) {
+            _this.model().selectItem(ann.item());
+        };
+
+        _this.onItemsUpdated = function () {
+            console.log('items loaded!');
+            _this.render();
         };
 
         return _this;
