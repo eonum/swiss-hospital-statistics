@@ -3,7 +3,7 @@ define([
     'Announcer',
     'announcements/OnAlphabeticalItemsUpdated',
     'announcements/OnAlphabeticalItemSelected',
-    'announcements/OnAlphabeticalItemDeselected',
+    'announcements/OnAlphabeticalItemDeselected'
 ], function(
     View,
     Announcer,
@@ -24,7 +24,7 @@ define([
     }
 
     function Navigation () {
-        var _this = new View('<div data-magellan-expedition="fixed"></div>');
+        var _this = new View('<div data-magellan-expedition="fixed" class="navigation"></div>');
 
         var subNav;
         var model;

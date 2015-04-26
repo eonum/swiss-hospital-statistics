@@ -5,25 +5,66 @@
   font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
   font-weight: 300;
 
-  ul.inline-list {
-    margin: 1em 0.5em;
+  div {
 
-    li {
-      font-size: 1em;
-      padding: 0 0.5em;
-      margin: 0;
-      border-right: 1px solid #dfdfdf;
+    &.navigation {
+      margin: 1em 0;
+    }
 
-      &.inactive {
+    dl.sub-nav {
+      margin: 0 0.5em;
+
+      dd {
+        font-size: 1em;
+        padding: 0;
+        margin: 0;
+        border-right: 0 solid #dfdfdf;
+
         a {
-          color: gray;
-          pointer-events: none;
-          cursor: default;
+          color: #008CBA;
+          font-weight: 300;
+          padding: 0 0.5em;
+          margin: 0;
+        }
+
+        &.active {
+          a { color: #ffffff; }
+        }
+
+        &.inactive {
+          a {
+            color: gray;
+            pointer-events: none;
+            cursor: default;
+          }
+        }
+
+        &:last-of-type {
+          border-right: none;
         }
       }
+    }
 
-      &:last-of-type {
-        border-right: none;
+    &.fixed {
+
+      &.navigation {
+        margin: 0;
+      }
+
+      dl.sub-nav {
+        dd {
+          padding: 0 0.5em;
+          a {
+            color: gray;
+            padding: 0.1875rem 1rem;
+          }
+
+          &.active {
+            a {
+              color: #ffffff;
+            }
+          }
+        }
       }
     }
   }
