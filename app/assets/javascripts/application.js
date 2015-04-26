@@ -44,7 +44,8 @@ requirejs([
     //'i18n/translations',
     'turbolinks',
     'foundation',
-    'Polymorphism'
+    'Polymorphism',
+    'jquery-ui.min'
 ], function(jquery, underscore, bacon, _serviceProvider) {
     $ = jquery;
     _ = underscore;
