@@ -27,6 +27,36 @@ define(['d3', 'views/ResponsiveSvg', 'views/ui/HospitalTypeButtonBar'], function
             _this.setTitle("Empty Table");
         };
 
+        var table = _this.svg().append("table");
+        var tableHead = table.append("thead");
+        var tableBody = table.append("tbody");
+
+        _this.setData = function(data){
+            var fakeData = [["0,0", "0,1", "0,2"],["1,0", "1,1", "1,2"],["2,0", "2,1", "2,2"]];
+            var headerData = ["Schaf", "Fish", "Blub"];
+
+            tableHead.selectAll("tr")
+                .data(headerData)
+                .enter()
+                .append("tr")
+                .selectAll("th")
+                    .data(function(datum){return datum})
+                    .enter()
+                    .append("th")
+                    .text(function(datum){return datum});
+
+              var rows = tableBody.selectAll("tr")
+                .data(fakeData)
+                .enter()
+                .append("tr");
+
+            var cells = rows.selectAll("td")
+                .data(function(row) {return "blub"})
+                .enter()
+                .append("td");
+              /* */
+        };
+
         _this.setTitle = function(text){
             _this.svg().select("#title")
                 .transition()
