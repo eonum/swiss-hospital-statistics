@@ -11,7 +11,7 @@ module Api
       end
 
       def new
-        Catalog.new.update_db_code(AgeCodeDataset)
+        Catalog.new.update_db_code(IcdChapterAgeSexDataset)
         render json: {:message => 'OK'}
       end
 
