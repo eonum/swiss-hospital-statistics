@@ -1,50 +1,55 @@
 // import the CSS framework
 @import "foundation";
 
-// override for the 'Home' navigation link
-.top-bar .name {
-  font-size: rem-calc(13);
-  line-height: 45px; }
-.top-bar .name a {
-  font-weight: normal;
-  color: white;
-  padding: 0 15px; }
+.alphabetical-selector {
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-weight: 300;
 
-// THESE ARE EXAMPLES YOU CAN MODIFY
-// create mixins using Foundation classes
-@mixin twelve-columns {
-  @extend .small-12;
-  @extend .columns;
+  ul.inline-list {
+    margin: 1em 0.5em;
+
+    li {
+      font-size: 1em;
+      padding: 0 0.5em;
+      margin: 0;
+      border-right: 1px solid #dfdfdf;
+
+      &.inactive {
+        a {
+          color: gray;
+          pointer-events: none;
+          cursor: default;
+        }
+      }
+
+      &:last-of-type {
+        border-right: none;
+      }
+    }
+  }
+
+  div.inline-block {
+    ul {
+      li {
+        font-size: 0.95em;
+        &.selected {
+          a {
+            text-decoration: underline;
+            color: #1c1c1c;
+          }
+        }
+      }
+    }
+  }
 }
-@mixin six-columns-centered {
-  @extend .small-6;
-  @extend .columns;
-  @extend .text-center;
+
+.full-width {
+  width: 100%;
+  max-width: 100%;
 }
-// create your own classes
-// to make views framework-neutral
-.column {
-  @include six-columns-centered;
-}
-.form {
-  @include grid-column(6);
-}
-.form-centered {
-  @include six-columns-centered;
-}
-.submit {
-  @extend .button;
-  @extend .radius;
-}
-// apply styles to HTML elements
-// to make views framework-neutral
-main {
-  @include twelve-columns;
-  background-color: #eee;
-}
-section {
-  @extend .row;
-  margin-top: 20px;
+
+.inline-block {
+  display: inline-block;
 }
 
 .svg-content {

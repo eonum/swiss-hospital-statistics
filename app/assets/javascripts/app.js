@@ -31,9 +31,8 @@ define([
             $('body').append(catalogChoiceButtons);
         };
 
-
         _this.visualise = function () {
-            var pane = $('<div class="row" style="width: 100%; max-width: 100%"></div>');
+            var pane = $('<div class="row full-width"></div>');
             $('body').append(pane);
 
             var selectorModel = new AlphabeticalSelectorModel();

@@ -1,7 +1,8 @@
 define ([
     'jquery-adapter',
     'foundation',
-    'topbar'
+    'topbar',
+    'magellan'
     //,
     // load necessary foundation modules here
     //'alerts', 'clearing', 'cookie', 'dropdown', 'forms', 'joyride', 'magellan', 'orbit',

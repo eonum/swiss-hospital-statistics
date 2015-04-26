@@ -44,6 +44,9 @@ shim:
   topbar:
     deps: ['jquery']
 
+  magellan:
+    deps: ['jquery']
+
   underscore:
     exports: '_'
 

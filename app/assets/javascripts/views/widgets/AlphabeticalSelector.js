@@ -1,12 +1,20 @@
 define([
     'View',
     'Announcer',
-    'announcements/OnAlphabeticalItemsUpdated'
+    'announcements/OnAlphabeticalItemsUpdated',
+    'announcements/OnAlphabeticalItemSelected',
+    'announcements/OnAlphabeticalItemDeselected',
 ], function(
     View,
     Announcer,
-    OnAlphabeticalItemsUpdated
+    OnAlphabeticalItemsUpdated,
+    OnAlphabeticalItemSelected,
+    OnAlphabeticalItemDeselected
 ) {
+
+    var groupID = function(group) {
+        return 'group'+group.label();
+    };
 
     function OnItemClicked(item) {
         var _this = this;
@@ -15,9 +23,76 @@ define([
         };
     }
 
+    function Navigation () {
+        var _this = new View('<div data-magellan-expedition="fixed"></div>');
+
+        var subNav;
+        var model;
+
+        _this.model = function (_model) {
+            if (_.isUndefined(_model)) return model;
+            model = _model;
+            _this.render();
+        };
+
+        _this.render = function () {
+            _this.empty();
+            subNav = _this.newSubNav();
+            _.each(_this.model().groups(), function (group) {
+                var groupView = _this.renderGroup(group);
+                if (group.isNotEmpty()) groupView.removeClass('inactive');
+                subNav.add(groupView);
+            });
+            _this.add(subNav);
+        };
+
+        _this.newSubNav = function () {
+            return new View('<dl class="sub-nav"></dl>');
+        };
+
+        _this.renderGroup = function (group) {
+            return new View('<dd data-magellan-arrival="'+groupID(group)+'"><a href="#'+groupID(group)+'">'+group.label()+'</a></dd>');
+        };
+
+        return _this;
+    }
+
+    function ItemView(_group) {
+        var _this = new View('<li></li>');
+        var link = new View('<a></a>');
+
+        var item;
+        var group = _group;
+
+        _this.item = function (_item) {
+            if (_.isUndefined(_item)) return item;
+            item = _item;
+            _this.render();
+        };
+
+        _this.group = function () {
+            return group;
+        };
+
+        _this.render = function () {
+            link.text(_this.group().selector().nameOf(_this.item()));
+            _this.add(link);
+        };
+
+        _this.select = function () {
+            _this.class('selected');
+        };
+
+        _this.deselect = function () {
+            _this.removeClass('selected');
+        };
+
+        return _this;
+    }
+
     function GroupView () {
-        var _this = new View('<div class="row left" style="width: 100%; max-width: 100%"></div>');
-        var name = new View('<div class="medium-1 large-1 columns"></div>');
+        var _this = new View('<div class="row left" style="width: 100%"></div>');
+        var name;
         var content = new View ('<div class="medium-11 large-11 columns"></div>');
         var list = new View ('<ul class="no-bullet"></ul>');
         var announcer = new Announcer();
@@ -35,7 +110,7 @@ define([
         };
 
         _this.render = function () {
-            name.html(_this.model().label());
+            name = _this.renderName();
             _this.add(name);
             _this.renderList();
             content.add(list);
@@ -53,10 +128,14 @@ define([
             _this.renderItemsIn(_this.model().items(), list);
         };
 
+        _this.renderName = function () {
+            return new View('<div data-magellan-destination="'+groupID(_this.model())+'" class="medium-1 large-1 columns" id="'+groupID(_this.model())+'">'+_this.model().label()+'</div>');
+        };
+
         _this.renderItemsIn = function (_items, _list) {
             _.each(_items, function (each) {
                 var item = _this.newItem();
-                item.find('a').text(_this.model().selector().nameOf(each));
+                item.item(each);
                 item.click(function() {
                     _this.announcer().announce(new OnItemClicked(each));
                 });
@@ -71,14 +150,21 @@ define([
         };
 
         _this.newItem = function () {
-            return new View('<li><a></a></li>')
+            return new ItemView(_this.model());
+        };
+
+        _this.findItemView = function(item) {
+            if (!_.isUndefined(list))
+                return list.children().filter(function(index, each) {
+                    return $(each).me().item() == item;
+                }).me();
         };
 
         return _this;
     }
 
     function AlphabeticalSelector() {
-        var _this = new View('<div></div>');
+        var _this = new View('<div class="alphabetical-selector"></div>');
         var header;
         var list;
         var model;
@@ -87,29 +173,23 @@ define([
             if (_.isUndefined(_model)) return model;
             model = _model;
             model.announcer().onSendTo(OnAlphabeticalItemsUpdated, _this.onItemsUpdated, _this);
+            model.announcer().onSendTo(OnAlphabeticalItemSelected, _this.onItemSelected, _this);
+            model.announcer().onSendTo(OnAlphabeticalItemDeselected, _this.onItemDeselected, _this);
             _this.render();
         };
 
         _this.render = function () {
             _this.cleanAll();
-            header = _this.renderCharacterList();
+            header = new Navigation();
+            header.model(_this.model());
             list = _this.renderGroupList();
             _this.add(header);
             _this.add(list);
-        };
-
-        _this.renderCharacterList = function () {
-            var list = _this.newCharacterList();
-            _.each(_this.model().groups(), function (group) {
-                var item = _this.newCharacterListItem();
-                item.find('a').text(group.label());
-                list.add(item);
-            });
-            return list;
+            $(document).foundation();
         };
 
         _this.renderGroupList = function () {
-            var list = new View('<div style="display: inline-block; width: 100%"></div>');
+            var list = new View('<div class="inline-block full-width"></div>');
             _.each(_.filter(_this.model().groups(), function(each) {return each.isNotEmpty()}), function (each) {
                 list.add(_this.renderGroup(each));
             });
@@ -131,12 +211,15 @@ define([
             return view;
         };
 
-        _this.newCharacterList = function () {
-            return new View('<ul class="inline-list"></ul>');
+        _this.findGroupView = function (group) {
+            if (!_.isUndefined(list))
+               return list.children().filter(function(index, each) {
+                    return $(each).me().model() == group
+                }).me();
         };
 
-        _this.newCharacterListItem = function () {
-            return new View('<li><a></a></li>')
+        _this.findItemView = function (item) {
+            return _this.findGroupView(_this.model().groupOf(item)).findItemView(item);
         };
 
         _this.onItemClicked = function (ann) {
@@ -145,6 +228,14 @@ define([
 
         _this.onItemsUpdated = function () {
             _this.render();
+        };
+
+        _this.onItemSelected = function (ann) {
+            _this.findItemView(ann.item()).select();
+        };
+
+        _this.onItemDeselected = function (ann) {
+            _this.findItemView(ann.item()).deselect();
         };
 
         return _this;

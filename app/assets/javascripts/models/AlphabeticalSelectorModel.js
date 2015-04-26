@@ -1,13 +1,14 @@
 define([
     'Announcer',
     'announcements/OnAlphabeticalItemSelected',
+    'announcements/OnAlphabeticalItemDeselected',
     'announcements/OnAlphabeticalItemsUpdated'
-    ],
-    function(
-        Announcer,
-        OnAlphabeticalItemSelected,
-        OnAlphabeticalItemsUpdated
-    ) {
+], function(
+    Announcer,
+    OnAlphabeticalItemSelected,
+    OnAlphabeticalItemDeselected,
+    OnAlphabeticalItemsUpdated
+) {
 
     function Group (_selector, _label) {
         var _this = this;
@@ -47,6 +48,7 @@ define([
         var _this = this;
 
         var items = [];
+        var selectedItem;
         var nameLogic = function(_item) {return _item.toString();};
         var groups = {};
         var announcer = new Announcer();
@@ -74,8 +76,12 @@ define([
 
         _this.initializeGroupsFrom = function() {
             _.each(_.groupBy(_this.items(), _this.firstCharacterOf), function(each) {
-                _this.groupAt(_this.firstCharacterOf(_.first(each)).toUpperCase()).items(each);
+                _this.groupOf(_.first(each)).items(each);
             });
+        };
+
+        _this.groupOf = function(item) {
+            return _this.groupAt(_this.firstCharacterOf(item).toUpperCase());
         };
 
         _this.groupAt = function (character) {
@@ -95,7 +101,26 @@ define([
         };
 
         _this.selectItem = function(item) {
-            _this.announcer().announce(new OnAlphabeticalItemSelected(item));
+            _this.deselectItem();
+            selectedItem = item;
+            _this.notifyItemSelected(item);
+        };
+
+        _this.deselectItem = function () {
+            if (!_this.isItemSelected()) return;
+            var wasSelected = _this.selectedItem();
+            selectedItem = null;
+            _this.notifyItemDeselected(wasSelected);
+        };
+
+        _this.selectedItem = function () {
+            return selectedItem;
+        };
+
+        _this.isItemSelected = function (item) {
+            if (_.isUndefined(item))
+                return !_.isUndefined(_this.selectedItem());
+            return _this.selectedItem() === item;
         };
 
         _this.invalidate = function () {
@@ -106,6 +131,14 @@ define([
 
         _this.notifyItemsUpdated = function () {
             _this.announcer().announce(new OnAlphabeticalItemsUpdated());
+        };
+
+        _this.notifyItemSelected = function(item) {
+            _this.announcer().announce(new OnAlphabeticalItemSelected(item));
+        };
+
+        _this.notifyItemDeselected = function(item) {
+            _this.announcer().announce(new OnAlphabeticalItemDeselected(item));
         };
 
         _this.initialize();
