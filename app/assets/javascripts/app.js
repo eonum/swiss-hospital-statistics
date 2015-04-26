@@ -20,10 +20,13 @@ define([
     'views/ui/OrdinalCurveChartVisualisation',
     'helpers/CodeChooser',
     'views/ui/CatalogChoiceButtonBar',
-    'views/ui/TopThreeDiagnosisVisualisation'
+    'views/ui/TopThreeDiagnosisVisualisation',
+    'models/AlphabeticalSelectorModel',
+    'views/ui/AlphabeticalSelector'
 ], function(CardElement, CardPane, AbstractSwissMap, PieChart, SeriesChart, CardBoardView, CardView, AbstractSeriesChart,
             CodeTableView, CodeButtonBarView, ChartChoiceButtonBar, PieChartByAgeVisualisation,BarChartVisualisation,
-            BoxPlotVisualisation, BarChart, BoxPlot, OrdinalCurveChart, OrdinalCurveChartVisualisation, CodeChooser, CatalogChoiceButtonBar, TopThreeDiagnosisVisualisation){
+            BoxPlotVisualisation, BarChart, BoxPlot, OrdinalCurveChart, OrdinalCurveChartVisualisation, CodeChooser, CatalogChoiceButtonBar, TopThreeDiagnosisVisualisation,
+            AlphabeticalSelectorModel, AlphabeticalSelecor){
 
     "use strict";
     function App() {
@@ -94,6 +97,19 @@ define([
         _this.displayTopThreeDiagnosis = function(){
 
         };
+
+        var selectorView = new AlphabeticalSelecor();
+        $('body').append(selectorView);
+
+        $.getJSON("/api/v1/codes/icd", function(result){
+            console.log('loaded!');
+            var selectorModel = new AlphabeticalSelectorModel();
+            selectorModel.nameLogic(function(item){
+                return item.code + " "+item.text_de;
+            });
+            selectorModel.items(result);
+            selectorView.model(selectorModel);
+        });
         
         _this.initialize();
     }

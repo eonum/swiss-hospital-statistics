@@ -40,8 +40,8 @@ requirejs([
     'underscore',
     'Bacon.min',
     'helpers/ServiceProvider',
-    'i18n',
-    'i18n/translations',
+    //'i18n',
+    //'i18n/translations',
     'turbolinks',
     'foundation',
     'Polymorphism'
