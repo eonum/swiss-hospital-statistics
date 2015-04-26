@@ -30,8 +30,12 @@ define([
             catalogChoiceButtons.addButton("DRG", function(){window.alert("Hi! I'm the DRG catalog!")});
             $('body').append(catalogChoiceButtons);
         };
-        
+
+
         _this.visualise = function () {
+            var pane = $('<div class="row" style="width: 100%; max-width: 100%"></div>');
+            $('body').append(pane);
+
             var selectorModel = new AlphabeticalSelectorModel();
             selectorModel.nameLogic(function(item){
                 return item.code + " "+item.text_de;
@@ -42,15 +46,18 @@ define([
             },_this);
 
             var selectorView = new AlphabeticalSelector();
+            selectorView.class('large-5 columns');
             selectorView.model(selectorModel);
-            $('body').append(selectorView);
+
+            pane.append(selectorView);
 
             $.getJSON("/api/v1/codes/icd", function(result){
                 selectorModel.items(result);
             });
 
             var codeCard = new CodeVisualisationCard();
-            $('body').append(codeCard);
+            codeCard.class('large-7 columns');
+            pane.append(codeCard);
         };
 
 

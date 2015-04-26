@@ -71,7 +71,7 @@ define([
         };
 
         _this.on = function (type, code) {
-            _this.initialize();
+            if (!chartCardPane.parent().length)_this.initialize();
             codeChooser.fetchDatasets(type, code, updateVisualisations);
         };
 

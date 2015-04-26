@@ -16,7 +16,7 @@ define([
     }
 
     function GroupView () {
-        var _this = new View('<div class="row left"></div>');
+        var _this = new View('<div class="row left" style="width: 100%; max-width: 100%"></div>');
         var name = new View('<div class="medium-1 large-1 columns"></div>');
         var content = new View ('<div class="medium-11 large-11 columns"></div>');
         var list = new View ('<ul class="no-bullet"></ul>');
@@ -78,7 +78,7 @@ define([
     }
 
     function AlphabeticalSelector() {
-        var _this = new View('<div style="width: 100%; display: inline-block;"></div>');
+        var _this = new View('<div></div>');
         var header;
         var list;
         var model;
@@ -109,7 +109,7 @@ define([
         };
 
         _this.renderGroupList = function () {
-            var list = new View('<div></div>');
+            var list = new View('<div style="display: inline-block; width: 100%"></div>');
             _.each(_.filter(_this.model().groups(), function(each) {return each.isNotEmpty()}), function (each) {
                 list.add(_this.renderGroup(each));
             });
