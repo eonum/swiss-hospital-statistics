@@ -23,8 +23,8 @@ Rails.application.routes.draw do
       resources :codes, :only => [:index, :show, :new] do
         resources :specific, :only => [:show]
         resources :datasets, :only => [:index, :show]
-        resources :casesbychapter, :only => [:index, :show]
       end
+      resources :chaptersbyyear, :only => [:show]
     end
   end
 
