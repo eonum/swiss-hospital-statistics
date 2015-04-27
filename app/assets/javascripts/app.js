@@ -2,17 +2,21 @@
 define([
     'views/ui/CatalogChoiceButtonBar',
     'models/AlphabeticalSelectorModel',
+    'models/SearchProcessor',
     'views/widgets/AlphabeticalSelector',
     'views/widgets/CodeVisualisationCard',
     'views/widgets/SearchField',
-    'announcements/OnAlphabeticalItemSelected'
+    'announcements/OnAlphabeticalItemSelected',
+    'announcements/OnSearchProcessorFiltered'
 ], function(
     CatalogChoiceButtonBar,
     AlphabeticalSelectorModel,
+    SearchProcessor,
     AlphabeticalSelector,
     CodeVisualisationCard,
     SearchField,
-    OnAlphabeticalItemSelected
+    OnAlphabeticalItemSelected,
+    OnSearchProcessorFiltered
 ){
 
     "use strict";
@@ -58,17 +62,27 @@ define([
 
             leftPane.append(selectorView);
 
-            $.getJSON("/api/v1/codes/icd", function(result){
-                selectorModel.items(result);
-            });
-
             var codeCard = new CodeVisualisationCard();
             codeCard.class('full-width');
             rightPane.append(codeCard);
 
+            var processor = new SearchProcessor();
+            processor.ignoreCase();
+            processor.nameLogic(function(item){
+                return item.short_code + " "+item.code + " "+item.text_de;
+            });
+            processor.announcer().onSendTo(OnSearchProcessorFiltered, function(ann) {
+                selectorModel.items(ann.candidates());
+            },_this);
+
             var search = new SearchField();
             search.class('full-width');
             leftPane.prepend(search);
+
+            $.getJSON("/api/v1/codes/icd", function(result){
+                processor.allCandidates(result);
+                search.model(processor);
+            });
         };
 
 

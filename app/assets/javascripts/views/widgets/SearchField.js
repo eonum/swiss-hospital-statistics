@@ -12,6 +12,15 @@ define([
         var input;
         var button;
 
+        var model;
+
+        _this.model = function (_model) {
+            if (_.isUndefined(_model)) return model;
+            model = _model;
+            _this.render();
+            _this.search(_this.input());
+        };
+
         _this.render = function () {
             input = _this.newInput();
             button = _this.newButton();
@@ -19,6 +28,7 @@ define([
             buttonWrapper.add(button);
             _this.add(inputWrapper);
             _this.add(buttonWrapper);
+            _this.attachInputHandler();
         };
 
         _this.newButton = function () {
@@ -29,7 +39,32 @@ define([
             return new View('<input type="text" placeholder="Search codes e.g. A045">');
         };
 
-        _this.render();
+        _this.search = function (query) {
+            _this.model().process(query);
+        };
+
+        _this.input = function () {
+            return _.isUndefined(_this.inputField()) ? '' : _this.inputField().val();
+        };
+
+        _this.inputField = function () {
+            return input;
+        };
+
+        _this.attachInputHandler = function(){
+            if (_.isUndefined(_this.inputField())) return;
+            _this.inputField().keyup(function () {
+                _this.search(_this.input());
+
+                //_this.fetchCode(codeType, text, function(resultCodes) {
+                //    $('#code_chooser').autocomplete({source: resultCodes});
+                //});
+
+                //if(text.length >= 4){
+                //    _this.fetchCodeAndDatasets(codeType, text, newCodeCallback);
+                //}
+            });
+        };
 
         return _this;
     }

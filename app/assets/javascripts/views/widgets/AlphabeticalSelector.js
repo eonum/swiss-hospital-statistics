@@ -51,7 +51,7 @@ define([
         };
 
         _this.renderGroup = function (group) {
-            return new View('<dd data-magellan-arrival="'+groupID(group)+'"><a href="#'+groupID(group)+'">'+group.label()+'</a></dd>');
+            return new View('<dd class="inactive" data-magellan-arrival="'+groupID(group)+'"><a href="#'+groupID(group)+'">'+group.label()+'</a></dd>');
         };
 
         return _this;
