@@ -26,14 +26,6 @@ define([
                 intervals = boxPlotDataConverter.convert();
 
                 boxPlot.setData(intervals);
-                /*
-                 if(document.getElementById("title_id_boxplot")) {
-                 document.getElementById("title_id_boxplot").innerHTML = title;
-                 } else {
-                 content.add('<h3 class="svg_title_boxplot", id="title_id_boxplot">' + title + '</h3>');
-                 }
-                 */
-
                 boxPlot.setTitle(title);
                 content.add(boxPlot);
 

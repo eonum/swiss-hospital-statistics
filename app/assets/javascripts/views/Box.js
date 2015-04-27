@@ -11,17 +11,13 @@ define([
             domain = null,
             min = 0,
             max = 19,
-            //value = Number,
             whiskers = [1,4],
-            //quartiles = [2,3],
             tickFormat = null,
             yScale = y;
 
         // For each small multiple…
         function box(g) {
             g.each(function (d, i) {
-               //  d = d.map(value).sort(d3.ascending);
-
                 // g is one container of one boxplot
                 var g = d3.select(this),
                     ageRange = d.ageInterval,
@@ -34,17 +30,16 @@ define([
                     lowerWhisker = d.lowerWhisker,
                     higherWhisker = d.higherWhisker;
 
+                // TODO: to be tested visually if min max problem is solved
+                
+                if(max > 4*(higherQ-lowerQ)) {
+                    max = higherQ+(higherQ-lowerQ);
+                }
+
                 // Compute quartiles. Must return exactly 3 elements.
                 var quartileData = [d.lowerQ, d.avg, d.higherQ];
 
                 var whiskerIndices = [lowerWhisker, higherWhisker];
-                // TODO can we omit one of these?
-                var whiskerData = whiskerIndices;
-
-                // TODO function not needed?
-//                var outlierIndices = whiskerIndices
-//                   ? d3.range(0, whiskerIndices[0]).concat(d3.range(whiskerIndices[1] + 1, n))
-//                    : d3.range(n);
 
                 // Compute the new x-scale.
 //                var x1 = d3.scale.linear()
@@ -71,7 +66,7 @@ define([
 
                 // Update center line: the vertical line spanning the whiskers.
                 var center = g.selectAll("line.center")
-                    .data(whiskerData ? [whiskerData] : []);
+                    .data(whiskerIndices ? [whiskerIndices] : []);
 
                 center.enter().insert("line", "rect")
                     .attr("class", "center")
@@ -169,7 +164,7 @@ define([
 
                 // Update whiskers.
                 var whisker = g.selectAll("line.whisker")
-                    .data(whiskerData || []);
+                    .data(whiskerIndices || []);
 
                 whisker.enter().insert("line", "circle, text")
                     .attr("class", "whisker")
@@ -231,7 +226,7 @@ define([
                 // ticks because they may or may not exist, and we want don't want
                 // to join box ticks pre-transition with whisker ticks post-.
                 var whiskerTick = g.selectAll("text.whisker")
-                    .data(whiskerData || []);
+                    .data(whiskerIndices || []);
 
                 whiskerTick.enter().append("text")
                     .attr("class", "whisker")
@@ -272,31 +267,13 @@ define([
             height = x;
             return box;
         };
-/*
-        box.tickFormat = function (x) {
-            if (!arguments.length) return tickFormat;
-            tickFormat = x;
-            return box;
-        };
 
-        box.duration = function (x) {
-            if (!arguments.length) return duration;
-            duration = x;
-            return box;
-        };
-*/
         box.domain = function (x) {
             if (!arguments.length) return domain;
             domain = x == null ? x : d3.functor(x);
             return box;
         };
-/*
-        box.value = function (x) {
-            if (!arguments.length) return value;
-            value = x;
-            return box;
-        };
-*/
+
         box.whiskers = function (x) {
 
             if (!arguments.length) return whiskers;
@@ -315,13 +292,7 @@ define([
             max = x;
             return box;
         };
-/*
-        box.quartiles = function (x) {
-            if (!arguments.length) return quartiles;
-            quartiles = x;
-            return box;
-        };
-*/
+
         return box;
     }
 
