@@ -55,8 +55,6 @@ define([], function() {
                         sum: sum
                     }
                 );
-                console.log("THIIIISSS");
-                console.log(intervals);
             }
             return intervals
         }

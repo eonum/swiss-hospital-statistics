@@ -8,6 +8,7 @@ define([
     'views/ui/PieChartByAgeVisualisation',
     'views/ui/BoxPlotVisualisation',
     'views/ui/TopThreeDiagnosisVisualisation',
+    'views/ui/ChaptersByYear',
     'helpers/CodeChooser'
 ],function(
     View,
@@ -19,6 +20,7 @@ define([
     PieChartByAgeVisualisation,
     BoxPlotVisualisation,
     TopThreeDiagnosisVisualisation,
+    ChaptersByYear,
     CodeChooser
 ){
 
@@ -53,6 +55,11 @@ define([
         chartCardPane.addCard(topThreeCard);
         chartChoiceButtons.addButton("topThreeTable", "Top 3 Diagnosen");
 
+        var chaptersByYearVisualisation = new ChaptersByYear(800, 400);
+        var chaptersByYearCard = new CardElement("chaptersByYear", chaptersByYearVisualisation);
+        chartCardPane.addCard(chaptersByYearCard);
+        chartChoiceButtons.addButton("chaptersByYear", "Chapters By Year");
+
         function updateVisualisations(code, datasets){
             var title = code.code + ": " + code.text_de;
 
@@ -60,6 +67,7 @@ define([
             ordinalCurveVisualisation.visualiseData(title, datasets);
             pieChartVisualisation.visualiseData(title, datasets);
             boxPlotVisualisation.visualiseData(title, datasets);
+            chaptersByYearVisualisation.visualiseData(title, datasets);
         }
 
         var codeChooser = new CodeChooser("icd", updateVisualisations);
