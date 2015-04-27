@@ -55,14 +55,6 @@ define([
             if (_.isUndefined(_this.inputField())) return;
             _this.inputField().keyup(function () {
                 _this.search(_this.input());
-
-                //_this.fetchCode(codeType, text, function(resultCodes) {
-                //    $('#code_chooser').autocomplete({source: resultCodes});
-                //});
-
-                //if(text.length >= 4){
-                //    _this.fetchCodeAndDatasets(codeType, text, newCodeCallback);
-                //}
             });
         };
 

@@ -1,6 +1,5 @@
-
 define([
-    'views/ui/CatalogChoiceButtonBar',
+    'views/widgets/TopBar',
     'models/AlphabeticalSelectorModel',
     'models/SearchProcessor',
     'views/widgets/AlphabeticalSelector',
@@ -9,7 +8,7 @@ define([
     'announcements/OnAlphabeticalItemSelected',
     'announcements/OnSearchProcessorFiltered'
 ], function(
-    CatalogChoiceButtonBar,
+    TopBar,
     AlphabeticalSelectorModel,
     SearchProcessor,
     AlphabeticalSelector,
@@ -23,18 +22,17 @@ define([
     function App() {
         var _this = this;
 
-        var catalogChoiceButtons = new CatalogChoiceButtonBar();
-
         _this.initialize = function(){
-            _this.addCatalogChoiceButtons();
-            _this.visualise();
-        };
+            var topBar = new TopBar();
+            topBar.title('Eonum');
+            var button = topBar.newButton('ICD');
+            button.beActive();
 
-        _this.addCatalogChoiceButtons = function(){
-            catalogChoiceButtons.addButton("ICD", function(){window.alert("Hi! I'm the ICD catalog!")});
-            catalogChoiceButtons.addButton("CHOP", function(){window.alert("Hi! I'm the CHOP catalog!")});
-            catalogChoiceButtons.addButton("DRG", function(){window.alert("Hi! I'm the DRG catalog!")});
-            $('body').append(catalogChoiceButtons);
+            topBar.addLeft(button);
+            topBar.addLeft(topBar.newButton('CHOP'));
+            topBar.addLeft(topBar.newButton('DRG'));
+            $('header').append(topBar);
+            _this.visualise();
         };
 
         _this.visualise = function () {
@@ -44,6 +42,7 @@ define([
             pane.append(leftPane);
             pane.append(rightPane);
 
+            $('body').append('<div class="row"></div>');
             $('body').append(pane);
 
             var selectorModel = new AlphabeticalSelectorModel();
@@ -54,7 +53,6 @@ define([
             selectorModel.announcer().onSendTo(OnAlphabeticalItemSelected, function(ann) {
                 codeCard.on(ann.item().type, ann.item().short_code);
             },_this);
-
 
             var selectorView = new AlphabeticalSelector();
             selectorView.class('full-width');

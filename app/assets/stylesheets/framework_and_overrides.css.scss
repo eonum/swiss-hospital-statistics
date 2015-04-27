@@ -1,10 +1,70 @@
 // import the CSS framework
 @import "foundation";
 
-.alphabetical-selector {
+.light-font {
   font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
   font-weight: 300;
+}
 
+header {
+  nav {
+    &.top-bar {
+      margin-bottom: 1em;
+      ul {
+        &.title-area {
+          li {
+            &.name {
+              h1 {
+                @extend .light-font;
+                color: #ffffff;
+                padding: 0 2em;
+              }
+            }
+          }
+        }
+      }
+
+      section {
+        li {
+          background-color: transparent;
+          a {
+            @extend .light-font;
+            min-width: 7em;
+            &:hover {
+              background: rgba(0, 0, 0, 0.2) !important;
+            }
+          }
+
+          &.active {
+            &:after {
+              top: 100%;
+              left: 0%;
+              bottom: -12px;
+              border: solid transparent;
+              content: " ";
+              height: 0;
+              width: 0;
+              position: relative;
+              pointer-events: none;
+              border-top-color: #008CBA;
+              border-width: 15px;
+            }
+
+            a {
+              &:hover {
+                background: #008CBA !important;
+              }
+            }
+          }
+
+        }
+      }
+    }
+  }
+}
+
+.alphabetical-selector {
+  @extend .light-font;
   div {
 
     &.name {
