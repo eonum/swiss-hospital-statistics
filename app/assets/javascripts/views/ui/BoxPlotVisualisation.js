@@ -18,22 +18,25 @@ define([
          * Creates this visualisation from the data provided.
          * @param data the data to update this visualisation with
          */
-        _this.visualiseData = function (title, datasets){
-            if(datasets.length > 0) {
+        _this.visualiseData = function (title, datasets) {
+            if (datasets.length > 0) {
                 var intervals = [];
 
                 var boxPlotDataConverter = new BoxPlotDataConverter(datasets);
                 intervals = boxPlotDataConverter.convert();
 
                 boxPlot.setData(intervals);
+                /*
+                 if(document.getElementById("title_id_boxplot")) {
+                 document.getElementById("title_id_boxplot").innerHTML = title;
+                 } else {
+                 content.add('<h3 class="svg_title_boxplot", id="title_id_boxplot">' + title + '</h3>');
+                 }
+                 */
 
-                if(document.getElementById("title_id_boxplot")) {
-                    document.getElementById("title_id_boxplot").innerHTML = title;
-                } else {
-                    content.add('<h3 class="svg_title_boxplot", id="title_id_boxplot">' + title + '</h3>');
-                }
-
+                boxPlot.setTitle(title);
                 content.add(boxPlot);
+
             }
             return _this;
         };

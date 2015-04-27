@@ -8,6 +8,8 @@ define(['d3', 'views/ResponsiveSvg', 'views/Box'], function (d3, ResponsiveSvg, 
     function BoxPlot(_width, _height){
         var _this = new ResponsiveSvg(_width, _height);
 
+        var TRANSITION_TIME = 10000;
+
         var xScale = d3.scale.ordinal();
         xScale.rangeBands([0, _width], 0.6);
 
@@ -18,12 +20,19 @@ define(['d3', 'views/ResponsiveSvg', 'views/Box'], function (d3, ResponsiveSvg, 
         _this.marginRight(140);
         _this.marginBottom(50);
 
+        var titleFontSize = _height / 20;
+        var chartHeight = _height - titleFontSize;
+
         var min = Infinity,
             max = -Infinity;
 
         var xAxis = d3.svg.axis()
             .scale(xScale)
             .orient("bottom");
+
+        _this.svg().append("text")
+            .attr("id", "title")
+            .style("font-size", titleFontSize + "px");
 
         var yAxis = d3.svg.axis()
             .scale(yScale)
@@ -51,7 +60,7 @@ define(['d3', 'views/ResponsiveSvg', 'views/Box'], function (d3, ResponsiveSvg, 
                 height = _height - margin.top - margin.bottom;
 
             yScale.domain([d3.max(data, function(d) {return d.max}), d3.min(data, function(d) {return d.min})]);
-            yScale.range([0, height]);
+            yScale.range([0, chartHeight]);
             _this.svg().selectAll(".y.axis").call(yAxis);
 
             // Need data to calculate on
@@ -89,6 +98,13 @@ define(['d3', 'views/ResponsiveSvg', 'views/Box'], function (d3, ResponsiveSvg, 
                 .remove();
 
 
+        };
+
+        _this.setTitle = function (text) {
+            _this.svg().select("#title")
+                .transition()
+                .duration(TRANSITION_TIME)
+                .text(text);
         };
 
         _this.initialize();
