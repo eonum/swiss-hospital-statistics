@@ -93,8 +93,7 @@ define([
     }
 
     function NullItemView(_group) {
-        var _this = new ItemView(_group);
-        return _this;
+        return new ItemView(_group);
     }
 
     function GroupView () {
@@ -172,7 +171,7 @@ define([
 
     function NullGroupView() {
         var _this = new GroupView();
-        _this.findItemView = override(_this, _this.findItemView, function(item){
+        _this.findItemView = override(_this, _this.findItemView, function(){
             return new NullItemView();
         });
         return _this;
