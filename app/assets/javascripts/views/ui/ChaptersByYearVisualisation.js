@@ -1,5 +1,5 @@
 define([
-    'View', 'views/ChaptersByYear', 'helpers/converters/ChapterByYearConverter'
+    'View', 'views/ChaptersByYear', 'helpers/converters/ChaptersByYearConverter'
 ], function (
     View, ChaptersByYear, ChaptersByYearConverter
 ) {

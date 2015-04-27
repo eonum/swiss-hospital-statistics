@@ -8,7 +8,7 @@ define([
     'views/ui/PieChartByAgeVisualisation',
     'views/ui/BoxPlotVisualisation',
     'views/ui/TopThreeDiagnosisVisualisation',
-    'views/ui/ChaptersByYear',
+    'views/ui/ChaptersByYearVisualisation',
     'helpers/CodeChooser'
 ],function(
     View,
@@ -20,7 +20,7 @@ define([
     PieChartByAgeVisualisation,
     BoxPlotVisualisation,
     TopThreeDiagnosisVisualisation,
-    ChaptersByYear,
+    ChaptersByYearVisualisation,
     CodeChooser
 ){
 
@@ -55,7 +55,7 @@ define([
         chartCardPane.addCard(topThreeCard);
         chartChoiceButtons.addButton("topThreeTable", "Top 3 Diagnosen");
 
-        var chaptersByYearVisualisation = new ChaptersByYear(800, 400);
+        var chaptersByYearVisualisation = new ChaptersByYearVisualisation(800, 400);
         var chaptersByYearCard = new CardElement("chaptersByYear", chaptersByYearVisualisation);
         chartCardPane.addCard(chaptersByYearCard);
         chartChoiceButtons.addButton("chaptersByYear", "Chapters By Year");
