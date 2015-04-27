@@ -92,6 +92,11 @@ define([
         return _this;
     }
 
+    function NullItemView(_group) {
+        var _this = new ItemView(_group);
+        return _this;
+    }
+
     function GroupView () {
         var _this = new View('<div class="row left" style="width: 100%"></div>');
         var name;
@@ -156,12 +161,20 @@ define([
         };
 
         _this.findItemView = function(item) {
-            if (!_.isUndefined(list))
-                return list.children().filter(function(index, each) {
-                    return $(each).me().item() == item;
-                }).me();
+            if (_.isUndefined(list)) return new NullItemView();
+            var found = list.children().filter(function(index, each) {
+                return $(each).me().item() == item; }).me();
+            return _.isUndefined(found) ?  new NullItemView() : found;
         };
 
+        return _this;
+    }
+
+    function NullGroupView() {
+        var _this = new GroupView();
+        _this.findItemView = override(_this, _this.findItemView, function(item){
+            return new NullItemView();
+        });
         return _this;
     }
 
@@ -214,10 +227,10 @@ define([
         };
 
         _this.findGroupView = function (group) {
-            if (!_.isUndefined(list))
-               return list.children().filter(function(index, each) {
-                    return $(each).me().model() == group
-                }).me();
+            if (_.isUndefined(list)) return new NullGroupView();
+            var found = list.children().filter(function(index, each) {
+                return $(each).me().model() == group }).me();
+            return _.isUndefined(found) ?  new NullGroupView() : found;
         };
 
         _this.findItemView = function (item) {
