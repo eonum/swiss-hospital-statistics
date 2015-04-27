@@ -77,6 +77,8 @@ define([
         _this.render = function () {
             link.text(_this.group().selector().nameOf(_this.item()));
             _this.add(link);
+            if (_this.group().selector().isItemSelected(_this.item()))
+                _this.select();
         };
 
         _this.select = function () {
