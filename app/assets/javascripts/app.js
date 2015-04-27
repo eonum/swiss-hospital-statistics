@@ -4,12 +4,14 @@ define([
     'models/AlphabeticalSelectorModel',
     'views/widgets/AlphabeticalSelector',
     'views/widgets/CodeVisualisationCard',
+    'views/widgets/SearchField',
     'announcements/OnAlphabeticalItemSelected'
 ], function(
     CatalogChoiceButtonBar,
     AlphabeticalSelectorModel,
     AlphabeticalSelector,
     CodeVisualisationCard,
+    SearchField,
     OnAlphabeticalItemSelected
 ){
 
@@ -33,6 +35,11 @@ define([
 
         _this.visualise = function () {
             var pane = $('<div class="row full-width"></div>');
+            var leftPane = $('<div class="large-5 columns"></div>');
+            var rightPane = $('<div class="large-7 columns"></div>');
+            pane.append(leftPane);
+            pane.append(rightPane);
+
             $('body').append(pane);
 
             var selectorModel = new AlphabeticalSelectorModel();
@@ -44,19 +51,24 @@ define([
                 codeCard.on(ann.item().type, ann.item().short_code);
             },_this);
 
+
             var selectorView = new AlphabeticalSelector();
-            selectorView.class('large-5 columns');
+            selectorView.class('full-width');
             selectorView.model(selectorModel);
 
-            pane.append(selectorView);
+            leftPane.append(selectorView);
 
             $.getJSON("/api/v1/codes/icd", function(result){
                 selectorModel.items(result);
             });
 
             var codeCard = new CodeVisualisationCard();
-            codeCard.class('large-7 columns');
-            pane.append(codeCard);
+            codeCard.class('full-width');
+            rightPane.append(codeCard);
+
+            var search = new SearchField();
+            search.class('full-width');
+            leftPane.prepend(search);
         };
 
 
