@@ -31,7 +31,7 @@ define([
                     higherWhisker = d.higherWhisker;
 
                 // TODO: to be tested visually if min max problem is solved
-                
+
                 if(max > 4*(higherQ-lowerQ)) {
                     max = higherQ+(higherQ-lowerQ);
                 }
