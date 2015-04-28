@@ -1,5 +1,11 @@
 define([], function(){
 
+    /**
+     *
+     * @param html
+     * @returns {*|jQuery|HTMLElement|View}
+     * @class {View}
+     */
     function View (html) {
         var _this = $(html);
         var model;

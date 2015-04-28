@@ -1,7 +1,9 @@
 define([
-    'views/widgets/CodePane'
+    'views/widgets/CodePane',
+    'views/widgets/DrgCodeVisualisationCard'
 ], function(
-    CodePane
+    CodePane,
+    DrgCodeVisualisationCard
 ){
 
     function DrgCodePane() {
@@ -27,6 +29,10 @@ define([
 
         _this.groupPrefix = function () {
             return 'drg';
+        };
+
+        _this.newCodeCard = function () {
+            return new DrgCodeVisualisationCard();
         };
 
         return _this;

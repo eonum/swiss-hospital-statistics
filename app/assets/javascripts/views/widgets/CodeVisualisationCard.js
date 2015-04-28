@@ -1,91 +1,122 @@
 define([
     'View',
     'views/ui/CardPane',
-    'views/ui/CardElement',
     'views/ui/ChartChoiceButtonBar',
-    'views/ui/BarChartVisualisation',
-    'views/ui/OrdinalCurveChartVisualisation',
-    'views/ui/PieChartByAgeVisualisation',
-    'views/ui/BoxPlotVisualisation',
-    'views/ui/TopThreeDiagnosisVisualisation',
-    'views/ui/ChaptersByYearVisualisation',
     'helpers/CodeChooser'
-],function(
+], function(
     View,
     CardPane,
-    CardElement,
     ChartChoiceButtonBar,
-    BarChartVisualisation,
-    OrdinalCurveChartVisualisation,
-    PieChartByAgeVisualisation,
-    BoxPlotVisualisation,
-    TopThreeDiagnosisVisualisation,
-    ChaptersByYearVisualisation,
     CodeChooser
 ){
-
-    function CodeVisualisationCard() {
+    /**
+     *
+     * @returns {View}
+     * @constructor
+     * @class {CodeVisualisationCard}
+     */
+    function CodeVisualisationCard () {
         var _this = new View('<div></div>');
 
-        var chartCardPane = new CardPane();
-        var chartChoiceButtons = new ChartChoiceButtonBar(chartCardPane);
-
-        var barChartVisualisation = new BarChartVisualisation(800, 400);
-        var barChartCard = new CardElement("barChart",barChartVisualisation);
-        chartCardPane.addCard(barChartCard);
-        chartChoiceButtons.addButton("barChart", "Bar Chart");
-
-        var ordinalCurveVisualisation = new OrdinalCurveChartVisualisation(800, 400);
-        var ordinalCurveChartCard = new CardElement("ordinalCurve",ordinalCurveVisualisation);
-        chartCardPane.addCard(ordinalCurveChartCard);
-        chartChoiceButtons.addButton("ordinalCurve", "Ordinal Curve");
-
-        var pieChartVisualisation = new PieChartByAgeVisualisation(800, 400);
-        var pieChartCard = new CardElement("pieChart", pieChartVisualisation);
-        chartCardPane.addCard(pieChartCard);
-        chartChoiceButtons.addButton("pieChart","Pie Chart");
-
-        var boxPlotVisualisation = new BoxPlotVisualisation(800, 400);
-        var boxPlotCard = new CardElement("boxPlot", boxPlotVisualisation);
-        chartCardPane.addCard(boxPlotCard);
-        chartChoiceButtons.addButton("boxPlot","BoxPlot");
-
-        var topThreeVisualisation = new TopThreeDiagnosisVisualisation(800, 400);
-        var topThreeCard = new CardElement("topThreeTable", topThreeVisualisation);
-        chartCardPane.addCard(topThreeCard);
-        chartChoiceButtons.addButton("topThreeTable", "Top 3 Diagnosen");
-
-        var chaptersByYearVisualisation = new ChaptersByYearVisualisation(800, 400);
-        var chaptersByYearCard = new CardElement("chaptersByYear", chaptersByYearVisualisation);
-        chartCardPane.addCard(chaptersByYearCard);
-        chartChoiceButtons.addButton("chaptersByYear", "Chapters By Year");
-
-        function updateVisualisations(code, datasets){
-            var title = code.code + ": " + code.text_de;
-
-            barChartVisualisation.visualiseData(title, datasets);
-            ordinalCurveVisualisation.visualiseData(title, datasets);
-            pieChartVisualisation.visualiseData(title, datasets);
-            boxPlotVisualisation.visualiseData(title, datasets);
-            chaptersByYearVisualisation.visualiseData(title, datasets);
-        }
-
-        var codeChooser = new CodeChooser("icd", updateVisualisations);
+        var chooseButtons;
+        var cardPane;
+        var codeChooser;
 
         _this.initialize = function () {
             _this.empty();
-            _this.append(chartChoiceButtons);
-            _this.append(chartCardPane);
+
+            cardPane = _this.newCardPane();
+            chooseButtons = _this.newChartChoiceButtonBar();
+            _this.append(chooseButtons);
+            _this.append(cardPane);
+            _this.initializeVisualisations();
+        };
+
+        _this.isInitialized = function () {
+            if (_.isUndefined(_this.cardPane()))
+                return false;
+            return _this.cardPane().parent().length;
+        };
+
+        /**
+         * @returns {View}
+         */
+        _this.cardPane = function () {
+            return cardPane;
+        };
+
+        _this.chooseButtons = function () {
+            return chooseButtons;
+        };
+
+        _this.codeChooser = function () {
+            if (_.isUndefined(codeChooser))
+                codeChooser = _this.newCodeChooser();
+            return codeChooser;
+        };
+
+        _this.addCard = function (card) {
+            _this.cardPane().addCard(card);
+        };
+
+        _this.addButton = function (targetID, title) {
+            _this.chooseButtons().addButton(targetID, title);
         };
 
         _this.on = function (type, code) {
-            if (!chartCardPane.parent().length)_this.initialize();
-            codeChooser.fetchDatasets(type, code, updateVisualisations);
+            if (!_this.isInitialized())
+                _this.initialize();
+            _this.codeChooser().fetchDatasets(type, code, _this.updateVisualisations);
+        };
+
+        /*-------------------------------------------------------------*/
+        /*------------ U S E F U L   T O   O V E R R I D E ------------*/
+        /*-------------------------------------------------------------*/
+
+        /**
+         * Override if you want to return any custom code chooser
+         * @returns {CodeChooser}
+         */
+        _this.newCodeChooser = function () {
+            return new CodeChooser(_this.codeType(), _this.updateVisualisations);
+        };
+
+        _this.newCardPane = function () {
+            return new CardPane();
+        };
+
+        _this.newChartChoiceButtonBar = function () {
+            return new ChartChoiceButtonBar(_this.cardPane());
+        };
+
+        /**
+         * Override to define code type like:
+         * "icd", "chop", "drg".
+         * @returns {string}
+         */
+        _this.codeType = function () {
+            return 'unknown';
+        };
+
+        /**
+         * Override to define which presentation to update
+         * @param code
+         * @param datasets
+         */
+        _this.updateVisualisations = function(code, datasets){
+            // by default do nothing
+        };
+
+        /**
+         * Override to initialize visualisations. Is used to support
+         * lazy initializations
+         */
+        _this.initializeVisualisations = function () {
+            // by default do nothing
         };
 
         return _this;
     }
 
     return CodeVisualisationCard;
-
 });

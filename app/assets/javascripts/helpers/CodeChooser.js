@@ -1,5 +1,13 @@
 define(['View'], function (View){
 
+    /**
+     *
+     * @param initialCodeType
+     * @param newCodeCallback
+     * @returns {View}
+     * @constructor
+     * @class {CodeChooser}
+     */
     function CodeChooser(initialCodeType, newCodeCallback){
         var _this = new View('<div></div>');
         var codeType = initialCodeType;

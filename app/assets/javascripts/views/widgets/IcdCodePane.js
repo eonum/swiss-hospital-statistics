@@ -1,7 +1,9 @@
 define([
-    'views/widgets/CodePane'
+    'views/widgets/CodePane',
+    'views/widgets/IcdCodeVisualisationCard'
 ], function(
-    CodePane
+    CodePane,
+    IcdCodeVisualisationCard
 ){
 
     function IcdCodePane() {
@@ -17,6 +19,10 @@ define([
 
         _this.groupPrefix = function () {
             return 'icd';
+        };
+
+        _this.newCodeCard = function () {
+            return new IcdCodeVisualisationCard();
         };
 
         return _this;

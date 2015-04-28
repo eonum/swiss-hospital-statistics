@@ -1,7 +1,9 @@
 define([
-    'views/widgets/CodePane'
+    'views/widgets/CodePane',
+    'views/widgets/ChopCodeVisualisationCard'
 ], function(
-    CodePane
+    CodePane,
+    ChopCodeVisualisationCard
 ){
 
     function ChopCodePane() {
@@ -17,6 +19,10 @@ define([
 
         _this.groupPrefix = function () {
             return 'chop';
+        };
+
+        _this.newCodeCard = function () {
+            return new ChopCodeVisualisationCard();
         };
 
         return _this;
