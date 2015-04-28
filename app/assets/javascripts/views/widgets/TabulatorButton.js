@@ -18,6 +18,7 @@ define([
             model.tabulator().announcer().onSendTo(OnTabulatorSelected, _this.onSelected, _this);
             model.tabulator().announcer().onSendTo(OnTabulatorDeselected, _this.onDeselected, _this);
             _this.render();
+            return _this;
         };
 
         _this.render = function () {
@@ -25,6 +26,8 @@ define([
             _this.attachListeners();
             _this.add(_this.link());
             _this.label(_this.model().name());
+            if(_this.model().isSelected())
+                _this.beActive();
         };
 
         _this.link = function () {

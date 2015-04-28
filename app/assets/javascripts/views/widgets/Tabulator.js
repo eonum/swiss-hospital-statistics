@@ -61,8 +61,6 @@ define([
             $target.removeAttr('data-'+oldName).attr(attr);
         };
 
-
-
         _this.render = function () {
             if (_this.isRendered()) return;
             content = _this.model().render();
@@ -114,7 +112,9 @@ define([
         _this.model = function(_model) {
             if (_.isUndefined(_model)) return model;
             model = _model;
+            _this.addTabsAll(model.tabs());
             model.announcer().onSendTo(OnTabulatorAdded, _this.onAdded, _this);
+            return _this;
         };
 
         _this.tabs = function () {
@@ -122,9 +122,21 @@ define([
         };
 
         _this.onAdded = function(ann) {
-            var tab = _this.buildTabFor(ann.tab());
+            _this.addTab(ann.tab());
+        };
+
+        _this.addTab = function (tabModel) {
+            var tab = _this.buildTabFor(tabModel);
             _this.tabs().push(tab);
             _this.add(tab);
+            if (tabModel.isSelected())
+                tab.select();
+        };
+
+        _this.addTabsAll = function (tabModels) {
+            _.each(tabModels, function(each){
+                _this.addTab(each);
+            });
         };
 
         _this.buildTabFor = function (tabModel) {

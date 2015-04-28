@@ -94,10 +94,17 @@ define([
 
         _this.title = function (string) {
             _this.titleView().title(string);
+            return _this;
         };
 
         _this.addLeft = function (view) {
             _this.section().addLeft(view);
+        };
+
+        _this.addLeftAll = function (views) {
+            _.each(views, function(each){
+                _this.addLeft(each);
+            });
         };
 
         _this.initialize();

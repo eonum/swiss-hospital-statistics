@@ -27,19 +27,24 @@ define([
         _this.render = function (_renderingLogic) {
             if (_.isUndefined(_renderingLogic)) return renderingLogic();
             renderingLogic = _renderingLogic;
+            return _this;
         };
 
         _this.select = function () {
-            if (_this.isSelected()) return;
+            if (_this.isSelected()) return _this;
             _this.tabulator().selectTab(_this);
+            return _this;
         };
 
         _this.deselect = function () {
-            if (!_this.isSelected()) return;
+            if (!_this.isSelected()) return _this;
             _this.tabulator().deselectTab(_this);
+            return _this;
         };
 
         _this.isSelected = function () {
+            if (_.isUndefined(_this.tabulator()))
+                return false;
             return _this.tabulator().isTabSelected(_this);
         };
     }
