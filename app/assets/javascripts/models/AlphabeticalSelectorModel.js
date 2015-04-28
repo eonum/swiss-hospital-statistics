@@ -50,12 +50,15 @@ define([
         var items = [];
         var selectedItem;
         var nameLogic = function(_item) {return _item.toString();};
+        var rangeLogic = function() { return '0123456789abcdefghijklmnopqrstuvwxyz'.toUpperCase().split("") };
+        var prefixLogic = function() { return 'group' };
         var groups = {};
+        var timestamp;
         var announcer = new Announcer();
 
         _this.initialize = function () {
             groups = {};
-            _.each('abcdefghijklmnopqrstuvwxyz'.toUpperCase().split(""),function(each) {
+            _.each(_this.range(),function(each) {
                 groups[each] = new Group(_this, each);
             });
         };
@@ -72,6 +75,38 @@ define([
 
         _this.name = function (_func) {
             nameLogic = _func;
+            return _this;
+        };
+
+        _this.timestamp = function() {
+            if (_.isUndefined(timestamp))
+                timestamp = new Date().getTime();
+            return timestamp;
+        };
+
+        _this.prefix = function (_func) {
+            if (_.isUndefined(_func)) return prefixLogic();
+            prefixLogic = _func;
+            return _this;
+        };
+
+        _this.prefixOf = function (group) {
+            return _this.prefix() + group.label();
+        };
+
+        _this.range = function (_func) {
+            if (_.isUndefined(_func)) return rangeLogic();
+            rangeLogic = _func;
+        };
+
+        _this.characterRange = function () {
+            _this.range(function() {return 'abcdefghijklmnopqrstuvwxyz'.toUpperCase().split("")});
+            return _this;
+        };
+
+        _this.numeralRange = function () {
+            _this.range(function() { return '0123456789'.toUpperCase().split("")});
+            return _this;
         };
 
         _this.initializeGroupsFrom = function() {

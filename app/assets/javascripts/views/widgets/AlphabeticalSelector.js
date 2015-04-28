@@ -13,7 +13,7 @@ define([
 ) {
 
     var groupID = function(group) {
-        return 'group'+group.label();
+        return group.selector().prefixOf(group);
     };
 
     function OnItemClicked(item) {
@@ -199,7 +199,7 @@ define([
             list = _this.renderGroupList();
             _this.add(header);
             _this.add(list);
-            $(document).foundation();
+            $(document).foundation('magellan-expedition','reflow');
         };
 
         _this.renderGroupList = function () {

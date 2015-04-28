@@ -18,7 +18,7 @@ define([
     OnSearchProcessorFiltered
 ){
 
-    function IcdCodePane() {
+    function CodePane() {
         var _this = new View('<div class="row full-width"></div>');
         var leftPane = new View('<div class="large-5 columns"></div>');
         var rightPane = new View('<div class="large-7 columns"></div>');
@@ -52,10 +52,6 @@ define([
         _this.searchModel = function (_searchModel) {
             if (_.isUndefined(_searchModel)) return searchModel;
             searchModel = _searchModel;
-            searchModel.ignoreCase();
-            searchModel.name(function(item){
-                return item.short_code + " "+item.code + " "+item.text_de;
-            });
             searchModel.announcer().onSendTo(OnSearchProcessorFiltered, _this.onSearched,_this);
         };
 
@@ -70,9 +66,6 @@ define([
         _this.selectorModel = function (_selectorModel) {
             if (_.isUndefined(_selectorModel)) return selectorModel;
             selectorModel = _selectorModel;
-            selectorModel.name(function(item){
-                return item.code + " "+item.text_de;
-            });
             selectorModel.announcer().onSendTo(OnAlphabeticalItemSelected, _this.onItemSelected,_this);
         };
 
@@ -104,7 +97,7 @@ define([
         };
 
         _this.newSearchModel = function () {
-            return new SearchProcessor();
+            return new SearchProcessor().name(_this.candidateNameOf).ignoreCase();
         };
 
         _this.newSelectorView = function () {
@@ -112,7 +105,7 @@ define([
         };
 
         _this.newSelectorModel = function () {
-            return new AlphabeticalSelectorModel();
+            return new AlphabeticalSelectorModel().name(_this.listNameOf).prefix(_this.groupPrefix);
         };
 
         _this.newCodeCard = function () {
@@ -120,17 +113,41 @@ define([
         };
 
         _this.load = function (url) {
+            _this.render();
             $.getJSON(url, function(candidates){
                 _this.searchModel().allCandidates(candidates);
             });
             return _this;
         };
 
-        _this.render();
+        /**
+         * @param item
+         * @param {string} item.code
+         * @param {string} item.text_de;
+         * @returns {string}
+         */
+        _this.listNameOf = function (item) {
+            return item.code + " "+item.text_de;
+        };
+
+        /**
+         * @param candidate
+         * @param {string} candidate.short_code
+         * @param {string} candidate.code
+         * @param {string} candidate.text_de;
+         * @returns {string}
+         */
+        _this.candidateNameOf = function (candidate) {
+            return candidate.short_code + " "+candidate.code + " "+candidate.text_de;
+        };
+
+        _this.groupPrefix = function () {
+            return 'group';
+        };
 
         return _this;
     }
 
-    return IcdCodePane;
+    return CodePane;
 
 });

@@ -3,27 +3,17 @@ define([
     'views/widgets/Tabulator',
     'views/widgets/TabulatorButton',
     'models/TabulatorModel',
-    'models/AlphabeticalSelectorModel',
-    'models/SearchProcessor',
-    'views/widgets/AlphabeticalSelector',
-    'views/widgets/CodeVisualisationCard',
-    'views/widgets/SearchField',
-    'announcements/OnAlphabeticalItemSelected',
-    'announcements/OnSearchProcessorFiltered',
-    'views/widgets/IcdCodePane'
+    'views/widgets/IcdCodePane',
+    'views/widgets/ChopCodePane',
+    'views/widgets/DrgCodePane'
 ], function(
     TopBar,
     Tabulator,
     TabulatorButton,
     TabulatorModel,
-    AlphabeticalSelectorModel,
-    SearchProcessor,
-    AlphabeticalSelector,
-    CodeVisualisationCard,
-    SearchField,
-    OnAlphabeticalItemSelected,
-    OnSearchProcessorFiltered,
-    IcdCodePane
+    IcdCodePane,
+    ChopCodePane,
+    DrgCodePane
 ){
 
     "use strict";
@@ -48,13 +38,13 @@ define([
             topBar.addLeft(drgButton);
 
             var tabIcd = tabulatorModel.addTab('ICD');
-            tabIcd.render(function(){return new IcdCodePane().load('/api/v1/codes/icd')});
+            tabIcd.render(function(){return new IcdCodePane().load()});
             icdButton.model(tabIcd);
             var tabChop = tabulatorModel.addTab('CHOP');
-            tabChop.render(function(){return $('<div style="background: green; height: 300px">Bla</div>')});
+            tabChop.render(function(){return new ChopCodePane().load()});
             chopButton.model(tabChop);
             var tabDrg = tabulatorModel.addTab('DRG');
-            tabDrg.render(function(){return $('<div style="background: blue; height: 300px">Bla</div>')});
+            tabDrg.render(function(){return new DrgCodePane().load()});
             drgButton.model(tabDrg);
 
             tabulatorModel.selectTab(tabIcd);

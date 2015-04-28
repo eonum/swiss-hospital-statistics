@@ -25,6 +25,7 @@ define([
 
         _this.ignoreCase = function () {
             _this.filter(new SearchFilterIgnoreCaseDecorator(_this.filter()));
+            return _this;
         };
 
         _this.filter = function (_filter) {
@@ -34,6 +35,7 @@ define([
 
         _this.name = function (_nameLogic) {
             nameLogic = _nameLogic;
+            return _this;
         };
 
         _this.allCandidates = function (_candidates) {

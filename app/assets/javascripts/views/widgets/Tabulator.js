@@ -33,24 +33,40 @@ define([
 
         _this.select = function () {
             _this.render();
-            _this.show();
+            _this.fixMagellanSelect();
+            _this.show(function(){
+                _this.fixMagellanSelect();
+            });
         };
 
         _this.deselect = function () {
-            _this.hide();
+            _this.hide(function(){
+                _this.fixMagellanDeselect();
+            });
         };
+
+        _this.fixMagellanDeselect = function () {
+            _this.renameData('magellan-expedition', 'magellan-expedition-backup');
+        };
+
+        _this.fixMagellanSelect = function () {
+            _this.renameData('magellan-expedition-backup', 'magellan-expedition');
+        };
+
+        _this.renameData = function (oldName, newName) {
+            var $target = _this.find('[data-'+oldName+']'),
+                oldData = $target.data(oldName);
+            var attr = {};
+            attr['data-'+newName] = oldData;
+            $target.removeAttr('data-'+oldName).attr(attr);
+        };
+
+
 
         _this.render = function () {
             if (_this.isRendered()) return;
             content = _this.model().render();
             _this.append(content);
-        };
-
-        _this.hide = function(callback) {
-            _this.fadeOut(500, function(){
-                _this.beHidden();
-                if (!_.isUndefined()) callback();
-            });
         };
 
         _this.beHidden = function () {
@@ -61,7 +77,16 @@ define([
             _this.removeClass('hide');
         };
 
+        _this.hide = function(callback) {
+            _this.stop(true, true);
+            _this.fadeOut(500, function(){
+                _this.beHidden();
+                if (!_.isUndefined(callback)) callback();
+            });
+        };
+
         _this.show = function (callback) {
+            _this.stop(true, true);
             _this.beVisible();
             _this.fadeOut(0);
             _this.fadeIn(500, callback);
