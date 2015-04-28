@@ -4,49 +4,6 @@ define([
     View
 ){
 
-    function Button(_label) {
-        var _this = new View('<li class="text-center"></li>');
-        var link;
-        var label = _label ? _label : 'Button';
-
-
-        _this.initialize = function () {
-            link = _this.newLink();
-            _this.add(_this.link());
-            _this.label(_this.label());
-        };
-
-        _this.link = function () {
-            return link;
-        };
-
-        _this.newLink = function() {
-            return new View('<a href="#"></a>');
-        };
-
-        _this.label = function (_label) {
-            if (_.isUndefined(_label)) return label;
-            label = _label;
-            _this.link().text(_this.label());
-        };
-
-        _this.beActive = function () {
-            _this.class('active');
-        };
-
-        _this.beNormal = function() {
-            _this.removeClass('active');
-        };
-
-        _this.active = function(bool) {
-            bool ? _this.beActive() : _this.beNormal();
-        };
-
-        _this.initialize();
-
-        return _this;
-    }
-
     function Title() {
         var _this = new View('<ul class="title-area"></ul>');
         var titleWrapper = new View('<li class="name"></li>');
@@ -141,10 +98,6 @@ define([
 
         _this.addLeft = function (view) {
             _this.section().addLeft(view);
-        };
-
-        _this.newButton = function (label) {
-            return new Button(label);
         };
 
         _this.initialize();

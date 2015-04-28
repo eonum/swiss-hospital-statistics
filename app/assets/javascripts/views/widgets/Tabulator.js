@@ -1,11 +1,81 @@
 define([
-    'View'
+    'View',
+    'announcements/OnTabulatorAdded',
+    'announcements/OnTabulatorSelected',
+    'announcements/OnTabulatorDeselected'
 ], function(
-    View
+    View,
+    OnTabulatorAdded,
+    OnTabulatorSelected,
+    OnTabulatorDeselected
 ){
 
     function Tab() {
-        var _this = new View('<div></div>');
+        var _this = new View('<div class="absolute fill-width"></div>');
+
+        var model;
+        var content;
+
+        _this.model = function (_model) {
+            if (_.isUndefined(_model)) return model;
+            model = _model;
+            model.tabulator().announcer().onSendTo(OnTabulatorSelected, _this.onSelected, _this);
+            model.tabulator().announcer().onSendTo(OnTabulatorDeselected, _this.onDeselected, _this);
+        };
+
+        _this.isRendered = function () {
+            return !_.isUndefined(_this.content());
+        };
+
+        _this.content = function () {
+            return content;
+        };
+
+        _this.select = function () {
+            _this.render();
+            _this.show();
+        };
+
+        _this.deselect = function () {
+            _this.hide();
+        };
+
+        _this.render = function () {
+            if (_this.isRendered()) return;
+            content = _this.model().render();
+            _this.append(content);
+        };
+
+        _this.hide = function(callback) {
+            _this.fadeOut(500, function(){
+                _this.beHidden();
+                if (!_.isUndefined()) callback();
+            });
+        };
+
+        _this.beHidden = function () {
+            _this.class('hide');
+        };
+
+        _this.beVisible = function () {
+            _this.removeClass('hide');
+        };
+
+        _this.show = function (callback) {
+            _this.beVisible();
+            _this.fadeOut(0);
+            _this.fadeIn(500, callback);
+        };
+
+        _this.onSelected = function (ann) {
+            if (ann.tab() === _this.model())
+                _this.select();
+        };
+
+        _this.onDeselected = function (ann) {
+            if (ann.tab() === _this.model())
+                _this.deselect();
+        };
 
         return _this;
     }
@@ -19,10 +89,28 @@ define([
         _this.model = function(_model) {
             if (_.isUndefined(_model)) return model;
             model = _model;
+            model.announcer().onSendTo(OnTabulatorAdded, _this.onAdded, _this);
         };
 
         _this.tabs = function () {
             return tabs;
+        };
+
+        _this.onAdded = function(ann) {
+            var tab = _this.buildTabFor(ann.tab());
+            _this.tabs().push(tab);
+            _this.add(tab);
+        };
+
+        _this.buildTabFor = function (tabModel) {
+            var tab = _this.newTab();
+            tab.model(tabModel);
+            tab.beHidden();
+            return tab;
+        };
+
+        _this.newTab = function () {
+            return new Tab();
         };
 
         return _this;

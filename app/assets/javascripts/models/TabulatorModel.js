@@ -13,13 +13,37 @@ define([
         var _this = this;
 
         var name = "Tab";
+        var renderingLogic = function () {return $('<div></div>')};
 
-        _this.name = function() {
-            return name;
+        _this.name = function(string) {
+            if (_.isUndefined(string)) return name;
+            name = string;
         };
 
         _this.tabulator = function() {
             return tabulator;
+        };
+
+        _this.render = function () {
+            return renderingLogic();
+        };
+
+        _this.renderingLogic = function (func) {
+            renderingLogic = func;
+        };
+
+        _this.select = function () {
+            if (_this.isSelected()) return;
+            _this.tabulator().selectTab(_this);
+        };
+
+        _this.deselect = function () {
+            if (!_this.isSelected()) return;
+            _this.tabulator().deselectTab(_this);
+        };
+
+        _this.isSelected = function () {
+            return _this.tabulator().isTabSelected(_this);
         };
     }
 
@@ -43,17 +67,32 @@ define([
             _this.notifyAdded(tab);
         };
 
+        _this.addTab = function (name) {
+            var tab = _this.newTab();
+            tab.name(name);
+            _this.add(tab);
+            return tab;
+        };
+
+        _this.newTab = function () {
+            return new Tab(_this);
+        };
+
         _this.selectTab = function(tab) {
-            _this.deselectItem();
+            _this.deselectTab();
             selectedTab = tab;
             _this.notifySelected(tab);
+        };
+
+        _this.selectTabAt = function (index) {
+            _this.tabAt(index).select();
         };
 
         _this.deselectTab = function () {
             if (!_this.isTabSelected()) return;
             var wasSelected = _this.selectedTab();
             selectedTab = null;
-            _this.notifyItemDeselected(wasSelected);
+            _this.notifyDeselected(wasSelected);
         };
 
         _this.selectedTab = function () {
@@ -64,6 +103,10 @@ define([
             if (_.isUndefined(tab))
                 return !_.isUndefined(_this.selectedTab());
             return _this.selectedTab() === tab;
+        };
+
+        _this.tabAt = function(index) {
+            return _this.tabs()[index];
         };
 
         _this.notifySelected = function (tab) {

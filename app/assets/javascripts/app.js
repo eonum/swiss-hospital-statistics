@@ -1,5 +1,8 @@
 define([
     'views/widgets/TopBar',
+    'views/widgets/Tabulator',
+    'views/widgets/TabulatorButton',
+    'models/TabulatorModel',
     'models/AlphabeticalSelectorModel',
     'models/SearchProcessor',
     'views/widgets/AlphabeticalSelector',
@@ -9,6 +12,9 @@ define([
     'announcements/OnSearchProcessorFiltered'
 ], function(
     TopBar,
+    Tabulator,
+    TabulatorButton,
+    TabulatorModel,
     AlphabeticalSelectorModel,
     SearchProcessor,
     AlphabeticalSelector,
@@ -25,14 +31,31 @@ define([
         _this.initialize = function(){
             var topBar = new TopBar();
             topBar.title('Eonum');
-            var button = topBar.newButton('ICD');
-            button.beActive();
+            var icdButton = new TabulatorButton();
+            var chopButton = new TabulatorButton();
+            var drgButton = new TabulatorButton();
 
-            topBar.addLeft(button);
-            topBar.addLeft(topBar.newButton('CHOP'));
-            topBar.addLeft(topBar.newButton('DRG'));
             $('header').append(topBar);
-            _this.visualise();
+
+            var tabulator = new Tabulator();
+            var tabulatorModel = new TabulatorModel();
+            $('body').append(tabulator);
+            tabulator.model(tabulatorModel);
+            topBar.addLeft(icdButton);
+            topBar.addLeft(chopButton);
+            topBar.addLeft(drgButton);
+
+            var tabIcd = tabulatorModel.addTab('ICD');
+            tabIcd.renderingLogic(function(){return _this.visualise()});
+            icdButton.model(tabIcd);
+            var tabChop = tabulatorModel.addTab('CHOP');
+            tabChop.renderingLogic(function(){return $('<div style="background: green; height: 300px">Bla</div>')});
+            chopButton.model(tabChop);
+            var tabDrg = tabulatorModel.addTab('DRG');
+            tabDrg.renderingLogic(function(){return $('<div style="background: blue; height: 300px">Bla</div>')});
+            drgButton.model(tabDrg);
+
+            tabulatorModel.selectTab(tabIcd);
         };
 
         _this.visualise = function () {
@@ -41,9 +64,6 @@ define([
             var rightPane = $('<div class="large-7 columns"></div>');
             pane.append(leftPane);
             pane.append(rightPane);
-
-            $('body').append('<div class="row"></div>');
-            $('body').append(pane);
 
             var selectorModel = new AlphabeticalSelectorModel();
             selectorModel.nameLogic(function(item){
@@ -81,6 +101,8 @@ define([
                 processor.allCandidates(result);
                 search.model(processor);
             });
+
+            return pane;
         };
 
 
