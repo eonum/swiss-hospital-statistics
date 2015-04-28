@@ -7,6 +7,12 @@ define(['d3', 'views/ResponsiveSvg'], function (d3, ResponsiveSvg) {
      */
     function AbstractPieChart(_width, _height){
         var _this = new ResponsiveSvg(_width, _height);
+
+         _this.marginTop(50);
+         _this.marginLeft(50);
+         _this.marginRight(140);
+         _this.marginBottom(50);
+
         var radius = Math.min(_this._width(), _this._height()) / 2;
         var path = _this.svg()
             .append("g")
@@ -45,8 +51,16 @@ define(['d3', 'views/ResponsiveSvg'], function (d3, ResponsiveSvg) {
         _this._valueSymbol = function() {return 'value'};
 
         var arc = d3.svg.arc().innerRadius(radius - 100).outerRadius(radius - 20);
-        _this.initialize = function(data) {
 
+        _this.initialize = function() {
+            var titleFontSize = _height / 20;
+            // append title
+            _this.svg().append("text")
+                .attr("id", "title")
+                .style("font-size", titleFontSize + "px");
+        };
+
+        _this.setData = function(data){
             var pie = d3.layout
                 .pie()
                 .value(function(d) { return d[_this._valueSymbol()]; })
@@ -80,6 +94,13 @@ define(['d3', 'views/ResponsiveSvg'], function (d3, ResponsiveSvg) {
                 .style("text-anchor", "middle")
                 .text(function(d) { return _this._labelOf(_this._valueOf(d), d); });
         };
+
+        _this.setTitle = function(text){
+            _this.svg().select("#title").text(text);
+        };
+
+        _this.initialize();
+
         return _this;
     }
 

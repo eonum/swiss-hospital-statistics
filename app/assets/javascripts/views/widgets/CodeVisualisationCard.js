@@ -40,7 +40,7 @@ define([
         chartCardPane.addCard(ordinalCurveChartCard);
         chartChoiceButtons.addButton("ordinalCurve", "Ordinal Curve");
 
-        var pieChartVisualisation = new PieChartByAgeVisualisation();
+        var pieChartVisualisation = new PieChartByAgeVisualisation(800, 400);
         var pieChartCard = new CardElement("pieChart", pieChartVisualisation);
         chartCardPane.addCard(pieChartCard);
         chartChoiceButtons.addButton("pieChart","Pie Chart");

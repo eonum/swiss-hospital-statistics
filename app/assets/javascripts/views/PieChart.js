@@ -8,6 +8,7 @@ define(['d3', 'views/abstract/AbstractPieChart'], function (d3, AbstractPieChart
     function PieChart(_width, _height){
         var _this = new AbstractPieChart(_width, _height);
 
+
         var scripting = {
             colorLogic: d3.scale.category20(),
             displayLogic: function (entity) { return entity; },
@@ -26,7 +27,7 @@ define(['d3', 'views/abstract/AbstractPieChart'], function (d3, AbstractPieChart
 
         /* ------------ S C R I P T I N G   A P I ------------ */
         _this.openOn = function (entity) {
-            _this.initialize(scripting.displayLogic(entity));
+            _this.setData(scripting.displayLogic(entity));
             return _this;
         };
 
