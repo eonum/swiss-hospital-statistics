@@ -24,12 +24,9 @@ define([
             return tabulator;
         };
 
-        _this.render = function () {
-            return renderingLogic();
-        };
-
-        _this.renderingLogic = function (func) {
-            renderingLogic = func;
+        _this.render = function (_renderingLogic) {
+            if (_.isUndefined(_renderingLogic)) return renderingLogic();
+            renderingLogic = _renderingLogic;
         };
 
         _this.select = function () {

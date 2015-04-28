@@ -17,6 +17,7 @@ define([
         var nameLogic = function (candidate) { return candidate.toString(); };
         var filter = new SearchFilter();
         var announcer = new Announcer();
+        var query = "";
 
         _this.announcer = function () {
             return announcer;
@@ -31,17 +32,19 @@ define([
             filter = _filter;
         };
 
-        _this.nameLogic = function (_nameLogic) {
+        _this.name = function (_nameLogic) {
             nameLogic = _nameLogic;
         };
 
         _this.allCandidates = function (_candidates) {
             if (_.isUndefined(_candidates)) return rawCandidates;
             rawCandidates = _candidates;
+            _this.process(_this.query());
         };
 
-        _this.process = function (query) {
-            candidates = _.isEmpty(query) ? _this.allCandidates() : _this.filterCandidates(query);
+        _this.process = function (_query) {
+            query = _query;
+            candidates = _.isEmpty(_query) ? _this.allCandidates() : _this.filterCandidates(_query);
             _this.notifyFiltered(_this.candidates());
         };
 
@@ -51,6 +54,10 @@ define([
 
         _this.candidates = function () {
             return candidates;
+        };
+
+        _this.query = function () {
+            return query;
         };
 
         _this.nameOf = function (candidate) {

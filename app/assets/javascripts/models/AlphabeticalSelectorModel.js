@@ -55,7 +55,7 @@ define([
 
         _this.initialize = function () {
             groups = {};
-            _.each("abcdefghijklmnopqrstuvwxyz".toUpperCase().split(""),function(each) {
+            _.each('abcdefghijklmnopqrstuvwxyz'.toUpperCase().split(""),function(each) {
                 groups[each] = new Group(_this, each);
             });
         };
@@ -70,7 +70,7 @@ define([
             _this.invalidate();
         };
 
-        _this.nameLogic = function (_func) {
+        _this.name = function (_func) {
             nameLogic = _func;
         };
 

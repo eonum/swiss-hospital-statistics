@@ -9,7 +9,8 @@ define([
     'views/widgets/CodeVisualisationCard',
     'views/widgets/SearchField',
     'announcements/OnAlphabeticalItemSelected',
-    'announcements/OnSearchProcessorFiltered'
+    'announcements/OnSearchProcessorFiltered',
+    'views/widgets/IcdCodePane'
 ], function(
     TopBar,
     Tabulator,
@@ -21,7 +22,8 @@ define([
     CodeVisualisationCard,
     SearchField,
     OnAlphabeticalItemSelected,
-    OnSearchProcessorFiltered
+    OnSearchProcessorFiltered,
+    IcdCodePane
 ){
 
     "use strict";
@@ -46,63 +48,16 @@ define([
             topBar.addLeft(drgButton);
 
             var tabIcd = tabulatorModel.addTab('ICD');
-            tabIcd.renderingLogic(function(){return _this.visualise()});
+            tabIcd.render(function(){return new IcdCodePane().load('/api/v1/codes/icd')});
             icdButton.model(tabIcd);
             var tabChop = tabulatorModel.addTab('CHOP');
-            tabChop.renderingLogic(function(){return $('<div style="background: green; height: 300px">Bla</div>')});
+            tabChop.render(function(){return $('<div style="background: green; height: 300px">Bla</div>')});
             chopButton.model(tabChop);
             var tabDrg = tabulatorModel.addTab('DRG');
-            tabDrg.renderingLogic(function(){return $('<div style="background: blue; height: 300px">Bla</div>')});
+            tabDrg.render(function(){return $('<div style="background: blue; height: 300px">Bla</div>')});
             drgButton.model(tabDrg);
 
             tabulatorModel.selectTab(tabIcd);
-        };
-
-        _this.visualise = function () {
-            var pane = $('<div class="row full-width"></div>');
-            var leftPane = $('<div class="large-5 columns"></div>');
-            var rightPane = $('<div class="large-7 columns"></div>');
-            pane.append(leftPane);
-            pane.append(rightPane);
-
-            var selectorModel = new AlphabeticalSelectorModel();
-            selectorModel.nameLogic(function(item){
-                return item.code + " "+item.text_de;
-            });
-
-            selectorModel.announcer().onSendTo(OnAlphabeticalItemSelected, function(ann) {
-                codeCard.on(ann.item().type, ann.item().short_code);
-            },_this);
-
-            var selectorView = new AlphabeticalSelector();
-            selectorView.class('full-width');
-            selectorView.model(selectorModel);
-
-            leftPane.append(selectorView);
-
-            var codeCard = new CodeVisualisationCard();
-            codeCard.class('full-width');
-            rightPane.append(codeCard);
-
-            var processor = new SearchProcessor();
-            processor.ignoreCase();
-            processor.nameLogic(function(item){
-                return item.short_code + " "+item.code + " "+item.text_de;
-            });
-            processor.announcer().onSendTo(OnSearchProcessorFiltered, function(ann) {
-                selectorModel.items(ann.candidates());
-            },_this);
-
-            var search = new SearchField();
-            search.class('full-width');
-            leftPane.prepend(search);
-
-            $.getJSON("/api/v1/codes/icd", function(result){
-                processor.allCandidates(result);
-                search.model(processor);
-            });
-
-            return pane;
         };
 
 
