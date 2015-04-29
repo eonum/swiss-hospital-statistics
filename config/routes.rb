@@ -20,6 +20,9 @@ Rails.application.routes.draw do
   # only /index /show and /new shall be used for the time being
   namespace :api do
     namespace :v1 do
+      namespace :groups do
+        resources :icd, :only => [:index]
+      end
       resources :codes, :only => [:index, :show, :new] do
         resources :specific, :only => [:show]
         resources :datasets, :only => [:index, :show]

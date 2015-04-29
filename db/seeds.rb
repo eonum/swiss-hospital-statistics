@@ -12,90 +12,98 @@ HospitalType.create(:text_de => 'Spezialkliniken: Rehabilitationskliniken', :tex
 HospitalType.create(:text_de => 'Spezialkliniken: Andere Spezialkliniken', :text_fr => 'Cliniques spécialisées: autres cliniques spécialisées')
 
 
-IcdChapter.create(roman_number: "I", number:1,
+def init_chapter(chapter)
+  chapter.icd_nonterminals = chapter.icd_nonterminals.find_by_nonterminal(chapter.nonterminals)
+  chapter.save
+end
+
+init_chapter(IcdChapter.create(roman_number: "I", number:1, nonterminals: 'A00-B99',
                   text_de: "Bestimmte infektiöse und parasitäre Krankheiten",
                   text_fr: "Certaines maladies infectieuses et parasitaires",
-                  text_it: "Alcune malattie infettive e parassitarie")
-IcdChapter.create(roman_number: "II", number:2,
+                  text_it: "Alcune malattie infettive e parassitarie"))
+
+init_chapter(IcdChapter.create(roman_number: "II", number:2, nonterminals: 'C00-D48',
                   text_de: "Neubildungen",
                   text_fr: "Tumeurs",
-                  text_it: "Tumori")
-IcdChapter.create(roman_number: "III", number:3,
+                  text_it: "Tumori"))
+init_chapter(IcdChapter.create(roman_number: "III", number:3, nonterminals: 'D50-D90',
                   text_de: "Krankheiten des Blutes und der blutbildenden Organe sowie bestimmte Störungen mit Beteiligung des Immunsystems",
                   text_fr: "Maladies du sang et des organes hématopoïétiques et certains troubles du système immunitaire",
-                  text_it: "Malattie del sangue e degli organi ematopoietici ed alcuni disturbi del sistema immunitario")
-IcdChapter.create(roman_number: "IV", number:4, text_de: "Endokrine, Ernährungs- und Stoffwechselkrankheiten",
+                  text_it: "Malattie del sangue e degli organi ematopoietici ed alcuni disturbi del sistema immunitario"))
+init_chapter(IcdChapter.create(roman_number: "IV", number:4, nonterminals: 'E00-E90',
+                  text_de: "Endokrine, Ernährungs- und Stoffwechselkrankheiten",
                   text_fr: "Maladies endocriniennes, nutritionnelles et métaboliques",
-                  text_it: "Malattie endocrine, nutrizionali e metaboliche")
-IcdChapter.create(roman_number: "V", number:5,
+                  text_it: "Malattie endocrine, nutrizionali e metaboliche"))
+init_chapter(IcdChapter.create(roman_number: "V", number:5, nonterminals: 'F00-F99',
                   text_de: "Psychische und Verhaltensstörungen",
                   text_fr: "Troubles mentaux et du comportement",
-                  text_it: "Disturbi psichici e comportamentali")
-IcdChapter.create(roman_number: "VI", number:6,
+                  text_it: "Disturbi psichici e comportamentali"))
+init_chapter(IcdChapter.create(roman_number: "VI", number:6, nonterminals: 'G00-G99',
                   text_de: "Krankheiten des Nervensystems",
                   text_fr: "Maladies du système nerveux",
-                  text_it: "Malattie del sistema nervoso")
-IcdChapter.create(roman_number: "VII", number:7,
-                  text_de: "Krankheiten des Auges und der Augenanhangsgebilde", text_fr: "Maladies de l'œil et de ses annexes",
-                  text_it: "Malattie dell'occhio e degli annessi oculari")
-IcdChapter.create(roman_number: "VIII", number:8,
+                  text_it: "Malattie del sistema nervoso"))
+init_chapter(IcdChapter.create(roman_number: "VII", number:7, nonterminals: 'H00-H59',
+                  text_de: "Krankheiten des Auges und der Augenanhangsgebilde",
+                  text_fr: "Maladies de l'œil et de ses annexes",
+                  text_it: "Malattie dell'occhio e degli annessi oculari"))
+init_chapter(IcdChapter.create(roman_number: "VIII", number:8, nonterminals: 'H60-H95',
                   text_de: "Krankheiten des Ohres und des Warzenfortsatzes",
                   text_fr: "Maladies de l'oreille et de l'apophyse mastoïde",
-                  text_it: "Malattie dell'orecchio e dell'apofisi mastoide")
-IcdChapter.create(roman_number: "IX", number:9,
+                  text_it: "Malattie dell'orecchio e dell'apofisi mastoide"))
+init_chapter(IcdChapter.create(roman_number: "IX", number:9, nonterminals: 'I00-I99',
                   text_de: "Krankheiten des Kreislaufsystems",
                   text_fr: "Maladies de l'appareil circulatoire",
-                  text_it: "Malattie del sistema circolatori")
-IcdChapter.create(roman_number: "X", number:10,
+                  text_it: "Malattie del sistema circolatori"))
+init_chapter(IcdChapter.create(roman_number: "X", number:10, nonterminals: 'J00-J99',
                   text_de: "Krankheiten des Atmungssystems",
                   text_fr: "Maladies de l'appareil respiratoire",
-                  text_it: "Malattie del sistema circolatori")
-IcdChapter.create(roman_number: "XI", number:11,
+                  text_it: "Malattie del sistema circolatori"))
+init_chapter(IcdChapter.create(roman_number: "XI", number:11, nonterminals: 'K00-K93',
                   text_de: "Krankheiten des Verdauungssystems",
                   text_fr: "Maladies de l'appareil digestif",
-                  text_it: "Malattie dell'apparato digerente")
-IcdChapter.create(roman_number: "XII", number:12,
+                  text_it: "Malattie dell'apparato digerente"))
+init_chapter(IcdChapter.create(roman_number: "XII", number:12, nonterminals: 'L00-L99',
                   text_de: "Krankheiten der Haut und der Unterhaut",
                   text_fr: "Maladies de l'appareil digestif",
-                  text_it: "Malattie della cute e del tessuto sottocutaneo")
-IcdChapter.create(roman_number: "XIII", number:13,
+                  text_it: "Malattie della cute e del tessuto sottocutaneo"))
+init_chapter(IcdChapter.create(roman_number: "XIII", number:13, nonterminals: 'M00-M99',
                   text_de: "Krankheiten des Muskel-Skelett-Systems und des Bindegewebes",
                   text_fr: "Maladies du système ostéo-articulaire, des muscles et du tissu conjonctif",
-                  text_it: "Malattie del sistema osteomuscolare e del tessuto connettivo")
-IcdChapter.create(roman_number: "XIV", number:14,
+                  text_it: "Malattie del sistema osteomuscolare e del tessuto connettivo"))
+init_chapter(IcdChapter.create(roman_number: "XIV", number:14, nonterminals: 'N00-N99',
                   text_de: "Krankheiten des Urogenitalsystems",
                   text_fr: "Maladies de l'appareil génito-urinaire",
-                  text_it: "Malattie dell'apparato genitourinario")
-IcdChapter.create(roman_number: "XV", number:15,
+                  text_it: "Malattie dell'apparato genitourinario"))
+init_chapter(IcdChapter.create(roman_number: "XV", number:15, nonterminals: 'O00-O99',
                   text_de: "Schwangerschaft, Geburt und Wochenbett",
                   text_fr: "Grossesse, accouchement et puerpéralité",
-                  text_it: "Gravidanza, parto e puerperio")
-IcdChapter.create(roman_number: "XVI", number:16,
+                  text_it: "Gravidanza, parto e puerperio"))
+init_chapter(IcdChapter.create(roman_number: "XVI", number:16, nonterminals: 'P00-P96',
                   text_de: "Bestimmte Zustände, die ihren Ursprung in der Perinatalperiode haben",
                   text_fr: "Certaines affections dont l'origine se situe dans la période périnatale",
-                  text_it: "Alcune condizioni morbose che hanno origine nel periodo perinatale")
-IcdChapter.create(roman_number: "XVII", number:17,
+                  text_it: "Alcune condizioni morbose che hanno origine nel periodo perinatale"))
+init_chapter(IcdChapter.create(roman_number: "XVII", number:17, nonterminals: 'Q00-Q99',
                   text_de: "Angeborene Fehlbildungen, Deformitäten und Chromosomenanomalien",
                   text_fr: "Malformations congénitales et anomalies chromosomiques",
-                  text_it: "Malformazioni e deformazioni congenite, anomalie cromosomiche")
-IcdChapter.create(roman_number: "XVIII", number:18,
+                  text_it: "Malformazioni e deformazioni congenite, anomalie cromosomiche"))
+init_chapter(IcdChapter.create(roman_number: "XVIII", number:18, nonterminals: 'R00-R99',
                   text_de: "Symptome und abnorme klinische und Laborbefunde, die anderenorts nicht klassifiziert sind",
                   text_fr: "Symptômes, signes et résultats anormaux d'examens cliniques et de laboratoire, non classés ailleurs",
-                  text_it: "Sintomi, segni e risultati anormali di esami clinici e di laboratorio, non classificati altrove")
-IcdChapter.create(roman_number: "XIX", number:19,
+                  text_it: "Sintomi, segni e risultati anormali di esami clinici e di laboratorio, non classificati altrove"))
+init_chapter(IcdChapter.create(roman_number: "XIX", number:19, nonterminals: 'S00-T98',
                   text_de: "Verletzungen, Vergiftungen und bestimmte andere Folgen äußerer Ursachen",
                   text_fr: "Lésions traumatiques, empoisonnements et certaines autres conséquences de causes externes",
-                  text_it: "Traumatismi, avvelenamenti ed alcune altre conseguenze di cause esterne")
-IcdChapter.create(roman_number: "XX", number:20,
+                  text_it: "Traumatismi, avvelenamenti ed alcune altre conseguenze di cause esterne"))
+init_chapter(IcdChapter.create(roman_number: "XX", number:20, nonterminals: 'V01-Y84',
                   text_de: "Äußere Ursachen von Morbidität und Mortalität",
                   text_fr: "Causes externes de morbidité et de mortalité",
-                  text_it: "Cause esterne di morbosità e mortalità")
-IcdChapter.create(roman_number: "XXI", number:21,
+                  text_it: "Cause esterne di morbosità e mortalità"))
+init_chapter(IcdChapter.create(roman_number: "XXI", number:21, nonterminals: 'Z00-Z99',
                   text_de: "Faktoren, die den Gesundheitszustand beeinflussen und zur Inanspruchnahme des Gesundheitswesens führen",
                   text_fr: "Facteurs influant sur l'état de santé et motifs de recours aux services de santé",
-                  text_it: "Fattori influenzanti lo stato di salute e il ricorso ai servizi sanitari")
-IcdChapter.create(roman_number: "XXII", number:22,
+                  text_it: "Fattori influenzanti lo stato di salute e il ricorso ai servizi sanitari"))
+init_chapter(IcdChapter.create(roman_number: "XXII", number:22, nonterminals: 'U00-U99',
                   text_de: "Schlüsselnummern für besondere Zwecke",
                   text_fr: "Codes d'utilisation particulière",
-                  text_it: "Codici per scopi speciali")
+                  text_it: "Codici per scopi speciali"))
 

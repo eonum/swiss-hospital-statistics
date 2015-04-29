@@ -41,7 +41,7 @@ define([
             chaptersByYearCard;
 
         /**
-         * Initializes all visualisations suitable for icd code
+         * Initializes all visualisations suitable for chop code
          * @override
          */
         _this.initializeVisualisations = function () {

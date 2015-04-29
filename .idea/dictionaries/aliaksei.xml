@@ -5,7 +5,9 @@
       <w>datasets</w>
       <w>diagnosen</w>
       <w>eonum</w>
+      <w>nonterminals</w>
       <w>reflow</w>
+      <w>subnodes</w>
     </words>
   </dictionary>
 </component>

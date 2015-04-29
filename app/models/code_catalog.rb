@@ -1,6 +1,7 @@
 require 'codes/icd_code'
 require 'codes/chop_code'
 require 'codes/drg'
+require 'codes/icd_chapter'
 
 #
 # This class is responsible for the mapping of tags to the code types from the catalogs stemming from
@@ -28,12 +29,16 @@ class CodeCatalog
   def codes_for_tag(tag)
     type = code_for_tag(tag)
     codes = type.all.pluck(:code, :short_code, :text_de, :text_fr, :text_it).to_a
-    codes = codes.collect{|each| {:type => tag, :code => each[0], :short_code => each[1], :text_de => each[2], :text_fr => each[3], :text_it => each[4]}}
+    codes.collect{|each| {:type => tag, :code => each[0], :short_code => each[1], :text_de => each[2], :text_fr => each[3], :text_it => each[4]}}
   end
 
   def code_for_tag(tag)
     return unless tag
     @codes[tag]
+  end
+
+  def icd_chapters
+    DocumentForJSONCleaner.new.clean_documents_for_json(IcdChapter.all)
   end
 
 end
