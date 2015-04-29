@@ -1,7 +1,7 @@
 define([
-    'View'
+    'View', 'helpers/converters/ChaptersByYearConverter'
 ], function(
-    View
+    View, ChaptersByYearConverter
 ){
 
     function YearChoiceButtonBar(callback){
@@ -15,13 +15,15 @@ define([
         var subtypeButtons = new View('<div class="button-bar"></div>');
         var callback = callback;
 
+        var chaptersByYearConverter = new ChaptersByYearConverter();
+
         _this.initialize = function(){
             _this.addTypeButtons();
         };
 
         _this.setButton = function(year){
             var data = $.getJSON("/api/v1/chaptersbyyear/" + year);
-
+            chaptersByYearConverter.convert(data);
             console.log(data);
         };
 

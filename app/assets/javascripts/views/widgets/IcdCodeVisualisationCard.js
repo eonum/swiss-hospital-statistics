@@ -95,7 +95,7 @@ define([
             ordinalCurveVisualisation.visualiseData(title, datasets);
             pieChartVisualisation.visualiseData(title, datasets);
             boxPlotVisualisation.visualiseData(title, datasets);
-            chaptersByYearVisualisation.visualiseData(title, datasets);
+            //chaptersByYearVisualisation.visualiseData(title, datasets);
         };
 
         /**

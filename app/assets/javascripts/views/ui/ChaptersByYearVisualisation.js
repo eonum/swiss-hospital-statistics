@@ -15,7 +15,7 @@ define([
         };
 
         _this.visualiseData = function(title, datasets){
-            var converter = new ChaptersByYearConverter(datasets);
+            //var converter = new ChaptersByYearConverter(datasets);
 
             // TODO get clean data from converter and continue with it.
 
