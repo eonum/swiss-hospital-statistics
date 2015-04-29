@@ -40,7 +40,7 @@ define([
             $('header').append(topBar);
             $('body').append(new Tabulator().model(tabulatorModel));
         };
-        
+
         _this.initialize();
     }
 
