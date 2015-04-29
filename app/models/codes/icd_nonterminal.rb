@@ -3,7 +3,7 @@ class IcdNonterminal
   include MultiLanguageText
 
   field :code, :type => String
-  embedded_in :icd_chapter
+  embedded_in :icd_chapter_group
 
   def self.find_by_nonterminal(nonterminals)
     arr = nonterminals.split(/-/)

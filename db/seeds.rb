@@ -1,8 +1,11 @@
 require 'datasets/icd_chapter_age_sex_dataset'
 require 'codes/icd_chapter'
+require 'codes/icd_chapter_group'
+
 # clear out old data
 HospitalType.delete_all
 IcdChapter.delete_all
+IcdChapterGroup.delete_all
 
 # seed the hospital types
 HospitalType.create(:text_de => 'Allgemeine Krankenhäuser, Zentrumsversorgung', :text_fr => 'Hôpitaux de soins généraux, prise en charge centralisée')
@@ -11,9 +14,23 @@ HospitalType.create(:text_de => 'Spezialkliniken: Psychiatrische Kliniken', :tex
 HospitalType.create(:text_de => 'Spezialkliniken: Rehabilitationskliniken', :text_fr => 'Cliniques spécialisées: cliniques de réadaptation')
 HospitalType.create(:text_de => 'Spezialkliniken: Andere Spezialkliniken', :text_fr => 'Cliniques spécialisées: autres cliniques spécialisées')
 
+def select_group (group, start, finish)
+  arr = group.code.split(/-/)
+  from = arr[0]
+  to = arr[1]
+  from >= start && to <= finish
+end
 
 def init_chapter(chapter)
-  chapter.icd_nonterminals = chapter.icd_nonterminals.find_by_nonterminal(chapter.nonterminals)
+  arr = chapter.nonterminals.split(/-/)
+  from = arr[0]
+  to = arr[1]
+  groups = IcdGroup.all
+               .select {|group| select_group(group, from, to) }
+               .sort! { |x,y| x.code <=> y.code }
+               .map {|group| IcdChapterGroup.create(code: group.code, text_de: group.text_de, text_fr: group.text_fr, text_it: group.text_it, icd_chapter: chapter) }
+  groups.each {|each| each.icd_nonterminals = IcdNonterminal.find_by_nonterminal(each.code); each.save}
+  chapter.icd_chapter_groups = groups
   chapter.save
 end
 
@@ -106,4 +123,3 @@ init_chapter(IcdChapter.create(roman_number: "XXII", number:22, nonterminals: 'U
                   text_de: "Schlüsselnummern für besondere Zwecke",
                   text_fr: "Codes d'utilisation particulière",
                   text_it: "Codici per scopi speciali"))
-

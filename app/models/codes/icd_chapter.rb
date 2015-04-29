@@ -1,4 +1,4 @@
-require 'codes/icd_nonterminal'
+require 'codes/icd_chapter_group'
 
 class IcdChapter
   include Mongoid::Document
@@ -11,9 +11,6 @@ class IcdChapter
   field :text_it, :type => String
 
   has_many :icd_chapter_age_sex_datasets
-  embeds_many :icd_nonterminals do
-    def find_by_nonterminal(nonterminals)
-      IcdNonterminal.find_by_nonterminal(nonterminals)
-    end
-  end
+
+  embeds_many :icd_chapter_groups
 end
