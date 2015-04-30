@@ -3,9 +3,12 @@ define([], function() {
     function Level(breadcrumb) {
         var _this = this;
 
-        var labelLogic = function(){return "Label"};
+        var labelLogic = function(){return 'Label'};
         var nextLogic = function(){return []};
         var selectedLogic = function(){};
+        var defaultChild;
+        var defaultLabel = function(){return 'Default'};
+        var defaultSelect = function() {};
 
         _this.label = function(_func) {
             labelLogic = _func;
@@ -26,12 +29,47 @@ define([], function() {
             return labelLogic(entity);
         };
 
+        /**
+         * @param entity
+         */
         _this.childrenOf = function (entity) {
-            return nextLogic(entity);
+            return _.flatten(_.map(_.flatten([entity]), nextLogic));
         };
 
         _this.end = function() {
             return breadcrumb;
+        };
+
+        _this.hasDefault = function () {
+            return !_.isUndefined(defaultChild);
+        };
+
+        _this.nextDefault = function (_func) {
+            defaultChild = _func;
+            return _this;
+        };
+
+        _this.sameDefault = function(){
+            defaultChild = nextLogic;
+            return _this;
+        };
+
+        _this.defaultChildOf = function (entity) {
+            return _.flatten(_.map(_.flatten([entity]), defaultChild));
+        };
+
+        _this.defaultLabel = function(_func) {
+            defaultLabel = _func;
+            return _this;
+        };
+
+        _this.defaultLabelOf = function(entity) {
+            return defaultLabel(entity);
+        };
+
+        _this.defaultSelect = function(_func) {
+            defaultSelect = _func;
+            return _this;
         };
     }
 
@@ -82,7 +120,7 @@ define([], function() {
         };
 
         _this.children = function () {
-            return _this.level().childrenOf(_this.entity());
+            return _.compact(_this.level().childrenOf(_this.entity()));
         };
 
         _this.breadcrumb = function(_breadcrumb) {
@@ -92,12 +130,20 @@ define([], function() {
 
         _this.invalidate = function () {
             subnodes = [];
+            _this.initializeDefaultIn();
             var subentities = _this.children();
             _.each(subentities, function(each){
                 var node = new Node();
                 _this.addNode(node);
                 node.entity(each);
             });
+        };
+
+        _this.initializeDefaultIn = function () {
+            if(!_this.level().hasDefault()) return;
+            var node = new DefaultNode();
+            _this.addNode(node);
+            node.entity(_this.level().defaultChildOf(_this.entity()));
         };
 
         _this.next = function () {
@@ -120,6 +166,16 @@ define([], function() {
         _this.hasAlternatives = function () {
             return !_.isEmpty(_this.alternatives());
         };
+    }
+
+    function DefaultNode () {
+        var _this = new Node();
+
+        _this.label = function () {
+            return _this.level().defaultLabelOf(_this.entity());
+        };
+
+        return _this;
     }
 
     function BreadcrumbModel() {

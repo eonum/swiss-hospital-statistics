@@ -3,8 +3,6 @@ define([
 ], function(
     View
 ){
-
-
     function Dropdown () {
         var _this = new View('<ul class="dropdown"></ul>');
 
