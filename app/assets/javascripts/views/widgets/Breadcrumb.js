@@ -1,7 +1,9 @@
 define([
-    'View'
+    'View',
+    'announcements/OnBreadcrumbSelected'
 ], function(
-    View
+    View,
+    OnBreadcrumbSelected
 ){
     function Dropdown () {
         var _this = new View('<ul class="dropdown"></ul>');
@@ -21,13 +23,22 @@ define([
         };
 
         _this.renderLink = function(node) {
+            var item = _this.newItem();
             var link = _this.newLink();
-            link.find('a').text(node.label());
-            return link;
+            link.model(node).text(node.label()).click(function(e){
+                e.preventDefault();
+                $(this).me().model().select()
+            });
+            item.add(link);
+            return item;
         };
 
         _this.newLink = function () {
-            return new View('<li><a></a></li>');
+            return new View('<a></a>');
+        };
+
+        _this.newItem = function () {
+            return new View('<li></li>');
         };
 
         return _this;
@@ -98,16 +109,14 @@ define([
         _this.model = function(_model) {
             if (_.isUndefined(_model)) return model;
             model = _model;
+            model.announcer().onSendTo(OnBreadcrumbSelected, _this.onSelected, _this);
             _this.render();
         };
 
         _this.render = function() {
-            var stepModel = _this.model().root();
-            while (stepModel.hasNext()) {
-                _this.addStep(stepModel);
-                stepModel = stepModel.next();
-            }
-            _this.addStep(stepModel);
+            _.each(_this.model().selected().path(), function(each){
+                _this.addStep(each);
+            });
         };
 
         _this.addStep = function (stepModel) {
@@ -118,6 +127,11 @@ define([
 
         _this.newStep = function () {
             return new Step();
+        };
+
+        _this.onSelected = function () {
+            _this.empty();
+            _this.render();
         };
 
         return _this;

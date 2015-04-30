@@ -1,4 +1,10 @@
-define([], function() {
+define([
+    'Announcer',
+    'announcements/OnBreadcrumbSelected'
+], function(
+    Announcer,
+    OnBreadcrumbSelected
+) {
 
     function Level(breadcrumb) {
         var _this = this;
@@ -146,14 +152,6 @@ define([], function() {
             node.entity(_this.level().defaultChildOf(_this.entity()));
         };
 
-        _this.next = function () {
-            return _this.activeNode();
-        };
-
-        _this.activeNode = function () {
-            return _.first(_this.subnodes());
-        };
-
         _this.hasNext = function () {
             return !_.isEmpty(_this.subnodes());
         };
@@ -166,6 +164,26 @@ define([], function() {
         _this.hasAlternatives = function () {
             return !_.isEmpty(_this.alternatives());
         };
+
+        _this.path = function () {
+            if (!_this.hasParent()) return [ _this];
+            return _.union(_this.parent().path(), [_this]);
+        };
+
+        _this.deepest = function () {
+            if (!_this.hasNext()) return _this;
+            var next = _.first(_this.subnodes());
+            if (!next.isDefault()) return _this;
+            return next.deepest();
+        };
+
+        _this.isDefault = function () {
+            return false;
+        };
+
+        _this.select = function () {
+            _this.breadcrumb().select(_this);
+        };
     }
 
     function DefaultNode () {
@@ -175,18 +193,28 @@ define([], function() {
             return _this.level().defaultLabelOf(_this.entity());
         };
 
+        _this.isDefault = function () {
+            return true;
+        };
+
         return _this;
     }
 
     function BreadcrumbModel() {
         var _this = this;
 
+        var announcer = new Announcer();
         var rootNode;
         var levels = [];
+        var selectedNode;
 
         _this.initialize = function () {
             rootNode = new Node();
             rootNode.breadcrumb(_this);
+        };
+
+        _this.announcer = function () {
+            return announcer;
         };
 
         _this.root = function () {
@@ -214,6 +242,20 @@ define([], function() {
 
         _this.entity = function () {
             return _this.root().entity();
+        };
+
+        _this.selected = function() {
+            if (!_.isUndefined(selectedNode)) return selectedNode;
+            return _this.root().deepest();
+        };
+
+        _this.select = function (node) {
+            selectedNode = node.deepest();
+            _this.notifySelected(_this.selected());
+        };
+
+        _this.notifySelected = function (node) {
+            _this.announcer().announce(new OnBreadcrumbSelected(node));
         };
 
         _this.initialize();
