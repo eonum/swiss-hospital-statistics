@@ -17,7 +17,7 @@ define(['d3', 'views/ResponsiveSvg'], function (d3, ResponsiveSvg) {
         var path = _this.svg()
             .append("g")
             .attr("transform", "translate(" + _this._width() / 2 + "," + _this._height() / 2 + ")")
-            .selectAll("path");
+            .selectAll("g");
 
         var utils = {
             findNeighborArc : function(i, data0, data1, key) {
@@ -71,28 +71,36 @@ define(['d3', 'views/ResponsiveSvg'], function (d3, ResponsiveSvg) {
 
             path = path.data(data1, _this._keyOf);
 
-            path.enter().append("path")
-                .each(function(d, i) { this._current = utils.findNeighborArc(i, data0, data1, _this._keyOf) || d; })
+            var enterGroups = path.enter().append("g");
+
+            enterGroups.append("path")
+                .each(function(d, i) {this._current = utils.findNeighborArc(i, data0, data1, _this._keyOf) || d;})
                 .attr("fill", function(d) { return _this._colorOf(_this._valueOf(d), d); })
                 .append("title")
                 .text(_this._keyOf);
 
-            path.exit()
-                .datum(function(d, i) { return utils.findNeighborArc(i, data1, data0, _this._keyOf) || d; })
+            enterGroups.append("text")
+                .attr("dy", ".35em")
+                .style("text-anchor", "middle");
+
+            path.exit().select("path")
+                .datum(function(d, i) {return utils.findNeighborArc(i, data1, data0, _this._keyOf) || d;})
                 .transition()
                 .duration(750)
                 .attrTween("d", utils.arcTween)
                 .remove();
 
-            path.transition()
+            path.exit().select("text")
+                .remove();
+
+            path.select("text")
+                .attr("transform", function(d) { return "translate(" + arc.centroid(d) + ")"; })
+                .text(function(d) { return _this._labelOf(_this._valueOf(d), d); });
+
+            path.select("path")
+                .transition()
                 .duration(750)
                 .attrTween("d", utils.arcTween);
-
-            path.enter().append("text")
-                .attr("transform", function(d) { return "translate(" + arc.centroid(d) + ")"; })
-                .attr("dy", ".35em")
-                .style("text-anchor", "middle")
-                .text(function(d) { return _this._labelOf(_this._valueOf(d), d); });
         };
 
         _this.setTitle = function(text){
