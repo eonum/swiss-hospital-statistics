@@ -13,8 +13,10 @@ define([
     function SearchProcessor() {
         var _this = this;
         var rawCandidates = [];
+        var allCandidates = [];
         var candidates = [];
         var nameLogic = function (candidate) { return candidate.toString(); };
+        var allCandidatesLogic = _.identity;
         var filter = new SearchFilter();
         var announcer = new Announcer();
         var query = "";
@@ -39,9 +41,15 @@ define([
         };
 
         _this.allCandidates = function (_candidates) {
-            if (_.isUndefined(_candidates)) return rawCandidates;
+            if (_.isUndefined(_candidates)) return allCandidates;
             rawCandidates = _candidates;
+            allCandidates = allCandidatesLogic(rawCandidates);
             _this.process(_this.query());
+        };
+
+        _this.allCandidatesLogic = function(_func) {
+            allCandidatesLogic = _func;
+            _this.allCandidates(rawCandidates);
         };
 
         _this.process = function (_query) {

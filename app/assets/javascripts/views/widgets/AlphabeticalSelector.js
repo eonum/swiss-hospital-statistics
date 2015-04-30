@@ -124,10 +124,11 @@ define([
         };
 
         _this.renderList = function () {
-            if (_.size(_this.model().items()) > 4) {
-                _this.renderItemsIn(_.first(_this.model().items(),2), list);
+            var limit = 4;
+            if (_.size(_this.model().items()) > limit) {
+                _this.renderItemsIn(_.first(_this.model().items(),limit/2), list);
                 list.add(_this.newExpandItem());
-                _this.renderItemsIn(_.last(_this.model().items(),2), list);
+                _this.renderItemsIn(_.last(_this.model().items(),limit/2), list);
                 return;
             }
 

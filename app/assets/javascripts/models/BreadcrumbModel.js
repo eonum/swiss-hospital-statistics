@@ -39,7 +39,7 @@ define([
          * @param entity
          */
         _this.childrenOf = function (entity) {
-            return _.flatten(_.map(_.flatten([entity]), nextLogic));
+            return _.compact(_.flatten(_.map(_.flatten([entity]), nextLogic)));
         };
 
         _this.end = function() {
@@ -61,7 +61,7 @@ define([
         };
 
         _this.defaultChildOf = function (entity) {
-            return _.flatten(_.map(_.flatten([entity]), defaultChild));
+            return _.compact(_.flatten(_.map(_.flatten([entity]), defaultChild)));
         };
 
         _this.defaultLabel = function(_func) {
@@ -126,7 +126,7 @@ define([
         };
 
         _this.children = function () {
-            return _.compact(_this.level().childrenOf(_this.entity()));
+            return _this.level().childrenOf(_this.entity());
         };
 
         _this.breadcrumb = function(_breadcrumb) {

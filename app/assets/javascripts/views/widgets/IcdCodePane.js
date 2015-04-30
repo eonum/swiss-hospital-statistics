@@ -2,12 +2,14 @@ define([
     'views/widgets/CodePane',
     'views/widgets/IcdCodeVisualisationCard',
     'models/BreadcrumbModel',
-    'views/widgets/Breadcrumb'
+    'views/widgets/Breadcrumb',
+    'announcements/OnBreadcrumbSelected'
 ], function(
     CodePane,
     IcdCodeVisualisationCard,
     BreadcrumbModel,
-    Breadcrumb
+    Breadcrumb,
+    OnBreadcrumbSelected
 ){
 
     function IcdCodePane() {
@@ -57,6 +59,30 @@ define([
                     .defaultLabel(function(){return 'Alle Nonterminale'})
                     .label(function(nonterminal) {return 'Nonterminal '+nonterminal.code})
                     .end();
+
+            var searchFilter = function (candidates) {
+                var nonterminals = _.flatten([_.last(breadcrumbModel.selected().path()).entity()]);
+                var lastTrueIndex = 0;
+
+                function match(candidate, nonterminal) {
+                    return _s(candidate.code).startsWith(nonterminal.code);
+                }
+
+                function isMatches (candidate) {
+                    for (var i = lastTrueIndex; i < nonterminals.length; i++) {
+                        if (match(candidate, nonterminals[i])) {
+                            lastTrueIndex = i;
+                            return true;
+                        }
+                    }
+                    return false;
+                }
+                return _.filter(candidates, isMatches);
+            };
+
+            breadcrumbModel.announcer().onSendTo(OnBreadcrumbSelected, function(){
+                _this.searchModel().allCandidatesLogic(searchFilter);
+            }, this);
 
             $.getJSON('/api/v1/groups/icd', function(result){
                 breadcrumbModel.on(result);
