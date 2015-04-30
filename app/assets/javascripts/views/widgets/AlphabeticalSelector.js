@@ -103,6 +103,9 @@ define([
         var list = new View ('<ul class="no-bullet"></ul>');
         var announcer = new Announcer();
 
+        var itemLimit = 2;
+        var groupLimit = 2;
+
         var model;
 
         _this.announcer = function () {
@@ -124,14 +127,12 @@ define([
         };
 
         _this.renderList = function () {
-            var limit = 4;
-            if (_.size(_this.model().items()) > limit) {
-                _this.renderItemsIn(_.first(_this.model().items(),limit/2), list);
+            if (_.size(_this.model().items()) > itemLimit * 2 && _this.model().amountOfGroups() > groupLimit) {
+                _this.renderItemsIn(_.first(_this.model().items(),itemLimit), list);
                 list.add(_this.newExpandItem());
-                _this.renderItemsIn(_.last(_this.model().items(),limit/2), list);
+                _this.renderItemsIn(_.last(_this.model().items(),itemLimit), list);
                 return;
             }
-
             _this.renderItemsIn(_this.model().items(), list);
         };
 

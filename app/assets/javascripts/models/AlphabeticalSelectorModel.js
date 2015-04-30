@@ -42,6 +42,10 @@ define([
         _this.selector = function () {
             return selector;
         };
+
+        _this.amountOfGroups = function () {
+            return _this.selector().amountOfGroups();
+        };
     }
 
     function AlphabeticalSelectorModel() {
@@ -174,6 +178,10 @@ define([
 
         _this.notifyItemDeselected = function(item) {
             _this.announcer().announce(new OnAlphabeticalItemDeselected(item));
+        };
+
+        _this.amountOfGroups = function () {
+            return _.size(_.filter(_this.groups(), function(each) {return each.isNotEmpty()}));
         };
 
         _this.initialize();
