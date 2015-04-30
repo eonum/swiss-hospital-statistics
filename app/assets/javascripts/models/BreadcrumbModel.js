@@ -110,7 +110,16 @@ define([], function() {
 
         _this.hasNext = function () {
             return !_.isEmpty(_this.subnodes());
-        }
+        };
+
+        _this.alternatives = function () {
+            if (!_this.hasParent()) return [];
+            return _.select(_this.parent().subnodes(), function(node){return node !== _this});
+        };
+
+        _this.hasAlternatives = function () {
+            return !_.isEmpty(_this.alternatives());
+        };
     }
 
     function BreadcrumbModel() {

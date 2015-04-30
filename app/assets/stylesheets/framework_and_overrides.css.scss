@@ -7,6 +7,8 @@
 }
 
 header {
+  z-index: 2;
+  position: relative;
   nav {
     &.top-bar {
       margin-bottom: 1.5em;
@@ -39,7 +41,7 @@ header {
             &:after {
               top: 100%;
               left: 0%;
-              bottom: -12px;
+              bottom: -11px;
               border: solid transparent;
               content: " ";
               height: 0;
@@ -153,6 +155,83 @@ header {
     }
   }
 }
+
+$breadcrumb-dropdown-padding: 0.75em;
+ul {
+  &.breadcrumbs {
+    padding-top: 0;
+    padding-bottom: 0;
+
+    li {
+      font-size: 0.75em;
+      text-transform: none;
+      padding-top: $breadcrumb-dropdown-padding;
+      padding-bottom: $breadcrumb-dropdown-padding;
+      &.has-dropdown {
+        ul {
+          &.dropdown {
+            list-style: none;
+            display: none;
+            position: absolute;
+            margin-left: 0.75rem * 2 + 0.22rem;
+            margin-top: $breadcrumb-dropdown-padding - 0.2em;
+            z-index: 5;
+            border: 1px solid #dcdcdc;
+            border-bottom-right-radius: 3px;
+            border-bottom-left-radius: 3px;
+            border-top-width: 0;
+            background-color: #f4f4f4;
+            padding-left: 1em;
+            padding-right: 1em;
+            padding-bottom: 0.5em;
+
+            li {
+              padding-top: 0;
+              padding-bottom: 0;
+              a{
+                padding-top: 0.1em;
+                padding-bottom: 0.1em;
+              }
+            }
+          }
+        }
+
+        a {
+        }
+
+        &:hover {
+          ul {
+            &.dropdown {
+              display: block;
+
+              li {
+                a {
+                  text-decoration: none;
+                  color: #008CBA;
+
+                  &:hover {
+                    text-decoration: underline;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+
+      &:first-of-type {
+        &.has-dropdown {
+          ul {
+            &.dropdown {
+              margin-left: -0.75em;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
 
 .fill-width {
   width: 100%;

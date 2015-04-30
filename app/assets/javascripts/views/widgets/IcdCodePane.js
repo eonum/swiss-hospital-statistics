@@ -31,7 +31,6 @@ define([
             return new IcdCodeVisualisationCard();
         };
 
-
         _this.renderBreadcrumb = function () {
             var breadcrumb = new Breadcrumb();
             _this.leftPane().prepend(breadcrumb);
