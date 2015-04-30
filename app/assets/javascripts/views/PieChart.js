@@ -20,7 +20,6 @@ define(['d3', 'views/abstract/AbstractPieChart'], function (d3, AbstractPieChart
 
         _this._keyOf = function (d) { return d.data[scripting.keySymbol] };
         _this._valueOf = function (d) { return scripting.transformedLogic(d.data[scripting.valueSymbol]) };
-        _this._colorOf = function(value, d){ return scripting.colorLogic(value, d.data) };
         _this._labelOf = function(value, d) { return scripting.labelLogic(value, d.data) };
         _this._keySymbol = function() { return scripting.keySymbol };
         _this._valueSymbol = function() { return scripting.valueSymbol };

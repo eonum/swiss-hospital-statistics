@@ -45,12 +45,13 @@ define(['d3', 'views/ResponsiveSvg'], function (d3, ResponsiveSvg) {
 
         _this._keyOf = function (d) {return d.data[_this._keySymbol()]};
         _this._valueOf = function (data) {return data.data[_this._valueSymbol()]};
-        _this._colorOf = function(value) { return d3.scale.category20()(value) };
+        _this._colorOf = function(value) { return colorScale(value) };
         _this._labelOf = function(value) {return value.toString()};
         _this._keySymbol = function() {return 'key'};
         _this._valueSymbol = function() {return 'value'};
 
         var arc = d3.svg.arc().innerRadius(radius - 100).outerRadius(radius - 20);
+        var colorScale = d3.scale.category20();
 
         _this.initialize = function() {
             var titleFontSize = _height / 20;
@@ -69,6 +70,7 @@ define(['d3', 'views/ResponsiveSvg'], function (d3, ResponsiveSvg) {
             var data0 = path.data();
             var data1 = pie(data);
 
+            colorScale.domain( _.map(data1, _this._keyOf));
             path = path.data(data1, _this._keyOf);
 
             var enterGroups = path.enter().append("g");
