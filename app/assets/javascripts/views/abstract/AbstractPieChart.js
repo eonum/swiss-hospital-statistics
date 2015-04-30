@@ -45,7 +45,7 @@ define(['d3', 'views/ResponsiveSvg'], function (d3, ResponsiveSvg) {
 
         _this._keyOf = function (d) {return d.data[_this._keySymbol()]};
         _this._valueOf = function (data) {return data.data[_this._valueSymbol()]};
-        _this._colorOf = function(value) { return colorScale(value) };
+        _this._colorOf = function(value) {return colorScale(value)};
         _this._labelOf = function(value) {return value.toString()};
         _this._keySymbol = function() {return 'key'};
         _this._valueSymbol = function() {return 'value'};
@@ -70,21 +70,42 @@ define(['d3', 'views/ResponsiveSvg'], function (d3, ResponsiveSvg) {
             var data0 = path.data();
             var data1 = pie(data);
 
-            colorScale.domain( _.map(data1, _this._keyOf));
+            colorScale = d3.scale.category20().domain( _.map(data1, _this._keyOf));
             path = path.data(data1, _this._keyOf);
 
             var enterGroups = path.enter().append("g");
 
+            // enter arcs
             enterGroups.append("path")
                 .each(function(d, i) {this._current = utils.findNeighborArc(i, data0, data1, _this._keyOf) || d;})
-                .attr("fill", function(d) { return _this._colorOf(_this._valueOf(d), d); })
                 .append("title")
                 .text(_this._keyOf);
 
+            // enter arc descriptions
             enterGroups.append("text")
                 .attr("dy", ".35em")
                 .style("text-anchor", "middle");
 
+            // enter key
+            var group = enterGroups.append("g");
+            var keyHeight = _height / 15;
+            var keyWidth = _width / 5;
+            // TODO magic offset
+            var magicOffset = -100;
+            var xPosition = function(d, i) { return 1/3 * _width};
+            var yPosition = function(d, i) {return  magicOffset + i * (keyHeight + 10)};
+            group.append("rect")
+                .attr("width", keyWidth)
+                .attr("height" ,keyHeight)
+                // initial position (no animation from the center)
+                .attr("transform", function (d, i){ return "translate(" + xPosition(d, i)+ "," + magicOffset+ ")"});
+
+            group.append("text")
+                .attr("dy", ".35em")
+                // initial position (no animation from the center)
+                .attr("transform", function (d, i){ return "translate(" + (xPosition(d, i)+ keyWidth / 10)+ "," + magicOffset+ ")"});
+
+            // exit arcs
             path.exit().select("path")
                 .datum(function(d, i) {return utils.findNeighborArc(i, data1, data0, _this._keyOf) || d;})
                 .transition()
@@ -92,17 +113,39 @@ define(['d3', 'views/ResponsiveSvg'], function (d3, ResponsiveSvg) {
                 .attrTween("d", utils.arcTween)
                 .remove();
 
+            // exit arc descriptions
             path.exit().select("text")
                 .remove();
 
+            // exit key
+            path.exit().select("g")
+                .remove();
+
+            // update arc descriptors
             path.select("text")
                 .attr("transform", function(d) { return "translate(" + arc.centroid(d) + ")"; })
                 .text(function(d) { return _this._labelOf(_this._valueOf(d), d); });
 
+            // update arc
             path.select("path")
+                .attr("fill", function(d) { return _this._colorOf(_this._keyOf(d), d); })
                 .transition()
                 .duration(750)
                 .attrTween("d", utils.arcTween);
+
+            // update key
+            group = path.select("g");
+            group.select("rect")
+                .attr("fill", function(d) { return _this._colorOf(_this._keyOf(d), d); })
+                .transition()
+                .duration(750)
+                .attr("transform", function (d, i) { return "translate("+ xPosition(d, i) + ","+ yPosition(d, i)+ ")"});
+            group.select("text")
+                .transition()
+                .duration(750)
+                .attr("transform", function (d, i) { return "translate(" + (xPosition(d, i)+ keyWidth / 10)  + "," + (yPosition(d, i) + keyHeight /2)+")"})
+                .text(function(d){return _this._keyOf(d) + ", n = " + _this._valueOf(d)});
+
         };
 
         _this.setTitle = function(text){

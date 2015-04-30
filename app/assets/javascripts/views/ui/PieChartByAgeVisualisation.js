@@ -14,10 +14,7 @@ define([
             content.append(pieChart);
 
             pieChart.key('interval')
-                .value('amount')
-                .transformed(function (v) {
-                    return v.toPrecision(3)
-                });
+                .value('amount');
         };
 
         _this.add = override(_this, _this.add, function(element){
