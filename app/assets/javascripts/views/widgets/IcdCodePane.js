@@ -39,7 +39,7 @@ define([
 
             var breadcrumbModel = new BreadcrumbModel()
                 .level()
-                    .label(function(){return _this.groupPrefix();})
+                    .label(function(){return _this.groupPrefix().toUpperCase();})
                     .next(_.identity)
                     .sameDefault()
                     .end()
@@ -63,11 +63,9 @@ define([
             var searchFilter = function (candidates) {
                 var nonterminals = _.flatten([_.last(breadcrumbModel.selected().path()).entity()]);
                 var lastTrueIndex = 0;
-
                 function match(candidate, nonterminal) {
                     return _s(candidate.code).startsWith(nonterminal.code);
                 }
-
                 function isMatches (candidate) {
                     for (var i = lastTrueIndex; i < nonterminals.length; i++) {
                         if (match(candidate, nonterminals[i])) {
