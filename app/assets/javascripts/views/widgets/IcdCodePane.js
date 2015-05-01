@@ -23,7 +23,7 @@ define([
            this.super('/api/v1/codes/icd');
             _this.renderBreadcrumb();
             // TODO remove that
-            _this.searchModel().process("a045");
+            //_this.searchModel().process("a045");
             return _this;
         });
 

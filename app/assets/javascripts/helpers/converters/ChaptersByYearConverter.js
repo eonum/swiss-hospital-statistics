@@ -10,15 +10,18 @@ define([], function() {
         };
 
         _this.cleanData = function(dataset) {
-            var cleanedData = [];
-            function removeItem(obj, prop, val) {
+            var cleanedData = [[],[]];
+            function removeItem() {
                 for (i = 0; i<dataset.length; i++) {
-                    if(dataset[i].categorised_data.categories.icd_chapter_sex_interval[0].sex != 2) {
-                        cleanedData.push(dataset[i]);
+                    if(dataset[i].categorised_data.categories.icd_chapter_sex_interval[0].sex == 0) {
+                        cleanedData[0].push(dataset[i]);
+                    }
+                    if(dataset[i].categorised_data.categories.icd_chapter_sex_interval[0].sex == 1) {
+                        cleanedData[1].push(dataset[i]);
                     }
                 }
             };
-            removeItem(dataset, 'sex', '2');
+            removeItem();
             return cleanedData;
         };
 
@@ -31,11 +34,12 @@ define([], function() {
 
 
             cData = _this.cleanData(dataset);
+            console.log(cData);
 
-            for(i = 0; i < cData.length; i++) {
-                
+            /*for(i = 0; i < cData.length; i++) {
+                if(cData[i].categoriesed_data.categories)
             }
-
+*/
             return cData;
 
 
