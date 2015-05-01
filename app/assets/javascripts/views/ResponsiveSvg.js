@@ -1,5 +1,13 @@
 define(['View'], function (View) {
 
+    /**
+     *
+     * @param _width
+     * @param _height
+     * @returns {View}
+     * @constructor
+     * @class {ResponsiveSvg}
+     */
     function ResponsiveSvg(_width, _height) {
         var _this = new View('<div></div>');
         var margin, width, height, svg, _svg;

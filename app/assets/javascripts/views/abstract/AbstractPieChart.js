@@ -145,7 +145,6 @@ define(['d3', 'views/ResponsiveSvg'], function (d3, ResponsiveSvg) {
                 .duration(750)
                 .attr("transform", function (d, i) { return "translate(" + (xPosition(d, i)+ keyWidth / 10)  + "," + (yPosition(d, i) + keyHeight /2)+")"})
                 .text(function(d){return _this._keyOf(d) + ", n = " + _this._valueOf(d)});
-
         };
 
         _this.setTitle = function(text){
