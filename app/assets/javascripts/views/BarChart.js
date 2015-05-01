@@ -9,7 +9,7 @@ define(['d3', 'views/ResponsiveSvg'], function (d3, ResponsiveSvg){
      */
     function BarChart(_width, _height){
         var _this = new ResponsiveSvg(_width, _height);
-        _this.margin({top: 50, right: 140, bottom: 50, left: 50});
+        _this.margin({top: 50, right: 50, bottom: 50, left: 50});
 
         var title;
         var chart;
@@ -373,7 +373,7 @@ define(['d3', 'views/ResponsiveSvg'], function (d3, ResponsiveSvg){
 
             bars.append('text');
             _this.barText()
-                .style('font-size', '18px')
+                .style('font-size', '16px')
                 .attr('text-anchor', 'middle')
                 .attr('fill', '#ffffff')
                 .attr('x', function(){return _this.xScale().rangeBand()/2})
