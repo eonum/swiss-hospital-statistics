@@ -29,7 +29,7 @@ group :templates do
   # Use SCSS for stylesheets
   gem 'sass-rails'
   # Foundation::Rails is a gem to make it super easy to use Foundation in your upcoming Rails project.
-  gem 'foundation-rails'
+  gem 'foundation-rails', '5.5.1.2'
 end
 
 group :javascript do
