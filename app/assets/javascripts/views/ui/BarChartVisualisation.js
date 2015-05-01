@@ -7,27 +7,20 @@ function (BarChart, View, NumberByAgeDatasetConverter){
         var barChart = new BarChart(_width, _height);
 
         _this.initialize = function (){
-            _this.append(content);
-            content.append(barChart);
+            _this.add(content);
+            content.add(barChart
+                .title(function(entity) { return entity.code.code + ' ' + entity.code.text_de})
+                .display(function(entity) { return entity.data })
+                .x('interval')
+                .y('amount'));
         };
-
-        _this.add = override(_this, _this.add, function(element){
-            content.add(element);
-            return _this;
-        });
 
         /**
          * Creates the visualisation by displaying the given dataset
-         * @param dataset
          */
-        _this.visualiseData = function (description, datasets){
+        _this.visualiseData = function (code, datasets){
             var converter = new NumberByAgeDatasetConverter(datasets);
-
-            barChart.setData(converter.asAbsoluteData()).setTitle(description);
-        };
-
-        _this.getFirstProperty = function (object){
-            return _.first(_.values(object));
+            barChart.on({code: code, data: converter.asAbsoluteData()});
         };
 
         _this.initialize();

@@ -91,7 +91,7 @@ define([
         _this.updateVisualisations = function(code, datasets){
             var title = code.code + ": " + code.text_de;
 
-            barChartVisualisation.visualiseData(title, datasets);
+            barChartVisualisation.visualiseData(code, datasets);
             ordinalCurveVisualisation.visualiseData(title, datasets);
             pieChartVisualisation.visualiseData(title, datasets);
             boxPlotVisualisation.visualiseData(title, datasets);

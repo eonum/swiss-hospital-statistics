@@ -9,15 +9,18 @@ define(['d3', 'views/ResponsiveSvg'], function (d3, ResponsiveSvg){
      */
     function BarChart(_width, _height){
         var _this = new ResponsiveSvg(_width, _height);
+        _this.margin({top: 50, right: 140, bottom: 50, left: 50});
 
         var title;
-        var chartGroup;
+        var chart;
 
         var settings;
         var xScale;
         var yScale;
         var xAxis;
         var yAxis;
+
+        var rawEntity;
         var entity;
 
         _this.settings = function () {
@@ -36,17 +39,84 @@ define(['d3', 'views/ResponsiveSvg'], function (d3, ResponsiveSvg){
                 transformedX: _.identity,
                 transformedY: _.identity,
                 xScale: function(scale) { return scale.ordinal() },
-                yScale: function(scale) { return scale.linear() }
+                yScale: function(scale) { return scale.linear() },
+                xDomain: function(entity) { return _.map(entity, _this.xValue) },
+                yDomain: function(entity) { return [ 0, d3.max(entity, _this.yValue) ] },
+                color: d3.scale.category20(),
+                label: _.identity
             };
+        };
+
+        _this.transitionDuration = function (number) {
+            if (_.isUndefined(number)) return _this.settings().transitionDuration;
+            _this.settings().transitionDuration = number;
+            return _this;
+        };
+
+        _this.title = function (object) {
+            _this.settings().title = _this.asFunction(object);
+            return _this;
+        };
+
+        _this.display = function (object) {
+            _this.settings().display = _this.asFunction(object);
+            return _this;
+        };
+
+        _this.x = function (string) {
+            _this.settings().x = string;
+            return _this;
+        };
+
+        _this.y = function (string) {
+            _this.settings().y = string;
+            return _this;
+        };
+
+        _this.transformedX = function (object) {
+            _this.settings().transformedX = _this.asFunction(object);
+            return _this;
+        };
+
+        _this.transformedY = function (object) {
+            _this.settings().transformedY = _this.asFunction(object);
+            return _this;
+        };
+
+        _this.label = function (object) {
+            _this.settings().label = _this.asFunction(object);
+            return _this;
+        };
+
+        _this.asFunction = function (object) {
+            return _.isFunction(object) ? object : function() { return object };
+        };
+
+
+        _this.initialize = function(){
+            title = _this.newTitle();
+            chart = _this.newChart();
         };
 
         _this.render = function () {
             if (_.isUndefined(_this.entity()))
                 throw 'Entity can\'t be null';
+            _this.updateScales();
+            _this.updateTitle();
+            _this.updateBars();
         };
 
-        _this.entity = function () {
-            return entity;
+        _this.entity = function (_entity) {
+            if (_.isUndefined(_entity)) return entity;
+            var isNil = _.isUndefined(_this.rawEntity());
+            rawEntity = _entity;
+            entity = _this.settings().display(_this.rawEntity());
+            if (isNil) _this.initialize();
+            _this.render();
+        };
+
+        _this.rawEntity = function () {
+            return rawEntity;
         };
 
         /**
@@ -74,6 +144,22 @@ define(['d3', 'views/ResponsiveSvg'], function (d3, ResponsiveSvg){
             if (_.isUndefined(xScale))
                 xScale = _this.defaultXScale();
             return xScale;
+        };
+
+        _this.xValue = function (item) {
+            return _this.settings().transformedX(item[_this.settings().x]);
+        };
+
+        _this.yValue = function (item) {
+            return _this.settings().transformedY(item[_this.settings().y]);
+        };
+
+        _this.scaledXValue = function (item) {
+            return _this.xScale()(_this.xValue(item));
+        };
+
+        _this.scaledYValue = function (item) {
+            return _this.yScale()(_this.yValue(item));
         };
 
         /**
@@ -147,11 +233,38 @@ define(['d3', 'views/ResponsiveSvg'], function (d3, ResponsiveSvg){
                 .orient("left");
         };
 
+        _this.xDomain = function () {
+            return _this.settings().xDomain(_this.entity());
+        };
+
+        _this.yDomain = function () {
+            return _this.settings().yDomain(_this.entity());
+        };
+
+        _this.xAxisView = function () {
+            return _this.chart().selectAll('.x.axis');
+        };
+
+        _this.yAxisView = function () {
+            return _this.chart().selectAll('.y.axis');
+        };
+
+        _this.colorScale = function (item) {
+            return (_this.settings().color.domain(_this.xDomain()))(_this.xValue(item));
+        };
+
+        _this.updateScales = function () {
+            _this.xScale().domain(_this.xDomain());
+            _this.yScale().domain(_this.yDomain());
+            _this.xAxisView().transition().duration(_this.settings().transitionDuration).call(_this.xAxis());
+            _this.yAxisView().transition().duration(_this.settings().transitionDuration).call(_this.yAxis());
+        };
+
         /**
          * Returns title dom element
          * @returns {*}
          */
-        _this.title = function () {
+        _this.titleView = function () {
             return title;
         };
 
@@ -160,7 +273,7 @@ define(['d3', 'views/ResponsiveSvg'], function (d3, ResponsiveSvg){
          * @returns {boolean}
          */
         _this.hasTitle = function () {
-            return !_.isUndefined(_this.title());
+            return !_.isUndefined(_this.titleView());
         };
 
         /**
@@ -176,10 +289,9 @@ define(['d3', 'views/ResponsiveSvg'], function (d3, ResponsiveSvg){
         /**
          * Returns string title of the entity
          * @returns {string}
-         * @private
          */
-        _this._title = function() {
-            var text = _this.settings().title(_this.entity());
+        _this.titleText = function() {
+            var text = _this.settings().title(_this.rawEntity());
             return _.isUndefined(text) ? "" : text;
         };
 
@@ -188,80 +300,91 @@ define(['d3', 'views/ResponsiveSvg'], function (d3, ResponsiveSvg){
          * @returns {*}
          */
         _this.updateTitle = function () {
-            _this.title().transition()
+            _this.titleView().transition()
                 .duration(_this.settings().transitionDuration)
-                .text(_this._title());
+                .text(_this.titleText());
         };
 
+        _this.chart = function () {
+            return chart;
+        };
 
-        _this.initialize = function(){
-            _this.margin({top: 50, right: 140, bottom: 50, left: 50});
-            title = _this.newTitle();
-
-
-            chartGroup = _this.svg().append("g")
+        _this.newChart = function () {
+            var group = _this.svg().append("g")
                 .attr("transform", "translate(40, " + _this.titleFontSize() + ")");
-            chartGroup.append("g")
+            group.append("g")
                 .attr('transform', 'translate(0,'+ _this.chartHeight()+')')
                 .attr('class', 'x axis')
                 .call(_this.xAxis());
-
-            chartGroup.append("g")
+            group.append("g")
                 .attr("class", "y axis");
-
-            return _this;
+            return group;
         };
 
-        _this.setData = function (data){
-            chartGroup.selectAll("rect")
-                .data(data)
-                .exit().remove();
-            chartGroup.selectAll(".bar")
-                .data(data)
-                .exit().remove();
+        /**
+         * Returns all bar elements. One bar consists
+         * of colored rectangle and text showing value
+         * @returns {*}
+         */
+        _this.bars = function () {
+            return _this.chart().selectAll('.bar');
+        };
 
-            var barGroups = chartGroup.selectAll(".bar")
-                .data(data)
-                .enter().append("g").attr("class", "bar");
+        _this.barText = function () {
+            return _this.bars().select('text');
+        };
 
-            barGroups.append("rect");
-            barGroups.append("text").style("font-size", "24px").attr("text-anchor", "middle");
+        _this.barRect = function () {
+            return _this.bars().select('rect');
+        };
 
-            var xDomain = _.map(data, function(datum){ return datum.interval}).sort();
-            var colorScale = d3.scale.category20().domain(xDomain);
+        _this.barTranslation = function(item) {
+            return 'translate(' + _this.scaledXValue(item)+ ','+ _this.scaledYValue(item) + ')';
+        };
 
-            _this.xScale().domain(xDomain);
-            _this.yScale().domain([0, d3.max(data, function(datum){
-                return datum.amount;
-            })]);
+        _this.barLabel = function (item) {
+            return _this.settings().label(_this.yValue(item));
+        };
 
-            chartGroup.selectAll(".x.axis").transition().duration(_this.settings().transitionDuration).call(_this.xAxis());
-            chartGroup.selectAll(".y.axis").transition().duration(_this.settings().transitionDuration).call(_this.yAxis());
+        _this.updateBars = function() {
+            _this.removeBars();
+            _this.addBars();
+        };
 
-            barGroups = chartGroup.selectAll(".bar").data(data);
-            barGroups
+        _this.removeBars = function () {
+            _this.bars().data(_this.entity()).exit().remove();
+        };
+
+        _this.addBars = function () {
+            var bars = _this.bars().data(_this.entity()).enter().append('g')
+                .attr('class', 'bar');
+            _this.bars()
                 .transition()
                 .duration(_this.settings().transitionDuration)
-                .attr("transform", function(datum) { return "translate(" + _this.xScale()(datum.interval)+ ","+ (_this.yScale()(datum.amount) -1) + ")"});
+                .attr('transform', _this.barTranslation);
 
-            barGroups.select("rect")
-                .style("fill", function(datum) { return colorScale(datum.interval)})
+            bars.append('rect');
+            _this.barRect()
+                .style('fill', _this.colorScale)
                 .transition()
                 .duration(_this.settings().transitionDuration)
-                .attr("width", function(datum) { return _this.xScale().rangeBand()})
-                .attr("height",function(datum) { return _this.chartHeight() - _this.yScale()(datum.amount)});
-            barGroups.select("text").attr("x", function(datum){return _this.xScale().rangeBand()/2}).attr("y", 30).text(function(datum){return datum.amount});
+                .attr('width', _this.xScale().rangeBand)
+                .attr('height', function(item) { return _this.chartHeight() - _this.scaledYValue(item)});
 
-            return _this;
+            bars.append('text');
+            _this.barText()
+                .style('font-size', '18px')
+                .attr('text-anchor', 'middle')
+                .attr('fill', '#ffffff')
+                .attr('x', function(){return _this.xScale().rangeBand()/2})
+                .attr('y', 30)
+                .text(_this.barLabel);
         };
 
-        _this.setTitle = function(text){
-            _this.settings().title = function() {return text};
-            _this.updateTitle();
+        _this.on = function (_entity){
+            _this.entity(_entity);
             return _this;
         };
-
-        _this.initialize();
 
         return _this;
     }
