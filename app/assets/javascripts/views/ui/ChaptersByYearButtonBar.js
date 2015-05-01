@@ -17,14 +17,20 @@ define([
 
         var chaptersByYearConverter = new ChaptersByYearConverter();
 
+
         _this.initialize = function(){
             _this.addTypeButtons();
         };
 
+
+
         _this.setButton = function(year){
-            var data = $.getJSON("/api/v1/chaptersbyyear/" + year);
-            chaptersByYearConverter.convert(data);
-            console.log(data);
+            $.getJSON("/api/v1/chaptersbyyear/" + year, function(data) {
+                var criticalData = chaptersByYearConverter.convert(data);
+                console.log(criticalData);
+            });
+
+
         };
 
 
