@@ -3,6 +3,9 @@ define([], function() {
     function ChaptersByYearConverter() {
         var _this = {};
 
+        var WOMAN = 0;
+        var MAN = 1;
+
         var cData = [];
 
         _this.initialize = function () {
@@ -12,15 +15,19 @@ define([], function() {
         _this.cleanData = function(dataset) {
             var cleanedData = [[],[]];
             function removeItem() {
-                for (i = 0; i<dataset.length; i++) {
-                    if(dataset[i].categorised_data.categories.icd_chapter_sex_interval[0].sex == 0) {
-                        cleanedData[0].push(dataset[i]);
-                    }
-                    if(dataset[i].categorised_data.categories.icd_chapter_sex_interval[0].sex == 1) {
-                        cleanedData[1].push(dataset[i]);
-                    }
+                function sex(data) {
+                    return _.first(data.categorised_data.categories.icd_chapter_sex_interval).sex;
                 }
-            };
+                _.each (dataset, function(data){
+                    if(sex(data) === WOMAN)
+                        cleanedData[WOMAN].push(data);
+                    if(sex(data) === MAN)
+                        cleanedData[MAN].push(data); });
+
+                _.each(dataset, function(data){
+                    // do something with data here
+                });
+            }
             removeItem();
             return cleanedData;
         };
