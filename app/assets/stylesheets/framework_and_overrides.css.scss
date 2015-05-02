@@ -89,7 +89,7 @@ header {
       margin-top: 0.5em;
       margin-bottom: 0.5em;
       margin-left: 1.5em;
-      border-color: rgb(225, 225, 225);;
+      border-color: rgb(225, 225, 225);
 
       p {
         font-size: 0.8rem;
@@ -207,10 +207,12 @@ header {
           overflow: hidden;
           display: inline-block;
           max-width: 100%;
+          vertical-align: top;
         }
 
         span {
           &.label {
+            @extend .light-font;
             display: none;
             float: right;
             text-overflow: ellipsis;
@@ -218,6 +220,7 @@ header {
             overflow: hidden;
             max-width: 12%;
             cursor: pointer;
+            margin-top: 0.3em;
           }
         }
 
