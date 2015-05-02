@@ -115,7 +115,7 @@ define([
         _this.load = function (url) {
             _this.render();
             $.getJSON(url, function(candidates){
-                _this.searchModel().allCandidates(candidates);
+                _this.searchModel().allCandidates(_.sortBy(candidates, 'code'));
             });
             return _this;
         };

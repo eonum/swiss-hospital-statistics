@@ -179,11 +179,48 @@ define([
         return _this;
     }
 
+    function Hint() {
+        var _this = new View('<div class="panel radius"></div>');
+        var text = new View('<p></p>');
+
+        _this.render = function() {
+            text.html(_this.hintText());
+            _this.add(text);
+        };
+
+        _this.hintText = function() {
+            return 'To navigate through codes you can use <kbd>Arrow Up</kbd> and <kbd>Arrow Down</kbd>';
+        };
+
+        _this.render();
+
+        return _this;
+    }
+
     function AlphabeticalSelector() {
         var _this = new View('<div class="alphabetical-selector"></div>');
         var header;
+        var hint;
         var list;
         var model;
+
+        _this.initialize = function() {
+            $(document).keydown(function(e) {
+                if (_this.closest('.hide').length > 0) return;
+                if (_.isUndefined(_this.model())) return;
+                var ARROW_UP = 38, ARROW_DOWN = 40;
+                switch(e.which) {
+                    case ARROW_UP:
+                        _this.model().selectPrevious();
+                        break;
+                    case ARROW_DOWN:
+                        _this.model().selectNext();
+                        break;
+                    default: return;
+                }
+                e.preventDefault();
+            });
+        };
 
         _this.model = function (_model) {
             if (_.isUndefined(_model)) return model;
@@ -198,8 +235,10 @@ define([
             _this.cleanAll();
             header = new Navigation();
             header.model(_this.model());
+            hint = new Hint();
             list = _this.renderGroupList();
             _this.add(header);
+            _this.add(hint);
             _this.add(list);
             $(document).foundation('magellan-expedition','reflow');
         };
@@ -253,6 +292,8 @@ define([
         _this.onItemDeselected = function (ann) {
             _this.findItemView(ann.item()).deselect();
         };
+
+        _this.initialize();
 
         return _this;
     }

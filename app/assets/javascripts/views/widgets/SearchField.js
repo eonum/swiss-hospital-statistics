@@ -5,7 +5,7 @@ define([
 ) {
 
     function SearchField() {
-        var _this = new View('<div class="row"><div class="large-12 columns"><div class="row collapse"></div></div></div>');
+        var _this = new View('<div class="row search"></div>');
         var inputWrapper = new View('<div class="small-10 columns"></div>');
         var buttonWrapper = new View('<div class="small-2 columns"></div>');
 

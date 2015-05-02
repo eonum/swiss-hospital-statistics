@@ -184,6 +184,40 @@ define([
             return _.size(_.filter(_this.groups(), function(each) {return each.isNotEmpty()}));
         };
 
+        _this.selectFirst = function () {
+            _this.selectItem(_.first(_this.items()));
+        };
+
+        _this.selectLast = function() {
+            _this.selectItem(_.last(_this.items()));
+        };
+
+        _this.indexOf = function(item) {
+            return _.indexOf(_this.items(), item);
+        };
+
+        _this.selectNext = function () {
+            if (_.isEmpty(_this.items())) return;
+            if (!_this.isItemSelected())
+                return _this.selectFirst();
+            var index = _this.indexOf(_this.selectedItem());
+            if (index === -1) return _this.selectFirst();
+            if (index + 1 < _.size(_this.items()))
+                return _this.selectItem(_this.items()[index + 1]);
+            _this.selectFirst();
+        };
+
+        _this.selectPrevious = function () {
+            if (_.isEmpty(_this.items())) return;
+            if (!_this.isItemSelected())
+                return _this.selectLast();
+            var index = _this.indexOf(_this.selectedItem());
+            if (index === -1) return _this.selectLast();
+            if (index - 1 >= 0)
+                return _this.selectItem(_this.items()[index - 1]);
+            _this.selectLast();
+        };
+
         _this.initialize();
     }
 
