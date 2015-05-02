@@ -3,13 +3,17 @@ define([
     'Announcer',
     'announcements/OnAlphabeticalItemsUpdated',
     'announcements/OnAlphabeticalItemSelected',
-    'announcements/OnAlphabeticalItemDeselected'
+    'announcements/OnAlphabeticalItemDeselected',
+    'announcements/OnAlphabeticalItemMarked',
+    'announcements/OnAlphabeticalItemUnmarked'
 ], function(
     View,
     Announcer,
     OnAlphabeticalItemsUpdated,
     OnAlphabeticalItemSelected,
-    OnAlphabeticalItemDeselected
+    OnAlphabeticalItemDeselected,
+    OnAlphabeticalItemMarked,
+    OnAlphabeticalItemUnmarked
 ) {
 
     var groupID = function(group) {
@@ -57,12 +61,51 @@ define([
         return _this;
     }
 
+    function ItemLabel(_group) {
+        var _this = new View('<span class="radius secondary label"></span>');
+
+        var item;
+        var group = _group;
+
+        _this.initialize = function() {
+            _this.click(function(e){
+                e.preventDefault();
+                if (_.isUndefined(_this.item())) return;
+                _this.group().selector().toggleMark(_this.item());
+            });
+        };
+
+        _this.item = function (_item) {
+            if (_.isUndefined(_item)) return item;
+            item = _item;
+            _this.render();
+            return _this;
+        };
+
+        _this.group = function () {
+            return group;
+        };
+
+        _this.render = function () {
+            _this.html(_this.labelText());
+        };
+
+        _this.labelText = function () {
+            return 'vergleich';
+        };
+
+        _this.initialize();
+
+        return _this;
+    }
+
     function ItemView(_group) {
         var _this = new View('<li></li>');
         var link = new View('<a></a>');
 
         var item;
         var group = _group;
+        var label;
 
         _this.item = function (_item) {
             if (_.isUndefined(_item)) return item;
@@ -74,11 +117,23 @@ define([
             return group;
         };
 
+        _this.link = function() {
+            return link;
+        };
+
+        _this.label = function () {
+            return label;
+        };
+
         _this.render = function () {
             link.text(_this.group().selector().nameOf(_this.item()));
             _this.add(link);
             if (_this.group().selector().isItemSelected(_this.item()))
                 _this.select();
+            if (_this.group().selector().isMarked(_this.item()))
+                _this.mark();
+            label = new ItemLabel(_this.group()).item(_this.item());
+            _this.add(label);
         };
 
         _this.select = function () {
@@ -87,6 +142,14 @@ define([
 
         _this.deselect = function () {
             _this.removeClass('selected');
+        };
+
+        _this.mark = function () {
+            _this.class('marked');
+        };
+
+        _this.unmark = function () {
+            _this.removeClass('marked');
         };
 
         return _this;
@@ -144,7 +207,7 @@ define([
             _.each(_items, function (each) {
                 var item = _this.newItem();
                 item.item(each);
-                item.click(function() {
+                item.link().click(function() {
                     _this.announcer().announce(new OnItemClicked(each));
                 });
                 _list.add(item);
@@ -228,6 +291,8 @@ define([
             model.announcer().onSendTo(OnAlphabeticalItemsUpdated, _this.onItemsUpdated, _this);
             model.announcer().onSendTo(OnAlphabeticalItemSelected, _this.onItemSelected, _this);
             model.announcer().onSendTo(OnAlphabeticalItemDeselected, _this.onItemDeselected, _this);
+            model.announcer().onSendTo(OnAlphabeticalItemMarked, _this.onItemMarked, _this);
+            model.announcer().onSendTo(OnAlphabeticalItemUnmarked, _this.onItemUnmarked, _this);
             _this.render();
         };
 
@@ -291,6 +356,14 @@ define([
 
         _this.onItemDeselected = function (ann) {
             _this.findItemView(ann.item()).deselect();
+        };
+
+        _this.onItemMarked = function (ann) {
+            _this.findItemView(ann.item()).mark();
+        };
+
+        _this.onItemUnmarked = function (ann) {
+            _this.findItemView(ann.item()).unmark();
         };
 
         _this.initialize();

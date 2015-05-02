@@ -179,6 +179,73 @@ header {
           a {
             text-decoration: underline;
             color: #1c1c1c;
+
+            &:after {
+              content: "";
+            }
+          }
+        }
+
+        &.marked {
+          span {
+            &.label {
+              background-color: #43AC6A;
+              color: #ffffff;
+              display: inline-block;
+            }
+          }
+
+          a {
+            max-width: 87%;
+            text-overflow: clip;
+          }
+        }
+
+        a {
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          overflow: hidden;
+          display: inline-block;
+          max-width: 100%;
+        }
+
+        span {
+          &.label {
+            display: none;
+            float: right;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;
+            max-width: 12%;
+            cursor: pointer;
+          }
+        }
+
+        &:hover {
+
+          &.selected {
+            a {
+              &:after {
+                content: "";
+              }
+            }
+          }
+
+          a {
+            max-width: 87%;
+            text-overflow: clip;
+
+            &:after {
+              content: " .........................................................................................................................................";
+              color: #e1e1e1;
+              font-size: 0.6rem;
+            }
+          }
+
+          span {
+            &.label {
+              display: inline-block;
+            }
           }
         }
       }
