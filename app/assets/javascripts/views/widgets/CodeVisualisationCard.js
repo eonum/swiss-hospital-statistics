@@ -2,12 +2,14 @@ define([
     'View',
     'views/ui/CardPane',
     'views/ui/ChartChoiceButtonBar',
-    'helpers/CodeChooser'
+    'helpers/CodeChooser',
+    'views/widgets/LabelsCloud'
 ], function(
     View,
     CardPane,
     ChartChoiceButtonBar,
-    CodeChooser
+    CodeChooser,
+    LabelsCloud
 ){
     /**
      *
@@ -21,12 +23,17 @@ define([
         var chooseButtons;
         var cardPane;
         var codeChooser;
+        var model;
+        var cloud;
 
         _this.initialize = function () {
             _this.empty();
 
             cardPane = _this.newCardPane();
             chooseButtons = _this.newChartChoiceButtonBar();
+            cloud = _this.newCloud();
+            cloud.model(model.cloud());
+            _this.add(cloud);
             _this.append(chooseButtons);
             _this.append(cardPane);
             _this.initializeVisualisations();
@@ -45,6 +52,10 @@ define([
             return cardPane;
         };
 
+        _this.cloud = function () {
+            return cloud;
+        };
+
         _this.chooseButtons = function () {
             return chooseButtons;
         };
@@ -61,6 +72,11 @@ define([
 
         _this.addButton = function (targetID, title) {
             _this.chooseButtons().addButton(targetID, title);
+        };
+
+        _this.model = function(_model) {
+            if (_.isUndefined(_model)) return model;
+            model = _model;
         };
 
         _this.on = function (type, code) {
@@ -87,6 +103,10 @@ define([
 
         _this.newChartChoiceButtonBar = function () {
             return new ChartChoiceButtonBar(_this.cardPane());
+        };
+
+        _this.newCloud = function () {
+            return new LabelsCloud();
         };
 
         /**

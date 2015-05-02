@@ -1,16 +1,14 @@
 define([
     'Announcer',
+    'models/LabelsCloudModel',
     'announcements/OnAlphabeticalItemSelected',
     'announcements/OnAlphabeticalItemDeselected',
-    'announcements/OnAlphabeticalItemMarked',
-    'announcements/OnAlphabeticalItemUnmarked',
     'announcements/OnAlphabeticalItemsUpdated'
 ], function(
     Announcer,
+    LabelsCloudModel,
     OnAlphabeticalItemSelected,
     OnAlphabeticalItemDeselected,
-    OnAlphabeticalItemMarked,
-    OnAlphabeticalItemUnmarked,
     OnAlphabeticalItemsUpdated
 ) {
 
@@ -57,7 +55,7 @@ define([
 
         var items = [];
         var selectedItem;
-        var markedItems = [];
+        var cloud = new LabelsCloudModel();
         var nameLogic = function(_item) {return _item.toString();};
         var rangeLogic = function() { return '0123456789abcdefghijklmnopqrstuvwxyz'.toUpperCase().split("") };
         var prefixLogic = function() { return 'group' };
@@ -80,6 +78,10 @@ define([
             if (_.isUndefined(_items)) return items;
             items = _items;
             _this.invalidate();
+        };
+
+        _this.cloud = function() {
+            return cloud;
         };
 
         _this.name = function (_func) {
@@ -233,40 +235,6 @@ define([
             if (index - 1 >= 0)
                 return _this.selectItem(_this.items()[index - 1]);
             _this.selectLast();
-        };
-
-        _this.markedItems = function () {
-            return markedItems;
-        };
-
-        _this.markItem = function (item) {
-            if (_this.isMarked(item)) return;
-            _this.markedItems().push(item);
-            _this.notifyItemMarked(item);
-        };
-
-        _this.unmarkItem = function(item) {
-            if (!_this.isMarked(item)) return;
-            markedItems = _.without(_this.markedItems(), item);
-            _this.notifyItemUnmarked(item);
-        };
-
-        _this.toggleMark = function(item) {
-            console.log('mark item');
-            if (_this.isMarked(item))
-                _this.unmarkItem(item);
-            else
-                _this.markItem(item);
-        };
-
-        _this.unmarkAll = function () {
-            var marked = _.flatten(_this.markedItems());
-            markedItems = [];
-            _.each(marked, function(each){_this.notifyItemUnmarked(each)});
-        };
-
-        _this.isMarked = function(item) {
-            return _.indexOf(_this.markedItems(), item) >= 0;
         };
 
         _this.initialize();

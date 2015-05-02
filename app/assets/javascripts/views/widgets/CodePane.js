@@ -67,11 +67,13 @@ define([
             if (_.isUndefined(_selectorModel)) return selectorModel;
             selectorModel = _selectorModel;
             selectorModel.announcer().onSendTo(OnAlphabeticalItemSelected, _this.onItemSelected,_this);
+            selectorModel.cloud().label(function(item){ return item.short_code });
         };
 
         _this.codeCard = function (_codeCard) {
             if (_.isUndefined(_codeCard)) return codeCard;
             codeCard = _codeCard;
+            codeCard.model(_this.selectorModel());
             _this.rightPane().add(codeCard);
         };
 

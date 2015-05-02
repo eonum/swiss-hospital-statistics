@@ -4,16 +4,16 @@ define([
     'announcements/OnAlphabeticalItemsUpdated',
     'announcements/OnAlphabeticalItemSelected',
     'announcements/OnAlphabeticalItemDeselected',
-    'announcements/OnAlphabeticalItemMarked',
-    'announcements/OnAlphabeticalItemUnmarked'
+    'announcements/OnLabelsCloudAdded',
+    'announcements/OnLabelsCloudRemoved'
 ], function(
     View,
     Announcer,
     OnAlphabeticalItemsUpdated,
     OnAlphabeticalItemSelected,
     OnAlphabeticalItemDeselected,
-    OnAlphabeticalItemMarked,
-    OnAlphabeticalItemUnmarked
+    OnLabelsCloudAdded,
+    OnLabelsCloudRemoved
 ) {
 
     var groupID = function(group) {
@@ -71,7 +71,7 @@ define([
             _this.click(function(e){
                 e.preventDefault();
                 if (_.isUndefined(_this.item())) return;
-                _this.group().selector().toggleMark(_this.item());
+                _this.group().selector().cloud().toggle(_this.item());
             });
         };
 
@@ -130,7 +130,7 @@ define([
             _this.add(link);
             if (_this.group().selector().isItemSelected(_this.item()))
                 _this.select();
-            if (_this.group().selector().isMarked(_this.item()))
+            if (_this.group().selector().cloud().has(_this.item()))
                 _this.mark();
             label = new ItemLabel(_this.group()).item(_this.item());
             _this.add(label);
@@ -291,8 +291,8 @@ define([
             model.announcer().onSendTo(OnAlphabeticalItemsUpdated, _this.onItemsUpdated, _this);
             model.announcer().onSendTo(OnAlphabeticalItemSelected, _this.onItemSelected, _this);
             model.announcer().onSendTo(OnAlphabeticalItemDeselected, _this.onItemDeselected, _this);
-            model.announcer().onSendTo(OnAlphabeticalItemMarked, _this.onItemMarked, _this);
-            model.announcer().onSendTo(OnAlphabeticalItemUnmarked, _this.onItemUnmarked, _this);
+            model.cloud().announcer().onSendTo(OnLabelsCloudAdded, _this.onItemMarked, _this);
+            model.cloud().announcer().onSendTo(OnLabelsCloudRemoved, _this.onItemUnmarked, _this);
             _this.render();
         };
 
