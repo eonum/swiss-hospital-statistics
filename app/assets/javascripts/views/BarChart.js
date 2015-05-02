@@ -9,8 +9,10 @@ define(['d3', 'views/ResponsiveSvg'], function (d3, ResponsiveSvg){
      */
     function BarChart(_width, _height){
         var _this = new ResponsiveSvg(_width, _height);
-        _this.margin({top: 50, right: 50, bottom: 50, left: 50});
-
+        _this.marginTop(50);
+        _this.marginLeft(50);
+        _this.marginRight(140);
+        _this.marginBottom(50);
         var title;
         var chart;
 
