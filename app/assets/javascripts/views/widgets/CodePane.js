@@ -70,8 +70,8 @@ define([
             selectorModel = _selectorModel;
             selectorModel.announcer().onSendTo(OnAlphabeticalItemSelected, _this.onItemSelected,_this);
             selectorModel.cloud().announcer().onSendTo(OnLabelsCloudAdded, function(ann){
-                if (!_this.codeCard().isInitialized())
-                    _this.codeCard().on(ann.item().type, ann.item().short_code);
+                if (!_this.selectorModel().isItemSelected())
+                    _this.selectorModel().selectItem(ann.item());
             }, _this);
             selectorModel.cloud().label(function(item){ return item.short_code });
         };
