@@ -16,7 +16,6 @@ define([], function(){
          * Counts total number of cases and parses intervals to interval name tags (text)
          */
         _this.initialize = function (){
-
             //get total number of cases
             totalNumber = _this.getTotalCases();
 
@@ -28,29 +27,15 @@ define([], function(){
          e.g. "15 - 36" or "70+"
          Does NOT sort the intervals*/
         _this.pushTextIntervals = function() {
-            var intervals = [];
-            for (var i = 0; i < datasets.length; i++) {
-                var interval = datasets[i].categorised_data.categories.interval[0];
-                var from = interval.interval.from;
-                var to = interval.interval.to;
-
-                var textInterval;
-                if (_.isUndefined(to)) {
-                    textInterval = from + "+";
-                } else {
-                    textInterval = from + " - " + to;
-                }
-                intervals.push(textInterval);
-            }
-            return intervals;
+            return _.map(datasets, function(dataset){
+                var interval = _.first(dataset.categorised_data.categories.interval).interval;
+                return interval.from + (_.isUndefined(interval.to) ? '+' : ' - ' + interval.to);
+            });
         };
 
         //returns the total number of cases for a specific code
         _this.getTotalCases = function() {
-            var cases = 0;
-            for (var i = 0; i < datasets.length; i++)
-                cases += datasets[i].categorised_data.categories.interval[0].n;
-            return cases;
+            return _.reduce(datasets, function(cases, data){ return cases + data.categorised_data.categories.interval[0].n; }, 0);
         };
 
         /**
@@ -58,9 +43,7 @@ define([], function(){
          * @returns array of data set objects {interval: val, amount: val}, sorted by the interval
          */
         _this.asAbsoluteData = function(){
-            return _this.asData(function (n){
-                return n;
-            });
+            return _this.asData(_.identity);
         };
 
         /**
@@ -69,14 +52,14 @@ define([], function(){
          */
         _this.asPercentData = function () {
             return _this.asData(function (n) {
-                return 100 * (n) / totalNumber;
+                return 100 * n / totalNumber;
             });
         };
 
         _this.asData = function (amountCalculator){
             var data = _.map(datasets, function(dataset, index){
                 var interval = dataset.categorised_data.categories.interval[0];
-                return {interval: textIntervals[index], amount: amountCalculator(interval.n)};
+                return { interval: textIntervals[index], amount: amountCalculator(interval.n) };
             });
             // sort by interval
             return _.sortBy(data, 'interval');
