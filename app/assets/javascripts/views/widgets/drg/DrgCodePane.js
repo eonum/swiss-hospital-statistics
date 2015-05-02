@@ -1,6 +1,6 @@
 define([
     'views/widgets/CodePane',
-    'views/widgets/DrgCodeVisualisationCard'
+    'views/widgets/drg/DrgCodeVisualisationCard'
 ], function(
     CodePane,
     DrgCodeVisualisationCard

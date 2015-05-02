@@ -3,9 +3,9 @@ define([
     'views/widgets/Tabulator',
     'views/widgets/TabulatorButton',
     'models/TabulatorModel',
-    'views/widgets/IcdCodePane',
-    'views/widgets/ChopCodePane',
-    'views/widgets/DrgCodePane'
+    'views/widgets/icd/IcdCodePane',
+    'views/widgets/chop/ChopCodePane',
+    'views/widgets/drg/DrgCodePane'
 ], function(
     TopBar,
     Tabulator,

@@ -1,6 +1,6 @@
 define([
     'views/widgets/CodePane',
-    'views/widgets/IcdCodeVisualisationCard',
+    'views/widgets/icd/IcdCodeVisualisationCard',
     'models/BreadcrumbModel',
     'views/widgets/Breadcrumb',
     'announcements/OnBreadcrumbSelected'

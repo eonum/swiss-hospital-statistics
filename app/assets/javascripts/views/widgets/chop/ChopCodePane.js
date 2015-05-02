@@ -1,6 +1,6 @@
 define([
     'views/widgets/CodePane',
-    'views/widgets/ChopCodeVisualisationCard'
+    'views/widgets/chop/ChopCodeVisualisationCard'
 ], function(
     CodePane,
     ChopCodeVisualisationCard
