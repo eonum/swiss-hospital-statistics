@@ -18,11 +18,7 @@ define([], function() {
                 function sex(data) {
                     return _.first(data.categorised_data.categories.icd_chapter_sex_interval).sex;
                 }
-                _.each (dataset, function(data){
-                    if(sex(data) === WOMAN)
-                        cleanedData[WOMAN].push(data);
-                    if(sex(data) === MAN)
-                        cleanedData[MAN].push(data); });
+                cleanedData = _.map([WOMAN, MAN], function(each) {return _.filter(dataset, function(data) { return sex(data) === each })});
 
                 _.each(dataset, function(data){
                     // do something with data here
