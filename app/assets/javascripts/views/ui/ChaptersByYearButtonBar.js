@@ -27,6 +27,7 @@ define([
         _this.setButton = function(year){
             $.getJSON("/api/v1/chaptersbyyear/" + year, function(data) {
                 var criticalData = chaptersByYearConverter.convert(data);
+                console.log("critical Dataz");
                 console.log(criticalData);
             });
 
