@@ -29,7 +29,7 @@ define([], function(){
         _this.pushTextIntervals = function() {
             return _.map(datasets, function(dataset){
                 var interval = _.first(dataset.categorised_data.categories.interval).interval;
-                return interval.from + (_.isUndefined(interval.to) ? '+' : ' - ' + interval.to);
+                return interval.from + (_.has(interval,'to') ? ' - ' + interval.to : '+');
             });
         };
 
