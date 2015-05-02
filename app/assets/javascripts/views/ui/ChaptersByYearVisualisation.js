@@ -1,7 +1,7 @@
 define([
-    'View', 'views/ChaptersByYear', 'helpers/converters/ChaptersByYearConverter'
+    'View', 'views/ChaptersByYear'
 ], function (
-    View, ChaptersByYear, ChaptersByYearConverter
+    View, ChaptersByYear
 ) {
 
     function ChaptersByYearVisualisation(_width, _height) {
@@ -16,14 +16,14 @@ define([
 
         _this.visualiseData = function(title, datasets){
             //var converter = new ChaptersByYearConverter(datasets);
-
+            console.log(title);
             // TODO get clean data from converter and continue with it.
 
             // chaptersByYear.setTitle(title);
 
             content.empty();
 
-
+            return _this;
 
         };
 

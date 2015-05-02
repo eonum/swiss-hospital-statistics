@@ -7,7 +7,7 @@ define([], function() {
         var MAN = 1;
 
         var cData = [];
-        var endData = [[],[]]
+        var endData = [[],[]];
 
         _this.initialize = function () {
 
@@ -38,7 +38,7 @@ define([], function() {
             cData = _this.cleanData(dataset);
 
             _.each(cData, function(data) {
-                if(data[0].categorised_data.categories.icd_chapter_sex_interval[0].sex == 1) {
+                if(data[0].categorised_data.categories.icd_chapter_sex_interval[0].sex == MAN) {
                     for(i = 0; i < data.length; i++) {
                         year = data[i].year;
                         from = data[i].categorised_data.categories.icd_chapter_sex_interval[0].interval.from;
@@ -46,10 +46,10 @@ define([], function() {
                         percentage = data[i].categorised_data.categories.icd_chapter_sex_interval[0].percentage;
                         sex = data[i].categorised_data.categories.icd_chapter_sex_interval[0].sex;
                         code = data[i].code;
-                        endData[1].push([year, from, to, percentage, sex, code]);
+                        endData[MAN].push([year, from, to, percentage, sex, code]);
                     }
                 }
-                if(data[0].categorised_data.categories.icd_chapter_sex_interval[0].sex == 0) {
+                if(data[0].categorised_data.categories.icd_chapter_sex_interval[0].sex == WOMAN) {
                     for(i = 0; i < data.length; i++) {
                         year = data[i].year;
                         from = data[i].categorised_data.categories.icd_chapter_sex_interval[0].interval.from;
@@ -57,36 +57,12 @@ define([], function() {
                         percentage = data[i].categorised_data.categories.icd_chapter_sex_interval[0].percentage;
                         sex = data[i].categorised_data.categories.icd_chapter_sex_interval[0].sex;
                         code = data[i].code;
-                        endData[0].push([year, from, to, percentage, sex, code]);
+                        endData[WOMAN].push([year, from, to, percentage, sex, code]);
                     }
                 }
-
-                console.log("endData");
-                console.log(endData);
-
-                console.log("inside main function")
-                console.log(data[80].categorised_data.categories.icd_chapter_sex_interval[0].interval.from);
-                console.log(data[80].categorised_data.categories.icd_chapter_sex_interval[0].interval.to);
-                /*
-                if(data[MAN].categorised_data.categories.icd_chapter_sex_interval[0].interval.sex == 1) {
-                    year = data[MAN].categorised_data.categories.icd_chapter_sex_interval[0].year;
-                    console.log(year);
-                    from = data.categorised_data.categories.icd_chapter_sex_interval[0].interval.from;
-                    to = data.categorised_data.categories.icd_chapter_sex_interval[0].interval.from;
-                    endData[MAN].push([year, from, to]);
-                }*/
             });
 
-
-            console.log(endData);
-
-            /*for(i = 0; i < cData.length; i++) {
-                if(cData[i].categoriesed_data.categories)
-            }
-*/
             return endData;
-
-
         };
 
         _this.initialize();

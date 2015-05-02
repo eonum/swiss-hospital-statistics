@@ -1,7 +1,7 @@
 define([
-    'View', 'helpers/converters/ChaptersByYearConverter'
+    'View', 'views/ui/ChaptersByYearVisualisation', 'helpers/converters/ChaptersByYearConverter'
 ], function(
-    View, ChaptersByYearConverter
+    View, ChaptersByYearVisualisation, ChaptersByYearConverter
 ){
 
     function YearChoiceButtonBar(callback){
@@ -16,7 +16,7 @@ define([
         var callback = callback;
 
         var chaptersByYearConverter = new ChaptersByYearConverter();
-
+        var chaptersByYearVisualisation = new ChaptersByYearVisualisation(800, 700);
 
         _this.initialize = function(){
             _this.addTypeButtons();
@@ -27,8 +27,8 @@ define([
         _this.setButton = function(year){
             $.getJSON("/api/v1/chaptersbyyear/" + year, function(data) {
                 var criticalData = chaptersByYearConverter.convert(data);
-                console.log("critical Dataz");
-                console.log(criticalData);
+                chaptersByYearVisualisation.visualiseData("ICD Chapter Visualisation for the year: " + year,
+                    criticalData);
             });
 
 
