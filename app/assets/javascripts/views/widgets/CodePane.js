@@ -6,7 +6,8 @@ define([
     'views/widgets/SearchField',
     'models/SearchProcessor',
     'views/widgets/CodeVisualisationCard',
-    'announcements/OnSearchProcessorFiltered'
+    'announcements/OnSearchProcessorFiltered',
+    'announcements/OnLabelsCloudAdded'
 ], function(
     View,
     AlphabeticalSelector,
@@ -15,7 +16,8 @@ define([
     SearchField,
     SearchProcessor,
     CodeVisualisationCard,
-    OnSearchProcessorFiltered
+    OnSearchProcessorFiltered,
+    OnLabelsCloudAdded
 ){
 
     function CodePane() {
@@ -67,6 +69,10 @@ define([
             if (_.isUndefined(_selectorModel)) return selectorModel;
             selectorModel = _selectorModel;
             selectorModel.announcer().onSendTo(OnAlphabeticalItemSelected, _this.onItemSelected,_this);
+            selectorModel.cloud().announcer().onSendTo(OnLabelsCloudAdded, function(ann){
+                if (!_this.codeCard().isInitialized())
+                    _this.codeCard().on(ann.item().type, ann.item().short_code);
+            }, _this);
             selectorModel.cloud().label(function(item){ return item.short_code });
         };
 
