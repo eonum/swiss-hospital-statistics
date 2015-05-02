@@ -5,7 +5,6 @@ define([
     'views/ui/OrdinalCurveChartVisualisation',
     'views/ui/PieChartByAgeVisualisation',
     'views/ui/BoxPlotVisualisation',
-    'views/ui/TopThreeDiagnosisVisualisation',
     'views/ui/ChaptersByYearVisualisation'
 ],function(
     CodeVisualisationCard,
@@ -14,7 +13,6 @@ define([
     OrdinalCurveChartVisualisation,
     PieChartByAgeVisualisation,
     BoxPlotVisualisation,
-    TopThreeDiagnosisVisualisation,
     ChaptersByYearVisualisation
 ){
 
@@ -35,8 +33,6 @@ define([
             pieChartCard,
             boxPlotVisualisation,
             boxPlotCard,
-            topThreeVisualisation,
-            topThreeCard,
             chaptersByYearVisualisation,
             chaptersByYearCard;
 
@@ -68,12 +64,6 @@ define([
             boxPlotCard = new CardElement("boxPlot", boxPlotVisualisation);
             _this.addCard(boxPlotCard);
             _this.addButton("boxPlot","BoxPlot");
-
-            // create top-3 Diagnosen chart
-            topThreeVisualisation = new TopThreeDiagnosisVisualisation(800, 400);
-            topThreeCard = new CardElement("topThreeTable", topThreeVisualisation);
-            _this.addCard(topThreeCard);
-            _this.addButton("topThreeTable", "Top 3 Diagnosen");
 
             // create chapters by year visualisation
             chaptersByYearVisualisation = new ChaptersByYearVisualisation(800, 400);

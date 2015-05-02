@@ -5,7 +5,8 @@ define([
     'models/TabulatorModel',
     'views/widgets/icd/IcdCodePane',
     'views/widgets/chop/ChopCodePane',
-    'views/widgets/drg/DrgCodePane'
+    'views/widgets/drg/DrgCodePane',
+    'views/widgets/top3/Top3DiagnosesPane'
 ], function(
     TopBar,
     Tabulator,
@@ -13,7 +14,8 @@ define([
     TabulatorModel,
     IcdCodePane,
     ChopCodePane,
-    DrgCodePane
+    DrgCodePane,
+    Top3DiagnosesPane
 ){
 
     "use strict";
@@ -29,12 +31,11 @@ define([
             var tabIcd = tabulatorModel.addTab('ICD').render(function(){return new IcdCodePane().load()}).select();
             var tabChop = tabulatorModel.addTab('CHOP').render(function(){return new ChopCodePane().load()});
             var tabDrg = tabulatorModel.addTab('DRG').render(function(){return new DrgCodePane().load()});
+            var tabTop3 = tabulatorModel.addTab('Top Diagnosen').render(function(){return new Top3DiagnosesPane()});
 
             // then create corresponding button views and attach tab models
-            topBar.addLeftAll([
-                new TabulatorButton().model(tabIcd),
-                new TabulatorButton().model(tabChop),
-                new TabulatorButton().model(tabDrg)]);
+            topBar.addLeftAll(_.map([tabIcd,tabChop,tabDrg, tabTop3],
+                function(tab){return new TabulatorButton().model(tab)}));
 
             // and finally add everything to the dom
             $('header').append(topBar);

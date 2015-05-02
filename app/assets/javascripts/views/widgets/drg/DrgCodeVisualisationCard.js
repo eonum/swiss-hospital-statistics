@@ -4,18 +4,14 @@ define([
     'views/ui/BarChartVisualisation',
     'views/ui/OrdinalCurveChartVisualisation',
     'views/ui/PieChartByAgeVisualisation',
-    'views/ui/BoxPlotVisualisation',
-    'views/ui/TopThreeDiagnosisVisualisation',
-    'views/ui/ChaptersByYearVisualisation'
+    'views/ui/BoxPlotVisualisation'
 ],function(
     CodeVisualisationCard,
     CardElement,
     BarChartVisualisation,
     OrdinalCurveChartVisualisation,
     PieChartByAgeVisualisation,
-    BoxPlotVisualisation,
-    TopThreeDiagnosisVisualisation,
-    ChaptersByYearVisualisation
+    BoxPlotVisualisation
 ){
 
     /**
@@ -34,11 +30,7 @@ define([
             pieChartVisualisation,
             pieChartCard,
             boxPlotVisualisation,
-            boxPlotCard,
-            topThreeVisualisation,
-            topThreeCard,
-            chaptersByYearVisualisation,
-            chaptersByYearCard;
+            boxPlotCard;
 
         /**
          * Initializes all visualisations suitable for drg code
@@ -68,18 +60,6 @@ define([
             boxPlotCard = new CardElement("boxPlot", boxPlotVisualisation);
             _this.addCard(boxPlotCard);
             _this.addButton("boxPlot","BoxPlot");
-
-            // create top-3 Diagnosen chart
-            topThreeVisualisation = new TopThreeDiagnosisVisualisation(800, 400);
-            topThreeCard = new CardElement("topThreeTable", topThreeVisualisation);
-            _this.addCard(topThreeCard);
-            _this.addButton("topThreeTable", "Top 3 Diagnosen");
-
-            // create chapters by year visualisation
-            chaptersByYearVisualisation = new ChaptersByYearVisualisation(800, 400);
-            chaptersByYearCard = new CardElement("chaptersByYear", chaptersByYearVisualisation);
-            _this.addCard(chaptersByYearCard);
-            _this.addButton("chaptersByYear", "Chapters By Year");
         };
 
         /**
@@ -95,7 +75,6 @@ define([
             ordinalCurveVisualisation.visualiseData(title, datasets);
             pieChartVisualisation.visualiseData(title, datasets);
             boxPlotVisualisation.visualiseData(title, datasets);
-            chaptersByYearVisualisation.visualiseData(title, datasets);
         };
 
         /**
