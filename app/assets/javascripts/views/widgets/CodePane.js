@@ -72,7 +72,6 @@ define([
         _this.codeCard = function (_codeCard) {
             if (_.isUndefined(_codeCard)) return codeCard;
             codeCard = _codeCard;
-            codeCard.class('full-width');
             _this.rightPane().add(codeCard);
         };
 

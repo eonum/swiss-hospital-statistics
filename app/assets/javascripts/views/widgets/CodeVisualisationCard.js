@@ -16,7 +16,7 @@ define([
      * @class {CodeVisualisationCard}
      */
     function CodeVisualisationCard () {
-        var _this = new View('<div></div>');
+        var _this = new View('<div class="code-visualisations"></div>');
 
         var chooseButtons;
         var cardPane;
