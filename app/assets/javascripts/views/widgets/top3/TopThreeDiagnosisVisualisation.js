@@ -1,5 +1,10 @@
-define(['views/TopThreeDiagnosisTable', 'View'],
-    function (TopThreeDiagnosisTable, View){
+define([
+    'View',
+    'views/widgets/top3/TopThreeDiagnosisTable'
+],function (
+    View,
+    TopThreeDiagnosisTable
+){
 
         function TopThreeDiagnosisVisualisation(_width, _height){
             var _this = new View('<div></div>');

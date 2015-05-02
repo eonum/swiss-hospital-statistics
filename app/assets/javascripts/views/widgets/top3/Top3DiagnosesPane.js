@@ -1,6 +1,6 @@
 define([
     'View',
-    'views/ui/TopThreeDiagnosisVisualisation'
+    'views/widgets/top3/TopThreeDiagnosisVisualisation'
 ], function(
     View,
     TopThreeDiagnosisVisualisation

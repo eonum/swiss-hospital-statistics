@@ -1,4 +1,12 @@
-define(['d3', 'views/ResponsiveSvg', 'views/ui/HospitalTypeButtonBar'], function (d3, ResponsiveSvg, HospitalTypeButtonBar){
+define([
+    'd3',
+    'views/ResponsiveSvg',
+    'views/ui/HospitalTypeButtonBar'
+], function (
+    d3,
+    ResponsiveSvg,
+    HospitalTypeButtonBar
+){
 
     function TopThreeDiagnosisTable(_width, _height){
 
