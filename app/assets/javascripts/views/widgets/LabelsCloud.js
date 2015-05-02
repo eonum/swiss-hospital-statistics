@@ -10,7 +10,7 @@ define([
 
     function Label(cloud){
         var _this = new View('<li></li>');
-        var label = new View('<span class="success label"></span>');
+        var label = new View('<span class="success label radius"></span>');
 
         var item;
 
