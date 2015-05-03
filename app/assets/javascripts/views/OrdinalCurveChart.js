@@ -1,123 +1,213 @@
-define(['d3', 'views/ResponsiveSvg'], function (d3, ResponsiveSvg) {
-
-    // TODO: So far, only one curve is shown at a time. We use the ordinal curve visualisation to compare multiple Codes.
-    // TODO: also, the colors have to be set right. See TODOs below.
-
+define([
+    'views/abstract/AxisGraphChart'
+], function (
+    AxisGraphChart
+){
     function OrdinalCurveChart(_width, _height) {
-        var TRANSITION_TIME = 1000;
+        var _this = new AxisGraphChart(_width, _height);
 
-        var _this = new ResponsiveSvg(_width, _height);
 
-        _this.marginTop(20);
-        _this.marginLeft(0);
-        _this.marginRight(140);
-        _this.marginBottom(40);
+        _this.defaultSettings = override(_this, _this.defaultSettings, function () {
+            var settings = this.super();
+            settings.xDomain = function(entity) { return _.unique(_.flatten(_.map(entity, function(serie){
+                return _.map(serie, _this.xValue);
+            }))) };
+            settings.yDomain = function(entity) { return [ 0, d3.max(entity, function(serie){
+                return d3.max(serie, _this.yValue);
+            })]};
+            return _.extend(settings,{
+                name: function(serie) {return _.indexOf(_this.entity(), serie)}
+            });
+        });
 
-        var x = d3.scale.ordinal();
+        /**
+         * @override
+         */
+        _this.renderContent = function () {
+            //console.log(_this.entity());
 
-        x.rangePoints([0, _this._width()], 0.5);
+            _this.updateCurves();
+        };
 
-        var titleFontSize = _this._height() / 20;
-        var chartHeight = _this._height() - titleFontSize;
-
-        _this.svg().append("text")
-            .attr("id", "title")
-            .style("font-size", titleFontSize + "px");
-
-        var y = d3.scale.linear().range([chartHeight, 0]);
-
-        var xAxis = d3.svg.axis()
-            .scale(x)
-            .orient("bottom");
-
-        var yAxis = d3.svg.axis()
-            .scale(y)
-            .orient("left");
-
-        var chartGroup = _this.svg().append("g")
-            .attr("transform", "translate(40, " + titleFontSize + ")");
-
-        _this.initialize = function(){
-
-            chartGroup.append("g")
-                .attr('transform', 'translate(0,'+ chartHeight +')')
-                .attr('class', 'x axis')
-                .call(xAxis);
-
-            chartGroup.append("g")
-                .attr("class", "y axis");
-
+        _this.name = function (func) {
+            _this.settings().name = func;
             return _this;
         };
 
-        _this.setData = function (data){
+        _this.updateCurves = function() {
+            //_this.removeLines();
+            //_this.removeCircles();
+            //_this.addLines();
+            //_this.addCircles();
 
-            var lines = chartGroup.selectAll(".connection").data(data);
+            //_this.removeLayers();
+            _this.removeLayers();
+            _this.addLayers();
 
-            lines.enter().append("g").append("line")
-                .attr("class", "connection");
+        };
 
-            lines.exit().remove();
+        _this.serieName = function(serie) {
+            return _this.settings().name(serie);
+        };
 
-            chartGroup.selectAll("circle")
-                .data(data)
-                .enter().append("g").append("circle");
+        /**
+         *
+         * @param index
+         * @returns {*}
+         * @override
+         */
+        _this.colorScale = function (index) {
+            return _this.settings().color(_this.serieName(_this.itemAt(index)));
+        };
 
-            chartGroup.selectAll("circle")
-                .data(data)
-                .exit().remove();
+        _this.data = function() {
+            return _.map(_this.entity(), function(each, index){return index});
+        };
 
-            var xDomain = _.map(data, function(datum){ return datum.interval});
-            var colorScaleIntervals = d3.scale.category20().domain(xDomain);
-            var colorScaleNumbers = d3.scale.category20();
+        _this.layers = function () {
+            return _this.chart().selectAll('.layer');
+        };
 
-            x.domain(xDomain);
-            y.domain([0, d3.max(data, function(datum){
-                return datum.amount;
-            })]);
-
-            chartGroup.selectAll(".x.axis").transition().duration(TRANSITION_TIME).call(xAxis);
-            chartGroup.selectAll(".y.axis").transition().duration(TRANSITION_TIME).call(yAxis);
-
-            // show all lines but the last one
-            lines = chartGroup.selectAll(".connection").data(data);
-            lines.filter(function (datum, index) {return index != data.length -1 })
-                /*TODO: Choose n-th color from scale, n = number of the curve*/
-                .style("stroke", function(datum) {return colorScaleNumbers(1)})
-                .attr("stroke-width", 0)
+        _this.addLayers = function () {
+            var layers = _this.layers().data(_this.data()).enter().append('g').attr('class', 'layer');
+            layers.append('path')
+                .attr('class', 'serie')
+                .attr('fill', 'none')
+                .style('stroke', _this.colorScale);
+            _this.series()
                 .transition()
-                .duration(TRANSITION_TIME)
+                .duration(_this.settings().transitionDuration)
+                .attr('d', _this.line);
+
+            //layers.selectAll('circle').data(_this.data(),function(a,b,c){console.log([a,b,c]);});
+        };
+
+        _this.removeLayers = function () {
+            _this.layers().data(_this.data()).exit().remove();
+        };
+
+        _this.addSeries = function () {
+
+            _this.series().data(_this.data()).enter().append('path')
+                .attr('class', 'serie')
+                .attr('fill', 'none')
+                .style('stroke', _this.colorScale);
+                //.attr('index', _.identity)
+                //.attr('timestamp', Date.now());
+
+                _this.series()
+                    .transition()
+                    .duration(_this.settings().transitionDuration)
+                    .attr('d', _this.line);
+
+
+
+            //_.each(_.range(_.size(_.flatten(_this.series())), _.size(_this.entity())), function(index){
+            //    _this.chart().append('path')
+            //        .attr('class', 'serie')
+            //        .style('stroke', _this.colorScale)
+            //        .attr('index',index)
+            //        .attr('timestamp', Date.now());
+            //});
+            //
+            //_.each(_.flatten(_this.series()), function(path, index){
+            //    path
+            //        .transition()
+            //        .duration(_this.settings().transitionDuration)
+            //        .attr('d', _this.line(_this.itemAt(index)));
+            //});
+
+            //var series = _this.series().data(_this.entity(),_this.serieIndex).enter().append('path');
+            //series
+            //    .attr('class', 'serie')
+            //    .style('stroke', _this.colorScale)
+            //    .attr('index',_this.serieIndex)
+            //    .attr('timestamp', Date.now());
+
+
+                //.transition()
+                //.duration(_this.settings().transitionDuration)
+                //.attr('d', _this.line);
+
+
+            //layers.append('circle')
+            //    .style('fill', _this.colorScale)
+            //    .transition()
+            //    .duration(_this.settings().transitionDuration)
+            //    .attr("cx", function(o) {return 20})
+            //    .attr("cy", 20)
+            //    .attr("r", 4);
+        };
+
+        _this.line = function(index) {
+            return (d3.svg.line()
+                .interpolate('monotone')
+                .x(_this.scaledXValue)
+                .y(_this.scaledYValue))(_this.itemAt(index));
+        };
+
+        _this.series = function () {
+            return _this.chart().selectAll('.serie');
+        };
+
+        _this.removeSeries = function() {
+            _this.series().data(_this.data()).exit().remove();
+        };
+
+        _this.circles = function () {
+            return _this.chart().selectAll('circle');
+        };
+
+        _this.removeLines = function () {
+            _this.lines().data(_this.entity()).exit().remove();
+        };
+
+        _this.removeCircles = function () {
+            _this.circles().data(_this.entity()).exit().remove();
+        };
+
+        _this.lineFromX = function(item) {
+            return _this.scaledXValue(item);
+        };
+
+        _this.lineFromY = function (item) {
+            return _this.scaledYValue(item);
+        };
+
+        _this.lineToX = function(item) {
+            var index = _.indexOf(_this.entity(), item);
+            return _this.lineFromX(_this.itemAt(index + 1));
+        };
+
+        _this.lineToY = function (item) {
+            var index = _.indexOf(_this.entity(), item);
+            return _this.lineFromY(_this.itemAt(index + 1));
+        };
+
+        _this.addLines = function () {
+            _this.lines().data(_this.entity()).enter().append('g').append('line').attr('class', 'connection');
+            _this.lines()
+                .style('stroke','red')
+                .transition()
+                .duration(_this.settings().transitionDuration)
                 .attr("stroke-width", 1.5)
                 .attr("stroke", "black")
-                .attr("x1", function(datum) { return x(datum.interval)})
-                .attr("y1", function(datum) { return y(datum.amount) - 1})
-                .attr("x2", function(datum, index) { return x(data[index + 1].interval)})
-                .attr("y2", function(datum, index) { return y(data[index + 1].amount)});
-
-            // hide the last element
-            lines.filter(function (datum, index) {return index == data.length -1 })
-                .attr("stroke-width", 0);
-
-            chartGroup.selectAll("circle").data(data)
-                /*TODO: Choose n-th color from scale, n = number of the curve*/
-                .style("fill", function(datum) {return colorScaleNumbers(1)})
-                .attr("cx", function(datum) { return x(datum.interval)})
-                .attr("cy", function(datum) { return y(datum.amount) - 1})
-                .attr("r", 4);
-
-            _this.setTitle = function(text){
-                _this.svg().select("#title")
-                    .transition()
-                    .duration(TRANSITION_TIME)
-                    .text(text);
-
-                return _this;
-            };
-
-            return _this;
+                .attr("x1", _this.lineFromX)
+                .attr("y1", _this.lineFromY)
+                .attr("x2", _this.lineToX)
+                .attr("y2", _this.lineToY);
         };
 
-        _this.initialize();
+        _this.addCircles = function () {
+            _this.circles().data(_this.entity()).enter().append('g').append("circle");
+            _this.circles()
+                .style('fill', _this.colorScale)
+                .transition()
+                .duration(_this.settings().transitionDuration)
+                .attr("cx", _this.lineFromX)
+                .attr("cy", _this.lineFromY)
+                .attr("r", 4);
+        };
 
         return _this;
     }

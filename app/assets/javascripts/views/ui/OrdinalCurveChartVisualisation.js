@@ -6,20 +6,25 @@ function(View, OrdinalCurveChart, NumberByAgeDatasetConverter, DatasetSorter)
         var chart = new OrdinalCurveChart(_width, _height);
 
         _this.initialize = function(){
-            _this.add(chart);
+            _this.add(chart
+                .title(function(entity) { return entity.codes[0].code[0].code + ': ' + entity.codes[0].code[0].text_de })
+                .display(function(entity) { return entity.data })
+                .x('interval')
+                .y('amount'));
         };
 
         /**
          * Updates this visualisation based upon the given description and datasets.
-         * @param description the description of the code
-         * @param datasets the datasets to use
+         * @param codes
          */
-        _this.visualiseData = function (description, datasets){
-                var sorter = new DatasetSorter(datasets);
-                var sortedDatasets = sorter.sortByIntervalsAscending();
-
-                var converter = new NumberByAgeDatasetConverter(sortedDatasets);
-                chart.setData(converter.asAbsoluteData()).setTitle(description);
+        _this.visualiseData = function (codes){
+                var data = _.map(codes, function(code) {
+                    var sorter = new DatasetSorter(code.datasets);
+                    var sortedDatasets = sorter.sortByIntervalsAscending();
+                    var converter = new NumberByAgeDatasetConverter(sortedDatasets);
+                    return converter.asAbsoluteData();
+                });
+                chart.on({codes: codes, data: data});
         };
 
         _this.initialize();

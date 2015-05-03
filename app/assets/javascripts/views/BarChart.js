@@ -14,6 +14,9 @@ define([
     function BarChart(_width, _height){
         var _this = new AxisGraphChart(_width, _height);
 
+        /**
+         * @override
+         */
         _this.defaultSettings = override(_this, _this.defaultSettings, function () {
             return _.extend(this.super(),{
                 minBarWidth: 70,
@@ -23,7 +26,7 @@ define([
         });
 
         /**
-         * Override to add additional logic
+         * @override
          */
         _this.renderContent = function () {
             _this.updateBars();
@@ -125,6 +128,8 @@ define([
             bars.append('text');
             _this.barText()
                 .style('font-size', _this.barTextSize()+'px')
+                .transition()
+                .duration(_this.settings().transitionDuration)
                 .attr('class', 'light-font')
                 .attr('text-anchor', 'middle')
                 .attr('fill', _this.barTextColor)

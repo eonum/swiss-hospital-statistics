@@ -34,7 +34,7 @@ define(['d3', 'views/ResponsiveSvg'], function (d3, ResponsiveSvg) {
         var xAxis = d3.svg.axis()
             .scale(x)
             .orient('bottom')
-            .tickFormat(function(d) { return _this._keyLabelOf(d) })
+            .tickFormat(function(d) { return _this._keyLabelOf(d) });
 
         var yAxis = d3.svg.axis()
                 .scale(y)

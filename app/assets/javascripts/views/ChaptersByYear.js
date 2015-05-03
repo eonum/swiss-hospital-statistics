@@ -8,7 +8,6 @@ define(['d3', 'views/ResponsiveSvg', 'views/ui/ChaptersByYearButtonBar'], functi
 
         var chaptersByYearButtonBar = new ChaptersByYearButtonBar();
 
-        _this.append(chaptersByYearButtonBar);
 
         _this.marginTop(50);
         _this.marginLeft(50);
@@ -16,10 +15,11 @@ define(['d3', 'views/ResponsiveSvg', 'views/ui/ChaptersByYearButtonBar'], functi
         _this.marginBottom(50);
 
         _this.initialize = function(){
-
+            _this.add(chaptersByYearButtonBar);
         };
 
         _this.initialize();
+
         return _this;
     }
 

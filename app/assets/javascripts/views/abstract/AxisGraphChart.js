@@ -172,6 +172,11 @@ define([
             return _this.yScale()(_this.yValue(item));
         };
 
+        _this.itemAt  = function(_index) {
+            var index = Math.min(_index, _.size(_this.entity()) - 1);
+            return _this.entity()[index];
+        };
+
         /**
          * Creates default Scale for x axis
          * @returns {*}
@@ -219,7 +224,7 @@ define([
         _this.defaultXAxis = function () {
             return d3.svg.axis()
                 .scale(_this.xScale())
-                .orient("bottom");
+                .orient('bottom');
         };
 
         /**

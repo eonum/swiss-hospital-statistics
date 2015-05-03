@@ -5,7 +5,9 @@ define([
     'views/ui/OrdinalCurveChartVisualisation',
     'views/ui/PieChartByAgeVisualisation',
     'views/ui/BoxPlotVisualisation',
-    'views/ui/ChaptersByYearVisualisation'
+    'views/ui/ChaptersByYearVisualisation',
+    'announcements/OnLabelsCloudAdded',
+    'announcements/OnLabelsCloudRemoved'
 ],function(
     CodeVisualisationCard,
     CardElement,
@@ -13,7 +15,9 @@ define([
     OrdinalCurveChartVisualisation,
     PieChartByAgeVisualisation,
     BoxPlotVisualisation,
-    ChaptersByYearVisualisation
+    ChaptersByYearVisualisation,
+    OnLabelsCloudAdded,
+    OnLabelsCloudRemoved
 ){
 
     /**
@@ -41,11 +45,27 @@ define([
             pieChartVisualisation = new PieChartByAgeVisualisation(800, 390);
             boxPlotVisualisation = new BoxPlotVisualisation(800, 390);
             chaptersByYearVisualisation = new ChaptersByYearVisualisation(800, 390);
-            _this.addButton(tabulatorModel.addTab("Bar chart").render(function(){return barChartVisualisation}).select(), 'chart-bar.png');
-            _this.addButton(tabulatorModel.addTab("Ordinal curve chart").render(function(){return ordinalCurveVisualisation}), 'chart-line.png');
+            _this.addButton(tabulatorModel.addTab("Bar chart").render(function(){return barChartVisualisation}), 'chart-bar.png');
+            _this.addButton(tabulatorModel.addTab("Ordinal curve chart").render(function(){return ordinalCurveVisualisation}).select(), 'chart-line.png');
             _this.addButton(tabulatorModel.addTab("Pie chart").render(function(){return pieChartVisualisation}), 'chart-pie.png');
-            var boxTab = tabulatorModel.addTab("Box plot").render(function(){return boxPlotVisualisation});
-            var chapterTab = tabulatorModel.addTab("Chapters by year").render(function(){return chaptersByYearVisualisation});
+            _this.addButton(tabulatorModel.addTab("Box plot").render(function(){return boxPlotVisualisation}), 'chart-plot.png');
+            _this.addButton(tabulatorModel.addTab("By year").render(function(){return chaptersByYearVisualisation}), 'chart-by-year.png');
+
+            _this.model().cloud().announcer().onSendTo(OnLabelsCloudAdded, _this.updateComparison, _this);
+            _this.model().cloud().announcer().onSendTo(OnLabelsCloudRemoved, _this.updateComparison, _this);
+
+        };
+
+        _this.updateComparison = function () {
+            var items = [];
+            items.push(_this.model().cloud().items());
+            items.push(_this.model().selectedItem());
+            var codes = _.map(_.unique(_.flatten(items)), function(item){
+                return {type: item.type, code: item.short_code};
+            });
+            _this.codeChooser().fetchAllCodeAndDatasets(codes, function(result){
+                ordinalCurveVisualisation.visualiseData(result);
+            });
         };
 
         /**
@@ -58,10 +78,10 @@ define([
             var title = code.code + ": " + code.text_de;
 
             barChartVisualisation.visualiseData(code, datasets);
-            ordinalCurveVisualisation.visualiseData(title, datasets);
+            _this.updateComparison();
             pieChartVisualisation.visualiseData(title, datasets);
             boxPlotVisualisation.visualiseData(title, datasets);
-            //chaptersByYearVisualisation.visualiseData(title, datasets);
+            chaptersByYearVisualisation.visualiseData(title, datasets);
         };
 
         /**

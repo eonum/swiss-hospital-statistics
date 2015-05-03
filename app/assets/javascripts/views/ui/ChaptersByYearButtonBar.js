@@ -5,8 +5,6 @@ define([
 ){
 
     function YearChoiceButtonBar(callback){
-
-
         var _this = new View('<div></div>');
 
         var typeButtons = new View('<div class="button-bar"></div>');
