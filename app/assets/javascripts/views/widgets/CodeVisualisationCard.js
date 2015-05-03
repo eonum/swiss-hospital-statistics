@@ -1,15 +1,17 @@
 define([
     'View',
-    'views/ui/CardPane',
-    'views/ui/ChartChoiceButtonBar',
     'helpers/CodeChooser',
-    'views/widgets/LabelsCloud'
+    'views/widgets/LabelsCloud',
+    'views/widgets/Tabulator',
+    'views/widgets/TabulatorButton',
+    'models/TabulatorModel'
 ], function(
     View,
-    CardPane,
-    ChartChoiceButtonBar,
     CodeChooser,
-    LabelsCloud
+    LabelsCloud,
+    Tabulator,
+    TabulatorButton,
+    TabulatorModel
 ){
     /**
      *
@@ -20,44 +22,46 @@ define([
     function CodeVisualisationCard () {
         var _this = new View('<div class="code-visualisations"></div>');
 
-        var chooseButtons;
-        var cardPane;
         var codeChooser;
         var model;
         var cloud;
+        var tabulator;
+        var tabulatorModel;
+        var tabulatorButtons;
 
         _this.initialize = function () {
             _this.empty();
-
-            cardPane = _this.newCardPane();
-            chooseButtons = _this.newChartChoiceButtonBar();
-            cloud = _this.newCloud();
-            cloud.model(model.cloud());
-            _this.add(cloud);
-            _this.append(chooseButtons);
-            _this.append(cardPane);
-            _this.initializeVisualisations();
+            _this.cloud(_this.newCloud());
+            _this.tabulator(_this.newTabulator());
+            _this.tabulatorButtons(_this.newTabulatorButtons());
+            _this.initializeVisualisations(_this.tabulatorModel());
         };
 
         _this.isInitialized = function () {
-            if (_.isUndefined(_this.cardPane()))
+            if (_.isUndefined(_this.tabulator()))
                 return false;
-            return _this.cardPane().parent().length;
+            return _this.tabulator().parent().length;
         };
 
-        /**
-         * @returns {View}
-         */
-        _this.cardPane = function () {
-            return cardPane;
+        _this.cloud = function (_cloud) {
+            if (_.isUndefined(_cloud)) return cloud;
+            cloud = _cloud;
+            cloud.model(model.cloud());
+            _this.add(cloud);
+            return _this;
         };
 
-        _this.cloud = function () {
-            return cloud;
+        _this.tabulator = function(_tabulator) {
+            if (_.isUndefined(_tabulator)) return tabulator;
+            tabulatorModel = _this.newTabulatorModel();
+            tabulator = _tabulator;
+            tabulator.styled(function(tab){tab.duration(0)}).model(tabulatorModel);
+            _this.add(tabulator);
+            return _this;
         };
 
-        _this.chooseButtons = function () {
-            return chooseButtons;
+        _this.tabulatorModel = function () {
+            return tabulatorModel;
         };
 
         _this.codeChooser = function () {
@@ -66,12 +70,15 @@ define([
             return codeChooser;
         };
 
-        _this.addCard = function (card) {
-            _this.cardPane().addCard(card);
+        _this.addButton = function (tabModel, imagePath) {
+            _this.tabulatorButtons().add(_this.newButton().model(tabModel).image(imagePath));
         };
 
-        _this.addButton = function (targetID, title) {
-            _this.chooseButtons().addButton(targetID, title);
+        _this.tabulatorButtons = function (_tabulatorButtons) {
+            if (_.isUndefined(_tabulatorButtons)) return tabulatorButtons;
+            tabulatorButtons = _tabulatorButtons;
+            _this.add(tabulatorButtons);
+            return _this;
         };
 
         _this.model = function(_model) {
@@ -97,16 +104,24 @@ define([
             return new CodeChooser(_this.codeType(), _this.updateVisualisations);
         };
 
-        _this.newCardPane = function () {
-            return new CardPane();
-        };
-
-        _this.newChartChoiceButtonBar = function () {
-            return new ChartChoiceButtonBar(_this.cardPane());
-        };
-
         _this.newCloud = function () {
             return new LabelsCloud();
+        };
+
+        _this.newTabulator = function() {
+            return new Tabulator();
+        };
+
+        _this.newTabulatorModel = function() {
+            return new TabulatorModel();
+        };
+
+        _this.newTabulatorButtons = function () {
+            return new TabulatorButtons();
+        };
+
+        _this.newButton = function() {
+            return new Button();
         };
 
         /**
@@ -131,9 +146,42 @@ define([
          * Override to initialize visualisations. Is used to support
          * lazy initializations
          */
-        _this.initializeVisualisations = function () {
+        _this.initializeVisualisations = function (tabulatorModel) {
             // by default do nothing
         };
+
+        return _this;
+    }
+
+    function TabulatorButtons() {
+        return new View('<ul class="inline-list chart-buttons"></ul>');
+    }
+
+    function Button() {
+        var _this = new TabulatorButton();
+
+        var image;
+
+        _this.renderLink = override(_this, _this.renderLink, function () {
+            image = _this.newImage();
+            this.super();
+            _this.link().add(_this.image());
+        });
+
+        _this.label = function () {
+            // no label
+        };
+
+        _this.image = function(_imageName) {
+            if (_.isUndefined(_imageName)) return image;
+            _this.image().attr('src','images/'+_imageName);
+            return _this;
+        };
+
+        _this.newImage = function () {
+            return new View('<img>');
+        };
+
 
         return _this;
     }

@@ -26,7 +26,7 @@ define([
             // we use topbar to have tab buttons there
             var topBar = new TopBar().title('Eonum');
 
-            // first we define tabulator model and script 3 tabs
+            // first we define tabulator model and script 3 tabs. select first one by default
             var tabulatorModel = new TabulatorModel();
             var tabIcd = tabulatorModel.addTab('ICD').render(function(){return new IcdCodePane().load()}).select();
             var tabChop = tabulatorModel.addTab('CHOP').render(function(){return new ChopCodePane().load()});
@@ -39,7 +39,7 @@ define([
 
             // and finally add everything to the dom
             $('header').append(topBar);
-            $('body').append(new Tabulator().model(tabulatorModel));
+            $('body').append(new Tabulator().styled(function(tab){tab.class('absolute')}).model(tabulatorModel));
         };
 
         _this.initialize();

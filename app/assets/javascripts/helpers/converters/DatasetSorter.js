@@ -15,9 +15,9 @@ function(){
             {
                 var indexOfSmallest = 0;
                 var smallest = sets[0].categorised_data.categories.interval[0].interval.from;
-                for(var i=0; i<sets.length; i++)
+                for(i=0; i<sets.length; i++)
                     if(sets[i].categorised_data.categories.interval[0].interval.from <= smallest) {
-                        smallest = sets[i].categorised_data.categories.interval[0].interval.from
+                        smallest = sets[i].categorised_data.categories.interval[0].interval.from;
                         indexOfSmallest = i;
                     }
 

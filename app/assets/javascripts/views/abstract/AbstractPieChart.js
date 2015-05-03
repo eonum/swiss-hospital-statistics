@@ -8,10 +8,10 @@ define(['d3', 'views/ResponsiveSvg'], function (d3, ResponsiveSvg) {
     function AbstractPieChart(_width, _height){
         var _this = new ResponsiveSvg(_width, _height);
 
-         _this.marginTop(50);
-         _this.marginLeft(50);
+         _this.marginTop(20);
+         _this.marginLeft(0);
          _this.marginRight(140);
-         _this.marginBottom(50);
+         _this.marginBottom(40);
 
         var radius = Math.min(_this._width(), _this._height()) / 2;
         var path = _this.svg()

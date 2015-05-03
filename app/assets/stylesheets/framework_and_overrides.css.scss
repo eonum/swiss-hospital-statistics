@@ -331,15 +331,23 @@ ul {
 
 .code-visualisations {
   position: fixed;
-  top: 2.8125rem;
-  margin-top: 1em;
-  width:inherit;
+  width: inherit;
+  overflow: scroll;
+  height: 100%;
+  margin-left: 1em;
+
+  div {
+    &.tabulator {
+
+    }
+  }
 
   ul {
     &.labels-cloud {
-      min-height: 2em;
+      min-height: 1.8em;
       margin-left: -1rem;
       margin-top: -0.5rem;
+
       li {
         margin-left: 1rem;
         margin-top: 0.5rem;
@@ -359,6 +367,36 @@ ul {
               background-color: #45c581;
             }
           }
+        }
+      }
+    }
+
+    &.chart-buttons {
+      li {
+        border: 1px solid #e1e1e1;
+        border-radius: 3px;
+
+        a {
+          padding: 0.3em;
+        }
+
+        img {
+          opacity: 0.6;
+          filter: alpha(opacity=60);
+          max-height: 3em;
+        }
+
+        &.active {
+          border-color: #008CBA;
+
+          img {
+            opacity: 1;
+            filter: alpha(opacity=100);
+          }
+        }
+
+        &:hover {
+          border-bottom-color: #008CBA;
         }
       }
     }

@@ -9,10 +9,11 @@ define(['d3', 'views/ResponsiveSvg'], function (d3, ResponsiveSvg){
      */
     function BarChart(_width, _height){
         var _this = new ResponsiveSvg(_width, _height);
-        _this.marginTop(50);
-        _this.marginLeft(50);
+        _this.marginTop(20);
+        _this.marginLeft(0);
         _this.marginRight(140);
-        _this.marginBottom(50);
+        _this.marginBottom(40);
+
         var title;
         var chart;
 
@@ -341,7 +342,7 @@ define(['d3', 'views/ResponsiveSvg'], function (d3, ResponsiveSvg){
         };
 
         _this.barTranslation = function(item) {
-            return 'translate(' + _this.scaledXValue(item)+ ','+ _this.scaledYValue(item) + ')';
+            return 'translate(' + (_this.scaledXValue(item) + (_this.xScale().rangeBand(item) - _this.barWidth(item))/2)+ ','+ _this.scaledYValue(item) + ')';
         };
 
         _this.barLabel = function (item) {
@@ -357,6 +358,44 @@ define(['d3', 'views/ResponsiveSvg'], function (d3, ResponsiveSvg){
             _this.bars().data(_this.entity()).exit().remove();
         };
 
+        _this.barWidth = function (item) {
+            return Math.min(70,_this.xScale().rangeBand(item));
+        };
+
+        _this.barHeight = function(item) {
+            return _this.chartHeight() - _this.scaledYValue(item);
+        };
+
+        _this.barTextSize = function () {
+            return 15;
+        };
+
+        _this.barTextX = function (item) {
+            return _this.barWidth(item) / 2;
+        };
+
+        _this.barTextY = function (item) {
+            var y = _this.rawBarTextY(item);
+            if (y * 2 + _this.barTextSize() < _this.barHeight(item)) return y;
+            y = _this.centeredBarTextY(item);
+            if (y > _this.barTextSize()) return y;
+            y = y / 2.0 + _this.barTextSize();
+            if (y <  _this.barHeight(item)) return y;
+            return -5;
+        };
+
+        _this.centeredBarTextY = function (item) {
+            return (_this.barHeight(item) - _this.barTextSize()) / 2.0;
+        };
+
+        _this.rawBarTextY = function () {
+            return _this.barTextSize() * 2;
+        };
+
+        _this.barTextColor = function(item) {
+            return _this.barTextY(item) > 0 ? '#ffffff' : '#222222';
+        };
+
         _this.addBars = function () {
             var bars = _this.bars().data(_this.entity()).enter().append('g')
                 .attr('class', 'bar');
@@ -370,16 +409,17 @@ define(['d3', 'views/ResponsiveSvg'], function (d3, ResponsiveSvg){
                 .style('fill', _this.colorScale)
                 .transition()
                 .duration(_this.settings().transitionDuration)
-                .attr('width', _this.xScale().rangeBand)
-                .attr('height', function(item) { return _this.chartHeight() - _this.scaledYValue(item)});
+                .attr('width', _this.barWidth)
+                .attr('height', _this.barHeight);
 
             bars.append('text');
             _this.barText()
-                .style('font-size', '16px')
+                .style('font-size', _this.barTextSize()+'px')
+                .attr('class', 'light-font')
                 .attr('text-anchor', 'middle')
-                .attr('fill', '#ffffff')
-                .attr('x', function(){return _this.xScale().rangeBand()/2})
-                .attr('y', 30)
+                .attr('fill', _this.barTextColor)
+                .attr('x', _this.barTextX)
+                .attr('y', _this.barTextY)
                 .text(_this.barLabel);
         };
 

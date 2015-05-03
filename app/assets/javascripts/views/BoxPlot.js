@@ -15,7 +15,7 @@ define(['d3', 'views/ResponsiveSvg', 'views/Box'], function (d3, ResponsiveSvg, 
 
         var yScale = d3.scale.linear();
 
-        _this.marginTop(50);
+        _this.marginTop(20);
         _this.marginLeft(50);
         _this.marginRight(140);
         _this.marginBottom(50);

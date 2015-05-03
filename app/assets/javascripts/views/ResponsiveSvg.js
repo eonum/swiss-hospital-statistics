@@ -85,7 +85,7 @@ define(['View'], function (View) {
         };
 
         _this._setPaddingBottom = function () {
-            _this.css('padding-bottom', (_this._outerHeight()/_this._outerWidth() * 100) + '%');
+            _this.css('padding-bottom', (_this._outerHeight()/_this._outerWidth() * 80) + '%');
             return _this;
         };
 
@@ -101,7 +101,7 @@ define(['View'], function (View) {
 
             svg = _svg
                 .attr('viewBox', '0 0 '+width+' '+height)
-                .attr('preserveAspectRatio','xMinYMin meet')
+                .attr('preserveAspectRatio','xMidYMid meet')
                 .attr('class', 'svg-content')
                 .append("g");
 

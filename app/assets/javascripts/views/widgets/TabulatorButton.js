@@ -22,12 +22,16 @@ define([
         };
 
         _this.render = function () {
-            link = _this.newLink();
+            _this.renderLink();
             _this.attachListeners();
-            _this.add(_this.link());
             _this.label(_this.model().name());
             if(_this.model().isSelected())
                 _this.beActive();
+        };
+
+        _this.renderLink = function () {
+            link = _this.newLink();
+            _this.add(_this.link());
         };
 
         _this.link = function () {
@@ -35,7 +39,7 @@ define([
         };
 
         _this.newLink = function() {
-            return new View('<a href="#"></a>');
+            return new View('<a></a>');
         };
 
         _this.label = function (_label) {

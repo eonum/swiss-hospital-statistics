@@ -11,8 +11,9 @@ define([
 ){
 
     function Tab() {
-        var _this = new View('<div class="absolute fill-width"></div>');
+        var _this = new View('<div class="fill-width"></div>');
 
+        var duration = 500;
         var model;
         var content;
 
@@ -29,6 +30,12 @@ define([
 
         _this.content = function () {
             return content;
+        };
+
+        _this.duration = function(number) {
+            if (_.isUndefined(number)) return duration;
+            duration = number;
+            return _this;
         };
 
         _this.select = function () {
@@ -77,7 +84,7 @@ define([
 
         _this.hide = function(callback) {
             _this.stop(true, true);
-            _this.fadeOut(500, function(){
+            _this.fadeOut(_this.duration(), function(){
                 _this.beHidden();
                 if (!_.isUndefined(callback)) callback();
             });
@@ -87,7 +94,7 @@ define([
             _this.stop(true, true);
             _this.beVisible();
             _this.fadeOut(0);
-            _this.fadeIn(500, callback);
+            _this.fadeIn(_this.duration(), callback);
         };
 
         _this.onSelected = function (ann) {
@@ -104,9 +111,10 @@ define([
     }
 
     function Tabulator() {
-        var _this = new View('<div></div>');
+        var _this = new View('<div class="tabulator"></div>');
 
         var tabs = [];
+        var styled = _.identity;
         var model;
 
         _this.model = function(_model) {
@@ -119,6 +127,11 @@ define([
 
         _this.tabs = function () {
             return tabs;
+        };
+
+        _this.styled = function(func) {
+            styled = func;
+            return _this;
         };
 
         _this.onAdded = function(ann) {
@@ -143,7 +156,8 @@ define([
             var tab = _this.newTab();
             tab.model(tabModel);
             tab.beHidden();
-            return tab;
+            var newTab = styled(tab);
+            return _.isUndefined(newTab) ? tab : newTab;
         };
 
         _this.newTab = function () {

@@ -26,50 +26,26 @@ define([
         var _this = new CodeVisualisationCard();
 
         var barChartVisualisation,
-            barChartCard,
             ordinalCurveVisualisation,
-            ordinalCurveChartCard,
             pieChartVisualisation,
-            pieChartCard,
             boxPlotVisualisation,
-            boxPlotCard,
-            chaptersByYearVisualisation,
-            chaptersByYearCard;
+            chaptersByYearVisualisation;
 
         /**
          * Initializes all visualisations suitable for icd code
          * @override
          */
-        _this.initializeVisualisations = function () {
-            // create bar chart
-            barChartVisualisation = new BarChartVisualisation(800, 400);
-            barChartCard = new CardElement("barChart",barChartVisualisation);
-            _this.addCard(barChartCard);
-            _this.addButton("barChart", "Bar Chart");
-
-            // create ordinal curve chart
-            ordinalCurveVisualisation = new OrdinalCurveChartVisualisation(800, 400);
-            ordinalCurveChartCard = new CardElement("ordinalCurve",ordinalCurveVisualisation);
-            _this.addCard(ordinalCurveChartCard);
-            _this.addButton("ordinalCurve", "Ordinal Curve");
-
-            // create pie chart
-            pieChartVisualisation = new PieChartByAgeVisualisation(800, 400);
-            pieChartCard = new CardElement("pieChart", pieChartVisualisation);
-            _this.addCard(pieChartCard);
-            _this.addButton("pieChart","Pie Chart");
-
-            // create box plot
-            boxPlotVisualisation = new BoxPlotVisualisation(800, 400);
-            boxPlotCard = new CardElement("boxPlot", boxPlotVisualisation);
-            _this.addCard(boxPlotCard);
-            _this.addButton("boxPlot","BoxPlot");
-
-            // create chapters by year visualisation
-            chaptersByYearVisualisation = new ChaptersByYearVisualisation(800, 400);
-            chaptersByYearCard = new CardElement("chaptersByYear", chaptersByYearVisualisation);
-            _this.addCard(chaptersByYearCard);
-            _this.addButton("chaptersByYear", "Chapters By Year");
+        _this.initializeVisualisations = function (tabulatorModel) {
+            barChartVisualisation = new BarChartVisualisation(800, 390);
+            ordinalCurveVisualisation = new OrdinalCurveChartVisualisation(800, 390);
+            pieChartVisualisation = new PieChartByAgeVisualisation(800, 390);
+            boxPlotVisualisation = new BoxPlotVisualisation(800, 390);
+            chaptersByYearVisualisation = new ChaptersByYearVisualisation(800, 390);
+            _this.addButton(tabulatorModel.addTab("Bar chart").render(function(){return barChartVisualisation}).select(), 'chart-bar.png');
+            _this.addButton(tabulatorModel.addTab("Ordinal curve chart").render(function(){return ordinalCurveVisualisation}), 'chart-line.png');
+            _this.addButton(tabulatorModel.addTab("Pie chart").render(function(){return pieChartVisualisation}), 'chart-pie.png');
+            var boxTab = tabulatorModel.addTab("Box plot").render(function(){return boxPlotVisualisation});
+            var chapterTab = tabulatorModel.addTab("Chapters by year").render(function(){return chaptersByYearVisualisation});
         };
 
         /**

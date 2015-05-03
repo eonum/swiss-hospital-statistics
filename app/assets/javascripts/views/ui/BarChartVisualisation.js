@@ -9,7 +9,7 @@ function (BarChart, View, NumberByAgeDatasetConverter){
         _this.initialize = function (){
             _this.add(content);
             content.add(barChart
-                .title(function(entity) { return entity.code.code + ' ' + entity.code.text_de })
+                .title(function(entity) { return entity.code.code + ': ' + entity.code.text_de })
                 .display(function(entity) { return entity.data })
                 .label(function (value) { return value + ' ' + (value > 1 ? 'Fälle' : 'Fall') })
                 .x('interval')

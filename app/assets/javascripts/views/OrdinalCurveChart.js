@@ -8,17 +8,17 @@ define(['d3', 'views/ResponsiveSvg'], function (d3, ResponsiveSvg) {
 
         var _this = new ResponsiveSvg(_width, _height);
 
-        _this.marginTop(50);
-        _this.marginLeft(50);
+        _this.marginTop(20);
+        _this.marginLeft(0);
         _this.marginRight(140);
-        _this.marginBottom(50);
+        _this.marginBottom(40);
 
         var x = d3.scale.ordinal();
 
-        x.rangePoints([0, _width], 0.5);
+        x.rangePoints([0, _this._width()], 0.5);
 
-        var titleFontSize = _height / 20;
-        var chartHeight = _height - titleFontSize;
+        var titleFontSize = _this._height() / 20;
+        var chartHeight = _this._height() - titleFontSize;
 
         _this.svg().append("text")
             .attr("id", "title")
