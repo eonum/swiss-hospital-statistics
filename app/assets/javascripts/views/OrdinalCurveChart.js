@@ -24,9 +24,8 @@ define([
          * @override
          */
         _this.renderContent = function () {
-            //console.log(_this.entity());
-
-            _this.updateCurves();
+            _this.updateLayers();
+            _this.updateCircles();
         };
 
         _this.name = function (func) {
@@ -34,16 +33,9 @@ define([
             return _this;
         };
 
-        _this.updateCurves = function() {
-            //_this.removeLines();
-            //_this.removeCircles();
-            //_this.addLines();
-            //_this.addCircles();
-
-            //_this.removeLayers();
+        _this.updateLayers = function() {
             _this.removeLayers();
             _this.addLayers();
-
         };
 
         _this.serieName = function(serie) {
@@ -51,7 +43,6 @@ define([
         };
 
         /**
-         *
          * @param index
          * @returns {*}
          * @override
@@ -68,75 +59,24 @@ define([
             return _this.chart().selectAll('.layer');
         };
 
-        _this.addLayers = function () {
-            var layers = _this.layers().data(_this.data()).enter().append('g').attr('class', 'layer');
-            layers.append('path')
-                .attr('class', 'serie')
-                .attr('fill', 'none')
-                .style('stroke', _this.colorScale);
-            _this.series()
-                .transition()
-                .duration(_this.settings().transitionDuration)
-                .attr('d', _this.line);
+        _this.addCirclesAt = function (index) {
+            _this.circlesAt(index).data(_this.itemAt(index), _this.xValue).enter().append('circle');
+        };
 
-            //layers.selectAll('circle').data(_this.data(),function(a,b,c){console.log([a,b,c]);});
+        _this.removeCirclesAt = function (index) {
+            _this.circlesAt(index).data(_this.itemAt(index), _this.xValue).exit().remove();
         };
 
         _this.removeLayers = function () {
             _this.layers().data(_this.data()).exit().remove();
         };
 
-        _this.addSeries = function () {
+        _this.layerAt = function(index) {
+            return _this.chart().selectAll('[index=\''+index+'\']');
+        };
 
-            _this.series().data(_this.data()).enter().append('path')
-                .attr('class', 'serie')
-                .attr('fill', 'none')
-                .style('stroke', _this.colorScale);
-                //.attr('index', _.identity)
-                //.attr('timestamp', Date.now());
-
-                _this.series()
-                    .transition()
-                    .duration(_this.settings().transitionDuration)
-                    .attr('d', _this.line);
-
-
-
-            //_.each(_.range(_.size(_.flatten(_this.series())), _.size(_this.entity())), function(index){
-            //    _this.chart().append('path')
-            //        .attr('class', 'serie')
-            //        .style('stroke', _this.colorScale)
-            //        .attr('index',index)
-            //        .attr('timestamp', Date.now());
-            //});
-            //
-            //_.each(_.flatten(_this.series()), function(path, index){
-            //    path
-            //        .transition()
-            //        .duration(_this.settings().transitionDuration)
-            //        .attr('d', _this.line(_this.itemAt(index)));
-            //});
-
-            //var series = _this.series().data(_this.entity(),_this.serieIndex).enter().append('path');
-            //series
-            //    .attr('class', 'serie')
-            //    .style('stroke', _this.colorScale)
-            //    .attr('index',_this.serieIndex)
-            //    .attr('timestamp', Date.now());
-
-
-                //.transition()
-                //.duration(_this.settings().transitionDuration)
-                //.attr('d', _this.line);
-
-
-            //layers.append('circle')
-            //    .style('fill', _this.colorScale)
-            //    .transition()
-            //    .duration(_this.settings().transitionDuration)
-            //    .attr("cx", function(o) {return 20})
-            //    .attr("cy", 20)
-            //    .attr("r", 4);
+        _this.circlesAt = function(index) {
+            return _this.layerAt(index).selectAll('circle');
         };
 
         _this.line = function(index) {
@@ -146,24 +86,12 @@ define([
                 .y(_this.scaledYValue))(_this.itemAt(index));
         };
 
+        _this.scaledXValue = override(_this,_this.scaledXValue, function(item){
+            return this.super(item) + _this.xScale().rangeBand(item) / 2.0;
+        });
+
         _this.series = function () {
             return _this.chart().selectAll('.serie');
-        };
-
-        _this.removeSeries = function() {
-            _this.series().data(_this.data()).exit().remove();
-        };
-
-        _this.circles = function () {
-            return _this.chart().selectAll('circle');
-        };
-
-        _this.removeLines = function () {
-            _this.lines().data(_this.entity()).exit().remove();
-        };
-
-        _this.removeCircles = function () {
-            _this.circles().data(_this.entity()).exit().remove();
         };
 
         _this.lineFromX = function(item) {
@@ -174,38 +102,35 @@ define([
             return _this.scaledYValue(item);
         };
 
-        _this.lineToX = function(item) {
-            var index = _.indexOf(_this.entity(), item);
-            return _this.lineFromX(_this.itemAt(index + 1));
-        };
-
-        _this.lineToY = function (item) {
-            var index = _.indexOf(_this.entity(), item);
-            return _this.lineFromY(_this.itemAt(index + 1));
-        };
-
-        _this.addLines = function () {
-            _this.lines().data(_this.entity()).enter().append('g').append('line').attr('class', 'connection');
-            _this.lines()
-                .style('stroke','red')
+        _this.addLayers = function () {
+            var layers = _this.layers().data(_this.data()).enter().append('g')
+                .attr('class', 'layer')
+                .attr('index', function(d, index) {return index});
+            layers.append('path')
+                .attr('class', 'serie')
+                .attr('fill', 'none')
+                .style('stroke', _this.colorScale);
+            _this.series()
                 .transition()
                 .duration(_this.settings().transitionDuration)
-                .attr("stroke-width", 1.5)
-                .attr("stroke", "black")
-                .attr("x1", _this.lineFromX)
-                .attr("y1", _this.lineFromY)
-                .attr("x2", _this.lineToX)
-                .attr("y2", _this.lineToY);
+                .attr('d', _this.line);
         };
 
-        _this.addCircles = function () {
-            _this.circles().data(_this.entity()).enter().append('g').append("circle");
-            _this.circles()
-                .style('fill', _this.colorScale)
+        _this.updateCircles = function () {
+            _this.layers().each(function(index){
+                _this.removeCirclesAt(index);
+                _this.addCirclesAt(index);
+                _this.updateCirclesAt(index);
+            });
+        };
+
+        _this.updateCirclesAt = function (index) {
+            _this.circlesAt(index)
+                .style('fill', _this.colorScale(index))
                 .transition()
                 .duration(_this.settings().transitionDuration)
-                .attr("cx", _this.lineFromX)
-                .attr("cy", _this.lineFromY)
+                .attr("cx", _this.scaledXValue)
+                .attr("cy", _this.scaledYValue)
                 .attr("r", 4);
         };
 
