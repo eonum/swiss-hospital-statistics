@@ -404,6 +404,33 @@ ul {
   }
 }
 
+.svg-container {
+  display: inline-block;
+  position: relative;
+  width: 100%;
+  vertical-align: middle;
+  overflow: hidden;
+
+  svg {
+    &.svg-content {
+      display: inline-block;
+      position: absolute;
+      top: 0;
+      left: 0;
+
+      text {
+        @extend .light-font;
+      }
+
+      .axis path,
+      .axis line {
+        fill: none;
+        stroke: #222222;
+        shape-rendering: crispEdges;
+      }
+    }
+  }
+}
 
 .fill-width {
   width: 100%;
@@ -431,36 +458,8 @@ ul {
   display: inline-block;
 }
 
-.svg-content {
-  display: inline-block;
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-
-.svg-container {
-  display: inline-block;
-  position: relative;
-  width: 100%;
-  vertical-align: middle;
-  overflow: hidden;
-}
-
 .align-vertical {
   position: relative;
   top: 50%;
   transform: translateY(-50%);
-}
-
-.axis path,
-.axis line {
-  fill: none;
-  stroke: #000;
-  shape-rendering: crispEdges;
-}
-
-.line {
-  fill: none;
-  stroke: steelblue;
-  stroke-width: 1.5px;
 }
