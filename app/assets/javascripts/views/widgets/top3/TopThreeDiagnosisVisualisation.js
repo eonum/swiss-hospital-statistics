@@ -12,9 +12,13 @@ define([
 
             _this.initialize = function (){
                 _this.append(topThreeTable);
+
+                var datasets = [{"name:": "fish", "value": 10}, {"name:": "sheep", "value": 4}, {"name:": "boss", "value": 12}];
+                topThreeTable.randomBarStuff(datasets);
+
             };
 
-            //TODO: what do you do...?
+
             _this.add = override(_this, _this.add, function(element){
                 _this.add(element);
                 return _this;
@@ -25,6 +29,7 @@ define([
              * @param dataset
              */
             _this.visualiseData = function (description, datasets){
+
                 //TODO: implement this
             };
 
