@@ -114,7 +114,7 @@ define([
             _this.announcer().announce(new OnIcdAgesDeselected(ages));
         };
 
-        _this.state = function () {
+        _this.selection = function () {
             return {
                 years: _this.selectedYears(),
                 ages: _this.selectedAges()

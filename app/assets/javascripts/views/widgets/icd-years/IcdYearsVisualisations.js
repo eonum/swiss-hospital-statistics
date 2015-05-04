@@ -32,14 +32,6 @@ define([
             _this.manChart().html(JSON.stringify(selection));
         };
 
-        _this.manChart = function () {
-            return man;
-        };
-
-        _this.womanChart = function () {
-            return woman;
-        };
-
         /**
          * Returns new chart, a subclass of ResponsiveSvg subclass, that is used to visualise women
          * @returns {ResponsiveSvg|View}
@@ -55,6 +47,7 @@ define([
         _this.newManChart = function () {
             return new View('<div style="background: #88d0fc; height: 500px"></div>')
         };
+
         /*------------------------------------------------*/
 
         _this.model = function(_model) {
@@ -79,12 +72,20 @@ define([
             _this.add(right);
         };
 
+        _this.manChart = function () {
+            return man;
+        };
+
+        _this.womanChart = function () {
+            return woman;
+        };
+
         _this.newColumn = function () {
             return new View('<div class="columns large-6"></div>');
         };
 
         _this.invalidate = function() {
-            _this.update(_this.model().state());
+            _this.update(_this.model().selection());
         };
 
         return _this;
