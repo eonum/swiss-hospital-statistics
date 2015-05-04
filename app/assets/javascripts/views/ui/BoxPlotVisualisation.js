@@ -1,36 +1,44 @@
 define([
-    'View', 'views/BoxPlot', 'helpers/converters/BoxPlotDataConverter'
+    'View',
+    'views/BoxPlot',
+    'helpers/converters/BoxPlotDataConverter'
 ], function (
-    View, BoxPlot, BoxPlotDataConverter
+    View,
+    BoxPlot,
+    BoxPlotDataConverter
 ) {
 
     function BoxPlotVisualisation(_width, _height) {
         var _this = new View('<div></div>');
-        var content = new View('<div></div>');
         var boxPlot = new BoxPlot(_width, _height);
 
         _this.initialize = function () {
-            this.append(content);
-            content.append(boxPlot);
+            _this.append(boxPlot
+                .title(function(entity) { return entity.code.code + ': ' + entity.code.text_de })
+                .display(function(entity) { return entity.data })
+                .x('ageInterval')
+                .y('avg'));
         };
 
         /**
          * Creates this visualisation from the data provided.
-         * @param data the data to update this visualisation with
+         * @param code the data to update this visualisation with
+         * @param datasets
          */
-        _this.visualiseData = function (title, datasets) {
+        _this.visualiseData = function (code, datasets) {
             if (datasets.length > 0) {
-                var intervals = [];
-
-                var boxPlotDataConverter = new BoxPlotDataConverter(datasets);
-                intervals = boxPlotDataConverter.convert();
-
-                boxPlot.setData(intervals);
-                boxPlot.setTitle(title);
-                content.add(boxPlot);
-
+                var converter = new BoxPlotDataConverter(datasets);
+                boxPlot.on({code: code, data: _.sortBy(converter.convert(),'ageInterval')});
             }
             return _this;
+        };
+
+        _this.update = function () {
+            if (_.isUndefined(boxPlot.rawEntity())) return;
+            var duration = boxPlot.transitionDuration();
+            boxPlot.transitionDuration(0);
+            boxPlot.on(boxPlot.rawEntity());
+            boxPlot.transitionDuration(duration);
         };
 
         _this.initialize();

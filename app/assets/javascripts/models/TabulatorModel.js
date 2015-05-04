@@ -14,6 +14,7 @@ define([
 
         var name = "Tab";
         var renderingLogic = function () {return $('<div></div>')};
+        var onSelected = _.identity;
 
         _this.name = function(string) {
             if (_.isUndefined(string)) return name;
@@ -33,6 +34,7 @@ define([
         _this.select = function () {
             if (_this.isSelected()) return _this;
             _this.tabulator().selectTab(_this);
+            onSelected(_this);
             return _this;
         };
 
@@ -46,6 +48,11 @@ define([
             if (_.isUndefined(_this.tabulator()))
                 return false;
             return _this.tabulator().isTabSelected(_this);
+        };
+
+        _this.onSelected = function(callback) {
+            onSelected = callback;
+            return _this;
         };
     }
 

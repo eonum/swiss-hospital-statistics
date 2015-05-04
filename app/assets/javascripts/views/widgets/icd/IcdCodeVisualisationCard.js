@@ -46,14 +46,13 @@ define([
             boxPlotVisualisation = new BoxPlotVisualisation(800, 390);
             chaptersByYearVisualisation = new ChaptersByYearVisualisation(800, 390);
             _this.addButton(tabulatorModel.addTab("Bar chart").render(function(){return barChartVisualisation}), 'chart-bar.png');
-            _this.addButton(tabulatorModel.addTab("Ordinal curve chart").render(function(){return ordinalCurveVisualisation}).select(), 'chart-line.png');
+            _this.addButton(tabulatorModel.addTab("Ordinal curve chart").render(function(){return ordinalCurveVisualisation}), 'chart-line.png');
             _this.addButton(tabulatorModel.addTab("Pie chart").render(function(){return pieChartVisualisation}), 'chart-pie.png');
-            _this.addButton(tabulatorModel.addTab("Box plot").render(function(){return boxPlotVisualisation}), 'chart-plot.png');
+            _this.addButton(tabulatorModel.addTab("Box plot").render(function(){return boxPlotVisualisation}).onSelected(function(){boxPlotVisualisation.update()}).select(), 'chart-plot.png');
             _this.addButton(tabulatorModel.addTab("By year").render(function(){return chaptersByYearVisualisation}), 'chart-by-year.png');
 
             _this.model().cloud().announcer().onSendTo(OnLabelsCloudAdded, _this.updateComparison, _this);
             _this.model().cloud().announcer().onSendTo(OnLabelsCloudRemoved, _this.updateComparison, _this);
-
         };
 
         _this.updateComparison = function () {
@@ -80,7 +79,7 @@ define([
             barChartVisualisation.visualiseData(code, datasets);
             _this.updateComparison();
             pieChartVisualisation.visualiseData(title, datasets);
-            boxPlotVisualisation.visualiseData(title, datasets);
+            boxPlotVisualisation.visualiseData(code, datasets);
             chaptersByYearVisualisation.visualiseData(title, datasets);
         };
 

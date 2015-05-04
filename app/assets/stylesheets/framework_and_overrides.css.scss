@@ -411,6 +411,10 @@ ul {
   vertical-align: middle;
   overflow: hidden;
 
+  text {
+    @extend .light-font;
+  }
+
   svg {
     &.svg-content {
       display: inline-block;
@@ -420,6 +424,12 @@ ul {
 
       text {
         @extend .light-font;
+      }
+
+
+      line {
+        fill: none;
+        stroke: #222222;
       }
 
       .axis path,

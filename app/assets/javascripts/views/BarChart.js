@@ -19,7 +19,7 @@ define([
          */
         _this.defaultSettings = override(_this, _this.defaultSettings, function () {
             return _.extend(this.super(),{
-                minBarWidth: 70,
+                maxBarWidth: 70,
                 labelFontSize: 15,
                 label: _.identity
             });
@@ -72,7 +72,7 @@ define([
         };
 
         _this.barWidth = function (item) {
-            return Math.min(_this.settings().minBarWidth,_this.xScale().rangeBand(item));
+            return Math.min(_this.settings().maxBarWidth,_this.xScale().rangeBand(item));
         };
 
         _this.barHeight = function(item) {
