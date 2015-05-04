@@ -23,6 +23,7 @@ end
 group :db do
   gem 'mongoid', '~> 4'
   gem 'roo'
+  gem 'roo-xls'
 end
 
 group :templates do
