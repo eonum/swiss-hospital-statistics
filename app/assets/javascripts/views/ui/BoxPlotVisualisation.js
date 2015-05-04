@@ -30,6 +30,8 @@ define([
                 var converter = new BoxPlotDataConverter(datasets);
                 boxPlot.on({code: code, data: _.sortBy(converter.convert(),'ageInterval')});
             }
+            else boxPlot.on({code: code, data: []});
+
             return _this;
         };
 
