@@ -48,43 +48,39 @@ define([
             return _this;
         };
 
-
-        /* ----------------------------- UNSAFE --------------------------------------------- */
-        _this.randomBarStuff = function(data){
+        _this.setData = function(data){
             console.log("Data array contains " + data.length + " elements.");
             console.log("First element's val is " + data[0].value);
 
-            var boxDimension = _height/3;
+            var boxHeight = _height/3;
+            var boxWidth = _width/3;
+            var padding = 10;
 
             var hardCodedY = 200;
 
             var xDomain = [0,1,2];
             xScale.domain(xDomain);
 
-            var bar = _this.svg().selectAll("g")
+            var boxGroup = _this.svg().selectAll("g")
                 .data(data)
                 .enter().append("g");
-                //.attr("transform", function(d, i) { return "translate(" + i * boxDimension + ",0)"; });
 
-            bar.append("rect")
+            boxGroup.append("rect")
                 .attr("x", function(d, i) {return xScale(i)})
                 .attr("y", function(d) { return hardCodedY/*yScale(d.value);*/})
-                .attr("height", function(d) { return boxDimension; })
-                .attr("width", boxDimension)
-                .style("fill", function(d) { return "red"; });
+                .attr("height", function(d) { return boxHeight - (padding/2) })
+                .attr("width", function(d) { return boxWidth - (padding/2) })
+                .style("fill", function(d) { return "red" });
 
-            bar.append("text")
-                .attr("x", function(d, i) { return xScale(i) + (boxDimension/2)})
-                .attr("y", hardCodedY + (boxDimension/2))
+            boxGroup.append("text")
+                .attr("x", function(d, i) { return xScale(i) + (boxWidth/2) - (padding/2)})
+                .attr("y", hardCodedY + (boxHeight/2))
                 .style('font-size', '20px')
                 .attr('class', 'light-font')
                 .attr('text-anchor', 'middle')
                 .attr('fill', "black")
-                .text(function(d) { return d.name  });
+                .text(function(d) { return d.name });
         };
-         /* ---------------------------------------------------------------------------------- */
-
-
 
         _this.initialize();
         return _this;
