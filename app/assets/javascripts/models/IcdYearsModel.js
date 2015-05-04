@@ -114,6 +114,13 @@ define([
             _this.announcer().announce(new OnIcdAgesDeselected(ages));
         };
 
+        _this.state = function () {
+            return {
+                years: _this.selectedYears(),
+                ages: _this.selectedAges()
+            };
+        };
+
         return _this;
     }
 
