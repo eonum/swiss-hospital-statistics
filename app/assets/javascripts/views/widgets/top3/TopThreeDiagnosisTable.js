@@ -36,7 +36,7 @@ define([
                 .attr("y", 35)
                 .style("font-size", titleFontSize + "px");
 
-            _this.setTitle("Three majestic black squares in their natural habitat");
+            _this.setTitle("Three majestic black (actually now red) squares in their natural habitat");
         };
 
         _this.setTitle = function(text){
@@ -51,7 +51,12 @@ define([
 
         /* ----------------------------- UNSAFE --------------------------------------------- */
         _this.randomBarStuff = function(data){
+            console.log("Data array contains " + data.length + " elements.");
+            console.log("First element's val is " + data[0].value);
+
             var boxDimension = _height/3;
+
+            var hardCodedY = 200;
 
             var xDomain = [0,1,2];
             xScale.domain(xDomain);
@@ -62,17 +67,20 @@ define([
                 //.attr("transform", function(d, i) { return "translate(" + i * boxDimension + ",0)"; });
 
             bar.append("rect")
-                .attr("x", function(d, i) { console.log(d + ", " + i + ", " + xScale(i)); return xScale(i)})
-                .attr("y", function(d) { return 200/*yScale(d.value);*/})
+                .attr("x", function(d, i) {return xScale(i)})
+                .attr("y", function(d) { return hardCodedY/*yScale(d.value);*/})
                 .attr("height", function(d) { return boxDimension; })
                 .attr("width", boxDimension)
-                .style("fill", function(d) { return "black"; });
+                .style("fill", function(d) { return "red"; });
 
-            /*bar.append("text")
-                .attr("x", boxDimension / 2)
-                .attr("y", function(d) { return yScale(d.value) + 3; })
-                .attr("dy", ".75em")
-                .text(function(d) { return d.value; });*/
+            bar.append("text")
+                .attr("x", function(d, i) { return xScale(i) + (boxDimension/2)})
+                .attr("y", hardCodedY + (boxDimension/2))
+                .style('font-size', '20px')
+                .attr('class', 'light-font')
+                .attr('text-anchor', 'middle')
+                .attr('fill', "black")
+                .text(function(d) { return d.name  });
         };
          /* ---------------------------------------------------------------------------------- */
 
