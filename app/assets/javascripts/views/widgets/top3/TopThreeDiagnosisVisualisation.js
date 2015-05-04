@@ -13,7 +13,7 @@ define([
             _this.initialize = function (){
                 _this.append(topThreeTable);
 
-                _this.fillChartWithDummyObjects(true);
+                _this.fillChartWithDummyObjects(false);
             };
 
 
