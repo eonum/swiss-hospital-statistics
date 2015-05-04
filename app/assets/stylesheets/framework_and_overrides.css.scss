@@ -6,6 +6,15 @@
   font-weight: 300;
 }
 
+.noselect {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
 header {
   z-index: 2;
   position: relative;
@@ -398,6 +407,33 @@ ul {
 
         &:hover {
           border-bottom-color: #008CBA;
+        }
+      }
+    }
+  }
+}
+
+.icd_years {
+  ul {
+    &.inline-list {
+      margin-left: 1rem;
+
+      li {
+        &.label {
+          @extend .noselect;
+          padding: 0.3rem 0.6rem 0.3rem;
+          cursor: pointer;
+          a {
+            @extend .light-font;
+            color: #222222;
+            font-size: 0.9rem;
+          }
+
+          &.success {
+            a {
+              color: #ffffff;
+            }
+          }
         }
       }
     }

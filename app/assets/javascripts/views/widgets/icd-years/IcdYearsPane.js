@@ -1,17 +1,38 @@
 define([
-    'View'
+    'View',
+    'views/widgets/icd-years/IcdYearsSelector',
+    'models/IcdYearsModel'
 ], function(
-    View
+    View,
+    IcdYearsSelector,
+    IcdYearsModel
 ){
 
     function IcdYearsPane() {
-        var _this = new View('<div></div>');
+        var _this = new View('<div class="icd_years"></div>');
+
+        var model;
+        var selectorView;
 
         /**
          * Create dom elements here
          */
         _this.initialize = function () {
+            model = _this.newModel();
+            model.years(_.range(2003, 2015));
+            model.ages(['0-14', '15-39','40-69','70+']);
 
+            selectorView = _this.newSelectorView();
+            selectorView.model(model);
+            _this.add(selectorView);
+        };
+
+        _this.newModel = function () {
+            return new IcdYearsModel();
+        };
+
+        _this.newSelectorView = function () {
+            return new IcdYearsSelector();
         };
 
         /**
@@ -19,7 +40,7 @@ define([
          * Should start visualisation process here
          */
         _this.load = function () {
-
+            return _this;
         };
 
         _this.initialize();
