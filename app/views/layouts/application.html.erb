@@ -5,7 +5,11 @@
     <title><%= content_for?(:title) ? yield(:title) : "eonum drg scaffold" %></title>
     <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Rails Foundation" %>">
     <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
-    <%= requirejs_include_tag 'application' %>
+    <% if ENV['RAILS_ENV'] == 'development' %>
+        <script src="javascripts/application.min.js" type="application/javascript"></script>
+    <% else%>
+        <%= requirejs_include_tag 'application' %>
+    <% end %>
     <%= csrf_meta_tags %>
 </head>
 <body>
