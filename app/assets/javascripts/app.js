@@ -41,7 +41,7 @@ define([
                 function(tab){return new TabulatorButton().model(tab)}));
 
             // and finally add everything to the dom
-            $('header').append(topBar);
+            $('body').append($('<header></header>')).find('header').append(topBar);
             $('body').append(new Tabulator().styled(function(tab){tab.class('absolute')}).model(tabulatorModel));
         };
 

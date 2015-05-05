@@ -4,15 +4,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><%= content_for?(:title) ? yield(:title) : "eonum drg scaffold" %></title>
     <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Rails Foundation" %>">
-    <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
     <% if ENV['RAILS_ENV'] == 'production' %>
-        <script src="javascripts/application.min.js" type="application/javascript"></script>
+    <link rel="stylesheet" media="all" href="/stylesheets/application.min.css" data-turbolinks-track="true" />
     <% else%>
-        <%= requirejs_include_tag 'application' %>
+    <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
     <% end %>
-    <%= csrf_meta_tags %>
+    <% if ENV['RAILS_ENV'] == 'production' %>
+    <script src="/javascripts/application.min.js" type="application/javascript" data-turbolinks-track="true"></script>
+    <% else%>
+    <%= requirejs_include_tag 'application' %>
+    <% end %>
 </head>
-<body>
-<header></header>
-</body>
+<body></body>
 </html>

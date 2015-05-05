@@ -19,7 +19,7 @@
 /.idea/workspace.xml
 #ignore all compiled assets
 /public/assets/*
-
+.sass-cache/*
 
 .idea/uiDesigner.xml
 
