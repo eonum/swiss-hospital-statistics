@@ -8,53 +8,25 @@
 // compiled file.
 //
 
-var CODE_PATH = 'models/codes/';
-var CODE_CLASSES = [
-    'ChopCodeDataset',
-    'DrgCodeDataset',
-    'IcdCodeDataset',
-    'AgeCodeDataset',
-    'KeCodeDataset'
-];
-
-var CATEGORY_PATH = 'models/categories/';
-var CATEGORY_CLASSES = [
-    'GeneralIntervalCategory',
-    'PercentileCategory',
-    'SexCategory',
-    'ValueIntervalCategory',
-    'KeKantonCategory',
-    'KeKantonStatisticCategory',
-    'KeRegionCategory',
-    'KeRegionStatisticCategory'
-];
-
 // better to make them global for convenience
 var _;
 var _s;
 var $;
 var Bacon;
-var ServiceProvider;
 
 requirejs([
     'jquery-adapter',
     'underscore',
     'underscore.string',
     'Bacon.min',
-    'helpers/ServiceProvider',
-    //'i18n',
-    //'i18n/translations',
-    'turbolinks',
-    'foundation',
-    'Polymorphism',
-    'jquery-ui.min'
-], function(jquery, underscore, underscoreString,bacon, _serviceProvider) {
+    'app',
+    'foundation-adapter',
+    'Polymorphism'
+], function(jquery, underscore, underscoreString, bacon, App) {
     $ = jquery;
     _ = underscore;
     _s = underscoreString;
     Bacon = bacon;
-    ServiceProvider = _serviceProvider;
-    requirejs(['app'], function (App) {
-        new App();
-    })
+
+    new App();
 });
