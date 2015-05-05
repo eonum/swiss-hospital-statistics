@@ -12,21 +12,18 @@
 var _;
 var _s;
 var $;
-var Bacon;
 
 requirejs([
     'jquery-adapter',
     'underscore',
     'underscore.string',
-    'Bacon.min',
     'app',
     'foundation-adapter',
     'Polymorphism'
-], function(jquery, underscore, underscoreString, bacon, App) {
+], function(jquery, underscore, underscoreString, App) {
     $ = jquery;
     _ = underscore;
     _s = underscoreString;
-    Bacon = bacon;
 
     new App();
 });
