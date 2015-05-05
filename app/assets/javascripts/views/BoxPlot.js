@@ -351,6 +351,7 @@ define([
             boxes.append('rect');
             _this.boxRect()
                 .style('fill', 'white')
+                .style('stroke','black')
                 .transition()
                 .duration(_this.settings().transitionDuration)
                 .attr('width', _this.boxWidth)
