@@ -33,6 +33,7 @@ Rails.application.configure do
 
   # Precompile *all* assets, except those that start with underscore
   config.assets.precompile << /(^[^_\/]|\/[^_])[^\/]*$/
+  config.assets.paths << Rails.root.join('vendor', 'assets', 'javascripts', 'foundation')
 
   config.assets.compile = true
 

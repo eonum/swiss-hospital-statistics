@@ -1,3 +1,7 @@
+modules:
+  - name: 'application'
+wrap: true
+
 paths:
   app: 'app'
   application: 'application'
@@ -5,20 +9,22 @@ paths:
   Dictionary: 'Dictionary'
   Polymorphism: 'Polymorphism'
 
-  jquery: 'vendor/jquery'
+  jquery: 'jquery'
   # JQuery modules must be defined in jquery-adapter
   'jquery-adapter': 'jquery-adapter'
   jquery_ujs: 'jquery_ujs'
 
   d3: 'd3'
 
+  topbar: 'foundation/topbar'
+  magellan: 'foundation/magellan'
+
   # Foudnation modules must be defined in foundation-adapter
   'foundation-adapter': 'foundation-adapter'
-  foundation: 'foundation/foundation'
+  foundation: 'foundation'
 
   # Modernizr is inside a vendor directory
   modernizr: 'vendor/modernizr'
-
 shim:
 
   #JQuery adapter consists of jquery and jquery_ujs

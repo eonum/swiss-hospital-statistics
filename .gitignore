@@ -17,6 +17,9 @@
 /uploads/*
 /config/mongoid.yml
 /.idea/workspace.xml
+#ignore all compiled assets
+/public/assets/*
+
 
 .idea/uiDesigner.xml
 
