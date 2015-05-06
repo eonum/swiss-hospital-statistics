@@ -1,4 +1,4 @@
-require 'codes/icd_chapter_group'
+require 'codes/icd_group'
 
 class IcdChapter
   include Mongoid::Document
@@ -10,7 +10,6 @@ class IcdChapter
   field :text_fr, :type => String
   field :text_it, :type => String
 
+  embeds_many :icd_groups
   has_many :icd_chapter_age_sex_datasets
-
-  embeds_many :icd_chapter_groups
 end

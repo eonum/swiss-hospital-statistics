@@ -1,27 +1,25 @@
 class Interval
-  include Mongoid::Document
-  include MultiLanguageText
 
-  field :from, :type => Integer
-  field :to, :type => Integer
+  attr_accessor :from
+  attr_accessor :to
 
   def duration
     return Float::INFINITY if self.infinite?
-    (to - from)
+    (@to - @from)
   end
 
   def infinite?
-    !to
+    !@to
   end
 
   def ==(another)
-    self.from == another.from && self.to == another.to
+    @from == another.from && @to == another.to
   end
 
   def from_s (string)
     arr = string.split(/-|\+/).collect{|each| each.to_i}
-    self.from = arr[0] unless arr.empty?
-    self.to = arr[1] if arr.length > 1
+    @from = arr[0] unless arr.empty?
+    @to = arr[1] if arr.length > 1
     self
   end
 

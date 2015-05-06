@@ -4,8 +4,8 @@ class IcdChapterSexIntervalCategory < IntervalCategory
 
   @tag = :icd_chapter_sex_interval
 
-  field :percentage, :type => Float
+  attr_accessor :percentage
   # number per 1000 inhabitants
-  field :number, :type => Float
-  field :sex, :type => Integer
+  attr_accessor :number
+  attr_accessor :sex
 end

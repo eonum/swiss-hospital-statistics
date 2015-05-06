@@ -2,8 +2,14 @@ require 'abstract/abstract_category'
 
 class SexCategory < AbstractCategory
 
-  field :sex, :type => Integer
+  attr_accessor :sex
 
   @tag = :sex
+
+
+  def initialize(options = {})
+    super()
+    @sex = options[:sex]
+  end
 
 end

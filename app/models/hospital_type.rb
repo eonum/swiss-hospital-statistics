@@ -7,5 +7,5 @@ class HospitalType
   field :text_fr, :type => String
   field :text_it, :type => String
 
-  has_many :sex_interval_categories
+  field :sex_interval_categories, :type => Hash
 end

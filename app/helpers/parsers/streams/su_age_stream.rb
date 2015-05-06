@@ -40,7 +40,7 @@ class SuAgeStream
   def to_codes
     @codes = []
     @map.each {|raw_sex, sheet|
-      puts 'Parsing... '+ ((raw_sex == 0) ? 'women' : 'men')
+      puts '   parsing... '+ ((raw_sex == 0) ? 'women' : 'men')
       sheet.each{|id, raw_code|
         code = @clazz.new
         @codes.push(code)

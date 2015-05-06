@@ -63,11 +63,15 @@ class Catalog
     pragmas = Pragma.pragmas_named_in(:parser, clazz)
     unless pragmas.empty?
       parser = pragmas.first.method.eonum_value(clazz)
+      puts 'Updating DB for '+clazz.name+'...'
+      time_start = Time.now
       parser.parse
       codes = parser.stream.to_codes
-      puts 'Parsed '+ codes.size.to_s + ' ' + clazz.name + 's'
-      codes.each {|each| each.persist_dataset}
-      #clazz.collection.insert codes.collect{|each| each.as_document } unless codes.empty?
+      puts  '   parsed '+ codes.size.to_s + ' ' + clazz.name + 's'
+      puts '   persisting data...'
+      #codes.each {|each| each.persist_dataset}
+      clazz.collection.insert codes.collect{|each| each.as_document } unless codes.empty?
+      puts "   updated in #{Time.now - time_start} seconds"
     end
   end
 

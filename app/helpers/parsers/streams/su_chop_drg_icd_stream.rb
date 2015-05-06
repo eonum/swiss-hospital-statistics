@@ -42,9 +42,11 @@ class SuChopDrgIcdStream
   end
 
   def to_codes
-    @codes = []
+    @codes = [  ]
+    puts "   creating #{clazz.name}..."
+    time_start = Time.now
     @map.each {|raw_interval, sheet|
-      puts 'Parsing... '+ raw_interval
+      print "   reading... #{raw_interval}"
       sheet.each{|year, codes|
         codes.each{|id, raw_code|
           code = @clazz.new
@@ -70,10 +72,10 @@ class SuChopDrgIcdStream
           end
         }
       }
+      puts '   done'
     }
-    codes = @codes.sort_by{|each| each.code.downcase}
-    #codes.each{|each| each.unlock}
+    codes = @codes.sort_by!{|each| each.code.downcase}
+    puts "   converted in #{Time.now - time_start} seconds"
     codes
   end
-
 end
