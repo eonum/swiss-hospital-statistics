@@ -18,6 +18,8 @@ define(['d3', 'views/ResponsiveSvg', 'views/ui/ChaptersByYearButtonBar'], functi
             _this.add(chaptersByYearButtonBar);
         };
 
+
+
         _this.initialize();
 
         return _this;

@@ -3,17 +3,20 @@ define([
     'announcements/OnIcdAgesDeselected',
     'announcements/OnIcdAgesSelected',
     'announcements/OnIcdYearsDeselected',
-    'announcements/OnIcdYearsSelected'
+    'announcements/OnIcdYearsSelected',
+    'helpers/converters/ChaptersByYearConverter'
 ], function(
     View,
     OnIcdAgesDeselected,
     OnIcdAgesSelected,
     OnIcdYearsDeselected,
-    OnIcdYearsSelected
+    OnIcdYearsSelected,
+    ChaptersByYearConverter
 ){
 
     function IcdYearsVisualisations() {
         var _this = new View('<div class="row full-width"></div>');
+        var converter = new ChaptersByYearConverter();
 
         var man;
         var woman;
@@ -21,6 +24,7 @@ define([
 
         /*--------- V I S U A L I S A T I O N S ---------*/
         _this.update = function (selection) {
+            converter.convert(selection)
             // parse selections here
             // retrieve data from db
             // convert data
@@ -84,6 +88,8 @@ define([
             return new View('<div class="columns large-6"></div>');
         };
 
+        // calls the selection method of IcdYearsModel which returns a JSON
+        // of two arrays selectedYears and selectedAges
         _this.invalidate = function() {
             _this.update(_this.model().selection());
         };

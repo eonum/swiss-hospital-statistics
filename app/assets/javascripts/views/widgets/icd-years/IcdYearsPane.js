@@ -22,7 +22,7 @@ define([
          */
         _this.initialize = function () {
             model = _this.newModel();
-            model.years(_.range(2003, 2015));
+            model.years(_.range(2003, 2014));
             model.ages(['0-14', '15-39','40-69','70+']);
 
             selectorView = _this.newSelectorView();

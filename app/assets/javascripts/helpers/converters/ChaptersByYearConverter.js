@@ -12,7 +12,7 @@ define([], function() {
         _this.initialize = function () {
 
         };
-
+/*
         _this.cleanData = function(dataset) {
             var cleanedData = [[],[]];
             function removeItem() {
@@ -32,9 +32,59 @@ define([], function() {
             removeItem();
             return cleanedData;
         };
-
+*/
+        // This function will iterate per year through all age intervals and sum it up
+        // first for loop iterates through the years while the second iterates through
+        // the age intervals.
         _this.convert = function (dataset) {
+            // TODO: man woman
             var year, from, to, percentage, sex, code;
+
+            console.log(dataset);
+            for(i = 0; i < dataset.years.length; i++) {
+                $.getJSON("/api/v1/chaptersbyyear/" + dataset.years[i], function(data) {
+
+                    var tmpYear = dataset.years[i];
+
+                    for (j = 0; j < dataset.ages.length; j++) {
+                        var tmpAgeInterval = dataset.ages[j];
+
+
+                        _.each(data, function(daten) {
+                            if(daten.categorised_data.categories.icd_chapter_sex_interval[0].sex == MAN) {
+                                console.log("MAN");
+                            }
+                            if(daten.categorised_data.categories.icd_chapter_sex_interval[0].sex == WOMAN) {
+                                console.log("WOMAN");
+                            }
+                        })
+                    }
+
+                });
+
+
+            }
+
+            return dataset;
+            /*
+                    ._each(data, function(d) {
+                        if(d[0].categorised_data.categories.icd_chapter_sex_interval[0].sex == MAN) {
+                            console.log("MAN");
+                        }
+                        if(d[0].categorised_data.categories.icd_chapter_sex_interval[0].sex == WOMAN) {
+                            console.log("WOMAN");
+                        }
+                    })
+                }
+                return dataset;
+
+                */
+        };
+
+                //cData = _.this.cleanData(data);
+
+            /*
+
             cData = _this.cleanData(dataset);
 
             _.each(cData, function(data) {
@@ -62,8 +112,11 @@ define([], function() {
                 }
             });
 
+
             return endData;
+
         };
+        */
 
         _this.initialize();
 
