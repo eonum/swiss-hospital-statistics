@@ -6,9 +6,6 @@ define([], function() {
         var WOMAN = 0;
         var MAN = 1;
 
-        var cData = [];
-        var endData = [[],[]];
-
         _this.initialize = function () {
 
         };
@@ -50,12 +47,18 @@ define([], function() {
                         var tmpAgeInterval = dataset.ages[j];
 
 
-                        _.each(data, function(daten) {
-                            if(daten.categorised_data.categories.icd_chapter_sex_interval[0].sex == MAN) {
+                        _.each(data, function(d) {
+                            var dataShortHand = d.categorised_data.categories.icd_chapter_sex_interval[0];
+                            var intervalShortHand = dataShortHand.interval.from + "-" + dataShortHand.interval.to;
+
+                            if(dataShortHand.sex == MAN && intervalShortHand == tmpAgeInterval) {
                                 console.log("MAN");
+                                // TODO: insert variable and add them up per chart
+                                // TODO: there is still a bug with 70+
                             }
-                            if(daten.categorised_data.categories.icd_chapter_sex_interval[0].sex == WOMAN) {
+                            if(dataShortHand.sex == WOMAN && intervalShortHand == tmpAgeInterval) {
                                 console.log("WOMAN");
+                                // TODO: insert variable and add them up per chart
                             }
                         })
                     }
