@@ -1,0 +1,1986 @@
+[
+    {
+        "chapter": "I",
+        "chapter_number": 1,
+        "code": "A00-A09",
+        "text_de": "Infekti\u00f6se Darmkrankheiten",
+        "text_fr": "Maladies intestinales infectieuses",
+        "text_it": "Malattie infettive intestinali"
+    },
+    {
+        "chapter": "I",
+        "chapter_number": 1,
+        "code": "A15-A19",
+        "text_de": "Tuberkulose",
+        "text_fr": "Tuberculose",
+        "text_it": "Tubercolosi"
+    },
+    {
+        "chapter": "I",
+        "chapter_number": 1,
+        "code": "A20-A28",
+        "text_de": "Bestimmte bakterielle Zoonosen",
+        "text_fr": "Certaines anthropozoonoses bact\u00e9riennes",
+        "text_it": "Alcune malattie batteriche trasmesse da animali"
+    },
+    {
+        "chapter": "I",
+        "chapter_number": 1,
+        "code": "A30-A49",
+        "text_de": "Sonstige bakterielle Krankheiten",
+        "text_fr": "Autres maladies bact\u00e9riennes",
+        "text_it": "Altre malattie batteriche"
+    },
+    {
+        "chapter": "I",
+        "chapter_number": 1,
+        "code": "A50-A64",
+        "text_de": "Infektionen, die vorwiegend durch Geschlechtsverkehr \u00fcbertragen werden",
+        "text_fr": "Infections dont le mode de transmission est essentiellement sexuel",
+        "text_it": "Infezioni a trasmissione prevalentemente sessuale"
+    },
+    {
+        "chapter": "I",
+        "chapter_number": 1,
+        "code": "A65-A69",
+        "text_de": "Sonstige Spiroch\u00e4tenkrankheiten",
+        "text_fr": "Autres maladies \u00e0 spiroch\u00e8tes",
+        "text_it": "Altre malattie da spirochete"
+    },
+    {
+        "chapter": "I",
+        "chapter_number": 1,
+        "code": "A70-A74",
+        "text_de": "Sonstige Krankheiten durch Chlamydien",
+        "text_fr": "Autres maladies \u00e0 Chlamydia",
+        "text_it": "Altre malattie causate da Chlamydiae"
+    },
+    {
+        "chapter": "I",
+        "chapter_number": 1,
+        "code": "A75-A79",
+        "text_de": "Rickettsiosen",
+        "text_fr": "Rickettsioses",
+        "text_it": "Rickettsiosi"
+    },
+    {
+        "chapter": "I",
+        "chapter_number": 1,
+        "code": "A80-A89",
+        "text_de": "Virusinfektionen des Zentralnervensystems",
+        "text_fr": "Infections virales du syst\u00e8me nerveux central",
+        "text_it": "Infezioni virali del sistema nervoso centrale"
+    },
+    {
+        "chapter": "I",
+        "chapter_number": 1,
+        "code": "A90-A99",
+        "text_de": "Durch Arthropoden \u00fcbertragene Viruskrankheiten und virale h\u00e4morrhagische Fieber",
+        "text_fr": "Fi\u00e8vres virales transmises par des arthropodes et fi\u00e8vres virales h\u00e9morragiques",
+        "text_it": "Febbri virali da artropodi e febbri virali emorragiche"
+    },
+    {
+        "chapter": "I",
+        "chapter_number": 1,
+        "code": "B00-B09",
+        "text_de": "Virusinfektionen, die durch Haut- und Schleimhautl\u00e4sionen gekennzeichnet sind",
+        "text_fr": "Infections virales caract\u00e9ris\u00e9es par des l\u00e9sions cutan\u00e9o-muqueuses",
+        "text_it": "Infezioni virali caratterizzate da lesioni della cute e delle membrane mucose"
+    },
+    {
+        "chapter": "I",
+        "chapter_number": 1,
+        "code": "B15-B19",
+        "text_de": "Virushepatitis",
+        "text_fr": "H\u00e9patite virale",
+        "text_it": "Epatite virale"
+    },
+    {
+        "chapter": "I",
+        "chapter_number": 1,
+        "code": "B20-B24",
+        "text_de": "HIV-Krankheit [Humane Immundefizienz-Viruskrankheit]",
+        "text_fr": "Maladies dues au virus de l'immunod\u00e9ficience humaine [VIH]",
+        "text_it": "Malattia da virus dell'immunodeficienza umana [HIV]"
+    },
+    {
+        "chapter": "I",
+        "chapter_number": 1,
+        "code": "B25-B34",
+        "text_de": "Sonstige Viruskrankheiten",
+        "text_fr": "Autres maladies virales",
+        "text_it": "Altre malattie virali"
+    },
+    {
+        "chapter": "I",
+        "chapter_number": 1,
+        "code": "B35-B49",
+        "text_de": "Mykosen",
+        "text_fr": "Mycoses",
+        "text_it": "Micosi"
+    },
+    {
+        "chapter": "I",
+        "chapter_number": 1,
+        "code": "B50-B64",
+        "text_de": "Protozoenkrankheiten",
+        "text_fr": "Maladies dues \u00e0 des protozoaires",
+        "text_it": "Malattie protozoarie"
+    },
+    {
+        "chapter": "I",
+        "chapter_number": 1,
+        "code": "B65-B83",
+        "text_de": "Helminthosen",
+        "text_fr": "Helminthiases",
+        "text_it": "Elmintiasi"
+    },
+    {
+        "chapter": "I",
+        "chapter_number": 1,
+        "code": "B85-B89",
+        "text_de": "Pedikulose [L\u00e4usebefall], Akarinose [Milbenbefall] und sonstiger Parasitenbefall der Haut",
+        "text_fr": "P\u00e9diculose, acariase et autres infestations",
+        "text_it": "Pediculosi, acariasi ed altre infestazioni"
+    },
+    {
+        "chapter": "I",
+        "chapter_number": 1,
+        "code": "B90-B94",
+        "text_de": "Folgezust\u00e4nde von infekti\u00f6sen und parasit\u00e4ren Krankheiten",
+        "text_fr": "S\u00e9quelles de maladies infectieuses et parasitaires",
+        "text_it": "Sequele di malattie infettive e parassitarie"
+    },
+    {
+        "chapter": "I",
+        "chapter_number": 1,
+        "code": "B95-B98",
+        "text_de": "Bakterien, Viren und sonstige Infektionserreger als Ursache von Krankheiten, die in anderen Kapiteln klassifiziert sind",
+        "text_fr": "Agents d'infections bact\u00e9riennes, virales et autres class\u00e9es dans d'autres chapitres",
+        "text_it": "Batteri, virus ed altri agenti infettivi come causa di malattie classificate altrove"
+    },
+    {
+        "chapter": "I",
+        "chapter_number": 1,
+        "code": "B99-B99",
+        "text_de": "Sonstige Infektionskrankheiten",
+        "text_fr": "Autres maladies infectieuses",
+        "text_it": "Altre malattie infettive"
+    },
+    {
+        "chapter": "II",
+        "chapter_number": 2,
+        "code": "C00-C14",
+        "text_de": "B\u00f6sartige Neubildungen der Lippe, der Mundh\u00f6hle und des Pharynx",
+        "text_fr": "Tumeurs malignes de la l\u00e8vre, de la cavit\u00e9 buccale et du pharynx",
+        "text_it": "Tumori maligni del labbro, della cavit\u00e0 orale e della faringe"
+    },
+    {
+        "chapter": "II",
+        "chapter_number": 2,
+        "code": "C00-C75",
+        "text_de": "B\u00f6sartige Neubildungen an genau bezeichneten Lokalisationen, als prim\u00e4r festgestellt oder vermutet, ausgenommen lymphatisches, blutbildendes und verwandtes Gewebe",
+        "text_fr": "Tumeurs malignes, primitives ou pr\u00e9sum\u00e9es primitives, de si\u00e8ge pr\u00e9cis\u00e9, \u00e0 l'exception des tissus lympho\u00efde, h\u00e9matopo\u00ef\u00e9tique et apparent\u00e9s",
+        "text_it": "Tumori maligni primitivi, di sede specificata, ad eccezione di quelli del tessuto linfatico, ematopoietico e tessuti correlati, dichiarati primitivi o presunti tali"
+    },
+    {
+        "chapter": "II",
+        "chapter_number": 2,
+        "code": "C00-C97",
+        "text_de": "B\u00f6sartige Neubildungen",
+        "text_fr": "Tumeurs malignes",
+        "text_it": "Tumori maligni"
+    },
+    {
+        "chapter": "II",
+        "chapter_number": 2,
+        "code": "C15-C26",
+        "text_de": "B\u00f6sartige Neubildungen der Verdauungsorgane",
+        "text_fr": "Tumeurs malignes des organes digestifs",
+        "text_it": "Tumori maligni degli organi dell'apparato digerente"
+    },
+    {
+        "chapter": "II",
+        "chapter_number": 2,
+        "code": "C30-C39",
+        "text_de": "B\u00f6sartige Neubildungen der Atmungsorgane und sonstiger intrathorakaler Organe",
+        "text_fr": "Tumeurs malignes des organes respiratoires et intrathoraciques",
+        "text_it": "Tumori maligni dell'apparato respiratorio e degli organi intratoracici"
+    },
+    {
+        "chapter": "II",
+        "chapter_number": 2,
+        "code": "C40-C41",
+        "text_de": "B\u00f6sartige Neubildungen des Knochens und des Gelenkknorpels",
+        "text_fr": "Tumeurs malignes des os et du cartilage articulaire",
+        "text_it": "Tumori maligni di osso e cartilagine articolare"
+    },
+    {
+        "chapter": "II",
+        "chapter_number": 2,
+        "code": "C43-C44",
+        "text_de": "Melanom und sonstige b\u00f6sartige Neubildungen der Haut",
+        "text_fr": "M\u00e9lanome malin et autres tumeurs malignes de la peau",
+        "text_it": "Melanoma ed altri tumori maligni della cute"
+    },
+    {
+        "chapter": "II",
+        "chapter_number": 2,
+        "code": "C45-C49",
+        "text_de": "B\u00f6sartige Neubildungen des mesothelialen Gewebes und des Weichteilgewebes",
+        "text_fr": "Tumeurs malignes du tissu m\u00e9soth\u00e9lial et des tissus mous",
+        "text_it": "Tumori maligni di tessuto mesoteliale e dei tessuti molli"
+    },
+    {
+        "chapter": "II",
+        "chapter_number": 2,
+        "code": "C50-C50",
+        "text_de": "B\u00f6sartige Neubildungen der Brustdr\u00fcse [Mamma]",
+        "text_fr": "Tumeurs malignes du sein",
+        "text_it": "Tumore maligno della mammella"
+    },
+    {
+        "chapter": "II",
+        "chapter_number": 2,
+        "code": "C51-C58",
+        "text_de": "B\u00f6sartige Neubildungen der weiblichen Genitalorgane",
+        "text_fr": "Tumeurs malignes des organes g\u00e9nitaux de la femme",
+        "text_it": "Tumori maligni degli organi genitali femminili"
+    },
+    {
+        "chapter": "II",
+        "chapter_number": 2,
+        "code": "C60-C63",
+        "text_de": "B\u00f6sartige Neubildungen der m\u00e4nnlichen Genitalorgane",
+        "text_fr": "Tumeurs malignes des organes g\u00e9nitaux de l'homme",
+        "text_it": "Tumori maligni degli organi genitali maschili"
+    },
+    {
+        "chapter": "II",
+        "chapter_number": 2,
+        "code": "C64-C68",
+        "text_de": "B\u00f6sartige Neubildungen der Harnorgane",
+        "text_fr": "Tumeurs malignes des voies urinaires",
+        "text_it": "Tumori maligni dell'apparato urinario"
+    },
+    {
+        "chapter": "II",
+        "chapter_number": 2,
+        "code": "C69-C72",
+        "text_de": "B\u00f6sartige Neubildungen des Auges, des Gehirns und sonstiger Teile des Zentralnervensystems",
+        "text_fr": "Tumeurs malignes de l'\u0153il, de l'enc\u00e9phale et d'autres parties du syst\u00e8me nerveux central",
+        "text_it": "Tumore maligno dell'occhio, dell'encefalo e di altre parti del sistema nervoso centrale"
+    },
+    {
+        "chapter": "II",
+        "chapter_number": 2,
+        "code": "C73-C75",
+        "text_de": "B\u00f6sartige Neubildungen der Schilddr\u00fcse und sonstiger endokriner Dr\u00fcsen",
+        "text_fr": "Tumeurs malignes de la thyro\u00efde et d'autres glandes endocrines",
+        "text_it": "Tumori maligni della tiroide e delle altre ghiandole endocrine"
+    },
+    {
+        "chapter": "II",
+        "chapter_number": 2,
+        "code": "C76-C80",
+        "text_de": "B\u00f6sartige Neubildungen ungenau bezeichneter, sekund\u00e4rer und nicht n\u00e4her bezeichneter Lokalisationen",
+        "text_fr": "Tumeurs malignes de si\u00e8ges mal d\u00e9finis, secondaires et non pr\u00e9cis\u00e9s",
+        "text_it": "Tumori maligni di sedi mal definite, tumori secondari e di sedi non specificate"
+    },
+    {
+        "chapter": "II",
+        "chapter_number": 2,
+        "code": "C81-C96",
+        "text_de": "B\u00f6sartige Neubildungen des lymphatischen, blutbildenden und verwandten Gewebes, als prim\u00e4r festgestellt oder vermutet",
+        "text_fr": "Tumeurs malignes primitives ou pr\u00e9sum\u00e9es primitives des tissus lympho\u00efde, h\u00e9matopo\u00ef\u00e9tique et apparent\u00e9s",
+        "text_it": "Tumore maligno del tessuto linfatico, ematopoietico e tessuti correlati"
+    },
+    {
+        "chapter": "II",
+        "chapter_number": 2,
+        "code": "C97-C97",
+        "text_de": "B\u00f6sartige Neubildungen als Prim\u00e4rtumoren an mehreren Lokalisationen",
+        "text_fr": "Tumeurs malignes de si\u00e8ges multiples ind\u00e9pendants (primitifs)",
+        "text_it": "Tumori maligni di sedi indipendenti (primitive) multiple"
+    },
+    {
+        "chapter": "II",
+        "chapter_number": 2,
+        "code": "D00-D09",
+        "text_de": "In-situ-Neubildungen",
+        "text_fr": "Tumeurs in situ",
+        "text_it": "Tumori in situ"
+    },
+    {
+        "chapter": "II",
+        "chapter_number": 2,
+        "code": "D10-D36",
+        "text_de": "Gutartige Neubildungen",
+        "text_fr": "Tumeurs b\u00e9nignes",
+        "text_it": "Tumori benigni"
+    },
+    {
+        "chapter": "II",
+        "chapter_number": 2,
+        "code": "D37-D48",
+        "text_de": "Neubildungen unsicheren oder unbekannten Verhaltens",
+        "text_fr": "Tumeurs \u00e0 \u00e9volution impr\u00e9visible ou inconnue",
+        "text_it": "Tumori di comportamento incerto o sconosciuto"
+    },
+    {
+        "chapter": "III",
+        "chapter_number": 3,
+        "code": "D50-D53",
+        "text_de": "Aliment\u00e4re An\u00e4mien",
+        "text_fr": "An\u00e9mies nutritionnelles",
+        "text_it": "Anemie Nutrizionali"
+    },
+    {
+        "chapter": "III",
+        "chapter_number": 3,
+        "code": "D55-D59",
+        "text_de": "H\u00e4molytische An\u00e4mien",
+        "text_fr": "An\u00e9mies h\u00e9molytiques",
+        "text_it": "Anemie emolitiche"
+    },
+    {
+        "chapter": "III",
+        "chapter_number": 3,
+        "code": "D60-D64",
+        "text_de": "Aplastische und sonstige An\u00e4mien",
+        "text_fr": "Aplasies m\u00e9dullaires [an\u00e9mie aplastique] et autres an\u00e9mies",
+        "text_it": "Anemia aplastica e altre anemie"
+    },
+    {
+        "chapter": "III",
+        "chapter_number": 3,
+        "code": "D65-D69",
+        "text_de": "Koagulopathien, Purpura und sonstige h\u00e4morrhagische Diathesen",
+        "text_fr": "Anomalies de la coagulation, purpura et autres affections h\u00e9morragiques",
+        "text_it": "Difetti della coagulazione, porpore e altre condizioni emorragiche"
+    },
+    {
+        "chapter": "III",
+        "chapter_number": 3,
+        "code": "D70-D77",
+        "text_de": "Sonstige Krankheiten des Blutes und der blutbildenden Organe",
+        "text_fr": "Autres maladies du sang et des organes h\u00e9matopo\u00ef\u00e9tiques",
+        "text_it": "Altre malattie del sangue e degli organi ematopoietici"
+    },
+    {
+        "chapter": "III",
+        "chapter_number": 3,
+        "code": "D80-D90",
+        "text_de": "Bestimmte St\u00f6rungen mit Beteiligung des Immunsystems",
+        "text_fr": "Certaines anomalies du syst\u00e8me immunitaire",
+        "text_it": "Alcuni disturbi interessanti il sistema immunitario"
+    },
+    {
+        "chapter": "IV",
+        "chapter_number": 4,
+        "code": "E00-E07",
+        "text_de": "Krankheiten der Schilddr\u00fcse",
+        "text_fr": "Affections de la glande thyro\u00efde",
+        "text_it": "Disturbi della tiroide"
+    },
+    {
+        "chapter": "IV",
+        "chapter_number": 4,
+        "code": "E10-E14",
+        "text_de": "Diabetes mellitus",
+        "text_fr": "Diab\u00e8te sucr\u00e9",
+        "text_it": "Diabete mellito"
+    },
+    {
+        "chapter": "IV",
+        "chapter_number": 4,
+        "code": "E15-E16",
+        "text_de": "Sonstige St\u00f6rungen der Blutglukose-Regulation und der inneren Sekretion des Pankreas",
+        "text_fr": "Autres anomalies de la r\u00e9gulation du glucose et de la s\u00e9cr\u00e9tion pancr\u00e9atique interne",
+        "text_it": "Altri disturbi della regolazione del glucosio e della secrezione endocrina pancreatica"
+    },
+    {
+        "chapter": "IV",
+        "chapter_number": 4,
+        "code": "E20-E35",
+        "text_de": "Krankheiten sonstiger endokriner Dr\u00fcsen",
+        "text_fr": "Maladies des autres glandes endocrines",
+        "text_it": "Disturbi di altre ghiandole endocrine"
+    },
+    {
+        "chapter": "IV",
+        "chapter_number": 4,
+        "code": "E40-E46",
+        "text_de": "Mangelern\u00e4hrung",
+        "text_fr": "Malnutrition",
+        "text_it": "Malnutrizione"
+    },
+    {
+        "chapter": "IV",
+        "chapter_number": 4,
+        "code": "E50-E64",
+        "text_de": "Sonstige aliment\u00e4re Mangelzust\u00e4nde",
+        "text_fr": "Autres carences nutritionnelles",
+        "text_it": "Altri deficit nutrizionali"
+    },
+    {
+        "chapter": "IV",
+        "chapter_number": 4,
+        "code": "E65-E68",
+        "text_de": "Adipositas und sonstige \u00dcberern\u00e4hrung",
+        "text_fr": "Ob\u00e9sit\u00e9 et autres exc\u00e8s d'apport",
+        "text_it": "Obesit\u00e0 ed altre forme di iperalimentazione"
+    },
+    {
+        "chapter": "IV",
+        "chapter_number": 4,
+        "code": "E70-E90",
+        "text_de": "Stoffwechselst\u00f6rungen",
+        "text_fr": "Anomalies du m\u00e9tabolisme",
+        "text_it": "Disturbi metabolici"
+    },
+    {
+        "chapter": "V",
+        "chapter_number": 5,
+        "code": "F00-F09",
+        "text_de": "Organische, einschlie\u00dflich symptomatischer psychischer St\u00f6rungen",
+        "text_fr": "Troubles mentaux organiques, y compris les troubles symptomatiques",
+        "text_it": "Disturbi psichici di natura organica, compresi quelli sintomatici"
+    },
+    {
+        "chapter": "V",
+        "chapter_number": 5,
+        "code": "F10-F19",
+        "text_de": "Psychische und Verhaltensst\u00f6rungen durch psychotrope Substanzen",
+        "text_fr": "Troubles mentaux et du comportement li\u00e9s \u00e0 l'utilisation de substances psycho-actives",
+        "text_it": "Disturbi psichici e comportamentali da uso di sostanze psicoattive"
+    },
+    {
+        "chapter": "V",
+        "chapter_number": 5,
+        "code": "F20-F29",
+        "text_de": "Schizophrenie, schizotype und wahnhafte St\u00f6rungen",
+        "text_fr": "Schizophr\u00e9nie, trouble schizotypique et troubles d\u00e9lirants",
+        "text_it": "Schizofrenia, disturbo schizotipico e disturbi deliranti"
+    },
+    {
+        "chapter": "V",
+        "chapter_number": 5,
+        "code": "F30-F39",
+        "text_de": "Affektive St\u00f6rungen",
+        "text_fr": "Troubles de l'humeur [affectifs]",
+        "text_it": "Disturbi dell'umore [affettivi]"
+    },
+    {
+        "chapter": "V",
+        "chapter_number": 5,
+        "code": "F40-F48",
+        "text_de": "Neurotische, Belastungs- und somatoforme St\u00f6rungen",
+        "text_fr": "Troubles n\u00e9vrotiques, troubles li\u00e9s \u00e0 des facteurs de stress et troubles somatoformes",
+        "text_it": "Disturbi nevrotici, legati a stress e somatoformi"
+    },
+    {
+        "chapter": "V",
+        "chapter_number": 5,
+        "code": "F50-F59",
+        "text_de": "Verhaltensauff\u00e4lligkeiten mit k\u00f6rperlichen St\u00f6rungen und Faktoren",
+        "text_fr": "Syndromes comportementaux associ\u00e9s \u00e0 des perturbations physiologiques et \u00e0 des facteurs physiques",
+        "text_it": "Sindromi comportamentali associate a disfunzioni fisiologiche e a fattori fisici"
+    },
+    {
+        "chapter": "V",
+        "chapter_number": 5,
+        "code": "F60-F69",
+        "text_de": "Pers\u00f6nlichkeits- und Verhaltensst\u00f6rungen",
+        "text_fr": "Troubles de la personnalit\u00e9 et du comportement chez l'adulte",
+        "text_it": "Disturbi della personalit\u00e0 e del comportamento nell'adulto"
+    },
+    {
+        "chapter": "V",
+        "chapter_number": 5,
+        "code": "F70-F79",
+        "text_de": "Intelligenzst\u00f6rung",
+        "text_fr": "Retard mental",
+        "text_it": "Ritardo mentale"
+    },
+    {
+        "chapter": "V",
+        "chapter_number": 5,
+        "code": "F80-F89",
+        "text_de": "Entwicklungsst\u00f6rungen",
+        "text_fr": "Troubles du d\u00e9veloppement psychologique",
+        "text_it": "Disturbi dello sviluppo psicologico"
+    },
+    {
+        "chapter": "V",
+        "chapter_number": 5,
+        "code": "F90-F98",
+        "text_de": "Verhaltens- und emotionale St\u00f6rungen mit Beginn in der Kindheit und Jugend",
+        "text_fr": "Troubles du comportement et troubles \u00e9motionnels apparaissant habituellement durant l'enfance et l'adolescence",
+        "text_it": "Disturbi comportamentali e della sfera emozionale con esordio abituale nell'infanzia e nell'adolescenza"
+    },
+    {
+        "chapter": "V",
+        "chapter_number": 5,
+        "code": "F99-F99",
+        "text_de": "Nicht n\u00e4her bezeichnete psychische St\u00f6rungen",
+        "text_fr": "Trouble mental, sans pr\u00e9cision",
+        "text_it": "Disturbo mentale non specificato"
+    },
+    {
+        "chapter": "VI",
+        "chapter_number": 6,
+        "code": "G00-G09",
+        "text_de": "Entz\u00fcndliche Krankheiten des Zentralnervensystems",
+        "text_fr": "Maladies inflammatoires du syst\u00e8me nerveux central",
+        "text_it": "Malattie infiammatorie del sistema nervoso centrale"
+    },
+    {
+        "chapter": "VI",
+        "chapter_number": 6,
+        "code": "G10-G14",
+        "text_de": "Systematrophien, die vorwiegend das Zentralnervensystem betreffen",
+        "text_fr": "Affections d\u00e9g\u00e9n\u00e9ratives syst\u00e9miques affectant principalement le syst\u00e8me nerveux central",
+        "text_it": "Atrofie sistemiche interessanti principalmente il sistema nervoso centrale"
+    },
+    {
+        "chapter": "VI",
+        "chapter_number": 6,
+        "code": "G20-G26",
+        "text_de": "Extrapyramidale Krankheiten und Bewegungsst\u00f6rungen",
+        "text_fr": "Syndromes extrapyramidaux et troubles de la motricit\u00e9",
+        "text_it": "Disturbi extrapiramidali e del movimento"
+    },
+    {
+        "chapter": "VI",
+        "chapter_number": 6,
+        "code": "G30-G32",
+        "text_de": "Sonstige degenerative Krankheiten des Nervensystems",
+        "text_fr": "Autres affections d\u00e9g\u00e9n\u00e9ratives du syst\u00e8me nerveux",
+        "text_it": "Altre malattie degenerative del sistema nervoso"
+    },
+    {
+        "chapter": "VI",
+        "chapter_number": 6,
+        "code": "G35-G37",
+        "text_de": "Demyelinisierende Krankheiten des Zentralnervensystems",
+        "text_fr": "Maladies d\u00e9my\u00e9linisantes du syst\u00e8me nerveux central",
+        "text_it": "Malattie demielinizzanti del sistema nervoso centrale"
+    },
+    {
+        "chapter": "VI",
+        "chapter_number": 6,
+        "code": "G40-G47",
+        "text_de": "Episodische und paroxysmale Krankheiten des Nervensystems",
+        "text_fr": "Affections \u00e9pisodiques et paroxystiques",
+        "text_it": "Disturbi episodici e parossistici"
+    },
+    {
+        "chapter": "VI",
+        "chapter_number": 6,
+        "code": "G50-G59",
+        "text_de": "Krankheiten von Nerven, Nervenwurzeln und Nervenplexus",
+        "text_fr": "Affections des nerfs et des racines et plexus nerveux",
+        "text_it": "Disturbi dei nervi, delle radici nervose e dei plessi nervosi"
+    },
+    {
+        "chapter": "VI",
+        "chapter_number": 6,
+        "code": "G60-G64",
+        "text_de": "Polyneuropathien und sonstige Krankheiten des peripheren Nervensystems",
+        "text_fr": "Polyn\u00e9vrites et autres affections du syst\u00e8me nerveux p\u00e9riph\u00e9rique",
+        "text_it": "Polineuropatie ed altri disturbi del sistema nervoso periferico"
+    },
+    {
+        "chapter": "VI",
+        "chapter_number": 6,
+        "code": "G70-G73",
+        "text_de": "Krankheiten im Bereich der neuromuskul\u00e4ren Synapse und des Muskels",
+        "text_fr": "Affections musculaires et neuro-musculaires",
+        "text_it": "Malattie della giunzione neuromuscolare e dei muscoli"
+    },
+    {
+        "chapter": "VI",
+        "chapter_number": 6,
+        "code": "G80-G83",
+        "text_de": "Zerebrale L\u00e4hmung und sonstige L\u00e4hmungssyndrome",
+        "text_fr": "Paralysies c\u00e9r\u00e9brales et autres syndromes paralytiques",
+        "text_it": "Paralisi cerebrale ed altre sindromi paralitiche"
+    },
+    {
+        "chapter": "VI",
+        "chapter_number": 6,
+        "code": "G90-G99",
+        "text_de": "Sonstige Krankheiten des Nervensystems",
+        "text_fr": "Autres affections du syst\u00e8me nerveux",
+        "text_it": "Altri disturbi del sistema nervoso"
+    },
+    {
+        "chapter": "VII",
+        "chapter_number": 7,
+        "code": "H00-H06",
+        "text_de": "Affektionen des Augenlides, des Tr\u00e4nenapparates und der Orbita",
+        "text_fr": "Affections de la paupi\u00e8re, de l'appareil lacrymal et de l'orbite",
+        "text_it": "Disturbi delle palpebre, dell'apparato lacrimale e dell'orbita"
+    },
+    {
+        "chapter": "VII",
+        "chapter_number": 7,
+        "code": "H10-H13",
+        "text_de": "Affektionen der Konjunktiva",
+        "text_fr": "Affections de la conjonctive",
+        "text_it": "Disturbi della congiuntiva"
+    },
+    {
+        "chapter": "VII",
+        "chapter_number": 7,
+        "code": "H15-H22",
+        "text_de": "Affektionen der Sklera, der Hornhaut, der Iris und des Ziliark\u00f6rpers",
+        "text_fr": "Affections de la scl\u00e9rotique, de la corn\u00e9e, de l'iris et du corps ciliaire",
+        "text_it": "Disturbi della sclera, della cornea, dell'iride e del corpo ciliare"
+    },
+    {
+        "chapter": "VII",
+        "chapter_number": 7,
+        "code": "H25-H28",
+        "text_de": "Affektionen der Linse",
+        "text_fr": "Affections du cristallin",
+        "text_it": "Disturbi del cristallino"
+    },
+    {
+        "chapter": "VII",
+        "chapter_number": 7,
+        "code": "H30-H36",
+        "text_de": "Affektionen der Aderhaut und der Netzhaut",
+        "text_fr": "Affections de la choro\u00efde et de la r\u00e9tine",
+        "text_it": "Disturbi della coroide e della retina"
+    },
+    {
+        "chapter": "VII",
+        "chapter_number": 7,
+        "code": "H40-H42",
+        "text_de": "Glaukom",
+        "text_fr": "Glaucome",
+        "text_it": "Glaucoma"
+    },
+    {
+        "chapter": "VII",
+        "chapter_number": 7,
+        "code": "H43-H45",
+        "text_de": "Affektionen des Glask\u00f6rpers und des Augapfels",
+        "text_fr": "Affections du corps vitr\u00e9 et du globe oculaire",
+        "text_it": "Disturbi del corpo vitreo e del globo oculare"
+    },
+    {
+        "chapter": "VII",
+        "chapter_number": 7,
+        "code": "H46-H48",
+        "text_de": "Affektionen des N. opticus und der Sehbahn",
+        "text_fr": "Affections du nerf et des voies optiques",
+        "text_it": "Disturbi del nervo ottico e delle vie ottiche"
+    },
+    {
+        "chapter": "VII",
+        "chapter_number": 7,
+        "code": "H49-H52",
+        "text_de": "Affektionen der Augenmuskeln, St\u00f6rungen der Blickbewegungen sowie Akkommodationsst\u00f6rungen und Refraktionsfehler",
+        "text_fr": "Affections des muscles oculaires, des mouvements binoculaires, de l'accommodation et de la r\u00e9fraction",
+        "text_it": "Disturbi dei muscoli oculari, dei movimenti binoculari, di accomodazione e vizi di rifrazione"
+    },
+    {
+        "chapter": "VII",
+        "chapter_number": 7,
+        "code": "H53-H54",
+        "text_de": "Sehst\u00f6rungen und Blindheit",
+        "text_fr": "Troubles de la vision et c\u00e9cit\u00e9",
+        "text_it": "Disturbi visivi e cecit\u00e0"
+    },
+    {
+        "chapter": "VII",
+        "chapter_number": 7,
+        "code": "H55-H59",
+        "text_de": "Sonstige Affektionen des Auges und der Augenanhangsgebilde",
+        "text_fr": "Autres affections de l'\u0153il et de ses annexes",
+        "text_it": "Altri disturbi dell'occhio e degli annessi oculari"
+    },
+    {
+        "chapter": "VIII",
+        "chapter_number": 8,
+        "code": "H60-H62",
+        "text_de": "Krankheiten des \u00e4u\u00dferen Ohres",
+        "text_fr": "Maladies de l'oreille externe",
+        "text_it": "Malattie dell'orecchio esterno"
+    },
+    {
+        "chapter": "VIII",
+        "chapter_number": 8,
+        "code": "H65-H75",
+        "text_de": "Krankheiten des Mittelohres und des Warzenfortsatzes",
+        "text_fr": "Maladies de l'oreille moyenne et de l'apophyse masto\u00efde",
+        "text_it": "Malattie dell'orecchio medio e della mastoide"
+    },
+    {
+        "chapter": "VIII",
+        "chapter_number": 8,
+        "code": "H80-H83",
+        "text_de": "Krankheiten des Innenohres",
+        "text_fr": "Maladies de l'oreille interne",
+        "text_it": "Malattie dell'orecchio interno"
+    },
+    {
+        "chapter": "VIII",
+        "chapter_number": 8,
+        "code": "H90-H95",
+        "text_de": "Sonstige Krankheiten des Ohres",
+        "text_fr": "Autres affections de l'oreille",
+        "text_it": "Altri disturbi dell'orecchio"
+    },
+    {
+        "chapter": "IX",
+        "chapter_number": 9,
+        "code": "I00-I02",
+        "text_de": "Akutes rheumatisches Fieber",
+        "text_fr": "Rhumatisme articulaire aigu",
+        "text_it": "Reumatismo articolare acuto"
+    },
+    {
+        "chapter": "IX",
+        "chapter_number": 9,
+        "code": "I05-I09",
+        "text_de": "Chronische rheumatische Herzkrankheiten",
+        "text_fr": "Cardiopathies rhumatismales chroniques",
+        "text_it": "Cardiopatie reumatiche croniche"
+    },
+    {
+        "chapter": "IX",
+        "chapter_number": 9,
+        "code": "I10-I15",
+        "text_de": "Hypertonie [Hochdruckkrankheit]",
+        "text_fr": "Maladies hypertensives",
+        "text_it": "Malattie ipertensive"
+    },
+    {
+        "chapter": "IX",
+        "chapter_number": 9,
+        "code": "I20-I25",
+        "text_de": "Isch\u00e4mische Herzkrankheiten",
+        "text_fr": "Cardiopathies isch\u00e9miques",
+        "text_it": "Cardiopatie ischemiche"
+    },
+    {
+        "chapter": "IX",
+        "chapter_number": 9,
+        "code": "I26-I28",
+        "text_de": "Pulmonale Herzkrankheit und Krankheiten des Lungenkreislaufes",
+        "text_fr": "Affections cardiopulmonaires et maladies de la circulation pulmonaire",
+        "text_it": "Cuore polmonare e malattie del circolo polmonare"
+    },
+    {
+        "chapter": "IX",
+        "chapter_number": 9,
+        "code": "I30-I52",
+        "text_de": "Sonstige Formen der Herzkrankheit",
+        "text_fr": "Autres formes de cardiopathies",
+        "text_it": "Altre forme di cardiopatia"
+    },
+    {
+        "chapter": "IX",
+        "chapter_number": 9,
+        "code": "I60-I69",
+        "text_de": "Zerebrovaskul\u00e4re Krankheiten",
+        "text_fr": "Maladies c\u00e9r\u00e9brovasculaires",
+        "text_it": "Malattie cerebrovascolari"
+    },
+    {
+        "chapter": "IX",
+        "chapter_number": 9,
+        "code": "I70-I79",
+        "text_de": "Krankheiten der Arterien, Arteriolen und Kapillaren",
+        "text_fr": "Maladies des art\u00e8res, art\u00e9rioles et capillaires",
+        "text_it": "Malattie delle arterie, delle arteriole e dei capillari"
+    },
+    {
+        "chapter": "IX",
+        "chapter_number": 9,
+        "code": "I80-I89",
+        "text_de": "Krankheiten der Venen, der Lymphgef\u00e4\u00dfe und der Lymphknoten, anderenorts nicht klassifiziert",
+        "text_fr": "Maladies des veines, des vaisseaux et des ganglions lymphatiques, non class\u00e9es ailleurs",
+        "text_it": "Malattie delle vene, dei vasi linfatici e dei linfonodi non classificate altrove"
+    },
+    {
+        "chapter": "IX",
+        "chapter_number": 9,
+        "code": "I95-I99",
+        "text_de": "Sonstige und nicht n\u00e4her bezeichnete Krankheiten des Kreislaufsystems",
+        "text_fr": "Troubles autres et non pr\u00e9cis\u00e9s de l'appareil circulatoire",
+        "text_it": "Altri e non specificati disturbi del sistema circolatorio"
+    },
+    {
+        "chapter": "X",
+        "chapter_number": 10,
+        "code": "J00-J06",
+        "text_de": "Akute Infektionen der oberen Atemwege",
+        "text_fr": "Affections aigu\u00ebs des voies respiratoires sup\u00e9rieures",
+        "text_it": "Infezioni acute delle vie respiratorie superiori"
+    },
+    {
+        "chapter": "X",
+        "chapter_number": 10,
+        "code": "J09-J18",
+        "text_de": "Grippe und Pneumonie",
+        "text_fr": "Grippe et pneumopathie",
+        "text_it": "Influenza e polmonite"
+    },
+    {
+        "chapter": "X",
+        "chapter_number": 10,
+        "code": "J20-J22",
+        "text_de": "Sonstige akute Infektionen der unteren Atemwege",
+        "text_fr": "Autres affections aigu\u00ebs des voies respiratoires inf\u00e9rieures",
+        "text_it": "Altre infezioni acute delle inferiori vie respiratorie"
+    },
+    {
+        "chapter": "X",
+        "chapter_number": 10,
+        "code": "J30-J39",
+        "text_de": "Sonstige Krankheiten der oberen Atemwege",
+        "text_fr": "Autres maladies des voies respiratoires sup\u00e9rieures",
+        "text_it": "Altre malattie delle vie respiratorie superiori"
+    },
+    {
+        "chapter": "X",
+        "chapter_number": 10,
+        "code": "J40-J47",
+        "text_de": "Chronische Krankheiten der unteren Atemwege",
+        "text_fr": "Maladies chroniques des voies respiratoires inf\u00e9rieures",
+        "text_it": "Malattie croniche delle vie respiratorie inferiori"
+    },
+    {
+        "chapter": "X",
+        "chapter_number": 10,
+        "code": "J60-J70",
+        "text_de": "Lungenkrankheiten durch exogene Substanzen",
+        "text_fr": "Maladies du poumon dues \u00e0 des agents externes",
+        "text_it": "Malattie polmonari da agenti esterni"
+    },
+    {
+        "chapter": "X",
+        "chapter_number": 10,
+        "code": "J80-J84",
+        "text_de": "Sonstige Krankheiten der Atmungsorgane, die haupts\u00e4chlich das Interstitium betreffen",
+        "text_fr": "Autres maladies respiratoires touchant principalement le tissu interstitiel",
+        "text_it": "Altre pneumopatie che interessano prevalentemente l'interstizio"
+    },
+    {
+        "chapter": "X",
+        "chapter_number": 10,
+        "code": "J85-J86",
+        "text_de": "Purulente und nekrotisierende Krankheitszust\u00e4nde der unteren Atemwege",
+        "text_fr": "Maladies suppur\u00e9es et n\u00e9crotiques des voies respiratoires inf\u00e9rieures",
+        "text_it": "Malattie suppurative e necrotiche delle vie respiratorie inferiori"
+    },
+    {
+        "chapter": "X",
+        "chapter_number": 10,
+        "code": "J90-J94",
+        "text_de": "Sonstige Krankheiten der Pleura",
+        "text_fr": "Autres affections de la pl\u00e8vre",
+        "text_it": "Altre malattie della pleura"
+    },
+    {
+        "chapter": "X",
+        "chapter_number": 10,
+        "code": "J95-J99",
+        "text_de": "Sonstige Krankheiten des Atmungssystems",
+        "text_fr": "Autres maladies de l'appareil respiratoire",
+        "text_it": "Altre malattie dell'apparato respiratorio"
+    },
+    {
+        "chapter": "XI",
+        "chapter_number": 11,
+        "code": "K00-K14",
+        "text_de": "Krankheiten der Mundh\u00f6hle, der Speicheldr\u00fcsen und der Kiefer",
+        "text_fr": "Maladies de la cavit\u00e9 buccale, des glandes salivaires et des maxillaires",
+        "text_it": "Malattie della cavit\u00e0 orale, delle ghiandole salivari e dei mascellari"
+    },
+    {
+        "chapter": "XI",
+        "chapter_number": 11,
+        "code": "K20-K31",
+        "text_de": "Krankheiten des \u00d6sophagus, des Magens und des Duodenums",
+        "text_fr": "Maladies de l'\u0153sophage, de l'estomac et du duod\u00e9num",
+        "text_it": "Malattie dell'esofago, dello stomaco e del duodeno"
+    },
+    {
+        "chapter": "XI",
+        "chapter_number": 11,
+        "code": "K35-K38",
+        "text_de": "Krankheiten der Appendix",
+        "text_fr": "Maladies de l'appendice",
+        "text_it": "Malattie dell'appendice"
+    },
+    {
+        "chapter": "XI",
+        "chapter_number": 11,
+        "code": "K40-K46",
+        "text_de": "Hernien",
+        "text_fr": "Hernies",
+        "text_it": "Ernie"
+    },
+    {
+        "chapter": "XI",
+        "chapter_number": 11,
+        "code": "K50-K52",
+        "text_de": "Nichtinfekti\u00f6se Enteritis und Kolitis",
+        "text_fr": "Ent\u00e9rites et colites non infectieuses",
+        "text_it": "Enteriti e coliti non infettive"
+    },
+    {
+        "chapter": "XI",
+        "chapter_number": 11,
+        "code": "K55-K64",
+        "text_de": "Sonstige Krankheiten des Darmes",
+        "text_fr": "Autres maladies de l'intestin",
+        "text_it": "Altre malattie dell'intestino"
+    },
+    {
+        "chapter": "XI",
+        "chapter_number": 11,
+        "code": "K65-K67",
+        "text_de": "Krankheiten des Peritoneums",
+        "text_fr": "Maladies du p\u00e9ritoine",
+        "text_it": "Malattie del peritoneo"
+    },
+    {
+        "chapter": "XI",
+        "chapter_number": 11,
+        "code": "K70-K77",
+        "text_de": "Krankheiten der Leber",
+        "text_fr": "Maladies du foie",
+        "text_it": "Malattie del fegato"
+    },
+    {
+        "chapter": "XI",
+        "chapter_number": 11,
+        "code": "K80-K87",
+        "text_de": "Krankheiten der Gallenblase, der Gallenwege und des Pankreas",
+        "text_fr": "Maladies de la v\u00e9sicule biliaire, des voies biliaires et du pancr\u00e9as",
+        "text_it": "Disturbi della colecisti, delle vie biliari e del pancreas"
+    },
+    {
+        "chapter": "XI",
+        "chapter_number": 11,
+        "code": "K90-K93",
+        "text_de": "Sonstige Krankheiten des Verdauungssystems",
+        "text_fr": "Autres maladies de l'appareil digestif",
+        "text_it": "Altre malattie dell'apparato digerente"
+    },
+    {
+        "chapter": "XII",
+        "chapter_number": 12,
+        "code": "L00-L08",
+        "text_de": "Infektionen der Haut und der Unterhaut",
+        "text_fr": "Infections de la peau et du tissu cellulaire sous-cutan\u00e9",
+        "text_it": "Infezioni della cute e del tessuto sottocutaneo"
+    },
+    {
+        "chapter": "XII",
+        "chapter_number": 12,
+        "code": "L10-L14",
+        "text_de": "Bull\u00f6se Dermatosen",
+        "text_fr": "Dermatoses bulleuses",
+        "text_it": "Malattie bollose"
+    },
+    {
+        "chapter": "XII",
+        "chapter_number": 12,
+        "code": "L20-L30",
+        "text_de": "Dermatitis und Ekzem",
+        "text_fr": "Dermatoses et ecz\u00e9mas",
+        "text_it": "Dermatite con eczema"
+    },
+    {
+        "chapter": "XII",
+        "chapter_number": 12,
+        "code": "L40-L45",
+        "text_de": "Papulosquam\u00f6se Hautkrankheiten",
+        "text_fr": "L\u00e9sions papulo-squameuses",
+        "text_it": "Malattie papulosquamose della cute"
+    },
+    {
+        "chapter": "XII",
+        "chapter_number": 12,
+        "code": "L50-L54",
+        "text_de": "Urtikaria und Erythem",
+        "text_fr": "Urticaire et \u00e9ryth\u00e8me",
+        "text_it": "Orticaria ed eritema"
+    },
+    {
+        "chapter": "XII",
+        "chapter_number": 12,
+        "code": "L55-L59",
+        "text_de": "Krankheiten der Haut und der Unterhaut durch Strahleneinwirkung",
+        "text_fr": "Affections de la peau et du tissu cellulaire sous-cutan\u00e9 li\u00e9es \u00e0 une irradiation",
+        "text_it": "Disturbi della cute e del tessuto sottocutaneo da radiazioni"
+    },
+    {
+        "chapter": "XII",
+        "chapter_number": 12,
+        "code": "L60-L75",
+        "text_de": "Krankheiten der Hautanhangsgebilde",
+        "text_fr": "Maladies des phan\u00e8res et des annexes de la peau",
+        "text_it": "Disturbi degli annessi cutanei"
+    },
+    {
+        "chapter": "XII",
+        "chapter_number": 12,
+        "code": "L80-L99",
+        "text_de": "Sonstige Krankheiten der Haut und der Unterhaut",
+        "text_fr": "Autres affections de la peau et du tissu cellulaire sous-cutan\u00e9",
+        "text_it": "Altri disturbi della cute e del tessuto sottocutaneo"
+    },
+    {
+        "chapter": "XIII",
+        "chapter_number": 13,
+        "code": "M00-M03",
+        "text_de": "Infekti\u00f6se Arthropathien",
+        "text_fr": "Arthropathies infectieuses",
+        "text_it": "Artropatie infettive"
+    },
+    {
+        "chapter": "XIII",
+        "chapter_number": 13,
+        "code": "M00-M25",
+        "text_de": "Arthropathien",
+        "text_fr": "Arthropathies",
+        "text_it": "Artropatie"
+    },
+    {
+        "chapter": "XIII",
+        "chapter_number": 13,
+        "code": "M05-M14",
+        "text_de": "Entz\u00fcndliche Polyarthropathien",
+        "text_fr": "Polyarthropathies inflammatoires",
+        "text_it": "Poliartropatie infiammatorie"
+    },
+    {
+        "chapter": "XIII",
+        "chapter_number": 13,
+        "code": "M15-M19",
+        "text_de": "Arthrose",
+        "text_fr": "Arthroses",
+        "text_it": "Artrosi"
+    },
+    {
+        "chapter": "XIII",
+        "chapter_number": 13,
+        "code": "M20-M25",
+        "text_de": "Sonstige Gelenkkrankheiten",
+        "text_fr": "Autres affections articulaires",
+        "text_it": "Altri disturbi delle articolazioni"
+    },
+    {
+        "chapter": "XIII",
+        "chapter_number": 13,
+        "code": "M30-M36",
+        "text_de": "Systemkrankheiten des Bindegewebes",
+        "text_fr": "Affections diss\u00e9min\u00e9es du tissu conjonctif",
+        "text_it": "Disturbi sistemici del tessuto connettivo"
+    },
+    {
+        "chapter": "XIII",
+        "chapter_number": 13,
+        "code": "M40-M43",
+        "text_de": "Deformit\u00e4ten der Wirbels\u00e4ule und des R\u00fcckens",
+        "text_fr": "Dorsopathies avec d\u00e9formation",
+        "text_it": "Dorsopatie deformanti"
+    },
+    {
+        "chapter": "XIII",
+        "chapter_number": 13,
+        "code": "M40-M54",
+        "text_de": "Krankheiten der Wirbels\u00e4ule und des R\u00fcckens",
+        "text_fr": "Dorsopathies",
+        "text_it": "Malattie della Colonna vertebrale e Dorsopatie"
+    },
+    {
+        "chapter": "XIII",
+        "chapter_number": 13,
+        "code": "M45-M49",
+        "text_de": "Spondylopathien",
+        "text_fr": "Spondylopathies",
+        "text_it": "Spondilopatie"
+    },
+    {
+        "chapter": "XIII",
+        "chapter_number": 13,
+        "code": "M50-M54",
+        "text_de": "Sonstige Krankheiten der Wirbels\u00e4ule und des R\u00fcckens",
+        "text_fr": "Autres dorsopathies",
+        "text_it": "Altre dorsopatie"
+    },
+    {
+        "chapter": "XIII",
+        "chapter_number": 13,
+        "code": "M60-M63",
+        "text_de": "Krankheiten der Muskeln",
+        "text_fr": "Myopathies",
+        "text_it": "Disturbi muscolari"
+    },
+    {
+        "chapter": "XIII",
+        "chapter_number": 13,
+        "code": "M60-M79",
+        "text_de": "Krankheiten der Weichteilgewebe",
+        "text_fr": "Affections des tissus mous",
+        "text_it": "Disturbi dei tessuti molli"
+    },
+    {
+        "chapter": "XIII",
+        "chapter_number": 13,
+        "code": "M65-M68",
+        "text_de": "Krankheiten der Synovialis und der Sehnen",
+        "text_fr": "Atteintes des synoviales et des tendons",
+        "text_it": "Disturbi delle sinovie e dei tendini"
+    },
+    {
+        "chapter": "XIII",
+        "chapter_number": 13,
+        "code": "M70-M79",
+        "text_de": "Sonstige Krankheiten des Weichteilgewebes",
+        "text_fr": "Autres affections des tissus mous",
+        "text_it": "Altri disturbi dei tessuti molli"
+    },
+    {
+        "chapter": "XIII",
+        "chapter_number": 13,
+        "code": "M80-M85",
+        "text_de": "Ver\u00e4nderungen der Knochendichte und -struktur",
+        "text_fr": "Anomalies de la densit\u00e9 et de la structure osseuse",
+        "text_it": "Disturbi della densit\u00e0 e della struttura delle ossa"
+    },
+    {
+        "chapter": "XIII",
+        "chapter_number": 13,
+        "code": "M80-M94",
+        "text_de": "Osteopathien und Chondropathien",
+        "text_fr": "Ost\u00e9opathies et chondropathies",
+        "text_it": "Osteopatie e condropatie"
+    },
+    {
+        "chapter": "XIII",
+        "chapter_number": 13,
+        "code": "M86-M90",
+        "text_de": "Sonstige Osteopathien",
+        "text_fr": "Autres ost\u00e9opathies",
+        "text_it": "Altre osteopatie"
+    },
+    {
+        "chapter": "XIII",
+        "chapter_number": 13,
+        "code": "M91-M94",
+        "text_de": "Chondropathien",
+        "text_fr": "Chondropathies",
+        "text_it": "Condropatie"
+    },
+    {
+        "chapter": "XIII",
+        "chapter_number": 13,
+        "code": "M95-M99",
+        "text_de": "Sonstige Krankheiten des Muskel-Skelett-Systems und des Bindegewebes",
+        "text_fr": "Autres maladies du syst\u00e8me ost\u00e9o-articulaire, des muscles et du tissu conjonctif",
+        "text_it": "Altri disturbi del sistema osteomuscolare e del tessuto connettivo"
+    },
+    {
+        "chapter": "XIV",
+        "chapter_number": 14,
+        "code": "N00-N08",
+        "text_de": "Glomerul\u00e4re Krankheiten",
+        "text_fr": "Glom\u00e9rulopathies",
+        "text_it": "Malattie glomerulari"
+    },
+    {
+        "chapter": "XIV",
+        "chapter_number": 14,
+        "code": "N10-N16",
+        "text_de": "Tubulointerstitielle Nierenkrankheiten",
+        "text_fr": "Maladies r\u00e9nales tubulo-interstitielles",
+        "text_it": "Malattie renali tubulo-interstiziali"
+    },
+    {
+        "chapter": "XIV",
+        "chapter_number": 14,
+        "code": "N17-N19",
+        "text_de": "Niereninsuffizienz",
+        "text_fr": "Insuffisance r\u00e9nale",
+        "text_it": "Insufficienza renale"
+    },
+    {
+        "chapter": "XIV",
+        "chapter_number": 14,
+        "code": "N20-N23",
+        "text_de": "Urolithiasis",
+        "text_fr": "Lithiases urinaires",
+        "text_it": "Urolitiasi"
+    },
+    {
+        "chapter": "XIV",
+        "chapter_number": 14,
+        "code": "N25-N29",
+        "text_de": "Sonstige Krankheiten der Niere und des Ureters",
+        "text_fr": "Autres affections du rein et de l'uret\u00e8re",
+        "text_it": "Altri disturbi del rene e dell'uretere"
+    },
+    {
+        "chapter": "XIV",
+        "chapter_number": 14,
+        "code": "N30-N39",
+        "text_de": "Sonstige Krankheiten des Harnsystems",
+        "text_fr": "Autres maladies de l'appareil urinaire",
+        "text_it": "Altre malattie dell'apparato urinario"
+    },
+    {
+        "chapter": "XIV",
+        "chapter_number": 14,
+        "code": "N40-N51",
+        "text_de": "Krankheiten der m\u00e4nnlichen Genitalorgane",
+        "text_fr": "Maladies des organes g\u00e9nitaux de l'homme",
+        "text_it": "Malattie dell'apparato genitale maschile"
+    },
+    {
+        "chapter": "XIV",
+        "chapter_number": 14,
+        "code": "N60-N64",
+        "text_de": "Krankheiten der Mamma [Brustdr\u00fcse]",
+        "text_fr": "Affections du sein",
+        "text_it": "Disturbi della mammella"
+    },
+    {
+        "chapter": "XIV",
+        "chapter_number": 14,
+        "code": "N70-N77",
+        "text_de": "Entz\u00fcndliche Krankheiten der weiblichen Beckenorgane",
+        "text_fr": "Affections inflammatoires des organes pelviens de la femme",
+        "text_it": "Malattie infiammatorie di organi pelvici femminili"
+    },
+    {
+        "chapter": "XIV",
+        "chapter_number": 14,
+        "code": "N80-N98",
+        "text_de": "Nichtentz\u00fcndliche Krankheiten des weiblichen Genitaltraktes",
+        "text_fr": "Affections non inflammatoires de l'appareil g\u00e9nital de la femme",
+        "text_it": "Disturbi non infiammatori dell'apparato genitale femminile"
+    },
+    {
+        "chapter": "XIV",
+        "chapter_number": 14,
+        "code": "N99-N99",
+        "text_de": "Sonstige Krankheiten des Urogenitalsystems",
+        "text_fr": "Autres affections de l'appareil g\u00e9nito-urinaire",
+        "text_it": "Altri disturbi dell'apparato genitourinario"
+    },
+    {
+        "chapter": "XV",
+        "chapter_number": 15,
+        "code": "O00-O08",
+        "text_de": "Schwangerschaft mit abortivem Ausgang",
+        "text_fr": "Grossesse se terminant par un avortement",
+        "text_it": "Gravidanza con esito abortivo"
+    },
+    {
+        "chapter": "XV",
+        "chapter_number": 15,
+        "code": "O09-O09",
+        "text_de": "Schwangerschaftsdauer",
+        "text_fr": "Dur\u00e9e de la grossesse",
+        "text_it": "Durata della gravidanza"
+    },
+    {
+        "chapter": "XV",
+        "chapter_number": 15,
+        "code": "O10-O16",
+        "text_de": "\u00d6deme, Proteinurie und Hypertonie w\u00e4hrend der Schwangerschaft, der Geburt und des Wochenbettes",
+        "text_fr": "\u0152d\u00e8me, prot\u00e9inurie et hypertension au cours de la grossesse, de l'accouchement et de la puerp\u00e9ralit\u00e9",
+        "text_it": "Edema, proteinuria e disturbi ipertensivi in gravidanza, parto e puerperio"
+    },
+    {
+        "chapter": "XV",
+        "chapter_number": 15,
+        "code": "O20-O29",
+        "text_de": "Sonstige Krankheiten der Mutter, die vorwiegend mit der Schwangerschaft verbunden sind",
+        "text_fr": "Autres affections maternelles li\u00e9es principalement \u00e0 la grossesse",
+        "text_it": "Altri disturbi materni correlati prevalentemente alla gravidanza"
+    },
+    {
+        "chapter": "XV",
+        "chapter_number": 15,
+        "code": "O30-O48",
+        "text_de": "Betreuung der Mutter im Hinblick auf den Feten und die Amnionh\u00f6hle sowie m\u00f6gliche Entbindungskomplikationen",
+        "text_fr": "Soins maternels li\u00e9s au f\u0153tus et \u00e0 la cavit\u00e9 amniotique, et probl\u00e8mes possibles pos\u00e9s par l'accouchement",
+        "text_it": "Assistenza prestata alla madre per motivi legati al feto o alla cavit\u00e0 amniotica e per possibili problemi del parto"
+    },
+    {
+        "chapter": "XV",
+        "chapter_number": 15,
+        "code": "O60-O75",
+        "text_de": "Komplikationen bei Wehent\u00e4tigkeit und Entbindung",
+        "text_fr": "Complications du travail et de l'accouchement",
+        "text_it": "Complicanze del travaglio e del parto"
+    },
+    {
+        "chapter": "XV",
+        "chapter_number": 15,
+        "code": "O80-O82",
+        "text_de": "Entbindung",
+        "text_fr": "Accouchement",
+        "text_it": "Parto"
+    },
+    {
+        "chapter": "XV",
+        "chapter_number": 15,
+        "code": "O85-O92",
+        "text_de": "Komplikationen, die vorwiegend im Wochenbett auftreten",
+        "text_fr": "Complications principalement li\u00e9es \u00e0 la puerp\u00e9ralit\u00e9",
+        "text_it": "Complicanze correlate prevalentemente al puerperio"
+    },
+    {
+        "chapter": "XV",
+        "chapter_number": 15,
+        "code": "O94-O99",
+        "text_de": "Sonstige Krankheitszust\u00e4nde w\u00e4hrend der Gestationsperiode, die anderenorts nicht klassifiziert sind",
+        "text_fr": "Autres probl\u00e8mes obst\u00e9tricaux, non class\u00e9s ailleurs",
+        "text_it": "Altre condizioni morbose gravidiche non classificate altrove"
+    },
+    {
+        "chapter": "XVI",
+        "chapter_number": 16,
+        "code": "P00-P04",
+        "text_de": "Sch\u00e4digung des Feten und Neugeborenen durch m\u00fctterliche Faktoren und durch Komplikationen bei Schwangerschaft, Wehent\u00e4tigkeit und Entbindung",
+        "text_fr": "F\u0153tus et nouveau-n\u00e9 affect\u00e9s par des troubles maternels et par des complications de la grossesse, du travail et de l'accouchement",
+        "text_it": "Feto e neonato sofferenti per fattori materni e complicanze della gravidanza, del travaglio e del parto"
+    },
+    {
+        "chapter": "XVI",
+        "chapter_number": 16,
+        "code": "P05-P08",
+        "text_de": "St\u00f6rungen im Zusammenhang mit der Schwangerschaftsdauer und dem fetalen Wachstum",
+        "text_fr": "Anomalies li\u00e9es \u00e0 la dur\u00e9e de la gestation et \u00e0 la croissance du f\u0153tus",
+        "text_it": "Disturbi correlati alla durata della gestazione ed all'accrescimento fetale"
+    },
+    {
+        "chapter": "XVI",
+        "chapter_number": 16,
+        "code": "P10-P15",
+        "text_de": "Geburtstrauma",
+        "text_fr": "Traumatismes obst\u00e9tricaux",
+        "text_it": "Traumi da parto"
+    },
+    {
+        "chapter": "XVI",
+        "chapter_number": 16,
+        "code": "P20-P29",
+        "text_de": "Krankheiten des Atmungs- und Herz-Kreislaufsystems, die f\u00fcr die Perinatalperiode spezifisch sind",
+        "text_fr": "Affections respiratoires et cardio-vasculaires sp\u00e9cifiques de la p\u00e9riode p\u00e9rinatale",
+        "text_it": "Disturbi respiratori e cardiovascolari specifici del periodo perinatale"
+    },
+    {
+        "chapter": "XVI",
+        "chapter_number": 16,
+        "code": "P35-P39",
+        "text_de": "Infektionen, die f\u00fcr die Perinatalperiode spezifisch sind",
+        "text_fr": "Infections sp\u00e9cifiques de la p\u00e9riode p\u00e9rinatale",
+        "text_it": "Infezioni specifiche del periodo perinatale"
+    },
+    {
+        "chapter": "XVI",
+        "chapter_number": 16,
+        "code": "P50-P61",
+        "text_de": "H\u00e4morrhagische und h\u00e4matologische Krankheiten beim Feten und Neugeborenen",
+        "text_fr": "Affections h\u00e9morragiques et h\u00e9matologiques du f\u0153tus et du nouveau-n\u00e9",
+        "text_it": "Disturbi emorragici ed ematologici del feto e del neonato"
+    },
+    {
+        "chapter": "XVI",
+        "chapter_number": 16,
+        "code": "P70-P74",
+        "text_de": "Transitorische endokrine und Stoffwechselst\u00f6rungen, die f\u00fcr den Feten und das Neugeborene spezifisch sind",
+        "text_fr": "Anomalies endocriniennes et m\u00e9taboliques transitoires sp\u00e9cifiques du f\u0153tus et du nouveau-n\u00e9",
+        "text_it": "Disturbi endocrini e metabolici transitori specifici del feto e del neonato"
+    },
+    {
+        "chapter": "XVI",
+        "chapter_number": 16,
+        "code": "P75-P78",
+        "text_de": "Krankheiten des Verdauungssystems beim Feten und Neugeborenen",
+        "text_fr": "Affections de l'appareil digestif du f\u0153tus et du nouveau-n\u00e9",
+        "text_it": "Disturbi dell'apparato digerente del feto e del neonato"
+    },
+    {
+        "chapter": "XVI",
+        "chapter_number": 16,
+        "code": "P80-P83",
+        "text_de": "Krankheitszust\u00e4nde mit Beteiligung der Haut und der Temperaturregulation beim Feten und Neugeborenen",
+        "text_fr": "Affections int\u00e9ressant les t\u00e9guments et la r\u00e9gulation thermique du f\u0153tus et du nouveau-n\u00e9",
+        "text_it": "Condizioni morbose che interessano la cute e la termoregolazione del feto e del neonato"
+    },
+    {
+        "chapter": "XVI",
+        "chapter_number": 16,
+        "code": "P90-P96",
+        "text_de": "Sonstige St\u00f6rungen, die ihren Ursprung in der Perinatalperiode haben",
+        "text_fr": "Autres affections dont l'origine se situe dans la p\u00e9riode p\u00e9rinatale",
+        "text_it": "Altri disturbi che hanno origine nel periodo perinatale"
+    },
+    {
+        "chapter": "XVII",
+        "chapter_number": 17,
+        "code": "Q00-Q07",
+        "text_de": "Angeborene Fehlbildungen des Nervensystems",
+        "text_fr": "Malformations cong\u00e9nitales du syst\u00e8me nerveux",
+        "text_it": "Malformazioni congenite del sistema nervoso"
+    },
+    {
+        "chapter": "XVII",
+        "chapter_number": 17,
+        "code": "Q10-Q18",
+        "text_de": "Angeborene Fehlbildungen des Auges, des Ohres, des Gesichtes und des Halses",
+        "text_fr": "Malformations cong\u00e9nitales de l'\u0153il, de l'oreille, de la face et du cou",
+        "text_it": "Malformazioni congenite dell'occhio, dell'orecchio, del viso e del collo"
+    },
+    {
+        "chapter": "XVII",
+        "chapter_number": 17,
+        "code": "Q20-Q28",
+        "text_de": "Angeborene Fehlbildungen des Kreislaufsystems",
+        "text_fr": "Malformations cong\u00e9nitales de l'appareil circulatoire",
+        "text_it": "Malformazioni congenite dell'apparato circolatorio"
+    },
+    {
+        "chapter": "XVII",
+        "chapter_number": 17,
+        "code": "Q30-Q34",
+        "text_de": "Angeborene Fehlbildungen des Atmungssystems",
+        "text_fr": "Malformations cong\u00e9nitales de l'appareil respiratoire",
+        "text_it": "Malformazioni congenite dell'apparato respiratorio"
+    },
+    {
+        "chapter": "XVII",
+        "chapter_number": 17,
+        "code": "Q35-Q37",
+        "text_de": "Lippen-, Kiefer- und Gaumenspalte",
+        "text_fr": "Fente labiale et fente palatine",
+        "text_it": "Schisi del labbro, del palato e dell'osso mascellare"
+    },
+    {
+        "chapter": "XVII",
+        "chapter_number": 17,
+        "code": "Q38-Q45",
+        "text_de": "Sonstige angeborene Fehlbildungen des Verdauungssystems",
+        "text_fr": "Autres malformations cong\u00e9nitales de l'appareil digestif",
+        "text_it": "Altre malformazioni congenite dell'apparato digerente"
+    },
+    {
+        "chapter": "XVII",
+        "chapter_number": 17,
+        "code": "Q50-Q56",
+        "text_de": "Angeborene Fehlbildungen der Genitalorgane",
+        "text_fr": "Malformations cong\u00e9nitales des organes g\u00e9nitaux",
+        "text_it": "Malformazioni congenite degli organi genitali"
+    },
+    {
+        "chapter": "XVII",
+        "chapter_number": 17,
+        "code": "Q60-Q64",
+        "text_de": "Angeborene Fehlbildungen des Harnsystems",
+        "text_fr": "Malformations cong\u00e9nitales de l'appareil urinaire",
+        "text_it": "Malformazioni congenite dell'apparato urinario"
+    },
+    {
+        "chapter": "XVII",
+        "chapter_number": 17,
+        "code": "Q65-Q79",
+        "text_de": "Angeborene Fehlbildungen und Deformit\u00e4ten des Muskel-Skelett-Systems",
+        "text_fr": "Malformations cong\u00e9nitales du syst\u00e8me ost\u00e9o-articulaire et des muscles",
+        "text_it": "Malformazioni e deformazioni congenite del sistema osteomuscolare"
+    },
+    {
+        "chapter": "XVII",
+        "chapter_number": 17,
+        "code": "Q80-Q89",
+        "text_de": "Sonstige angeborene Fehlbildungen",
+        "text_fr": "Autres malformations cong\u00e9nitales",
+        "text_it": "Altre malformazioni congenite"
+    },
+    {
+        "chapter": "XVII",
+        "chapter_number": 17,
+        "code": "Q90-Q99",
+        "text_de": "Chromosomenanomalien, anderenorts nicht klassifiziert",
+        "text_fr": "Anomalies chromosomiques, non class\u00e9es ailleurs",
+        "text_it": "Anomalie cromosomiche non classificate altrove"
+    },
+    {
+        "chapter": "XVIII",
+        "chapter_number": 18,
+        "code": "R00-R09",
+        "text_de": "Symptome, die das Kreislaufsystem und das Atmungssystem betreffen",
+        "text_fr": "Sympt\u00f4mes et signes relatifs aux appareils circulatoire et respiratoire",
+        "text_it": "Sintomi e segni che interessano gli apparati circolatorio e respiratorio"
+    },
+    {
+        "chapter": "XVIII",
+        "chapter_number": 18,
+        "code": "R10-R19",
+        "text_de": "Symptome, die das Verdauungssystem und das Abdomen betreffen",
+        "text_fr": "Sympt\u00f4mes et signes relatifs \u00e0 l'appareil digestif et \u00e0 l'abdomen",
+        "text_it": "Sintomi e segni che interessano l'apparato digerente e l'addome"
+    },
+    {
+        "chapter": "XVIII",
+        "chapter_number": 18,
+        "code": "R20-R23",
+        "text_de": "Symptome, die die Haut und das Unterhautgewebe betreffen",
+        "text_fr": "Sympt\u00f4mes et signes relatifs \u00e0 la peau et au tissu cellulaire sous-cutan\u00e9",
+        "text_it": "Sintomi e segni che interessano la cute ed il tessuto sottocutaneo"
+    },
+    {
+        "chapter": "XVIII",
+        "chapter_number": 18,
+        "code": "R25-R29",
+        "text_de": "Symptome, die das Nervensystem und das Muskel-Skelett-System betreffen",
+        "text_fr": "Sympt\u00f4mes et signes relatifs aux syst\u00e8mes nerveux et ost\u00e9o-musculaire",
+        "text_it": "Sintomi e segni che interessano il sistema nervoso ed il sistema osteomuscolare"
+    },
+    {
+        "chapter": "XVIII",
+        "chapter_number": 18,
+        "code": "R30-R39",
+        "text_de": "Symptome, die das Harnsystem betreffen",
+        "text_fr": "Sympt\u00f4mes et signes relatifs \u00e0 l'appareil urinaire",
+        "text_it": "Sintomi e segni che interessano l'apparato urinario"
+    },
+    {
+        "chapter": "XVIII",
+        "chapter_number": 18,
+        "code": "R40-R46",
+        "text_de": "Symptome, die das Erkennungs- und Wahrnehmungsverm\u00f6gen, die Stimmung und das Verhalten betreffen",
+        "text_fr": "Sympt\u00f4mes et signes relatifs \u00e0 la connaissance, la perception, l'humeur et le comportement",
+        "text_it": "Sintomi e segni che interessano le facolt\u00e0 cognitive, la percezione, lo stato emotivo ed il comportamento"
+    },
+    {
+        "chapter": "XVIII",
+        "chapter_number": 18,
+        "code": "R47-R49",
+        "text_de": "Symptome, die die Sprache und die Stimme betreffen",
+        "text_fr": "Sympt\u00f4mes et signes relatifs au langage et \u00e0 la voix",
+        "text_it": "Sintomi e segni che interessano il linguaggio e la voce"
+    },
+    {
+        "chapter": "XVIII",
+        "chapter_number": 18,
+        "code": "R50-R69",
+        "text_de": "Allgemeinsymptome",
+        "text_fr": "Sympt\u00f4mes et signes g\u00e9n\u00e9raux",
+        "text_it": "Sintomi e segni generali"
+    },
+    {
+        "chapter": "XVIII",
+        "chapter_number": 18,
+        "code": "R70-R79",
+        "text_de": "Abnorme Blutuntersuchungsbefunde ohne Vorliegen einer Diagnose",
+        "text_fr": "R\u00e9sultats anormaux de l'examen du sang, sans diagnostic",
+        "text_it": "Risultati anormali, non diagnostici, di esame del sangue"
+    },
+    {
+        "chapter": "XVIII",
+        "chapter_number": 18,
+        "code": "R80-R82",
+        "text_de": "Abnorme Urinuntersuchungsbefunde ohne Vorliegen einer Diagnose",
+        "text_fr": "R\u00e9sultats anormaux de l'examen des urines, sans diagnostic",
+        "text_it": "Risultati anormali, non diagnostici, di esame dell'urina"
+    },
+    {
+        "chapter": "XVIII",
+        "chapter_number": 18,
+        "code": "R83-R89",
+        "text_de": "Abnorme Befunde ohne Vorliegen einer Diagnose bei der Untersuchung anderer K\u00f6rperfl\u00fcssigkeiten, Substanzen und Gewebe",
+        "text_fr": "R\u00e9sultats anormaux de l'examen d'autres liquides, substances et tissus, sans diagnostic",
+        "text_it": "Risultati anormali, non diagnostici, di esame di altri liquidi, sostanze e tessuti corporei"
+    },
+    {
+        "chapter": "XVIII",
+        "chapter_number": 18,
+        "code": "R90-R94",
+        "text_de": "Abnorme Befunde ohne Vorliegen einer Diagnose bei bildgebender Diagnostik und Funktionspr\u00fcfungen",
+        "text_fr": "R\u00e9sultats anormaux d'imagerie diagnostique et d'\u00e9preuves fonctionnelles, sans diagnostic",
+        "text_it": "Risultati anormali di diagnostica per immagini e di esami per studi di funzionalit\u00e0, non diagnostici"
+    },
+    {
+        "chapter": "XVIII",
+        "chapter_number": 18,
+        "code": "R95-R99",
+        "text_de": "Ungenau bezeichnete und unbekannte Todesursachen",
+        "text_fr": "Causes de mortalit\u00e9 mal d\u00e9finies et inconnues",
+        "text_it": "Cause mal definite e sconosciute di mortalit\u00e0"
+    },
+    {
+        "chapter": "XIX",
+        "chapter_number": 19,
+        "code": "S00-S09",
+        "text_de": "Verletzungen des Kopfes",
+        "text_fr": "L\u00e9sions traumatiques de la t\u00eate",
+        "text_it": "Traumatismi della testa"
+    },
+    {
+        "chapter": "XIX",
+        "chapter_number": 19,
+        "code": "S10-S19",
+        "text_de": "Verletzungen des Halses",
+        "text_fr": "L\u00e9sions traumatiques du cou",
+        "text_it": "Traumatismi del collo"
+    },
+    {
+        "chapter": "XIX",
+        "chapter_number": 19,
+        "code": "S20-S29",
+        "text_de": "Verletzungen des Thorax",
+        "text_fr": "L\u00e9sions traumatiques du thorax",
+        "text_it": "Traumatismi del torace"
+    },
+    {
+        "chapter": "XIX",
+        "chapter_number": 19,
+        "code": "S30-S39",
+        "text_de": "Verletzungen des Abdomens, der Lumbosakralgegend, der Lendenwirbels\u00e4ule und des Beckens",
+        "text_fr": "L\u00e9sions traumatiques de l'abdomen, des lombes, du rachis lombaire et du bassin",
+        "text_it": "Traumatismi dell'addome, della regione lombosacrale, della colonna vertebrale e della pelvi"
+    },
+    {
+        "chapter": "XIX",
+        "chapter_number": 19,
+        "code": "S40-S49",
+        "text_de": "Verletzungen der Schulter und des Oberarmes",
+        "text_fr": "L\u00e9sions traumatiques de l'\u00e9paule et du bras",
+        "text_it": "Traumatismi della spalla e del braccio"
+    },
+    {
+        "chapter": "XIX",
+        "chapter_number": 19,
+        "code": "S50-S59",
+        "text_de": "Verletzungen des Ellenbogens und des Unterarmes",
+        "text_fr": "L\u00e9sions traumatiques du coude et de l'avant-bras",
+        "text_it": "Traumatismi del gomito e dell'avambraccio"
+    },
+    {
+        "chapter": "XIX",
+        "chapter_number": 19,
+        "code": "S60-S69",
+        "text_de": "Verletzungen des Handgelenkes und der Hand",
+        "text_fr": "L\u00e9sions traumatiques du poignet et de la main",
+        "text_it": "Traumatismi del polso e della mano"
+    },
+    {
+        "chapter": "XIX",
+        "chapter_number": 19,
+        "code": "S70-S79",
+        "text_de": "Verletzungen der H\u00fcfte und des Oberschenkels",
+        "text_fr": "L\u00e9sions traumatiques de la hanche et de la cuisse",
+        "text_it": "Traumatismi dell'anca e della coscia"
+    },
+    {
+        "chapter": "XIX",
+        "chapter_number": 19,
+        "code": "S80-S89",
+        "text_de": "Verletzungen des Knies und des Unterschenkels",
+        "text_fr": "L\u00e9sions traumatiques du genou et de la jambe",
+        "text_it": "Traumatismi del ginocchio e della gamba"
+    },
+    {
+        "chapter": "XIX",
+        "chapter_number": 19,
+        "code": "S90-S99",
+        "text_de": "Verletzungen der Kn\u00f6chelregion und des Fu\u00dfes",
+        "text_fr": "L\u00e9sions traumatiques de la cheville et du pied",
+        "text_it": "Traumatismi della caviglia e del piede"
+    },
+    {
+        "chapter": "XIX",
+        "chapter_number": 19,
+        "code": "T00-T07",
+        "text_de": "Verletzungen mit Beteiligung mehrerer K\u00f6rperregionen",
+        "text_fr": "L\u00e9sions traumatiques de plusieurs parties du corps",
+        "text_it": "Traumatismi interessanti regioni corporee multiple"
+    },
+    {
+        "chapter": "XIX",
+        "chapter_number": 19,
+        "code": "T08-T14",
+        "text_de": "Verletzungen nicht n\u00e4her bezeichneter Teile des Rumpfes, der Extremit\u00e4ten oder anderer K\u00f6rperregionen",
+        "text_fr": "L\u00e9sions traumatiques de si\u00e8ge non pr\u00e9cis\u00e9 du tronc, membre ou autre r\u00e9gion du corps",
+        "text_it": "Traumatismi di sede non specificata del tronco, di arto o di altra regione corporea"
+    },
+    {
+        "chapter": "XIX",
+        "chapter_number": 19,
+        "code": "T15-T19",
+        "text_de": "Folgen des Eindringens eines Fremdk\u00f6rpers durch eine nat\u00fcrliche K\u00f6rper\u00f6ffnung",
+        "text_fr": "Effets dus \u00e0 un corps \u00e9tranger ayant p\u00e9n\u00e9tr\u00e9 dans un orifice naturel",
+        "text_it": "Effetti della penetrazione di corpo estraneo attraverso un orifizio naturale"
+    },
+    {
+        "chapter": "XIX",
+        "chapter_number": 19,
+        "code": "T20-T25",
+        "text_de": "Verbrennungen oder Ver\u00e4tzungen der \u00e4u\u00dferen K\u00f6rperoberfl\u00e4che, Lokalisation bezeichnet",
+        "text_fr": "Br\u00fblures et corrosions de la surface externe du corps, selon la localisation",
+        "text_it": "Ustioni e corrosioni della superficie corporea esterna, classificate per sede"
+    },
+    {
+        "chapter": "XIX",
+        "chapter_number": 19,
+        "code": "T20-T32",
+        "text_de": "Verbrennungen oder Ver\u00e4tzungen",
+        "text_fr": "Br\u00fblures et corrosions",
+        "text_it": "Ustioni e corrosioni"
+    },
+    {
+        "chapter": "XIX",
+        "chapter_number": 19,
+        "code": "T26-T28",
+        "text_de": "Verbrennungen oder Ver\u00e4tzungen, die auf das Auge und auf innere Organe begrenzt sind",
+        "text_fr": "Br\u00fblures et corrosions de l'\u0153il et des organes internes",
+        "text_it": "Ustioni e corrosioni limitate all'occhio ed agli organi interni"
+    },
+    {
+        "chapter": "XIX",
+        "chapter_number": 19,
+        "code": "T29-T32",
+        "text_de": "Verbrennungen oder Ver\u00e4tzungen mehrerer und nicht n\u00e4her bezeichneter K\u00f6rperregionen",
+        "text_fr": "Br\u00fblures et corrosions de parties du corps, multiples et non pr\u00e9cis\u00e9es",
+        "text_it": "Ustioni e corrosioni di regioni corporee multiple e non specificate"
+    },
+    {
+        "chapter": "XIX",
+        "chapter_number": 19,
+        "code": "T33-T35",
+        "text_de": "Erfrierungen",
+        "text_fr": "Gelures",
+        "text_it": "Congelamento"
+    },
+    {
+        "chapter": "XIX",
+        "chapter_number": 19,
+        "code": "T36-T50",
+        "text_de": "Vergiftungen durch Arzneimittel, Drogen und biologisch aktive Substanzen",
+        "text_fr": "Intoxications par des m\u00e9dicaments et des substances biologiques",
+        "text_it": "Avvelenamento da farmaci, droghe e sostanze biologiche"
+    },
+    {
+        "chapter": "XIX",
+        "chapter_number": 19,
+        "code": "T51-T65",
+        "text_de": "Toxische Wirkungen von vorwiegend nicht medizinisch verwendeten Substanzen",
+        "text_fr": "Effets toxiques de substances d'origine essentiellement non m\u00e9dicinale",
+        "text_it": "Effetti tossici di sostanze di origine principalmente non medicamentosa"
+    },
+    {
+        "chapter": "XIX",
+        "chapter_number": 19,
+        "code": "T66-T78",
+        "text_de": "Sonstige und nicht n\u00e4her bezeichnete Sch\u00e4den durch \u00e4u\u00dfere Ursachen",
+        "text_fr": "Effets de causes externes, autres et non pr\u00e9cis\u00e9s",
+        "text_it": "Altri e non specificati effetti di cause esterne"
+    },
+    {
+        "chapter": "XIX",
+        "chapter_number": 19,
+        "code": "T79-T79",
+        "text_de": "Bestimmte Fr\u00fchkomplikationen eines Traumas",
+        "text_fr": "Certaines complications pr\u00e9coces des traumatismes",
+        "text_it": "Alcune complicanze precoci di traumatismi"
+    },
+    {
+        "chapter": "XIX",
+        "chapter_number": 19,
+        "code": "T80-T88",
+        "text_de": "Komplikationen bei chirurgischen Eingriffen und medizinischer Behandlung, anderenorts nicht klassifiziert",
+        "text_fr": "Complications de soins chirurgicaux et m\u00e9dicaux, non class\u00e9es ailleurs",
+        "text_it": "Complicanze di cure chirurgiche e mediche non classificate altrove"
+    },
+    {
+        "chapter": "XIX",
+        "chapter_number": 19,
+        "code": "T89-T89",
+        "text_de": "Sonstige Komplikationen eines Traumas, anderenorts nicht klassifiziert",
+        "text_fr": "Autres complications d'un traumatisme non class\u00e9es ailleurs",
+        "text_it": "Altre complicanze di traumatismo, non classificate altrove"
+    },
+    {
+        "chapter": "XIX",
+        "chapter_number": 19,
+        "code": "T90-T98",
+        "text_de": "Folgen von Verletzungen, Vergiftungen und sonstigen Auswirkungen \u00e4u\u00dferer Ursachen",
+        "text_fr": "S\u00e9quelles de l\u00e9sions traumatiques, d'empoisonnements et d'autres cons\u00e9quences de causes externes",
+        "text_it": "Sequele di traumatismi, di avvelenamenti e di altre conseguenze di cause esterne"
+    },
+    {
+        "chapter": "XXII",
+        "chapter_number": 22,
+        "code": "U00-U49",
+        "text_de": "Vorl\u00e4ufige Zuordnungen f\u00fcr Krankheiten mit unklarer \u00c4tiologie und nicht belegte Schl\u00fcsselnummern",
+        "text_fr": "Classement provisoire d'affections d'\u00e9tiologie incertaine et codes non attribu\u00e9s",
+        "text_it": "Assegnazione provvisoria di nuove malattie di eziologia incerta e codici non attribuiti"
+    },
+    {
+        "chapter": "XXII",
+        "chapter_number": 22,
+        "code": "U50-U52",
+        "text_de": "Funktionseinschr\u00e4nkung",
+        "text_fr": "Limitation fonctionnelle",
+        "text_it": "Limitazione funzionale"
+    },
+    {
+        "chapter": "XXII",
+        "chapter_number": 22,
+        "code": "U55-U55",
+        "text_de": "Erfolgte Registrierung zur Organtransplantation",
+        "text_fr": "Inscription pour transplantation d'organe",
+        "text_it": "Iscrizione in lista per trapianto d\u2019organo"
+    },
+    {
+        "chapter": "XXII",
+        "chapter_number": 22,
+        "code": "U60-U61",
+        "text_de": "Stadieneinteilung der HIV-Infektion",
+        "text_fr": "D\u00e9finition des stades de l'infection par le VIH",
+        "text_it": "Stadiazione dell\u2019infezione da HIV"
+    },
+    {
+        "chapter": "XXII",
+        "chapter_number": 22,
+        "code": "U69-U69",
+        "text_de": "Sonstige sekund\u00e4re Schl\u00fcsselnummern f\u00fcr besondere Zwecke",
+        "text_fr": "Autres codes secondaires destin\u00e9s \u00e0 des usages particuliers",
+        "text_it": "Altri codici secondari per scopi particolari"
+    },
+    {
+        "chapter": "XXII",
+        "chapter_number": 22,
+        "code": "U80-U85",
+        "text_de": "Infektionserreger mit Resistenzen gegen bestimmte Antibiotika oder Chemotherapeutika",
+        "text_fr": "Agents infectieux r\u00e9sistants aux antibiotiques ou aux th\u00e9rapies chimiques pr\u00e9cis\u00e9s",
+        "text_it": "Agenti infettivi con resistenze a determinati antibiotici o chemioterapici"
+    },
+    {
+        "chapter": "XXII",
+        "chapter_number": 22,
+        "code": "U99-U99",
+        "text_de": "Nicht belegte Schl\u00fcsselnummern",
+        "text_fr": "Codes non attribu\u00e9s",
+        "text_it": "Codici non attribuiti"
+    },
+    {
+        "chapter": "XX",
+        "chapter_number": 20,
+        "code": "V01-X59",
+        "text_de": "Unf\u00e4lle",
+        "text_fr": "Accidents",
+        "text_it": "Incidenti"
+    },
+    {
+        "chapter": "XX",
+        "chapter_number": 20,
+        "code": "X60-X84",
+        "text_de": "Vors\u00e4tzliche Selbstbesch\u00e4digung",
+        "text_fr": "L\u00e9sion auto-inflig\u00e9e",
+        "text_it": "Autolesionismo intenzionale"
+    },
+    {
+        "chapter": "XX",
+        "chapter_number": 20,
+        "code": "X85-Y09",
+        "text_de": "T\u00e4tlicher Angriff",
+        "text_fr": "Agression",
+        "text_it": "Aggressione"
+    },
+    {
+        "chapter": "XX",
+        "chapter_number": 20,
+        "code": "Y10-Y34",
+        "text_de": "Ereignis, dessen n\u00e4here Umst\u00e4nde unbestimmt sind",
+        "text_fr": "Ev\u00e9nements, dont les circonstances pr\u00e9cises ne sont pas d\u00e9termin\u00e9es",
+        "text_it": "Evento con intento indeterminato"
+    },
+    {
+        "chapter": "XX",
+        "chapter_number": 20,
+        "code": "Y35-Y36",
+        "text_de": "Gesetzliche Ma\u00dfnahmen und Kriegshandlungen",
+        "text_fr": "Mesures judiciaires et faits de guerre",
+        "text_it": "Intervento della forza pubblica e operazioni di guerra"
+    },
+    {
+        "chapter": "XX",
+        "chapter_number": 20,
+        "code": "Y40-Y84",
+        "text_de": "Komplikationen bei der medizinischen und chirurgischen Behandlung",
+        "text_fr": "Complications de soins m\u00e9dicaux et chirurgicaux",
+        "text_it": "Complicanze di assistenza medica e chirurgica"
+    },
+    {
+        "chapter": "XXI",
+        "chapter_number": 21,
+        "code": "Z00-Z13",
+        "text_de": "Personen, die das Gesundheitswesen zur Untersuchung und Abkl\u00e4rung in Anspruch nehmen",
+        "text_fr": "Sujets en contact avec les services de sant\u00e9 pour des examens divers",
+        "text_it": "Persone che ricorrono ai servizi sanitari per visite ed analisi"
+    },
+    {
+        "chapter": "XXI",
+        "chapter_number": 21,
+        "code": "Z20-Z29",
+        "text_de": "Personen mit potentiellen Gesundheitsrisiken hinsichtlich \u00fcbertragbarer Krankheiten",
+        "text_fr": "Sujets pouvant courir un risque li\u00e9 \u00e0 des maladies transmissibles",
+        "text_it": "Persone a rischio potenziale per malattie trasmissibili"
+    },
+    {
+        "chapter": "XXI",
+        "chapter_number": 21,
+        "code": "Z30-Z39",
+        "text_de": "Personen, die das Gesundheitswesen im Zusammenhang mit Problemen der Reproduktion in Anspruch nehmen",
+        "text_fr": "Sujets ayant recours aux services de sant\u00e9 pour des motifs li\u00e9s \u00e0 la reproduction",
+        "text_it": "Persone che ricorrono ai servizi sanitari per motivi connessi con la riproduzione"
+    },
+    {
+        "chapter": "XXI",
+        "chapter_number": 21,
+        "code": "Z40-Z54",
+        "text_de": "Personen, die das Gesundheitswesen zum Zwecke spezifischer Ma\u00dfnahmen und zur medizinischen Betreuung in Anspruch nehmen",
+        "text_fr": "Sujets ayant recours aux services de sant\u00e9 pour des actes m\u00e9dicaux et des soins sp\u00e9cifiques",
+        "text_it": "Persone che ricorrono ai servizi sanitari per procedure e trattamenti specifici"
+    },
+    {
+        "chapter": "XXI",
+        "chapter_number": 21,
+        "code": "Z55-Z65",
+        "text_de": "Personen mit potentiellen Gesundheitsrisiken aufgrund sozio\u00f6konomischer oder psychosozialer Umst\u00e4nde",
+        "text_fr": "Sujets dont la sant\u00e9 peut \u00eatre menac\u00e9e par des conditions socio-\u00e9conomiques et psycho-sociales",
+        "text_it": "Persone con potenziali problemi di salute legati a condizioni socioeconomiche o a circostanze psicosociali"
+    },
+    {
+        "chapter": "XXI",
+        "chapter_number": 21,
+        "code": "Z70-Z76",
+        "text_de": "Personen, die das Gesundheitswesen aus sonstigen Gr\u00fcnden in Anspruch nehmen",
+        "text_fr": "Sujets ayant recours aux services de sant\u00e9 pour d'autres motifs",
+        "text_it": "Persone che ricorrono ai servizi sanitari in altre circostanze"
+    },
+    {
+        "chapter": "XXI",
+        "chapter_number": 21,
+        "code": "Z80-Z99",
+        "text_de": "Personen mit potentiellen Gesundheitsrisiken aufgrund der Familien- oder Eigenanamnese und bestimmte Zust\u00e4nde, die den Gesundheitszustand beeinflussen",
+        "text_fr": "Sujets dont la sant\u00e9 peut \u00eatre menac\u00e9e en raison d'ant\u00e9c\u00e9dents personnels et familiaux et de certaines affections",
+        "text_it": "Persone con potenziali rischi della salute in relazione all'anamnesi personale e familiare ed a talune condizioni che influenzano lo stato di salute"
+    }
+]

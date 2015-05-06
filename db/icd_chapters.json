@@ -1,0 +1,178 @@
+[
+    {
+        "nonterminals": "A00-B99",
+        "number": 1,
+        "roman_number": "I",
+        "text_de": "Bestimmte infekti\u00f6se und parasit\u00e4re Krankheiten",
+        "text_fr": "Certaines maladies infectieuses et parasitaires",
+        "text_it": "Alcune malattie infettive e parassitarie"
+    },
+    {
+        "nonterminals": "C00-D48",
+        "number": 2,
+        "roman_number": "II",
+        "text_de": "Neubildungen",
+        "text_fr": "Tumeurs",
+        "text_it": "Tumori"
+    },
+    {
+        "nonterminals": "D50-D90",
+        "number": 3,
+        "roman_number": "III",
+        "text_de": "Krankheiten des Blutes und der blutbildenden Organe sowie bestimmte St\u00f6rungen mit Beteiligung des Immunsystems",
+        "text_fr": "Maladies du sang et des organes h\u00e9matopo\u00ef\u00e9tiques et certains troubles du syst\u00e8me immunitaire",
+        "text_it": "Malattie del sangue e degli organi ematopoietici ed alcuni disturbi del sistema immunitario"
+    },
+    {
+        "nonterminals": "E00-E90",
+        "number": 4,
+        "roman_number": "IV",
+        "text_de": "Endokrine, Ern\u00e4hrungs- und Stoffwechselkrankheiten",
+        "text_fr": "Maladies endocriniennes, nutritionnelles et m\u00e9taboliques",
+        "text_it": "Malattie endocrine, nutrizionali e metaboliche"
+    },
+    {
+        "nonterminals": "F00-F99",
+        "number": 5,
+        "roman_number": "V",
+        "text_de": "Psychische und Verhaltensst\u00f6rungen",
+        "text_fr": "Troubles mentaux et du comportement",
+        "text_it": "Disturbi psichici e comportamentali"
+    },
+    {
+        "nonterminals": "G00-G99",
+        "number": 6,
+        "roman_number": "VI",
+        "text_de": "Krankheiten des Nervensystems",
+        "text_fr": "Maladies du syst\u00e8me nerveux",
+        "text_it": "Malattie del sistema nervoso"
+    },
+    {
+        "nonterminals": "H00-H59",
+        "number": 7,
+        "roman_number": "VII",
+        "text_de": "Krankheiten des Auges und der Augenanhangsgebilde",
+        "text_fr": "Maladies de l'\u0153il et de ses annexes",
+        "text_it": "Malattie dell'occhio e degli annessi oculari"
+    },
+    {
+        "nonterminals": "H60-H95",
+        "number": 8,
+        "roman_number": "VIII",
+        "text_de": "Krankheiten des Ohres und des Warzenfortsatzes",
+        "text_fr": "Maladies de l'oreille et de l'apophyse masto\u00efde",
+        "text_it": "Malattie dell'orecchio e dell'apofisi mastoide"
+    },
+    {
+        "nonterminals": "I00-I99",
+        "number": 9,
+        "roman_number": "IX",
+        "text_de": "Krankheiten des Kreislaufsystems",
+        "text_fr": "Maladies de l'appareil circulatoire",
+        "text_it": "Malattie del sistema circolatori"
+    },
+    {
+        "nonterminals": "J00-J99",
+        "number": 10,
+        "roman_number": "X",
+        "text_de": "Krankheiten des Atmungssystems",
+        "text_fr": "Maladies de l'appareil respiratoire",
+        "text_it": "Malattie del sistema circolatori"
+    },
+    {
+        "nonterminals": "K00-K93",
+        "number": 11,
+        "roman_number": "XI",
+        "text_de": "Krankheiten des Verdauungssystems",
+        "text_fr": "Maladies de l'appareil digestif",
+        "text_it": "Malattie dell'apparato digerente"
+    },
+    {
+        "nonterminals": "L00-L99",
+        "number": 12,
+        "roman_number": "XII",
+        "text_de": "Krankheiten der Haut und der Unterhaut",
+        "text_fr": "Maladies de l'appareil digestif",
+        "text_it": "Malattie della cute e del tessuto sottocutaneo"
+    },
+    {
+        "nonterminals": "M00-M99",
+        "number": 13,
+        "roman_number": "XIII",
+        "text_de": "Krankheiten des Muskel-Skelett-Systems und des Bindegewebes",
+        "text_fr": "Maladies du syst\u00e8me ost\u00e9o-articulaire, des muscles et du tissu conjonctif",
+        "text_it": "Malattie del sistema osteomuscolare e del tessuto connettivo"
+    },
+    {
+        "nonterminals": "N00-N99",
+        "number": 14,
+        "roman_number": "XIV",
+        "text_de": "Krankheiten des Urogenitalsystems",
+        "text_fr": "Maladies de l'appareil g\u00e9nito-urinaire",
+        "text_it": "Malattie dell'apparato genitourinario"
+    },
+    {
+        "nonterminals": "O00-O99",
+        "number": 15,
+        "roman_number": "XV",
+        "text_de": "Schwangerschaft, Geburt und Wochenbett",
+        "text_fr": "Grossesse, accouchement et puerp\u00e9ralit\u00e9",
+        "text_it": "Gravidanza, parto e puerperio"
+    },
+    {
+        "nonterminals": "P00-P96",
+        "number": 16,
+        "roman_number": "XVI",
+        "text_de": "Bestimmte Zust\u00e4nde, die ihren Ursprung in der Perinatalperiode haben",
+        "text_fr": "Certaines affections dont l'origine se situe dans la p\u00e9riode p\u00e9rinatale",
+        "text_it": "Alcune condizioni morbose che hanno origine nel periodo perinatale"
+    },
+    {
+        "nonterminals": "Q00-Q99",
+        "number": 17,
+        "roman_number": "XVII",
+        "text_de": "Angeborene Fehlbildungen, Deformit\u00e4ten und Chromosomenanomalien",
+        "text_fr": "Malformations cong\u00e9nitales et anomalies chromosomiques",
+        "text_it": "Malformazioni e deformazioni congenite, anomalie cromosomiche"
+    },
+    {
+        "nonterminals": "R00-R99",
+        "number": 18,
+        "roman_number": "XVIII",
+        "text_de": "Symptome und abnorme klinische und Laborbefunde, die anderenorts nicht klassifiziert sind",
+        "text_fr": "Sympt\u00f4mes, signes et r\u00e9sultats anormaux d'examens cliniques et de laboratoire, non class\u00e9s ailleurs",
+        "text_it": "Sintomi, segni e risultati anormali di esami clinici e di laboratorio, non classificati altrove"
+    },
+    {
+        "nonterminals": "S00-T98",
+        "number": 19,
+        "roman_number": "XIX",
+        "text_de": "Verletzungen, Vergiftungen und bestimmte andere Folgen \u00e4u\u00dferer Ursachen",
+        "text_fr": "L\u00e9sions traumatiques, empoisonnements et certaines autres cons\u00e9quences de causes externes",
+        "text_it": "Traumatismi, avvelenamenti ed alcune altre conseguenze di cause esterne"
+    },
+    {
+        "nonterminals": "V01-Y84",
+        "number": 20,
+        "roman_number": "XX",
+        "text_de": "\u00c4u\u00dfere Ursachen von Morbidit\u00e4t und Mortalit\u00e4t",
+        "text_fr": "Causes externes de morbidit\u00e9 et de mortalit\u00e9",
+        "text_it": "Cause esterne di morbosit\u00e0 e mortalit\u00e0"
+    },
+    {
+        "nonterminals": "Z00-Z99",
+        "number": 21,
+        "roman_number": "XXI",
+        "text_de": "Faktoren, die den Gesundheitszustand beeinflussen und zur Inanspruchnahme des Gesundheitswesens f\u00fchren",
+        "text_fr": "Facteurs influant sur l'\u00e9tat de sant\u00e9 et motifs de recours aux services de sant\u00e9",
+        "text_it": "Fattori influenzanti lo stato di salute e il ricorso ai servizi sanitari"
+    },
+    {
+        "nonterminals": "U00-U99",
+        "number": 22,
+        "roman_number": "XXII",
+        "text_de": "Schl\u00fcsselnummern f\u00fcr besondere Zwecke",
+        "text_fr": "Codes d'utilisation particuli\u00e8re",
+        "text_it": "Codici per scopi speciali"
+    }
+]
