@@ -6,8 +6,6 @@ define([], function() {
         var WOMAN = 0;
         var MAN = 1;
 
-        var endData = [];
-
         _this.initialize = function () {
 
         };
@@ -15,7 +13,7 @@ define([], function() {
         // This function will iterate per year through all age intervals and sum it up
         // first for loop iterates through the years while the second iterates through
         // the age intervals.
-        _this.convert = function (dataset) {
+        _this.convert = function (dataset, resultCallback) {
             var percentageInterval_male = {"I": 0, "II": 0, "III": 0, "IV": 0, "V": 0, "VI": 0, "VII": 0, "VIII": 0, "IX": 0, "X": 0,
                 "XI": 0, "XII": 0, "XIII": 0, "XIV": 0, "XV": 0, "XVI": 0, "XVII": 0, "XVIII": 0, "XIX": 0, "XX": 0, "XXI": 0};
             var percentageInterval_female = {"I": 0, "II": 0, "III": 0, "IV": 0, "V": 0, "VI": 0, "VII": 0, "VIII": 0, "IX": 0, "X": 0,
@@ -23,11 +21,14 @@ define([], function() {
 
             // iterates through all years of the year interval
             for(i = 0; i < dataset.years.length; i++) {
+
                 $.getJSON("/api/v1/chaptersbyyear/" + dataset.years[i], function(data) {
+                    var agesLength = dataset.ages.length;
+                    var yearsLength = dataset.years.length;
 
                     // var tmpYear = dataset.years[i];
 
-                    for (j = 0; j < dataset.ages.length; j++) {
+                    for (j = 0; j < agesLength; j++) {
                         var tmpAgeInterval = dataset.ages[j];
 
 
@@ -175,35 +176,22 @@ define([], function() {
                         })
                     }
 
-                    //endData.push(_this.normalizeData(percentageInterval_male));
-                    //endData.push(_this.normalizeData(percentageInterval_female));
+                    percentageInterval_male = _this.normalizeData(percentageInterval_male, agesLength*yearsLength);
+                    percentageInterval_female = _this.normalizeData(percentageInterval_female, agesLength*yearsLength);
 
+                    resultCallback(percentageInterval_male, percentageInterval_female);
                 });
             }
-
-            console.log("NOOOOOOOO");
-            console.log(endData);
-            return endData;
-
         };
 
-        _this.normalizeData = function(notNormalized) {
-            var sum;
-            sum = 0;
-            //console.log("TESTERT");
-            //console.log(notNormalized);
-            _.each(notNormalized, function(d) {
-                sum = sum + d;
-
-            });
-            // TODO figure out normalization
-            _.each(notNormalized, function(d) {
-                d = d/(sum/100);
-            });
-
-            //console.log(sum);
-        }
-
+        _this.normalizeData = function(notNormalized, a) {
+            if(a != 0) {
+                var normalizedData = _.object(_.map(notNormalized, function(value, key) {
+                    return [key, value/a];
+                }));
+            }
+            return normalizedData;
+        };
 
         _this.initialize();
 

@@ -24,8 +24,14 @@ define([
 
         /*--------- V I S U A L I S A T I O N S ---------*/
         _this.update = function (selection) {
-            var endData = converter.convert(selection);
-            console.log(endData);
+            converter.convert(selection, function(resultMale, resultFemale) {
+                console.log("VISUALISATION");
+                console.log("MALE");
+                console.log(resultMale);
+                console.log("FEMALE");
+                console.log(resultFemale);
+            });
+
 
             // parse selections here
             // retrieve data from db
