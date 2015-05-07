@@ -24,7 +24,9 @@ define([
 
         /*--------- V I S U A L I S A T I O N S ---------*/
         _this.update = function (selection) {
-            converter.convert(selection)
+            var endData = converter.convert(selection);
+            console.log(endData);
+
             // parse selections here
             // retrieve data from db
             // convert data

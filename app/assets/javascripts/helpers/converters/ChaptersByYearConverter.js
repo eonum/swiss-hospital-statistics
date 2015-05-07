@@ -6,41 +6,20 @@ define([], function() {
         var WOMAN = 0;
         var MAN = 1;
 
+        var endData = [];
+
         _this.initialize = function () {
 
         };
-/*
-        _this.cleanData = function(dataset) {
-            var cleanedData = [[],[]];
-            function removeItem() {
-                function sex(data) {
-                    return _.first(data.categorised_data.categories.icd_chapter_sex_interval).sex;
-                }
-                cleanedData = _.map([WOMAN, MAN], function(each) {
-                    return _.filter(dataset, function(data) {
-                        return (sex(data) === each);
-                    })
-                });
 
-                _.each(dataset, function(data){
-
-                });
-            }
-            removeItem();
-            return cleanedData;
-        };
-*/
         // This function will iterate per year through all age intervals and sum it up
         // first for loop iterates through the years while the second iterates through
         // the age intervals.
         _this.convert = function (dataset) {
-            var percentage_m, code_m, percentage_f, code_f;
             var percentageInterval_male = {"I": 0, "II": 0, "III": 0, "IV": 0, "V": 0, "VI": 0, "VII": 0, "VIII": 0, "IX": 0, "X": 0,
                 "XI": 0, "XII": 0, "XIII": 0, "XIV": 0, "XV": 0, "XVI": 0, "XVII": 0, "XVIII": 0, "XIX": 0, "XX": 0, "XXI": 0};
             var percentageInterval_female = {"I": 0, "II": 0, "III": 0, "IV": 0, "V": 0, "VI": 0, "VII": 0, "VIII": 0, "IX": 0, "X": 0,
                 "XI": 0, "XII": 0, "XIII": 0, "XIV": 0, "XV": 0, "XVI": 0, "XVII": 0, "XVIII": 0, "XIX": 0, "XX": 0, "XXI": 0};
-
-            console.log(dataset);
 
             // iterates through all years of the year interval
             for(i = 0; i < dataset.years.length; i++) {
@@ -59,7 +38,6 @@ define([], function() {
 
 
                             if(dataShortHand.sex == MAN && intervalShortHand == tmpAgeInterval) {
-                                console.log("MAN");
                                 switch(d.code) {
                                     case 'I':
                                         percentageInterval_male["I"] += dataShortHand.percentage;
@@ -126,11 +104,8 @@ define([], function() {
                                         break;
 
                                 }
-                                console.log(percentageInterval_male)
-
                             }
                             if(dataShortHand.sex == WOMAN && intervalShortHand == tmpAgeInterval) {
-                                console.log("WOMAN");
                                 switch(d.code) {
                                     case 'I':
                                         percentageInterval_female["I"] += dataShortHand.percentage;
@@ -196,69 +171,39 @@ define([], function() {
                                         percentageInterval_female["XXI"] += dataShortHand.percentage;
                                         break;
                                 }
-
                             }
                         })
                     }
 
+                    //endData.push(_this.normalizeData(percentageInterval_male));
+                    //endData.push(_this.normalizeData(percentageInterval_female));
 
                 });
-
-
             }
 
-            return dataset;
-            /*
-                    ._each(data, function(d) {
-                        if(d[0].categorised_data.categories.icd_chapter_sex_interval[0].sex == MAN) {
-                            console.log("MAN");
-                        }
-                        if(d[0].categorised_data.categories.icd_chapter_sex_interval[0].sex == WOMAN) {
-                            console.log("WOMAN");
-                        }
-                    })
-                }
-                return dataset;
-
-                */
-        };
-
-                //cData = _.this.cleanData(data);
-
-            /*
-
-            cData = _this.cleanData(dataset);
-
-            _.each(cData, function(data) {
-                if(data[0].categorised_data.categories.icd_chapter_sex_interval[0].sex == MAN) {
-                    for(i = 0; i < data.length; i++) {
-                        year = data[i].year;
-                        from = data[i].categorised_data.categories.icd_chapter_sex_interval[0].interval.from;
-                        to = data[i].categorised_data.categories.icd_chapter_sex_interval[0].interval.to;
-                        percentage = data[i].categorised_data.categories.icd_chapter_sex_interval[0].percentage;
-                        sex = data[i].categorised_data.categories.icd_chapter_sex_interval[0].sex;
-                        code = data[i].code;
-                        endData[MAN].push([year, from, to, percentage, sex, code]);
-                    }
-                }
-                if(data[0].categorised_data.categories.icd_chapter_sex_interval[0].sex == WOMAN) {
-                    for(i = 0; i < data.length; i++) {
-                        year = data[i].year;
-                        from = data[i].categorised_data.categories.icd_chapter_sex_interval[0].interval.from;
-                        to = data[i].categorised_data.categories.icd_chapter_sex_interval[0].interval.to;
-                        percentage = data[i].categorised_data.categories.icd_chapter_sex_interval[0].percentage;
-                        sex = data[i].categorised_data.categories.icd_chapter_sex_interval[0].sex;
-                        code = data[i].code;
-                        endData[WOMAN].push([year, from, to, percentage, sex, code]);
-                    }
-                }
-            });
-
-
+            console.log("NOOOOOOOO");
+            console.log(endData);
             return endData;
 
         };
-        */
+
+        _this.normalizeData = function(notNormalized) {
+            var sum;
+            sum = 0;
+            //console.log("TESTERT");
+            //console.log(notNormalized);
+            _.each(notNormalized, function(d) {
+                sum = sum + d;
+
+            });
+            // TODO figure out normalization
+            _.each(notNormalized, function(d) {
+                d = d/(sum/100);
+            });
+
+            //console.log(sum);
+        }
+
 
         _this.initialize();
 
