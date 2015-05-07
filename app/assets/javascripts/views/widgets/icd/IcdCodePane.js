@@ -20,7 +20,7 @@ define([
         });
 
         _this.load = override(_this, _this.load, function(){
-           this.super('/api/v1/codes/icd');
+            this.super();
             _this.renderBreadcrumb();
             // TODO remove that
             //_this.searchModel().process("a045");
@@ -48,7 +48,7 @@ define([
                 .level()
                     .defaultLabel(function(){return 'Alle Kapitel'})
                     .label(function(chapter){return 'Kapitel '+chapter.roman_number + ' ' + chapter.nonterminals})
-                    .next(function(chapter){return chapter.icd_chapter_groups})
+                    .next(function(chapter){return chapter.icd_groups})
                     .sameDefault()
                     .end()
                 .level()
@@ -60,33 +60,23 @@ define([
                 .level()
                     .defaultLabel(function(){return 'Alle Nonterminals'})
                     .label(function(nonterminal) {return 'Nonterminal '+nonterminal.code})
+                    .next(function(group){return group.icd_terminals})
+                    .sameDefault()
+                    .beLast()
+                    .end()
+                .level()
+                    .defaultLabel(function(){return 'Alle Terminals'})
+                    .label(function(terminal) {return 'Terminal '+terminal.code})
                     .end();
 
-            var searchFilter = function (candidates) {
-                var nonterminals = _.flatten([_.last(breadcrumbModel.selected().path()).entity()]);
-                var lastTrueIndex = 0;
-                function match(candidate, nonterminal) {
-                    return _s(candidate.code).startsWith(nonterminal.code);
-                }
-                function isMatches (candidate) {
-                    for (var i = lastTrueIndex; i < nonterminals.length; i++) {
-                        if (match(candidate, nonterminals[i])) {
-                            lastTrueIndex = i;
-                            return true;
-                        }
-                    }
-                    return false;
-                }
-                return _.filter(candidates, isMatches);
-            };
-
-            breadcrumbModel.announcer().onSendTo(OnBreadcrumbSelected, function(){
-                _this.searchModel().allCandidatesLogic(searchFilter);
+            breadcrumbModel.announcer().onSendTo(OnBreadcrumbSelected, function(ann){
+                _this.searchModel().allCandidates(ann.node().deepest().children())
             }, this);
 
             $.getJSON('/api/v1/groups/icd', function(result){
                 breadcrumbModel.on(result);
                 breadcrumb.model(breadcrumbModel);
+                _this.searchModel().allCandidates(breadcrumbModel.root().deepest().children())
             });
         };
 

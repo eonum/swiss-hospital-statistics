@@ -15,10 +15,20 @@ define([
         var defaultChild;
         var defaultLabel = function(){return 'Default'};
         var defaultSelect = function() {};
+        var isLast = false;
 
         _this.label = function(_func) {
             labelLogic = _func;
             return _this;
+        };
+
+        _this.beLast = function () {
+            isLast = true;
+            return _this;
+        };
+
+        _this.isLast = function () {
+            return isLast
         };
 
         _this.next = function (_func) {
@@ -153,7 +163,7 @@ define([
         };
 
         _this.hasNext = function () {
-            return !_.isEmpty(_this.subnodes());
+            return !_.isEmpty(_this.subnodes()) && !_this.level().isLast();
         };
 
         _this.alternatives = function () {

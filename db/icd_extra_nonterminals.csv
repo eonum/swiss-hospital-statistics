@@ -1,0 +1,268 @@
+code,text_de,text_fr,text_it
+A46,Erysipel [Wundrose],Érysipèle [érysipèle],Erisipela [erisipela]
+A55,Lymphogranuloma inguinale (venereum) durch Chlamydien,Lymphogranulomatose inguinale (vénérienne) par la chlamydia,Linfogranuloma inguinale (venereo) da clamidia
+A57,Ulcus molle (venereum),Le chancre mou (vénérienne),Chancroid (venereo)
+A58,Granuloma venereum (inguinale),Granulome vénérien (inguinale),Granuloma venereo (inguinale)
+A64,"Durch Geschlechtsverkehr übertragene Krankheiten, nicht näher bezeichnet","Les maladies sexuellement transmissibles, sans précision","Malattie sessualmente trasmissibili, non specificata"
+A65,Nichtvenerische Syphilis,Nichtvenerische Syphilis,Nichtvenerische Sifilide
+A70,Infektionen durch Chlamydia psittaci,Les infections causées par Chlamydia psittaci,Le infezioni causate da Chlamydia psittaci
+A78,Q-Fieber,La fièvre Q,Febbre Q
+A86,"Virusenzephalitis, nicht näher bezeichnet","Encéphalite virale, sans précision","Encefalite virale, non specificata"
+A89,"Virusinfektion des Zentralnervensystems, nicht näher bezeichnet",Se réfère à une infection virale du système nerveux central indéterminée,Si riferisce a infezione da virus del sistema nervoso centrale non specificata
+A90,Dengue-Fieber [Klassische Dengue],Dengue [dengue classique],La febbre dengue [dengue classica]
+A91,Hämorrhagisches Dengue-Fieber,La dengue hémorragique,Emorragica dengue
+A94,"Durch Arthropoden übertragene Viruskrankheit, nicht näher bezeichnet","Arthropodes maladie virale, sans précision","Trasmesse da artropodi malattia virale, non specificata"
+A99,Nicht näher bezeichnete hämorrhagische Viruskrankheit,Maladie hémorragique virale Non spécifié,Non specificata malattia emorragica virale
+B03,Pocken,Variole,Vaiolo
+B04,Affenpocken,Monkeypox,Vaiolo delle scimmie
+B07,Viruswarzen,Les verrues de virus,Verruche Virus
+B09,"Nicht näher bezeichnete Virusinfektion, die durch Haut- und Schleimhautläsionen gekennzeichnet ist",Infection virale Non spécifié caractérisé par des lésions cutanéo-muqueuses,Infezione virale non specificata caratterizzata da lesioni della cute e delle membrane mucose
+B20,Infektiöse und parasitäre Krankheiten infolge HIV-Krankheit [Humane Immundefizienz-Viruskrankheit],Les maladies infectieuses et parasitaires dues à la maladie VIH [de la maladie du virus de l'immunodéficience humaine],Malattie infettive e parassitarie a causa della malattia da HIV [malattia virus dell'immunodeficienza umana]
+B21,Bösartige Neubildungen infolge HIV-Krankheit [Humane Immundefizienz-Viruskrankheit],Tumeurs malignes maladie par VIH à [maladie à virus de l'immunodéficience humaine],Tumori maligni malattia da HIV con conseguente [dell'immunodeficienza umana della malattia da virus]
+B22,Sonstige näher bezeichnete Krankheiten infolge HIV-Krankheit [Humane Immundefizienz-Viruskrankheit],Autres maladies précisées en raison de la maladie du VIH [de la maladie du virus de l'immunodéficience humaine],Altre malattie specificate a causa di malattia da HIV [malattia virus dell'immunodeficienza umana]
+B24,Nicht näher bezeichnete HIV-Krankheit [Humane Immundefizienz-Viruskrankheit],Non spécifié maladie VIH [immunodéficience humaine maladie virale],Malattia non specificata HIV [dell'immunodeficienza umana della malattia da virus]
+B49,Nicht näher bezeichnete Mykose,Mycoses Non spécifié,Micosi non specificata
+B54,"Malaria, nicht näher bezeichnet","Le paludisme, sans précision","Malaria, non specificata"
+B64,Nicht näher bezeichnete Protozoenkrankheit,Maladie protozoaire Non spécifié,Malattia protozoaria non specificata
+B72,Drakunkulose,Dracunculose,Dracunculiasi
+B73,Onchozerkose,Onchocercose,Oncocercosi
+B75,Trichinellose,La trichinellose,Trichinellosi
+B79,Trichuriasis,Trichocéphalose,Trichuriasis
+B80,Enterobiasis,Enterobiasis,Enterobiasis
+B86,Skabies,Gale,Scabbia
+B89,Nicht näher bezeichnete parasitäre Krankheit,Maladie parasitaire Non spécifié,Malattia parassitaria non specificata
+B91,Folgezustände der Poliomyelitis,Séquelles de la poliomyélite,Postumi della poliomielite
+B92,Folgezustände der Lepra,Séquelles de la lèpre,Postumi della lebbra
+B99,Sonstige und nicht näher bezeichnete Infektionskrankheiten,Autres et non précisées maladies infectieuses,Altri e non specificati malattie infettive
+C01,Bösartige Neubildung des Zungengrundes,Tumeur maligne de la base de la langue,Tumori maligni della base della lingua
+C07,Bösartige Neubildung der Parotis,Tumeur maligne de la glande parotide,Tumori maligni della parotide
+C12,Bösartige Neubildung des Recessus piriformis,Tumeur maligne du piriforme de récréation,Tumori maligni del piriforme recesso
+C19,"Bösartige Neubildung am Rektosigmoid, Übergang","Tumeur maligne au rectosigmoïde, transition","Tumori maligni al rectosigmoid, di transizione"
+C20,Bösartige Neubildung des Rektums,Tumeur maligne du rectum,Tumore maligno del retto
+C23,Bösartige Neubildung der Gallenblase,Tumeur maligne de la vésicule biliaire,Tumori maligni della colecisti
+C33,Bösartige Neubildung der Trachea,Tumeur maligne de la trachée,Tumori maligni della trachea
+C37,Bösartige Neubildung des Thymus,Tumeur maligne du thymus,Tumori maligni del timo
+C52,Bösartige Neubildung der Vagina,Tumeur maligne du vagin,Tumori maligni della vagina
+C55,"Bösartige Neubildung des Uterus, Teil nicht näher bezeichnet","Tumeur maligne appelée de l'utérus, partie non précisée","Chiamato neoplasia maligna dell'utero, parte non specificata"
+C56,Bösartige Neubildung des Ovars,Tumeur maligne de l'ovaire,Tumori maligni dell'ovaio
+C58,Bösartige Neubildung der Plazenta,Tumeur maligne du placenta,Tumori maligni della placenta
+C61,Bösartige Neubildung der Prostata,Tumeur maligne de la prostate,Tumori maligni della prostata
+C64,"Bösartige Neubildung der Niere, ausgenommen Nierenbecken","Tumeur maligne du rein, à l'exception du bassinet du rein","Tumori maligni del rene, ad eccezione della pelvi renale"
+C65,Bösartige Neubildung des Nierenbeckens,Tumeur maligne du bassinet du rein,Tumori maligni della pelvi renale
+C66,Bösartige Neubildung des Ureters,Tumeur maligne de l'uretère,Tumori maligni dell'uretere
+C73,Bösartige Neubildung der Schilddrüse,Tumeur maligne de la glande thyroïde,Tumori maligni della tiroide
+D24,Gutartige Neubildung der Brustdrüse [Mamma],Tumeur bénigne du sein [mammaire],Tumori benigni della mammella [mammaria]
+D27,Gutartige Neubildung des Ovars,Tumeur bénigne de l'ovaire,Tumori benigni dell'ovaio
+D34,Gutartige Neubildung der Schilddrüse,Tumeur bénigne de la glande thyroïde,Tumori benigni della tiroide
+D45,Polycythaemia vera,Vaquez,Policitemia vera
+D62,Akute Blutungsanämie,Aiguë anémie perte de sang,Acuta perdita di sangue anemia
+D66,Hereditärer Faktor-VIII-Mangel,Facteur héréditaire carence VIII,Carenza di fattore ereditario VIII
+D67,Hereditärer Faktor-IX-Mangel,Facteur héréditaire carence IX,Deficienza di fattore IX ereditario
+D71,Funktionelle Störungen der neutrophilen Granulozyten,Les troubles fonctionnels de polynucléaires neutrophiles,Disturbi funzionali di neutrofili polimorfonucleati
+D90,"Immunkompromittierung nach Bestrahlung, Chemotherapie und sonstigen immunsuppressiven Maßnahmen","Immunkompromittierung de radiothérapie, la chimiothérapie et d'autres mesures immunosuppresseurs","Immunkompromittierung a radioterapia, chemioterapia e altre misure di immunosoppressori"
+E02,Subklinische Jodmangel-Hypothyreose,Subclinique carence en iode hypothyroïdie,Subclinica carenza di iodio ipotiroidismo
+E15,"Hypoglykämisches Koma, nichtdiabetisch","Le coma hypoglycémique, non diabétique","Coma ipoglicemico, non diabetica"
+E40,Kwashiorkor,Kwashiorkor,Kwashiorkor
+E41,Alimentärer Marasmus,Marasme alimentaire,Marasma Alimentare
+E42,Kwashiorkor-Marasmus,Kwashiorkor marasme,Kwashiorkor marasma
+E43,Nicht näher bezeichnete erhebliche Energie- und Eiweißmangelernährung,Énergie et de protéines non précisée malnutrition considérable,Non specificato notevole energia e malnutrizione proteica
+E45,Entwicklungsverzögerung durch Energie- und Eiweißmangelernährung,Le retard de développement par la malnutrition protéino-énergétique,Il ritardo dello sviluppo per malnutrizione proteico-energetica
+E46,Nicht näher bezeichnete Energie- und Eiweißmangelernährung,Non spécifié malnutrition protéino-énergétique,Non specificato malnutrizione proteico-energetica
+E52,Niazinmangel [Pellagra],Niazinmangel [pellagre],Niazinmangel [pellagra]
+E54,Ascorbinsäuremangel,La carence en acide ascorbique,Carenza di acido ascorbico
+E58,Alimentärer Kalziummangel,Carence en calcium alimentaire,Carenza di calcio alimentare
+E59,Alimentärer Selenmangel,Une carence alimentaire en sélénium,Carenza di selenio alimentari
+E60,Alimentärer Zinkmangel,Carence en zinc alimentaire,Carenza di zinco Alimentare
+E65,Lokalisierte Adipositas,Adiposité localisée,Adiposità localizzate
+E68,Folgen der Überernährung,Conséquences de suralimentation,Conseguenze di eccesso di cibo
+E86,Volumenmangel,Hypovolémie,Ipovolemia
+F03,Nicht näher bezeichnete Demenz,"Démence, sans précision",Demenza non specificata
+F04,"Organisches amnestisches Syndrom, nicht durch Alkohol oder andere psychotrope Substanzen bedingt","Syndrome amnésique organique, non induit par l'alcool ou d'autres substances psychoactives","La sindrome amnesico biologico, non indotto da alcol o altre sostanze psicoattive"
+F09,Nicht näher bezeichnete organische oder symptomatische psychische Störung,Non spécifié trouble mental organique ou symptomatique,Disturbo mentale organico o sintomatica non specificato
+F21,Schizotype Störung,Trouble schizotypique,Disturbo schizotipico
+F24,Induzierte wahnhafte Störung,Trouble délirant induit,Disturbo delirante indotto
+F28,Sonstige nichtorganische psychotische Störungen,Autres troubles psychotiques non organiques,Altri disturbi psicotici non organici
+F29,Nicht näher bezeichnete nichtorganische Psychose,"Psychose non organique, non précisée",Non specificato Psicosi nonorganic
+F39,Nicht näher bezeichnete affektive Störung,Trouble affectif Non spécifié,Disturbo affettivo non specificato
+F54,Psychologische Faktoren oder Verhaltensfaktoren bei anderenorts klassifizierten Krankheiten,Les facteurs psychologiques et comportementaux de maladies classées ailleurs,Fattori psicologici e fattori comportamentali in malattie classificate altrove
+F59,Nicht näher bezeichnete Verhaltensauffälligkeiten bei körperlichen Störungen und Faktoren,Anomalies comportementales non spécifiés dans des perturbations physiologiques et facteurs physiques,Anomalie comportamentali non specificati in disfunzioni fisiologiche ea fattori fisici
+F61,Kombinierte und andere Persönlichkeitsstörungen,Combiné et d'autres troubles de la personnalité,Combinato e altri disturbi di personalità
+F69,Nicht näher bezeichnete Persönlichkeits- und Verhaltensstörung,Non spécifié personnalité et les troubles du comportement,Personalità non specificato e disturbi comportamentali
+F83,Kombinierte umschriebene Entwicklungsstörungen,Troubles spécifiques du développement combinés,Disturbi dello sviluppo specifiche combinate
+F88,Andere Entwicklungsstörungen,Autres troubles du développement,Altri disturbi dello sviluppo
+F89,Nicht näher bezeichnete Entwicklungsstörung,Trouble du développement non spécifié,Disturbi dello sviluppo non specificato
+F99,Psychische Störung ohne nähere Angabe,Trouble mental non spécifié,Disturbo mentale non specificati altrimenti
+G08,Intrakranielle und intraspinale Phlebitis und Thrombophlebitis,Phlébite et thrombophlébite intracrânienne et intraspinale,Flebiti e tromboflebiti intracranica e intraspinale
+G09,Folgen entzündlicher Krankheiten des Zentralnervensystems,Les conséquences des maladies inflammatoires du système nerveux central,Conseguenze di malattie infiammatorie del sistema nervoso centrale
+G10,Chorea Huntington,Huntington,Huntington
+G14,Postpolio-Syndrom,Syndrome de post-polio,Polio post
+G64,Sonstige Krankheiten des peripheren Nervensystems,Autres troubles du système nerveux périphérique,Altri disturbi del sistema nervoso periferico
+G92,Toxische Enzephalopathie,Toxique encéphalopathie,Toxic Encefalopatia
+G98,"Sonstige Krankheiten des Nervensystems, anderenorts nicht klassifiziert","Autres affections du système nerveux, non classés ailleurs","Altri disturbi del sistema nervoso, non classificati altrove"
+H46,Neuritis nervi optici,Névrite optique,Neuriti ottiche
+H55,Nystagmus und sonstige abnorme Augenbewegungen,Nystagmus et d'autres mouvements irréguliers des yeux,Nistagmo e altri movimenti oculari irregolari
+H71,Cholesteatom des Mittelohres,Cholestéatome de l'oreille moyenne,Colesteatoma dell'orecchio medio
+I00,Rheumatisches Fieber ohne Angabe einer Herzbeteiligung,Le rhumatisme articulaire aigu sans mention de la participation de coeur,La febbre reumatica senza menzione di interessamento cardiaco
+I38,"Endokarditis, Herzklappe nicht näher bezeichnet","Endocardite appelé, valve cardiaque non spécifié","Endocardite Chiamato, valvola cardiaca non specificata"
+I64,"Schlaganfall, nicht als Blutung oder Infarkt bezeichnet","Accident vasculaire cérébral, non précisé comme étant hémorragique ou par infarctus","Ictus, non specificato come emorragie o infarto"
+I81,Pfortaderthrombose,La thrombose portale,Trombosi venosa Portal
+I99,Sonstige und nicht näher bezeichnete Krankheiten des Kreislaufsystems,Autres et non précisées troubles de l'appareil circulatoire,Altri e non specificati disturbi del sistema circolatorio
+J00,Akute Rhinopharyngitis [Erkältungsschnupfen],Rhinopharyngite aiguë [rhume],Rinofaringite acuta [raffreddore]
+J09,Grippe durch bestimmte nachgewiesene Influenzaviren,Grippe causée par certains virus de la grippe détecté,Influenza causati da alcuni virus influenzali rilevato
+J13,Pneumonie durch Streptococcus pneumoniae,Pneumonie causée par Streptococcus pneumoniae,Polmonite causata da Streptococcus pneumoniae
+J14,Pneumonie durch Haemophilus influenzae,Pneumonie causée par Haemophilus influenzae,La polmonite causata da Haemophilus influenzae
+J22,"Akute Infektion der unteren Atemwege, nicht näher bezeichnet","L'infection aiguë des voies respiratoires inférieures, sans précision","Infezione acuta del tratto respiratorio inferiore, non specificata"
+J36,Peritonsillarabszess,Périamygdalien,Peritonsillar
+J40,"Bronchitis, nicht als akut oder chronisch bezeichnet","Bronchite, non précisée comme aiguë ou chronique","Bronchite, non specificate come acute o croniche"
+J42,Nicht näher bezeichnete chronische Bronchitis,Bronchite chronique Non spécifié,Non specificata bronchite cronica
+J46,Status asthmaticus,État de mal asthmatique,Stato asmatico
+J47,Bronchiektasen,Bronchiectasie,Bronchiectasie
+J60,Kohlenbergarbeiter-Pneumokoniose,La pneumoconiose du mineur de charbon,Pneumoconiosi carbone del minatore
+J61,Pneumokoniose durch Asbest und sonstige anorganische Fasern,Pneumoconiose due à l'amiante et autres fibres inorganiques,Pneumoconiosi causa di amianto e altre fibre inorganiche
+J64,Nicht näher bezeichnete Pneumokoniose,Pneumoconiose Non spécifié,Pneumoconiosi non specificata
+J65,Pneumokoniose in Verbindung mit Tuberkulose,Pneumoconiose associée à la tuberculose,Pneumoconiosi associato con la tubercolosi
+J80,Atemnotsyndrom des Erwachsenen [ARDS],Adulte syndrome de détresse respiratoire [SDRA],Sindrome da distress respiratorio [ARDS]
+J81,Lungenödem,Œdème pulmonaire,Edema polmonare
+J82,"Eosinophiles Lungeninfiltrat, anderenorts nicht klassifiziert","Pulmonaire infiltration éosinophilie, non classés ailleurs","Polmonare infiltrazione eosinofilia, non classificati altrove"
+J90,"Pleuraerguss, anderenorts nicht klassifiziert","Épanchement pleural, non classé ailleurs","Versamento pleurico, non classificati altrove"
+K20,Ösophagitis,Œsophagite,Esofagite
+K30,Funktionelle Dyspepsie,La dyspepsie fonctionnelle,Dispepsia funzionale
+K36,Sonstige Appendizitis,Autres appendicite,Altro appendicite
+K37,Nicht näher bezeichnete Appendizitis,Appendicite Non spécifié,Appendicite non specificata
+L22,Windeldermatitis,Érythème fessier,Dermatite da pannolino
+L26,Exfoliative Dermatitis,Dermatite exfoliative,Dermatite esfoliativa
+L42,Pityriasis rosea,Pityriasis rosé,Pityriasis rosea
+L52,Erythema nodosum,Érythème noueux,Eritema nodoso
+L80,Vitiligo,Vitiligo,Vitiligine
+L82,Seborrhoische Keratose,Kératose séborrhéique,Seborroica cheratosi
+L83,Acanthosis nigricans,Acanthosis nigricans,Nigricans Acanthosis
+L84,Hühneraugen und Horn- (Haut-) Schwielen,Les cors et Horn (peau) callosités,Calli e corno (pelle) calli
+L88,Pyoderma gangraenosum,Pyoderma gangrenosum,Pioderma gangrenoso
+L97,"Ulcus cruris, anderenorts nicht klassifiziert","Ulcère de jambe, non classés ailleurs","Leg ulcera, non classificata altrove"
+N10,Akute tubulointerstitielle Nephritis,Néphrite aiguë tubulointerstitial,Acuta nefrite tubulo-interstiziale
+N12,"Tubulointerstitielle Nephritis, nicht als akut oder chronisch bezeichnet","Néphrite tubulo-interstitielle, non précisée comme aiguë ou chronique","Nefrite tubulo-interstiziale, non specificate come acute o croniche"
+N19,Nicht näher bezeichnete Niereninsuffizienz,Insuffisance rénale Non spécifié,Insufficienza renale non specificata
+N23,Nicht näher bezeichnete Nierenkolik,Colique néphrétique Non spécifié,Colica renale non specificata
+N26,"Schrumpfniere, nicht näher bezeichnet","Rein contracté, sans précision","Rene contratta, non specificata"
+N40,Prostatahyperplasie,Hyperplasie prostatique,Iperplasia prostatica
+N46,Sterilität beim Mann,Infertilité chez les hommes,Infertilità negli uomini
+N47,"Vorhauthypertrophie, Phimose und Paraphimose","Vorhauthypertrophie, phimosis et paraphimosis","Vorhauthypertrophie, fimosi e parafimosi"
+N61,Entzündliche Krankheiten der Mamma [Brustdrüse],Troubles inflammatoires de l'allaitement [glande mammaire],Malattie infiammatorie del seno [ghiandola mammaria]
+N62,Hypertrophie der Mamma [Brustdrüse],Hypertrophie du sein [glande mammaire],Ipertrofia del seno [ghiandola mammaria]
+N63,Nicht näher bezeichnete Knoten in der Mamma [Brustdrüse],Nœuds non précisées dans le sein [glande mammaire],Nodi non specificati nel seno [ghiandola mammaria]
+N72,Entzündliche Krankheit der Cervix uteri,Maladie inflammatoire du col de l'utérus,Malattia infiammatoria della cervice uterina
+N86,Erosion und Ektropium der Cervix uteri,Erosion et ectropion du col de l'utérus,Erosione e ectropion del collo uterino
+N96,Neigung zu habituellem Abort,Aborter habituelle,Aborter Habitual
+O11,"Vorher bestehende chronische Hypertonie mit aufgepfropfter Präeklampsie, die Schwangerschaft, Geburt und Wochenbett kompliziert","Hypertension chronique préexistante compliqué avec prééclampsie greffé, la grossesse, l'accouchement et post-partum","Ipertensione cronica preesistente complicata da preeclampsia innestato, la gravidanza, il parto e dopo il parto"
+O13,Gestationshypertonie [schwangerschaftsinduzierte Hypertonie],Gestationnel [hypertension induite par la grossesse],Gestazionale [ipertensione indotta dalla gravidanza]
+O16,Nicht näher bezeichnete Hypertonie der Mutter,Non spécifié hypertension de la mère,Ipertensione non specificata della madre
+O25,Fehl- und Mangelernährung in der Schwangerschaft,La malnutrition pendant la grossesse,Malnutrizione in gravidanza
+O40,Polyhydramnion,Polyhydramnios,Polidramnios
+O48,Übertragene Schwangerschaft,Transféré grossesse,Gravidanza Trasferito
+O80,Spontangeburt eines Einlings,Accouchement spontané d'un singleton,Consegna spontanea di un Singleton
+O81,Geburt eines Einlings durch Zangen- oder Vakuumextraktion,Naissance d'un singleton par forceps ou à vide,Nascita di un singleton da forcipe o dell'estrazione di vuoto
+O82,Geburt eines Einlings durch Schnittentbindung [Sectio caesarea],Naissance d'un singleton par césarienne [césarienne],Nascita di un Singleton con taglio cesareo [taglio cesareo]
+O85,Puerperalfieber,Fièvre puerpérale,Febbre puerperale
+O94,"Folgen von Komplikationen während Schwangerschaft, Geburt und Wochenbett","Effets de complications pendant la grossesse, l'accouchement et post-partum","Effetti di complicazioni durante la gravidanza, il parto e dopo il parto"
+O95,Sterbefall während der Gestationsperiode nicht näher bezeichneter Ursache,Mort pendant la période de gestation de cause non précisée,La morte durante il periodo di gestazione di causa non specificata
+P38,Omphalitis beim Neugeborenen mit oder ohne leichte Blutung,Omphalite le nouveau-né avec ou sans hémorragie légère,Onfalite il neonato con o senza lieve emorragia
+P53,Hämorrhagische Krankheit beim Feten und Neugeborenen,Maladie hémorragique du nouveau-né et de foetus,Malattia emorragica del feto e del neonato
+P60,Disseminierte intravasale Gerinnung beim Feten und Neugeborenen,Coagulation intravasculaire disséminée du foetus et du nouveau-né,Coagulazione intravascolare disseminata di feto e del neonato
+P77,Enterocolitis necroticans beim Feten und Neugeborenen,Entérocolite nécrosante fœtus et du nouveau-né,Enterocolite necrotizzante feto e del neonato
+P90,Krämpfe beim Neugeborenen,Spasmes dans le nouveau-né,Spasmi nel neonato
+P93,"Reaktionen und Intoxikationen durch Arzneimittel oder Drogen, die dem Feten und Neugeborenen verabreicht wurden",Réactions et intoxications dus à la drogue et les médicaments qui ont été administrés pour le fœtus et le nouveau-né,Reazioni e intossicazioni a causa di droghe e farmaci che sono stati somministrati per il feto e del neonato
+P95,Fetaltod nicht näher bezeichneter Ursache,Mort foetale de cause non précisée,Morte fetale di causa non specificata
+Q02,Mikrozephalie,Microcéphalie,Microcefalia
+R02,"Gangrän, anderenorts nicht klassifiziert","Gangrène, non classés ailleurs","Cancrena, non classificati altrove"
+R05,Husten,Toux,Tosse
+R11,Übelkeit und Erbrechen,Nausée et vomissements,Nausea e vomito
+R12,Sodbrennen,Brûlures d'estomac,Bruciore di stomaco
+R14,Flatulenz und verwandte Zustände,conditions de flatulences et connexes,Condizioni di flatulenza e correlate
+R15,Stuhlinkontinenz,Incontinence fécale,Incontinenza fecale
+R17,"Gelbsucht, nicht näher bezeichnet","La jaunisse, sans précision","Ittero, non specificata"
+R18,Aszites,Ascite,Ascite
+R21,Hautausschlag und sonstige unspezifische Hauteruptionen,Rash et autres éruptions cutanées non spécifique,Rash e altre eruzioni cutanee aspecifico
+R31,Nicht näher bezeichnete Hämaturie,Hématurie Non spécifié,Ematuria specificato
+R32,Nicht näher bezeichnete Harninkontinenz,Incontinence urinaire Non spécifié,Non specificato incontinenza urinaria
+R33,Harnverhaltung,Rétention d'urine,Ritenzione urinaria
+R34,Anurie und Oligurie,Anurie et oligurie,Anuria e oliguria
+R35,Polyurie,Polyurie,Poliuria
+R36,Ausfluss aus der Harnröhre,L'écoulement urétral,Scarico uretrale
+R42,Schwindel und Taumel,Étourdissements et vertiges,Capogiri e vertigini
+R51,Kopfschmerz,Mal de tête,Mal di testa
+R53,Unwohlsein und Ermüdung,Malaise et la fatigue,Malessere e fatica
+R54,Senilität,Sénilité,Senilità
+R55,Synkope und Kollaps,Syncope et collapsus,Sincope e collasso
+R58,"Blutung, anderenorts nicht klassifiziert","Hémorragie, non classés ailleurs","Emorragia, non classificati altrove"
+R64,Kachexie,Cachexie,Cachessia
+R69,Unbekannte und nicht näher bezeichnete Krankheitsursachen,Les causes inconnues et non précisées de la maladie,Cause sconosciute e non specificate di malattia
+R71,Veränderung der Erythrozyten,Changements dans érythrocytaire,Variazioni degli eritrociti
+R72,"Veränderung der Leukozyten, anderenorts nicht klassifiziert",", Changements Non classé ailleurs dans les leucocytes",", Cambiamenti classificate non altrove in leucociti"
+R75,Laborhinweis auf Humanes Immundefizienz-Virus [HIV],Laboratoire de référence pour le virus de l'immunodéficience humaine [VIH],Reference Laboratory del virus dell'immunodeficienza umana [HIV]
+R80,Isolierte Proteinurie,Protéinurie isolée,Isolata proteinuria
+R81,Glukosurie,Glycosurie,Glucosuria
+R91,Abnorme Befunde bei der bildgebenden Diagnostik der Lunge,Résultats anormaux d'imagerie diagnostique du cancer du poumon,Risultati anormali di diagnostica per immagini del polmone
+R92,Abnorme Befunde bei der bildgebenden Diagnostik der Mamma [Brustdrüse],Résultats anormaux d'imagerie diagnostique du cancer du sein [glande mammaire],Risultati anormali di diagnostica per immagini del seno [ghiandola mammaria]
+R98,Tod ohne Anwesenheit anderer Personen,Mort sans la présence d'autres personnes,Morte senza la presenza di altre persone
+R99,Sonstige ungenau oder nicht näher bezeichnete Todesursachen,Autres causes mal ou non précisées de la mortalité,Altre cause malati o non specificate di mortalità
+S16,Verletzung von Muskeln und Sehnen in Halshöhe,Lésion traumatique de muscles et de tendons au niveau du cou,Lesioni di muscoli e tendini a livello del collo
+S18,Traumatische Amputation in Halshöhe,Amputation traumatique au niveau du cou,Amputazione traumatica a livello del collo
+S47,Zerquetschung der Schulter und des Oberarmes,Broyage l'épaule et du bras,Schiacciare la spalla e del braccio
+T07,Nicht näher bezeichnete multiple Verletzungen,De multiples blessures non précisées,Non specificato lesioni multiple
+T16,Fremdkörper im Ohr,Corps étrangers dans l'oreille,Corpi estranei nell'orecchio
+T55,Toxische Wirkung von Seifen und Detergenzien,Effet toxique de savons et détergents,Gli effetti tossici di saponi e detergenti
+T58,Toxische Wirkung von Kohlenmonoxid,Effet toxique de monoxyde de carbone,Gli effetti tossici di monossido di carbonio
+T64,Toxische Wirkung von Aflatoxin und sonstigem Mykotoxin in kontaminierten Lebensmitteln,Effet toxique de l'aflatoxine et d'autres mycotoxines dans les aliments contaminés,Gli effetti tossici di aflatossina e l'altro da micotossine in alimenti contaminati
+T66,Nicht näher bezeichnete Schäden durch Strahlung,Des dommages non spécifiés causés par le rayonnement,I danni non specificati causati dalle radiazioni
+T68,Hypothermie,Hypothermie,Ipotermia
+T71,Erstickung,Suffocation,Soffocamento
+T96,"Folgen einer Vergiftung durch Arzneimittel, Drogen und biologisch aktive Substanzen",D'intoxication par des médicaments et substances biologiques,"Di avvelenamento da farmaci, medicamenti e sostanze biologiche"
+T97,Folgen toxischer Wirkungen von vorwiegend nicht medizinisch verwendeten Substanzen,Suivez effets toxiques des substances d'origine principalement non médicinaux,Seguire effetti tossici delle sostanze principalmente nonmedicinal
+Z02,Untersuchung und Konsultation aus administrativen Gründen,Examen et de consultation pour des raisons administratives,Esame e di consultazione per ragioni amministrative
+Z10,Allgemeine Reihenuntersuchung bestimmter Bevölkerungsgruppen,Le dépistage général de certains groupes de population,Lo screening generale di determinati gruppi di popolazione
+Z11,Spezielle Verfahren zur Untersuchung auf infektiöse und parasitäre Krankheiten,Examen spécial de dépistage pour les maladies infectieuses et parasitaires,Esame speciale di screening per le malattie infettive e parassitarie
+Z21,Asymptomatische HIV-Infektion [Humane Immundefizienz-Virusinfektion],L'infection à VIH asymptomatique [immunodéficience humaine infection par le virus],Infezione asintomatica da HIV [dell'immunodeficienza umana infezione da virus]
+Z28,Nicht durchgeführte Impfung [Immunisierung],Non vaccination menée [de vaccination],La vaccinazione non condotto [immunizzazione]
+Z32,Untersuchung und Test zur Feststellung einer Schwangerschaft,Examen et test pour déterminer la grossesse,L'esame e test per determinare la gravidanza
+Z34,Überwachung einer normalen Schwangerschaft,Suivi d'une grossesse normale,Il monitoraggio di una gravidanza normale
+Z53,"Personen, die Einrichtungen des Gesundheitswesens wegen spezifischer Maßnahmen aufgesucht haben, die aber nicht durchgeführt wurden","Ces établissements de soins de santé ont cherché des mesures spécifiques, qui ne sont pas réalisées","Quelle istituzioni sanitarie hanno cercato per misure specifiche, che non sono stati effettuati"
+Z55,Kontaktanlässe mit Bezug auf die Ausbildung,Contactez occasions à l'égard de la formation,Contatto occasioni con riguardo alla formazione
+Z56,Kontaktanlässe mit Bezug auf das Berufsleben,Contactez les événements par rapport à la vie professionnelle,Contatto eventi relativi alla vita professionale
+Z57,Berufliche Exposition gegenüber Risikofaktoren,L'exposition professionnelle à des facteurs de risque,L'esposizione professionale a fattori di rischio
+Z58,Kontaktanlässe mit Bezug auf die physikalische Umwelt,Contactez les événements à l'égard de l'environnement physique,Contatto eventi relativi all'ambiente fisico
+Z59,Kontaktanlässe mit Bezug auf das Wohnumfeld oder die wirtschaftliche Lage,Contactez les événements par rapport à l'environnement de vie et de la situation économique,Eventi di contatto per quanto riguarda l'ambiente di vita e la situazione economica
+Z60,Kontaktanlässe mit Bezug auf die soziale Umgebung,Contactez occasions à l'égard de l'environnement social,Contatto occasioni per quanto riguarda l'ambiente sociale
+Z61,Kontaktanlässe mit Bezug auf Kindheitserlebnisse,Contactez les événements par rapport aux expériences de l'enfance,Eventi di contatto rispetto a esperienze infantili
+Z62,Andere Kontaktanlässe mit Bezug auf die Erziehung,Autres occasions de contact en ce qui concerne l'éducation,Altre occasioni di contatto per quanto riguarda l'educazione
+Z63,Andere Kontaktanlässe mit Bezug auf den engeren Familienkreis,Autres occasions de contact à l'égard de la famille immédiate,Altre occasioni di contatto per quanto riguarda la famiglia immediata
+Z65,Kontaktanlässe mit Bezug auf andere psychosoziale Umstände,Contacter événements liés à d'autres circonstances psychosociaux,Eventi di contatto relative ad altre circostanze psicosociali
+Z70,"Beratung in Bezug auf Sexualeinstellung, -verhalten oder -orientierung","Services de conseils relatifs à l'attitude sexuelle, le comportement ou l'orientation","Servizi di consulenza in materia di atteggiamento sessuale, comportamento o orientamento"
+Z71,"Personen, die das Gesundheitswesen zum Zwecke anderer Beratung oder ärztlicher Konsultation in Anspruch nehmen, anderenorts nicht klassifiziert","Personnes aux services de santé pour les autres services de counselling et de consultation médicale à compléter, non classés ailleurs","Le persone che incontrano i servizi sanitari per gli altri la consulenza e la consultazione medica a completare, non classificate altrove"
+Z73,Probleme mit Bezug auf Schwierigkeiten bei der Lebensbewältigung,Les problèmes liés à des difficultés à faire face à la vie,I problemi legati alla difficoltà di affrontare la vita
+Z81,Psychische Krankheiten oder Verhaltensstörungen in der Familienanamnese,Troubles mentaux et du comportement dans l'histoire de la famille,I disturbi mentali e comportamentali nella storia di famiglia
+Z82,"Bestimmte Behinderungen oder chronische Krankheiten in der Familienanamnese, die zu Schädigung oder Behinderung führen","Certains handicaps ou de maladies chroniques de l'histoire de la famille, menant à des blessures ou d'invalidité","Alcune disabilità o malattie croniche nella storia di famiglia, portando a ferite o disabilità"
+T08,"Fraktur der Wirbelsäule, Höhe nicht näher bezeichnet","Fracture de la colonne vertébrale, niveau non précisé","Frattura della colonna vertebrale, livello non specificato"
+T08,"Fraktur der Wirbelsäule, Höhe nicht näher bezeichnet","Fracture de la colonne vertébrale, niveau non précisé","Frattura della colonna vertebrale, livello non specificato"
+T10,"Fraktur der oberen Extremität, Höhe nicht näher bezeichnet","Fracture d'un membre supérieur, niveau non précisé","Frattura di arto superiore, livello non specificato"
+T10,"Fraktur der oberen Extremität, Höhe nicht näher bezeichnet","Fracture d'un membre supérieur, niveau non précisé","Frattura di arto superiore, livello non specificato"
+T12,"Fraktur der unteren Extremität, Höhe nicht näher bezeichnet","Fracture d'un membre inférieur, niveau non précisé","Frattura di arto inferiore, livello non specificato"
+T12,"Fraktur der unteren Extremität, Höhe nicht näher bezeichnet","Fracture d'un membre inférieur, niveau non précisé","Frattura di arto inferiore, livello non specificato"
+C97,Bösartige Neubildungen als Primärtumoren an mehreren Lokalisationen,Tumeurs malignes que les tumeurs primaires à plusieurs sites,Tumori maligni di tumori primari in più siti
+D77,Sonstige Krankheiten des Blutes und der blutbildenden Organe bei anderenorts klassifizierten Krankheiten,Autres maladies du sang et des organes hématopoïétiques de maladies classées ailleurs,Altre malattie del sangue e degli organi ematopoietici in malattie classificate altrove
+E90,Ernährungs- und Stoffwechselstörungen bei anderenorts klassifizierten Krankheiten,Nutritionnelles et métaboliques de maladies classées ailleurs,Disturbi nutrizionali e metabolici in malattie classificate altrove
+G01,Meningitis bei anderenorts klassifizierten bakteriellen Krankheiten,Méningite dans d'autres maladies bactériennes classées ailleurs,Meningite in altre malattie batteriche classificate altrove
+G07,Intrakranielle und intraspinale Abszesse und Granulome bei anderenorts klassifizierten Krankheiten,Abcès et granulome intracrâniens et intra-rachidienne de maladies classées ailleurs,Ascessi intracranici ed intrarachidiani e granulomi in malattie classificate altrove
+G22,Parkinson-Syndrom bei anderenorts klassifizierten Krankheiten,Le syndrome de Parkinson de maladies classées ailleurs,La sindrome di Parkinson in malattie classificate altrove
+G26,Extrapyramidale Krankheiten und Bewegungsstörungen bei anderenorts klassifizierten Krankheiten,Extrapyramidaux et troubles de maladies classées ailleurs,Extrapiramidali e Disordini del Movimento in malattie classificate altrove
+H82,Schwindelsyndrome bei anderenorts klassifizierten Krankheiten,syndromes de Vertiges de maladies classées ailleurs,Sindromi Vertigini in malattie classificate altrove
+J91,Pleuraerguss bei anderenorts klassifizierten Krankheiten,Épanchement pleural de maladies classées ailleurs,Versamento pleurico in malattie classificate altrove
+L14,Bullöse Dermatosen bei anderenorts klassifizierten Krankheiten,Troubles bulleuses de maladies classées ailleurs,Disturbi bollose in malattie classificate altrove
+L45,Papulosquamöse Hautkrankheiten bei anderenorts klassifizierten Krankheiten,Maladies papulosquameuses de maladies classées ailleurs,Malattie papulosquamous in malattie classificate altrove
+L86,Keratom bei anderenorts klassifizierten Krankheiten,Kératodermie de maladies classées ailleurs,Cheratodermia in malattie classificate altrove
+P75,Mekoniumileus bei zystischer Fibrose (E84.1+),Iléus méconial dans la fibrose kystique (E84.1 +),Ileo da meconio in fibrosi cistica (E84.1 +)
+Y69,Zwischenfälle bei chirurgischem Eingriff und medizinischer Behandlung,Incidents dans la chirurgie et le traitement médical,Incidenti in chirurgia e cure mediche
+Z33,Schwangerschaftsfeststellung als Nebenbefund,détermination de la grossesse comme une découverte fortuite,Determinazione gravidanza come un accertamento incidentale
+U81,Bakterien mit Multiresistenz gegen Antibiotika,Les bactéries avec multi-résistance aux antibiotiques,Batteri con multi-resistenza agli antibiotici
+U83,Candida mit Resistenz gegen Fluconazol oder Voriconazol,Candida avec une résistance au fluconazole ou voriconazole,Candida con la resistenza al fluconazolo o voriconazolo
+U84,Herpesviren mit Resistenz gegen Virustatika,virus de l'herpès avec la résistance aux antiviraux,Herpes virus con resistenza agli antivirali
+U85,Humanes Immundefizienz-Virus mit Resistenz gegen Virustatika oder Proteinaseinhibitoren,Virus de l'immunodéficience humaine de la résistance aux antiviraux ou protéinase,Virus dell'immunodeficienza umana resistenza agli antivirali o proteinasi

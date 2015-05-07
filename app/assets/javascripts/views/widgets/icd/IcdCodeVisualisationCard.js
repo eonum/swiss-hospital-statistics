@@ -55,7 +55,7 @@ define([
             items.push(_this.model().cloud().items());
             items.push(_this.model().selectedItem());
             var codes = _.map(_.unique(_.flatten(items)), function(item){
-                return {type: item.type, code: item.short_code};
+                return {type: _this.codeType(), code: item.short_code};
             });
             _this.codeChooser().fetchAllCodeAndDatasets(codes, function(result){
                 ordinalCurveVisualisation.visualiseData(result);

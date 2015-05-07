@@ -96,7 +96,7 @@ define([
         };
 
         _this.onItemSelected = function (ann) {
-            _this.codeCard().on(ann.item().type, ann.item().short_code);
+            _this.codeCard().on(_this.groupPrefix(), ann.item().short_code);
         };
 
         _this.newSearchView = function () {
@@ -121,6 +121,7 @@ define([
 
         _this.load = function (url) {
             _this.render();
+            if (_.isUndefined(url)) return;
             $.getJSON(url, function(candidates){
                 _this.searchModel().allCandidates(_.sortBy(candidates, 'code'));
             });

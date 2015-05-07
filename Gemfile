@@ -63,4 +63,6 @@ group :development do
   gem 'coffee-script-source', '1.8.0'
   # javascript testing
   gem 'teaspoon'
+  # to parse html
+  gem 'nokogiri'
 end

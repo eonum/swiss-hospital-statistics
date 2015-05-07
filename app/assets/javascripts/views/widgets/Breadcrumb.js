@@ -7,7 +7,7 @@ define([
 ){
     function Dropdown () {
         var _this = new View('<ul class="dropdown"></ul>');
-
+        var itemLimit = 50;
         var model;
 
         _this.model = function (_model) {
@@ -17,9 +17,14 @@ define([
         };
 
         _this.render = function () {
-            _.each(_this.model().alternatives(), function(node) {
-                _this.add(_this.renderLink(node));
-            });
+            var items = _this.model().alternatives();
+            if (_.size(items) > itemLimit * 2) {
+                _this.renderItemsIn(_.first(items,itemLimit), _this);
+                _this.add(_this.newExpandItem());
+                _this.renderItemsIn(_.last(items,itemLimit), _this);
+                return;
+            }
+            _this.renderItemsIn(items, _this);
         };
 
         _this.renderLink = function(node) {
@@ -31,6 +36,18 @@ define([
             });
             item.add(link);
             return item;
+        };
+
+        _this.renderItemsIn = function (_items, _list) {
+            _.each(_items, function (item) {
+                _list.add(_this.renderLink(item));
+            });
+        };
+
+        _this.newExpandItem = function () {
+            var expand = _this.newItem();
+            expand.html('...');
+            return expand;
         };
 
         _this.newLink = function () {

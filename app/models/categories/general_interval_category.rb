@@ -2,11 +2,11 @@ require 'abstract/interval_category'
 
 class GeneralIntervalCategory < IntervalCategory
 
-  field :dad, :type => Integer
-  field :sa, :type => Integer
-  field :min, :type => Integer
-  field :max, :type => Integer
-  field :number, :type => Integer
+  attr_accessor :dad
+  attr_accessor :sa
+  attr_accessor :min
+  attr_accessor :max
+  attr_accessor :number
 
   @tag = :interval
 

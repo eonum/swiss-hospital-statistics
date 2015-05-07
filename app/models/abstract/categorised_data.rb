@@ -31,7 +31,6 @@ class CategorisedData < AbstractData
     self.categories[category_id.to_s]
   end
 
-  # TODO documentation
   def at_find (category_id, &block)
     return self.at(category_id) unless block_given?
     selected = self.at(category_id) ? self.at(category_id).select(&block) : [ ]
