@@ -10,21 +10,24 @@ define([
 
     function TopThreeDiagnosisTable(_width, _height){
 
-        //Expected JSON-format: {"interval": val, "total": val, "male": val, "female": val}
-
         var _this = new ResponsiveSvg(_width, _height);
 
         var TRANSITION_TIME = 1000;
+        var NUM_OF_COLS = 3;
+        var BOX_PADDING = 30;
         var titleFontSize = _height / 20;
         var chartHeight = _height - titleFontSize;
-        var topOffset = 60; //TODO another magic number...
+
+
+        var topOffset = 80; //TODO: magic offset
+        var leftOffset = 100; //TODO: magic offset
 
         var hospitalTypeButtons = new HospitalTypeButtonBar();
 
         _this.append(hospitalTypeButtons);
 
         _this.marginTop(50);
-        _this.marginLeft(50);
+        _this.marginLeft(30);
         _this.marginRight(140);
         _this.marginBottom(50);
 
@@ -34,10 +37,10 @@ define([
         _this.initialize = function(){
             _this.svg().append("text")
                 .attr("id", "title")
-                .attr("y", 35)
+                .attr("y", 35)//TODO: magic number
                 .style("font-size", titleFontSize + "px");
 
-            _this.setTitle("Three majestic black (actually now red, well, now pink) squares in their natural habitat. Also, there are 9 squares...");
+            _this.setTitle("Nine majestic pink boxes in their natural habitat");
         };
 
         _this.setTitle = function(text){
@@ -50,33 +53,67 @@ define([
         };
 
         _this.setData = function(data){
+            var numOfRows = data.length / NUM_OF_COLS;
 
-            var boxHeight = _height/3;
-            var boxWidth = _width/3;
-            var padding = 30;
+            var boxHeight = _height/numOfRows;
+            var boxWidth = _width/ NUM_OF_COLS;
 
-            var hardCodedY = 200;
-
-            var xDomain = [0,1,2]; //TODO: eliminate magic numbers, same for yDomain
+            var xDomain = [];
+            for(var i=0; i<(NUM_OF_COLS); i++)
+                xDomain.push(i);
             xScale.domain(xDomain);
 
-            var yDomain = [0,1,2];
+            var yDomain = [];
+            for(var i=0; i<(data.length/NUM_OF_COLS); i++)
+                yDomain.push(i);
             yScale.domain(yDomain);
 
             var boxGroup = _this.svg().selectAll("g")
                 .data(data)
                 .enter().append("g");
 
-            boxGroup.append("rect")//TODO: loads of magic numbers here...
-                .attr("x", function(d, i) {return xScale(i%3)})
-                .attr("y", function(d, i) { return yScale((Math.floor(i/3))) + topOffset})
-                .attr("height", function(d) { return boxHeight - (padding/2) })
-                .attr("width", function(d) { return boxWidth - (padding/2) })
+            this.svg().append("text")
+                .attr("x", 100)
+                .attr("y", 70)
+                .text("Total");
+
+            this.svg().append("text")
+                .attr("x", 250)
+                .attr("y", 70)
+                .text("Male");
+
+            this.svg().append("text")
+                .attr("x", 500)
+                .attr("y", 70)
+                .text("Female");
+
+            this.svg().append("text")
+                .attr("x", _this.marginLeft())
+                .attr("y", 70)
+                .text("0-14");
+
+            this.svg().append("text")
+                .attr("x", _this.marginLeft())
+                .attr("y", 130)
+                .text("15-39");
+
+            this.svg().append("text")
+                .attr("x", _this.marginLeft())
+                .attr("y", 250)
+                .text("40-69");
+
+
+
+            boxGroup.append("rect")
+                .attr("x", function(d, i) {return xScale(i%NUM_OF_COLS) + leftOffset})
+                .attr("y", function(d, i) { return yScale((Math.floor(i/numOfRows))) + topOffset})
+                .attr("height", function(d) { return boxHeight - (BOX_PADDING/2) })
+                .attr("width", function(d) { return boxWidth - (BOX_PADDING/2) })
                 .style("fill", function(d) { return "pink" });
 
             boxGroup.append("text")
-                .attr("x", function(d, i) { return xScale(i%3) + (boxWidth/2) - (padding/2)})
-                .attr("y", function(d, i) { return yScale((Math.floor(i/3))) + (boxHeight/2) + topOffset})
+                .attr("x", function(d, i) { return xScale(i%NUM_OF_COLS) + (boxWidth/2) + leftOffset - (BOX_PADDING/2)})
+                .attr("y", function(d, i) { return yScale((Math.floor(i/numOfRows))) + (boxHeight/2) + topOffset})
                 .style('font-size', '20px')
                 .attr('class', 'light-font')
                 .attr('text-anchor', 'middle')

@@ -1,3 +1,7 @@
+/*Tests the CodeChooser and its methods. Note that it is sufficient to test
+* fetchDatasets, since in this method, also fetchCode and fetchCodeAndDataset
+* are called.*/
+
 define(['helpers/CodeChooser'], function(CodeChooser){
     describe('CodeChooser', function (){
         var timeoutTime = 1000;
