@@ -7,16 +7,19 @@ class LinearParser < CompositeParser
   def initialize
     super
     @from = 1
+    @step = 1
     @to = Float::INFINITY
     @position = @from
     @is_index_used = false
 
     #defines parsing logic for linear parsers in super class
     self.parsing do
-      |parser|
+    |parser|
       self.position(@from)
-      (@from..@to).each {|index|
+      (@from..@to).step(@step) {|index|
+        puts index
         value = parser.value_at(index)
+        puts "value=#{value}"
         break if @to == Float::INFINITY && !value
         self.position(index)
         parser.stream(@is_index_used ? index : value, @position)}
@@ -28,6 +31,12 @@ class LinearParser < CompositeParser
     return @from unless index
     @from = index
     self.position(@from)
+    self
+  end
+
+  def step(step=nil)
+    return @step unless step
+    @step = step
     self
   end
 
