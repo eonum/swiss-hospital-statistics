@@ -13,8 +13,11 @@ define([
         var _this = new ResponsiveSvg(_width, _height);
 
         var TRANSITION_TIME = 1000;
+        var NUM_OF_COLS = 3;
         var titleFontSize = _height / 20;
         var chartHeight = _height - titleFontSize;
+
+
         var topOffset = 80; //TODO another magic number...
         var leftOffset = 100;
 
@@ -56,10 +59,14 @@ define([
 
             var hardCodedY = 200;
 
-            var xDomain = [0,1,2]; //TODO: eliminate magic numbers, same for yDomain
+            var xDomain = [];
+            for(var i=0; i<(NUM_OF_COLS); i++)
+                xDomain.push(i);
             xScale.domain(xDomain);
 
-            var yDomain = [0,1,2];
+            var yDomain = [];
+            for(var i=0; i<(data.length/NUM_OF_COLS); i++)
+                yDomain.push(i);
             yScale.domain(yDomain);
 
             var boxGroup = _this.svg().selectAll("g")
