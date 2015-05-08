@@ -36,7 +36,7 @@ define([
         };
 
         _this.newInput = function () {
-            return new View('<input type="text" placeholder="Search codes e.g. A045">');
+            return new View('<input type="text" placeholder="Nach Code oder Beschreibung suchen">');
         };
 
         _this.search = function (query) {
