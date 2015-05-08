@@ -24,6 +24,7 @@ function(View, OrdinalCurveChart, NumberByAgeDatasetConverter, DatasetSorter)
                     var converter = new NumberByAgeDatasetConverter(sortedDatasets);
                     return converter.asAbsoluteData();
                 });
+                data = _.sortBy(data, function(d){return d.interval});
                 chart.on({codes: codes, data: data});
         };
 
