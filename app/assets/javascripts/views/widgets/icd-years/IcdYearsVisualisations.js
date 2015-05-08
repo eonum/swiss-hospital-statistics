@@ -24,12 +24,13 @@ define([
 
         /*--------- V I S U A L I S A T I O N S ---------*/
         _this.update = function (selection) {
-            converter.convert(selection, function(resultMale, resultFemale) {
+            converter.convert(selection, function(result) {
+                console.log(result);
                 console.log("VISUALISATION");
                 console.log("MALE");
-                console.log(resultMale);
+                console.log(result.man);
                 console.log("FEMALE");
-                console.log(resultFemale);
+                console.log(result.woman);
             });
 
 
