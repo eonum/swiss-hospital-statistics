@@ -23,7 +23,11 @@ define([
 
         _this.render = function () {
             input = _this.newInput();
+            new Multiglot().on(input).id('search_placeholder').attr('placeholder').apply();
+
             button = _this.newButton();
+            new Multiglot().on(button).id('search_button').apply();
+
             inputWrapper.add(input);
             buttonWrapper.add(button);
             _this.add(inputWrapper);
@@ -32,11 +36,11 @@ define([
         };
 
         _this.newButton = function () {
-            return new View('<a href="#" class="button postfix">Search</a>');
+            return new View('<a href="#" class="button postfix"></a>');
         };
 
         _this.newInput = function () {
-            return new View('<input type="text" placeholder="Nach Code oder Beschreibung suchen">');
+            return new View('<input type="text">');
         };
 
         _this.search = function (query) {
