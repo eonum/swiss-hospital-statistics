@@ -12,6 +12,18 @@ define([], function(){
             it: 'Cerca per codice o descrizione',
             en: 'Search for code or description'
         },
+        compare: {
+            de: 'vergleichen',
+            fr: 'comparer',
+            it: 'compare',
+            en: 'compare'
+        },
+        navigation_hint: {
+            de: 'Um durch Codes zu navigieren können Sie <kbd>Pfeil nach oben</kbd> und <kbd>Pfeil nach unten</kbd> drücken',
+            fr: 'Pour naviguer à travers les codes que vous pouvez utiliser <kbd>Flèche Haut</kbd> et <kbd>Flèche vers le bas</kbd>',
+            it: 'Per navigare attraverso codici è possibile utilizzare <kbd>Freccia Su</kbd> e <kbd>Freccia Giù</kbd>',
+            en: 'To navigate through codes you can use <kbd>Arrow Up</kbd> and <kbd>Arrow Down</kbd>'
+        },
         all_chapters: {
             de: 'Alle Kapitel',
             fr: 'Tous les chapitres',
