@@ -4,14 +4,16 @@ define([
     'announcements/OnIcdAgesSelected',
     'announcements/OnIcdYearsDeselected',
     'announcements/OnIcdYearsSelected',
-    'helpers/converters/ChaptersByYearConverter'
+    'helpers/converters/ChaptersByYearConverter',
+    'views/PieChart'
 ], function(
     View,
     OnIcdAgesDeselected,
     OnIcdAgesSelected,
     OnIcdYearsDeselected,
     OnIcdYearsSelected,
-    ChaptersByYearConverter
+    ChaptersByYearConverter,
+    PieChart
 ){
 
     function IcdYearsVisualisations() {
@@ -25,8 +27,6 @@ define([
         /*--------- V I S U A L I S A T I O N S ---------*/
         _this.update = function (selection) {
             converter.convert(selection, function(result) {
-                console.log(result);
-                console.log("VISUALISATION");
                 console.log("MALE");
                 console.log(result.man);
                 console.log("FEMALE");
@@ -34,9 +34,6 @@ define([
             });
 
 
-            // parse selections here
-            // retrieve data from db
-            // convert data
             // update visualisations
 
 
@@ -50,7 +47,17 @@ define([
          * @returns {ResponsiveSvg|View}
          */
         _this.newWomanChart = function () {
-            return new View('<div style="background: #ff69b4; height: 500px"></div>')
+
+            var womanView = new View('<div height: 500px></div>');
+            var pieChart = new PieChart(300, 300);
+
+
+
+            return pieChart;
+
+
+
+           // return new View('<div style="background: #ff69b4; height: 500px"></div>')
         };
 
         /**
@@ -58,7 +65,14 @@ define([
          * @returns {ResponsiveSvg|View}
          */
         _this.newManChart = function () {
-            return new View('<div style="background: #88d0fc; height: 500px"></div>')
+
+            var manView = new View('<div height: 500px></div>');
+            var pieChart = new PieChart(_width, _height);
+
+
+
+
+            //return new View('<div style="background: #88d0fc; height: 500px"></div>')
         };
 
         /*------------------------------------------------*/
