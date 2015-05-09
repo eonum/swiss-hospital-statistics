@@ -62,7 +62,7 @@ group :development do
   # only necessary on windows
   gem 'coffee-script-source', '1.8.0'
   # javascript testing
-  gem 'teaspoon'
+  gem 'teaspoon', '0.9.1'
   # to parse html
   gem 'nokogiri'
 end
