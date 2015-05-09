@@ -17,9 +17,9 @@ class LinearParser < CompositeParser
     |parser|
       self.position(@from)
       (@from..@to).step(@step) {|index|
-        puts index
+        #puts index
         value = parser.value_at(index)
-        puts "value=#{value}"
+        #puts "value=#{value}"
         break if @to == Float::INFINITY && !value
         self.position(index)
         parser.stream(@is_index_used ? index : value, @position)}

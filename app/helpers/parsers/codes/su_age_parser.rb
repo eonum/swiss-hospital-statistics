@@ -11,7 +11,7 @@ class SuAgeParser < SuCodeParser
               .for(self.stream)
               .in(:sex)
               .index
-              .transformed(:pred) # -1 to remove offset
+              .transformed{|value|value.round.pred} # -1 to remove offset
               .repeat
               .with { |sheet|
                 sheet.row._

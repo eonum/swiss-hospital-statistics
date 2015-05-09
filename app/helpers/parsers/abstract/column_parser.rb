@@ -21,7 +21,7 @@ class ColumnParser < LinearParser
   protected
 
   def value_at (index)
-    puts "#{index} #{@column} #{self.sheet.cell(index, @column)}"
+    #puts "#{index} #{@column} #{self.sheet.cell(index, @column)}"
     self.sheet.cell(index, @column)
   end
 
