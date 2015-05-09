@@ -59,6 +59,7 @@ define([
         var nameLogic = function(_item) {return _item.toString();};
         var rangeLogic = function() { return '0123456789abcdefghijklmnopqrstuvwxyz'.toUpperCase().split("") };
         var prefixLogic = function() { return 'group' };
+        var firstCharOf = function(item) { return _this.nameOf(item).charAt(0) };
         var groups = {};
         var timestamp;
         var announcer = new Announcer();
@@ -101,6 +102,11 @@ define([
             return _this;
         };
 
+        _this.firstCharacter = function(func) {
+            firstCharOf = func;
+            return _this;
+        };
+
         _this.prefixOf = function (group) {
             return _this.prefix() + group.label();
         };
@@ -139,7 +145,7 @@ define([
         };
 
         _this.firstCharacterOf = function (_item) {
-            return _this.nameOf(_item).charAt(0);
+            return firstCharOf(_item);
         };
 
         _this.groups = function () {
@@ -185,18 +191,6 @@ define([
 
         _this.notifyItemDeselected = function(item) {
             _this.announcer().announce(new OnAlphabeticalItemDeselected(item));
-        };
-
-        _this.notifyItemMarked = function(item) {
-            _this.announcer().announce(new OnAlphabeticalItemMarked(item));
-        };
-
-        _this.notifyItemMarked = function(item) {
-            _this.announcer().announce(new OnAlphabeticalItemMarked(item));
-        };
-
-        _this.notifyItemUnmarked = function(item) {
-            _this.announcer().announce(new OnAlphabeticalItemUnmarked(item));
         };
 
         _this.amountOfGroups = function () {

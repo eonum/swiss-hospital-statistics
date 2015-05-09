@@ -112,7 +112,7 @@ define([
         };
 
         _this.newSelectorModel = function () {
-            return new AlphabeticalSelectorModel().name(_this.listNameOf).prefix(_this.groupPrefix);
+            return new AlphabeticalSelectorModel().name(_this.listNameOf).prefix(_this.groupPrefix).firstCharacter(_this.firstCharacterOf);
         };
 
         _this.newCodeCard = function () {
@@ -132,10 +132,14 @@ define([
          * @param item
          * @param {string} item.code
          * @param {string} item.text_de;
-         * @returns {string}
+         * @returns {Object}
          */
         _this.listNameOf = function (item) {
-            return item.code + " "+item.text_de;
+            return {
+                de: (item.code + " "+item.text_de),
+                fr: (item.code + " "+item.text_fr),
+                it: (item.code + " "+item.text_it)
+            }
         };
 
         /**
@@ -147,6 +151,10 @@ define([
          */
         _this.candidateNameOf = function (candidate) {
             return candidate.short_code + " "+candidate.code + " "+candidate.text_de;
+        };
+
+        _this.firstCharacterOf = function(item) {
+            return item.code.charAt(0);
         };
 
         _this.groupPrefix = function () {

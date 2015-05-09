@@ -37,6 +37,7 @@ header {
 
       section {
         li {
+          @extend .noselect;
           background-color: transparent;
           a {
             @extend .light-font;
@@ -47,6 +48,13 @@ header {
           }
 
           &.active {
+
+            &.language {
+              &:after {
+                border-top-color: transparent;
+              }
+            }
+
             &:after {
               top: 100%;
               left: 0%;

@@ -126,7 +126,9 @@ define([
         };
 
         _this.render = function () {
-            link.text(_this.group().selector().nameOf(_this.item()));
+            var translations = _this.group().selector().nameOf(_this.item());
+            new Multiglot().on(link).custom(translations).apply();
+
             _this.add(link);
             if (_this.group().selector().isItemSelected(_this.item()))
                 _this.select();

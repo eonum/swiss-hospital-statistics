@@ -49,6 +49,11 @@ define([
                 multiglot.applyOn(html);
                 return html;
             };
+
+            _this.custom = function(translation) {
+                element.data(Multiglot.customID, translation);
+                return _this;
+            };
         }
 
         function Processor(_html) {
@@ -116,9 +121,28 @@ define([
                 });
             };
 
+            _this.hasCustom = function () {
+                return !_.isUndefined(_this.custom());
+            };
+
+            _this.custom = function () {
+                return html.data(Multiglot.customID);
+            };
+
+            _this.useCustom = function () {
+                var translations = _this.custom();
+                processor.translationsLogic(function(html){
+                    return $(html).data(Multiglot.customID);
+                });
+            };
+
             _this.build = function () {
                 if (_this.hasAttribute())
                     _this.useAttribute();
+
+                if (_this.hasCustom())
+                    _this.useCustom();
+
                 return processor;
             };
 
