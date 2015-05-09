@@ -46,7 +46,7 @@ define([
         _this.cloud = function (_cloud) {
             if (_.isUndefined(_cloud)) return cloud;
             cloud = _cloud;
-            cloud.model(model.cloud());
+            cloud.model(model);
             _this.add(cloud);
             return _this;
         };

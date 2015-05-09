@@ -1,11 +1,13 @@
 define([
     'View',
     'announcements/OnLabelsCloudAdded',
-    'announcements/OnLabelsCloudRemoved'
+    'announcements/OnLabelsCloudRemoved',
+    'announcements/OnAlphabeticalItemSelected'
 ], function(
     View,
     OnLabelsCloudAdded,
-    OnLabelsCloudRemoved
+    OnLabelsCloudRemoved,
+    OnAlphabeticalItemSelected
 ){
 
     function Label(cloud){
@@ -44,19 +46,28 @@ define([
     function LabelsCloud() {
         var _this = new View('<ul class="inline-list labels-cloud"></ul>');
 
+        var hintText;
         var model;
+        var selectorModel;
 
-        _this.model = function (_model) {
-            if (_.isUndefined(_model)) return model;
-            model = _model;
+        _this.model = function (_selectorModel) {
+            if (_.isUndefined(_selectorModel)) return model;
+            selectorModel = _selectorModel;
+            model = _selectorModel.cloud();
             model.announcer().onSendTo(OnLabelsCloudAdded, _this.onAdded, _this);
             model.announcer().onSendTo(OnLabelsCloudRemoved, _this.onRemoved, _this);
+            selectorModel.announcer().onSendTo(OnAlphabeticalItemSelected, _this.onSelected, _this);
             _this.render();
             return _this;
         };
 
+        _this.selectorModel = function () {
+            return selectorModel;
+        };
+
         _this.render = function () {
             _this.empty();
+            _this.renderHint();
             _.each(_this.model().items(), function(each){_this.addLabel(each)});
         };
 
@@ -65,15 +76,33 @@ define([
         };
 
         _this.onAdded = function(ann) {
+            hintText.remove();
             _this.addLabel(ann.item());
         };
 
         _this.onRemoved = function(ann) {
             _this.removeLabel(ann.item());
+            if (_.isEmpty(_this.model().items()))
+                _this.add(hintText);
+        };
+
+        _this.onSelected = function(ann) {
+
         };
 
         _this.addLabel = function (item) {
             _this.add(_this.newLabel().item(item));
+        };
+
+        _this.renderHint = function () {
+            hintText = _this.newHint();
+            new Multiglot().on(hintText.find('p')).id('compare_hint').apply();
+            if (_.isEmpty(_this.model().items()))
+                _this.add(hintText);
+        };
+
+        _this.newHint = function () {
+            return new View('<li class="panel radius callout"><p></p></li>');
         };
 
         _this.removeLabel = function (item) {

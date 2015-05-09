@@ -371,14 +371,18 @@ ul {
   }
 
   ul {
+    $line-height: 1.8rem;
+
     &.labels-cloud {
-      min-height: 1.8em;
+      min-height: $line-height;
       margin-left: -1rem;
-      margin-top: -0.5rem;
+      margin-top: 0;
+      margin-bottom: 0;
 
       li {
         margin-left: 1rem;
-        margin-top: 0.5rem;
+        margin-top: 0;
+        margin-bottom: 0.9rem;
 
         span {
           &.label {
@@ -395,6 +399,28 @@ ul {
               background-color: #45c581;
             }
           }
+        }
+
+        &.panel {
+          @extend .light-font;
+          height: $line-height - 0.1rem;
+          padding-top: 0;
+          padding-bottom: 0;
+          margin: 0 0 0.5rem 1rem;
+          border-color: #92d9eb;
+
+          p {
+            line-height: $line-height - 0.2rem;
+            font-size: 0.8rem;
+
+            kbd {
+              @extend .light-font;
+              padding-top: 0;
+              font-size: 0.7rem;
+              padding-bottom: 0.08rem;
+            }
+          }
+
         }
       }
     }

@@ -33,6 +33,12 @@ define([], function(){
             it: 'compare',
             en: 'compare'
         },
+        compare_hint: {
+            de: 'You can compare diagnoses on the same chart. Just hover a diagnose in the list to the left and press <kbd>compare</kbd>',
+            fr: 'You can compare diagnoses on the same chart. Just hover a diagnose in the list to the left and press <kbd>compare</kbd>',
+            it: 'You can compare diagnoses on the same chart. Just hover a diagnose in the list to the left and press <kbd>compare</kbd>',
+            en: 'You can compare diagnoses on the same chart. Just hover a diagnose in the list to the left and press <kbd>compare</kbd>'
+        },
         navigation_hint: {
             de: 'Um durch Codes zu navigieren können Sie <kbd>Pfeil nach oben</kbd> und <kbd>Pfeil nach unten</kbd> drücken.<br>' +
                 'To compare codes hover one with mouse and click <kbd>compare</kbd> to the right of the code.',
