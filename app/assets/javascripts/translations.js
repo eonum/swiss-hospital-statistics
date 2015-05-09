@@ -34,10 +34,14 @@ define([], function(){
             en: 'compare'
         },
         navigation_hint: {
-            de: 'Um durch Codes zu navigieren können Sie <kbd>Pfeil nach oben</kbd> und <kbd>Pfeil nach unten</kbd> drücken',
-            fr: 'Pour naviguer à travers les codes que vous pouvez utiliser <kbd>Flèche Haut</kbd> et <kbd>Flèche vers le bas</kbd>',
-            it: 'Per navigare attraverso codici è possibile utilizzare <kbd>Freccia Su</kbd> e <kbd>Freccia Giù</kbd>',
-            en: 'To navigate through codes you can use <kbd>Arrow Up</kbd> and <kbd>Arrow Down</kbd>'
+            de: 'Um durch Codes zu navigieren können Sie <kbd>Pfeil nach oben</kbd> und <kbd>Pfeil nach unten</kbd> drücken.<br>' +
+                'To compare codes hover one with mouse and click <kbd>compare</kbd> to the right of the code.',
+            fr: 'Pour naviguer à travers les codes que vous pouvez utiliser <kbd>Flèche Haut</kbd> et <kbd>Flèche vers le bas</kbd>.<br>' +
+                'To compare codes hover one with mouse and click <kbd>compare</kbd> to the right of the code.',
+            it: 'Per navigare attraverso codici è possibile utilizzare <kbd>Freccia Su</kbd> e <kbd>Freccia Giù</kbd>.<br>' +
+                'To compare codes hover one with mouse and click <kbd>compare</kbd> to the right of the code.',
+            en: 'To navigate through codes you can use <kbd>Arrow Up</kbd> and <kbd>Arrow Down</kbd>.<br>' +
+                'To compare codes hover one with mouse and click <kbd>compare</kbd> to the right of the code.'
         },
         all_chapters: {
             de: 'Alle Kapitel',
