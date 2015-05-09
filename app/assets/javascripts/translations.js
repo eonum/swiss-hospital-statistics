@@ -1,5 +1,20 @@
 define([], function(){
     return {
+        tab_icd: 'ICD',
+        tab_icd_per_year: {
+            de: 'ICD pro Jahr',
+            it: "ICD all'anno",
+            fr: 'ICD par an',
+            en: 'ICD per year'
+        },
+        tab_chop: 'CHOP',
+        tab_drg: 'DRG',
+        tab_top_3: {
+            de: 'Top Diagnosen',
+            it: 'Top diagnosi',
+            fr: 'Top diagnostics',
+            en: 'Top diagnoses'
+        },
         search_button: {
             de: 'Suchen',
             it: 'Cercare',

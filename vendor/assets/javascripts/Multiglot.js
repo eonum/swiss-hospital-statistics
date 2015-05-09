@@ -170,5 +170,9 @@ define([
         return new Multiglot().invalidate();
     };
 
+    Multiglot.custom = function(html, translations) {
+        return new Multiglot().on(html).custom(translations).apply();
+    };
+
     return Multiglot;
 });

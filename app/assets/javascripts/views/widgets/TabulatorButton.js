@@ -42,8 +42,8 @@ define([
             return new View('<a></a>');
         };
 
-        _this.label = function (_label) {
-            _this.link().text(_label);
+        _this.label = function (translations) {
+            Multiglot.custom(_this.link(), translations);
         };
 
         _this.beActive = function () {
