@@ -63,7 +63,10 @@ define([
             var applyLogic = function(html, text) { html.html(text) };
             var idLogic = function(html) { return html.data(Multiglot.dataID) };
             var translationsLogic = function(html) { return Multiglot.translations[_this.id(html)] };
-            var textLogic = function(translations) { return translations[Multiglot.language] };
+            var textLogic = function(translations) {
+                if (_.isString(translations)) return translations;
+                return translations[Multiglot.language]
+            };
 
             _this.id = function(html) {
                 return idLogic(html);
@@ -130,7 +133,6 @@ define([
             };
 
             _this.useCustom = function () {
-                var translations = _this.custom();
                 processor.translationsLogic(function(html){
                     return $(html).data(Multiglot.customID);
                 });
@@ -145,7 +147,6 @@ define([
 
                 return processor;
             };
-
         }
 
         return _this;
