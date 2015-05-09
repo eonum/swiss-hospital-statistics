@@ -29,7 +29,10 @@ define([
                         {"name": "Box 2/0", "value": 10}, {"name": "Box 2/1", "value": 10}, {"name": "Box 2/2", "value": 10}];
                 }
 
-                topThreeTable.setData(datasets);
+                var hardcodedYear = 2013;
+                var hardcodedHospitalTypeString = "Spezialkliniken: Reha";
+
+                topThreeTable.setData(datasets, hardcodedYear, hardcodedHospitalTypeString);
 
             };
 

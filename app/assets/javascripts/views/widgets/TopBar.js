@@ -41,9 +41,12 @@ define([
     function Section() {
         var _this = new View('<section class="top-bar-section"></section>');
         var leftSection;
+        var rightSection;
 
         _this.initialize = function () {
             leftSection = _this.newLeftSection();
+            rightSection = _this.newRightSection();
+            _this.add(rightSection);
             _this.add(leftSection);
         };
 
@@ -55,8 +58,20 @@ define([
             return leftSection;
         };
 
+        _this.addRight = function (view) {
+            _this.rightSection().add(view);
+        };
+
+        _this.rightSection = function () {
+            return rightSection;
+        };
+
         _this.newLeftSection = function () {
             return new View('<ul class="left"></ul>');
+        };
+
+        _this.newRightSection = function () {
+            return new View('<ul class="right"></ul>');
         };
 
         _this.initialize();
@@ -104,6 +119,16 @@ define([
         _this.addLeftAll = function (views) {
             _.each(views, function(each){
                 _this.addLeft(each);
+            });
+        };
+
+        _this.addRight = function (view) {
+            _this.section().addRight(view);
+        };
+
+        _this.addRightAll = function (views) {
+            _.each(views, function(each){
+                _this.addRight(each);
             });
         };
 

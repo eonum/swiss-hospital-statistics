@@ -30,10 +30,13 @@ define([
         _this.renderLink = function(node) {
             var item = _this.newItem();
             var link = _this.newLink();
-            link.model(node).text(node.label()).click(function(e){
+            new Multiglot().on(link).custom(node.label()).apply();
+            link.model(node).click(function(e){
                 e.preventDefault();
                 $(this).me().model().select()
             });
+            if (node.isSelected())
+                item.class('selected');
             item.add(link);
             return item;
         };
@@ -81,20 +84,25 @@ define([
 
         _this.render = function () {
             _this.label(_this.model().label());
+
             if (!_this.model().hasNext())
                 _this.beCurrent();
             if (_this.model().hasAlternatives()) {
                 _this.dropdown().model(_this.model());
                 _this.add(_this.dropdown());
             }
+            _this.click(function(e){
+                e.preventDefault();
+                _this.model().select();
+            });
         };
 
         _this.beCurrent = function () {
             _this.class('current');
         };
 
-        _this.label = function(string) {
-            _this.link().text(string);
+        _this.label = function(translations) {
+            new Multiglot().on(_this.link()).custom(translations).apply();
         };
 
         _this.dropdown = function () {

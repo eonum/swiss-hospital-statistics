@@ -39,34 +39,59 @@ define([
             var breadcrumb = new Breadcrumb();
             _this.leftPane().prepend(breadcrumb);
 
+            function chapterLabel(chapter) {
+                return _.mapObject(Multiglot.translations.chapter, function(translation){
+                    return translation+' '+chapter.roman_number + ' ' + chapter.nonterminals
+                })
+            }
+
+            function groupLabel(group) {
+                return _.mapObject(Multiglot.translations.group, function(translation){
+                    return translation+' '+group.code
+                })
+            }
+
+            function nonterminalLabel(nonterminal) {
+                return _.mapObject(Multiglot.translations.nonterminal, function(translation){
+                    return translation+' '+nonterminal.code
+                })
+            }
+
+            function terminalLabel(terminal) {
+                return _.mapObject(Multiglot.translations.terminal, function(translation){
+                    return translation+' '+terminal.code
+                })
+            }
+
             var breadcrumbModel = new BreadcrumbModel()
                 .level()
                     .label(function(){return _this.groupPrefix().toUpperCase();})
                     .next(_.identity)
                     .sameDefault()
+                    .select(function(node){ node.select(true) })
                     .end()
                 .level()
-                    .defaultLabel(function(){return 'Alle Kapitel'})
-                    .label(function(chapter){return 'Kapitel '+chapter.roman_number + ' ' + chapter.nonterminals})
+                    .defaultLabel(function(){ return Multiglot.translations.all_chapters })
+                    .label(chapterLabel)
                     .next(function(chapter){return chapter.icd_groups})
                     .sameDefault()
                     .end()
                 .level()
-                    .defaultLabel(function(){return 'Alle Gruppen'})
-                    .label(function(group) {return 'Gruppe '+group.code})
+                    .defaultLabel(function(){ return Multiglot.translations.all_groups })
+                    .label(groupLabel)
                     .next(function(group){return group.icd_nonterminals})
                     .sameDefault()
                     .end()
                 .level()
-                    .defaultLabel(function(){return 'Alle Nonterminals'})
-                    .label(function(nonterminal) {return 'Nonterminal '+nonterminal.code})
+                    .defaultLabel(function(){ return Multiglot.translations.all_nonterminals })
+                    .label(nonterminalLabel)
                     .next(function(group){return group.icd_terminals})
                     .sameDefault()
                     .beLast()
                     .end()
                 .level()
-                    .defaultLabel(function(){return 'Alle Terminals'})
-                    .label(function(terminal) {return 'Terminal '+terminal.code})
+                    .defaultLabel(function(){ return Multiglot.translations.all_terminals })
+                    .label(terminalLabel)
                     .end();
 
             breadcrumbModel.announcer().onSendTo(OnBreadcrumbSelected, function(ann){

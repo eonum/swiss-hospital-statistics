@@ -315,9 +315,12 @@ define([
          * @returns {*}
          */
         _this.updateTitle = function () {
-            _this.titleView().transition()
-                .duration(_this.settings().transitionDuration)
-                .text(_this.titleText());
+            new Multiglot()
+                .d3()
+                .on(_this.titleView())
+                .custom(_this.titleText())
+                .set(function(html, text) {html.text(text)})
+                .apply();
         };
 
         _this.chart = function () {

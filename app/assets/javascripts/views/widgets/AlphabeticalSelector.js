@@ -87,11 +87,7 @@ define([
         };
 
         _this.render = function () {
-            _this.html(_this.labelText());
-        };
-
-        _this.labelText = function () {
-            return 'vergleich';
+            new Multiglot().on(_this).id('compare').apply();
         };
 
         _this.initialize();
@@ -126,7 +122,9 @@ define([
         };
 
         _this.render = function () {
-            link.text(_this.group().selector().nameOf(_this.item()));
+            var translations = _this.group().selector().nameOf(_this.item());
+            new Multiglot().on(link).custom(translations).apply();
+
             _this.add(link);
             if (_this.group().selector().isItemSelected(_this.item()))
                 _this.select();
@@ -247,12 +245,8 @@ define([
         var text = new View('<p></p>');
 
         _this.render = function() {
-            text.html(_this.hintText());
+            new Multiglot().on(text).id('navigation_hint').apply();
             _this.add(text);
-        };
-
-        _this.hintText = function() {
-            return 'To navigate through codes you can use <kbd>Arrow Up</kbd> and <kbd>Arrow Down</kbd>';
         };
 
         _this.render();

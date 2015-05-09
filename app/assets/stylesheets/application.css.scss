@@ -37,6 +37,7 @@ header {
 
       section {
         li {
+          @extend .noselect;
           background-color: transparent;
           a {
             @extend .light-font;
@@ -47,6 +48,13 @@ header {
           }
 
           &.active {
+
+            &.language {
+              &:after {
+                border-top-color: transparent;
+              }
+            }
+
             &:after {
               top: 100%;
               left: 0%;
@@ -78,7 +86,7 @@ header {
   padding-top: 0.5em;
   padding-bottom: 0.5em;
   input { margin-bottom: 0; }
-  a { margin-bottom: 0; }
+  a { margin-bottom: 0; padding-left: 0; padding-right: 0}
 }
 
 .alphabetical-selector {
@@ -298,9 +306,19 @@ ul {
             li {
               padding-top: 0;
               padding-bottom: 0;
+
+              &.selected {
+                a {
+                  color: #222222 !important;
+                  text-decoration: underline !important;
+                  pointer-events: none;
+                }
+              }
+
               a{
                 padding-top: 0.1em;
                 padding-bottom: 0.1em;
+                cursor: pointer !important;
               }
             }
           }

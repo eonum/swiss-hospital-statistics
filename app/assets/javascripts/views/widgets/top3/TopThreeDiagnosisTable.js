@@ -22,6 +22,8 @@ define([
         var topOffset = 80; //TODO: magic offset
         var leftOffset = 100; //TODO: magic offset
 
+        /* Note: maybe try eliminating magic offsets with classes and margin */
+
         var hospitalTypeButtons = new HospitalTypeButtonBar();
 
         _this.append(hospitalTypeButtons);
@@ -40,7 +42,7 @@ define([
                 .attr("y", 35)//TODO: magic number
                 .style("font-size", titleFontSize + "px");
 
-            _this.setTitle("Nine majestic pink boxes in their natural habitat");
+            _this.setTitle("Top Drei Diagnosen");
         };
 
         _this.setTitle = function(text){
@@ -52,7 +54,9 @@ define([
             return _this;
         };
 
-        _this.setData = function(data){
+        _this.setData = function(data, year, hospitalType){
+            _this.setTitle("Top Drei Diagnosen, " + year + ", " + hospitalType);
+
             var numOfRows = data.length / NUM_OF_COLS;
 
             var boxHeight = _height/numOfRows;
@@ -68,10 +72,12 @@ define([
                 yDomain.push(i);
             yScale.domain(yDomain);
 
+
             var boxGroup = _this.svg().selectAll("g")
                 .data(data)
                 .enter().append("g");
 
+             /*
             this.svg().append("text")
                 .attr("x", 100)
                 .attr("y", 70)
@@ -101,7 +107,7 @@ define([
                 .attr("x", _this.marginLeft())
                 .attr("y", 250)
                 .text("40-69");
-
+            */
 
 
             boxGroup.append("rect")

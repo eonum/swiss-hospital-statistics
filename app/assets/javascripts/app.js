@@ -28,13 +28,23 @@ define([
             // we use topbar to have tab buttons there
             var topBar = new TopBar().title('Eonum');
 
+            var languages = [{name: 'Deutsch', id: Multiglot.DE}, {name: 'Français', id: Multiglot.FR}, {name: 'Italiano', id: Multiglot.IT}];
+            var languageTabulator = new TabulatorModel();
+            var languageModels = _.map(languages, function(language){
+                var tab = languageTabulator.addTab(language.name).onSelected(function(){ Multiglot.setLanguage(language.id) });
+                if (Multiglot.language === language.id) tab.select();
+                return tab;
+            });
+            topBar.addRightAll(_.map(languageModels,
+                function(tab){return new TabulatorButton().class('language').model(tab)}));
+
             // first we define tabulator model and script 3 tabs. select first one by default
             var tabulatorModel = new TabulatorModel();
-            var tabIcd = tabulatorModel.addTab('ICD').render(function(){return new IcdCodePane().load()}).select();
-            var tabYearIcd = tabulatorModel.addTab('ICD pro Jahr').render(function(){return new IcdYearsPane().load()});
-            var tabChop = tabulatorModel.addTab('CHOP').render(function(){return new ChopCodePane().load()});
-            var tabDrg = tabulatorModel.addTab('DRG').render(function(){return new DrgCodePane().load()});
-            var tabTop3 = tabulatorModel.addTab('Top Diagnosen').render(function(){return new Top3DiagnosesPane()});
+            var tabIcd = tabulatorModel.addTab(Multiglot.translations.tab_icd).render(function(){return new IcdCodePane().load()}).select();
+            var tabYearIcd = tabulatorModel.addTab(Multiglot.translations.tab_icd_per_year).render(function(){return new IcdYearsPane().load()});
+            var tabChop = tabulatorModel.addTab(Multiglot.translations.tab_chop).render(function(){return new ChopCodePane().load()});
+            var tabDrg = tabulatorModel.addTab(Multiglot.translations.tab_drg).render(function(){return new DrgCodePane().load()});
+            var tabTop3 = tabulatorModel.addTab(Multiglot.translations.tab_top_3).render(function(){return new Top3DiagnosesPane()});
 
             // then create corresponding button views and attach tab models
             topBar.addLeftAll(_.map([tabIcd,tabYearIcd,tabChop,tabDrg, tabTop3],
