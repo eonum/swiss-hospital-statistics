@@ -26,11 +26,31 @@ define([
 
         /*--------- V I S U A L I S A T I O N S ---------*/
         _this.update = function (selection) {
+            var arrayTester = [{"I": 10},{"II": 40},{"III": 20},{"IV": 25},{"V": 5}];
+            var arrayTester2 = [];
+
             converter.convert(selection, function(result) {
                 console.log("MALE");
                 console.log(result.man);
                 console.log("FEMALE");
                 console.log(result.woman);
+
+
+                var tmpObject = {};
+
+
+                _.each(result.woman, function(value, key) {
+                    arrayTester2.push({interval: key, amount: value});
+
+                });
+
+                console.log(arrayTester2);
+
+                //pieChart = new PieChart(300,300);
+                //woman.add(pieChart);
+
+                //pieChart.openOn(arrayTester2);
+
             });
 
 
@@ -38,7 +58,9 @@ define([
 
 
             // dummy update
-            _this.womanChart().html(JSON.stringify(selection));
+            console.log(arrayTester);
+            //_this.visualiseWomanChart(arrayTester, woman);
+            _this.newWomanChart().openOn(arrayTester2).labeled("tester");
             _this.manChart().html(JSON.stringify(selection));
         };
 
@@ -48,16 +70,15 @@ define([
          */
         _this.newWomanChart = function () {
 
-            var womanView = new View('<div height: 500px></div>');
+            //var womanView = new View('<div height: 500px></div>');
             var pieChart = new PieChart(300, 300);
-
 
 
             return pieChart;
 
 
 
-           // return new View('<div style="background: #ff69b4; height: 500px"></div>')
+            //return new View('<div style="background: #ff69b4; height: 500px"></div>')
         };
 
         /**
@@ -66,13 +87,12 @@ define([
          */
         _this.newManChart = function () {
 
-            var manView = new View('<div height: 500px></div>');
-            var pieChart = new PieChart(_width, _height);
+            //var manView = new View('<div height: 500px></div>');
+            //var pieChart = new PieChart(_width, _height);
+            //pieChart.openOn();
+            //return pieChart;
 
-
-
-
-            //return new View('<div style="background: #88d0fc; height: 500px"></div>')
+            return new View('<div style="background: #88d0fc; height: 500px"></div>')
         };
 
         /*------------------------------------------------*/
