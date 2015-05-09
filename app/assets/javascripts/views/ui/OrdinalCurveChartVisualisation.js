@@ -7,7 +7,12 @@ function(View, OrdinalCurveChart, NumberByAgeDatasetConverter, DatasetSorter)
 
         _this.initialize = function(){
             _this.add(chart
-                .title(function(entity) { return entity.codes[0].code[0].code + ': ' + entity.codes[0].code[0].text_de })
+                .title(function(entity) { return {
+                    de: entity.codes[0].code[0].code + ': ' + entity.codes[0].code[0].text_de,
+                    fr: entity.codes[0].code[0].code + ': ' + entity.codes[0].code[0].text_fr,
+                    it: entity.codes[0].code[0].code + ': ' + entity.codes[0].code[0].text_it
+                }})
+
                 .display(function(entity) { return entity.data })
                 .x('interval')
                 .y('amount'));

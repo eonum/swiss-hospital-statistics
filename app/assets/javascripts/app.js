@@ -37,7 +37,7 @@ define([
             });
             topBar.addRightAll(_.map(languageModels,
                 function(tab){return new TabulatorButton().class('language').model(tab)}));
-            
+
             // first we define tabulator model and script 3 tabs. select first one by default
             var tabulatorModel = new TabulatorModel();
             var tabIcd = tabulatorModel.addTab(Multiglot.translations.tab_icd).render(function(){return new IcdCodePane().load()}).select();

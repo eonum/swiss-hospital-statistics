@@ -14,7 +14,11 @@ define([
 
         _this.initialize = function () {
             _this.append(boxPlot
-                .title(function(entity) { return entity.code.code + ': ' + entity.code.text_de })
+                .title(function(entity) { return {
+                    de: entity.code.code + ': ' + entity.code.text_de,
+                    fr: entity.code.code + ': ' + entity.code.text_fr,
+                    it: entity.code.code + ': ' + entity.code.text_it
+                }})
                 .display(function(entity) { return entity.data })
                 .x('ageInterval')
                 .y('avg'));
