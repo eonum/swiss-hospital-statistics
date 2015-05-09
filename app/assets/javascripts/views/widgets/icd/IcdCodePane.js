@@ -63,13 +63,12 @@ define([
                 })
             }
 
-
-
             var breadcrumbModel = new BreadcrumbModel()
                 .level()
                     .label(function(){return _this.groupPrefix().toUpperCase();})
                     .next(_.identity)
                     .sameDefault()
+                    .select(function(node){ node.select(true) })
                     .end()
                 .level()
                     .defaultLabel(function(){ return Multiglot.translations.all_chapters })

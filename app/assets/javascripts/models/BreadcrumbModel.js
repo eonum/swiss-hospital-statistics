@@ -87,6 +87,14 @@ define([
             defaultSelect = _func;
             return _this;
         };
+
+        _this.onSelected = function (node) {
+            selectedLogic(node);
+        };
+
+        _this.onDefaultSelected = function(node) {
+            defaultSelect(node);
+        };
     }
 
     function Node () {
@@ -168,7 +176,7 @@ define([
 
         _this.alternatives = function () {
             if (!_this.hasParent()) return [];
-            return _.select(_this.parent().subnodes(), function(node){return node !== _this});
+            return _this.parent().subnodes();
         };
 
         _this.hasAlternatives = function () {
@@ -191,8 +199,25 @@ define([
             return false;
         };
 
-        _this.select = function () {
+        /**
+         * @param {boolean} [force=false]
+         */
+        _this.select = function (force) {
+            force = _.isUndefined(force) ? false : force;
+            if (!force) _this.virtuallySelect();
+            if (!force && _this.isSelected()) return;
             _this.breadcrumb().select(_this);
+        };
+
+        _this.isSelected = function () {
+            return _.contains(_this.breadcrumb().selected().path(), _this);
+        };
+
+        _this.virtuallySelect = function () {
+            _.each(_this.deepest().path(), function(node){
+                if (node.isDefault()) _this.level().onDefaultSelected(node);
+                else _this.level().onSelected(node);
+            });
         };
     }
 
@@ -265,6 +290,7 @@ define([
         };
 
         _this.notifySelected = function (node) {
+            var level = node.level();
             _this.announcer().announce(new OnBreadcrumbSelected(node));
         };
 

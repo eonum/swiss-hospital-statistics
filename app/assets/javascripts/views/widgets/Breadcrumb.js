@@ -35,6 +35,8 @@ define([
                 e.preventDefault();
                 $(this).me().model().select()
             });
+            if (node.isSelected())
+                item.class('selected');
             item.add(link);
             return item;
         };
@@ -89,6 +91,10 @@ define([
                 _this.dropdown().model(_this.model());
                 _this.add(_this.dropdown());
             }
+            _this.click(function(e){
+                e.preventDefault();
+                _this.model().select();
+            });
         };
 
         _this.beCurrent = function () {

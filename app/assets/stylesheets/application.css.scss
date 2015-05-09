@@ -306,9 +306,19 @@ ul {
             li {
               padding-top: 0;
               padding-bottom: 0;
+
+              &.selected {
+                a {
+                  color: #222222 !important;
+                  text-decoration: underline !important;
+                  pointer-events: none;
+                }
+              }
+
               a{
                 padding-top: 0.1em;
                 padding-bottom: 0.1em;
+                cursor: pointer !important;
               }
             }
           }
