@@ -13,8 +13,8 @@ define(['d3', 'views/abstract/AbstractPieChart'], function (d3, AbstractPieChart
             colorLogic: d3.scale.category20(),
             displayLogic: function (entity) { return entity; },
             transformedLogic: function(value) { return value },
-            //labelLogic: function (value) { return "Tester" },
-            labelLogic: function (value) { return value.toString() },
+            labelLogic: function (value) { return "Tester" },
+            //labelLogic: function (value) { return value.toString() },
             keySymbol: 'key',
             valueSymbol: 'value'
         };
