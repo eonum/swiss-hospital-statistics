@@ -37,17 +37,22 @@ define([
 
                 // mapping for compatibility with PieChart
                 _.each(result.woman, function(value, key) {
+                    value = Math.round(value*100)/100;
                     data_man.push({interval: key, amount: value});
 
                 });
                 _.each(result.man, function(value, key) {
+                    value = Math.round(value*100)/100;
                     data_woman.push({interval: key, amount: value});
 
                 });
+
+                _this.womanChart().openOn(data_woman);
+                _this.manChart().openOn(data_man);
             });
 
-            _this.womanChart().openOn(data_woman);
-            _this.manChart().openOn(data_man);
+
+
         };
 
         /**
@@ -55,8 +60,10 @@ define([
          * @returns {ResponsiveSvg|View}
          */
         _this.newWomanChart = function () {
-            var pieChart = new PieChart(300, 300);
-
+            var pieChart = new PieChart(800, 500);
+            pieChart.key('interval').value('amount').labeled(function(amount) {
+                return Math.round(amount*100)/100;
+            });
             return pieChart;
         };
 
@@ -65,8 +72,8 @@ define([
          * @returns {ResponsiveSvg|View}
          */
         _this.newManChart = function () {
-            var pieChart = new PieChart(300, 300);
-            
+            var pieChart = new PieChart(800, 500);
+            pieChart.key('interval').value('amount');
             return pieChart;
         };
 
