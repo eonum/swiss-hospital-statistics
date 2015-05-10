@@ -96,6 +96,33 @@ define([], function(){
             fr: 'Terminal',
             it: 'Terminale',
             en: 'Terminal'
+        },
+        box_plot: {
+            higher_whiskers: {
+                de: 'is higher whisker [de]',
+                fr: 'is higher whisker [fr]',
+                it: 'is higher whisker [it]'
+            },
+            lower_whiskers: {
+                de: 'is lower whisker [de]',
+                fr: 'is lower whisker [fr]',
+                it: 'is lower whisker [it]'
+            },
+            higher_quartile: {
+                de: 'is higher quartile [de]',
+                fr: 'is higher quartile [fr]',
+                it: 'is higher quartile [it]'
+            },
+            lower_quartile: {
+                de: 'is lower quartile [de]',
+                fr: 'is lower quartile [fr]',
+                it: 'is lower quartile [it]'
+            },
+            average: {
+                de: 'is average value [de]',
+                fr: 'is average value [fr]',
+                it: 'is average value [it]'
+            }
         }
     }
 });

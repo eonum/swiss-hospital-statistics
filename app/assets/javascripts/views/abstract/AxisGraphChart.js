@@ -63,6 +63,7 @@ define([
                 legendItems: function() { return [] },
                 legendLabel: function(item) { return item.toString() },
                 legendColor: d3.scale.category20(),
+                legendTextColor: 'white',
                 legendBarTopPadding: 5,
                 legendBarLeftPadding: 5,
                 legendBarHeight: 25,
@@ -97,6 +98,27 @@ define([
 
         _this.x = function (string) {
             _this.settings().x = string;
+            return _this;
+        };
+
+        _this.legend = function(func) {
+            if (_.isUndefined(func)) return legend;
+            _this.settings().legendItems = func;
+            return _this;
+        };
+
+        _this.legendLabel = function (func) {
+            _this.settings().legendLabel = func;
+            return _this;
+        };
+
+        _this.legendColor = function(func) {
+            _this.settings().legendColor = func;
+            return _this;
+        };
+
+        _this.legendTextColor = function(color) {
+            _this.settings().legendTextColor = color;
             return _this;
         };
 
@@ -378,10 +400,6 @@ define([
                 .attr('class', 'legend');
         };
 
-        _this.legend = function () {
-            return legend;
-        };
-
         _this.legendBars = function () {
             return _this.legend().selectAll('.bar');
         };
@@ -485,7 +503,7 @@ define([
                 .style('font-size', _this.legendBarTextSize()+'px')
                 .attr('class', 'light-font')
                 .attr('text-anchor', 'start')
-                .attr('fill', 'white')
+                .attr('fill', _this.settings().legendTextColor)
                 .style('text-overflow', 'ellipsis')
                 .style('white-space', 'nowrap')
                 .attr('x', _this.legendBarLeftPadding)

@@ -19,6 +19,40 @@ define([
                     fr: entity.code.code + ': ' + entity.code.text_fr,
                     it: entity.code.code + ': ' + entity.code.text_it
                 }})
+                .legend(function(entity) {
+                    var data = entity.data[0];
+                    return [
+                        {
+                            value: data.higherWhisker,
+                            text: Multiglot.translations.box_plot.higher_whiskers
+                        },
+                        {
+                            value: data.higherQ,
+                            text: Multiglot.translations.box_plot.higher_quartile
+                        },
+                        {
+                            value: data.avg,
+                            text: Multiglot.translations.box_plot.average
+                        },
+                        {
+                            value: data.lowerQ,
+                            text: Multiglot.translations.box_plot.lower_quartile
+                        },
+                        {
+                            value: data.lowerWhisker,
+                            text: Multiglot.translations.box_plot.lower_whiskers
+                        }
+                    ]
+                })
+                .legendLabel(function(item){
+                    return _.mapObject(item.text, function(text){
+                        return text;
+                    })
+                })
+                .legendColor(function(){
+                    return d3.rgb(239, 239, 239);
+                })
+                .legendTextColor('black')
                 .display(function(entity) { return entity.data })
                 .x('ageInterval')
                 .y('avg'));
