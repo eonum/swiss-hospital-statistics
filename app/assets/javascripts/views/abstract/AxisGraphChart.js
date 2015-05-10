@@ -54,6 +54,8 @@ define([
                 yScale: function(scale) { return scale.linear() },
                 xDomain: function(entity) { return _.map(entity, _this.xValue) },
                 yDomain: function(entity) { return [ 0, d3.max(entity, _this.yValue) ] },
+                xAxisLabel: function() { return ''},
+                yAxisLabel: function() { return ''},
                 color: d3.scale.category20(),
                 legendWidth: 30,
                 titleFontSize: 5,
@@ -405,7 +407,7 @@ define([
         };
 
         _this.legendBarLabel = function (item) {
-            return _this.settings().legendLabel(item, _this.entity(), _this.rawEntity())[Multiglot.language];
+            return _this.settings().legendLabel(item, _this.entity(), _this.rawEntity());
         };
 
         _this.legendItems = function () {
@@ -438,7 +440,11 @@ define([
         };
 
         _this.textWrap = function() {
-            var self = d3.select(this),
+            _this.applyTextWrap(this);
+        };
+
+        _this.applyTextWrap = function (element) {
+            var self = d3.select(element),
                 textLength = self.node().getComputedTextLength(),
                 text = self.text();
             while (textLength > (_this.legendWidth() - _this.legendBarLeftPadding()) && text.length > 0) {
@@ -446,6 +452,15 @@ define([
                 self.text(text + '...');
                 textLength = self.node().getComputedTextLength();
             }
+        };
+
+        _this.legendTextTranslations = function() {
+            var self = this;
+            new Multiglot()
+                .on($(this))
+                .custom(_this.legendBarLabel(d3.select(self)[0][0].__data__))
+                .set(function(html, text) { html.text(text); _this.applyTextWrap(self) })
+                .apply();
         };
 
         _this.addLegendBars = function () {
@@ -475,11 +490,9 @@ define([
                 .style('white-space', 'nowrap')
                 .attr('x', _this.legendBarLeftPadding)
                 .attr('y', _this.legendBarTextY)
-                .text(_this.legendBarLabel)
                 .attr('width', _this.legendWidth())
-                .each(_this.textWrap);
+                .each(_this.legendTextTranslations);
         };
-
 
         _this.on = function (_entity){
             _this.entity(_entity);
