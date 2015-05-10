@@ -34,20 +34,20 @@ define([], function(){
             en: 'compare'
         },
         compare_hint: {
-            de: 'You can compare diagnoses on the same chart. Just hover a diagnose in the list to the left and press <kbd>compare</kbd>',
-            fr: 'You can compare diagnoses on the same chart. Just hover a diagnose in the list to the left and press <kbd>compare</kbd>',
-            it: 'You can compare diagnoses on the same chart. Just hover a diagnose in the list to the left and press <kbd>compare</kbd>',
-            en: 'You can compare diagnoses on the same chart. Just hover a diagnose in the list to the left and press <kbd>compare</kbd>'
+            de: 'Diagnosen direkt vergleichen: <kbd>vergleichen</kbd> rechts neben der Diagnose klicken',
+            fr: 'Comparer des diagnoses directement: Cliquer <kbd>comparer</kbd> à la droite de la diagnose',
+            it: 'Confronta diagnosi: selezionare <kbd>compare</kbd> sul lato destro',
+            en: 'To compare diagnoses, click <kbd>compare</kbd> to the right of the diagnosis'
         },
         navigation_hint: {
             de: 'Um durch Codes zu navigieren können Sie <kbd>Pfeil nach oben</kbd> und <kbd>Pfeil nach unten</kbd> drücken.<br>' +
-                'To compare codes hover one with mouse and click <kbd>compare</kbd> to the right of the code.',
+                'Diagnosen direkt vergleichen: <kbd>vergleichen</kbd> rechts neben der Diagnose klicken',
             fr: 'Pour naviguer à travers les codes que vous pouvez utiliser <kbd>Flèche haut</kbd> et <kbd>Flèche bas</kbd>.<br>' +
-                'To compare codes hover one with mouse and click <kbd>compare</kbd> to the right of the code.',
+                'Comparer des diagnoses directement: Cliquer <kbd>comparer</kbd> à la droite de la diagnose',
             it: 'Per navigare attraverso codici è possibile utilizzare <kbd>Freccia Su</kbd> e <kbd>Freccia Giù</kbd>.<br>' +
-                'To compare codes hover one with mouse and click <kbd>compare</kbd> to the right of the code.',
+                'Confronta diagnosi: selezionare <kbd>compare</kbd> sul lato destro',
             en: 'To navigate through codes you can use <kbd>Arrow Up</kbd> and <kbd>Arrow Down</kbd>.<br>' +
-                'To compare codes hover one with mouse and click <kbd>compare</kbd> to the right of the code.'
+                'To compare diagnoses, click <kbd>compare</kbd> to the right of the diagnosis.'
         },
         all_chapters: {
             de: 'Alle Kapitel',
