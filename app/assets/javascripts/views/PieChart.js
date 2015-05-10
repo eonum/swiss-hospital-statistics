@@ -13,8 +13,7 @@ define(['d3', 'views/abstract/AbstractPieChart'], function (d3, AbstractPieChart
             colorLogic: d3.scale.category20(),
             displayLogic: function (entity) { return entity; },
             transformedLogic: function(value) { return value },
-            labelLogic: function (value) { return "Tester" },
-            //labelLogic: function (value) { return value.toString() },
+            labelLogic: function (value) { return value.toString() },
             keySymbol: 'key',
             valueSymbol: 'value'
         };
@@ -29,10 +28,6 @@ define(['d3', 'views/abstract/AbstractPieChart'], function (d3, AbstractPieChart
         _this.openOn = function (entity) {
             console.log("entity");
             console.log(entity);
-            //var testInterval = [{"interval": "120", "amount": 120},{"interval": "130", "amount": 130},{"interval": "140", "amount": 140}];
-            //console.log(testInterval);
-            //console.log(typeof entity);
-            //console.log(typeof testInterval);
 
             _this.setData(scripting.displayLogic(entity));
             return _this;

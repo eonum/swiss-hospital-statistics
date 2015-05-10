@@ -46,16 +46,8 @@ define([
                 });
             });
 
-
-            pieChart = new PieChart(300,300);
-            pieChart.openOn(data_woman);
-
-            // update visualisations
-            // dummy update
-
-            //_this.visualiseWomanChart(arrayTester, woman);
-            _this.newWomanChart().openOn(pieChart);
-            _this.manChart().html(JSON.stringify(data_woman));
+            _this.womanChart().openOn(data_woman);
+            _this.manChart().openOn(data_man);
         };
 
         /**
@@ -63,22 +55,9 @@ define([
          * @returns {ResponsiveSvg|View}
          */
         _this.newWomanChart = function () {
-
-            //var womanView = new View('<div height: 500px></div>');
             var pieChart = new PieChart(300, 300);
 
-            // Even when I try to add dummy data I get errors in d3.js but I modelled the data
-            // exactly like the entity given to PieChart by the other function (ICD Code -> PieChart)
-            var arrayTester = [{"I": 10},{"II": 40},{"III": 20},{"IV": 25},{"V": 5}];
-
-            // pieChart.labeled("Tester Lable");
-            // pieChart.openOn(arrayTester);
-
-
             return pieChart;
-            //return woman;
-
-            return new View('<div style="background: #ff69b4; height: 500px"></div>');
         };
 
         /**
@@ -86,13 +65,9 @@ define([
          * @returns {ResponsiveSvg|View}
          */
         _this.newManChart = function () {
-
-            //var manView = new View('<div height: 500px></div>');
-            //var pieChart = new PieChart(_width, _height);
-            //pieChart.openOn();
-            //return pieChart;
-
-            return new View('<div style="background: #88d0fc; height: 500px"></div>');
+            var pieChart = new PieChart(300, 300);
+            
+            return pieChart;
         };
 
         /*------------------------------------------------*/
