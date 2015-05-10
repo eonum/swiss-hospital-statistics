@@ -20,6 +20,10 @@ define([
         var isExpanded = false;
         var items = [];
 
+        _this.empty = function(){
+            items = [];
+        };
+
         _this.isEmpty = function () {
             return _.isEmpty(_this.items());
         };
@@ -65,9 +69,13 @@ define([
         var announcer = new Announcer();
 
         _this.initialize = function () {
-            groups = {};
             _.each(_this.range(),function(each) {
-                groups[each] = new Group(_this, each);
+                var group = _this.groupAt(each);
+                if (_.isUndefined(group)) {
+                    groups[each] = new Group(_this, each);
+                    group = _this.groupAt(each);
+                }
+                group.empty();
             });
         };
 
@@ -114,6 +122,9 @@ define([
         _this.range = function (_func) {
             if (_.isUndefined(_func)) return rangeLogic();
             rangeLogic = _func;
+            groups = _.pick(_this.groups(), function(group, char){
+                return _.contains(_this.range(), char)
+            });
         };
 
         _this.characterRange = function () {
