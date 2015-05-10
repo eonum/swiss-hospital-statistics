@@ -85,7 +85,7 @@ define(['View'], function (View) {
         };
 
         _this._setPaddingBottom = function () {
-            _this.css('padding-bottom', (_this._outerHeight()/_this._outerWidth() * 80) + '%');
+            _this.css('padding-bottom', (_this._outerHeight()/_this._outerWidth() * 100) + '%');
             return _this;
         };
 

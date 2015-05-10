@@ -38,12 +38,12 @@ define([
          * @override
          */
         _this.initializeVisualisations = function (tabulatorModel) {
-            barChartVisualisation = new BarChartVisualisation(800, 390);
-            ordinalCurveVisualisation = new OrdinalCurveChartVisualisation(800, 390);
-            pieChartVisualisation = new PieChartByAgeVisualisation(800, 390);
-            boxPlotVisualisation = new BoxPlotVisualisation(800, 390);
-            ordinalCurveTabModel = tabulatorModel.addTab("Ordinal curve chart").render(function(){return ordinalCurveVisualisation});
-            _this.addButton(tabulatorModel.addTab("Bar chart").render(function(){return barChartVisualisation}).select(), 'chart-bar.png');
+            barChartVisualisation = new BarChartVisualisation(1024, 390);
+            ordinalCurveVisualisation = new OrdinalCurveChartVisualisation(1024, 390);
+            pieChartVisualisation = new PieChartByAgeVisualisation(1024, 390);
+            boxPlotVisualisation = new BoxPlotVisualisation(1024, 390);
+            ordinalCurveTabModel = tabulatorModel.addTab("Ordinal curve chart").render(function(){return ordinalCurveVisualisation}).select();
+            _this.addButton(tabulatorModel.addTab("Bar chart").render(function(){return barChartVisualisation}), 'chart-bar.png');
             _this.addButton(ordinalCurveTabModel, 'chart-line.png');
             _this.addButton(tabulatorModel.addTab("Pie chart").render(function(){return pieChartVisualisation}), 'chart-pie.png');
             _this.addButton(tabulatorModel.addTab("Box plot").render(function(){return boxPlotVisualisation}).onSelected(function(){boxPlotVisualisation.update()}), 'chart-plot.png');

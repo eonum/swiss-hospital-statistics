@@ -20,7 +20,20 @@ define([
                     fr: entity.codes[0].code[0].code + ': ' + entity.codes[0].code[0].text_fr,
                     it: entity.codes[0].code[0].code + ': ' + entity.codes[0].code[0].text_it
                 }})
-
+                .settingsDo(function(settings){
+                    settings.legendItems = function(entity) {
+                        return _.map(entity.codes, function(each){
+                            return each.code[0];
+                        });
+                    };
+                    settings.legendLabel = function(item) {
+                        return {
+                            de: item.code + ': ' + item.text_de,
+                            fr: item.code + ': ' + item.text_fr,
+                            it: item.code + ': ' + item.text_it
+                        }
+                    }
+                })
                 .display(function(entity) { return entity.data })
                 .x('interval')
                 .y('amount'));

@@ -16,6 +16,7 @@ define([
      */
     function AxisGraphChart(_width, _height){
         var _this = new ResponsiveSvg(_width, _height);
+
         _this.marginTop(20);
         _this.marginLeft(0);
         _this.marginRight(140);
@@ -23,6 +24,7 @@ define([
 
         var title;
         var chart;
+        var legend;
 
         var settings;
         var xScale;
@@ -52,14 +54,33 @@ define([
                 yScale: function(scale) { return scale.linear() },
                 xDomain: function(entity) { return _.map(entity, _this.xValue) },
                 yDomain: function(entity) { return [ 0, d3.max(entity, _this.yValue) ] },
-                color: d3.scale.category20()
+                color: d3.scale.category20(),
+                legendWidth: 30,
+                titleFontSize: 5,
+                leftOffset: 40,
+                legendItems: function() { return [] },
+                legendLabel: function(item) { return item.toString() },
+                legendColor: d3.scale.category20(),
+                legendBarTopPadding: 5,
+                legendBarLeftPadding: 5,
+                legendBarHeight: 25,
+                legendBarFontSize: 14
             };
+        };
+
+        _this.settingsDo = function(func) {
+            func(_this.settings());
+            return _this;
         };
 
         _this.transitionDuration = function (number) {
             if (_.isUndefined(number)) return _this.settings().transitionDuration;
             _this.settings().transitionDuration = number;
             return _this;
+        };
+
+        _this.leftOffset = function() {
+            return _this.settings().leftOffset;
         };
 
         _this.title = function (object) {
@@ -99,6 +120,7 @@ define([
         _this.initialize = function(){
             title = _this.newTitle();
             chart = _this.newChart();
+            legend = _this.newLegend();
         };
 
         _this.render = function () {
@@ -106,6 +128,7 @@ define([
                 throw 'Entity can\'t be null';
             _this.updateScales();
             _this.updateTitle();
+            _this.updateLegend();
             _this.renderContent();
         };
 
@@ -134,7 +157,7 @@ define([
          * @returns {number}
          */
         _this.titleFontSize = function () {
-            return _this._height() / 20;
+            return _this._height() / 100 * _this.settings().titleFontSize;
         };
 
         /**
@@ -143,6 +166,14 @@ define([
          */
         _this.chartHeight = function () {
             return _this._height() - _this.titleFontSize();
+        };
+
+        _this.chartWidth = function () {
+            return _this._width() - _this.legendWidth();
+        };
+
+        _this.legendWidth = function () {
+            return _this._width() / 100 * _this.settings().legendWidth;
         };
 
         /**
@@ -183,7 +214,7 @@ define([
          */
         _this.defaultXScale = function () {
             return _this.settings()
-                .xScale(d3.scale).rangeBands([0, _this._width()], 0.5);
+                .xScale(d3.scale).rangeBands([0, _this.chartWidth()], 0.5);
         };
 
         /**
@@ -245,7 +276,7 @@ define([
         _this.defaultYAxis = function () {
             return d3.svg.axis()
                 .scale(_this.yScale())
-                .orient("left");
+                .orient('left');
         };
 
         _this.xDomain = function () {
@@ -296,9 +327,9 @@ define([
          * @returns {*}
          */
         _this.newTitle = function () {
-            return _this.svg().append("text")
-                .attr("class", "title")
-                .style("font-size", _this.titleFontSize() + "px");
+            return _this.svg().append('text')
+                .attr('class', 'title')
+                .style('font-size', _this.titleFontSize() + 'px');
         };
 
         /**
@@ -328,16 +359,127 @@ define([
         };
 
         _this.newChart = function () {
-            var group = _this.svg().append("g")
-                .attr("transform", "translate(40, " + _this.titleFontSize() + ")");
-            group.append("g")
+            var chart = _this.svg().append('g')
+                .attr('transform', 'translate('+_this.leftOffset()+', ' + _this.titleFontSize() + ')');
+            chart.append('g')
                 .attr('transform', 'translate(0,'+ _this.chartHeight()+')')
                 .attr('class', 'x axis')
                 .call(_this.xAxis());
-            group.append("g")
-                .attr("class", "y axis");
-            return group;
+            chart.append('g')
+                .attr('class', 'y axis');
+            return chart;
         };
+
+        _this.newLegend = function() {
+            return _this.svg().append('g')
+                .attr('transform', 'translate('+(_this.leftOffset() + _this.chartWidth())+', ' + _this.titleFontSize() + ')')
+                .attr('class', 'legend');
+        };
+
+        _this.legend = function () {
+            return legend;
+        };
+
+        _this.legendBars = function () {
+            return _this.legend().selectAll('.bar');
+        };
+
+        _this.legendBarText = function () {
+            return _this.legendBars().select('text');
+        };
+
+        _this.legendBarRect = function () {
+            return _this.legendBars().select('rect');
+        };
+
+        _this.legendBarTranslation = function(item, index) {
+            return 'translate(0,'+ ((_this.legendBarHeight() + _this.legendBarTopPadding()) * index) + ')';
+        };
+
+        _this.legendBarTopPadding = function () {
+            return  _this.settings().legendBarTopPadding;
+        };
+
+        _this.legendBarLeftPadding = function () {
+            return  _this.settings().legendBarLeftPadding;
+        };
+
+        _this.legendBarLabel = function (item) {
+            return _this.settings().legendLabel(item, _this.entity(), _this.rawEntity())[Multiglot.language];
+        };
+
+        _this.legendItems = function () {
+            return _this.settings().legendItems(_this.rawEntity(), _this.entity());
+        };
+
+        _this.updateLegend = function() {
+            _this.removeLegendBars();
+            _this.addLegendBars();
+        };
+
+        _this.removeLegendBars = function () {
+            _this.legendBars().data(_this.legendItems()).exit().remove();
+        };
+
+        _this.legendColorScale = function (item, index) {
+            return _this.settings().legendColor(index);
+        };
+
+        _this.legendBarHeight = function() {
+            return _this.settings().legendBarHeight;
+        };
+
+        _this.legendBarTextSize = function () {
+            return _this.settings().legendBarFontSize;
+        };
+
+        _this.legendBarTextY = function () {
+            return _this.legendBarHeight() - _this.legendBarTextSize() / 2.0;
+        };
+
+        _this.textWrap = function() {
+            var self = d3.select(this),
+                textLength = self.node().getComputedTextLength(),
+                text = self.text();
+            while (textLength > (_this.legendWidth() - _this.legendBarLeftPadding()) && text.length > 0) {
+                text = text.slice(0, -1);
+                self.text(text + '...');
+                textLength = self.node().getComputedTextLength();
+            }
+        };
+
+        _this.addLegendBars = function () {
+            var bars = _this.legendBars().data(_this.legendItems()).enter().append('g')
+                .attr('class', 'bar');
+
+            _this.legendBars()
+                .transition()
+                .duration(_this.settings().transitionDuration)
+                .attr('transform', _this.legendBarTranslation);
+
+            bars.append('rect');
+            _this.legendBarRect()
+                .style('fill', _this.legendColorScale)
+                .transition()
+                .duration(_this.settings().transitionDuration)
+                .attr('width', _this.legendWidth())
+                .attr('height', _this.legendBarHeight);
+
+            bars.append('text');
+            _this.legendBarText()
+                .style('font-size', _this.legendBarTextSize()+'px')
+                .attr('class', 'light-font')
+                .attr('text-anchor', 'start')
+                .attr('fill', 'white')
+                .style('text-overflow', 'ellipsis')
+                .style('white-space', 'nowrap')
+                .attr('x', _this.legendBarLeftPadding)
+                .attr('y', _this.legendBarTextY)
+                .text(_this.legendBarLabel)
+                .attr('width', _this.legendWidth())
+                .each(_this.textWrap);
+        };
+
 
         _this.on = function (_entity){
             _this.entity(_entity);
