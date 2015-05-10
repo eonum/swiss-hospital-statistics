@@ -272,5 +272,45 @@ define([
         return new Multiglot().on(html).custom(translations).apply();
     };
 
+    Multiglot.renderCustom = function(translations, type) {
+        type = type || 'jquery';
+        return [
+            'data-',
+            Multiglot.marker,
+            '=',
+            '"true" ',
+            'data-',
+            Multiglot.customID,
+            "='",
+            JSON.stringify(translations),
+            "' ",
+            'data-',
+            Multiglot.typeID,
+            '="',
+            type,
+            '"'
+        ].join("");
+    };
+
+    Multiglot.renderId = function(id, type) {
+        type = type || 'jquery';
+        return [
+            'data-',
+            Multiglot.marker,
+            '=',
+            '"true" ',
+            'data-',
+            Multiglot.dataID,
+            '="',
+            id,
+            '" ',
+            'data-',
+            Multiglot.typeID,
+            '="',
+            type,
+            '"'
+        ].join("");
+    };
+
     return Multiglot;
 });

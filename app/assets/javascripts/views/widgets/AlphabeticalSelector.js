@@ -5,7 +5,9 @@ define([
     'announcements/OnAlphabeticalItemSelected',
     'announcements/OnAlphabeticalItemDeselected',
     'announcements/OnLabelsCloudAdded',
-    'announcements/OnLabelsCloudRemoved'
+    'announcements/OnLabelsCloudRemoved',
+    'announcements/OnAlphabeticalGroupExpanded',
+    'announcements/OnAlphabeticalGroupCollapsed'
 ], function(
     View,
     Announcer,
@@ -13,7 +15,9 @@ define([
     OnAlphabeticalItemSelected,
     OnAlphabeticalItemDeselected,
     OnLabelsCloudAdded,
-    OnLabelsCloudRemoved
+    OnLabelsCloudRemoved,
+    OnAlphabeticalGroupExpanded,
+    OnAlphabeticalGroupCollapsed
 ) {
 
     var groupID = function(group) {
@@ -61,43 +65,9 @@ define([
         return _this;
     }
 
-    function ItemLabel(_group) {
-        var _this = new View('<span class="radius secondary label"></span>');
-
-        var item;
-        var group = _group;
-
-        _this.initialize = function() {
-            _this.click(function(e){
-                e.preventDefault();
-                if (_.isUndefined(_this.item())) return;
-                _this.group().selector().cloud().toggle(_this.item());
-            });
-        };
-
-        _this.item = function (_item) {
-            if (_.isUndefined(_item)) return item;
-            item = _item;
-            _this.render();
-            return _this;
-        };
-
-        _this.group = function () {
-            return group;
-        };
-
-        _this.render = function () {
-            new Multiglot().on(_this).id('compare').apply();
-        };
-
-        _this.initialize();
-
-        return _this;
-    }
-
     function ItemView(_group) {
         var _this = new View('<li></li>');
-        var link = new View('<a></a>');
+        var link;
 
         var item;
         var group = _group;
@@ -123,15 +93,14 @@ define([
 
         _this.render = function () {
             var translations = _this.group().selector().nameOf(_this.item());
-            new Multiglot().on(link).custom(translations).apply();
+            link = $('<a '+Multiglot.renderCustom(translations)+'>'+translations[Multiglot.language]+'</a>');
 
-            _this.add(link);
             if (_this.group().selector().isItemSelected(_this.item()))
                 _this.select();
             if (_this.group().selector().cloud().has(_this.item()))
                 _this.mark();
-            label = new ItemLabel(_this.group()).item(_this.item());
-            _this.add(label);
+            label = _this.renderItemLabel();
+            _this.append(link,label);
         };
 
         _this.select = function () {
@@ -148,6 +117,16 @@ define([
 
         _this.unmark = function () {
             _this.removeClass('marked');
+        };
+
+        _this.renderItemLabel = function() {
+            var label = $('<span class="radius secondary label" '+Multiglot.renderId('compare')+'>'+Multiglot.translations.compare[Multiglot.language]+'</span>');
+            label.click(function(e){
+                e.preventDefault();
+                if (_.isUndefined(_this.item())) return;
+                _this.group().selector().cloud().toggle(_this.item());
+            });
+            return label;
         };
 
         return _this;
@@ -176,6 +155,8 @@ define([
         _this.model = function (_model) {
             if (_.isUndefined(_model)) return model;
             model = _model;
+            model.announcer().onSendTo(OnAlphabeticalGroupExpanded, _this.onExpanded, _this);
+            model.announcer().onSendTo(OnAlphabeticalGroupCollapsed, _this.onCollapsed, _this);
             _this.render();
         };
 
@@ -188,13 +169,15 @@ define([
         };
 
         _this.renderList = function () {
-            if (_.size(_this.model().items()) > itemLimit * 2 && _this.model().amountOfGroups() > groupLimit) {
-                _this.renderItemsIn(_.first(_this.model().items(),itemLimit), list);
-                list.add(_this.newExpandItem());
-                _this.renderItemsIn(_.last(_this.model().items(),itemLimit), list);
-                return;
+            list.empty();
+            var views = [];
+            if (!_this.model().isExpanded() && _.size(_this.model().items()) > itemLimit * 2 && _this.model().amountOfGroups() > groupLimit) {
+                _this.renderItemsIn(_.first(_this.model().items(),itemLimit), views);
+                _this.renderExpandItemIn(_this.newExpandItem(), views);
+                _this.renderItemsIn(_.last(_this.model().items(),itemLimit), views);
             }
-            _this.renderItemsIn(_this.model().items(), list);
+            else _this.renderItemsIn(_this.model().items(), views);
+            list.append(views);
         };
 
         _this.renderName = function () {
@@ -208,13 +191,32 @@ define([
                 item.link().click(function() {
                     _this.announcer().announce(new OnItemClicked(each));
                 });
-                _list.add(item);
+                _list.push(item);
             });
+        };
+
+        _this.renderExpandItemIn = function(view, _list) {
+            view.click(function(e){
+                e.preventDefault();
+                _this.model().expand();
+            });
+            _list.push(view);
+        };
+
+        _this.onExpanded = function(ann) {
+            if (ann.group() !== _this.model()) return;
+            _this.renderList();
+        };
+
+        _this.onCollapsed = function(ann) {
+            if (ann.group() !== _this.model()) return;
+            _this.renderList();
         };
 
         _this.newExpandItem = function () {
             var expand = _this.newItem();
             expand.html('...');
+            expand.class('expand');
             return expand;
         };
 
@@ -313,7 +315,9 @@ define([
         _this.cleanAll = function () {
             if (!_.isUndefined(list))
                 list.children().each(function(index, group) {
-                    $(group).me().announcer().unsubscribe(_this);
+                    var view = $(group).me();
+                    view.announcer().unsubscribe(_this);
+                    view.model().announcer().unsubscribe(view);
                 });
             _this.empty();
         };

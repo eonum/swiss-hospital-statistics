@@ -3,13 +3,17 @@ define([
     'models/LabelsCloudModel',
     'announcements/OnAlphabeticalItemSelected',
     'announcements/OnAlphabeticalItemDeselected',
-    'announcements/OnAlphabeticalItemsUpdated'
+    'announcements/OnAlphabeticalItemsUpdated',
+    'announcements/OnAlphabeticalGroupExpanded',
+    'announcements/OnAlphabeticalGroupCollapsed'
 ], function(
     Announcer,
     LabelsCloudModel,
     OnAlphabeticalItemSelected,
     OnAlphabeticalItemDeselected,
-    OnAlphabeticalItemsUpdated
+    OnAlphabeticalItemsUpdated,
+    OnAlphabeticalGroupExpanded,
+    OnAlphabeticalGroupCollapsed
 ) {
 
     function Group (_selector, _label) {
@@ -19,6 +23,11 @@ define([
         var label = _label;
         var isExpanded = false;
         var items = [];
+        var announcer = new Announcer();
+
+        _this.announcer = function () {
+            return announcer;
+        };
 
         _this.empty = function(){
             items = [];
@@ -52,6 +61,30 @@ define([
         _this.amountOfGroups = function () {
             return _this.selector().amountOfGroups();
         };
+
+        _this.expand = function () {
+            if (_this.isExpanded()) return;
+            isExpanded = true;
+            _this.notifyExpanded();
+        };
+
+        _this.collapse = function () {
+            if (!_this.isExpanded()) return;
+            isExpanded = false;
+            _this.notifyCollapsed();
+        };
+
+        _this.notifyExpanded = function () {
+            _this.announcer().announce(new OnAlphabeticalGroupExpanded(_this));
+        };
+
+        _this.notifyCollapsed = function () {
+            _this.announcer().announce(new OnAlphabeticalGroupCollapsed(_this));
+        };
+
+        _this._collapse = function() {
+            isExpanded = false;
+        };
     }
 
     function AlphabeticalSelectorModel() {
@@ -76,6 +109,7 @@ define([
                     group = _this.groupAt(each);
                 }
                 group.empty();
+                group._collapse();
             });
         };
 
