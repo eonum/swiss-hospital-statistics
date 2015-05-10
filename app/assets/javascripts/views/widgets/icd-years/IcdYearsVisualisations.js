@@ -28,6 +28,11 @@ define([
         _this.update = function (selection) {
             var data_man = [];
             var data_woman = [];
+            var tmp_man = [];
+            var tmp_woman = [];
+            var normalizer = selection.years.length*selection.ages.length;
+
+            console.log("normalizer: " + normalizer);
 
             converter.convert(selection, function(result) {
                 console.log("MALE");
@@ -35,16 +40,47 @@ define([
                 console.log("FEMALE");
                 console.log(result.woman);
 
+                if(normalizer != 0) {
+                    _.map(result.woman, function (value, key) {
+                        return value/normalizer;
+                    });
+                    _.each(result.man, function (value) {
+                        value = value/normalizer;
+                    });
+                    console.log("MALE 22");
+                    console.log(result.man);
+                    console.log("FEMALE 22");
+                    console.log(result.woman);
+                }
+
+                var minEventsMan = 0;
+                _.filter(result.man, function(num) {
+                    if(num < 5) {
+                        minEventsMan += num;
+                    }
+                });
+                console.log("minEventsMan" + minEventsMan);
+                var minEventsFemale = 0;
+                minEventsFemale += _.filter(result.female, function(num) {
+                    return num < 5;
+                });
+                console.log("minEventsFemale" + minEventsFemale);
+
+// TODO refactor
                 // mapping for compatibility with PieChart
                 _.each(result.woman, function(value, key) {
                     value = Math.round(value*100)/100;
-                    data_man.push({interval: key, amount: value});
-
+                    if(value > 5) {
+                        value = value/normalizer;
+                        data_man.push({interval: key, amount: value});
+                    }
                 });
                 _.each(result.man, function(value, key) {
                     value = Math.round(value*100)/100;
-                    data_woman.push({interval: key, amount: value});
-
+                    if(value > 5) {
+                        value = value/normalizer;
+                        data_woman.push({interval: key, amount: value});
+                    }
                 });
 
                 _this.womanChart().openOn(data_woman);

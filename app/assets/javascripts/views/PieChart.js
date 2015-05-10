@@ -26,9 +26,6 @@ define(['d3', 'views/abstract/AbstractPieChart'], function (d3, AbstractPieChart
 
         /* ------------ S C R I P T I N G   A P I ------------ */
         _this.openOn = function (entity) {
-            console.log("entity");
-            console.log(entity);
-
             _this.setData(scripting.displayLogic(entity));
             return _this;
         };
