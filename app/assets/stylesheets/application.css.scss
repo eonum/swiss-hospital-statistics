@@ -85,8 +85,31 @@ header {
 .search {
   padding-top: 0.5em;
   padding-bottom: 0.5em;
-  input { margin-bottom: 0; }
   a { margin-bottom: 0; padding-left: 0; padding-right: 0}
+
+  div {
+    &:first-child::after {
+      @extend .light-font;
+      content: 'x';
+      position: absolute;
+      right: 0.9375rem;
+      top: 0;
+      bottom: 0;
+      vertical-align: -50%;
+      height: 1.4rem;
+      line-height: 1.3rem;
+      margin: auto;
+      width: 1.25em;
+      text-align: center;
+      font-size: 1.5rem;
+      color: #afafaf;
+      cursor: pointer;
+    }
+
+    input {
+      margin-bottom: 0;
+    }
+  }
 }
 
 .alphabetical-selector {

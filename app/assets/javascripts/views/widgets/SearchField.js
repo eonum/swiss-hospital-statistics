@@ -61,6 +61,23 @@ define([
                 _this.search(_this.input());
             }, 500, {leading: false});
             _this.inputField().keyup(onKeyUp);
+
+            function emToPx(input) {
+                var em = parseFloat($('body').css('font-size'));
+                // 1.5 is font-size of after element
+                return (em * 1.5 * input);
+            }
+
+            inputWrapper.click(function (e) {
+                var crossRight = inputWrapper.innerWidth() - (inputWrapper.innerWidth() - inputWrapper.width()) / 2;
+                var crossLeft = crossRight - emToPx(1.25);
+                if (e.offsetX >= crossLeft && e.offsetX <= crossRight) {
+                    e.preventDefault();
+                    if (_.isEmpty(_this.inputField().val())) return;
+                    _this.inputField().val('');
+                    _this.search('');
+                }
+            });
         };
 
         return _this;

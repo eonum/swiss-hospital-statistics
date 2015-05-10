@@ -282,7 +282,7 @@ define([
             'data-',
             Multiglot.customID,
             "='",
-            JSON.stringify(translations),
+            JSON.stringify(translations).replace(/'/g, "&#39;"),
             "' ",
             'data-',
             Multiglot.typeID,
