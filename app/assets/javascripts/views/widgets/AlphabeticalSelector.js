@@ -293,15 +293,17 @@ define([
         };
 
         _this.render = function () {
-            _this.cleanAll();
-            header = new Navigation();
-            header.model(_this.model());
-            hint = new Hint();
-            list = _this.renderGroupList();
-            _this.add(header);
-            _this.add(hint);
-            _this.add(list);
-            $(document).foundation('magellan-expedition','reflow');
+            _.defer(function(){
+                _this.cleanAll();
+                header = new Navigation();
+                header.model(_this.model());
+                hint = new Hint();
+                list = _this.renderGroupList();
+                _this.add(header);
+                _this.add(hint);
+                _this.add(list);
+                $(document).foundation('magellan-expedition','reflow');
+            });
         };
 
         _this.renderGroupList = function () {

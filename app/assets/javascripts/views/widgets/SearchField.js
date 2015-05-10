@@ -57,9 +57,10 @@ define([
 
         _this.attachInputHandler = function(){
             if (_.isUndefined(_this.inputField())) return;
-            _this.inputField().keyup(function () {
+            var onKeyUp = _.throttle(function(){
                 _this.search(_this.input());
-            });
+            }, 500, {leading: false});
+            _this.inputField().keyup(onKeyUp);
         };
 
         return _this;
