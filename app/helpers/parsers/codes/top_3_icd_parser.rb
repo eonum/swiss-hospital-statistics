@@ -15,34 +15,20 @@ class Top3IcdParser < SuCodeParser
                 sheet.column._
                     .column(2)
                     .from(8)
-                    .step(16)
+                    .step(17)
                     .for(self.stream)
                     .in(:hospital)
+                    .repeat
+                    .with { |hospitals|
+                        hospitals.box._
+                          .column(hospitals.column - 1)
+                          .row(hospitals.from)
+                          .for(self.stream)
+                          .repeated_row
+                          .offset(1)
+                          .in(:top3)
+                    }
               }
-              # .with { |sheet|
-              #   sheet.column._
-              #       .from(23)
-              #       .for(self.stream)
-              #       .in(:year)
-              #       .transformed(:round)
-              #       .distinct
-              #       .repeat
-              #       .with { |code|
-              #         code.row._
-              #             .row(code.from)
-              #             .from(code.column + 1)
-              #             .to(code.column + 7)
-              #             .for(self.stream)
-              #             .in(:code)
-              #       }
-              #       .with { |code|
-              #         code.row._
-              #             .row(code.from)
-              #             .from(code.column + 8)
-              #             .for(self.stream)
-              #             .in(:percentile_values)
-              #       }
-              # }
         }
   end
 end

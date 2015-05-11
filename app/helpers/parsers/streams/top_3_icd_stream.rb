@@ -14,6 +14,10 @@ class Top3IcdStream
     puts "type=#{hospital}"
   end
 
+  def top3(top3)
+    puts "top3=#{top3}"
+  end
+
   def tab (tab)
     puts tab
     @tab = tab
