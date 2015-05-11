@@ -25,6 +25,7 @@ define([
         var title;
         var chart;
         var legend;
+        var chartName;
 
         var settings;
         var xScale;
@@ -44,6 +45,7 @@ define([
         _this.defaultSettings = function () {
             return {
                 transitionDuration: 1000,
+                chartName: function() {return ''},
                 title: _.noop,
                 display: _.identity,
                 x: 'x',
@@ -60,7 +62,8 @@ define([
                 axisFontSize: 15,
                 color: d3.scale.category20(),
                 legendWidth: 30,
-                titleFontSize: 5,
+                chartNameFontSize: 5.5,
+                titleFontSize: 4.5,
                 leftOffset: 40,
                 topOffset: 15,
                 legendItems: function() { return [] },
@@ -76,6 +79,11 @@ define([
 
         _this.settingsDo = function(func) {
             func(_this.settings());
+            return _this;
+        };
+
+        _this.chartName = function(func) {
+            _this.settings().chartName = func;
             return _this;
         };
 
@@ -165,6 +173,7 @@ define([
         };
 
         _this.initialize = function(){
+            chartName = _this.newChartName();
             title = _this.newTitle();
             chart = _this.newChart();
             legend = _this.newLegend();
@@ -176,6 +185,7 @@ define([
             _this.updateScales();
             _this.updateTitle();
             _this.updateLegend();
+            _this.updateChartName();
             _this.renderContent();
         };
 
@@ -207,12 +217,16 @@ define([
             return _this._height() / 100 * _this.settings().titleFontSize;
         };
 
+        _this.chartNameFontSize = function () {
+            return _this._height() / 100 * _this.settings().chartNameFontSize;
+        };
+
         /**
          * Calculates actual chart height
          * @returns {number}
          */
         _this.chartHeight = function () {
-            return _this._height() - _this.titleFontSize() - _this.axisFontSize() - _this.settings().topOffset;
+            return _this._height() - _this.chartNameFontSize() - _this.titleFontSize() - _this.axisFontSize() - _this.settings().topOffset;
         };
 
         _this.chartWidth = function () {
@@ -361,6 +375,10 @@ define([
             return title;
         };
 
+        _this.chartNameView = function () {
+            return chartName;
+        };
+
         /**
          * Returns true if title dom element exists, false otherwise
          * @returns {boolean}
@@ -374,9 +392,27 @@ define([
          * @returns {*}
          */
         _this.newTitle = function () {
-            return _this.svg().append('text')
+            return _this.svg()
+                .append('text')
                 .attr('class', 'title')
+                .attr('transform', 'translate(0,'+(_this.chartNameFontSize()*1.2)+')')
                 .style('font-size', _this.titleFontSize() + 'px');
+        };
+
+        _this.newChartName = function () {
+            return _this.svg()
+                .append('text')
+                .attr('class', 'char')
+                .style('font-size', _this.chartNameFontSize() + 'px');
+        };
+
+        _this.updateChartName = function () {
+            new Multiglot()
+                .d3()
+                .on(_this.chartNameView())
+                .custom(_this.chartNameText())
+                .set(function(html, text) {html.text(text)})
+                .apply();
         };
 
         /**
@@ -384,8 +420,13 @@ define([
          * @returns {string}
          */
         _this.titleText = function() {
-            var text = _this.settings().title(_this.rawEntity());
-            return _.isUndefined(text) ? "" : text;
+            var text = _this.settings().title(_this.rawEntity(), _this.entity());
+            return _.isUndefined(text) ? '' : text;
+        };
+
+        _this.chartNameText = function() {
+            var text = _this.settings().chartName(_this.rawEntity(), _this.entity());
+            return _.isUndefined(text) ? '' : text;
         };
 
         /**
@@ -402,7 +443,7 @@ define([
         };
 
         _this.topOffset = function () {
-            return _this.titleFontSize() + _this.axisFontSize() + _this.settings().topOffset;
+            return  _this.chartNameFontSize() + _this.titleFontSize() + _this.axisFontSize() + _this.settings().topOffset;
         };
 
         _this.chart = function () {

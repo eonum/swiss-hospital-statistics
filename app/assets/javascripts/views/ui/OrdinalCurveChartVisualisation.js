@@ -15,6 +15,9 @@ define([
 
         _this.initialize = function(){
             _this.add(chart
+                .chartName(function(){
+                    return Multiglot.translations.charts.ordinal.name
+                })
                 .title(function(entity) { return {
                     de: entity.codes[0].code[0].code + ': ' + entity.codes[0].code[0].text_de,
                     fr: entity.codes[0].code[0].code + ': ' + entity.codes[0].code[0].text_fr,

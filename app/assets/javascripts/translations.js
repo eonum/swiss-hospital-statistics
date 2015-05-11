@@ -131,6 +131,12 @@ define([], function(){
         },
         charts: {
             bar: {
+                name: {
+                    de: 'Diagnosen: Anzahl Fälle nach Alterskategorie',
+                    fr: "Diagnoses: Nombre des cas par catégorie d'âge",
+                    it: 'Diagnosi: Numero di casi per categoria di età',
+                    en: 'Diagnoses: Number of cases by age category'
+                },
                 axises: {
                     y: {
                         de: 'Anzahl Fälle',
@@ -147,6 +153,12 @@ define([], function(){
                 }
             },
             ordinal: {
+                name: {
+                    de: 'Diagnosen: Anzahl Fälle nach Alterskategorie',
+                    fr: "Diagnoses: Nombre des cas par catégorie d'âge",
+                    it: 'Diagnosi: Numero di casi per categoria di età',
+                    en: 'Diagnoses: Number of cases by age category'
+                },
                 axises: {
                     y: {
                         de: 'Anzahl Fälle',
@@ -163,6 +175,12 @@ define([], function(){
                 }
             },
             box: {
+                name: {
+                    de: 'Statistiken zur Aufenthaltsdauer',
+                    fr: "Statistiques sur la durée du séjour",
+                    it: 'Le statistiche per la durata del soggiorno',
+                    en: 'Statistics for length of stay'
+                },
                 axises: {
                     y: {
                         de: 'Aufenthaltsdauer (in Tagen)',

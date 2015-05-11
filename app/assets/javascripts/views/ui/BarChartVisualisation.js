@@ -7,6 +7,9 @@ function (BarChart, View, NumberByAgeDatasetConverter){
 
         _this.initialize = function (){
             _this.add(barChart
+                .chartName(function(){
+                    return Multiglot.translations.charts.bar.name
+                })
                 .title(function(entity) { return {
                     de: entity.code.code + ': ' + entity.code.text_de,
                     fr: entity.code.code + ': ' + entity.code.text_fr,

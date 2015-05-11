@@ -14,6 +14,9 @@ define([
 
         _this.initialize = function () {
             _this.append(boxPlot
+                .chartName(function(){
+                    return Multiglot.translations.charts.box.name
+                })
                 .title(function(entity) { return {
                     de: entity.code.code + ': ' + entity.code.text_de,
                     fr: entity.code.code + ': ' + entity.code.text_fr,
