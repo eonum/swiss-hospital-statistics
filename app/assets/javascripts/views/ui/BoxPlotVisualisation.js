@@ -33,8 +33,6 @@ define([
                 })
                 .legend(function(entity) {
                     var data = entity.data[0];
-                    console.log("entity");
-                    console.log(entity);
                     return [
                         {
                             value: data.higherWhisker,
