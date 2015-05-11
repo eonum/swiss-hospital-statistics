@@ -78,6 +78,54 @@ def import_icd_codes
   end
 end
 
+def new_drg_chapter (json)
+  DrgChapter.new(code: json['code'], short_code: json['number'], index: json['index'], text_de: json['text_de'], text_fr: json['text_fr'], text_it: json['text_it'])
+end
+
+def new_drg_nonterminal (json)
+  DrgNonterminal.new(code: json['code'], short_code: json['short_code'], text_de: json['text_de'], text_fr: json['text_fr'], text_it: json['text_it'])
+end
+
+def new_drg_terminal (json)
+  DrgTerminal.new(code: json['code'], short_code: json['short_code'], text_de: json['text_de'], text_fr: json['text_fr'], text_it: json['text_it'])
+end
+
+def new_drg_code (json)
+  DrgCode.new(code: json['code'], short_code: json['short_code'], text_de: json['text_de'], text_fr: json['text_fr'], text_it: json['text_it'])
+end
+
+
+def import_drg_terminals
+  measure_time 'Importing DRG Chapters and Nonterminals from Json files' do
+    DrgChapter.delete_all
+    puts '   reading json...'
+    chapters_json = JSON.parse(File.read('db/drg_chapters.json'))
+    nonterminals_json = JSON.parse(File.read('db/drg_nonterminals.json'))
+    terminals_json = JSON.parse(File.read('db/drg_terminals.json'))
+
+    puts '   parsing...'
+
+    chapters_arr = chapters_json.collect{|chapter_json| new_drg_chapter(chapter_json) }
+    chapters = Hash[ *chapters_arr.collect { |chapter| [chapter.code, chapter ] }.flatten ]
+
+    nonterminals_arr = nonterminals_json.collect{|nonterminal_json| nonterminal = new_drg_nonterminal(nonterminal_json); chapters[nonterminal_json['mdc_code']].drg_nonterminals.push(nonterminal); nonterminal }
+    nonterminals = Hash[ *nonterminals_arr.collect { |nonterminal| [nonterminal.code, nonterminal ] }.flatten ]
+
+    terminals_json.collect{|terminal_json| terminal = new_drg_terminal(terminal_json)
+    nonterminals[terminal_json['adrg_code']].drg_terminals.push(terminal)}
+    DrgChapter.collection.insert chapters_arr.collect{|each| each.as_document } unless chapters_arr.empty?
+  end
+end
+
+def import_drg_codes
+  measure_time 'Importing DRG codes from Json file' do
+    DrgCode.delete_all
+    drg_json = JSON.parse(File.read('db/drg_terminals.json'))
+    codes = drg_json.map{ |json| new_drg_code(json) }
+    DrgCode.collection.insert codes.collect{|each| each.as_document } unless codes.empty?
+  end
+end
+
 def update_all_datasets
   AbstractDataset.delete_all
   Catalog.new.update_db
@@ -87,6 +135,8 @@ def seed_all
   import_hospitals
   import_icd_terminals
   import_icd_codes
+  import_drg_terminals
+  import_drg_codes
   update_all_datasets
 end
 

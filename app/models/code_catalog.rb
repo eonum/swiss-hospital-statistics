@@ -1,6 +1,6 @@
 require 'codes/icd_code'
 require 'codes/chop_code'
-require 'codes/drg'
+require 'codes/drg_code'
 require 'codes/icd_chapter'
 
 #
@@ -13,7 +13,7 @@ class CodeCatalog
     @codes = {
         :icd => IcdCode,
         :chop => ChopCode,
-        :drg => Drg
+        :drg => DrgCode
     }
   end
 

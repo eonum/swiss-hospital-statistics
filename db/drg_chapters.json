@@ -1,0 +1,218 @@
+[
+    {
+        "code": "9",
+        "index": "99",
+        "short_code": "9",
+        "text_de": "Fehler-DRGs und sonstige DRGs",
+        "text_fr": "DRG d\u00b4erreur et DRG autres",
+        "text_it": "DRG errati e altri DRG"
+    },
+    {
+        "code": "A",
+        "index": "Pre",
+        "short_code": "A",
+        "text_de": "Pr\u00e4-MDC",
+        "text_fr": "Pr\u00e9-MDC",
+        "text_it": "Pre-MDC"
+    },
+    {
+        "code": "B",
+        "index": "01",
+        "short_code": "B",
+        "text_de": "Krankheiten und St\u00f6rungen des Nervensystems",
+        "text_fr": "Maladies et troubles du syst\u00e8me nerveux",
+        "text_it": "Malattie e disturbi del sistema nervoso"
+    },
+    {
+        "code": "C",
+        "index": "02",
+        "short_code": "C",
+        "text_de": "Krankheiten und St\u00f6rungen des Auges",
+        "text_fr": "Maladies et troubles de l\u00b4oeil",
+        "text_it": "Malattie e disturbi dell'occhio"
+    },
+    {
+        "code": "D",
+        "index": "03",
+        "short_code": "D",
+        "text_de": "Krankheiten und St\u00f6rungen des Ohres, der Nase, des Mundes und des Halses",
+        "text_fr": "Maladies et troubles de l\u00b4oreille, du nez, de la bouche et de la gorge",
+        "text_it": "Malattie e disturbi dell'orecchio, del naso, della bocca e della gola"
+    },
+    {
+        "code": "E",
+        "index": "04",
+        "short_code": "E",
+        "text_de": "Krankheiten und St\u00f6rungen der Atmungsorgane",
+        "text_fr": "Maladies et troubles des organes respiratoires",
+        "text_it": "Malattie e disturbi dell'apparato respiratorio"
+    },
+    {
+        "code": "F",
+        "index": "05",
+        "short_code": "F",
+        "text_de": "Krankheiten und St\u00f6rungen des Kreislaufsystems",
+        "text_fr": "Maladies et troubles de l\u2019appareil circulatoire",
+        "text_it": "Malattie e disturbi del sistema cardiovascolare"
+    },
+    {
+        "code": "G",
+        "index": "06",
+        "short_code": "G",
+        "text_de": "Krankheiten und St\u00f6rungen der Verdauungsorgane",
+        "text_fr": "Maladies et troubles des organes digestifs",
+        "text_it": "Malattie e disturbi dell'apparato digerente"
+    },
+    {
+        "code": "H",
+        "index": "07",
+        "short_code": "H",
+        "text_de": "Krankheiten und St\u00f6rungen an hepatobili\u00e4rem System und Pankreas",
+        "text_fr": "Maladies et troubles du syst\u00e8me h\u00e9patobiliaire et du pancr\u00e9as",
+        "text_it": "Malattie e disturbi dell'apparato epatobiliare e del pancreas"
+    },
+    {
+        "code": "I",
+        "index": "08",
+        "short_code": "I",
+        "text_de": "Krankheiten und St\u00f6rungen an Muskel-Skelett-System und Bindegewebe",
+        "text_fr": "Maladies et troubles de l\u2019appareil musculosquelettique et du tissu conjonctif",
+        "text_it": "Malattie e disturbi del sistema muscoloscheletrico e tessuto connettivo"
+    },
+    {
+        "code": "J",
+        "index": "09",
+        "short_code": "J",
+        "text_de": "Krankheiten und St\u00f6rungen an Haut, Unterhaut und Mamma",
+        "text_fr": "Maladies et troubles de la peau, du tissu sous-cutan\u00e9 et de la glande mammaire",
+        "text_it": "Malattie e disturbi della pelle, del tessuto sottocutaneo e della mammella"
+    },
+    {
+        "code": "K",
+        "index": "10",
+        "short_code": "K",
+        "text_de": "Endokrine, Ern\u00e4hrungs- und Stoffwechselkrankheiten",
+        "text_fr": "Maladies endocriniennes, nutritionnelles et m\u00e9taboliques",
+        "text_it": "Malattie endocrine, nutrizionali e metaboliche"
+    },
+    {
+        "code": "L",
+        "index": "11",
+        "short_code": "L",
+        "text_de": "Krankheiten und St\u00f6rungen der Harnorgane",
+        "text_fr": "Maladies et troubles des organes urinaires",
+        "text_it": "Malattie e disturbi dell'apparato urinario"
+    },
+    {
+        "code": "M",
+        "index": "12",
+        "short_code": "M",
+        "text_de": "Krankheiten und St\u00f6rungen der m\u00e4nnlichen Geschlechtsorgane",
+        "text_fr": "Maladies et troubles des organes g\u00e9nitaux masculins",
+        "text_it": "Malattie e disturbi dell'apparato genitale maschile"
+    },
+    {
+        "code": "N",
+        "index": "13",
+        "short_code": "N",
+        "text_de": "Krankheiten und St\u00f6rungen der weiblichen Geschlechtsorgane",
+        "text_fr": "Maladies et troubles des organes g\u00e9nitaux f\u00e9minins",
+        "text_it": "Malattie e disturbi dell'apparato genitale femminile"
+    },
+    {
+        "code": "O",
+        "index": "14",
+        "short_code": "O",
+        "text_de": "Schwangerschaft, Geburt und Wochenbett",
+        "text_fr": "Grossesse, naissance et suites de couches",
+        "text_it": "Gravidanza, parto e puerperio"
+    },
+    {
+        "code": "P",
+        "index": "15",
+        "short_code": "P",
+        "text_de": "Neugeborene",
+        "text_fr": "Nouveau-n\u00e9s",
+        "text_it": "Neonati"
+    },
+    {
+        "code": "Q",
+        "index": "16",
+        "short_code": "Q",
+        "text_de": "Krankheiten des Blutes, der blutbildenden Organe und des Immunsystems",
+        "text_fr": "Affections du sang, des organes h\u00e9matopo\u00ef\u00e9tiques et du syst\u00e8me immunitaire",
+        "text_it": "Malattie del sangue, degli organi emopoietici e del sistema immunitario"
+    },
+    {
+        "code": "R",
+        "index": "17",
+        "short_code": "R",
+        "text_de": "H\u00e4matologische und solide Neubildungen",
+        "text_fr": "N\u00e9oformations h\u00e9matologiques et solides",
+        "text_it": "Neoplasie ematologiche e solide"
+    },
+    {
+        "code": "S",
+        "index": "18A",
+        "short_code": "S",
+        "text_de": "HIV",
+        "text_fr": "VIH",
+        "text_it": "HIV"
+    },
+    {
+        "code": "T",
+        "index": "18B",
+        "short_code": "T",
+        "text_de": "Infekti\u00f6se und parasit\u00e4re Krankheiten",
+        "text_fr": "Maladies infectieuses et parasitaires",
+        "text_it": "Malattie infettive e parassitarie"
+    },
+    {
+        "code": "U",
+        "index": "19",
+        "short_code": "U",
+        "text_de": "Psychische Krankheiten und St\u00f6rungen",
+        "text_fr": "Maladies et troubles psychiques",
+        "text_it": "Malattie e disturbi psichici"
+    },
+    {
+        "code": "V",
+        "index": "20",
+        "short_code": "V",
+        "text_de": "Alkohol- und Drogengebrauch und alkohol- und drogeninduzierte psychische St\u00f6rungen",
+        "text_fr": "Usage d\u2019alcool et de drogues et troubles psychiques induits par l\u00b4alcool et les drogues",
+        "text_it": "Uso di alcool e droghe e disturbi psichici indotti da alcool e droghe"
+    },
+    {
+        "code": "W",
+        "index": "21A",
+        "short_code": "W",
+        "text_de": "Polytrauma",
+        "text_fr": "Traumatisme multiple",
+        "text_it": "Politrauma"
+    },
+    {
+        "code": "X",
+        "index": "21B",
+        "short_code": "X",
+        "text_de": "Verletzungen, Vergiftungen und toxische Wirkungen von Drogen und Medikamenten",
+        "text_fr": "Blessures, empoisonnements et effets toxiques dus aux drogues et m\u00e9dicaments",
+        "text_it": "Traumatismi, avvelenamenti ed effetti tossici di droghe e farmaci"
+    },
+    {
+        "code": "Y",
+        "index": "22",
+        "short_code": "Y",
+        "text_de": "Verbrennungen",
+        "text_fr": "Br\u00fblures",
+        "text_it": "Ustioni"
+    },
+    {
+        "code": "Z",
+        "index": "23",
+        "short_code": "Z",
+        "text_de": "Faktoren, die den Gesundheitszustand beeinflussen, und andere Inanspruchnahme des Gesundheitswesens",
+        "text_fr": "Facteurs influant sur l\u2019\u00e9tat de sant\u00e9 et autre mise \u00e0 contribution de la sant\u00e9 publique",
+        "text_it": "Fattori che influenzano lo stato di salute e altro ricorso a servizi sanitari"
+    }
+]

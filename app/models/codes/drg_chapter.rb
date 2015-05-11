@@ -1,4 +1,4 @@
-class IcdTerminal
+class DrgChapter
   include Mongoid::Document
 
   field :code, :type => String
@@ -6,6 +6,7 @@ class IcdTerminal
   field :text_de, :type => String
   field :text_fr, :type => String
   field :text_it, :type => String
+  field :index, :type => String
 
-  embedded_in :icd_nonterminal
+  embeds_many :drg_nonterminals
 end

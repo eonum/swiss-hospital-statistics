@@ -2,7 +2,6 @@ require 'codes/icd_terminal'
 
 class IcdNonterminal
   include Mongoid::Document
-  include MultiLanguageText
 
   field :code, :type => String
   field :short_code, :type => String
