@@ -53,12 +53,21 @@ define(['d3', 'views/ResponsiveSvg'], function (d3, ResponsiveSvg) {
         var arc = d3.svg.arc().innerRadius(radius - 100).outerRadius(radius - 20);
         var colorScale = d3.scale.category20();
 
+        var chartNameView;
+        var titleView;
+
         _this.initialize = function() {
-            var titleFontSize = _height / 20;
-            // append title
-            _this.svg().append("text")
-                .attr("id", "title")
-                .style("font-size", titleFontSize + "px");
+            var chartNameFontSize = _this._height() / 100 * 5.5;
+            var titleFontSize = _this._height() / 100 * 4.5;
+
+            chartNameView = _this.svg()
+                .append('text')
+                .style('font-size', chartNameFontSize + 'px');
+
+            titleView = _this.svg()
+                .append('text')
+                .attr('transform', 'translate(0,'+(chartNameFontSize*1.2)+')')
+                .style("font-size", titleFontSize + 'px');
         };
 
         _this.setData = function(data){
@@ -147,8 +156,22 @@ define(['d3', 'views/ResponsiveSvg'], function (d3, ResponsiveSvg) {
                 .text(function(d){return _this._keyOf(d) + ", n = " + _this._valueOf(d)});
         };
 
-        _this.setTitle = function(text){
-            _this.svg().select("#title").text(text);
+        _this.setTitle = function(translations){
+            new Multiglot()
+                .d3()
+                .on(titleView)
+                .custom(translations)
+                .set(function(html, text) {html.text(text)})
+                .apply();
+        };
+
+        _this.setChartName = function(translations){
+            new Multiglot()
+                .d3()
+                .on(chartNameView)
+                .custom(translations)
+                .set(function(html, text) {html.text(text)})
+                .apply();
         };
 
         _this.initialize();

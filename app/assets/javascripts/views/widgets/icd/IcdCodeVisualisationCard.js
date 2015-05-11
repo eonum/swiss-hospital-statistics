@@ -76,11 +76,9 @@ define([
          * @override
          */
         _this.updateVisualisations = function(code, datasets){
-            var title = code.code + ": " + code.text_de;
-
             barChartVisualisation.visualiseData(code, datasets);
             _this.updateComparison();
-            pieChartVisualisation.visualiseData(title, datasets);
+            pieChartVisualisation.visualiseData(code, datasets);
             boxPlotVisualisation.visualiseData(code, datasets);
         };
 

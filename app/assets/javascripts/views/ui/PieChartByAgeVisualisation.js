@@ -22,11 +22,17 @@ define([
             return _this;
         });
 
-        _this.visualiseData = function(description, datasets){
+        _this.visualiseData = function(code, datasets){
             var converter = new NumberByAgeDatasetConverter(datasets);
             var intervals = converter.asAbsoluteData();
             pieChart.openOn(intervals);
-            pieChart.setTitle(description);
+            pieChart.setTitle({
+                de: code.code + ': ' + code.text_de,
+                fr: code.code + ': ' + code.text_fr,
+                it: code.code + ': ' + code.text_it
+            });
+            pieChart.setChartName(Multiglot.translations.charts.pie.name);
+
         };
 
         _this.initialize();

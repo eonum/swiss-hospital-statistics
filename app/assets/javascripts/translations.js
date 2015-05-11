@@ -174,6 +174,14 @@ define([], function(){
                     }
                 }
             },
+            pie: {
+                name: {
+                    de: 'Diagnosen: Anzahl Fälle nach Alterskategorie',
+                    fr: "Diagnoses: Nombre des cas par catégorie d'âge",
+                    it: 'Diagnosi: Numero di casi per categoria di età',
+                    en: 'Diagnoses: Number of cases by age category'
+                }
+            },
             box: {
                 name: {
                     de: 'Statistiken zur Aufenthaltsdauer',
