@@ -342,7 +342,7 @@ ul {
               span {
 
                 $triangle_size: 6px;
-                $triangle_width: 2px;
+                $triangle_width: 1px;
 
                 display: none;
                 position: absolute;
@@ -377,7 +377,7 @@ ul {
 
                 &:before {
                   border-color: transparent;
-                  border-right-color: #dcdcdc;
+                  border-right-color: #bebebe;
                   border-width: $triangle_size + $triangle_width;
                   margin-top: -$triangle_size - $triangle_width;
                 }
