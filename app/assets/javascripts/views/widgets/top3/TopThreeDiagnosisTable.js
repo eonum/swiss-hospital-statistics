@@ -151,7 +151,7 @@ define([
             _this.append(table);
         };
 
-        
+
         _this.setData = function(data){
             for(var i=0; i<data.length; i++) {
                 var row = $("<tr/>");
