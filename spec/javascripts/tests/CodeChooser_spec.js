@@ -11,101 +11,65 @@ define(['helpers/CodeChooser'], function(CodeChooser){
             secondprop: "secondvalue",
             thirdprop: "thirdvalue"};
 
-        var ICD_A041 = [{
-            "code": "A041",
-            "description": "Darminfektion durch enterotoxinbildende Escherichia coli",
-            "year": 2013,
-            "icd_code_id": {
-                "$oid": "5490074848e276ea1b793f75"
-            },
-            "categorised_data": {
-                "categories": {
-                    "interval": [{
-                        "categories": {
-                            "percentile": [{
-                                "categories": {},
-                                "percentile": 5,
-                                "amount": 8.0
-                            }, {
-                                "categories": {},
-                                "percentile": 10,
-                                "amount": 8.0
-                            }, {
-                                "categories": {},
-                                "percentile": 25,
-                                "amount": 8.0
-                            }, {
-                                "categories": {},
-                                "percentile": 50,
-                                "amount": 17.5
-                            }, {
-                                "categories": {},
-                                "percentile": 75,
-                                "amount": 27.0
-                            }, {
-                                "categories": {},
-                                "percentile": 90,
-                                "amount": 27.0
-                            }, {
-                                "categories": {},
-                                "percentile": 95,
-                                "amount": 27.0
-                            }]
-                        },
-                        "interval": {
-                            "from": 40,
-                            "to": 69
-                        },
-                        "n": 2,
-                        "dad": 17,
-                        "sa": 13,
-                        "min": 8,
-                        "max": 27
-                    }]
-                }
-            }
-        }];
-
-        var CHOP_0003 = [{
-            "code": "0003",
-            "description": "Therapeutischer Ultraschall von peripheren Blutgefässen",
-            "year": 2013,
-            "chop_code_id": {"$oid": "5490074d48e276ea1b79a3a1"},
-            "categorised_data": {
-                "categories": {
-                    "interval": [{
-                        "categories": {
-                            "percentile": [{
-                                "categories": {},
-                                "percentile": 5,
-                                "amount": 2.0
-                            }, {"categories": {}, "percentile": 10, "amount": 2.0}, {
-                                "categories": {},
-                                "percentile": 25,
-                                "amount": 2.0
-                            }, {"categories": {}, "percentile": 50, "amount": 2.0}, {
-                                "categories": {},
-                                "percentile": 75,
-                                "amount": 2.0
-                            }, {"categories": {}, "percentile": 90, "amount": 2.0}, {
-                                "categories": {},
-                                "percentile": 95,
-                                "amount": 2.0
-                            }]
-                        }, "interval": {"from": 70}, "n": 1, "dad": 2, "sa": 0, "min": 2, "max": 2
-                    }]
-                }
-            }
-        }];
-
-        var DRG_962Z = [
+        var ICD_A041 = [
             {
-                "code": "962Z",
-                "description": "Unzulässige geburtshilfliche Diagnosekombination",
+                code : 'A041',
+                description : 'Darminfektion durch enterotoxinbildende Escherichia coli',
+                year : 2013,
+                categorised_data : {
+                    categories : {
+                        interval : [
+                            {
+                                categories : {
+                                    percentile : [
+                                        {
+                                            categories : {  },
+                                            percentile : 5,
+                                            amount : 8 },
+                                        {
+                                            categories : {  },
+                                            percentile : 10,
+                                            amount : 8 },
+                                        {
+                                            categories : {  },
+                                            percentile : 25,
+                                            amount : 8 },
+                                        { categories : {  },
+                                            percentile : 50,
+                                            amount : 17.5 },
+                                        { categories : {  },
+                                            percentile : 75,
+                                            amount : 27 },
+                                        { categories : {  },
+                                            percentile : 90,
+                                            amount : 27 },
+                                        { categories : {  },
+                                            percentile : 95,
+                                            amount : 27 }
+                                    ]
+                                },
+                                interval :
+                                {
+                                    from : 40,
+                                    to : 69
+                                },
+                                n : 2,
+                                dad : 17.5,
+                                sa : 13.4350288,
+                                min : 8,
+                                max : 27
+                            }
+                        ]
+                    }
+                }
+            }
+        ];
+
+        var CHOP_0003 = [
+            {
+                "code": "0003",
+                "description": "Therapeutischer Ultraschall von peripheren Blutgefässen",
                 "year": 2013,
-                "drg_id": {
-                    "$oid": "54e5d7cc48e2b8495c4b39d5"
-                },
                 "categorised_data": {
                     "categories": {
                         "interval": [
@@ -115,61 +79,60 @@ define(['helpers/CodeChooser'], function(CodeChooser){
                                         {
                                             "categories": {},
                                             "percentile": 5,
-                                            "amount": 4
+                                            "amount": 2
                                         },
                                         {
                                             "categories": {},
                                             "percentile": 10,
-                                            "amount": 4
+                                            "amount": 2
                                         },
                                         {
                                             "categories": {},
                                             "percentile": 25,
-                                            "amount": 4
+                                            "amount": 2
                                         },
                                         {
                                             "categories": {},
                                             "percentile": 50,
-                                            "amount": 4
+                                            "amount": 2
                                         },
                                         {
                                             "categories": {},
                                             "percentile": 75,
-                                            "amount": 4
+                                            "amount": 2
                                         },
                                         {
                                             "categories": {},
                                             "percentile": 90,
-                                            "amount": 4
+                                            "amount": 2
                                         },
                                         {
                                             "categories": {},
                                             "percentile": 95,
-                                            "amount": 4
+                                            "amount": 2
                                         }
                                     ]
                                 },
                                 "interval": {
-                                    "from": 15,
-                                    "to": 39
+                                    "from": 70
                                 },
                                 "n": 1,
-                                "dad": 4,
+                                "dad": 2,
                                 "sa": 0,
-                                "min": 4,
-                                "max": 4
+                                "min": 2,
+                                "max": 2
                             }
                         ]
                     }
                 }
-            },
+            }
+        ];
+
+        var DRG_962Z = [
             {
                 "code": "962Z",
                 "description": "Unzulässige geburtshilfliche Diagnosekombination",
                 "year": 2013,
-                "drg_id": {
-                    "$oid": "54e5d7cc48e2b8495c4b39d5"
-                },
                 "categorised_data": {
                     "categories": {
                         "interval": [
@@ -228,75 +191,6 @@ define(['helpers/CodeChooser'], function(CodeChooser){
                 }
             }
         ];
-
-        var AGE_010 = {
-            "code": "010",
-            "description": "Brucellose",
-            "years": [
-                {
-                    "categories": [
-                        {
-                            "sex": [
-                                {
-                                    "categories": [
-                                        {
-                                            "valueInterval": [
-                                                {
-                                                    "interval": {
-                                                        "from": 20,
-                                                        "to": 24
-                                                    },
-                                                    "n": 1
-                                                },
-                                                {
-                                                    "interval": {
-                                                        "from": 30,
-                                                        "to": 34
-                                                    },
-                                                    "n": 1
-                                                },
-                                                {
-                                                    "interval": {
-                                                        "from": 35,
-                                                        "to": 39
-                                                    },
-                                                    "n": 1
-                                                }
-                                            ]
-                                        }
-                                    ],
-                                    "sex": "f"
-                                },
-                                {
-                                    "categories": [
-                                        {
-                                            "valueInterval": [
-                                                {
-                                                    "interval": {
-                                                        "from": 25,
-                                                        "to": 29
-                                                    },
-                                                    "n": 2
-                                                },
-                                                {
-                                                    "interval": {
-                                                        "from": 80,
-                                                        "to": 84
-                                                    },
-                                                    "n": 1
-                                                }
-                                            ]
-                                        }
-                                    ],
-                                    "sex": "m"
-                                }
-                            ]
-                        }
-                    ],
-                    "year": "2013"
-                }
-            ]
-        };
 
         var emptyArray = [];
 
@@ -404,34 +298,6 @@ define(['helpers/CodeChooser'], function(CodeChooser){
             });
         });
 
-        /*VALID AGE API TEST - READY AS SOON AS ROUTE IS DEFINED
-        //tests the api call (AGE, valid)
-        it("should return correct JSON string upon valid API call [AGE]", function() {
-            var expectedJSON = "blah";
-            var actualJSON;
-            var flag = false;
-
-            runs(function() {
-                flag = false;
-                var chooser = new CodeChooser();
-                chooser.fetchDatasets("age", "010", function(code, data) {
-                    actualJSON = data;
-                });
-
-                setTimeout(function() {
-                    flag = true;
-                }, timeoutTime / 2);
-            });
-
-            waitsFor(function() {
-                return flag;
-            }, "The Value should be incremented", timeoutTime);
-
-            runs(function() {
-                expect(actualJSON).toEqual(expectedJSON);
-            });
-        });*/
-
         //tests the api call (ICD, invalid)
         it("should return empty array upon invalid API call [ICD]", function() {
             var expectedJSON = emptyArray;
@@ -512,33 +378,5 @@ define(['helpers/CodeChooser'], function(CodeChooser){
                 expect(actualJSON).toEqual(expectedJSON);
             });
         });
-
-        /*INVALID AGE API TEST - READY AS SOON AS ROUTE IS DEFINED
-        //tests the api call (AGE, invalid)
-        it("should return empty array upon invalid API call [AGE]", function() {
-            var expectedJSON = emptyArray;
-            var actualJSON;
-            var flag = false;
-
-            runs(function() {
-                flag = false;
-                var chooser = new CodeChooser();
-                chooser.fetchDatasets("age", "blah", function(code, data) {
-                    actualJSON = data;
-                });
-
-                setTimeout(function() {
-                    flag = true;
-                }, timeoutTime / 2);
-            });
-
-            waitsFor(function() {
-                return flag;
-            }, "Wait longer for the function", timeoutTime);
-
-            runs(function() {
-                expect(actualJSON).toEqual(expectedJSON);
-            });
-        });*/
     });
 });
