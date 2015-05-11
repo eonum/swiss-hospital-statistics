@@ -53,16 +53,16 @@ define([
             itemView.class('secondary').removeClass('success');
         };
 
-        _this.select = function(items) {
+        _this.select = function(item) {
             _this.children().each(function(index,each){
-                if (_.indexOf(items,$(each).me().model()) >= 0)
+                if (item === $(each).me().model())
                     _this.beActive($(each).me());
             })
         };
 
-        _this.deselect = function (items) {
+        _this.deselect = function (item) {
             _this.children().each(function(index,each){
-                if (_.indexOf(items,$(each).me().model()) >= 0)
+                if (item === $(each).me().model())
                     _this.beNormal($(each).me());
             })
         };
@@ -79,7 +79,7 @@ define([
     }
 
     function IcdYearsSelector() {
-        var _this = new View('<div></div>');
+        var _this = new View('<div class="selector"></div>');
 
         var selectors = [];
         var model;

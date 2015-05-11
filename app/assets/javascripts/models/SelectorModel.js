@@ -34,10 +34,9 @@ define([
 
         _this.select = function (item) {
             if (_this.isSelected(item)) return;
-            item = _this.asArray(item);
             if (!_this.isMultipleSelection())
                 _this._deselectAll();
-            selected = _this.selected().concat(item);
+            selected = _this.selected().concat(_this.asArray(item));
             _this.notifySelected(item);
             _this.holder().notifyChanged();
         };
@@ -57,8 +56,7 @@ define([
 
         _this.deselect = function (item) {
             if (!_this.isSelected(item)) return;
-            item = _this.asArray(item);
-            selected = _.difference(_this.selected(),item);
+            selected = _.difference(_this.selected(),_this.asArray(item));
             _this.notifyDeselected(item);
             _this.holder().notifyChanged();
         };
