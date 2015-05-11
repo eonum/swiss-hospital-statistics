@@ -23,6 +23,7 @@ define([
         var man;
         var woman;
         var legend;
+        var right;
         var model;
 
         /*--------- V I S U A L I S A T I O N S ---------*/
@@ -67,8 +68,10 @@ define([
                 if(normalizer > 0) {
                     _this.womanChart().openOn(data_woman, CHARTIDENTIFIER);
                     _this.manChart().openOn(data_man, CHARTIDENTIFIER);
+
+                    if (!_.isUndefined(right)) right.remove();
                     legend = _this.newLegendChart();
-                    var right = _this.newLegend();
+                    right = _this.newLegend();
                     right.add(legend);
                     _this.add(right);
 
