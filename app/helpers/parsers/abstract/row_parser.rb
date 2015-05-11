@@ -2,8 +2,6 @@ require 'parsers/abstract/linear_parser'
 
 class RowParser < LinearParser
 
-  attr_reader :row
-
   def initialize
     super
     @row = 1

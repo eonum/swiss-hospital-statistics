@@ -14,6 +14,7 @@ class CompositeParser
   attr_reader :is_distinct
   attr_reader :force_merging
   attr_reader :results
+  attr_reader :repeat_offset
 
   def initialize (file_name = nil)
     @parsers = []
@@ -29,6 +30,7 @@ class CompositeParser
     @when_logic = lambda {|*args| true}
     @parsing_logic = lambda {|*args| }
     @repeat_logic = lambda {|*args| }
+    @repeat_offset = 0
     self.file(file_name)
   end
 
@@ -48,6 +50,12 @@ class CompositeParser
   def column
     require 'parsers/abstract/column_parser'
     add_parser(ColumnParser.new)
+  end
+
+  #adds box parser to the parsers collection
+  def box
+    require 'parsers/abstract/box_parser'
+    add_parser(BoxParser.new)
   end
 
   #loads Excel file to Roo
@@ -139,6 +147,11 @@ class CompositeParser
     self
   end
 
+  def offset(offset)
+    @repeat_offset = offset
+    self
+  end
+
   private
 
   def add_parser (parser)
@@ -155,13 +168,12 @@ class CompositeParser
 
   protected
 
-
   def stream (value, repeat = nil)
     should_save = !@cache.include?(value) || !@is_distinct
     @cache.push(value) if should_save
     @results.push(@transformed_logic.eonum_value(value)) if @when_logic.eonum_value(value) && should_save
     @receiver.send(@receiver_method, @results.last) if @receiver && !should_merge? && should_save
-    @parsers.each {|each| each.repeat_logic.call(each, repeat) if @is_children_repeated; each.parse } if @is_repeat
+    @parsers.each {|each| each.repeat_logic.call(each, repeat + each.repeat_offset) if @is_children_repeated; each.parse } if @is_repeat && repeat
   end
 
 end
