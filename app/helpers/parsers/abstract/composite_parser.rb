@@ -17,6 +17,7 @@ class CompositeParser
   attr_reader :repeat_offset
 
   def initialize (file_name = nil)
+    @files = Array(file_name)
     @parsers = []
     @cache = []
     @results = []
@@ -25,13 +26,14 @@ class CompositeParser
     @is_distinct = false
     @is_children_repeated = true
     @receiver_method = :on_parsed
+    @receiver_file_method = :on_file
     @after_parsed_logic = lambda { |*args|  }
     @transformed_logic = lambda { |each| each }
     @when_logic = lambda {|*args| true}
     @parsing_logic = lambda {|*args| }
     @repeat_logic = lambda {|*args| }
     @repeat_offset = 0
-    self.file(file_name)
+    self.file(@files.first)
   end
 
   #adds tab parser to the parsers collection
@@ -64,6 +66,11 @@ class CompositeParser
     sheet = Roo::Excel.new(file_name)
     sheet.default_sheet = sheet.sheets.first
     self.sheet = sheet
+  end
+
+  def file_in (method_symbol)
+    @receiver_file_method = method_symbol
+    self
   end
 
   #yields parsing control to passed block (if there is any)
@@ -131,6 +138,14 @@ class CompositeParser
     self
   end
 
+  def parse_all
+    @files.each{|file|
+      self.file(file)
+      self.stream_file_name(file)
+      self.parse
+    }
+  end
+
   def merge
     @force_merging = true
     self
@@ -174,6 +189,10 @@ class CompositeParser
     @results.push(@transformed_logic.eonum_value(value)) if @when_logic.eonum_value(value) && should_save
     @receiver.send(@receiver_method, @results.last) if @receiver && !should_merge? && should_save
     @parsers.each {|each| each.repeat_logic.call(each, repeat + each.repeat_offset) if @is_children_repeated; each.parse } if @is_repeat && repeat
+  end
+
+  def stream_file_name(value)
+    @receiver.send(@receiver_file_method, value) if @receiver && @receiver.respond_to?(@receiver_file_method)
   end
 
 end

@@ -11,37 +11,16 @@ class Top3IcdStream
   end
 
   def hospital(hospital)
-    puts "type=#{hospital}"
+    @hospital = hospital
   end
 
   def top3(top3)
-    puts "top3=#{top3}"
+    @map[@tab][@hospital] = top3
   end
 
   def tab (tab)
-    puts tab
     @tab = tab
     @map[@tab] = {} unless @map[@tab]
-  end
-
-  def year (year)
-    @year = year
-    @map[@tab][@year] = {} unless @map[@tab][@year]
-  end
-
-  def code(code)
-    @code_id = code[0]
-    @map[@tab][@year][@code_id] = {} unless @map[@tab][@year][@code_id]
-    @map[@tab][@year][@code_id][:data] = code
-  end
-
-  def percentile_values (values)
-    @map[@tab][@year][@code_id] = {} unless @map[@tab][@year][@code_id]
-    @map[@tab][@year][@code_id][:percentiles] = Hash[@percentiles.zip(values)]
-  end
-
-  def percentiles (percentiles)
-    @percentiles = percentiles
   end
 
   def clazz(clazz=nil)
