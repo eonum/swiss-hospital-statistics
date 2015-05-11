@@ -15,6 +15,9 @@ define([
     function IcdYearsVisualisations() {
         var _this = new View('<div class="row full-width"></div>');
         var converter = new ChaptersByYearConverter();
+        // 0 identifies regular PieChart visualisation
+        // 1 identifies ChaptersByYear Visualisation
+        var chartIdentifier = 1;
 
         var man;
         var woman;
@@ -61,8 +64,8 @@ define([
                 data_man.push({interval: "Rest", amount: minEventsMan});
 
                 if(normalizer > 0) {
-                    _this.womanChart().openOn(data_woman);
-                    _this.manChart().openOn(data_man);
+                    _this.womanChart().openOn(data_woman, chartIdentifier);
+                    _this.manChart().openOn(data_man, chartIdentifier);
                     _this.legendChart();
                 }
             });

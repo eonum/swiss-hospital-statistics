@@ -11,9 +11,6 @@ define([], function() {
 
         };
 
-        // This function will iterate per year through all age intervals and sum it up
-        // first for loop iterates through the years while the second iterates through
-        // the age intervals.
         _this.convert = function (selection, resultCallback) {
             var cache = [];
             $.when.apply($, _.map(selection.years, function (year) {
@@ -30,7 +27,6 @@ define([], function() {
          * @param selection
          * @param {Array} chaptersArray
          */
-
         _this.convertData = function(selection, chaptersArray) {
             function d(chapter) { return chapter.categorised_data.categories.icd_chapter_sex_interval[0] }
             function sex(data) { return data.sex }
@@ -51,44 +47,6 @@ define([], function() {
                     return _.reduce(chapters, function(summe, chapter){
                         return summe + percentage(d(chapter)) }, 0) }); });
         };
-
-            //// iterates through all years of the year interval
-            //for(var i = 0; i < dataset.years.length; i++) {
-            //
-            //    $.getJSON("/api/v1/chaptersbyyear/" + dataset.years[i], function(data) {
-            //        var agesLength = dataset.ages.length;
-            //        var yearsLength = dataset.years.length;
-            //
-            //        // var tmpYear = dataset.years[i];
-            //
-            //        for (var j = 0; j < agesLength; j++) {
-            //            var tmpAgeInterval = dataset.ages[j];
-            //
-            //
-            //            _.each(data, function(d) {
-            //                var dataShortHand = d.categorised_data.categories.icd_chapter_sex_interval[0];
-            //                var intervalShortHand = dataShortHand.interval.from +
-            //                    (_.isUndefined(dataShortHand.interval.to) ? '+' : '-' + dataShortHand.interval.to );
-            //
-            //
-            //                if(dataShortHand.sex == MAN && intervalShortHand == tmpAgeInterval) {
-            //                    percentageInterval_male[d.code] += dataShortHand.percentage;
-            //                }
-            //                if(dataShortHand.sex == WOMAN && intervalShortHand == tmpAgeInterval) {
-            //                    percentageInterval_female[d.code] += dataShortHand.percentage;
-            //                }
-            //            })
-            //        }
-            //
-            //        percentageInterval_male = _this.normalizeData(percentageInterval_male, agesLength*yearsLength);
-            //        percentageInterval_female = _this.normalizeData(percentageInterval_female, agesLength*yearsLength);
-            //
-            //        resultCallback(percentageInterval_male, percentageInterval_female);
-            //    });
-            //}
-        //};
-
-
 
         _this.normalizeData = function(notNormalized, a) {
             if(a != 0) {

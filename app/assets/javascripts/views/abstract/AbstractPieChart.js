@@ -70,7 +70,8 @@ define(['d3', 'views/ResponsiveSvg'], function (d3, ResponsiveSvg) {
                 .style("font-size", titleFontSize + 'px');
         };
 
-        _this.setData = function(data){
+        _this.setData = function(data, chartIdentifier){
+            console.log("chartIdentifier" + chartIdentifier);
             var pie = d3.layout
                 .pie()
                 .value(function(d) { return d[_this._valueSymbol()]; })
@@ -101,6 +102,12 @@ define(['d3', 'views/ResponsiveSvg'], function (d3, ResponsiveSvg) {
             var keyWidth = _width / 5;
             // TODO magic offset
             var magicOffset = -200;
+            if(chartIdentifier == 0){
+                magicOffset = -100
+            }
+            if(chartIdentifier == 1) {
+                magicOffset = -200;
+            }
             var xPosition = function(d, i) { return 1/3 * _width};
             var yPosition = function(d, i) {return  magicOffset + i * (keyHeight + 10)};
             group.append("rect")

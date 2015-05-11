@@ -25,8 +25,9 @@ define(['d3', 'views/abstract/AbstractPieChart'], function (d3, AbstractPieChart
         _this._valueSymbol = function() { return scripting.valueSymbol };
 
         /* ------------ S C R I P T I N G   A P I ------------ */
-        _this.openOn = function (entity) {
-            _this.setData(scripting.displayLogic(entity));
+        _this.openOn = function (entity, chartIdentifier) {
+            console.log("chartIdentifier" + chartIdentifier);
+            _this.setData(scripting.displayLogic(entity), chartIdentifier);
             return _this;
         };
 

@@ -10,6 +10,7 @@ define([
 
     function PieChartByAgeVisualisation() {
         var _this = new ChartVisualisation();
+        var chartIdentifier = 0;
 
         _this.newChart = function () {
             return new PieChart(_this.defaultWidth(), _this.defaultHeight());
@@ -23,7 +24,7 @@ define([
         _this.update = function(code, datasets){
             var converter = new NumberByAgeDatasetConverter(datasets);
             var intervals = converter.asAbsoluteData();
-            _this.chart().openOn(intervals);
+            _this.chart().openOn(intervals, chartIdentifier);
             _this.chart().setTitle({
                 de: code.code + ': ' + code.text_de,
                 fr: code.code + ': ' + code.text_fr,
