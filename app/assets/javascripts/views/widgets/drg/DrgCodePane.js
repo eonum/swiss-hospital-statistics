@@ -69,6 +69,14 @@ define([
                 })
             }
 
+            function hint(entity) {
+                return {
+                    de: entity.text_de,
+                    fr: entity.text_de,
+                    it: entity.text_de
+                }
+            }
+
             var breadcrumbModel = new BreadcrumbModel()
                 .level()
                     .label(function(){return _this.groupPrefix().toUpperCase();})
@@ -79,12 +87,14 @@ define([
                 .level()
                     .defaultLabel(function(){ return Multiglot.translations.all_chapters })
                     .label(chapterLabel)
+                    .hint(hint)
                     .next(function(chapter){ return chapter.drg_nonterminals })
                     .sameDefault()
                     .end()
                 .level()
                     .defaultLabel(function(){ return Multiglot.translations.all_nonterminals })
                     .label(nonterminalLabel)
+                    .hint(hint)
                     .next(function(nonterminal){return nonterminal.drg_terminals})
                     .sameDefault()
                     .beLast()

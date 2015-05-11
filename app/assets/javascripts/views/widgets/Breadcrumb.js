@@ -37,6 +37,8 @@ define([
             });
             if (node.isSelected())
                 item.class('selected');
+            if (!node.isDefault())
+                item.append('<span '+Multiglot.renderCustom(node.hint())+'>'+Multiglot.translate(node.hint())+'</span>');
             item.add(link);
             return item;
         };

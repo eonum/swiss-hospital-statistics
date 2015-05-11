@@ -128,15 +128,7 @@ define([
             var applyLogic = function(html, text) { html.html(text) };
             var idLogic = function(html) { return dataProcessor.get(html,Multiglot.dataID) };
             var translationsLogic = function(html) { return Multiglot.translations[_this.id(html)] };
-            var textLogic = function(translations) {
-                if (_.isString(translations)) return translations;
-                var language = Multiglot.language;
-                if (_.isUndefined(translations[language]))
-                    language = Multiglot.defaultLanguage;
-                if (_.isUndefined(translations[language]))
-                    language = _.first(_.keys(translations).sort());
-                return translations[language]
-            };
+            var textLogic = Multiglot.translate;
 
             _this.id = function(html) {
                 return idLogic(html);
@@ -282,6 +274,17 @@ define([
 
     Multiglot.custom = function(html, translations) {
         return new Multiglot().on(html).custom(translations).apply();
+    };
+
+    Multiglot.translate = function(translations) {
+        if (_.isUndefined(translations)) return '';
+        if (_.isString(translations)) return translations;
+        var language = Multiglot.language;
+        if (_.isUndefined(translations[language]))
+            language = Multiglot.defaultLanguage;
+        if (_.isUndefined(translations[language]))
+            language = _.first(_.keys(translations).sort());
+        return translations[language]
     };
 
     Multiglot.renderCustom = function(translations, type) {

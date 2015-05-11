@@ -15,6 +15,7 @@ define([
         var defaultChild;
         var defaultLabel = function(){return 'Default'};
         var defaultSelect = function() {};
+        var hintText = function () {return ''};
         var isLast = false;
 
         _this.label = function(_func) {
@@ -43,6 +44,15 @@ define([
 
         _this.labelOf = function (entity) {
             return labelLogic(entity);
+        };
+
+        _this.hintOf = function(entity) {
+            return hintText(entity);
+        };
+
+        _this.hint = function (func) {
+            hintText = func;
+            return _this;
         };
 
         /**
@@ -137,6 +147,10 @@ define([
 
         _this.label = function () {
             return _this.level().labelOf(_this.entity());
+        };
+
+        _this.hint = function () {
+            return _this.level().hintOf(_this.entity());
         };
 
         _this.level = function () {

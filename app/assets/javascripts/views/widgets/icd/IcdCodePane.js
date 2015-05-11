@@ -43,6 +43,14 @@ define([
                 })
             }
 
+            function hint(entity) {
+                return {
+                    de: entity.text_de,
+                    fr: entity.text_de,
+                    it: entity.text_de
+                }
+            }
+
             function groupLabel(group) {
                 return _.mapObject(Multiglot.translations.group, function(translation){
                     return translation+' '+group.code
@@ -72,17 +80,20 @@ define([
                     .defaultLabel(function(){ return Multiglot.translations.all_chapters })
                     .label(chapterLabel)
                     .next(function(chapter){return chapter.icd_groups})
+                    .hint(hint)
                     .sameDefault()
                     .end()
                 .level()
                     .defaultLabel(function(){ return Multiglot.translations.all_groups })
                     .label(groupLabel)
+                    .hint(hint)
                     .next(function(group){return group.icd_nonterminals})
                     .sameDefault()
                     .end()
                 .level()
                     .defaultLabel(function(){ return Multiglot.translations.all_nonterminals })
                     .label(nonterminalLabel)
+                    .hint(hint)
                     .next(function(nonterminal){return nonterminal.icd_terminals})
                     .sameDefault()
                     .beLast()
