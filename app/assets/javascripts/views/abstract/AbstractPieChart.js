@@ -91,7 +91,7 @@ define(['d3', 'views/ResponsiveSvg'], function (d3, ResponsiveSvg) {
             var keyHeight = _height / 15;
             var keyWidth = _width / 5;
             // TODO magic offset
-            var magicOffset = -100;
+            var magicOffset = -200;
             var xPosition = function(d, i) { return 1/3 * _width};
             var yPosition = function(d, i) {return  magicOffset + i * (keyHeight + 10)};
             group.append("rect")
