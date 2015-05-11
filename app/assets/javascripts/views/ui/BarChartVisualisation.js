@@ -13,7 +13,7 @@ function (BarChart, View, NumberByAgeDatasetConverter){
                     it: entity.code.code + ': ' + entity.code.text_it
                 }})
                 .display(function(entity) { return entity.data })
-                .label(function (value) { return value + ' ' + (value > 1 ? 'Fälle' : 'Fall') })
+                .label(function (value) { return value })
                 .yAxisLabel(function(){
                     return Multiglot.translations.charts.bar.axises.y
                 })
