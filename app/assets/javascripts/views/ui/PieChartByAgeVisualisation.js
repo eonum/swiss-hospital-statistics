@@ -1,41 +1,36 @@
 define([
-    'View', 'views/PieChart', 'helpers/converters/NumberByAgeDatasetConverter'
+    'views/ui/ChartVisualisation',
+    'views/PieChart',
+    'helpers/converters/NumberByAgeDatasetConverter'
 ], function (
-    View, PieChart, NumberByAgeDatasetConverter
+    ChartVisualisation,
+    PieChart,
+    NumberByAgeDatasetConverter
 ) {
 
-    function PieChartByAgeVisualisation(_width, _height) {
-        var _this = new View('<div></div>');
-        var content = new View('<div></div>');
-        var pieChart = new PieChart(_width, _height);
+    function PieChartByAgeVisualisation() {
+        var _this = new ChartVisualisation();
 
-        _this.initialize = function () {
-            _this.append(content);
-            content.append(pieChart);
+        _this.newChart = function () {
+            return new PieChart(_this.defaultWidth(), _this.defaultHeight());
+        };
 
-            pieChart.key('interval')
+        _this.initializeChart = function (chart) {
+            chart.key('interval')
                 .value('amount');
         };
 
-        _this.add = override(_this, _this.add, function(element){
-            content.add(element);
-            return _this;
-        });
-
-        _this.visualiseData = function(code, datasets){
+        _this.update = function(code, datasets){
             var converter = new NumberByAgeDatasetConverter(datasets);
             var intervals = converter.asAbsoluteData();
-            pieChart.openOn(intervals);
-            pieChart.setTitle({
+            _this.chart().openOn(intervals);
+            _this.chart().setTitle({
                 de: code.code + ': ' + code.text_de,
                 fr: code.code + ': ' + code.text_fr,
                 it: code.code + ': ' + code.text_it
             });
-            pieChart.setChartName(Multiglot.translations.charts.pie.name);
-
+            _this.chart().setChartName(Multiglot.translations.charts.pie.name);
         };
-
-        _this.initialize();
 
         return _this;
     }

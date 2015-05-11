@@ -1,19 +1,22 @@
 define([
-    'View',
     'views/BoxPlot',
+    'views/ui/ChartVisualisation',
     'helpers/converters/BoxPlotDataConverter'
 ], function (
-    View,
     BoxPlot,
+    ChartVisualisation,
     BoxPlotDataConverter
 ) {
 
-    function BoxPlotVisualisation(_width, _height) {
-        var _this = new View('<div></div>');
-        var boxPlot = new BoxPlot(_width, _height);
+    function BoxPlotVisualisation() {
+        var _this = new ChartVisualisation();
 
-        _this.initialize = function () {
-            _this.append(boxPlot
+        _this.newChart = function () {
+            return new BoxPlot(_this.defaultWidth(), _this.defaultHeight());
+        };
+
+        _this.initializeChart = function (chart) {
+            chart
                 .chartName(function(){
                     return Multiglot.translations.charts.box.name
                 })
@@ -64,7 +67,7 @@ define([
                 .legendTextColor('black')
                 .display(function(entity) { return entity.data })
                 .x('ageInterval')
-                .y('avg'));
+                .y('avg');
         };
 
         /**
@@ -72,25 +75,15 @@ define([
          * @param code the data to update this visualisation with
          * @param datasets
          */
-        _this.visualiseData = function (code, datasets) {
+        _this.update = function (code, datasets) {
             if (datasets.length > 0) {
                 var converter = new BoxPlotDataConverter(datasets);
-                boxPlot.on({code: code, data: _.sortBy(converter.convert(),'ageInterval')});
+                _this.chart().on({code: code, data: _.sortBy(converter.convert(),'ageInterval')});
             }
-            else boxPlot.on({code: code, data: []});
+            else _this.chart().on({code: code, data: []});
 
             return _this;
         };
-
-        _this.update = function () {
-            if (_.isUndefined(boxPlot.rawEntity())) return;
-            var duration = boxPlot.transitionDuration();
-            boxPlot.transitionDuration(0);
-            boxPlot.on(boxPlot.rawEntity());
-            boxPlot.transitionDuration(duration);
-        };
-
-        _this.initialize();
 
         return _this;
     }

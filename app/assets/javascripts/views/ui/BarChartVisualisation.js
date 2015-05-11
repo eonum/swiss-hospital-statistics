@@ -1,12 +1,22 @@
-define(['views/BarChart', 'View', 'helpers/converters/NumberByAgeDatasetConverter'],
-function (BarChart, View, NumberByAgeDatasetConverter){
+define([
+    'views/BarChart',
+    'views/ui/ChartVisualisation',
+    'helpers/converters/NumberByAgeDatasetConverter'
+], function (
+    BarChart,
+    ChartVisualisation,
+    NumberByAgeDatasetConverter
+){
 
-    function BarChartVisualisation(_width, _height){
-        var _this = new View('<div></div>');
-        var barChart = new BarChart(_width, _height);
+    function BarChartVisualisation(){
+        var _this = new ChartVisualisation();
 
-        _this.initialize = function (){
-            _this.add(barChart
+        _this.newChart = function () {
+            return new BarChart(_this.defaultWidth(), _this.defaultHeight());
+        };
+
+        _this.initializeChart = function(chart) {
+            chart
                 .chartName(function(){
                     return Multiglot.translations.charts.bar.name
                 })
@@ -24,18 +34,13 @@ function (BarChart, View, NumberByAgeDatasetConverter){
                     return Multiglot.translations.charts.bar.axises.x
                 })
                 .x('interval')
-                .y('amount'));
+                .y('amount');
         };
 
-        /**
-         * Creates the visualisation by displaying the given dataset
-         */
-        _this.visualiseData = function (code, datasets){
+        _this.update = function (code, datasets) {
             var converter = new NumberByAgeDatasetConverter(datasets);
-            barChart.on({code: code, data: converter.asAbsoluteData()});
+            _this.chart().on({code: code, data: converter.asAbsoluteData()});
         };
-
-        _this.initialize();
 
         return _this;
     }

@@ -174,6 +174,8 @@ define(['d3', 'views/ResponsiveSvg'], function (d3, ResponsiveSvg) {
                 .apply();
         };
 
+        _this.update = function () {};
+
         _this.initialize();
 
         return _this;

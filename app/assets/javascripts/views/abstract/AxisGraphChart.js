@@ -189,6 +189,14 @@ define([
             _this.renderContent();
         };
 
+        _this.update = function () {
+            if (_.isUndefined(_this.rawEntity())) return;
+            var duration = _this.transitionDuration();
+            _this.transitionDuration(0);
+            _this.on(_this.rawEntity());
+            _this.transitionDuration(duration);
+        };
+
         /**
          * Override to add additional logic
          */

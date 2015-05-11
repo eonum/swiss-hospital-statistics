@@ -4,6 +4,10 @@ define([
     'views/widgets/LabelsCloud',
     'views/widgets/Tabulator',
     'views/widgets/TabulatorButton',
+    'views/ui/BarChartVisualisation',
+    'views/ui/OrdinalCurveChartVisualisation',
+    'views/ui/PieChartByAgeVisualisation',
+    'views/ui/BoxPlotVisualisation',
     'models/TabulatorModel'
 ], function(
     View,
@@ -11,6 +15,10 @@ define([
     LabelsCloud,
     Tabulator,
     TabulatorButton,
+    BarChartVisualisation,
+    OrdinalCurveChartVisualisation,
+    PieChartByAgeVisualisation,
+    BoxPlotVisualisation,
     TabulatorModel
 ){
     /**
@@ -29,12 +37,15 @@ define([
         var tabulatorModel;
         var tabulatorButtons;
 
+        var visualisations = {};
+
         _this.initialize = function () {
             _this.empty();
             _this.cloud(_this.newCloud());
             _this.tabulator(_this.newTabulator());
             _this.tabulatorButtons(_this.newTabulatorButtons());
             _this.initializeVisualisations(_this.tabulatorModel());
+            _this.initializeDefaultVisualisations();
         };
 
         _this.isInitialized = function () {
@@ -71,8 +82,44 @@ define([
             return codeChooser;
         };
 
+        _this.visualisations = function () {
+            return visualisations;
+        };
+
         _this.addButton = function (tabModel, imagePath) {
             _this.tabulatorButtons().add(_this.newButton().model(tabModel).image(imagePath));
+        };
+
+        /**
+         * @param {Object} settings
+         * @param {Object} settings.name
+         * @param {Object} settings.chart
+         * @param {String} settings.icon
+         * @param {boolean} [settings.isSelected]
+         * @param {Function} [settings.onSelected]
+         */
+        _this.addVisualisation = function (settings) {
+            var chart = settings.chart;
+            _this.visualisations()[settings.name] = chart;
+            var tab = _this.tabulatorModel().newTab();
+            tab.name(settings.name);
+            tab.render(function(){ return chart });
+
+            tab.onSelected(function(){ chart.onSelected() });
+
+            if (!_.isUndefined(settings.onSelected))
+                tab.onSelected(settings.onSelected);
+
+            _this.tabulatorModel().add(tab);
+            chart.codeType(_this.codeType());
+            chart.tab(tab);
+            chart.model(_this.model());
+
+            if (!_.isUndefined(settings.isSelected) && settings.isSelected)
+                tab.select();
+
+            _this.addButton(tab, settings.icon);
+            return tab;
         };
 
         _this.tabulatorButtons = function (_tabulatorButtons) {
@@ -125,6 +172,22 @@ define([
             return new Button();
         };
 
+        _this.newBarChart = function () {
+            return new BarChartVisualisation();
+        };
+
+        _this.newPieChart = function () {
+            return new PieChartByAgeVisualisation(1024, 390);
+        };
+
+        _this.newOrdinalChart = function () {
+            return new OrdinalCurveChartVisualisation();
+        };
+
+        _this.newBoxPlotChart = function () {
+            return new BoxPlotVisualisation();
+        };
+
         /**
          * Override to define code type like:
          * "icd", "chop", "drg".
@@ -140,7 +203,9 @@ define([
          * @param datasets
          */
         _this.updateVisualisations = function(code, datasets){
-            // by default do nothing
+            _.each(_this.visualisations(), function(each){
+                each.update(code, datasets);
+            });
         };
 
         /**
@@ -149,6 +214,33 @@ define([
          */
         _this.initializeVisualisations = function (tabulatorModel) {
             // by default do nothing
+        };
+
+        _this.initializeDefaultVisualisations = function () {
+            _this.addVisualisation({
+                name: 'bar',
+                icon: 'chart-bar.png',
+                chart: _this.newBarChart(),
+                isSelected: true
+            });
+
+            _this.addVisualisation({
+                name: 'ordinal',
+                icon: 'chart-line.png',
+                chart: _this.newOrdinalChart()
+            });
+
+            _this.addVisualisation({
+                name: 'pie',
+                icon: 'chart-pie.png',
+                chart: _this.newPieChart()
+            });
+
+            _this.addVisualisation({
+                name: 'box',
+                icon: 'chart-plot.png',
+                chart: _this.newBoxPlotChart()
+            });
         };
 
         return _this;
