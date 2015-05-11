@@ -4,7 +4,7 @@ require 'pragmas'
 
 class CategorisedDataset < AbstractDataset
 
-  embeds_one :categorised_data, class_name: "CategorisedData", inverse_of: :categorised_dataset
+  embeds_one :categorised_data, class_name: 'CategorisedData', inverse_of: :categorised_dataset
 
   def new_data
     build_categorised_data
