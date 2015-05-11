@@ -54,6 +54,7 @@ define([
         _this.tabulator = function(_tabulator) {
             if (_.isUndefined(_tabulator)) return tabulator;
             tabulatorModel = _this.newTabulatorModel();
+            tabulatorModel.beNotLazy();
             tabulator = _tabulator;
             tabulator.styled(function(tab){tab.duration(0)}).model(tabulatorModel);
             _this.add(tabulator);

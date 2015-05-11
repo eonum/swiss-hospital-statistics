@@ -19,6 +19,7 @@ define([
         _this.name = function(string) {
             if (_.isUndefined(string)) return name;
             name = string;
+            return _this;
         };
 
         _this.tabulator = function() {
@@ -62,6 +63,7 @@ define([
         var announcer = new Announcer();
         var tabs = [];
         var selectedTab;
+        var isLazy = true;
 
         _this.announcer = function() {
             return announcer;
@@ -74,6 +76,7 @@ define([
         _this.add = function(tab) {
             _this.tabs().push(tab);
             _this.notifyAdded(tab);
+            return tab;
         };
 
         _this.addTab = function (name) {
@@ -128,6 +131,20 @@ define([
 
         _this.notifyAdded = function(tab) {
             _this.announcer().announce(new OnTabulatorAdded(tab));
+        };
+
+        _this.isLazy = function () {
+            return isLazy;
+        };
+
+        _this.beLazy = function () {
+            isLazy = true;
+            return _this;
+        };
+
+        _this.beNotLazy = function () {
+            isLazy = false;
+            return _this;
         };
     }
 

@@ -42,11 +42,11 @@ define([
             ordinalCurveVisualisation = new OrdinalCurveChartVisualisation(1024, 390);
             pieChartVisualisation = new PieChartByAgeVisualisation(1024, 390);
             boxPlotVisualisation = new BoxPlotVisualisation(1024, 390);
-            ordinalCurveTabModel = tabulatorModel.addTab("Ordinal curve chart").render(function(){return ordinalCurveVisualisation});
-            _this.addButton(tabulatorModel.addTab("Bar chart").render(function(){return barChartVisualisation}).select(), 'chart-bar.png');
+            ordinalCurveTabModel = tabulatorModel.add(tabulatorModel.newTab().name("Ordinal curve chart").render(function(){return ordinalCurveVisualisation}));
+            _this.addButton(tabulatorModel.add(tabulatorModel.newTab().name("Bar chart").render(function(){return barChartVisualisation})).select(), 'chart-bar.png');
             _this.addButton(ordinalCurveTabModel, 'chart-line.png');
-            _this.addButton(tabulatorModel.addTab("Pie chart").render(function(){return pieChartVisualisation}), 'chart-pie.png');
-            _this.addButton(tabulatorModel.addTab("Box plot").render(function(){return boxPlotVisualisation}).onSelected(function(){boxPlotVisualisation.update()}), 'chart-plot.png');
+            _this.addButton(tabulatorModel.add(tabulatorModel.newTab().name("Pie chart").render(function(){return pieChartVisualisation})), 'chart-pie.png');
+            _this.addButton(tabulatorModel.add(tabulatorModel.newTab().name("Box plot").render(function(){return boxPlotVisualisation}).onSelected(function(){boxPlotVisualisation.update()})), 'chart-plot.png');
 
             _this.model().cloud().announcer().onSendTo(OnLabelsCloudAdded, _this.onComparisonChanged, _this);
             _this.model().cloud().announcer().onSendTo(OnLabelsCloudRemoved, _this.onComparisonChanged, _this);

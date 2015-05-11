@@ -142,6 +142,8 @@ define([
             var tab = _this.buildTabFor(tabModel);
             _this.tabs().push(tab);
             _this.add(tab);
+            if (!_this.model().isLazy())
+                tab.render();
             if (tabModel.isSelected())
                 tab.select();
         };
@@ -158,6 +160,10 @@ define([
             tab.beHidden();
             var newTab = styled(tab);
             return _.isUndefined(newTab) ? tab : newTab;
+        };
+
+        _this.renderAll = function () {
+
         };
 
         _this.newTab = function () {
