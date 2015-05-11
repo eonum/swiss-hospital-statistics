@@ -47,6 +47,7 @@ define([
         };
 
         _this.deselect = function () {
+            _this.fixMagellanDeselect();
             _this.hide(function(){
                 _this.fixMagellanDeselect();
             });
