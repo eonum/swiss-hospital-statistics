@@ -64,7 +64,7 @@ define([
                 legendWidth: 30,
                 chartNameFontSize: 5.5,
                 titleFontSize: 4.5,
-                leftOffset: 40,
+                leftOffset: 50,
                 topOffset: 15,
                 legendItems: function() { return [] },
                 legendLabel: function(item) { return item.toString() },
