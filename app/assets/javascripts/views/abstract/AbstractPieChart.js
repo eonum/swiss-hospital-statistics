@@ -71,7 +71,6 @@ define(['d3', 'views/ResponsiveSvg'], function (d3, ResponsiveSvg) {
         };
 
         _this.setData = function(data, chartIdentifier){
-            console.log("chartIdentifier" + chartIdentifier);
             var pie = d3.layout
                 .pie()
                 .value(function(d) { return d[_this._valueSymbol()]; })

@@ -17,7 +17,8 @@ define([
         var converter = new ChaptersByYearConverter();
         // 0 identifies regular PieChart visualisation
         // 1 identifies ChaptersByYear Visualisation
-        var chartIdentifier = 1;
+        const CHARTIDENTIFIER = 1;
+
 
         var man;
         var woman;
@@ -64,8 +65,13 @@ define([
                 data_man.push({interval: "Rest", amount: minEventsMan});
 
                 if(normalizer > 0) {
-                    _this.womanChart().openOn(data_woman, chartIdentifier);
-                    _this.manChart().openOn(data_man, chartIdentifier);
+                    _this.womanChart().openOn(data_woman, CHARTIDENTIFIER);
+                    _this.manChart().openOn(data_man, CHARTIDENTIFIER);
+                    legend = _this.newLegendChart();
+                    var right = _this.newLegend();
+                    right.add(legend);
+                    _this.add(right);
+
                     _this.legendChart();
                 }
             });
@@ -109,16 +115,16 @@ define([
         _this.render = function () {
             woman = _this.newWomanChart();
             man = _this.newManChart();
-            legend = _this.newLegendChart();
+            //legend = _this.newLegendChart();
             var left = _this.newColumn();
             var middle = _this.newColumn();
-            var right = _this.newLegend();
+            //var right = _this.newLegend();
             left.add(woman);
             middle.add(man);
-            right.add(legend);
+            //right.add(legend);
             _this.add(left);
             _this.add(middle);
-            _this.add(right);
+            //_this.add(right);
         };
 
         _this.manChart = function () {
