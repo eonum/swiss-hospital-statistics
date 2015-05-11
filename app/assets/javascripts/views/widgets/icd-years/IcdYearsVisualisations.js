@@ -5,7 +5,8 @@ define([
     'announcements/OnIcdYearsDeselected',
     'announcements/OnIcdYearsSelected',
     'helpers/converters/ChaptersByYearConverter',
-    'views/PieChart'
+    'views/PieChart',
+    'views/LegendChart'
 ], function(
     View,
     OnIcdAgesDeselected,
@@ -13,7 +14,8 @@ define([
     OnIcdYearsDeselected,
     OnIcdYearsSelected,
     ChaptersByYearConverter,
-    PieChart
+    PieChart,
+    LegendChart
 ){
 
     function IcdYearsVisualisations() {
@@ -22,6 +24,7 @@ define([
 
         var man;
         var woman;
+        var legend;
         var model;
 
         /*--------- V I S U A L I S A T I O N S ---------*/
@@ -70,6 +73,7 @@ define([
                 if(normalizer > 0) {
                     _this.womanChart().openOn(data_woman);
                     _this.manChart().openOn(data_man);
+                    _this.legendChart();
                 }
             });
         };
@@ -80,9 +84,7 @@ define([
          */
         _this.newWomanChart = function () {
             var pieChart = new PieChart(800, 500);
-            pieChart.key('interval').value('amount').labeled(function(amount) {
-                return Math.round(amount*100)/100;
-            });
+            pieChart.key('interval').value('amount');
             return pieChart;
         };
 
@@ -95,6 +97,11 @@ define([
             pieChart.key('interval').value('amount');
             return pieChart;
         };
+
+        _this.newLegendChart = function() {
+            var legendChart = new LegendChart(100, 500);
+            return legendChart;
+        }
 
         /*------------------------------------------------*/
 
@@ -112,11 +119,15 @@ define([
         _this.render = function () {
             woman = _this.newWomanChart();
             man = _this.newManChart();
+            legend = _this.newLegendChart();
             var left = _this.newColumn();
-            var right = _this.newColumn();
+            var middle = _this.newColumn();
+            var right = _this.newLegend();
             left.add(woman);
-            right.add(man);
+            middle.add(man);
+            right.add(legend);
             _this.add(left);
+            _this.add(middle);
             _this.add(right);
         };
 
@@ -128,7 +139,15 @@ define([
             return woman;
         };
 
+        _this.legendChart = function () {
+            return legend;
+        };
+
         _this.newColumn = function () {
+            return new View('<div class="columns large-6"></div>');
+        };
+
+        _this.newLegend = function() {
             return new View('<div class="columns large-6"></div>');
         };
 
