@@ -39,10 +39,10 @@ define([
 
             // first we define tabulator model and script 3 tabs. select first one by default
             var tabulatorModel = new TabulatorModel();
-            var tabIcd = tabulatorModel.addTab(Multiglot.translations.tab_icd).render(function(){return new IcdCodePane().load()});
+            var tabIcd = tabulatorModel.addTab(Multiglot.translations.tab_icd).render(function(){return new IcdCodePane().load()}).select();
             var tabYearIcd = tabulatorModel.addTab(Multiglot.translations.tab_icd_per_year).render(function(){return new IcdYearsPane().load()});
             var tabChop = tabulatorModel.addTab(Multiglot.translations.tab_chop).render(function(){return new ChopCodePane().load()});
-            var tabDrg = tabulatorModel.addTab(Multiglot.translations.tab_drg).render(function(){return new DrgCodePane().load()}).select();
+            var tabDrg = tabulatorModel.addTab(Multiglot.translations.tab_drg).render(function(){return new DrgCodePane().load()});
             var tabTop3 = tabulatorModel.addTab(Multiglot.translations.tab_top_3).render(function(){return new Top3DiagnosesPane()});
 
             // then create corresponding button views and attach tab models
