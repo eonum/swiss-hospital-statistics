@@ -16,7 +16,7 @@ define(['d3', 'views/ResponsiveSvg'], function (d3, ResponsiveSvg) {
         var radius = Math.min(_this._width(), _this._height()) / 2;
         var path = _this.svg()
             .append("g")
-            .attr("transform", "translate(" + _this._width() / 2 + "," + _this._height() / 2 + ")")
+            .attr("transform", "translate(" + _this._width() / 2 + "," + (_this._height() / 1.8) + ")")
             .selectAll("g");
 
         var utils = {
@@ -96,8 +96,9 @@ define(['d3', 'views/ResponsiveSvg'], function (d3, ResponsiveSvg) {
                 .style("text-anchor", "middle");
 
             // enter key
-            var group = enterGroups.append("g");
-            var keyHeight = _height / 15;
+            var group = enterGroups
+                .append("g");
+            var keyHeight = _height / 10;
             var keyWidth = _width / 5;
             // TODO magic offset
             var magicOffset = -200;
