@@ -98,18 +98,18 @@ define(['d3', 'views/ResponsiveSvg'], function (d3, ResponsiveSvg) {
             // enter key
             var group = enterGroups
                 .append("g");
-            var keyHeight = _height / 10;
+            var keyHeight = _height / 12;
             var keyWidth = _width / 5;
             // TODO magic offset
             var magicOffset = -200;
             if(chartIdentifier == 0){
-                magicOffset = -100
+                magicOffset = -150
             }
             if(chartIdentifier == 1) {
                 magicOffset = -200;
             }
             var xPosition = function(d, i) { return 1/3 * _width};
-            var yPosition = function(d, i) {return  magicOffset + i * (keyHeight + 10)};
+            var yPosition = function(d, i) {return  magicOffset + i * (keyHeight + 5)};
             group.append("rect")
                 .attr("width", keyWidth)
                 .attr("height" ,keyHeight)
