@@ -1,18 +1,14 @@
 define([
     'View',
-    'announcements/OnIcdAgesDeselected',
-    'announcements/OnIcdAgesSelected',
-    'announcements/OnIcdYearsDeselected',
-    'announcements/OnIcdYearsSelected',
+    'announcements/OnDeselected',
+    'announcements/OnSelected',
     'helpers/converters/ChaptersByYearConverter',
     'views/PieChart',
     'views/LegendChart'
 ], function(
     View,
-    OnIcdAgesDeselected,
-    OnIcdAgesSelected,
-    OnIcdYearsDeselected,
-    OnIcdYearsSelected,
+    OnDeselected,
+    OnSelected,
     ChaptersByYearConverter,
     PieChart,
     LegendChart
@@ -101,17 +97,15 @@ define([
         _this.newLegendChart = function() {
             var legendChart = new LegendChart(800, 700);
             return legendChart;
-        }
+        };
 
         /*------------------------------------------------*/
 
         _this.model = function(_model) {
             if (_.isUndefined(_model)) return model;
             model = _model;
-            model.announcer().onSendTo(OnIcdAgesDeselected, _this.invalidate, _this);
-            model.announcer().onSendTo(OnIcdAgesSelected, _this.invalidate, _this);
-            model.announcer().onSendTo(OnIcdYearsDeselected, _this.invalidate, _this);
-            model.announcer().onSendTo(OnIcdYearsSelected, _this.invalidate, _this);
+            model.announcer().onSendTo(OnDeselected, _this.invalidate, _this);
+            model.announcer().onSendTo(OnSelected, _this.invalidate, _this);
             _this.render();
             return _this;
         };
