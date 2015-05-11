@@ -38,7 +38,7 @@ class CodeCatalog
   end
 
   def icd_chapters
-    DocumentForJSONCleaner.new.clean_documents_for_json(IcdChapter.first)
+    DocumentForJSONCleaner.new.clean_documents_for_json(IcdChapter.all.asc(:number))
   end
 
 end
