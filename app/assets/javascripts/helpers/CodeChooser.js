@@ -1,4 +1,4 @@
-define(['View'], function (View){
+define([], function (){
 
     /**
      *
@@ -8,27 +8,9 @@ define(['View'], function (View){
      * @constructor
      * @class {CodeChooser}
      */
-    function CodeChooser(initialCodeType, newCodeCallback){
-        var _this = new View('<div></div>');
-        var codeType = initialCodeType;
+    function CodeChooser(initialCodeType){
+        var _this = this;
 
-        _this.initialize = function (){
-            _this.add('<p>Code auswählen:</p>');
-            _this.add('<input id="code_chooser"/>');
-        };
-
-        _this.attachInputHandler = function(codeType){
-            $('#code_chooser').keyup(function () {
-                var text = $('#code_chooser').val();
-                _this.fetchCode(codeType, text, function(resultCodes) {
-                    $('#code_chooser').autocomplete({source: resultCodes});
-                });
-
-                if(text.length >= 4){
-                    _this.fetchCodeAndDatasets(codeType, text, newCodeCallback);
-                }
-            });
-        };
 
         //returns the value of the first property of an object
         _this.getFirstProperty = function (object){
@@ -89,10 +71,6 @@ define(['View'], function (View){
             element.append(_this);
             _this.attachInputHandler(codeType);
         };
-
-        _this.initialize();
-
-        return _this;
     }
 
     return CodeChooser;

@@ -135,6 +135,7 @@ define([
         };
 
         _this.on = function (type, code) {
+            console.log(type + ' '+ code);
             if (!_this.isInitialized())
                 _this.initialize();
             _this.codeChooser().fetchDatasets(type, code, _this.updateVisualisations);
@@ -149,7 +150,7 @@ define([
          * @returns {CodeChooser}
          */
         _this.newCodeChooser = function () {
-            return new CodeChooser(_this.codeType(), _this.updateVisualisations);
+            return new CodeChooser(_this.codeType());
         };
 
         _this.newCloud = function () {

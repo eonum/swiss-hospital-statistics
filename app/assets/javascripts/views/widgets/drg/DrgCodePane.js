@@ -17,6 +17,10 @@ define([
            return this.super('/api/v1/codes/drg');
         });
 
+        _this.codeOf = function(item) {
+            return item.code;
+        };
+
         /**
          * @param candidate
          * @param {string} candidate.code

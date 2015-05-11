@@ -73,7 +73,11 @@ define([
                 if (!_this.selectorModel().isItemSelected())
                     _this.selectorModel().selectItem(ann.item());
             }, _this);
-            selectorModel.cloud().label(function(item){ return item.short_code });
+            selectorModel.cloud().label(function(item){ return _this.codeOf(item) });
+        };
+
+        _this.codeOf = function(item) {
+            return item.short_code;
         };
 
         _this.codeCard = function (_codeCard) {
@@ -96,7 +100,7 @@ define([
         };
 
         _this.onItemSelected = function (ann) {
-            _this.codeCard().on(_this.groupPrefix(), ann.item().short_code);
+            _this.codeCard().on(_this.groupPrefix(), _this.codeOf(ann.item()));
         };
 
         _this.newSearchView = function () {
@@ -136,9 +140,9 @@ define([
          */
         _this.listNameOf = function (item) {
             return {
-                de: (item.code + " "+item.text_de),
-                fr: (item.code + " "+item.text_fr),
-                it: (item.code + " "+item.text_it)
+                de: (_this.codeOf(item) + " "+item.text_de),
+                fr: (_this.codeOf(item) + " "+item.text_fr),
+                it: (_this.codeOf(item) + " "+item.text_it)
             }
         };
 
@@ -150,11 +154,11 @@ define([
          * @returns {string}
          */
         _this.candidateNameOf = function (candidate) {
-            return candidate.short_code + " "+candidate.code + " "+candidate.text_de;
+            return candidate.short_code + " "+candidate.code + " "+candidate.text_de+" "+candidate.text_fr+" "+candidate.text_it;
         };
 
         _this.firstCharacterOf = function(item) {
-            return item.code.charAt(0);
+            return _this.codeOf(item).charAt(0);
         };
 
         _this.groupPrefix = function () {
