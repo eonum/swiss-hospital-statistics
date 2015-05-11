@@ -151,6 +151,7 @@ define([
             _this.append(table);
         };
 
+        //TODO: refactoring
         _this.setData = function(data){
             for(var i=0; i<data.length; i++) {
                 var row = $("<tr/>");
@@ -160,9 +161,12 @@ define([
                 row.append(($("<th/>").text(intervals[i])));
 
                 data[i].forEach(function(category){
+                    var localTable = $("<table/>");
+                    row.append($("<td/>").append(localTable));
+
                     var text = "";
-                    category.forEach(function(item){text += item.code}); //TODO: break line, add n and dad
-                    row.append($("<td/>").text(text));
+                    category.forEach(function(item){localTable.append($("<tr/>").append($("<td/>").text(item.code + ", " + item.n + " Fälle, dad=" + item.dad))) }); //TODO: remove styling from inner tables
+                    //row.append($("<td/>").text(text));
                 });
             }
         };
