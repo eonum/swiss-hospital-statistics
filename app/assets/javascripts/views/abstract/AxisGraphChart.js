@@ -503,7 +503,7 @@ define([
 
         _this.newLegend = function() {
             return _this.svg().append('g')
-                .attr('transform', 'translate('+(_this.leftOffset() + _this.chartWidth())+', ' + _this.titleFontSize() + ')')
+                .attr('transform', 'translate('+(_this.leftOffset() + _this.chartWidth())+', ' + (_this.topOffset() - _this.axisFontSize()) + ')')
                 .attr('class', 'legend');
         };
 
