@@ -172,7 +172,7 @@ define([
         _this.renderList = function () {
             list.empty();
             var views = [];
-            if (!_this.model().isExpanded() && _.size(_this.model().items()) > itemLimit * 2 && _this.model().amountOfGroups() > groupLimit) {
+            if (!_this.model().isExpanded() && _.size(_this.model().items()) > (itemLimit * 2 + 1) && _this.model().amountOfGroups() > groupLimit) {
                 _this.renderItemsIn(_.first(_this.model().items(),itemLimit), views);
                 _this.renderExpandItemIn(_this.newExpandItem(), views);
                 _this.renderItemsIn(_.last(_this.model().items(),itemLimit), views);
