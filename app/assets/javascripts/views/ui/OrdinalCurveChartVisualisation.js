@@ -20,6 +20,12 @@ define([
                     fr: entity.codes[0].code[0].code + ': ' + entity.codes[0].code[0].text_fr,
                     it: entity.codes[0].code[0].code + ': ' + entity.codes[0].code[0].text_it
                 }})
+                .yAxisLabel(function(){
+                    return Multiglot.translations.charts.ordinal.axises.y
+                })
+                .xAxisLabel(function(){
+                    return Multiglot.translations.charts.ordinal.axises.x
+                })
                 .legend(function(entity) {
                     return _.map(entity.codes, function(each){
                         return each.code[0];

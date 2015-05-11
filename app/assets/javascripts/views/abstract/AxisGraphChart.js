@@ -56,10 +56,13 @@ define([
                 yDomain: function(entity) { return [ 0, d3.max(entity, _this.yValue) ] },
                 xAxisLabel: function() { return ''},
                 yAxisLabel: function() { return ''},
+                yAxisMaxWidth: 200,
+                axisFontSize: 15,
                 color: d3.scale.category20(),
                 legendWidth: 30,
                 titleFontSize: 5,
                 leftOffset: 40,
+                topOffset: 15,
                 legendItems: function() { return [] },
                 legendLabel: function(item) { return item.toString() },
                 legendColor: d3.scale.category20(),
@@ -137,6 +140,26 @@ define([
             return _this;
         };
 
+        _this.yAxisLabel = function (func) {
+            if (_.isUndefined(func))
+                return _this.settings().yAxisLabel(_this.rawEntity(), _this.entity());
+            _this.settings().yAxisLabel = func;
+            return _this;
+        };
+
+        _this.xAxisLabel = function (func) {
+            if (_.isUndefined(func))
+                return _this.settings().xAxisLabel(_this.rawEntity(), _this.entity());
+            _this.settings().xAxisLabel = func;
+            return _this;
+        };
+
+        _this.axisFontSize = function (number) {
+            if (_.isUndefined(number)) return _this.settings().axisFontSize;
+            _this.settings().axisFontSize = number;
+            return _this;
+        };
+
         _this.asFunction = function (object) {
             return _.isFunction(object) ? object : function() { return object };
         };
@@ -189,7 +212,7 @@ define([
          * @returns {number}
          */
         _this.chartHeight = function () {
-            return _this._height() - _this.titleFontSize();
+            return _this._height() - _this.titleFontSize() - _this.axisFontSize() - _this.settings().topOffset;
         };
 
         _this.chartWidth = function () {
@@ -378,20 +401,55 @@ define([
                 .apply();
         };
 
+        _this.topOffset = function () {
+            return _this.titleFontSize() + _this.axisFontSize() + _this.settings().topOffset;
+        };
+
         _this.chart = function () {
             return chart;
         };
 
         _this.newChart = function () {
             var chart = _this.svg().append('g')
-                .attr('transform', 'translate('+_this.leftOffset()+', ' + _this.titleFontSize() + ')');
+                .attr('transform', 'translate('+_this.leftOffset()+', ' + _this.topOffset() + ')');
             chart.append('g')
                 .attr('transform', 'translate(0,'+ _this.chartHeight()+')')
                 .attr('class', 'x axis')
-                .call(_this.xAxis());
+                .call(_this.xAxis())
+                .append('text')
+                .attr('y',_this.axisFontSize() * 1.6)
+                .attr('x',_this.chartWidth())
+                .style('text-anchor', 'middle')
+                .style('font-size', _this.axisFontSize()+'px')
+                .each(_this.xAxisTextTranslations);
             chart.append('g')
-                .attr('class', 'y axis');
+                .attr('class', 'y axis')
+                .append('text')
+                .attr('y',-_this.axisFontSize() * 1.1)
+                .attr('x',-_this.leftOffset())
+                .attr('width', _this.settings().yAxisMaxWidth)
+                .style('text-anchor', 'start')
+                .style('font-size', _this.axisFontSize()+'px')
+                .each(_this.yAxisTextTranslations);
             return chart;
+        };
+
+        _this.xAxisTextTranslations = function() {
+            var self = this;
+            new Multiglot()
+                .on($(this))
+                .custom(_this.xAxisLabel())
+                .set(function(html, text) { html.text(text); _this.applyTextWrap(self) })
+                .apply();
+        };
+
+        _this.yAxisTextTranslations = function() {
+            var self = this;
+            new Multiglot()
+                .on($(this))
+                .custom(_this.yAxisLabel())
+                .set(function(html, text) { html.text(text); _this.applyTextWrap(self) })
+                .apply();
         };
 
         _this.newLegend = function() {

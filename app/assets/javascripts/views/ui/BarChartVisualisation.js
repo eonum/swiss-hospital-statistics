@@ -14,6 +14,12 @@ function (BarChart, View, NumberByAgeDatasetConverter){
                 }})
                 .display(function(entity) { return entity.data })
                 .label(function (value) { return value + ' ' + (value > 1 ? 'Fälle' : 'Fall') })
+                .yAxisLabel(function(){
+                    return Multiglot.translations.charts.bar.axises.y
+                })
+                .xAxisLabel(function(){
+                    return Multiglot.translations.charts.bar.axises.x
+                })
                 .x('interval')
                 .y('amount'));
         };

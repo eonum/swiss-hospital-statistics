@@ -123,6 +123,56 @@ define([], function(){
                 fr: 'is average value [fr]',
                 it: 'is average value [it]'
             }
+        },
+        charts: {
+            bar: {
+                axises: {
+                    y: {
+                        de: 'Anzahl Fälle',
+                        fr: 'Nombre des cas',
+                        it: 'Numero di casi',
+                        en: 'Number of cases'
+                    },
+                    x: {
+                        de: 'Alterskategorie',
+                        fr: "Catégorie d'âge",
+                        it: 'Categoria di età',
+                        en: 'Age category'
+                    }
+                }
+            },
+            ordinal: {
+                axises: {
+                    y: {
+                        de: 'Anzahl Fälle',
+                        fr: 'Nombre des cas',
+                        it: 'Numero di casi',
+                        en: 'Number of cases'
+                    },
+                    x: {
+                        de: 'Alterskategorie',
+                        fr: "Catégorie d'âge",
+                        it: 'Categoria di età',
+                        en: 'Age category'
+                    }
+                }
+            },
+            box: {
+                axises: {
+                    y: {
+                        de: 'Aufenthaltsdauer (in Tagen)',
+                        fr: 'Durée du séjour (en jours)',
+                        it: 'Durata del soggiorno (in giorni)',
+                        en: 'Length of stay (in days)'
+                    },
+                    x: {
+                        de: 'Alterskategorie',
+                        fr: "Catégorie d'âge",
+                        it: 'Categoria di età',
+                        en: 'Age category'
+                    }
+                }
+            }
         }
     }
 });

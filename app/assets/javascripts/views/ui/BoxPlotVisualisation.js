@@ -19,6 +19,12 @@ define([
                     fr: entity.code.code + ': ' + entity.code.text_fr,
                     it: entity.code.code + ': ' + entity.code.text_it
                 }})
+                .yAxisLabel(function(){
+                    return Multiglot.translations.charts.box.axises.y
+                })
+                .xAxisLabel(function(){
+                    return Multiglot.translations.charts.box.axises.x
+                })
                 .legend(function(entity) {
                     var data = entity.data[0];
                     return [
