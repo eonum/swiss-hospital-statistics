@@ -13,20 +13,17 @@ define([
             _this.initialize = function (){
                 _this.append(topThreeTable);
 
-                _this.fillChartWithDummyObjects(false);
+                _this.fillChartWithDummyObjects();
             };
 
 
-            _this.fillChartWithDummyObjects = function(simle){
-                var datasets = [];
+            _this.fillChartWithDummyObjects = function(){
+                var total = [{"code":"Z380  Einling, Geburt im Krankenhaus", "n":"37.3", "dad":"4.6"}, {"code":"Z380  Einling, Geburt im Krankenhaus", "n":"37.3", "dad":"4.6"}, {"code":"Z380  Einling, Geburt im Krankenhaus", "n":"37.3", "dad":"4.6"}];
+                var male = [{"code":"Z380  Einling, Geburt im Krankenhaus", "n":"37.3", "dad":"4.6"}, {"code":"Z380  Einling, Geburt im Krankenhaus", "n":"37.3", "dad":"4.6"}, {"code":"Z380  Einling, Geburt im Krankenhaus", "n":"37.3", "dad":"4.6"}];
+                var female = [{"code":"Z380  Einling, Geburt im Krankenhaus", "n":"37.3", "dad":"4.6"}, {"code":"Z380  Einling, Geburt im Krankenhaus", "n":"37.3", "dad":"4.6"}, {"code":"Z380  Einling, Geburt im Krankenhaus", "n":"37.3", "dad":"4.6"}];
 
-                if(simle){
-                    datasets = [{"name": "Box 0/0", "value": 10}, {"name": "Box 0/1", "value": 4}, {"name": "Box 0/2", "value": 12}];
-                }
-                else{
-                    datasets = [{"name": "Box 0/0", "value": 10}, {"name": "Box 0/1", "value": 4}, {"name": "Box 0/2", "value": 12},
-                        {"name": "Box 1/0", "value": 10}, {"name": "Box 1/1", "value": 10}];
-                }
+                var dataset =  [total, male, female];
+                var datasets = [dataset, dataset, dataset,dataset,dataset];
 
                 var hardcodedYear = 2013;
                 var hardcodedHospitalTypeString = "Spezialkliniken: Reha";

@@ -153,10 +153,17 @@ define([
 
         _this.setData = function(data){
             for(var i=0; i<data.length; i++) {
-                table.append($("<tr/>").append($("<th/>").text(intervals[i]))
-                    .append($("<td/>").text("bla1"))
-                    .append($("<td/>").text("bla2"))
-                    .append($("<td/>").text("bla3")));
+                var row = $("<tr/>");
+                table.append(row);
+                var interval = intervals[i];
+                console.log(interval);
+                row.append(($("<th/>").text(intervals[i])));
+
+                data[i].forEach(function(category){
+                    var text = "";
+                    category.forEach(function(item){text += item.code}); //TODO: break line, add n and dad
+                    row.append($("<td/>").text(text));
+                });
             }
         };
 
