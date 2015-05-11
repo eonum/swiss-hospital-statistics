@@ -1,3 +1,5 @@
+require 'codes/drg_nonterminal'
+
 class DrgChapter
   include Mongoid::Document
 

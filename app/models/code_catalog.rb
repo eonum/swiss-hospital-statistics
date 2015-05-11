@@ -2,6 +2,7 @@ require 'codes/icd_code'
 require 'codes/chop_code'
 require 'codes/drg_code'
 require 'codes/icd_chapter'
+require 'codes/drg_chapter'
 
 #
 # This class is responsible for the mapping of tags to the code types from the catalogs stemming from
@@ -39,6 +40,10 @@ class CodeCatalog
 
   def icd_chapters
     DocumentForJSONCleaner.new.clean_documents_for_json(IcdChapter.all.asc(:number))
+  end
+
+  def drg_chapters
+    DocumentForJSONCleaner.new.clean_documents_for_json(DrgChapter.all.asc(:code))
   end
 
 end

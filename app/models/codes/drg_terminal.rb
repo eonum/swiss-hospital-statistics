@@ -1,3 +1,5 @@
+require 'codes/drg_nonterminal'
+
 class DrgTerminal
   include Mongoid::Document
 

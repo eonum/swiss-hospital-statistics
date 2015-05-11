@@ -22,6 +22,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       namespace :groups do
         resources :icd, :only => [:index]
+        resources :drg, :only => [:index]
       end
       resources :codes, :only => [:index, :show, :new] do
         resources :specific, :only => [:show]

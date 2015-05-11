@@ -22,8 +22,6 @@ define([
         _this.load = override(_this, _this.load, function(){
             this.super();
             _this.renderBreadcrumb();
-            // TODO remove that
-            //_this.searchModel().process("a045");
             return _this;
         });
 
@@ -85,7 +83,7 @@ define([
                 .level()
                     .defaultLabel(function(){ return Multiglot.translations.all_nonterminals })
                     .label(nonterminalLabel)
-                    .next(function(group){return group.icd_terminals})
+                    .next(function(nonterminal){return nonterminal.icd_terminals})
                     .sameDefault()
                     .beLast()
                     .end()

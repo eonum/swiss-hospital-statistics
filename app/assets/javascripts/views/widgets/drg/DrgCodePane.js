@@ -1,9 +1,15 @@
 define([
     'views/widgets/CodePane',
-    'views/widgets/drg/DrgCodeVisualisationCard'
+    'views/widgets/drg/DrgCodeVisualisationCard',
+    'models/BreadcrumbModel',
+    'views/widgets/Breadcrumb',
+    'announcements/OnBreadcrumbSelected'
 ], function(
     CodePane,
-    DrgCodeVisualisationCard
+    DrgCodeVisualisationCard,
+    BreadcrumbModel,
+    Breadcrumb,
+    OnBreadcrumbSelected
 ){
 
     function DrgCodePane() {
@@ -14,7 +20,9 @@ define([
         });
 
         _this.load = override(_this, _this.load, function(){
-           return this.super('/api/v1/codes/drg');
+            this.super();
+            _this.renderBreadcrumb();
+            return _this;
         });
 
         _this.codeOf = function(item) {
@@ -37,6 +45,64 @@ define([
 
         _this.newCodeCard = function () {
             return new DrgCodeVisualisationCard();
+        };
+
+        _this.renderBreadcrumb = function () {
+            var breadcrumb = new Breadcrumb();
+            _this.leftPane().prepend(breadcrumb);
+
+            function chapterLabel(chapter) {
+                return _.mapObject(Multiglot.translations.chapter, function(translation){
+                    return translation+' '+chapter.code
+                })
+            }
+
+            function nonterminalLabel(nonterminal) {
+                return _.mapObject(Multiglot.translations.nonterminal, function(translation){
+                    return translation+' '+nonterminal.code
+                })
+            }
+
+            function terminalLabel(terminal) {
+                return _.mapObject(Multiglot.translations.terminal, function(translation){
+                    return translation+' '+terminal.code
+                })
+            }
+
+            var breadcrumbModel = new BreadcrumbModel()
+                .level()
+                    .label(function(){return _this.groupPrefix().toUpperCase();})
+                    .next(_.identity)
+                    .sameDefault()
+                    .select(function(node){ node.select(true) })
+                    .end()
+                .level()
+                    .defaultLabel(function(){ return Multiglot.translations.all_chapters })
+                    .label(chapterLabel)
+                    .next(function(chapter){ return chapter.drg_nonterminals })
+                    .sameDefault()
+                    .end()
+                .level()
+                    .defaultLabel(function(){ return Multiglot.translations.all_nonterminals })
+                    .label(nonterminalLabel)
+                    .next(function(nonterminal){return nonterminal.drg_terminals})
+                    .sameDefault()
+                    .beLast()
+                    .end()
+                .level()
+                    .defaultLabel(function(){ return Multiglot.translations.all_terminals })
+                    .label(terminalLabel)
+                    .end();
+
+            breadcrumbModel.announcer().onSendTo(OnBreadcrumbSelected, function(ann){
+                _this.searchModel().allCandidates(ann.node().deepest().children())
+            }, this);
+
+            $.getJSON('/api/v1/groups/drg', function(result){
+                breadcrumbModel.on(result);
+                breadcrumb.model(breadcrumbModel);
+                _this.searchModel().allCandidates(breadcrumbModel.root().deepest().children())
+            });
         };
 
         return _this;
