@@ -1,14 +1,12 @@
 define([
     'View',
-    'announcements/OnDeselected',
-    'announcements/OnSelected',
+    'announcements/OnSelectionChanged',
     'helpers/converters/ChaptersByYearConverter',
     'views/PieChart',
     'views/LegendChart'
 ], function(
     View,
-    OnDeselected,
-    OnSelected,
+    OnSelectionChanged,
     ChaptersByYearConverter,
     PieChart,
     LegendChart
@@ -104,8 +102,7 @@ define([
         _this.model = function(_model) {
             if (_.isUndefined(_model)) return model;
             model = _model;
-            model.announcer().onSendTo(OnDeselected, _this.invalidate, _this);
-            model.announcer().onSendTo(OnSelected, _this.invalidate, _this);
+            model.announcer().onSendTo(OnSelectionChanged, _this.onChanged, _this);
             _this.render();
             return _this;
         };
@@ -147,7 +144,11 @@ define([
 
         // calls the selection method of IcdYearsModel which returns a JSON
         // of two arrays selectedYears and selectedAges
-        _this.invalidate = function() {
+        _this.onChanged = function() {
+            _this.invalidate();
+        };
+
+        _this.invalidate = function () {
             _this.update(_this.model().selection());
         };
 

@@ -1,11 +1,13 @@
 define([
     'Announcer',
     'announcements/OnDeselected',
-    'announcements/OnSelected'
+    'announcements/OnSelected',
+    'announcements/OnSelectionChanged'
 ], function(
     Announcer,
     OnDeselected,
-    OnSelected
+    OnSelected,
+    OnSelectionChanged
 ){
 
     function CategoryModel(_holder) {
@@ -34,15 +36,23 @@ define([
             if (_this.isSelected(item)) return;
             item = _this.asArray(item);
             if (!_this.isMultipleSelection())
-                _this.deselectAll();
+                _this._deselectAll();
             selected = _this.selected().concat(item);
             _this.notifySelected(item);
+            _this.holder().notifyChanged();
         };
 
         _this.deselectAll = function () {
-            _.each(_this.selected(), function(each){
-                _this.deselect(each);
-            })
+            if (_.isEmpty(_this.selected())) return;
+            _this._deselectAll();
+            _this.holder().notifyChanged();
+        };
+
+        _this._deselectAll = function () {
+            if (_.isEmpty(_this.selected())) return;
+            var old = _this.selected();
+            selected = [ ];
+            _.each(old, _this.notifyDeselected);
         };
 
         _this.deselect = function (item) {
@@ -50,10 +60,11 @@ define([
             item = _this.asArray(item);
             selected = _.difference(_this.selected(),item);
             _this.notifyDeselected(item);
+            _this.holder().notifyChanged();
         };
 
         _this.isSelected = function (item) {
-            return _.contains(_this.selected, item);
+            return _.contains(_this.selected(), item);
         };
 
         _this.selected = function () {
@@ -151,6 +162,10 @@ define([
 
         _this.notifyDeselected = function(item) {
             _this.announcer().announce(new OnDeselected(item));
+        };
+
+        _this.notifyChanged = function () {
+            _this.announcer().announce(new OnSelectionChanged(_this.selection()));
         };
 
         _this.selection = function () {
