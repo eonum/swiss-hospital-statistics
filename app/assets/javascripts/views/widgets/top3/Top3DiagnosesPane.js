@@ -35,8 +35,9 @@ define([
 
         _this.onChanged = function(ann) {
             //TODO: implement this
-            //TODO: shouldn't be able to select multiple years
-            console.log(ann.selection());
+            var selectedYear = ann.selection().years[0];
+            var selectedHospitalType = ann.selection().hospitals[0];
+            console.log(selectedYear + ": " + selectedHospitalType);
         };
 
         _this.initialize();
