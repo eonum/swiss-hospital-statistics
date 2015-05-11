@@ -28,10 +28,6 @@ define([
             var normalizer = selection.years.length*selection.ages.length;
 
             converter.convert(selection, function(result) {
-                console.log("MALE");
-                console.log(result.man);
-                console.log("FEMALE");
-                console.log(result.woman);
 
                 var minEventsWoman = 0;
                 var minEventsMan = 0;

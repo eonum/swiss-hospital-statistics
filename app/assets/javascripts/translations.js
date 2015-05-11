@@ -99,34 +99,34 @@ define([], function(){
         },
         box_plot: {
             higher_whiskers: {
-                de: 'is higher whisker [de]',
-                fr: 'is higher whisker [fr]',
-                it: 'is higher whisker [it]',
-                en: 'is higher whisker [en]'
+                de: 'oberer Whisker: 90%-Quantil',
+                fr: 'Moustache supérieur: 0.9-quantile',
+                it: 'Baffo superiore: 0.9-quantili',
+                en: 'upper whisker: 90th percentile'
             },
             lower_whiskers: {
-                de: 'is lower whisker [de]',
-                fr: 'is lower whisker [fr]',
-                it: 'is lower whisker [it]',
-                en: 'is lower whisker [en]'
+                de: 'unterer Whisker: 10%-Quantil',
+                fr: 'Moustache inférieure: 0.1-quantile',
+                it: 'Baffo inferiore: 0.1-quantili',
+                en: 'lower whisker: 10th percentile'
             },
             higher_quartile: {
-                de: 'is higher quartile [de]',
-                fr: 'is higher quartile [fr]',
-                it: 'is higher quartile [it]',
-                en: 'is higher quartile [en]'
+                de: 'oberes Quartil (Q3)',
+                fr: '3e quartile (Q3)',
+                it: 'Quartile superiore (Q3)',
+                en: 'upper quartile (Q3)'
             },
             lower_quartile: {
-                de: 'is lower quartile [de]',
-                fr: 'is lower quartile [fr]',
-                it: 'is lower quartile [it]',
-                en: 'is lower quartile [en]'
+                de: 'unteres Quartil (Q1)',
+                fr: '1er quartile (Q1)',
+                it: 'Quartile inferiore (Q1)',
+                en: 'lower quartile (Q1)'
             },
             average: {
-                de: 'is average value [de]',
-                fr: 'is average value [fr]',
-                it: 'is average value [it]',
-                en: 'is average value [en]'
+                de: 'Durchschnitt',
+                fr: 'Moyenne',
+                it: 'Medio',
+                en: 'Average'
             }
         },
         charts: {
