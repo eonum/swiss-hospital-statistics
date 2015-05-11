@@ -25,8 +25,7 @@ define([
                 }
                 else{
                     datasets = [{"name": "Box 0/0", "value": 10}, {"name": "Box 0/1", "value": 4}, {"name": "Box 0/2", "value": 12},
-                        {"name": "Box 1/0", "value": 10}, {"name": "Box 1/1", "value": 10}, {"name": "Box 1/2", "value": 10},
-                        {"name": "Box 2/0", "value": 10}, {"name": "Box 2/1", "value": 10}, {"name": "Box 2/2", "value": 10}];
+                        {"name": "Box 1/0", "value": 10}, {"name": "Box 1/1", "value": 10}];
                 }
 
                 var hardcodedYear = 2013;
