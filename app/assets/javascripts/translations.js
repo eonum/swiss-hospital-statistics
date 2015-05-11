@@ -101,27 +101,32 @@ define([], function(){
             higher_whiskers: {
                 de: 'is higher whisker [de]',
                 fr: 'is higher whisker [fr]',
-                it: 'is higher whisker [it]'
+                it: 'is higher whisker [it]',
+                en: 'is higher whisker [en]'
             },
             lower_whiskers: {
                 de: 'is lower whisker [de]',
                 fr: 'is lower whisker [fr]',
-                it: 'is lower whisker [it]'
+                it: 'is lower whisker [it]',
+                en: 'is lower whisker [en]'
             },
             higher_quartile: {
                 de: 'is higher quartile [de]',
                 fr: 'is higher quartile [fr]',
-                it: 'is higher quartile [it]'
+                it: 'is higher quartile [it]',
+                en: 'is higher quartile [en]'
             },
             lower_quartile: {
                 de: 'is lower quartile [de]',
                 fr: 'is lower quartile [fr]',
-                it: 'is lower quartile [it]'
+                it: 'is lower quartile [it]',
+                en: 'is lower quartile [en]'
             },
             average: {
                 de: 'is average value [de]',
                 fr: 'is average value [fr]',
-                it: 'is average value [it]'
+                it: 'is average value [it]',
+                en: 'is average value [en]'
             }
         },
         charts: {

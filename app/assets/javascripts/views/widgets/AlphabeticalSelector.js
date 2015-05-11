@@ -93,7 +93,8 @@ define([
 
         _this.render = function () {
             var translations = _this.group().selector().nameOf(_this.item());
-            link = $('<a '+Multiglot.renderCustom(translations)+'>'+translations[Multiglot.language]+'</a>');
+            var translation = _.isUndefined(translations[Multiglot.language]) ? translations[Multiglot.defaultLanguage] : translations[Multiglot.language];
+            link = $('<a '+Multiglot.renderCustom(translations)+'>'+translation+'</a>');
 
             if (_this.group().selector().isItemSelected(_this.item()))
                 _this.select();

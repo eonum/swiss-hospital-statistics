@@ -130,7 +130,12 @@ define([
             var translationsLogic = function(html) { return Multiglot.translations[_this.id(html)] };
             var textLogic = function(translations) {
                 if (_.isString(translations)) return translations;
-                return translations[Multiglot.language]
+                var language = Multiglot.language;
+                if (_.isUndefined(translations[language]))
+                    language = Multiglot.defaultLanguage;
+                if (_.isUndefined(translations[language]))
+                    language = _.first(_.keys(translations).sort());
+                return translations[language]
             };
 
             _this.id = function(html) {
@@ -253,8 +258,15 @@ define([
     Multiglot.EN = 'en';
     Multiglot.FR = 'fr';
     Multiglot.IT = 'it';
+    Multiglot.defaultLanguage = Multiglot.DE;
+    Multiglot.languages = [
+        { name: 'Deutsch', code: Multiglot.DE },
+        { name: 'Français', code: Multiglot.FR },
+        { name: 'Italiano', code: Multiglot.IT },
+        { name: 'English', code: Multiglot.EN }
+    ];
     Multiglot.cookieID = 'multiglot-language';
-    Multiglot.language = $.cookie(Multiglot.cookieID) || 'de';
+    Multiglot.language = $.cookie(Multiglot.cookieID) || Multiglot.defaultLanguage;
     Multiglot.dataID = 'multiglot';
     Multiglot.marker = Multiglot.dataID+'-enabled';
     Multiglot.customID = Multiglot.dataID+'-custom';

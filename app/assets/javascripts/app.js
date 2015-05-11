@@ -28,11 +28,10 @@ define([
             // we use topbar to have tab buttons there
             var topBar = new TopBar().title('Eonum');
 
-            var languages = [{name: 'Deutsch', id: Multiglot.DE}, {name: 'Français', id: Multiglot.FR}, {name: 'Italiano', id: Multiglot.IT}];
             var languageTabulator = new TabulatorModel();
-            var languageModels = _.map(languages, function(language){
-                var tab = languageTabulator.addTab(language.name).onSelected(function(){ Multiglot.setLanguage(language.id) });
-                if (Multiglot.language === language.id) tab.select();
+            var languageModels = _.map(Multiglot.languages, function(language){
+                var tab = languageTabulator.addTab(language.name).onSelected(function(){ Multiglot.setLanguage(language.code) });
+                if (Multiglot.language === language.code) tab.select();
                 return tab;
             });
             topBar.addRightAll(_.map(languageModels,
