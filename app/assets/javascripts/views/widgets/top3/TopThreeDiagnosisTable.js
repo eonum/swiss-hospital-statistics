@@ -137,20 +137,30 @@ define([
         var _this = new View('<div></div>');
 
         var table = $("<table/>");
-        var tableHeader = $("<tr/>");
 
-        //TODO: translation!
-        tableHeader.append($("<th/>").text("Total"));
-        tableHeader.append($("<th/>").text("Männer"));
-        tableHeader.append($("<th/>").text("Frauen"));
+        //TODO: translation
+        var categories = ["Total", "Männer", "Frauen"];
+        var intervals = ["0-14", "15-39", "40-69", "70+", "Total"];
 
+        var tableHeader = $("<tr/>").append($("<th/>"));
+        categories.forEach(function(interval){tableHeader.append($("<th/>").text(interval))});
         table.append(tableHeader);
-        _this.append(table);
 
-        _this.setData = function(bla, blub){
-            console.log("Implement this!");
+
+        _this.initialize = function() {
+            _this.append(table);
         };
 
+        _this.setData = function(data){
+            for(var i=0; i<data.length; i++) {
+                table.append($("<tr/>").append($("<th/>").text(intervals[i]))
+                    .append($("<td/>").text("bla1"))
+                    .append($("<td/>").text("bla2"))
+                    .append($("<td/>").text("bla3")));
+            }
+        };
+
+        _this.initialize();
 
         return _this;
     }
