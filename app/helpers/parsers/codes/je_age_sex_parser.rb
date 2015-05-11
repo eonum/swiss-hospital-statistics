@@ -28,7 +28,7 @@ class JeAgeSexParser < AbstractJeDParser
     data = dataset.new_data
 
     category = SexIntervalCategory.new
-    category.hospital_type = @hospital_type.id.to_s
+    category.hospital = @hospital_type.id.to_s
     category.sex = @gender
     category.percentage = @sheet.cell(row, @percentage_column)
     category.dad = @sheet.cell(row, @dad_column)

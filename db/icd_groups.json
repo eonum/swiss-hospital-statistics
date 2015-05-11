@@ -178,22 +178,6 @@
     {
         "chapter": "II",
         "chapter_number": 2,
-        "code": "C00-C75",
-        "text_de": "B\u00f6sartige Neubildungen an genau bezeichneten Lokalisationen, als prim\u00e4r festgestellt oder vermutet, ausgenommen lymphatisches, blutbildendes und verwandtes Gewebe",
-        "text_fr": "Tumeurs malignes, primitives ou pr\u00e9sum\u00e9es primitives, de si\u00e8ge pr\u00e9cis\u00e9, \u00e0 l'exception des tissus lympho\u00efde, h\u00e9matopo\u00ef\u00e9tique et apparent\u00e9s",
-        "text_it": "Tumori maligni primitivi, di sede specificata, ad eccezione di quelli del tessuto linfatico, ematopoietico e tessuti correlati, dichiarati primitivi o presunti tali"
-    },
-    {
-        "chapter": "II",
-        "chapter_number": 2,
-        "code": "C00-C97",
-        "text_de": "B\u00f6sartige Neubildungen",
-        "text_fr": "Tumeurs malignes",
-        "text_it": "Tumori maligni"
-    },
-    {
-        "chapter": "II",
-        "chapter_number": 2,
         "code": "C15-C26",
         "text_de": "B\u00f6sartige Neubildungen der Verdauungsorgane",
         "text_fr": "Tumeurs malignes des organes digestifs",
@@ -1050,14 +1034,6 @@
     {
         "chapter": "XIII",
         "chapter_number": 13,
-        "code": "M00-M25",
-        "text_de": "Arthropathien",
-        "text_fr": "Arthropathies",
-        "text_it": "Artropatie"
-    },
-    {
-        "chapter": "XIII",
-        "chapter_number": 13,
         "code": "M05-M14",
         "text_de": "Entz\u00fcndliche Polyarthropathien",
         "text_fr": "Polyarthropathies inflammatoires",
@@ -1098,14 +1074,6 @@
     {
         "chapter": "XIII",
         "chapter_number": 13,
-        "code": "M40-M54",
-        "text_de": "Krankheiten der Wirbels\u00e4ule und des R\u00fcckens",
-        "text_fr": "Dorsopathies",
-        "text_it": "Malattie della Colonna vertebrale e Dorsopatie"
-    },
-    {
-        "chapter": "XIII",
-        "chapter_number": 13,
         "code": "M45-M49",
         "text_de": "Spondylopathien",
         "text_fr": "Spondylopathies",
@@ -1130,14 +1098,6 @@
     {
         "chapter": "XIII",
         "chapter_number": 13,
-        "code": "M60-M79",
-        "text_de": "Krankheiten der Weichteilgewebe",
-        "text_fr": "Affections des tissus mous",
-        "text_it": "Disturbi dei tessuti molli"
-    },
-    {
-        "chapter": "XIII",
-        "chapter_number": 13,
         "code": "M65-M68",
         "text_de": "Krankheiten der Synovialis und der Sehnen",
         "text_fr": "Atteintes des synoviales et des tendons",
@@ -1158,14 +1118,6 @@
         "text_de": "Ver\u00e4nderungen der Knochendichte und -struktur",
         "text_fr": "Anomalies de la densit\u00e9 et de la structure osseuse",
         "text_it": "Disturbi della densit\u00e0 e della struttura delle ossa"
-    },
-    {
-        "chapter": "XIII",
-        "chapter_number": 13,
-        "code": "M80-M94",
-        "text_de": "Osteopathien und Chondropathien",
-        "text_fr": "Ost\u00e9opathies et chondropathies",
-        "text_it": "Osteopatie e condropatie"
     },
     {
         "chapter": "XIII",
@@ -1734,14 +1686,6 @@
         "text_de": "Verbrennungen oder Ver\u00e4tzungen der \u00e4u\u00dferen K\u00f6rperoberfl\u00e4che, Lokalisation bezeichnet",
         "text_fr": "Br\u00fblures et corrosions de la surface externe du corps, selon la localisation",
         "text_it": "Ustioni e corrosioni della superficie corporea esterna, classificate per sede"
-    },
-    {
-        "chapter": "XIX",
-        "chapter_number": 19,
-        "code": "T20-T32",
-        "text_de": "Verbrennungen oder Ver\u00e4tzungen",
-        "text_fr": "Br\u00fblures et corrosions",
-        "text_it": "Ustioni e corrosioni"
     },
     {
         "chapter": "XIX",

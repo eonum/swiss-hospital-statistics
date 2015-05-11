@@ -1,10 +1,19 @@
+
+#############################################################################################################################################
+#############################################################################################################################################
+#############################################################################################################################################
+#############################################################################################################################################
+#############################################################################################################################################
+#############################################################################################################################################
+#############################################################################################################################################
+
 def write (file, output)
   File.write('db/'+file, output)
 end
 
 
 def import_icd_extra_nonterminals
-  CSV.foreach('db/icd_extra_nonterminals_3.csv', quote_char: '"', col_sep: ',', row_sep: :auto, headers: true) do |row|
+  CSV.foreach('db/icd_extra_nonterminals.csv', quote_char: '"', col_sep: ',', row_sep: :auto, headers: true) do |row|
     code = row['code']
     text_de = row['text_de']
     text_fr = row['text_fr']
@@ -152,7 +161,7 @@ def export_icd_groups
             .to_json)
 end
 
-def convert_non_terminal (chapter, group, nonterminal)
+def convert_non_terminal (group, nonterminal)
   {:code => nonterminal.code,
    :short_code => nonterminal.short_code||nonterminal.code,
    :text_de => nonterminal.text_de,
@@ -170,9 +179,15 @@ def convert_non_terminal (chapter, group, nonterminal)
    :exclusions_de => nonterminal.exclusions_de||[],
    :exclusions_fr => nonterminal.exclusions_fr||[],
    :exclusions_it => nonterminal.exclusions_it||[],
-   :group => group.code,
-   :chapter => chapter.roman_number,
-   :chapter_number => chapter.number}
+   :group => group.code
+  }
+end
+
+def distance(group)
+  arr = group.code.split(/-/)
+  from = arr[0].tr('a-zA-Z', '').to_i
+  to = arr[1].tr('a-zA-Z', '').to_i
+  to - from
 end
 
 def select_group (group, nonterminal)
@@ -187,20 +202,21 @@ def select_group (group, nonterminal)
 end
 
 def group_of_nonterminal (nonterminal)
-  result = IcdGroup.all.select{|group| select_group(group, nonterminal)}.first
+  results = IcdGroup.all.select{|group| select_group(group, nonterminal)}.sort { |x,y| distance(y) <=> distance(x) }.reverse
+  result = results.first
   puts nonterminal.as_document if result.nil?
   result
 end
 
 def export_icd_nonterminals
   write('icd_nonterminals.json',IcdNonterminal.all
-                                    .collect{ |nonterminal| group = group_of_nonterminal(nonterminal);convert_non_terminal(chapter_of_group(group), group, nonterminal)}
+                                    .collect{ |nonterminal| group = group_of_nonterminal(nonterminal);convert_non_terminal(group, nonterminal)}
                                     .flatten
                                     .sort {|a, b| [a[:code], a[:chapter_number]] <=> [b[:code], b[:chapter_number]] }
                                     .to_json)
 end
 
-def convert_terminal (chapter, group, nonterminal, terminal)
+def convert_terminal (nonterminal, terminal)
   {:code => terminal.code,
    :short_code => terminal.short_code,
    :text_de => terminal.text_de,
@@ -223,10 +239,8 @@ def convert_terminal (chapter, group, nonterminal, terminal)
    :exclusions_it => terminal.exclusions_it||[],
    :annotations => terminal.annotations||[],
    :nonterminal => nonterminal.code,
-   :nonterminal_short => nonterminal.short_code||nonterminal.code,
-   :group => group.code,
-   :chapter => chapter.roman_number,
-   :chapter_number => chapter.number}
+   :nonterminal_short => nonterminal.short_code||nonterminal.code
+  }
 end
 
 
@@ -237,8 +251,8 @@ end
 def nonterminal_of_terminal (terminal)
   code = terminal.code[0,2]
   result = IcdNonterminal.where(code: /^#{code}/).select{|each| select_nonterminal(each, terminal)}.first
-  puts terminal.as_document if result.nil?
-  #parse_not_found(terminal.code) if result.nil?
+  #puts terminal.as_document if result.nil?
+  parse_not_found(terminal.code) if result.nil?
   result
 end
 
@@ -249,7 +263,7 @@ def parse_not_found(code)
     name = page.css('td.code_three')[0].text
     code = page.css('div.code')[0].text.tr('^A-Za-z0-9', '')
     puts "#{code};#{name}"
-    open('db/unknown_nonterminals_3.txt', 'a') { |f|
+    open('db/unknown_nonterminals.txt', 'a') { |f|
       f.puts "#{code};#{name}"
     }
   rescue OpenURI::HTTPError => ex
@@ -279,7 +293,15 @@ end
 
 def export_icd_terminals
   write('icd_terminals.json',IcdCode.all
-                                 .collect{ |terminal| nonterminal = nonterminal_of_terminal(terminal); group = group_of_nonterminal(nonterminal); convert_terminal(chapter_of_group(group), group, nonterminal, terminal)}
+                                 .collect{ |terminal|
+                              nonterminal = nonterminal_of_terminal(terminal)
+                              unless nonterminal
+                                puts terminal.code
+                              end
+                              return nil unless nonterminal
+                              convert_terminal(nonterminal, terminal)
+                            }
+                                 .select{|each| each}
                                  .flatten
                                  .sort {|a, b| [a[:code], a[:chapter_number]] <=> [b[:code], b[:chapter_number]] }
                                  .to_json)
@@ -289,4 +311,4 @@ end
 # export_icd_groups
 # export_icd_nonterminals
 # export_icd_terminals
-#import_icd_extra_nonterminals
+# import_icd_extra_nonterminals
