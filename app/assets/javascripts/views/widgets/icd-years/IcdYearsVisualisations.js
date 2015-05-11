@@ -99,7 +99,7 @@ define([
         };
 
         _this.newLegendChart = function() {
-            var legendChart = new LegendChart(100, 500);
+            var legendChart = new LegendChart(800, 700);
             return legendChart;
         }
 
@@ -144,11 +144,11 @@ define([
         };
 
         _this.newColumn = function () {
-            return new View('<div class="columns large-6"></div>');
+            return new View('<div class="columns large-4"></div>');
         };
 
         _this.newLegend = function() {
-            return new View('<div class="columns large-6"></div>');
+            return new View('<div class="columns large-4"></div>');
         };
 
         // calls the selection method of IcdYearsModel which returns a JSON
