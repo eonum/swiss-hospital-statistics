@@ -151,22 +151,17 @@ define([
             _this.append(table);
         };
 
-        //TODO: refactoring
+        
         _this.setData = function(data){
             for(var i=0; i<data.length; i++) {
                 var row = $("<tr/>");
                 table.append(row);
-                var interval = intervals[i];
-                console.log(interval);
                 row.append(($("<th/>").text(intervals[i])));
 
-                data[i].forEach(function(category){
-                    var localTable = $("<table/>");
-                    row.append($("<td/>").append(localTable));
-
-                    var text = "";
-                    category.forEach(function(item){localTable.append($("<tr/>").append($("<td/>").text(item.code + ", " + item.n + " Fälle, dad=" + item.dad))) }); //TODO: remove styling from inner tables
-                    //row.append($("<td/>").text(text));
+                data[i].forEach(function(gender){
+                    var cellTable = $("<table/>").css("border", "0px");
+                    row.append($("<td/>").append(cellTable));
+                    gender.forEach(function(item){cellTable.append($("<tr/>").append($("<td/>").text(item.code + ", " + item.n + "%, dad=" + item.dad))) }); //TODO: inner tables, inherit gbg color from parent
                 });
             }
         };
