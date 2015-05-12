@@ -46,7 +46,7 @@ define([
             var tabTop3 = tabulatorModel.addTab(Multiglot.translations.tab_top_3).render(function(){return new Top3DiagnosesPane()});
 
             // then create corresponding button views and attach tab models
-            topBar.addLeftAll(_.map([tabIcd,tabYearIcd,tabChop,tabDrg, tabTop3],
+            topBar.addLeftAll(_.map([tabIcd,tabYearIcd,tabChop,tabDrg/*, tabTop3*/],
                 function(tab){return new TabulatorButton().model(tab)}));
 
             // and finally add everything to the dom
