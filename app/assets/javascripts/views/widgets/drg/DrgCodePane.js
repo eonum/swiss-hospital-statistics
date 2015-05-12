@@ -108,7 +108,7 @@ define([
                 _this.searchModel().allCandidates(ann.node().deepest().children())
             }, this);
 
-            $.getJSON('/api/v1/groups/drg', function(result){
+            _this.retrieveAndDo('/api/v1/groups/drg', function(result){
                 breadcrumbModel.on(result);
                 breadcrumb.model(breadcrumbModel);
                 _this.searchModel().allCandidates(breadcrumbModel.root().deepest().children())

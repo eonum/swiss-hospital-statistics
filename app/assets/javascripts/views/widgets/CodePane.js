@@ -165,6 +165,25 @@ define([
             return 'group';
         };
 
+        _this.retrieveAndDo = function (url, callback) {
+            var loaded = false;
+            _.once(_.debounce(function(){ if (!loaded)_this.leftPane().class('loading')}, 1000))();
+
+            function resultDo(result) {
+                if (!_.isUndefined(callback)) callback(result);
+                loaded = true;
+                _this.leftPane().removeClass('loading');
+            }
+
+            function retrieveRemote(){
+                $.getJSON(url, function(result){
+                    resultDo(result);
+                });
+            }
+
+            retrieveRemote();
+        };
+
         return _this;
     }
 
