@@ -16,8 +16,10 @@ define([
         var _this = new View('<div class="row full-width"></div>');
         var converter = new ChaptersByYearConverter();
         // 0 identifies regular PieChart visualisation
-        // 1 identifies ChaptersByYear Visualisation
-        const CHARTIDENTIFIER = 1;
+        // 1 identifies ChaptersByYear MAN Visualisation
+        // 2 identifies ChaptersByYear WOMAN Visualisation
+        const CHARTIDENTIFIERMAN = 1;
+        const CHARTIDENTIFIERWOMAN = 2;
 
 
         var man;
@@ -66,8 +68,8 @@ define([
                 data_man.push({interval: "Rest", amount: minEventsMan});
 
                 if(normalizer > 0) {
-                    _this.womanChart().openOn(data_woman, CHARTIDENTIFIER);
-                    _this.manChart().openOn(data_man, CHARTIDENTIFIER);
+                    _this.womanChart().openOn(data_woman, CHARTIDENTIFIERWOMAN);
+                    _this.manChart().openOn(data_man, CHARTIDENTIFIERMAN);
 
                     if (!_.isUndefined(right)) right.remove();
                     legend = _this.newLegendChart();

@@ -27,6 +27,12 @@ define(['d3', 'views/abstract/AbstractPieChart'], function (d3, AbstractPieChart
         /* ------------ S C R I P T I N G   A P I ------------ */
         _this.openOn = function (entity, chartIdentifier) {
             _this.setData(scripting.displayLogic(entity), chartIdentifier);
+            if(chartIdentifier == 1) {
+                _this.setGenderMan(["Man"]);
+            }
+            if(chartIdentifier == 2) {
+                _this.setGenderWoman(["Woman"]);
+            }
             return _this;
         };
 

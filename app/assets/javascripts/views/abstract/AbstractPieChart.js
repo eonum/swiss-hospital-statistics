@@ -105,7 +105,7 @@ define(['d3', 'views/ResponsiveSvg'], function (d3, ResponsiveSvg) {
             if(chartIdentifier == 0){
                 magicOffset = -150
             }
-            if(chartIdentifier == 1) {
+            if(chartIdentifier == 1 || chartIdentifier == 2) {
                 magicOffset = -200;
             }
             var xPosition = function(d, i) { return 1/3 * _width};
@@ -179,6 +179,22 @@ define(['d3', 'views/ResponsiveSvg'], function (d3, ResponsiveSvg) {
                 .custom(translations)
                 .set(function(html, text) {html.text(text)})
                 .apply();
+        };
+
+        _this.setGenderMan = function() {
+            chartNameViewMan = _this.svg()
+                .append('text')
+                .style('font-size', 30 + 'px')
+                .attr("transform", "translate(" + _this._width() / 2.1 + "," + (_this._height() / 1.7) + ")")
+                .text("Men");
+        };
+
+        _this.setGenderWoman = function() {
+            chartNameViewWoman = _this.svg()
+                .append('text')
+                .style('font-size', 30 + 'px')
+                .attr("transform", "translate(" + _this._width() / 2.25 + "," + (_this._height() / 1.7) + ")")
+                .text("Women");
         };
 
         _this.update = function () {};
