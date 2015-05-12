@@ -7,6 +7,7 @@ define(['d3', 'views/abstract/AbstractPieChart'], function (d3, AbstractPieChart
      */
     function PieChart(_width, _height){
         var _this = new AbstractPieChart(_width, _height);
+        var manSema = true, womanSema = true;
 
 
         var scripting = {
@@ -27,10 +28,12 @@ define(['d3', 'views/abstract/AbstractPieChart'], function (d3, AbstractPieChart
         /* ------------ S C R I P T I N G   A P I ------------ */
         _this.openOn = function (entity, chartIdentifier) {
             _this.setData(scripting.displayLogic(entity), chartIdentifier);
-            if(chartIdentifier == 1) {
+            if(chartIdentifier == 1 && manSema) {
+                manSema = false;
                 _this.setGenderMan(["Man"]);
             }
-            if(chartIdentifier == 2) {
+            if(chartIdentifier == 2 && womanSema) {
+                womanSema = false;
                 _this.setGenderWoman(["Woman"]);
             }
             return _this;

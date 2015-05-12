@@ -64,8 +64,6 @@ define(['d3', 'views/ResponsiveSvg'], function (d3, ResponsiveSvg) {
                 .text(function(d) { return d.text});
         };
 
-        console.log(data);
-
         _this.initialize();
 
         return _this;
