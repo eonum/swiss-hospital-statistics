@@ -73,7 +73,9 @@ define([
                 legendBarTopPadding: 5,
                 legendBarLeftPadding: 5,
                 legendBarHeight: 25,
-                legendBarFontSize: 14
+                legendBarFontSize: 14,
+                nothing: function(rawEntity, entity){ return !rawEntity || !entity || _.isEmpty(entity) },
+                nothingFontSize: 30
             };
         };
 
@@ -120,6 +122,11 @@ define([
 
         _this.legendLabel = function (func) {
             _this.settings().legendLabel = func;
+            return _this;
+        };
+
+        _this.nothing = function (func) {
+            _this.settings().nothing = func;
             return _this;
         };
 
@@ -172,12 +179,12 @@ define([
             return _.isFunction(object) ? object : function() { return object };
         };
 
-        _this.initialize = function(){
+        _this.initialize = _.once(function(){
             chartName = _this.newChartName();
             title = _this.newTitle();
             chart = _this.newChart();
             legend = _this.newLegend();
-        };
+        });
 
         _this.render = function () {
             if (_.isUndefined(_this.entity()))
@@ -186,6 +193,7 @@ define([
             _this.updateTitle();
             _this.updateLegend();
             _this.updateChartName();
+            _this.renderNothing();
             _this.renderContent();
         };
 
@@ -206,15 +214,18 @@ define([
 
         _this.entity = function (_entity) {
             if (_.isUndefined(_entity)) return entity;
-            var isNil = _.isUndefined(_this.rawEntity());
             rawEntity = _entity;
             entity = _this.settings().display(_this.rawEntity());
-            if (isNil) _this.initialize();
+            _this.initialize();
             _this.render();
         };
 
         _this.rawEntity = function () {
             return rawEntity;
+        };
+
+        _this.hasEntity = function () {
+            return !_this.settings().nothing(_this.rawEntity(), _this.entity());
         };
 
         /**
@@ -536,6 +547,7 @@ define([
         };
 
         _this.legendItems = function () {
+            if (!_this.hasEntity()) return [];
             return _this.settings().legendItems(_this.rawEntity(), _this.entity());
         };
 
@@ -585,6 +597,42 @@ define([
                 .on($(this))
                 .custom(_this.legendBarLabel(d3.select(self)[0][0].__data__))
                 .set(function(html, text) { html.text(text); _this.applyTextWrap(self) })
+                .apply();
+        };
+
+        _this.renderNothing = function() {
+            if (_this.hasEntity())
+                _this.removeNothing();
+            if (!_this.hasEntity() && _this.selectNothing().empty())
+                _this.addNothing();
+        };
+
+        _this.selectNothing = function () {
+            return _this.svg().selectAll('text.nothing');
+        };
+
+        _this.removeNothing = function () {
+            _this.selectNothing().remove();
+        };
+
+        _this.addNothing = function () {
+            _this.svg().append('text')
+                .attr('class', 'nothing')
+                .attr('x', _this.chartWidth()/2 - _this.leftOffset())
+                .attr('y', _this.chartHeight()/2 + _this.settings().nothingFontSize)
+                .style('font-size', _this.settings().nothingFontSize+'px')
+                .attr('fill', '#ffffff')
+                .transition()
+                .duration(_this.settings().transitionDuration)
+                .attr('fill', '#666666')
+                .each(_this.nothingTextTranslations)
+        };
+
+        _this.nothingTextTranslations = function() {
+            new Multiglot()
+                .on($(this))
+                .id('no_data')
+                .set(function(html, text) { html.text(text); })
                 .apply();
         };
 

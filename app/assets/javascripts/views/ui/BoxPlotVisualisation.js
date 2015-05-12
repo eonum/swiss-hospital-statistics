@@ -76,11 +76,14 @@ define([
          * @param datasets
          */
         _this.update = function (code, datasets) {
+            var data;
             if (datasets.length > 0) {
                 var converter = new BoxPlotDataConverter(datasets);
-                _this.chart().on({code: code, data: _.sortBy(converter.convert(),'ageInterval')});
+                data = {code: code, data: _.sortBy(converter.convert(),'ageInterval')};
             }
-            else _this.chart().on({code: code, data: []});
+            else data = {code: code, data: []};
+            console.log(data);
+            _this.chart().on(data);
 
             return _this;
         };

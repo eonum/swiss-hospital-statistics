@@ -80,6 +80,9 @@ define([
                         it: item.code + ': ' + item.text_it
                     }
                 })
+                .nothing(override(chart, chart.settings().nothing, function(raw, entity){
+                    return this.super(raw, entity) || _.every(entity, function(each){ return _.isEmpty(each) });
+                }))
                 .display(function(entity) { return entity.data })
                 .x('interval')
                 .y('amount');

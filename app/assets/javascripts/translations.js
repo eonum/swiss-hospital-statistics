@@ -97,6 +97,14 @@ define([], function(){
             it: 'Terminale',
             en: 'Terminal'
         },
+
+        no_data: {
+            de: 'Keine Daten verfügbar',
+            fr: 'Aucune donnée disponible',
+            it: 'Dati non disponibili',
+            en: 'No data available'
+        },
+
         box_plot: {
             higher_whiskers: {
                 de: 'oberer Whisker: 90%-Quantil',
@@ -129,7 +137,9 @@ define([], function(){
                 en: 'Average'
             }
         },
+
         charts: {
+
             bar: {
                 name: {
                     de: 'Diagnosen: Anzahl Fälle nach Alterskategorie',
