@@ -52,13 +52,13 @@ define([
             _this.leftPane().prepend(breadcrumb);
 
             function chapterLabel(chapter) {
-                return _.mapObject(Multiglot.translations.chapter, function(translation){
+                return _.mapObject(Multiglot.translations.mdc, function(translation){
                     return translation+' '+chapter.code
                 })
             }
 
             function nonterminalLabel(nonterminal) {
-                return _.mapObject(Multiglot.translations.nonterminal, function(translation){
+                return _.mapObject(Multiglot.translations.base_drg, function(translation){
                     return translation+' '+nonterminal.code
                 })
             }
@@ -85,14 +85,14 @@ define([
                     .select(function(node){ node.select(true) })
                     .end()
                 .level()
-                    .defaultLabel(function(){ return Multiglot.translations.all_chapters })
+                    .defaultLabel(function(){ return Multiglot.translations.all_mdcs})
                     .label(chapterLabel)
                     .hint(hint)
                     .next(function(chapter){ return chapter.drg_nonterminals })
                     .sameDefault()
                     .end()
                 .level()
-                    .defaultLabel(function(){ return Multiglot.translations.all_nonterminals })
+                    .defaultLabel(function(){ return Multiglot.translations.all_base_drg })
                     .label(nonterminalLabel)
                     .hint(hint)
                     .next(function(nonterminal){return nonterminal.drg_terminals})

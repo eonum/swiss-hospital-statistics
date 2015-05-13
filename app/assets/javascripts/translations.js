@@ -73,6 +73,18 @@ define([], function(){
             it: 'Tutti i terminali',
             en: 'All nonterminals'
         },
+        all_mdcs: {
+            de: 'Alle MDCs',
+            fr: 'Tous les MDCs',
+            it: 'Tutti i MDC',
+            en: 'All MDCs'
+        },
+        all_base_drg: {
+            de: 'Alle Basis-DRGs',
+            fr: 'Tous les DRGs de base',
+            it: 'Tutti i DRG di base',
+            en: 'All base DRGs'
+        },
         chapter: {
             de: 'Kapitel',
             fr: 'Chapitre',
@@ -96,6 +108,18 @@ define([], function(){
             fr: 'Terminal',
             it: 'Terminale',
             en: 'Terminal'
+        },
+        mdc: {
+            de: 'MDC',
+            fr: 'MDC',
+            it: 'MDC',
+            en: 'MDC'
+        },
+        base_drg: {
+            de: 'Basis-DRG',
+            fr: 'DRG de base',
+            it: 'DRG di base',
+            en: 'Base DRG'
         },
 
         no_data: {
