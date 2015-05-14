@@ -25,10 +25,10 @@ class CategorisedDatasetTest < ActiveSupport::TestCase
     @dataset.categorised_data.add(category_2)
     @dataset.categorised_data.add(category_3)
 
-    assert_equal(category_1, @dataset.categorised_data.at(AbstractCategory.tag).first)
-    assert_equal(category_2, @dataset.categorised_data.at(AbstractCategory.tag).second)
-    assert_equal(category_3, @dataset.categorised_data.at(AbstractCategory.tag).third)
-    assert_equal([category_1, category_2, category_3], @dataset.categorised_data.at(AbstractCategory.tag))
+    assert_equal(category_1.instance_values, @dataset.categorised_data.at(AbstractCategory.tag).first)
+    assert_equal(category_2.instance_values, @dataset.categorised_data.at(AbstractCategory.tag).second)
+    assert_equal(category_3.instance_values, @dataset.categorised_data.at(AbstractCategory.tag).third)
+    assert_equal([category_1.instance_values, category_2.instance_values, category_3.instance_values], @dataset.categorised_data.at(AbstractCategory.tag))
   end
 
 end
