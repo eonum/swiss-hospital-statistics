@@ -30,10 +30,10 @@ class JeDIcdChapterAgeSexParserTest < ActiveSupport::TestCase
     data = dataset.categorised_data.at(:icd_chapter_sex_interval).first
     assert_not_nil(data)
 
-    assert_equal(12.6, data.percentage)
-    assert_equal(25, data.number)
-    assert_equal(0, data.sex)
-    assert_equal(Interval.new(from: 0), data.interval)
+    assert_equal(12.6, data['percentage'])
+    assert_equal(25, data['number'])
+    assert_equal(0, data['sex'])
+    assert_equal(0, data['interval']['from'])
   end
 
 end
