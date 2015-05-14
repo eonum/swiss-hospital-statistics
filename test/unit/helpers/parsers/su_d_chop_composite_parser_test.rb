@@ -64,34 +64,34 @@ class SuDChopCompositeParserTest < ActiveSupport::TestCase
     assert_equal(1, @codes.first.categorised_data.at(:interval).length)
     assert_equal(1, @codes.second.categorised_data.at(:interval).length)
 
-    assert_equal(GeneralIntervalCategory, @codes.first.categorised_data.at(:interval).first.class)
-    assert_equal(GeneralIntervalCategory, @codes.second.categorised_data.at(:interval).first.class)
   end
 
   def test_interval_data
     first = @codes.first.categorised_data.at(:interval).first
     second = @codes.second.categorised_data.at(:interval).first
 
-    assert_equal(1, first.n)
-    assert_equal(3.0, first.dad)
-    assert_equal(0.0, first.sa)
-    assert_equal(3.0, first.min)
-    assert_equal(3.0, first.max)
-    assert_equal(Interval.new(from: 15,to: 39), first.interval)
+    assert_equal(1, first['n'])
+    assert_equal(3.0, first['dad'])
+    assert_equal(0.0, first['sa'])
+    assert_equal(3.0, first['min'])
+    assert_equal(3.0, first['max'])
+    assert_equal(15, first['interval']['from'])
+    assert_equal(39, first['interval']['to'])
 
-    assert_equal(1, second.n)
-    assert_equal(12.0, second.dad)
-    assert_equal(0.0, second.sa)
-    assert_equal(12.0, second.min)
-    assert_equal(12.0, second.max)
-    assert_equal(Interval.new(from: 15,to: 39), second.interval)
+    assert_equal(1, second['n'])
+    assert_equal(12.0, second['dad'])
+    assert_equal(0.0, second['sa'])
+    assert_equal(12.0, second['min'])
+    assert_equal(12.0, second['max'])
+    assert_equal(15, second['interval']['from'])
+    assert_equal(39, second['interval']['to'])
   end
 
   def test_percentile_categories
     first = @codes.first.categorised_data.at(:interval).first
     second = @codes.second.categorised_data.at(:interval).first
 
-    assert_not_nil(first.categories)
+    assert_not_nil(first['categories'])
     assert_not_nil(second.categories)
 
     assert_equal(1, first.categories.size)
@@ -108,24 +108,39 @@ class SuDChopCompositeParserTest < ActiveSupport::TestCase
   end
 
   def test_percentile_data
-    first = @codes.first.categorised_data.at(:interval).first.at(:percentile)
-    second = @codes.second.categorised_data.at(:interval).first.at(:percentile)
+    first = @codes.first.categorised_data.categories['interval'].first['categories']['percentile']
+    second = @codes.second.categorised_data.categories['interval'].first['categories']['percentile']
 
-    assert_equal(PercentileCategory.new(percentile: 5, amount: 3.0), first[0])
-    assert_equal(PercentileCategory.new(percentile:10, amount: 3.0), first[1])
-    assert_equal(PercentileCategory.new(percentile:25, amount: 3.0), first[2])
-    assert_equal(PercentileCategory.new(percentile:50, amount: 3.0), first[3])
-    assert_equal(PercentileCategory.new(percentile:75, amount: 3.0), first[4])
-    assert_equal(PercentileCategory.new(percentile:90, amount: 3.0), first[5])
-    assert_equal(PercentileCategory.new(percentile:95, amount: 3.0), first[6])
-    
-    assert_equal(PercentileCategory.new(percentile:5,  amount: 12.0), second[0])
-    assert_equal(PercentileCategory.new(percentile:10, amount: 12.0), second[1])
-    assert_equal(PercentileCategory.new(percentile:25, amount: 12.0), second[2])
-    assert_equal(PercentileCategory.new(percentile:50, amount: 12.0), second[3])
-    assert_equal(PercentileCategory.new(percentile:75, amount: 12.0), second[4])
-    assert_equal(PercentileCategory.new(percentile:90, amount: 12.0), second[5])
-    assert_equal(PercentileCategory.new(percentile:95, amount: 12.0), second[6])
+    assert_equal(5, first[0]['percentile'])
+    assert_equal(3.0, first[0]['amount'])
+    assert_equal(10, first[1]['percentile'])
+    assert_equal(3.0, first[1]['amount'])
+    assert_equal(25, first[2]['percentile'])
+    assert_equal(3.0, first[2]['amount'])
+    assert_equal(50, first[3]['percentile'])
+    assert_equal(3.0, first[3]['amount'])
+    assert_equal(75, first[4]['percentile'])
+    assert_equal(3.0, first[4]['amount'])
+    assert_equal(90, first[5]['percentile'])
+    assert_equal(3.0, first[5]['amount'])
+    assert_equal(95, first[6]['percentile'])
+    assert_equal(3.0, first[6]['amount'])
+
+
+    assert_equal(5, second[0]['percentile'])
+    assert_equal(12.0, second[0]['amount'])
+    assert_equal(10, second[1]['percentile'])
+    assert_equal(12.0, second[1]['amount'])
+    assert_equal(25, second[2]['percentile'])
+    assert_equal(12.0, second[2]['amount'])
+    assert_equal(50, second[3]['percentile'])
+    assert_equal(12.0, second[3]['amount'])
+    assert_equal(75, second[4]['percentile'])
+    assert_equal(12.0, second[4]['amount'])
+    assert_equal(90, second[5]['percentile'])
+    assert_equal(12.0, second[5]['amount'])
+    assert_equal(95, second[6]['percentile'])
+    assert_equal(12.0, second[6]['amount'])
   end
 
 end
