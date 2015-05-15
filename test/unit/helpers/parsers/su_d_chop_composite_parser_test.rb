@@ -92,19 +92,16 @@ class SuDChopCompositeParserTest < ActiveSupport::TestCase
     second = @codes.second.categorised_data.at(:interval).first
 
     assert_not_nil(first['categories'])
-    assert_not_nil(second.categories)
+    assert_not_nil(second['categories'])
 
-    assert_equal(1, first.categories.size)
-    assert_equal(1, second.categories.size)
+    assert_equal(1, first['categories'].size)
+    assert_equal(1, second['categories'].size)
 
-    assert_not_nil(first.at(:percentile))
-    assert_not_nil(second.at(:percentile))
+    assert_not_nil(first['categories']['percentile'])
+    assert_not_nil(second['categories']['percentile'])
 
-    assert_equal(7, first.at(:percentile).length)
-    assert_equal(7, second.at(:percentile).length)
-
-    assert_equal(PercentileCategory, first.at(:percentile).first.class)
-    assert_equal(PercentileCategory, second.at(:percentile).first.class)
+    assert_equal(7, first['categories']['percentile'].length)
+    assert_equal(7, second['categories']['percentile'].length)
   end
 
   def test_percentile_data
