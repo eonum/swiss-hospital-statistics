@@ -46,6 +46,8 @@ de:
   empty_faq: "Es konnte kein entsprechender Eintrag gefunden werden!"
   fulltext_search: "Volltextsuche"
 
+  site-title: "Visualisierung BFS-Statistiken der stationären Spitalbetriebe 2013"
+
   address: "Adresse"
   remarks: "Bemerkungen"
   password: "Passwort"

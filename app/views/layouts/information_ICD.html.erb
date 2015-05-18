@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title><%= content_for?(:title) ? yield(:title) : "eonum drg scaffold" %></title>
+  <title><%= content_for?(:title) ? yield(:title) : t('site-title') %></title>
   <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Rails Foundation" %>">
   <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
   <%= requirejs_include_tag 'applicationCode' %>
@@ -16,10 +16,10 @@
   <%= render 'layouts/messages' %>
 </main>
 <ul class="breadcrumbs">
-  <li><a href="#">Home</a></li>
-  <li><a href="#">Features</a></li>
-  <li class="unavailable"><a href="#">Gene Splicing</a></li>
-  <li class="current"><a href="#">Cloning</a></li>
+  <li><a href="#">1</a></li>
+  <li><a href="#">2</a></li>
+  <li class="unavailable"><a href="#">3</a></li>
+  <li class="current"><a href="#">4</a></li>
 </ul>
 
 </body>

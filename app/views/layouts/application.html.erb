@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= content_for?(:title) ? yield(:title) : "eonum drg scaffold" %></title>
+    <title><%= content_for?(:title) ? yield(:title) : t('site-title') %></title>
     <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Rails Foundation" %>">
     <% if ENV['RAILS_ENV'] == 'production' %>
     <link rel="stylesheet" media="all" href="/stylesheets/application.min.css" data-turbolinks-track="true" />

@@ -15,6 +15,8 @@ fr:
   expert_mode: Expert
   novice_mode: Standard
   password_required: "(Le mot de passe est requis pour enregistrer les données)"
+  site-title: "Visualisation OFS Statistique des hôpitaux 2013"
+
   login: Connexion
   logout: Déconnexion
   login_successful: "Connexion réussie"
