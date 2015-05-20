@@ -1,5 +1,5 @@
 # swiss-hospital-statistics
-This web-based visualization project is developed by a group of students from the [IAM](https://www.iam.unibe.ch/) from the University of Berne and is managed and maintained by [eonum](http://www.eonum.ch/). The sources of the visualized data can be found on the [the Swiss Statistics Web site](http://www.bfs.admin.ch/bfs/portal/de/index/themen/14/01/new/nip_detail.html?gnpID=2014-370) maintained by the Federal Statistical Office (FSO).
+This web-based visualization project is developed by a group of students from the [IAM](https://www.iam.unibe.ch/) from the University of Berne and is managed and maintained by [eonum](http://www.eonum.ch/). The sources of the visualized data can be found on [the Swiss Statistics Web site](http://www.bfs.admin.ch/bfs/portal/de/index/themen/14/01/new/nip_detail.html?gnpID=2014-370) maintained by the Federal Statistical Office (FSO).
 
 The project is deployed at [http://swiss-hospital-statistics.eonum.ch/](http://swiss-hospital-statistics.eonum.ch/)
 
