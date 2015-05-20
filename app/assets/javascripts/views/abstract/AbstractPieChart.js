@@ -181,20 +181,38 @@ define(['d3', 'views/ResponsiveSvg'], function (d3, ResponsiveSvg) {
                 .apply();
         };
 
-        _this.setGenderMan = function() {
-            chartNameViewMan = _this.svg()
-                .append('text')
-                .style('font-size', 30 + 'px')
-                .attr("transform", "translate(" + _this._width() / 2.1 + "," + (_this._height() / 1.7) + ")")
-                .text("Men");
+        _this.menTextTranslations = function() {
+            var self = this;
+            new Multiglot()
+                .on($(this))
+                .id('men')
+                .set(function(html, text) { html.text(text) })
+                .apply();
         };
 
-        _this.setGenderWoman = function() {
-            chartNameViewWoman = _this.svg()
+        _this.womenTextTranslations = function() {
+            var self = this;
+            new Multiglot()
+                .on($(this))
+                .id('women')
+                .set(function(html, text) { html.text(text) })
+                .apply();
+        };
+
+        _this.setGenderMan = function() {
+            _this.svg()
                 .append('text')
                 .style('font-size', 30 + 'px')
                 .attr("transform", "translate(" + _this._width() / 2.25 + "," + (_this._height() / 1.7) + ")")
-                .text("Women");
+                .each(_this.menTextTranslations);
+        };
+
+        _this.setGenderWoman = function() {
+            _this.svg()
+                .append('text')
+                .style('font-size', 30 + 'px')
+                .attr("transform", "translate(" + _this._width() / 2.25 + "," + (_this._height() / 1.7) + ")")
+                .each(_this.womenTextTranslations);
         };
 
         _this.update = function () {};

@@ -162,6 +162,20 @@ define([], function(){
             }
         },
 
+        men: {
+            de: 'Männer',
+            fr: 'Hommes',
+            it: 'Uomini',
+            en: 'Men'
+        },
+
+        women: {
+            de: 'Frauen',
+            fr: 'Femmes',
+            it: 'Donne',
+            en: 'Women'
+        },
+
         charts: {
 
             bar: {
