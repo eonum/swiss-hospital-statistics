@@ -6,7 +6,6 @@ define([
     'views/widgets/TabulatorButton',
     'views/ui/BarChartVisualisation',
     'views/ui/OrdinalCurveChartVisualisation',
-    'views/ui/PieChartByAgeVisualisation',
     'views/ui/BoxPlotVisualisation',
     'models/TabulatorModel'
 ], function(
@@ -17,7 +16,6 @@ define([
     TabulatorButton,
     BarChartVisualisation,
     OrdinalCurveChartVisualisation,
-    PieChartByAgeVisualisation,
     BoxPlotVisualisation,
     TabulatorModel
 ){
@@ -176,10 +174,6 @@ define([
             return new BarChartVisualisation();
         };
 
-        _this.newPieChart = function () {
-            return new PieChartByAgeVisualisation(1024, 390);
-        };
-
         _this.newOrdinalChart = function () {
             return new OrdinalCurveChartVisualisation();
         };
@@ -228,12 +222,6 @@ define([
                 name: 'ordinal',
                 icon: 'chart-line.png',
                 chart: _this.newOrdinalChart()
-            });
-
-            _this.addVisualisation({
-                name: 'pie',
-                icon: 'chart-pie.png',
-                chart: _this.newPieChart()
             });
 
             _this.addVisualisation({
