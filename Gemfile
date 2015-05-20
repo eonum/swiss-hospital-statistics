@@ -29,6 +29,10 @@ group :templates do
   gem 'foundation-rails', '5.5.1.2'
 end
 
+group :assets do
+  gem 'uglifier'
+end
+
 group :javascript do
   # Use CoffeeScript for .js.coffee assets and views
   gem 'coffee-rails', '4.1.0'
