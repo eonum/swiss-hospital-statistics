@@ -77,7 +77,7 @@ define([
         };
 
         _this.codeOf = function(item) {
-            return item.short_code;
+            return item.code;
         };
 
         _this.codeCard = function (_codeCard) {
