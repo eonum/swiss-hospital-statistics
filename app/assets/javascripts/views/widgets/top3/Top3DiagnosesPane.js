@@ -16,10 +16,11 @@ define([
 
     function Top3DiagnosesPane() {
         var _this = new View('<div></div>');
-        var visualisation;
         var codeChooser = new CodeChooser();
-        var model = new SelectorModel(); //TODO: shouldn't be able to select multiple years
+        var model = new SelectorModel();
         var widget = {};
+
+        var visualisation;
         var resultsWithTexts;
         var resultsWithoutTexts;
 
