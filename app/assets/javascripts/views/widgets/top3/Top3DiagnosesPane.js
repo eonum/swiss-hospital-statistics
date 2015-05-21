@@ -32,12 +32,10 @@ define([
 
                 var years = _.uniq(_.map(result, 'year'));
                 model.add('years').items(years);
-              /*  model.add('hospitals').items([  'Allgemeine Krankenhäuser, Zentrumsversorgung',
-                    'Allgemeine Krankenhäuser, Grundversorgung',
-                    'Spezialkliniken: Psychiatrische Kliniken',
-                    'Spezialkliniken: Rehabilitationskliniken',
-                    'Spezialkliniken: Andere Spezialkliniken']);*/
-                model.add('hospitals').items([Multiglot.translations.search_placeholder]);
+
+                var translations = Multiglot.translations.hospital_types;
+                model.add('hospitals').items([translations.general_centralised, translations.general_basic,
+                translations.psychiatric_clinics, translations.rehabilitation_clinic, translations.other_special_clinics]);
                 model.announcer().onSendTo(OnSelectionChanged, _this.onChanged, _this);
 
                 // all codes fetched
@@ -64,7 +62,7 @@ define([
 
         _this.onChanged = function(ann) {
             var selectedYear = ann.selection().years[0];
-            var selectedHospitalType = ann.selection().hospitals[0];
+            var selectedHospitalType = ann.selection().hospitals[0].de;
             visualisation.visualiseSelection(selectedYear, selectedHospitalType);
         };
 
