@@ -47,3 +47,6 @@ The unit tests of this project consist of ruby tests that mainly cover the stati
 
 - To run the ruby tests, the rake task *test:units* can be used. Please note that MongoDB needs to be running. The tests will run in the database specified in the *mongoid.yml* file.
 - For the javascript unit tests the teaspoon gem is used. This gem is only available in the development environment. To run the tests, the development configuration has to be run. Once the server is started, the javascript testing is available under the URL [http://localhost:3000/teaspoon/default](http://localhost:3000/teaspoon/default). Note that if one or multiple tests show 'undefined' as one of the variables they're comparing, the tests haven't properly been loaded. Just run them again and you should get the correct results.
+
+### Recompile minified app for production
+All Javascript resources are bundled in the file */public/javascripts/application.min.js* for production. You can recompile the resources using the script "compile.sh* in the root folder. Make sure you have Node.js installed on your system.
