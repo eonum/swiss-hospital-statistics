@@ -19,8 +19,18 @@ define([], function() {
                 return dataset.interval.from;
             });
 
+            // the total age interval is saved as from: 0, but 0-14 also from: 0
+            var zeroAgeIntervalDatasets = result[0];
+
+            var splitAgeIntervalDatasets = _.groupBy(zeroAgeIntervalDatasets, function(dataset){
+                return dataset.interval.to;
+            });
+
+            result[0] = splitAgeIntervalDatasets[14];
             // get the age intervals as array of arrays
             result = _.values(result);
+            // readd total age interval datasets
+            result.push(splitAgeIntervalDatasets[undefined]);
 
             // group by sex
             result = _.map(result, function(ageIntervalDatasets){
