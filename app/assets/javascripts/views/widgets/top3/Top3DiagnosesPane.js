@@ -3,41 +3,73 @@ define([
     'views/widgets/top3/TopThreeDiagnosisVisualisation',
     'views/widgets/Selector',
     'models/SelectorModel',
-    'announcements/OnSelectionChanged'
+    'announcements/OnSelectionChanged',
+    'helpers/CodeChooser'
 ], function(
     View,
     TopThreeDiagnosisVisualisation,
     Selector,
     SelectorModel,
-    OnSelectionChanged
+    OnSelectionChanged,
+    CodeChooser
 ){
 
     function Top3DiagnosesPane() {
         var _this = new View('<div></div>');
+        var visualisation;
+        var codeChooser = new CodeChooser();
         var model = new SelectorModel(); //TODO: shouldn't be able to select multiple years
         var widget = {};
+        var resultsWithTexts;
+        var resultsWithoutTexts;
 
         _this.initialize = function () {
-            model.add('years').items([2011, 2012, 2013]);
-            model.add('hospitals').items([  'Allgemeine Krankenhäuser, Zentrumsversorgung',
-                                            'Allgemeine Krankenhäuser, Grundversorgung',
-                                            'Spezialkliniken: Psychiatrische Kliniken',
-                                            'Spezialkliniken: Rehabilitationskliniken',
-                                            'Spezialkliniken: Andere Spezialkliniken']);
-            model.announcer().onSendTo(OnSelectionChanged, _this.onChanged, _this);
+            $.getJSON('api/v1/top3datasets/', function (result){
+                resultsWithoutTexts = result;
 
-            var widget = new Selector().model(model);
-            _this.add(widget);
-            _this.model(model);
+                var years = _.uniq(_.map(result, 'year'));
+                model.add('years').items(years);
+                model.add('hospitals').items([  'Allgemeine Krankenhäuser, Zentrumsversorgung',
+                    'Allgemeine Krankenhäuser, Grundversorgung',
+                    'Spezialkliniken: Psychiatrische Kliniken',
+                    'Spezialkliniken: Rehabilitationskliniken',
+                    'Spezialkliniken: Andere Spezialkliniken']);
+                model.announcer().onSendTo(OnSelectionChanged, _this.onChanged, _this);
 
-            _this.add(new TopThreeDiagnosisVisualisation(800, 400));
+                var widget = new Selector().model(model);
+                _this.add(widget);
+                _this.model(model);
+
+                visualisation = new TopThreeDiagnosisVisualisation();
+                _this.add(visualisation);
+
+                _this.addCodesToData(result);
+            });
         };
 
         _this.onChanged = function(ann) {
-            //TODO: implement this
             var selectedYear = ann.selection().years[0];
             var selectedHospitalType = ann.selection().hospitals[0];
-            console.log(selectedYear + ": " + selectedHospitalType);
+            visualisation.visualiseSelection(selectedYear, selectedHospitalType);
+        };
+
+        _this.addCodesToData = function(data){
+            resultsWithTexts = [];
+            // also fetch code texts
+            for(var i = 0; i < data.length; i++){
+                _this.attachCodeToDataset(data[i]);
+            }
+
+        };
+
+        _this.attachCodeToDataset = function(dataset){
+            codeChooser.fetchCode('icd', dataset.code, function (codes){
+                resultsWithTexts.push(_.extend(dataset, codes[0]));
+                if(resultsWithTexts.length == resultsWithoutTexts.length){
+                    // all codes fetched
+                    visualisation.setData(resultsWithTexts);
+                }
+            });
         };
 
         _this.initialize();
