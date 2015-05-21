@@ -16,6 +16,8 @@ define([
 
     function Top3DiagnosesPane() {
         var _this = new View('<div></div>');
+        _this.class('loading');
+
         var codeChooser = new CodeChooser();
         var model = new SelectorModel();
         var widget = {};
@@ -30,14 +32,26 @@ define([
 
                 var years = _.uniq(_.map(result, 'year'));
                 model.add('years').items(years);
-                model.add('hospitals').items([  'Allgemeine Krankenhäuser, Zentrumsversorgung',
+              /*  model.add('hospitals').items([  'Allgemeine Krankenhäuser, Zentrumsversorgung',
                     'Allgemeine Krankenhäuser, Grundversorgung',
                     'Spezialkliniken: Psychiatrische Kliniken',
                     'Spezialkliniken: Rehabilitationskliniken',
-                    'Spezialkliniken: Andere Spezialkliniken']);
+                    'Spezialkliniken: Andere Spezialkliniken']);*/
+                model.add('hospitals').items([Multiglot.translations.search_placeholder]);
                 model.announcer().onSendTo(OnSelectionChanged, _this.onChanged, _this);
 
-                var widget = new Selector().model(model);
+                // all codes fetched
+                var selector = new Selector();
+                // tell selector to support multiglot labels
+                selector.setOuterLinkTextLogic(function(link, item, model){
+                     if(_.isObject(item)){
+                         Multiglot.custom(link, item);
+                     }else{
+                         link.text(model.label(item));
+                     }
+                });
+                widget = selector.model(model);
+
                 _this.add(widget);
                 _this.model(model);
 
@@ -67,10 +81,14 @@ define([
             codeChooser.fetchCode('icd', dataset.code, function (codes){
                 resultsWithTexts.push(_.extend(dataset, codes[0]));
                 if(resultsWithTexts.length == resultsWithoutTexts.length){
-                    // all codes fetched
-                    visualisation.setData(resultsWithTexts);
+                    _this.initializeVisualisations(resultsWithTexts);
                 }
             });
+        };
+
+        _this.initializeVisualisations = function(data){
+            $(this).removeClass('loading');
+            visualisation.setData(resultsWithTexts);
         };
 
         _this.initialize();

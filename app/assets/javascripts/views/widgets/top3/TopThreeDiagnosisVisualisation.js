@@ -14,14 +14,10 @@ define([
             const WOMEN = 2;
 
             var _this = new View('<div></div>');
-            var topThreeTable = new TopThreeDiagnosisTable(_width, _height);
+            var topThreeTable;
             var converter = new Top3ByYearConverter();
 
             var datasets;
-
-            _this.initialize = function (){
-                _this.append(topThreeTable);
-            };
 
             _this.add = override(_this, _this.add, function(element){
                 _this.add(element);
@@ -40,6 +36,11 @@ define([
                    return;
                }
 
+               if(_.isUndefined(topThreeTable) && !_.isUndefined(datasets)){
+                   topThreeTable = new TopThreeDiagnosisTable(_width, _height);
+                   _this.append(topThreeTable);
+               }
+
                var result = converter.convert(datasets, year,  hospitalType);
 
                topThreeTable.setData(result);
@@ -48,8 +49,6 @@ define([
             _this.getSexInterval = function(dataset){
                 return dataset.categorised_data.categories['sex_interval'][0];
             };
-
-            _this.initialize();
 
             return _this;
         }
