@@ -62,8 +62,11 @@ define([
 
         _this.onChanged = function(ann) {
             var selectedYear = ann.selection().years[0];
-            var selectedHospitalType = ann.selection().hospitals[0].de;
-            visualisation.visualiseSelection(selectedYear, selectedHospitalType);
+            var selectedHospitalType = ann.selection().hospitals[0];
+
+            if(!_.isUndefined(selectedYear) && !_.isUndefined(selectedHospitalType)) {
+                visualisation.visualiseSelection(selectedYear, selectedHospitalType.de);
+            }
         };
 
         _this.addCodesToData = function(data){
@@ -77,7 +80,14 @@ define([
 
         _this.attachCodeToDataset = function(dataset){
             codeChooser.fetchCode('icd', dataset.code, function (codes){
-                resultsWithTexts.push(_.extend(dataset, codes[0]));
+                // add descriptions
+                var code = {};
+                code['de'] = codes[0].text_de;
+                code['fr'] = codes[0].text_fr;
+                code['it'] = codes[0].text_it;
+                code['en'] = codes[0].text_de;
+
+                resultsWithTexts.push(_.extend(dataset, code));
                 if(resultsWithTexts.length == resultsWithoutTexts.length){
                     _this.initializeVisualisations(resultsWithTexts);
                 }

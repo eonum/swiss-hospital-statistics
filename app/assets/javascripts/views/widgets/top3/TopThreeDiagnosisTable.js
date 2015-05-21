@@ -41,10 +41,18 @@ define([
         };
 
         _this.appendSingleCellToRow = function(datasets, row){
-            var cellTable = $("<table/>").css("border", "0px");
+            var cellTable = $("<table/>").css("border", "0px").css("width", "100%");
             row.append($("<td/>").append(cellTable));
+            // sort datasets by descending percentage
+            datasets = _.sortBy(datasets, 'percentage').reverse();
             datasets.forEach(function(item){
-                cellTable.append($("<tr/>").append($("<td/>").text(item.code + ", " + item.percentage.toPrecision(3) + "%, " + item.text_de)))
+                var row = $("<tr/>");
+                row.append($("<td/>").css("width", "10%").text(item.code));
+                var description = $("<td>");
+                row.append(description);
+                Multiglot.custom(description, item);
+                row.append($("<td>").css("width", "10%").text(item.percentage.toPrecision(3) + "%"));
+                cellTable.append(row);
             });
         };
 

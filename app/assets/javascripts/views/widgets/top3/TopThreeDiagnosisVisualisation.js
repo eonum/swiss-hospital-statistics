@@ -25,18 +25,18 @@ define([
             });
 
             _this.setData = function (data){
-                // get rid of properties we don't want
+                // make the sex interval better accessible
                 datasets = _.map(data, function(dataset){
                     return _.extend(dataset, _this.getSexInterval(dataset))
                 });
             };
 
            _this.visualiseSelection = function(year, hospitalType){
-               if(_.isUndefined(year) || _.isUndefined(hospitalType)){
+               if(_.isUndefined(year) || _.isUndefined(hospitalType) || _.isUndefined(datasets)){
                    return;
                }
 
-               if(_.isUndefined(topThreeTable) && !_.isUndefined(datasets)){
+               if(_.isUndefined(topThreeTable)){
                    topThreeTable = new TopThreeDiagnosisTable(_width, _height);
                    _this.append(topThreeTable);
                }
