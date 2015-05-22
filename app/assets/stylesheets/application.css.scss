@@ -559,11 +559,13 @@ ul {
   ul {
     &.inline-list {
       margin-left: 1rem;
+      margin-bottom: 0;
 
       li {
         &.label {
           @extend .noselect;
           padding: 0.3rem 0.6rem 0.3rem;
+          margin-bottom: 1rem;
           cursor: pointer;
           a {
             @extend .light-font;
