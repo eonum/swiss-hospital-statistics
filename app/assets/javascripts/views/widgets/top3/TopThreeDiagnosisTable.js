@@ -17,8 +17,7 @@ define([
         var _this = new View('<div></div>');
         var table = $("<table/>");
 
-        //TODO: translation
-        var categories = ["Total", "Männer", "Frauen"];
+        var categories = [Multiglot.translations.total, Multiglot.translations.men, Multiglot.translations.women];
         var intervals = ["0-14", "15-39", "40-69", "70+", "Total"];
 
         _this.initialize = function() {
@@ -59,7 +58,11 @@ define([
         _this.resetTable = function(){
             $(table).children().remove();
             var tableHeader = $("<tr/>").append($("<th/>"));
-            categories.forEach(function(interval){tableHeader.append($("<th/>").text(interval))});
+            categories.forEach(function(category){
+                var header = $("<th/>");
+                tableHeader.append(header);
+                Multiglot.custom(header, category);
+            });
             table.append(tableHeader);
         };
 

@@ -176,6 +176,13 @@ define([], function(){
             en: 'Women'
         },
 
+        total: {
+            de: 'Total',
+            fr: 'Total',
+            it: 'Totale',
+            en: 'Total'
+        },
+
         hospital_types: {
 
             general_centralised: {
