@@ -184,6 +184,10 @@ define([
             retrieveRemote();
         };
 
+        _this.clearSearchField = function(){
+            searchView.clearSearch();
+        };
+
         return _this;
     }
 

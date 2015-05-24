@@ -74,10 +74,14 @@ define([
                 if (e.offsetX >= crossLeft && e.offsetX <= crossRight) {
                     e.preventDefault();
                     if (_.isEmpty(_this.inputField().val())) return;
-                    _this.inputField().val('');
-                    _this.search('');
+                    _this.clearSearch();
                 }
             });
+        };
+
+        _this.clearSearch = function (){
+            _this.inputField().val('');
+            _this.search('');
         };
 
         return _this;
