@@ -126,6 +126,20 @@ def import_drg_codes
   end
 end
 
+def new_chop_code (json)
+  ChopCode.new(code: json['code'], short_code: json['short_code'], text_de: json['text_de'], text_fr: json['text_fr'], text_it: json['text_it'])
+end
+
+def import_chop_codes
+  measure_time 'Importing CHOP codes from Json file' do
+    ChopCode.delete_all
+    ChopNonterminal.delete_all
+    chop_json = JSON.parse(File.read('db/chop_terminals.json'))
+    codes = chop_json.map{ |json| new_chop_code(json) }
+    ChopCode.collection.insert codes.collect{|each| each.as_document } unless codes.empty?
+  end
+end
+
 def update_all_datasets
   AbstractDataset.delete_all
   Catalog.new.update_db
@@ -137,6 +151,7 @@ def seed_all
   import_icd_codes
   import_drg_terminals
   import_drg_codes
+  import_chop_codes
   update_all_datasets
 end
 
