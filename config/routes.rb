@@ -29,6 +29,7 @@ Rails.application.routes.draw do
         resources :datasets, :only => [:index, :show]
       end
       resources :chaptersbyyear, :only => [:show]
+      resources :top3datasets, :only => [:index]
     end
   end
 

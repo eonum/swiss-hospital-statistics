@@ -104,6 +104,7 @@ define([
                     .end();
 
             breadcrumbModel.announcer().onSendTo(OnBreadcrumbSelected, function(ann){
+                _this.clearSearchField();
                 _this.searchModel().allCandidates(ann.node().deepest().children())
             }, this);
 

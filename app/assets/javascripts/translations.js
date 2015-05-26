@@ -162,6 +162,66 @@ define([], function(){
             }
         },
 
+        men: {
+            de: 'Männer',
+            fr: 'Hommes',
+            it: 'Uomini',
+            en: 'Men'
+        },
+
+        women: {
+            de: 'Frauen',
+            fr: 'Femmes',
+            it: 'Donne',
+            en: 'Women'
+        },
+
+        total: {
+            de: 'Total',
+            fr: 'Total',
+            it: 'Totale',
+            en: 'Total'
+        },
+
+        hospital_types: {
+
+            general_centralised: {
+                de: 'Allgemeine Krankenhäuser, Zentrumsversorgung',
+                fr: 'Hôpitaux de soins généraux, prise en charge centralisée',
+                it: 'Ospedali generali, assistenza centralizzato',
+                en: 'General hospitals, centralised care'
+            },
+
+            general_basic: {
+                de: 'Allgemeine Krankenhäuser, Grundversorgung',
+                fr: 'Hôpitaux de soins généraux, soins de base',
+                it: 'Ospedali generali, assistenza base',
+                en: 'General hospitals, basic care'
+            },
+
+            psychiatric_clinics: {
+                de: 'Spezialkliniken: Psychiatrische Kliniken',
+                fr: 'Cliniques spécialisées: cliniques psychiatriques',
+                it: 'Cliniche speciali: ospedali psichiatrichi',
+                en: 'Special clincis: psychiatric clinics'
+            },
+
+            rehabilitation_clinic: {
+                de: 'Spezialkliniken: Rehabilitationskliniken',
+                fr: 'Cliniques spécialisées: cliniques de réadaptation',
+                it: 'Cliniche speciali: ospedali di riabilitazione',
+                en: 'Special clinics: rehabilitation clinics'
+            },
+
+            other_special_clinics: {
+                de: 'Spezialkliniken: Andere Spezialkliniken',
+                fr: 'Cliniques spécialisées: autres cliniques spécialisées',
+                it: 'Cliniche speciali: altri',
+                en: 'Special clinics: Other'
+            }
+
+        },
+
         charts: {
 
             bar: {

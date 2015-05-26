@@ -3,41 +3,100 @@ define([
     'views/widgets/top3/TopThreeDiagnosisVisualisation',
     'views/widgets/Selector',
     'models/SelectorModel',
-    'announcements/OnSelectionChanged'
+    'announcements/OnSelectionChanged',
+    'helpers/CodeChooser'
 ], function(
     View,
     TopThreeDiagnosisVisualisation,
     Selector,
     SelectorModel,
-    OnSelectionChanged
+    OnSelectionChanged,
+    CodeChooser
 ){
 
     function Top3DiagnosesPane() {
         var _this = new View('<div></div>');
-        var model = new SelectorModel(); //TODO: shouldn't be able to select multiple years
+        _this.class('loading');
+
+        var codeChooser = new CodeChooser();
+        var model = new SelectorModel();
         var widget = {};
 
+        var visualisation;
+        var resultsWithTexts;
+        var resultsWithoutTexts;
+
         _this.initialize = function () {
-            model.add('years').items([2011, 2012, 2013]);
-            model.add('hospitals').items([  'Allgemeine Krankenhäuser, Zentrumsversorgung',
-                                            'Allgemeine Krankenhäuser, Grundversorgung',
-                                            'Spezialkliniken: Psychiatrische Kliniken',
-                                            'Spezialkliniken: Rehabilitationskliniken',
-                                            'Spezialkliniken: Andere Spezialkliniken']);
-            model.announcer().onSendTo(OnSelectionChanged, _this.onChanged, _this);
+            $.getJSON('api/v1/top3datasets/', function (result){
+                resultsWithoutTexts = result;
 
-            var widget = new Selector().model(model);
-            _this.add(widget);
-            _this.model(model);
+                var years = _.uniq(_.map(result, 'year'));
+                model.add('years').items(years);
 
-            _this.add(new TopThreeDiagnosisVisualisation(800, 400));
+                var translations = Multiglot.translations.hospital_types;
+                model.add('hospitals').items([translations.general_centralised, translations.general_basic,
+                translations.psychiatric_clinics, translations.rehabilitation_clinic, translations.other_special_clinics]);
+                model.announcer().onSendTo(OnSelectionChanged, _this.onChanged, _this);
+
+                // all codes fetched
+                var selector = new Selector();
+                // tell selector to support multiglot labels
+                selector.setOuterLinkTextLogic(function(link, item, model){
+                     if(_.isObject(item)){
+                         Multiglot.custom(link, item);
+                     }else{
+                         link.text(model.label(item));
+                     }
+                });
+                widget = selector.model(model);
+
+                _this.add(widget);
+                _this.model(model);
+
+                visualisation = new TopThreeDiagnosisVisualisation();
+                _this.add(visualisation);
+
+                _this.addCodesToData(result);
+            });
         };
 
         _this.onChanged = function(ann) {
-            //TODO: implement this
             var selectedYear = ann.selection().years[0];
             var selectedHospitalType = ann.selection().hospitals[0];
-            console.log(selectedYear + ": " + selectedHospitalType);
+
+            if(!_.isUndefined(selectedYear) && !_.isUndefined(selectedHospitalType)) {
+                visualisation.visualiseSelection(selectedYear, selectedHospitalType.de);
+            }
+        };
+
+        _this.addCodesToData = function(data){
+            resultsWithTexts = [];
+            // also fetch code texts
+            for(var i = 0; i < data.length; i++){
+                _this.attachCodeToDataset(data[i]);
+            }
+
+        };
+
+        _this.attachCodeToDataset = function(dataset){
+            codeChooser.fetchCode('icd', dataset.code, function (codes){
+                // add descriptions
+                var code = {};
+                code['de'] = codes[0].text_de;
+                code['fr'] = codes[0].text_fr;
+                code['it'] = codes[0].text_it;
+                code['en'] = codes[0].text_de;
+
+                resultsWithTexts.push(_.extend(dataset, code));
+                if(resultsWithTexts.length == resultsWithoutTexts.length){
+                    _this.initializeVisualisations(resultsWithTexts);
+                }
+            });
+        };
+
+        _this.initializeVisualisations = function(data){
+            $(this).removeClass('loading');
+            visualisation.setData(resultsWithTexts);
         };
 
         _this.initialize();

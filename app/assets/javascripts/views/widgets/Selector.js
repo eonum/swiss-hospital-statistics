@@ -13,6 +13,10 @@ define([
 
         var model;
 
+        var linkTextLogic = function(link, item, model){
+            link.text(model.label(item));
+        };
+
         _this.model = function(_model) {
             if (_.isUndefined(_model)) return model;
             model = _model;
@@ -30,10 +34,18 @@ define([
             });
         };
 
+        _this.setLinkTextLogic = function(logic){
+            if(_.isUndefined(logic) || !_.isFunction(logic)){
+                return linkTextLogic;
+            }else{
+                linkTextLogic = logic;
+            }
+        };
+
         _this.buildItemView = function(item) {
             var itemView = new View('<li class="label radius secondary"></li>');
             var link = new View('<a></a>');
-            link.text(_this.model().label(item));
+            linkTextLogic(link, item, _this.model());
             itemView.add(link);
             itemView.model(item);
             itemView.click(function(e){
@@ -84,6 +96,8 @@ define([
         var selectors = [];
         var model;
 
+        var linkTextLogic;
+
         _this.model = function(_model) {
             if (_.isUndefined(_model)) return model;
             model = _model;
@@ -100,7 +114,19 @@ define([
         };
 
         _this.newSelector = function () {
-            return new Selector();
+            var selector = new Selector();
+            if(!_.isUndefined(linkTextLogic)){
+                selector.setLinkTextLogic(linkTextLogic);
+            }
+            return selector;
+        };
+
+        _this.setOuterLinkTextLogic = function (logic){
+            if(_.isUndefined(logic) || !_.isFunction(logic)){
+                return linkTextLogic;
+            }else{
+                linkTextLogic = logic;
+            }
         };
 
         return _this;

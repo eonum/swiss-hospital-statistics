@@ -22,8 +22,8 @@ define([
 
     function CodePane() {
         var _this = new View('<div class="row full-width"></div>');
-        var leftPane = new View('<div class="large-5 columns"></div>');
-        var rightPane = new View('<div class="large-7 columns"></div>');
+        var leftPane = new View('<div class="large-5 medium-5 small-5 columns"></div>');
+        var rightPane = new View('<div class="large-7 medium-7 small-7 columns"></div>');
 
         var searchView;
         var searchModel;
@@ -182,6 +182,10 @@ define([
             }
 
             retrieveRemote();
+        };
+
+        _this.clearSearchField = function(){
+            searchView.clearSearch();
         };
 
         return _this;
