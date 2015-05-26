@@ -77,7 +77,7 @@ define([
         };
 
         _this.codeOf = function(item) {
-            return item.code;
+            return item.short_code;
         };
 
         _this.codeCard = function (_codeCard) {
@@ -140,9 +140,9 @@ define([
          */
         _this.listNameOf = function (item) {
             return {
-                de: (_this.codeOf(item) + " "+item.text_de),
-                fr: (_this.codeOf(item) + " "+item.text_fr),
-                it: (_this.codeOf(item) + " "+item.text_it)
+                de: (item.code + " " + item.text_de),
+                fr: (item.code + " " + item.text_fr),
+                it: (item.code + " " + item.text_it)
             }
         };
 
